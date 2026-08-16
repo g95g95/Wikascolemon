@@ -21,7 +21,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #010-#013 | Banconio · Brio → Felignoto · Carpentrap ✅ |
 | #014-#043 | Libero |
 | #044-#049 | Pito, Pozza, Umito, Segaccio, Venagrox, Ciccharizard ✅ |
-| #050+ | Prossimi liberi |
+| #050-#149 | Libero |
+| **#150** | **Pretalien ✅ — chiude il Pokédex.** Numero finale: non superarlo e non riassegnarlo. |
 
 Regola: scansiona i file in `Wikascolemon/` e `schede _Pokemon/`, e assegna il **primo numero libero coerente col concept** (una linea starter va nel suo blocco riservato; una specie qualsiasi prende il primo libero da #050 in su). Non assegnare mai "il più alto + 1" senza guardare la tabella. La navigazione `.dexnav` tollera i buchi: il vicino mancante si scrive `<span class="dim">#0NN: ???</span>`.
 

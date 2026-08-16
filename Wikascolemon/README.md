@@ -29,6 +29,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #047 | [Segaccio](segaccio.html) | Pokémon Boscaiolo | Erba/Acciaio | Offida |
 | #048 | [Venagrox](venagrox.html) | Pokémon Trattore | Acciaio/Terra | Campagne del Piceno |
 | #049 | [Ciccharizard](ciccharizard.html) | Pokémon Maître | Buio/Spettro | Ascoli Piceno, centro storico |
+| #150 | [Pretalien](pretalien.html) | Pokémon Testimone | Coleot/Psico | Pretare, Monte Vettore |
 
 La wiki è in espansione: nuove schede verranno aggiunte nel tempo.
 
