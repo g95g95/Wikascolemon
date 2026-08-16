@@ -14,6 +14,14 @@ L'enciclopedia (immaginaria) dei Pokémon della vallata picena — schede fan-ma
 | #047 | [Segaccio](segaccio.html) | Pokémon Boscaiolo | Erba/Acciaio | Offida (Piceno) |
 | #048 | [Venagrox](venagrox.html) | Pokémon Trattore | Acciaio/Terra | Campagne del Piceno |
 
+## Pokédex del Piceno
+
+| N° | Nome | Categoria | Tipi | Territorio |
+|----|------|-----------|------|------------|
+| #001 | [Basilino](basilino.html) | Pokémon Mazzetto | Erba | Ascoli Piceno (Piceno) |
+| #002 | [Turibasil](turibasil.html) | Pokémon Chierichetto | Erba | Ascoli Piceno (Piceno) |
+| #003 | [Vescovasil](vescovasil.html) | Pokémon Cefaloforo | Erba/Terra | Ascoli Piceno (Piceno) |
+
 La wiki è in espansione: nuove schede verranno aggiunte nel tempo.
 
 *Progetto amatoriale senza scopo di lucro. Pokémon è un marchio di Nintendo/Creatures Inc./GAME FREAK inc.; questo progetto non è affiliato con i detentori del marchio.*
