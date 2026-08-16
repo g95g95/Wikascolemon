@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moro - Pokédex del Piceno</title>
+<style>
+:root{
+  --border:#a2a9b1; --panel:#f8f9fa; --text:#202122; --link:#3366cc; --red:#ba0000;
+  --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
+  --terra:#E0C068; --acqua:#6890F0; --lotta:#C03028; --acciaio:#B8B8D0;
+  --fuoco:#F08030; --volante:#A890F0; --psico:#F85888; --spettro:#705898;
+  --buio:#705848; --drago:#7038F8; --elettro:#F8D030; --folletto:#EE99AC;
+  --ghiaccio:#98D8D8; --coleot:#A8B820;
+  --accent1:#8a7d63; --accent2:#6f6a86;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--text);font:14px/1.6 "Segoe UI","Helvetica Neue",Arial,sans-serif}
+.page{max-width:1080px;margin:0 auto;padding:14px 20px 40px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+a.new{color:var(--red)}
+h1,h2{font-family:"Linux Libertine",Georgia,"Times New Roman",serif;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:4px;margin:20px 0 12px}
+h1{font-size:30px;margin-top:6px}
+h2{font-size:23px}
+h3{font-size:17px;margin:18px 0 8px}
+h4{font-size:15px;margin:14px 0 6px}
+.sitenotice{font-size:12px;color:#54595d;border-bottom:1px solid #eaecf0;padding-bottom:6px}
+.dexnav{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#f2efe2,#f8f9fa,#efe9f0);border:1px solid var(--border);border-radius:6px;padding:8px 14px;margin:12px 0;font-size:13px}
+.dexnav .mid{font-weight:700}
+.dexnav .dim{color:#9a9fa5}
+.type{display:inline-block;padding:2px 11px;border-radius:4px;color:#fff;font-weight:600;font-size:12px;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.18)}
+.t-roccia{background:var(--roccia)} .t-normale{background:var(--normale)} .t-veleno{background:var(--veleno)}
+.t-erba{background:var(--erba)} .t-terra{background:var(--terra);color:#5b4a12;text-shadow:none} .t-acqua{background:var(--acqua)}
+.t-lotta{background:var(--lotta)} .t-acciaio{background:var(--acciaio);color:#43436b;text-shadow:none} .t-fuoco{background:var(--fuoco)}
+.t-volante{background:var(--volante)} .t-psico{background:var(--psico)} .t-spettro{background:var(--spettro)}
+.t-buio{background:var(--buio)} .t-drago{background:var(--drago)} .t-elettro{background:var(--elettro);color:#6b5a10;text-shadow:none}
+.t-folletto{background:var(--folletto);color:#7c3350;text-shadow:none} .t-ghiaccio{background:var(--ghiaccio);color:#2a6a6a;text-shadow:none} .t-coleot{background:var(--coleot)}
+.infobox{float:right;width:308px;margin:0 0 16px 22px;border:1px solid var(--border);background:var(--panel);border-radius:8px;overflow:hidden;font-size:12.5px}
+.infobox .head{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff;text-align:center;padding:8px 10px}
+.infobox .head .num{font-size:12px;opacity:.9}
+.infobox .head .name{font-size:20px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.infobox .head .cat{font-size:12px;font-style:italic}
+.infobox .art{background:#fff;padding:8px;text-align:center;border-bottom:1px solid #eaecf0}
+.infobox .art svg{width:236px;height:236px}
+.infobox .art img{width:236px;height:236px;object-fit:contain}
+.artph{width:236px;height:236px;margin:0 auto;border:2px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;color:#72777d;font-size:12px;padding:10px;background:#fcfcfc}
+.infobox .art .capt{font-size:11px;color:#54595d}
+.infobox table{width:100%;border-collapse:collapse}
+.infobox th{background:#eef0f2;text-align:left;padding:5px 9px;width:41%;font-weight:600;vertical-align:top;border-top:1px solid #eaecf0}
+.infobox td{padding:5px 9px;border-top:1px solid #eaecf0;vertical-align:top}
+.infobox .lang{display:flex;justify-content:center;gap:14px;background:#eef0f2;padding:4px;font-size:11.5px;color:#54595d}
+.toc{display:inline-block;border:1px solid var(--border);background:var(--panel);padding:10px 18px;border-radius:6px;font-size:13px;margin:8px 0 4px}
+.toc .toctitle{font-weight:700;text-align:center}
+.toc ol{margin:6px 0 0;padding-left:22px}
+.toc ol ol{margin:0}
+.intro b.pkmn{font-size:15px}
+.wtable{border-collapse:collapse;margin:10px 0;font-size:13px}
+.wtable th,.wtable td{border:1px solid var(--border);padding:5px 10px}
+.wtable th{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff}
+.wtable td{background:#fff}
+.wtable tr:nth-child(even) td{background:#fafbfc}
+.wtable .lvl{text-align:center;font-weight:600}
+.wtable .num{text-align:center}
+.stab{font-weight:700}
+.effbox{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin:10px 0;max-width:760px}
+.effrow{display:flex;border-top:1px solid var(--border)}
+.effrow:first-child{border-top:none}
+.efflabel{width:130px;flex:0 0 130px;background:#eef0f2;padding:8px;font-weight:600;display:flex;align-items:center;font-size:12.5px}
+.effcells{padding:7px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;background:#fff}
+.effx{font-size:11px;color:#54595d;margin-left:2px}
+.evochain{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin:14px 0}
+.evocard{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:10px 12px;text-align:center;width:172px}
+.evocard svg{width:118px;height:118px}
+.evocard img{width:118px;height:118px;object-fit:contain}
+.evocard .nm{font-weight:700;margin:2px 0 6px}
+.evoarrow{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:11.5px;color:#54595d;width:130px;padding:0 4px}
+.evoarrow .ar{font-size:26px;color:#8b8f94;line-height:1}
+.statbars{max-width:640px}
+.statrow{display:flex;align-items:center;gap:10px;margin:4px 0}
+.statrow .sn{width:78px;flex:0 0 78px;font-weight:600;font-size:12.5px}
+.statrow .sv{width:34px;flex:0 0 34px;text-align:right;font-weight:700;font-size:13px}
+.statrow .sb{flex:1;background:#eef0f2;border:1px solid #dfe3e8;border-radius:4px;height:14px;overflow:hidden}
+.statrow .sb i{display:block;height:100%;border-radius:3px}
+.s-ps i{background:#FF5959}.s-att i{background:#F5AC78}.s-dif i{background:#FAE078}
+.s-asp i{background:#9DB7F5}.s-dsp i{background:#A7DB8D}.s-vel i{background:#FA92B2}
+.dexentries{max-width:820px}
+.dexentries .ver{font-weight:700}
+.itembox{border:1px solid #7fb1d8;background:#f0f7fc;border-radius:8px;padding:12px 16px;margin:14px 0;max-width:760px;display:flex;gap:14px;align-items:flex-start}
+.itembox svg{flex:0 0 46px}
+.notabene{border-left:4px solid var(--accent1);background:var(--panel);padding:8px 14px;margin:10px 0;max-width:780px;font-size:13px}
+.cats{border:1px solid var(--border);background:var(--panel);border-radius:6px;padding:8px 14px;margin-top:34px;font-size:12.5px}
+.footer{font-size:11.5px;color:#54595d;margin-top:14px}
+ul{margin:6px 0}
+@media (max-width:760px){
+  .infobox{float:none;width:100%;margin:12px 0}
+  .efflabel{width:96px;flex-basis:96px}
+  .evoarrow{width:100%}
+}
+@media (prefers-reduced-motion: no-preference){
+  .evocard:hover{box-shadow:0 2px 8px rgba(0,0,0,.12);transition:box-shadow .2s}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="impronta-moro" viewBox="0 0 40 40">
+  <circle cx="20" cy="20" r="14" fill="none" stroke="#54595d" stroke-width="2.4"/>
+  <circle cx="20" cy="20" r="9" fill="none" stroke="#54595d" stroke-width="2.4"/>
+  <circle cx="20" cy="20" r="4" fill="#54595d"/>
+  <path d="M20 2 a18 18 0 0 1 12 5" stroke="#54595d" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+</symbol>
+<symbol id="icon-bersaglio" viewBox="0 0 48 48">
+  <circle cx="24" cy="24" r="19" fill="#f2ede0" stroke="#8a7d63" stroke-width="1.6"/>
+  <circle cx="24" cy="24" r="15" fill="none" stroke="#8a7d63" stroke-width="1.4"/>
+  <circle cx="24" cy="24" r="11" fill="none" stroke="#8a7d63" stroke-width="1.4"/>
+  <circle cx="24" cy="24" r="7" fill="none" stroke="#8a7d63" stroke-width="1.4"/>
+  <circle cx="24" cy="24" r="3.4" fill="#c4442f"/>
+  <path d="M6 10 q6 -4 10 2" stroke="#5c5346" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+  <path d="M16 12 l4 5" stroke="#5c5346" stroke-width="2.2" stroke-linecap="round"/>
+</symbol>
+</defs>
+</svg>
+<div class="page">
+<div class="sitenotice"><a href="index.html"><b>← Wikascolemon</b></a> · da <b>Pokédex del Piceno</b>, l'enciclopedia (immaginaria) dei Pokémon della regione Piceno. <i>Pagina fan-made nel formato di Pokémon Central Wiki.</i></div>
+
+<div class="dexnav">
+  <span><a href="quintanaro.html">← #019: Quintanaro</a></span>
+  <span class="mid">#020 Moro</span>
+  <span class="dim">#021: ??? →</span>
+</div>
+
+<h1>Moro</h1>
+
+<div class="infobox">
+  <div class="head">
+    <div class="num">Pokédex del Piceno #020</div>
+    <div class="name">Moro</div>
+    <div class="cat">Pokémon Bersaglio</div>
+  </div>
+  <div class="art">
+    <div class="artph">Artwork di Moro<br>in arrivo</div>
+    <div class="capt">Artwork di Moro</div>
+  </div>
+  <div class="lang"><span>EN: Moro</span><span>JA: マワリマト <i>Mawarimato</i></span></div>
+  <table>
+    <tr><th>Tipo</th><td><span class="type t-acciaio">Acciaio</span> <span class="type t-spettro">Spettro</span></td></tr>
+    <tr><th>Abilità</th><td>Robustezza (prima)<br><i>Velostatico</i> (speciale)</td></tr>
+    <tr><th>Sesso</th><td>Senza sesso</td></tr>
+    <tr><th>Altezza</th><td>2,2 m</td></tr>
+    <tr><th>Peso</th><td>184,0 kg</td></tr>
+    <tr><th>Tasso di cattura</th><td>30 (8,2%)</td></tr>
+    <tr><th>Uovo</th><td>Non si riproduce<br>—</td></tr>
+    <tr><th>Pokédex regionali</th><td>Piceno #020</td></tr>
+    <tr><th>Tasso di allevamento</th><td>Lento</td></tr>
+    <tr><th>Esperienza base ceduta</th><td>187</td></tr>
+    <tr><th>Punti base ceduti</th><td>Totale: 2 — Difesa 2</td></tr>
+    <tr><th>Colore Pokédex</th><td>Marrone</td></tr>
+    <tr><th>Impronta</th><td><svg width="26" height="26"><use href="#impronta-moro"/></svg></td></tr>
+    <tr><th>Affetto di base</th><td>70</td></tr>
+  </table>
+</div>
+
+<p class="intro"><b class="pkmn">Moro</b> è un Pokémon di doppio tipo <b>Acciaio</b>/<b>Spettro</b> di <b>Campo Squarcia</b>, ad Ascoli Piceno. Non è nato vivo: è il <b>bersaglio girevole</b> della Giostra della Quintana, ed è diventato una creatura a furia di essere colpito.</p>
+<p>Compare due volte l'anno, nelle due date della giostra, e per il resto del tempo non si trova da nessuna parte.</p>
+
+<div class="toc">
+  <div class="toctitle">Indice</div>
+  <ol>
+    <li><a href="#Biologia">Biologia</a>
+      <ol>
+        <li><a href="#Fisionomia">Fisionomia</a></li>
+        <li><a href="#Comportamento">Comportamento</a></li>
+        <li><a href="#Habitat">Habitat</a></li>
+        <li><a href="#Dieta">Dieta</a></li>
+      </ol>
+    </li>
+    <li><a href="#Dati_di_gioco">Dati di gioco</a>
+      <ol>
+        <li><a href="#Resistenze">Resistenze e vulnerabilità</a></li>
+        <li><a href="#Evoluzioni">Evoluzioni</a></li>
+        <li><a href="#Statistiche">Statistiche di base</a></li>
+        <li><a href="#Mosse">Mosse apprese</a></li>
+        <li><a href="#Voci">Voci Pokédex</a></li>
+      </ol>
+    </li>
+    <li><a href="#Sfida">La Sfida al Moro</a></li>
+    <li><a href="#Curiosita">Curiosità</a></li>
+    <li><a href="#Lingue">In altre lingue</a></li>
+  </ol>
+</div>
+
+<h2 id="Biologia">Biologia</h2>
+
+<h3 id="Fisionomia">Fisionomia</h3>
+<p>Moro è un busto di legno duro e ferro montato su un <b>perno</b> che gli esce dalla schiena e su cui ruota senza attrito. Sul braccio sinistro porta uno <b>scudo tondo</b> con cinque cerchi concentrici dipinti, il più interno grande quanto una moneta; il braccio destro finisce in un <b>flagello</b> di catene e piombo che tiene sollevato all'altezza di un cavaliere.</p>
+<p>Il volto <b>non ha lineamenti</b>. Ce li aveva: il legno è stato consumato liscio da secoli di colpi, e oggi al posto della faccia c'è una superficie chiara e levigata in cui, se ci si mette davanti, ci si vede riflessi appena. Chi lo ha studiato sostiene che sia questa la sua parte viva.</p>
+<h4>Differenze tra i sessi</h4>
+<p>Moro non ha sesso e non si riproduce. Non ne esiste più di uno alla volta.</p>
+
+<h3 id="Comportamento">Comportamento</h3>
+<p>Immobile finché non sente arrivare qualcuno di corsa. Allora comincia a <b>girare</b>, e più a lungo dura lo scontro più accelera, fino a diventare una macchia. Non insegue mai: aspetta che siano gli altri a passargli davanti.</p>
+<p>Non sembra provare ostilità. Colpisce chi arriva in ritardo con la stessa indifferenza con cui lascia passare chi arriva in tempo, e quando lo scontro finisce si ferma esattamente nella posizione di prima. Gli osservatori concordano su una cosa sola: <b>non si difende mai</b>. Para soltanto perché è fatto per parare.</p>
+
+<h3 id="Habitat">Habitat</h3>
+<p><b>Campo Squarcia</b>, ad Ascoli Piceno, e nient'altro. Vi compare nella sera della seconda settimana di luglio e nel pomeriggio della prima domenica d'agosto — le due date della giostra — e non è mai stato avvistato in nessun altro luogo né in nessun altro giorno. Fuori da quelle due date il campo è vuoto, e il perno non c'è.</p>
+
+<h3 id="Dieta">Dieta</h3>
+<p>Non mangia. Le poche osservazioni disponibili suggeriscono che si nutra dei <b>colpi che riceve</b>: un Moro che non venga colpito da nessuno per un'intera giostra scompare prima del tramonto.</p>
+
+<h2 id="Dati_di_gioco">Dati di gioco</h2>
+
+<h3 id="Resistenze">Resistenze e vulnerabilità</h3>
+<div class="effbox">
+  <div class="effrow"><div class="efflabel">Debolezze</div><div class="effcells">
+    <span class="type t-fuoco">Fuoco</span><span class="effx">2×</span>
+    <span class="type t-terra">Terra</span><span class="effx">2×</span>
+    <span class="type t-spettro">Spettro</span><span class="effx">2×</span>
+    <span class="type t-buio">Buio</span><span class="effx">2×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Resistenze</div><div class="effcells">
+    <span class="type t-coleot">Coleot</span><span class="effx">¼×</span>
+    <span class="type t-erba">Erba</span><span class="effx">½×</span>
+    <span class="type t-ghiaccio">Ghiaccio</span><span class="effx">½×</span>
+    <span class="type t-volante">Volante</span><span class="effx">½×</span>
+    <span class="type t-psico">Psico</span><span class="effx">½×</span>
+    <span class="type t-roccia">Roccia</span><span class="effx">½×</span>
+    <span class="type t-drago">Drago</span><span class="effx">½×</span>
+    <span class="type t-acciaio">Acciaio</span><span class="effx">½×</span>
+    <span class="type t-folletto">Folletto</span><span class="effx">½×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Immunità</div><div class="effcells">
+    <span class="type t-normale">Normale</span><span class="effx">0×</span>
+    <span class="type t-lotta">Lotta</span><span class="effx">0×</span>
+    <span class="type t-veleno">Veleno</span><span class="effx">0×</span>
+  </div></div>
+</div>
+<div class="notabene"><b>Tre immunità</b>, nove resistenze e quattro debolezze: è la tipizzazione difensiva più forte del Pokédex del Piceno. E l'immunità che conta è quella alla <b>Lotta</b> — lo si colpisce da secoli e non è mai servito a niente. Per abbatterlo bisogna cambiare metodo: Fuoco, Terra, o le due cose che sa di essere, Spettro e Buio.</div>
+
+<h3 id="Evoluzioni">Evoluzioni</h3>
+<div class="evochain">
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm">Moro</div>
+    <span class="type t-acciaio">Acciaio</span> <span class="type t-spettro">Spettro</span>
+  </div>
+</div>
+<div class="notabene">Moro non si evolve e non ha pre-evoluzioni. Non è mai stato giovane: esisteva già così la prima volta che qualcuno lo ha guardato.</div>
+
+<h3 id="Statistiche">Statistiche di base</h3>
+<div class="statbars">
+  <div class="statrow s-ps"><span class="sn">PS</span><span class="sv">60</span><div class="sb"><i style="width:40%"></i></div></div>
+  <div class="statrow s-att"><span class="sn">Attacco</span><span class="sv">100</span><div class="sb"><i style="width:67%"></i></div></div>
+  <div class="statrow s-dif"><span class="sn">Difesa</span><span class="sv">130</span><div class="sb"><i style="width:87%"></i></div></div>
+  <div class="statrow s-asp"><span class="sn">Att. Sp.</span><span class="sv">60</span><div class="sb"><i style="width:40%"></i></div></div>
+  <div class="statrow s-dsp"><span class="sn">Dif. Sp.</span><span class="sv">100</span><div class="sb"><i style="width:67%"></i></div></div>
+  <div class="statrow s-vel"><span class="sn">Velocità</span><span class="sv">60</span><div class="sb"><i style="width:40%"></i></div></div>
+  <div class="statrow"><span class="sn"><b>Totale</b></span><span class="sv"><b>510</b></span><div></div></div>
+</div>
+<div class="notabene">Difese altissime e PS bassi: incassa quasi tutto ma non ha margine se qualcosa lo passa. La Velocità di partenza è mediocre, ma <i>Velostatico</i> lo fa accelerare a ogni turno — più lo scontro dura, più diventa difficile arrivargli davanti.</div>
+
+<h3 id="Mosse">Mosse apprese</h3>
+<h4>Aumentando di livello</h4>
+<table class="wtable">
+  <tr><th>Lv.</th><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td class="lvl">Inizio</td><td class="stab"><b>Flagello</b></td><td><span class="type t-acciaio">Acciaio</span></td><td>Fisico</td><td class="num">—</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">Inizio</td><td>Attacco Rapido</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">40</td><td class="num">100%</td><td class="num">30</td></tr>
+  <tr><td class="lvl">Inizio</td><td class="stab">Lecca</td><td><span class="type t-spettro">Spettro</span></td><td>Fisico</td><td class="num">30</td><td class="num">100%</td><td class="num">30</td></tr>
+  <tr><td class="lvl">12</td><td class="stab">Metalartiglio</td><td><span class="type t-acciaio">Acciaio</span></td><td>Fisico</td><td class="num">50</td><td class="num">95%</td><td class="num">35</td></tr>
+  <tr><td class="lvl">18</td><td>Riflesso</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">25</td><td class="stab">Ombraferoce</td><td><span class="type t-spettro">Spettro</span></td><td>Fisico</td><td class="num">70</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">32</td><td class="stab">Testataferro</td><td><span class="type t-acciaio">Acciaio</span></td><td>Fisico</td><td class="num">80</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">39</td><td class="stab">Malocchio</td><td><span class="type t-spettro">Spettro</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">5</td></tr>
+  <tr><td class="lvl">46</td><td>Contatore</td><td><span class="type t-lotta">Lotta</span></td><td>Fisico</td><td class="num">—</td><td class="num">100%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">54</td><td class="stab">Palla Ombra</td><td><span class="type t-spettro">Spettro</span></td><td>Speciale</td><td class="num">80</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">62</td><td class="stab">Ferrotestata</td><td><span class="type t-acciaio">Acciaio</span></td><td>Fisico</td><td class="num">100</td><td class="num">75%</td><td class="num">15</td></tr>
+</table>
+<h4>Tramite MT/DT (selezione)</h4>
+<table class="wtable">
+  <tr><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td>Protezione</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Sostituto</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Riposo</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">5</td></tr>
+  <tr><td>Terremoto</td><td><span class="type t-terra">Terra</span></td><td>Fisico</td><td class="num">100</td><td class="num">100%</td><td class="num">10</td></tr>
+</table>
+<p><small>Il <b>grassetto</b> indica una mossa che ha il bonus di tipo (STAB) quando viene usata da un Moro. <b>Flagello</b> è la sua mossa esclusiva: la potenza <b>aumenta quanto più l'avversario è lento di lui</b>, fino a un massimo di 150. È la regola vera della giostra — il flagello prende chi è passato in ritardo. Descrizione in gioco: «Chi arriva tardi lo sente».</small></p>
+
+<h3 id="Voci">Voci Pokédex</h3>
+<div class="dexentries">
+  <p><span class="ver">Versione Tronto</span> — <i>Il suo volto è stato consumato liscio da secoli di colpi. Chi ci si mette davanti ci vede riflesso sé stesso, e quasi tutti fanno un passo indietro.</i></p>
+  <p><span class="ver">Versione Laga</span> — <i>Compare due volte l'anno e sta fermo finché non sente arrivare qualcuno al galoppo. Non si difende: para soltanto, perché è fatto per parare.</i></p>
+</div>
+
+<h2 id="Sfida">La Sfida al Moro</h2>
+<div class="itembox">
+  <svg width="46" height="46"><use href="#icon-bersaglio"/></svg>
+  <div><b>Tre tornate, cinque cerchi.</b> Nella giostra vera il cavaliere percorre tre volte una pista a forma di otto lunga 720 metri e deve colpire il bersaglio sullo scudo del Moro: cinque cerchi concentrici che valgono 100, 80, 60, 40 e 20 punti dal centro verso fuori. Al braccio opposto, in origine, il fantoccio portava un flagello che colpiva chi passava troppo lento. Nel gioco è tutto qui: <b>il Moro non è un nemico da battere, è una misura</b>. Ti dice quanto sei preciso, e se sei in ritardo te lo fa sapere.</div>
+</div>
+
+<h2 id="Curiosita">Curiosità</h2>
+<ul>
+  <li>È l'unico Pokémon del Piceno che si può incontrare <b>soltanto in due giorni dell'anno</b>: la sera della giostra di luglio e il pomeriggio della prima domenica d'agosto.</li>
+  <li>Con tre immunità e nove resistenze ha la tipizzazione difensiva migliore del Pokédex regionale.</li>
+  <li>Non ha lineamenti perché li aveva: il legno del volto è stato levigato dai colpi, non intagliato liscio.</li>
+  <li>Impara <i>Contatore</i> pur essendo immune alla Lotta — restituisce colpi che a lui non fanno niente.</li>
+  <li><a href="quintanaro.html">Quintanaro</a> passa le estati a fissare la pista vuota di Campo Squarcia: sta aspettando lui.</li>
+</ul>
+<h3>Origine</h3>
+<p>Moro è il <b>fantoccio girevole della Sfida al Moro</b>, il momento centrale della Giostra della Quintana di Ascoli Piceno: un busto su perno con lo scudo-bersaglio sul braccio sinistro e, storicamente, un flagello su quello destro. Nella tradizione la figura rappresenta il nemico saraceno; qui è stata reinterpretata come <b>un bersaglio e nient'altro</b> — un oggetto che si è animato a forza di essere colpito, e che ha perso ogni tratto umano proprio per questo. La pista a otto, le tre tornate e i cinque cerchi del bersaglio sono quelli veri.</p>
+<h4>Origine del nome</h4>
+<p><b>Moro</b> è il nome con cui ad Ascoli si chiama il fantoccio. La specie tiene il nome dell'oggetto, non della figura che l'oggetto rappresentava.</p>
+<p>Il nome giapponese, マワリマト <i>Mawarimato</i>, unisce 回り <i>mawari</i> ("che gira") e 的 <i>mato</i> ("bersaglio").</p>
+
+<h2 id="Lingue">In altre lingue</h2>
+<table class="wtable">
+  <tr><th>Lingua</th><th>Nome</th><th>Origine</th></tr>
+  <tr><td><b>Giapponese</b></td><td>マワリマト <i>Mawarimato</i></td><td>Da <i>mawari</i>, "che gira", e <i>mato</i>, "bersaglio".</td></tr>
+  <tr><td><b>Inglese</b></td><td>Moro</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Francese</b></td><td>Moro</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Spagnolo</b></td><td>Moro</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Tedesco</b></td><td>Moro</td><td>Uguale al nome italiano.</td></tr>
+</table>
+
+<h2>Vedi anche</h2>
+<ul>
+  <li><a href="quintanaro.html">Quintanaro</a> — chi lo sfida, e le sue sei forme</li>
+  <li><a href="tamburino.html">Tamburino</a> e <a href="sbandiera.html">Sbandiera</a> — il resto del corteo</li>
+</ul>
+
+<div class="dexnav">
+  <span><a href="quintanaro.html">← #019: Quintanaro</a></span>
+  <span class="mid">#020 Moro</span>
+  <span class="dim">#021: ??? →</span>
+</div>
+
+<div class="cats"><b>Categorie:</b> Pokémon · Pokémon della regione Piceno · Pokémon di tipo Acciaio · Pokémon di tipo Spettro · Pokémon di doppio tipo · Pokémon senza evoluzioni · Pokémon senza sesso · Pokémon di colore Marrone · Linea evolutiva della Quintana</div>
+<div class="footer">Pagina fan-made ispirata al formato di Pokémon Central Wiki. La Sfida al Moro, la pista a otto di Campo Squarcia e il bersaglio a cinque cerchi sono reali.</div>
+</div>
+</body>
+</html>
