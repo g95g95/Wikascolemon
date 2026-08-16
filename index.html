@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wikascolemon — l'enciclopedia dei Pokémon della vallata picena</title>
+<style>
+:root{
+  --border:#a2a9b1; --panel:#f8f9fa; --text:#202122; --link:#3366cc; --red:#ba0000;
+  --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
+  --terra:#E0C068; --acqua:#6890F0; --acciaio:#B8B8D0;
+  --accent1:#5aa63e; --accent2:#8f8fae;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--text);font:14px/1.6 "Segoe UI","Helvetica Neue",Arial,sans-serif}
+.page{max-width:1080px;margin:0 auto;padding:14px 20px 40px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2{font-family:"Linux Libertine",Georgia,"Times New Roman",serif;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:4px;margin:20px 0 12px}
+h1{font-size:34px;margin-top:6px}
+h2{font-size:23px}
+.sitenotice{font-size:12px;color:#54595d;border-bottom:1px solid #eaecf0;padding-bottom:6px}
+.banner{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff;border-radius:8px;padding:22px 26px;margin:14px 0 6px}
+.banner .big{font-family:"Linux Libertine",Georgia,serif;font-size:34px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.banner .sub{font-size:14px;opacity:.95;margin-top:4px}
+.type{display:inline-block;padding:2px 11px;border-radius:4px;color:#fff;font-weight:600;font-size:12px;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.18)}
+.t-roccia{background:var(--roccia)} .t-normale{background:var(--normale)} .t-veleno{background:var(--veleno)}
+.t-erba{background:var(--erba)} .t-acciaio{background:var(--acciaio);color:#43436b;text-shadow:none}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:14px;margin:16px 0}
+.card{border:1px solid var(--border);border-radius:8px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
+.card .head{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff;padding:8px 12px}
+.card .head .num{font-size:11px;opacity:.9}
+.card .head .nm{font-size:19px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.card .head .cat{font-size:11.5px;font-style:italic}
+.card .body{padding:10px 12px;font-size:13px;flex:1}
+.card .types{margin:4px 0 8px;display:flex;gap:5px}
+.card .go{display:block;text-align:center;border-top:1px solid #eaecf0;background:#fff;padding:7px;font-weight:600}
+.notice{border:1px solid var(--border);border-left:5px solid var(--accent1);background:var(--panel);border-radius:4px;padding:10px 14px;font-size:13px;margin:14px 0}
+.wtable{border-collapse:collapse;margin:10px 0;font-size:13px;width:100%;max-width:760px}
+.wtable th,.wtable td{border:1px solid var(--border);padding:5px 10px}
+.wtable th{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff}
+.wtable td{background:#fff}
+.wtable tr:nth-child(even) td{background:#fafbfc}
+.footer{margin-top:30px;border-top:1px solid #eaecf0;padding-top:8px;font-size:12px;color:#54595d}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="sitenotice"><b>Wikascolemon</b> — l'enciclopedia (immaginaria) dei Pokémon della vallata picena. <i>Progetto fan-made nel formato di Pokémon Central Wiki.</i></div>
+
+<div class="banner">
+  <div class="big">Wikascolemon</div>
+  <div class="sub">L'enciclopedia dei Pokémon legati alla topografia e all'immaginario della vallata picena: dai borghi montani della Laga ai boschi di Offida.</div>
+</div>
+
+<p><b>Wikascolemon</b> raccoglie le schede dei Pokémon immaginari ispirati ai luoghi, alle tradizioni e ai personaggi dell'alta valle del Tronto e del Piceno. Ogni scheda segue il formato enciclopedico di Pokémon Central Wiki, con biologia, mosse, statistiche, curiosità e riferimenti al territorio reale.</p>
+
+<div class="notice">🚧 <b>Wiki in espansione</b> — il Pokédex della Laga è in continua crescita: nuove schede su personaggi e luoghi della vallata picena verranno aggiunte nel tempo.</div>
+
+<h2>Pokédex della Laga</h2>
+
+<div class="cards">
+  <div class="card">
+    <div class="head"><div class="num">#044</div><div class="nm">Pito</div><div class="cat">Pokémon Cerbiatto</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-roccia">Roccia</span><span class="type t-normale">Normale</span></div>
+      Originario dei borghi montani del comune di Acquasanta. Si evolve in Pozza dal livello 21 se sale di livello in un luogo umido.
+    </div>
+    <a class="go" href="pito.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#045</div><div class="nm">Pozza</div><div class="cat">Pokémon Fracchia</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-roccia">Roccia</span><span class="type t-veleno">Veleno</span></div>
+      Stadio intermedio della linea di Pito. Si evolve in Umito se scambiato mentre tiene un'Acquasanta.
+    </div>
+    <a class="go" href="pozza.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#046</div><div class="nm">Umito</div><div class="cat">Pokémon Cervosacro</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-roccia">Roccia</span><span class="type t-erba">Erba</span></div>
+      Forma finale della linea evolutiva di Pito, venerata nei borghi dell'alta valle del Tronto.
+    </div>
+    <a class="go" href="umito.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#047</div><div class="nm">Segaccio</div><div class="cat">Pokémon Boscaiolo</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-erba">Erba</span><span class="type t-acciaio">Acciaio</span></div>
+      Specie singola dei boschi di Offida, giunta secondo le testimonianze dalla sponda albanese dell'Adriatico.
+    </div>
+    <a class="go" href="segaccio.html">Vai alla scheda →</a>
+  </div>
+</div>
+
+<h2>Indice rapido</h2>
+<table class="wtable">
+  <tr><th>N°</th><th>Nome</th><th>Categoria</th><th>Tipi</th><th>Territorio</th></tr>
+  <tr><td>#044</td><td><a href="pito.html"><b>Pito</b></a></td><td>Pokémon Cerbiatto</td><td><span class="type t-roccia">Roccia</span> <span class="type t-normale">Normale</span></td><td>Acquasanta Terme (Laga)</td></tr>
+  <tr><td>#045</td><td><a href="pozza.html"><b>Pozza</b></a></td><td>Pokémon Fracchia</td><td><span class="type t-roccia">Roccia</span> <span class="type t-veleno">Veleno</span></td><td>Acquasanta Terme (Laga)</td></tr>
+  <tr><td>#046</td><td><a href="umito.html"><b>Umito</b></a></td><td>Pokémon Cervosacro</td><td><span class="type t-roccia">Roccia</span> <span class="type t-erba">Erba</span></td><td>Acquasanta Terme (Laga)</td></tr>
+  <tr><td>#047</td><td><a href="segaccio.html"><b>Segaccio</b></a></td><td>Pokémon Boscaiolo</td><td><span class="type t-erba">Erba</span> <span class="type t-acciaio">Acciaio</span></td><td>Offida (Piceno)</td></tr>
+</table>
+
+<div class="footer">Wikascolemon è un progetto amatoriale senza scopo di lucro. Pokémon è un marchio di Nintendo/Creatures Inc./GAME FREAK inc.; questo sito non è affiliato in alcun modo con i detentori del marchio. I contenuti sono opere di fantasia ispirate al territorio della vallata picena.</div>
+
+</div>
+</body>
+</html>
