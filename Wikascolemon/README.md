@@ -16,6 +16,9 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #004 | [Puledrotto](puledrotto.html) | Pokémon Miccia | Fuoco | Ripatransone |
 | #005 | [Cavalbrace](cavalbrace.html) | Pokémon Scalpito | Fuoco | Ripatransone |
 | #006 | [Fuocavallo](fuocavallo.html) | Pokémon Girandola | Fuoco/Folletto | Ripatransone |
+| #007 | [Tuffito](tuffito.html) | Pokémon Bomba | Acqua | Rio Castellano, Ascoli Piceno |
+| #008 | [Brasero](brasero.html) | Pokémon Griglia | Acqua | Rio Castellano, Ascoli Piceno |
+| #009 | [Compadrone](compadrone.html) | Pokémon Compare | Acqua/Lotta | Rio Castellano e Tronto |
 | #044 | [Pito](pito.html) | Pokémon Cerbiatto | Roccia/Normale | Acquasanta Terme (Laga) |
 | #045 | [Pozza](pozza.html) | Pokémon Fracchia | Roccia/Veleno | Acquasanta Terme (Laga) |
 | #046 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |

@@ -9,7 +9,7 @@
   --border:#a2a9b1; --panel:#f8f9fa; --text:#202122; --link:#3366cc; --red:#ba0000;
   --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
   --terra:#E0C068; --acqua:#6890F0; --acciaio:#B8B8D0;
-  --buio:#705848; --spettro:#705898; --fuoco:#F08030; --folletto:#EE99AC;
+  --buio:#705848; --spettro:#705898; --fuoco:#F08030; --folletto:#EE99AC; --lotta:#C03028;
   --accent1:#5aa63e; --accent2:#8f8fae;
 }
 *{box-sizing:border-box}
@@ -28,6 +28,7 @@ h2{font-size:23px}
 .t-roccia{background:var(--roccia)} .t-normale{background:var(--normale)} .t-veleno{background:var(--veleno)}
 .t-erba{background:var(--erba)} .t-acciaio{background:var(--acciaio);color:#43436b;text-shadow:none} .t-terra{background:var(--terra);color:#5b4a12;text-shadow:none}
 .t-buio{background:var(--buio)} .t-spettro{background:var(--spettro)} .t-fuoco{background:var(--fuoco)}
+.t-acqua{background:var(--acqua)} .t-lotta{background:var(--lotta)}
 .t-folletto{background:var(--folletto);color:#7c3350;text-shadow:none}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:14px;margin:16px 0}
 .card{border:1px solid var(--border);border-radius:8px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
@@ -115,6 +116,30 @@ h2{font-size:23px}
     <a class="go" href="fuocavallo.html">Vai alla scheda →</a>
   </div>
   <div class="card">
+    <div class="head"><div class="num">#007</div><div class="nm">Tuffito</div><div class="cat">Pokémon Bomba</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-acqua">Acqua</span></div>
+      Starter Acqua del Piceno, gambero delle pozze del Rio Castellano: si tuffa a bomba dai massi e rifà il tuffo se nessuno guardava. Si evolve in Brasero dal livello 17.
+    </div>
+    <a class="go" href="tuffito.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#008</div><div class="nm">Brasero</div><div class="cat">Pokémon Griglia</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-acqua">Acqua</span></div>
+      Stadio intermedio della linea di Tuffito. Usa la piastra del dorso come griglia e non lascia la riva finché l'ultimo tizzone non si è spento.
+    </div>
+    <a class="go" href="brasero.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#009</div><div class="nm">Compadrone</div><div class="cat">Pokémon Compare</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-acqua">Acqua</span><span class="type t-lotta">Lotta</span></div>
+      Forma finale della linea starter Acqua: dove si ferma, entro sera c'è una festa. I residenti a monte non sempre apprezzano.
+    </div>
+    <a class="go" href="compadrone.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
     <div class="head"><div class="num">#044</div><div class="nm">Pito</div><div class="cat">Pokémon Cerbiatto</div></div>
     <div class="body">
       <div class="types"><span class="type t-roccia">Roccia</span><span class="type t-normale">Normale</span></div>
@@ -173,6 +198,9 @@ h2{font-size:23px}
   <tr><td>#004</td><td><a href="puledrotto.html"><b>Puledrotto</b></a></td><td>Pokémon Miccia</td><td><span class="type t-fuoco">Fuoco</span></td><td>Ripatransone</td></tr>
   <tr><td>#005</td><td><a href="cavalbrace.html"><b>Cavalbrace</b></a></td><td>Pokémon Scalpito</td><td><span class="type t-fuoco">Fuoco</span></td><td>Ripatransone</td></tr>
   <tr><td>#006</td><td><a href="fuocavallo.html"><b>Fuocavallo</b></a></td><td>Pokémon Girandola</td><td><span class="type t-fuoco">Fuoco</span> <span class="type t-folletto">Folletto</span></td><td>Ripatransone</td></tr>
+  <tr><td>#007</td><td><a href="tuffito.html"><b>Tuffito</b></a></td><td>Pokémon Bomba</td><td><span class="type t-acqua">Acqua</span></td><td>Rio Castellano, Ascoli Piceno</td></tr>
+  <tr><td>#008</td><td><a href="brasero.html"><b>Brasero</b></a></td><td>Pokémon Griglia</td><td><span class="type t-acqua">Acqua</span></td><td>Rio Castellano, Ascoli Piceno</td></tr>
+  <tr><td>#009</td><td><a href="compadrone.html"><b>Compadrone</b></a></td><td>Pokémon Compare</td><td><span class="type t-acqua">Acqua</span> <span class="type t-lotta">Lotta</span></td><td>Rio Castellano e Tronto</td></tr>
   <tr><td>#044</td><td><a href="pito.html"><b>Pito</b></a></td><td>Pokémon Cerbiatto</td><td><span class="type t-roccia">Roccia</span> <span class="type t-normale">Normale</span></td><td>Acquasanta Terme (Laga)</td></tr>
   <tr><td>#045</td><td><a href="pozza.html"><b>Pozza</b></a></td><td>Pokémon Fracchia</td><td><span class="type t-roccia">Roccia</span> <span class="type t-veleno">Veleno</span></td><td>Acquasanta Terme (Laga)</td></tr>
   <tr><td>#046</td><td><a href="umito.html"><b>Umito</b></a></td><td>Pokémon Cervosacro</td><td><span class="type t-roccia">Roccia</span> <span class="type t-erba">Erba</span></td><td>Acquasanta Terme (Laga)</td></tr>
