@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sprite del Piceno — brief tecnico</title>
+<style>
+:root{--border:#a2a9b1;--panel:#f8f9fa;--acc:#78C850}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f6f6f6;color:#202122;margin:0;line-height:1.55}
+.page{max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--border);padding:22px 28px}
+h1{font-family:Georgia,serif;font-weight:normal;border-bottom:3px solid var(--acc);font-size:28px;margin:4px 0 4px}
+h2{font-family:Georgia,serif;font-weight:normal;border-bottom:1px solid var(--border);font-size:21px;margin-top:28px}
+h3{font-size:16px;margin:18px 0 6px}
+.sub{color:#54595d;font-size:14px;margin-bottom:14px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:10px 0}
+th,td{border:1px solid var(--border);padding:5px 8px;text-align:left;vertical-align:top}
+th{background:var(--panel)}
+.notabene{background:#fdf3e3;border:1px solid #e5c98e;padding:8px 12px;font-size:13.5px;margin:12px 0}
+.ok{color:#1d7a2e;font-weight:bold}
+.warn{color:#b3261e;font-weight:bold}
+ul,ol{margin:6px 0 10px 22px;padding:0}
+li{margin:3px 0}
+code{background:var(--panel);border:1px solid var(--border);padding:0 4px;border-radius:3px;font-size:12.5px}
+.footer{font-size:11.5px;color:#54595d;border-top:1px solid var(--border);margin-top:22px;padding-top:8px}
+.tag{display:inline-block;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:1px 8px;font-size:12px;margin:1px}
+.swatch{display:inline-block;width:13px;height:13px;border:1px solid #888;vertical-align:-2px;margin-right:3px}
+</style></head><body>
+<div class="page">
+
+<h1>Sprite del Piceno — brief tecnico</h1>
+<div class="sub">Come si disegna uno sprite per <i>Pokémon Versione Tronto / Laga</i> · v1.0 · agosto 2026 · complementare a <a href="brief_piceno.html">brief di progetto</a></div>
+
+<p>Il motore è <code>pokeemerald-expansion</code>: gli sprite sono quelli veri del Game Boy Advance,
+con i vincoli veri del Game Boy Advance. <b>Questo documento serve a chi disegna</b>: dice cosa
+consegnare, entro quali limiti e in che ordine. Le specie sono progettate sulla
+<a href="index.html">wiki</a>, gli artwork esistenti sono il <b>riferimento</b> — non lo sprite.</p>
+
+<div class="notabene"><b>La regola che riassume tutte le altre:</b> uno sprite non è l'artwork
+rimpicciolito. È un <b>ridisegno a 15 colori</b> in cui ogni pixel è una decisione. Un artwork
+bellissimo ridotto a 64×64 diventa una macchia: la silhouette va ricostruita da zero.</div>
+
+<h2>1. Cosa si consegna, per ogni specie</h2>
+<table>
+<tr><th>File</th><th>Dimensione</th><th>Cosa</th></tr>
+<tr><td><code>anim_front.png</code></td><td><b>64×128</b></td><td>Lo sprite frontale, <b>due fotogrammi</b> da 64×64 affiancati in verticale: Emerald li alterna per l'animazione d'entrata. Il secondo fotogramma può essere una variazione minima (un orecchio, la fiamma, il respiro).</td></tr>
+<tr><td><code>back.png</code></td><td>64×64</td><td>Visto da dietro. È disegnato <b>più vicino alla camera</b>: occupa più riquadro, ha meno dettaglio, spesso si vede solo la metà superiore del corpo.</td></tr>
+<tr><td><code>normal.pal</code></td><td>16 colori</td><td>La palette. Uno dei 16 è la trasparenza → <b>15 colori usabili</b>, per tutto: corpo, ombre, contorno, occhi, oggetti.</td></tr>
+<tr><td><code>icon.png</code></td><td>32×64</td><td>L'icona del menu squadra: due fotogrammi da 32×32. Non è lo sprite rimpicciolito — si ridisegna, tenendo solo i tratti che sopravvivono a metà risoluzione.</td></tr>
+<tr><td><code>shiny.pal</code></td><td>16 colori</td><td class="warn">Fuori perimetro per ora.</td></tr>
+</table>
+
+<div class="notabene"><b>Sulle shiny:</b> non le progettiamo, ma <b>il file serve comunque alla build</b>
+— senza, non compila. Si genera con uno spostamento automatico di tonalità sulla palette normale
+e si mette da parte. Diventeranno un lavoro vero solo se e quando decideremo che lo sono: nessuno
+si fermi ad aspettarle.</div>
+
+<h2>2. I vincoli, in ordine di durezza</h2>
+
+<h3>15 colori. Non 16, non «più o meno 16».</h3>
+<p>L'indice 0 della palette è la trasparenza. Restano 15 colori <b>per l'intero sprite</b>. In pratica
+si ragiona per rampe: 3-4 tonalità per il materiale principale, 2-3 per il secondario, 1 contorno,
+1-2 accenti (occhi, fuoco, metallo). Sono finiti prima di quanto sembri, e ogni effetto
+"sfumato" ne divora due o tre.</p>
+
+<h3>Il contorno non è nero</h3>
+<p>Lo stile Gen 3 usa un contorno di <b>1 pixel</b> in una versione molto scura del colore del corpo,
+e lo fa <b>variare</b> lungo la sagoma (più caldo dove batte la luce, più freddo in ombra). Il nero
+pieno appiattisce la figura e si riconosce immediatamente come "non di famiglia".</p>
+
+<h3>Ombreggiatura a fasce nette</h3>
+<p>Niente sfumature morbide, niente dithering diffuso: cel shading duro, con la <b>luce sempre da in
+alto a sinistra</b> come in tutta la generazione. Ogni pixel ammorbidito è un colore in meno.</p>
+
+<h3>Il colore va scelto già quantizzato</h3>
+<p>Il GBA lavora in <b>BGR555</b>: 5 bit per canale, 32 livelli per componente. Colori come
+<code>#F08030</code> non esistono esattamente e vengono arrotondati. Meglio scegliere la palette
+a monte sui valori validi che ritoccarla dopo aver visto lo sprite virare in gioco.</p>
+
+<h3>64×64 è il tetto, non la taglia</h3>
+<p>Un Pokémon grande riempie il riquadro, uno piccolo ne occupa un angolo: la <b>scala relativa</b>
+fra le specie si comunica soltanto così. Va decisa prima, per tutto il dex (§3).</p>
+
+<h3>Leggibilità a 1:1</h3>
+<p>Lo schermo è <b>240×160</b>: lo sprite in battaglia occupa più di un quarto della larghezza. Un
+dettaglio sotto i 2-3 pixel non esiste. Si guarda sempre allo zoom 100%, non al 400%.</p>
+
+<h2>3. Scala relativa — da decidere una volta sola</h2>
+<p>Il rapporto reale fra le taglie dichiarate è 18:1 (Basilino 0,3 m contro Venagrox 5,4 m): sul
+riquadro non ci sta, e infatti la serie non lo rispetta mai alla lettera. Quello che <b>deve</b>
+restare vero è <b>l'ordine</b>. Proposta di fasce, da usare come budget di altezza in pixel:</p>
+<table>
+<tr><th>Fascia</th><th>Altezza in gioco</th><th>Specie</th><th>Altezza sprite</th></tr>
+<tr><td>Minuti</td><td>0,3 – 0,5 m</td><td>Basilino, Tuffito, Pito</td><td>26 – 32 px</td></tr>
+<tr><td>Piccoli</td><td>0,7 – 1,0 m</td><td>Puledrotto, Turibasil, Brasero, Pozza</td><td>36 – 44 px</td></tr>
+<tr><td>Medi</td><td>1,2 – 1,7 m</td><td>Banconio, Cavalbrace, Compadrone, Vescovasil, Ciccharizard</td><td>48 – 56 px</td></tr>
+<tr><td>Grandi</td><td>1,9 m</td><td>Fuocavallo, Umito, Segaccio</td><td>58 – 64 px</td></tr>
+<tr><td>Fuori scala</td><td>5,4 m</td><td>Venagrox</td><td>riempie il riquadro ed <b>esce dai bordi</b></td></tr>
+</table>
+<div class="notabene">Venagrox è il caso limite ed è utile che lo sia: come i colossi della serie, si
+inquadra <b>tagliato</b> dal riquadro — non si rimpicciolisce fino a farlo entrare, altrimenti un
+trattore da 2,8 tonnellate finisce grande come un capriolo.</div>
+
+<h2>4. Metodo: la famiglia prima del singolo</h2>
+<ol>
+<li><b>Una palette per linea evolutiva.</b> I tre stadi condividono le rampe: cambiano le forme, non
+i colori. La coerenza cromatica della linea viene gratis e si risparmiano ore.</li>
+<li><b>Si disegna prima la forma finale.</b> Vescovasil, Fuocavallo, Compadrone. Le pre-evoluzioni
+sono <b>semplificazioni</b> di qualcosa che esiste già: vengono meglio, e in metà tempo.</li>
+<li><b>Silhouette prima di tutto.</b> Riempita di nero, deve essere riconoscibile. Se non lo è, nessuna
+quantità di dettaglio la salverà.</li>
+<li><b>Il colore Pokédex della scheda è un vincolo</b>, non un suggerimento: la tinta dominante dello
+sprite deve corrispondere (Verde, Rosso, Marrone, Grigio, Nero).</li>
+</ol>
+
+<h2>5. Pipeline di una specie</h2>
+<ol>
+<li>Aprire la scheda wiki: artwork, categoria, taglia, colore Pokédex, materiali.</li>
+<li>Silhouette 64×64 in nero → si riconosce? Altrimenti si rifà la posa.</li>
+<li>Contorno a 1 pixel, colore scuro derivato dal corpo.</li>
+<li>Colori piatti: 4-5 campiture, nessuna ombra ancora.</li>
+<li>Ombre e luci a fasce nette, luce da in alto a sinistra.</li>
+<li>Secondo fotogramma dell'animazione: variazione minima, non una posa nuova.</li>
+<li><code>back.png</code>: stessa palette, inquadratura più vicina, meno dettaglio.</li>
+<li><code>icon.png</code> 32×32 ×2: ridisegno, non riduzione.</li>
+<li>Prova in <b>mGBA</b> a schermo intero e su telefono. È qui che si scoprono i colori che virano.</li>
+</ol>
+
+<h2>6. Checklist di accettazione</h2>
+<ul>
+<li>Palette a <b>16 colori esatti</b>, trasparenza inclusa, immagine in modalità <i>indexed</i>.</li>
+<li>Silhouette leggibile in nero pieno.</li>
+<li>Nessun contorno in nero puro; contorno di 1 pixel, variabile.</li>
+<li>Luce coerente da in alto a sinistra su tutti gli stadi della linea.</li>
+<li>Altezza dentro la fascia assegnata (§3) e piedi appoggiati alla base del riquadro.</li>
+<li>Colore dominante = colore Pokédex della scheda.</li>
+<li>I tre stadi della linea condividono la palette.</li>
+<li>Verificato a zoom 100% e in emulatore, non solo nell'editor.</li>
+</ul>
+
+<h2>7. Da dove cominciare</h2>
+<p>Ordine consigliato, dal più semplice al più ostico. Chi impara Aseprite si faccia le ossa
+sui primi, <b>non</b> su uno starter.</p>
+<table>
+<tr><th>Difficoltà</th><th>Specie</th><th>Perché</th></tr>
+<tr><td class="ok">Facile</td><td>Banconio, Pito, Basilino</td><td>Forme compatte, pochi materiali, colori spenti. Banconio è il pezzo da esercitazione ideale.</td></tr>
+<tr><td>Media</td><td>Turibasil, Pozza, Brasero, Puledrotto, Tuffito</td><td>Un materiale dominante più un oggetto (turibolo, fango, carapace, miccia).</td></tr>
+<tr><td>Impegnativa</td><td>Vescovasil, Umito, Segaccio, Cavalbrace, Compadrone</td><td>Forme finali: molti materiali, dettaglio da comprimere.</td></tr>
+<tr><td class="warn">Difficile</td><td>Ciccharizard</td><td>Frac nero su fondo scuro: servono 3-4 grigi solo per far leggere il vestito, e restano pochissimi colori per il resto.</td></tr>
+<tr><td class="warn">Difficile</td><td>Venagrox</td><td>Fuori scala, tutto metallo: molte rampe di grigio, e va inquadrato tagliato.</td></tr>
+<tr><td class="warn">Il più difficile</td><td>Fuocavallo</td><td>Criniera arcobaleno, scia iridescente, girandole e stelline. <b>Lo spettro completo non ci sta.</b> Va risolto scegliendo 3-4 colori-simbolo della festa e suggerendo la scia con la <i>forma</i>, non con le sfumature.</td></tr>
+</table>
+
+<h2>8. Errori che costano un ridisegno</h2>
+<ul>
+<li>Convertire l'artwork con un filtro "pixel art" automatico: produce 200 colori e una poltiglia.</li>
+<li>Contorno nero pieno uniforme.</li>
+<li>Dithering per simulare sfumature: mangia palette e sfarfalla su schermo piccolo.</li>
+<li>Dettagli sotto i 2 pixel (fibbie, ricami, pupille minuscole): spariscono.</li>
+<li>Disegnare in RGB e convertire alla fine: la palette va decisa <b>prima</b>.</li>
+<li>Sprite che "galleggia": i piedi vanno appoggiati alla base, l'offset lo gestisce il motore.</li>
+</ul>
+
+<h2>9. Strumenti</h2>
+<ul>
+<li><b>Aseprite</b> (a pagamento, ~20 €) o <b>Piskel</b> / <b>LibreSprite</b> (gratuiti). Lavorare in
+modalità <i>indexed</i> con una palette bloccata a 16 colori fin dal primo pixel.</li>
+<li><b>mGBA</b> per la prova in gioco.</li>
+<li>I file vanno in <code>graphics/pokemon/&lt;specie&gt;/</code> nel repo del gioco; la build fa il
+resto (compressione inclusa).</li>
+</ul>
+
+<div class="footer">Documento di lavoro del progetto <i>Pokémon Piceno</i>. Fan game non ufficiale,
+gratuito e senza finalità commerciali. Pokémon è un marchio di Nintendo/Creatures Inc./GAME FREAK inc.</div>
+</div>
+</body>
+</html>
