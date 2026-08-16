@@ -19,6 +19,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #007 | [Tuffito](tuffito.html) | Pokémon Bomba | Acqua | Rio Castellano, Ascoli Piceno |
 | #008 | [Brasero](brasero.html) | Pokémon Griglia | Acqua | Rio Castellano, Ascoli Piceno |
 | #009 | [Compadrone](compadrone.html) | Pokémon Compare | Acqua/Lotta | Rio Castellano e Tronto |
+| #010 | [Banconio](banconio.html) | Pokémon Avventore | Normale | Bar storici di Ascoli e della valle |
 | #044 | [Pito](pito.html) | Pokémon Cerbiatto | Roccia/Normale | Acquasanta Terme (Laga) |
 | #045 | [Pozza](pozza.html) | Pokémon Fracchia | Roccia/Veleno | Acquasanta Terme (Laga) |
 | #046 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |
