@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pokémon Piceno — Brief di progetto</title>
+<style>
+:root{--border:#a2a9b1;--panel:#f8f9fa;--acc:#78C850}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f6f6f6;color:#202122;margin:0;line-height:1.55}
+.page{max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--border);padding:22px 28px}
+h1{font-family:Georgia,serif;font-weight:normal;border-bottom:3px solid var(--acc);font-size:28px;margin:4px 0 4px}
+h2{font-family:Georgia,serif;font-weight:normal;border-bottom:1px solid var(--border);font-size:21px;margin-top:28px}
+h3{font-size:16px;margin:18px 0 6px}
+.sub{color:#54595d;font-size:14px;margin-bottom:14px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:10px 0}
+th,td{border:1px solid var(--border);padding:5px 8px;text-align:left;vertical-align:top}
+th{background:var(--panel)}
+.notabene{background:#fdf3e3;border:1px solid #e5c98e;padding:8px 12px;font-size:13.5px;margin:12px 0}
+.ok{color:#1d7a2e;font-weight:bold}
+.warn{color:#b3261e;font-weight:bold}
+ul,ol{margin:6px 0 10px 22px;padding:0}
+li{margin:3px 0}
+code{background:var(--panel);border:1px solid var(--border);padding:0 4px;border-radius:3px;font-size:12.5px}
+.footer{font-size:11.5px;color:#54595d;border-top:1px solid var(--border);margin-top:22px;padding-top:8px}
+.tag{display:inline-block;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:1px 8px;font-size:12px;margin:1px}
+</style></head><body>
+<div class="page">
+
+<h1>Pokémon Piceno — Brief di progetto</h1>
+<div class="sub">Documento interno per il team · v1.0 · agosto 2026 · <b>non pubblicare</b> (contiene spoiler e nomi reali)</div>
+
+<h2>1. Che cosa stiamo facendo</h2>
+<p>Un <b>fangame Pokémon in stile terza generazione</b> (Rubino/Zaffiro/Smeraldo) ambientato in una regione originale ricalcata sulla <b>provincia di Ascoli Piceno</b>. Grafica, world design e battle system Gen 3; mappa, Pokédex, storia e personaggi interamente nostri. Progetto amatoriale, <b>gratuito e senza alcuna finalità commerciale</b>.</p>
+<p><b>Due versioni</b> (titoli provvisori): <i>Versione Tronto</i> e <i>Versione Laga</i>.</p>
+
+<h2>2. Stato attuale — cosa esiste già</h2>
+<table>
+<tr><th>Materiale</th><th>Stato</th></tr>
+<tr><td><b>7 pagine Pokédex</b> in formato wiki (HTML autonomi con artwork): #001 Basilino, #002 Turibasil, #003 Vescovasil, #044 Pito, #045 Pozza, #046 Umito, #047 Segaccio</td><td class="ok">Complete</td></tr>
+<tr><td><b>Mappa regione</b> in stile menu GBA (terreno AI + overlay geografico) + pagina con legenda</td><td class="ok">Alpha</td></tr>
+<tr><td><b>Logo</b> "Pokémon Versione Tronto" (scontornato) + <b>title screen</b> GBA 240×160</td><td class="ok">Placeholder di lusso</td></tr>
+<tr><td>Starter Fuoco e Acqua, capipalestra, storia completa, altre ~90-140 specie</td><td class="warn">Da fare</td></tr>
+</table>
+
+<h3>2.1 Il Pokédex del Piceno (dex unico) — specie definite</h3>
+<table>
+<tr><th>#</th><th>Nome</th><th>Tipo</th><th>Concept</th></tr>
+<tr><td>001</td><td>Basilino</td><td>Erba</td><td>Mazzetto di basilico benedetto di Sant'Emidio, filo rosso in vita. Starter: "non si compra, si riceve".</td></tr>
+<tr><td>002</td><td>Turibasil</td><td>Erba</td><td>Chierichetto col turibolo; la cimatura come rito di passaggio.</td></tr>
+<tr><td>003</td><td>Vescovasil</td><td>Erba/Terra</td><td>Vescovo cefaloforo che porta la propria testa fiorita; Levitazione, immune a Terremoto e non può impararlo. Mossa firma <b>Terrasanta</b> (5 turni senza mosse Terra in campo). Evolve a Sant'Emidio alle Grotte.</td></tr>
+<tr><td>044</td><td>Pito</td><td>Roccia/Normale</td><td>Cerbiatto con sassolini d'arenaria al posto delle macchie (frazione di Acquasanta).</td></tr>
+<tr><td>045</td><td>Pozza</td><td>Roccia/Veleno</td><td>Capriolo assonnato nella pozza di fracchia; corazza d'argilla. Evolve per scambio con strumento Acquasanta.</td></tr>
+<tr><td>046</td><td>Umito</td><td>Roccia/Erba</td><td>Cervo sacro con palco fiorito e alone; placa i sismi.</td></tr>
+<tr><td>047</td><td>Segaccio</td><td>Erba/Acciaio</td><td>Boscaiolo-tronco umanoide di Offida, origini balcaniche/albanesi, sega a due manici, nessuna evoluzione. Mossa firma <b>Sconfinata</b>. Sconfina a Polesio.</td></tr>
+</table>
+
+<h3>2.2 Concept approvati, da sviluppare</h3>
+<ul>
+<li><b>Starter Fuoco (#004-006)</b>: il Cavallo di Fuoco di Ripatransone. Puledrino → destriero pirotecnico, proposta <b>Fuoco/Folletto</b> (fuoco di festa, non di distruzione).</li>
+<li><b>Starter Acqua (#007-009)</b>: il festaiolo del fiume Castellano — creatura del fiume (NON persone reali), progressione tuffatore → grigliatore → patriarca della festa (Acqua/Lotta o Acqua/Normale). Il conflitto "festa vs quiete" si aggancia a Polesio.</li>
+<li><b>Fossile</b>: Chirocefalo del Marchesoni (Lago di Pilato) — si ottiene come "uovo di resistenza" che si schiude nell'acqua giusta. Possibile secondo fossile "gemello" dagli ipogei/cave di travertino.</li>
+<li><b>Leggendario</b>: la Sibilla appenninica (candidata copertina) + coppia con tema da definire.</li>
+<li><b>Antagonista</b>: il capo del team nemico è <i>Renato Di Silvestro</i> (nome interno, mai nella wiki pubblica), che villeggia a Polesio e vuole solo tranquillità: il conflitto nasce dagli sconfinamenti di Segaccio e dei festaioli. Tono comico alla Gen 3, con fondo malinconico.</li>
+</ul>
+
+<h3>2.3 Worldbuilding e infrastruttura di gioco</h3>
+<ul>
+<li><b>Bar iconici = Centri Pokémon</b> (ognuno diverso; guarigione dopo il convenevole «Che te faccio?»). <b>Alimentari/tabaccheria = Market</b>; nei borghi piccoli sono lo stesso locale.</li>
+<li><b>Percorso principale</b>: la Via Salaria lungo il Tronto (Arquata → Acquasanta → Ascoli → valle → costa) + litoranea e diramazioni collinari (Offida, Ripatransone).</li>
+<li><b>Dungeon urbano</b>: la Cripta del Duomo di Ascoli. Luogo evolutivo: Sant'Emidio alle Grotte.</li>
+<li><b>Temi ricorrenti</b> (mai dichiarati, solo suggeriti): i guardiani antisismici (Vescovasil, Umito); "il Piceno è fatto di chi ci è arrivato" (Emidio da Treviri, Segaccio dai Balcani); festa/fiume/fede come anime della regione.</li>
+</ul>
+
+<h2>3. Scelta tecnica: il motore</h2>
+<div class="notabene"><b>Raccomandazione: <code>pokeemerald-expansion</code></b> (fork della decompilazione di Smeraldo mantenuto dal Rom Hacking Hideout). È il motore <i>vero</i> di Smeraldo in C, con in più: tipo <b>Folletto</b> (indispensabile per lo starter Fuoco/Folletto), mosse/abilità/meccaniche moderne configurabili, limiti di nomi estesi, e una community enorme. L'alternativa <code>pokeemerald</code> vanilla non ha il tipo Folletto; l'alternativa Pokémon Essentials (RPG Maker) è più facile ma meno "Gen 3 autentica" e gira solo su PC.</div>
+<table>
+<tr><th></th><th>pokeemerald-expansion</th><th>Essentials</th></tr>
+<tr><td>Fedeltà Gen 3</td><td class="ok">Totale (è Smeraldo)</td><td>Ricostruita</td></tr>
+<tr><td>Piattaforma</td><td class="ok">ROM GBA: emulatori ovunque, anche telefono</td><td>Solo PC Windows</td></tr>
+<tr><td>Difficoltà</td><td>Media (build C, ma editing guidato)</td><td class="ok">Bassa</td></tr>
+<tr><td>Mapping</td><td class="ok">porymap (visuale, no codice)</td><td>Editor RPG Maker</td></tr>
+<tr><td>Tipo Folletto</td><td class="ok">Sì</td><td class="ok">Sì</td></tr>
+</table>
+
+<h3>3.1 Toolchain</h3>
+<ul>
+<li><b>Repo</b>: GitHub privato, fork di <code>rh-hideout/pokeemerald-expansion</code>. Git obbligatorio per tutti.</li>
+<li><b>Build</b>: Linux, WSL2 su Windows o macOS; toolchain <code>agbcc</code>/devkitARM (guida INSTALL.md del repo). Chi non compila lavora solo su asset e porymap.</li>
+<li><b>Mapping</b>: <a href="https://github.com/huderlem/porymap">porymap</a> — editor visuale di mappe, tileset, eventi e connessioni.</li>
+<li><b>Scripting eventi</b>: <a href="https://github.com/huderlem/poryscript">poryscript</a> (linguaggio leggibile che compila negli script di gioco).</li>
+<li><b>Sprite</b>: Aseprite (o Piskel gratuito). <b>Test</b>: mGBA. <b>Musica</b>: MIDI → engine m4a; all'inizio si riusano le tracce di Smeraldo.</li>
+</ul>
+
+<h3>3.2 Vincoli tecnici da rispettare (GBA)</h3>
+<ul>
+<li>Sprite specie: fronte <b>64×64</b>, retro 64×64, icona 32×32, <b>max 16 colori</b> (1 palette) + palette shiny. L'artwork Gemini NON è lo sprite: va ridisegnato in pixel art.</li>
+<li>Nomi specie max 10 caratteri: <span class="tag">Basilino ✓</span> <span class="tag">Turibasil ✓</span> <span class="tag">Vescovasil ✓ (10)</span> <span class="tag">Pito ✓</span> <span class="tag">Pozza ✓</span> <span class="tag">Umito ✓</span> <span class="tag">Segaccio ✓</span> — tutti già conformi. Mosse max 12: <span class="tag">Sconfinata ✓</span> <span class="tag">Terrasanta ✓</span>.</li>
+<li>Testi in italiano: il font copre le accentate, ma i box dialogo hanno larghezza fissa — scrivere corto.</li>
+<li>Tileset: partire da quelli di Smeraldo; custom solo dove serve identità (travertino di Ascoli, ponte romano, palme di San Benedetto).</li>
+</ul>
+
+<h2>4. Pipeline dei contenuti (chi produce cosa)</h2>
+<table>
+<tr><th>Contenuto</th><th>Formato di lavoro</th><th>Chi</th></tr>
+<tr><td>Design specie (lore, stats, mosse)</td><td>Pagine wiki → convertite nei file dati (<code>species_info.h</code>, learnset, dex text)</td><td>Team (idee) + Claude (stesura e conversione)</td></tr>
+<tr><td>Artwork di riferimento</td><td>Gemini / Retro Diffusion, prompt con blocco-famiglia</td><td>Team + Claude (prompt)</td></tr>
+<tr><td>Sprite 64×64</td><td>Aseprite, palette 16 colori, dal reference</td><td><b>Collo di bottiglia: servono 1-2 spriter</b></td></tr>
+<tr><td>Mappe</td><td>porymap (layout progettati prima su carta/Claude)</td><td>1-2 mapper</td></tr>
+<tr><td>Eventi e dialoghi</td><td>poryscript, testi italiani</td><td>Writer + Claude</td></tr>
+<tr><td>Codice motore (mosse firma, evoluzioni custom, bar-centro)</td><td>C su pokeemerald-expansion</td><td>1 dev + Claude</td></tr>
+<tr><td>QA</td><td>Playtest su mGBA, issue su GitHub</td><td>Tutti</td></tr>
+</table>
+
+<h2>5. Roadmap</h2>
+<ol>
+<li><b>Fase 0 — Setup (1-2 settimane)</b>: repo, build funzionante per almeno una persona, porymap installato da tutti, primo commit "hello Piceno" (una mappa di prova con un NPC).</li>
+<li><b>Fase 1 — Vertical slice (≈1 mese)</b>: Arquata + Percorso 1 + il primo bar-Centro funzionante; i 3 starter Erba implementati (sprite inclusi); consegna starter dal Professore. Obiettivo: <i>capire il flusso di lavoro</i>, non la quantità.</li>
+<li><b>Fase 2 — Demo "2 medaglie" (3-6 mesi)</b>: tratto Arquata → Acquasanta (+frazioni) → Ascoli (con Cripta) + spur Polesio; ~35-40 specie; 2 palestre; primo incontro con l'antagonista. Questa demo è il traguardo pubblico del progetto.</li>
+<li><b>Fase 3 — Espansione a capitoli</b>: valle bassa e costa, Offida/colline, Sibillini, Lega. Il dex cresce a ondate (obiettivo 100-150 "finché ci divertiamo").</li>
+</ol>
+<div class="notabene"><b>Stima onesta</b>: gioco completo ≈ 800-1500 ore/uomo (dex 150 = 200-400 ore di soli sprite). La demo Fase 2, con Claude su dati/testi/codice, è realistica in 3-6 mesi di weekend per 3-4 persone. La regola d'oro: <b>ogni fase deve produrre qualcosa di giocabile</b>.</div>
+
+<h2>6. Note legali (in breve)</h2>
+<ul>
+<li>Distribuzione <b>gratuita</b>, niente vendite, donazioni o crowdfunding. Dicitura "fan game non ufficiale" ovunque.</li>
+<li>Distribuire come <b>patch</b> (UPS/BPS) da applicare a una ROM di Smeraldo che ognuno si procura, mai la ROM completa: è lo standard della scena e riduce i rischi.</li>
+<li>Nintendo ha storicamente colpito progetti grandi e visibili: restare piccoli, non fare marketing aggressivo, non usare asset ufficiali oltre il necessario.</li>
+<li>Nomi di persone reali (es. l'antagonista) solo come scherzo interno: nella versione distribuita usare un nome di fantasia.</li>
+</ul>
+
+<h2>7. Decisioni da prendere alla prossima riunione</h2>
+<ol>
+<li>Conferma motore (<code>pokeemerald-expansion</code>) e chi tiene il repo.</li>
+<li>Chi fa gli sprite (o chi impara Aseprite): è il vincolo che detta il ritmo.</li>
+<li>Starter Fuoco e Acqua: approvare i concept e i nomi.</li>
+<li>Titoli definitivi delle versioni (Tronto/Laga?) e differenze tra le due.</li>
+<li>Le 8 città-palestra e i tipi dei capipalestra.</li>
+<li>Nome del Professore e suo laboratorio (proposta: Professor Oliva? Professoressa Anisetta?).</li>
+</ol>
+
+<div class="footer">Preparato con Claude · Il press kit completo (7 pagine Pokédex, mappa, logo, title screen) accompagna questo documento. Tutti i luoghi citati sono reali località della provincia di Ascoli Piceno.</div>
+</div>
+</body>
+</html>
