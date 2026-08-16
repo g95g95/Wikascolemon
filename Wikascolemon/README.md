@@ -23,6 +23,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #011 | [Brio](brio.html) | Pokémon Fuggevole | Normale/Folletto | Valle Castellana (Laga) |
 | #012 | [Felignoto](felignoto.html) | Pokémon Diceria | Buio/Folletto | Campagne dell'ascolano |
 | #013 | [Carpentrap](carpentrap.html) | Pokémon Ponteggio | Acciaio/Lotta | Ascoli Piceno, centro storico |
+| #014 | [Spesurde](spesurde.html) | Pokémon Sorda | Veleno/Terra | Monti Sibillini |
 | #044 | [Pito](pito.html) | Pokémon Cerbiatto | Roccia/Normale | Acquasanta Terme (Laga) |
 | #045 | [Pozza](pozza.html) | Pokémon Fracchia | Roccia/Veleno | Acquasanta Terme (Laga) |
 | #046 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |
