@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anisetta - Pokédex del Piceno</title>
+<style>
+:root{
+  --border:#a2a9b1; --panel:#f8f9fa; --text:#202122; --link:#3366cc; --red:#ba0000;
+  --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
+  --terra:#E0C068; --acqua:#6890F0; --lotta:#C03028; --acciaio:#B8B8D0;
+  --fuoco:#F08030; --volante:#A890F0; --psico:#F85888; --spettro:#705898;
+  --buio:#705848; --drago:#7038F8; --elettro:#F8D030; --folletto:#EE99AC;
+  --ghiaccio:#98D8D8; --coleot:#A8B820;
+  --accent1:#8ab54a; --accent2:#e0913c;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--text);font:14px/1.6 "Segoe UI","Helvetica Neue",Arial,sans-serif}
+.page{max-width:1080px;margin:0 auto;padding:14px 20px 40px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+a.new{color:var(--red)}
+h1,h2{font-family:"Linux Libertine",Georgia,"Times New Roman",serif;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:4px;margin:20px 0 12px}
+h1{font-size:30px;margin-top:6px}
+h2{font-size:23px}
+h3{font-size:17px;margin:18px 0 8px}
+h4{font-size:15px;margin:14px 0 6px}
+.sitenotice{font-size:12px;color:#54595d;border-bottom:1px solid #eaecf0;padding-bottom:6px}
+.dexnav{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#f2efe2,#f8f9fa,#efe9f0);border:1px solid var(--border);border-radius:6px;padding:8px 14px;margin:12px 0;font-size:13px}
+.dexnav .mid{font-weight:700}
+.dexnav .dim{color:#9a9fa5}
+.type{display:inline-block;padding:2px 11px;border-radius:4px;color:#fff;font-weight:600;font-size:12px;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.18)}
+.t-roccia{background:var(--roccia)} .t-normale{background:var(--normale)} .t-veleno{background:var(--veleno)}
+.t-erba{background:var(--erba)} .t-terra{background:var(--terra);color:#5b4a12;text-shadow:none} .t-acqua{background:var(--acqua)}
+.t-lotta{background:var(--lotta)} .t-acciaio{background:var(--acciaio);color:#43436b;text-shadow:none} .t-fuoco{background:var(--fuoco)}
+.t-volante{background:var(--volante)} .t-psico{background:var(--psico)} .t-spettro{background:var(--spettro)}
+.t-buio{background:var(--buio)} .t-drago{background:var(--drago)} .t-elettro{background:var(--elettro);color:#6b5a10;text-shadow:none}
+.t-folletto{background:var(--folletto);color:#7c3350;text-shadow:none} .t-ghiaccio{background:var(--ghiaccio);color:#2a6a6a;text-shadow:none} .t-coleot{background:var(--coleot)}
+.infobox{float:right;width:308px;margin:0 0 16px 22px;border:1px solid var(--border);background:var(--panel);border-radius:8px;overflow:hidden;font-size:12.5px}
+.infobox .head{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff;text-align:center;padding:8px 10px}
+.infobox .head .num{font-size:12px;opacity:.9}
+.infobox .head .name{font-size:20px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.infobox .head .cat{font-size:12px;font-style:italic}
+.infobox .art{background:#fff;padding:8px;text-align:center;border-bottom:1px solid #eaecf0}
+.infobox .art svg{width:236px;height:236px}
+.infobox .art img{width:236px;height:236px;object-fit:contain}
+.artph{width:236px;height:236px;margin:0 auto;border:2px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;color:#72777d;font-size:12px;padding:10px;background:#fcfcfc}
+.infobox .art .capt{font-size:11px;color:#54595d}
+.infobox table{width:100%;border-collapse:collapse}
+.infobox th{background:#eef0f2;text-align:left;padding:5px 9px;width:41%;font-weight:600;vertical-align:top;border-top:1px solid #eaecf0}
+.infobox td{padding:5px 9px;border-top:1px solid #eaecf0;vertical-align:top}
+.infobox .lang{display:flex;justify-content:center;gap:14px;background:#eef0f2;padding:4px;font-size:11.5px;color:#54595d}
+.toc{display:inline-block;border:1px solid var(--border);background:var(--panel);padding:10px 18px;border-radius:6px;font-size:13px;margin:8px 0 4px}
+.toc .toctitle{font-weight:700;text-align:center}
+.toc ol{margin:6px 0 0;padding-left:22px}
+.toc ol ol{margin:0}
+.intro b.pkmn{font-size:15px}
+.wtable{border-collapse:collapse;margin:10px 0;font-size:13px}
+.wtable th,.wtable td{border:1px solid var(--border);padding:5px 10px}
+.wtable th{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff}
+.wtable td{background:#fff}
+.wtable tr:nth-child(even) td{background:#fafbfc}
+.wtable .lvl{text-align:center;font-weight:600}
+.wtable .num{text-align:center}
+.stab{font-weight:700}
+.effbox{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin:10px 0;max-width:760px}
+.effrow{display:flex;border-top:1px solid var(--border)}
+.effrow:first-child{border-top:none}
+.efflabel{width:130px;flex:0 0 130px;background:#eef0f2;padding:8px;font-weight:600;display:flex;align-items:center;font-size:12.5px}
+.effcells{padding:7px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;background:#fff}
+.effx{font-size:11px;color:#54595d;margin-left:2px}
+.evochain{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin:14px 0}
+.evocard{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:10px 12px;text-align:center;width:172px}
+.evocard svg{width:118px;height:118px}
+.evocard img{width:118px;height:118px;object-fit:contain}
+.evocard .nm{font-weight:700;margin:2px 0 6px}
+.evoarrow{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:11.5px;color:#54595d;width:130px;padding:0 4px}
+.evoarrow .ar{font-size:26px;color:#8b8f94;line-height:1}
+.statbars{max-width:640px}
+.statrow{display:flex;align-items:center;gap:10px;margin:4px 0}
+.statrow .sn{width:78px;flex:0 0 78px;font-weight:600;font-size:12.5px}
+.statrow .sv{width:34px;flex:0 0 34px;text-align:right;font-weight:700;font-size:13px}
+.statrow .sb{flex:1;background:#eef0f2;border:1px solid #dfe3e8;border-radius:4px;height:14px;overflow:hidden}
+.statrow .sb i{display:block;height:100%;border-radius:3px}
+.s-ps i{background:#FF5959}.s-att i{background:#F5AC78}.s-dif i{background:#FAE078}
+.s-asp i{background:#9DB7F5}.s-dsp i{background:#A7DB8D}.s-vel i{background:#FA92B2}
+.dexentries{max-width:820px}
+.dexentries .ver{font-weight:700}
+.itembox{border:1px solid #7fb1d8;background:#f0f7fc;border-radius:8px;padding:12px 16px;margin:14px 0;max-width:760px;display:flex;gap:14px;align-items:flex-start}
+.itembox svg{flex:0 0 46px}
+.notabene{border-left:4px solid var(--accent1);background:var(--panel);padding:8px 14px;margin:10px 0;max-width:780px;font-size:13px}
+.cats{border:1px solid var(--border);background:var(--panel);border-radius:6px;padding:8px 14px;margin-top:34px;font-size:12.5px}
+.footer{font-size:11.5px;color:#54595d;margin-top:14px}
+ul{margin:6px 0}
+@media (max-width:760px){
+  .infobox{float:none;width:100%;margin:12px 0}
+  .efflabel{width:96px;flex-basis:96px}
+  .evoarrow{width:100%}
+}
+@media (prefers-reduced-motion: no-preference){
+  .evocard:hover{box-shadow:0 2px 8px rgba(0,0,0,.12);transition:box-shadow .2s}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="impronta-anisetta" viewBox="0 0 40 40">
+  <circle cx="20" cy="20" r="13" fill="none" stroke="#54595d" stroke-width="3"/>
+  <ellipse cx="20" cy="15" rx="3.6" ry="2.6" fill="#54595d" transform="rotate(-18 20 15)"/>
+  <path d="M12 31 q8 4 16 0" stroke="#54595d" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+</symbol>
+<symbol id="icon-mosca" viewBox="0 0 48 48">
+  <path d="M14 8 h20 l-3 26 a7 7 0 0 1 -14 0 z" fill="#f4f7f2" stroke="#b9c3b4" stroke-width="1.6"/>
+  <path d="M15.6 18 h16.8 l-1.6 16 a7 7 0 0 1 -13.6 0 z" fill="#f6e7bd" opacity=".85"/>
+  <ellipse cx="24" cy="25" rx="4" ry="3" fill="#5a3a22" transform="rotate(-20 24 25)"/>
+  <path d="M24 25 l-1 -1" stroke="#7a5236" stroke-width="1.2"/>
+  <path d="M18 40 h12" stroke="#b9c3b4" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M24 34 v6" stroke="#b9c3b4" stroke-width="2.6"/>
+</symbol>
+</defs>
+</svg>
+<div class="page">
+<div class="sitenotice"><a href="index.html"><b>← Wikascolemon</b></a> · da <b>Pokédex del Piceno</b>, l'enciclopedia (immaginaria) dei Pokémon della regione Piceno. <i>Pagina fan-made nel formato di Pokémon Central Wiki.</i></div>
+
+<div class="dexnav">
+  <span><a href="anicino.html">← #015: Anicino</a></span>
+  <span class="mid">#016 Anisetta</span>
+  <span class="dim">#017: ??? →</span>
+</div>
+
+<h1>Anisetta</h1>
+
+<div class="infobox">
+  <div class="head">
+    <div class="num">Pokédex del Piceno #016</div>
+    <div class="name">Anisetta</div>
+    <div class="cat">Pokémon Ammazzacaffè</div>
+  </div>
+  <div class="art">
+    <div class="artph">Artwork di Anisetta<br>in arrivo</div>
+    <div class="capt">Artwork di Anisetta</div>
+  </div>
+  <div class="lang"><span>EN: Anisetta</span><span>JA: ホロヨイソウ <i>Horoyoisō</i></span></div>
+  <table>
+    <tr><th>Tipo</th><td><span class="type t-erba">Erba</span> <span class="type t-fuoco">Fuoco</span></td></tr>
+    <tr><th>Abilità</th><td>Clorofilla (prima)<br><i>Fuocardore</i> (speciale)</td></tr>
+    <tr><th>Sesso</th><td>50% maschi · 50% femmine</td></tr>
+    <tr><th>Altezza</th><td>0,8 m</td></tr>
+    <tr><th>Peso</th><td>9,5 kg</td></tr>
+    <tr><th>Tasso di cattura</th><td>90 (23,4%)</td></tr>
+    <tr><th>Uovo</th><td>Gruppo Erba<br>20 cicli (min. 5120 passi)</td></tr>
+    <tr><th>Pokédex regionali</th><td>Piceno #016</td></tr>
+    <tr><th>Tasso di allevamento</th><td>Medio-veloce</td></tr>
+    <tr><th>Esperienza base ceduta</th><td>168</td></tr>
+    <tr><th>Punti base ceduti</th><td>Totale: 2 — Att. Sp. 2</td></tr>
+    <tr><th>Colore Pokédex</th><td>Bianco</td></tr>
+    <tr><th>Impronta</th><td><svg width="26" height="26"><use href="#impronta-anisetta"/></svg></td></tr>
+    <tr><th>Affetto di base</th><td>70</td></tr>
+  </table>
+</div>
+
+<p class="intro"><b class="pkmn">Anisetta</b> è un Pokémon di doppio tipo <b>Erba</b>/<b>Fuoco</b> del centro di <b>Ascoli Piceno</b>, e in particolare di <b>Piazza del Popolo</b>. È la forma finale della linea di <a href="anicino.html">Anicino</a>: la stessa pianta, dopo che il calore accumulato in tutta l'estate è stato distillato.</p>
+<p>Non si trova nei campi: compare dove la gente si ferma a parlare, e sparisce quando il locale si svuota.</p>
+
+<div class="toc">
+  <div class="toctitle">Indice</div>
+  <ol>
+    <li><a href="#Biologia">Biologia</a>
+      <ol>
+        <li><a href="#Fisionomia">Fisionomia</a></li>
+        <li><a href="#Comportamento">Comportamento</a></li>
+        <li><a href="#Habitat">Habitat</a></li>
+        <li><a href="#Dieta">Dieta</a></li>
+      </ol>
+    </li>
+    <li><a href="#Dati_di_gioco">Dati di gioco</a>
+      <ol>
+        <li><a href="#Resistenze">Resistenze e vulnerabilità</a></li>
+        <li><a href="#Evoluzioni">Evoluzioni</a></li>
+        <li><a href="#Statistiche">Statistiche di base</a></li>
+        <li><a href="#Mosse">Mosse apprese</a></li>
+        <li><a href="#Voci">Voci Pokédex</a></li>
+      </ol>
+    </li>
+    <li><a href="#Mosca">La mosca</a></li>
+    <li><a href="#Curiosita">Curiosità</a></li>
+    <li><a href="#Lingue">In altre lingue</a></li>
+  </ol>
+</div>
+
+<h2 id="Biologia">Biologia</h2>
+
+<h3 id="Fisionomia">Fisionomia</h3>
+<p>Anisetta ha il corpo di un piccolo <b>bicchierino</b> di vetro spesso, pieno per due terzi di un liquido chiaro che non si versa mai, per quanto si agiti. Dentro il liquido si intravedono le <b>radici</b> della pianta che era: sono ancora lì, sottilissime, e da loro sale il calore. Sopra il bordo galleggia sempre un <b>chicco di caffè</b> scuro — quello che ad Ascoli si chiama <i>la mosca</i> — che gli gira intorno pigramente e sembra fargli da occhio.</p>
+<p>Non ha zampe: si sposta scivolando, lasciando dietro di sé una scia tiepida che profuma di anice e che resta nell'aria per qualche minuto.</p>
+<h4>Differenze tra i sessi</h4>
+<p>Non vi sono differenze visibili tra maschi e femmine.</p>
+
+<h3 id="Comportamento">Comportamento</h3>
+<p>È lento, caldo e chiacchierone. Compare a fine pasto e nelle sere d'inverno, quasi sempre dove ci sono già delle persone che parlano: <b>non attira la conversazione, la segue</b>. Chi gli sta vicino tende ad allungare i discorsi oltre il previsto e a raccontare cose che non aveva intenzione di raccontare — non perché sia costretto, ma perché smette di avere fretta.</p>
+<p>In lotta usa la stessa arma: abbassa la guardia dell'avversario invece di sfondarla.</p>
+
+<h3 id="Habitat">Habitat</h3>
+<p>Il centro storico di <b>Ascoli Piceno</b>: <b>Piazza del Popolo</b>, i portici, e soprattutto i locali storici che vi si affacciano. Non è mai stato avvistato in campagna, dove pure nasce: appena si evolve, un Anisetta si sposta verso la città e non torna più indietro.</p>
+
+<h3 id="Dieta">Dieta</h3>
+<p>Calore e compagnia. Nei locali chiusi da tempo un Anisetta si raffredda, il liquido si intorbida e la mosca smette di girare: non muore, ma si addormenta finché il posto non riapre.</p>
+
+<h2 id="Dati_di_gioco">Dati di gioco</h2>
+
+<h3 id="Resistenze">Resistenze e vulnerabilità</h3>
+<div class="effbox">
+  <div class="effrow"><div class="efflabel">Debolezze</div><div class="effcells">
+    <span class="type t-roccia">Roccia</span><span class="effx">2×</span>
+    <span class="type t-volante">Volante</span><span class="effx">2×</span>
+    <span class="type t-veleno">Veleno</span><span class="effx">2×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Resistenze</div><div class="effcells">
+    <span class="type t-erba">Erba</span><span class="effx">¼×</span>
+    <span class="type t-elettro">Elettro</span><span class="effx">½×</span>
+    <span class="type t-acciaio">Acciaio</span><span class="effx">½×</span>
+    <span class="type t-folletto">Folletto</span><span class="effx">½×</span>
+  </div></div>
+</div>
+<div class="notabene">Erba/Fuoco è una combinazione che <b>in terza generazione non esiste</b>, ed è difensivamente ottima: il Fuoco cancella tre delle cinque debolezze dell'Erba — Fuoco, Ghiaccio e Coleottero — e ne restano solo tre, tutte a 2×. In più <i>Fuocardore</i> rende del tutto immuni al Fuoco. Il prezzo è la lentezza: 55 di Velocità significa quasi sempre colpire per secondi.</div>
+
+<h3 id="Evoluzioni">Evoluzioni</h3>
+<div class="evochain">
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm"><a href="anicino.html">Anicino</a></div>
+    <span class="type t-erba">Erba</span>
+  </div>
+  <div class="evoarrow"><span class="ar">→</span>Livello 20</div>
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm">Anisetta</div>
+    <span class="type t-erba">Erba</span> <span class="type t-fuoco">Fuoco</span>
+  </div>
+</div>
+<div class="notabene">Il secondo tipo compare solo allo stadio finale, come per Vescovasil (Terra), Fuocavallo (Folletto) e Compadrone (Lotta). Qui il Fuoco non è un attacco: è il calore che la pianta aveva accumulato e che la distillazione libera tutto insieme.</div>
+
+<h3 id="Statistiche">Statistiche di base</h3>
+<div class="statbars">
+  <div class="statrow s-ps"><span class="sn">PS</span><span class="sv">80</span><div class="sb"><i style="width:53%"></i></div></div>
+  <div class="statrow s-att"><span class="sn">Attacco</span><span class="sv">65</span><div class="sb"><i style="width:43%"></i></div></div>
+  <div class="statrow s-dif"><span class="sn">Difesa</span><span class="sv">70</span><div class="sb"><i style="width:47%"></i></div></div>
+  <div class="statrow s-asp"><span class="sn">Att. Sp.</span><span class="sv">100</span><div class="sb"><i style="width:67%"></i></div></div>
+  <div class="statrow s-dsp"><span class="sn">Dif. Sp.</span><span class="sv">80</span><div class="sb"><i style="width:53%"></i></div></div>
+  <div class="statrow s-vel"><span class="sn">Velocità</span><span class="sv">55</span><div class="sb"><i style="width:37%"></i></div></div>
+  <div class="statrow"><span class="sn"><b>Totale</b></span><span class="sv"><b>450</b></span><div></div></div>
+</div>
+<div class="notabene">Attaccante speciale lento e sufficientemente solido: 450 è la fascia giusta per la forma finale di una linea comune — sopra Anicino di duecento punti, ma sotto le specie singolari come Banconio e Spesurde. Si porta in squadra volentieri e non sbilancia niente.</div>
+
+<h3 id="Mosse">Mosse apprese</h3>
+<h4>Aumentando di livello</h4>
+<table class="wtable">
+  <tr><th>Lv.</th><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td class="lvl">Evo</td><td class="stab"><b>Corretto</b></td><td><span class="type t-erba">Erba</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">Inizio</td><td>Azione</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">40</td><td class="num">100%</td><td class="num">35</td></tr>
+  <tr><td class="lvl">Inizio</td><td>Profumino</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">100%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">Inizio</td><td class="stab">Braciere</td><td><span class="type t-fuoco">Fuoco</span></td><td>Speciale</td><td class="num">40</td><td class="num">100%</td><td class="num">25</td></tr>
+  <tr><td class="lvl">13</td><td class="stab">Fogliame</td><td><span class="type t-erba">Erba</span></td><td>Fisico</td><td class="num">40</td><td class="num">100%</td><td class="num">40</td></tr>
+  <tr><td class="lvl">17</td><td class="stab">Sonnifero</td><td><span class="type t-erba">Erba</span></td><td>Stato</td><td class="num">—</td><td class="num">75%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">22</td><td class="stab">Megassorbimento</td><td><span class="type t-erba">Erba</span></td><td>Speciale</td><td class="num">40</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">27</td><td class="stab">Turbofuoco</td><td><span class="type t-fuoco">Fuoco</span></td><td>Speciale</td><td class="num">35</td><td class="num">85%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">32</td><td class="stab">Aromaterapia</td><td><span class="type t-erba">Erba</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">5</td></tr>
+  <tr><td class="lvl">38</td><td class="stab">Lanciafiamme</td><td><span class="type t-fuoco">Fuoco</span></td><td>Speciale</td><td class="num">95</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">44</td><td class="stab">Energipalla</td><td><span class="type t-erba">Erba</span></td><td>Speciale</td><td class="num">90</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">51</td><td class="stab">Vampata</td><td><span class="type t-fuoco">Fuoco</span></td><td>Speciale</td><td class="num">140</td><td class="num">90%</td><td class="num">5</td></tr>
+</table>
+<h4>Tramite MT/DT (selezione)</h4>
+<table class="wtable">
+  <tr><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td>Protezione</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Sostituto</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Riposo</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">5</td></tr>
+  <tr><td>Solarraggio</td><td><span class="type t-erba">Erba</span></td><td>Speciale</td><td class="num">120</td><td class="num">100%</td><td class="num">10</td></tr>
+</table>
+<p><small>Il <b>grassetto</b> indica una mossa che ha il bonus di tipo (STAB) quando viene usata da un Anisetta. <b>Corretto</b> è la sua mossa esclusiva, appresa nel momento dell'evoluzione: Anisetta si scalda da sé, <b>cura i propri problemi di stato e aumenta l'Attacco Speciale</b>. Descrizione in gioco: «Un goccio aggiusta tutto».</small></p>
+
+<h3 id="Voci">Voci Pokédex</h3>
+<div class="dexentries">
+  <p><span class="ver">Versione Tronto</span> — <i>Compare dove la gente si ferma a parlare e sparisce quando il locale si svuota. Nessuno lo ha mai visto arrivare: a un certo punto è sul tavolo.</i></p>
+  <p><span class="ver">Versione Laga</span> — <i>Il chicco di caffè che gli gira intorno si chiama la mosca. Se smette di girare vuol dire che si è raffreddato, e allora dorme finché qualcuno non riapre.</i></p>
+</div>
+
+<h2 id="Mosca">La mosca</h2>
+<div class="itembox">
+  <svg width="46" height="46"><use href="#icon-mosca"/></svg>
+  <div><b>Il chicco che galleggia.</b> Ad Ascoli l'anisetta si beve <i>con la mosca</i>: un chicco di caffè lasciato a galleggiare nel bicchierino. Nella specie la mosca non è un accessorio ma <b>parte dell'animale</b> — gli fa da occhio, da orologio e da termometro. Gira piano quando è caldo, si ferma quando si raffredda, e accelera quando intorno a lui la conversazione si accende. Gli allevatori la chiamano «il polso»: per sapere come sta un Anisetta non si guarda lui, si guarda la mosca.</div>
+</div>
+
+<h2 id="Curiosita">Curiosità</h2>
+<ul>
+  <li>È l'unico Pokémon di doppio tipo <b>Erba/Fuoco</b> del Pokédex del Piceno, una combinazione che nella terza generazione non compare mai.</li>
+  <li>La sua linea evolutiva ripercorre una lavorazione reale: la pianta, la raccolta, la distillazione.</li>
+  <li>Insieme a <a href="banconio.html">Banconio</a> e a <a href="ciccharizard.html">Ciccharizard</a> forma il terzetto dei Pokémon da bancone: uno beve, uno serve, uno è nel bicchiere.</li>
+  <li>Un Anisetta lasciato in un locale chiuso non muore: si addormenta. Gli anziani sostengono che in certi bar sbarrati ce ne siano ancora, fermi da anni.</li>
+</ul>
+<h3>Origine</h3>
+<p>Anisetta è il liquore all'anice nato ad <b>Ascoli Piceno</b> nell'Ottocento per opera di <b>Silvio Meletti</b>, e diventato il simbolo della città. Il suo habitat è il <b>Caffè Meletti</b> di <b>Piazza del Popolo</b>, locale liberty aperto nel 1907 e tra i caffè storici d'Italia. L'usanza di berla <i>con la mosca</i>, con un chicco di caffè a galleggiare, è reale ed è il dettaglio da cui nasce il design della specie.</p>
+<h4>Origine del nome</h4>
+<p><b>Anisetta</b> è semplicemente il nome del liquore: la specie porta il nome della cosa che è diventata, mentre <a href="anicino.html">Anicino</a> porta quello della pianta che era.</p>
+<p>Il nome giapponese, ホロヨイソウ <i>Horoyoisō</i>, unisce ほろよい <i>horoyoi</i> ("brillo, piacevolmente su di giri") e 草 <i>sō</i> ("erba").</p>
+
+<h2 id="Lingue">In altre lingue</h2>
+<table class="wtable">
+  <tr><th>Lingua</th><th>Nome</th><th>Origine</th></tr>
+  <tr><td><b>Giapponese</b></td><td>ホロヨイソウ <i>Horoyoisō</i></td><td>Da <i>horoyoi</i>, "brillo", e <i>sō</i>, "erba".</td></tr>
+  <tr><td><b>Inglese</b></td><td>Anisetta</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Francese</b></td><td>Anisetta</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Spagnolo</b></td><td>Anisetta</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Tedesco</b></td><td>Anisetta</td><td>Uguale al nome italiano.</td></tr>
+</table>
+
+<h2>Vedi anche</h2>
+<ul>
+  <li><a href="anicino.html">Anicino</a> — la sua pre-evoluzione</li>
+  <li><a href="banconio.html">Banconio</a> e <a href="ciccharizard.html">Ciccharizard</a> — gli altri due del bancone</li>
+</ul>
+
+<div class="dexnav">
+  <span><a href="anicino.html">← #015: Anicino</a></span>
+  <span class="mid">#016 Anisetta</span>
+  <span class="dim">#017: ??? →</span>
+</div>
+
+<div class="cats"><b>Categorie:</b> Pokémon · Pokémon della regione Piceno · Pokémon di tipo Erba · Pokémon di tipo Fuoco · Pokémon di doppio tipo · Gruppo Uova Erba · Pokémon di colore Bianco</div>
+<div class="footer">Pagina fan-made ispirata al formato di Pokémon Central Wiki. L'Anisetta Meletti, il Caffè Meletti di Piazza del Popolo e l'usanza di berla «con la mosca» sono reali.</div>
+</div>
+</body>
+</html>

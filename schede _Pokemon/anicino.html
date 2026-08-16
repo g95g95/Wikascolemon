@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anicino - Pokédex del Piceno</title>
+<style>
+:root{
+  --border:#a2a9b1; --panel:#f8f9fa; --text:#202122; --link:#3366cc; --red:#ba0000;
+  --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
+  --terra:#E0C068; --acqua:#6890F0; --lotta:#C03028; --acciaio:#B8B8D0;
+  --fuoco:#F08030; --volante:#A890F0; --psico:#F85888; --spettro:#705898;
+  --buio:#705848; --drago:#7038F8; --elettro:#F8D030; --folletto:#EE99AC;
+  --ghiaccio:#98D8D8; --coleot:#A8B820;
+  --accent1:#78C850; --accent2:#5aa63e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--text);font:14px/1.6 "Segoe UI","Helvetica Neue",Arial,sans-serif}
+.page{max-width:1080px;margin:0 auto;padding:14px 20px 40px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+a.new{color:var(--red)}
+h1,h2{font-family:"Linux Libertine",Georgia,"Times New Roman",serif;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:4px;margin:20px 0 12px}
+h1{font-size:30px;margin-top:6px}
+h2{font-size:23px}
+h3{font-size:17px;margin:18px 0 8px}
+h4{font-size:15px;margin:14px 0 6px}
+.sitenotice{font-size:12px;color:#54595d;border-bottom:1px solid #eaecf0;padding-bottom:6px}
+.dexnav{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#f2efe2,#f8f9fa,#efe9f0);border:1px solid var(--border);border-radius:6px;padding:8px 14px;margin:12px 0;font-size:13px}
+.dexnav .mid{font-weight:700}
+.dexnav .dim{color:#9a9fa5}
+.type{display:inline-block;padding:2px 11px;border-radius:4px;color:#fff;font-weight:600;font-size:12px;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.18)}
+.t-roccia{background:var(--roccia)} .t-normale{background:var(--normale)} .t-veleno{background:var(--veleno)}
+.t-erba{background:var(--erba)} .t-terra{background:var(--terra);color:#5b4a12;text-shadow:none} .t-acqua{background:var(--acqua)}
+.t-lotta{background:var(--lotta)} .t-acciaio{background:var(--acciaio);color:#43436b;text-shadow:none} .t-fuoco{background:var(--fuoco)}
+.t-volante{background:var(--volante)} .t-psico{background:var(--psico)} .t-spettro{background:var(--spettro)}
+.t-buio{background:var(--buio)} .t-drago{background:var(--drago)} .t-elettro{background:var(--elettro);color:#6b5a10;text-shadow:none}
+.t-folletto{background:var(--folletto);color:#7c3350;text-shadow:none} .t-ghiaccio{background:var(--ghiaccio);color:#2a6a6a;text-shadow:none} .t-coleot{background:var(--coleot)}
+.infobox{float:right;width:308px;margin:0 0 16px 22px;border:1px solid var(--border);background:var(--panel);border-radius:8px;overflow:hidden;font-size:12.5px}
+.infobox .head{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff;text-align:center;padding:8px 10px}
+.infobox .head .num{font-size:12px;opacity:.9}
+.infobox .head .name{font-size:20px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.infobox .head .cat{font-size:12px;font-style:italic}
+.infobox .art{background:#fff;padding:8px;text-align:center;border-bottom:1px solid #eaecf0}
+.infobox .art svg{width:236px;height:236px}
+.infobox .art img{width:236px;height:236px;object-fit:contain}
+.artph{width:236px;height:236px;margin:0 auto;border:2px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;color:#72777d;font-size:12px;padding:10px;background:#fcfcfc}
+.infobox .art .capt{font-size:11px;color:#54595d}
+.infobox table{width:100%;border-collapse:collapse}
+.infobox th{background:#eef0f2;text-align:left;padding:5px 9px;width:41%;font-weight:600;vertical-align:top;border-top:1px solid #eaecf0}
+.infobox td{padding:5px 9px;border-top:1px solid #eaecf0;vertical-align:top}
+.infobox .lang{display:flex;justify-content:center;gap:14px;background:#eef0f2;padding:4px;font-size:11.5px;color:#54595d}
+.toc{display:inline-block;border:1px solid var(--border);background:var(--panel);padding:10px 18px;border-radius:6px;font-size:13px;margin:8px 0 4px}
+.toc .toctitle{font-weight:700;text-align:center}
+.toc ol{margin:6px 0 0;padding-left:22px}
+.toc ol ol{margin:0}
+.intro b.pkmn{font-size:15px}
+.wtable{border-collapse:collapse;margin:10px 0;font-size:13px}
+.wtable th,.wtable td{border:1px solid var(--border);padding:5px 10px}
+.wtable th{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff}
+.wtable td{background:#fff}
+.wtable tr:nth-child(even) td{background:#fafbfc}
+.wtable .lvl{text-align:center;font-weight:600}
+.wtable .num{text-align:center}
+.stab{font-weight:700}
+.effbox{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin:10px 0;max-width:760px}
+.effrow{display:flex;border-top:1px solid var(--border)}
+.effrow:first-child{border-top:none}
+.efflabel{width:130px;flex:0 0 130px;background:#eef0f2;padding:8px;font-weight:600;display:flex;align-items:center;font-size:12.5px}
+.effcells{padding:7px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;background:#fff}
+.effx{font-size:11px;color:#54595d;margin-left:2px}
+.evochain{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin:14px 0}
+.evocard{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:10px 12px;text-align:center;width:172px}
+.evocard svg{width:118px;height:118px}
+.evocard img{width:118px;height:118px;object-fit:contain}
+.evocard .nm{font-weight:700;margin:2px 0 6px}
+.evoarrow{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:11.5px;color:#54595d;width:130px;padding:0 4px}
+.evoarrow .ar{font-size:26px;color:#8b8f94;line-height:1}
+.statbars{max-width:640px}
+.statrow{display:flex;align-items:center;gap:10px;margin:4px 0}
+.statrow .sn{width:78px;flex:0 0 78px;font-weight:600;font-size:12.5px}
+.statrow .sv{width:34px;flex:0 0 34px;text-align:right;font-weight:700;font-size:13px}
+.statrow .sb{flex:1;background:#eef0f2;border:1px solid #dfe3e8;border-radius:4px;height:14px;overflow:hidden}
+.statrow .sb i{display:block;height:100%;border-radius:3px}
+.s-ps i{background:#FF5959}.s-att i{background:#F5AC78}.s-dif i{background:#FAE078}
+.s-asp i{background:#9DB7F5}.s-dsp i{background:#A7DB8D}.s-vel i{background:#FA92B2}
+.dexentries{max-width:820px}
+.dexentries .ver{font-weight:700}
+.itembox{border:1px solid #7fb1d8;background:#f0f7fc;border-radius:8px;padding:12px 16px;margin:14px 0;max-width:760px;display:flex;gap:14px;align-items:flex-start}
+.itembox svg{flex:0 0 46px}
+.notabene{border-left:4px solid var(--accent1);background:var(--panel);padding:8px 14px;margin:10px 0;max-width:780px;font-size:13px}
+.cats{border:1px solid var(--border);background:var(--panel);border-radius:6px;padding:8px 14px;margin-top:34px;font-size:12.5px}
+.footer{font-size:11.5px;color:#54595d;margin-top:14px}
+ul{margin:6px 0}
+@media (max-width:760px){
+  .infobox{float:none;width:100%;margin:12px 0}
+  .efflabel{width:96px;flex-basis:96px}
+  .evoarrow{width:100%}
+}
+@media (prefers-reduced-motion: no-preference){
+  .evocard:hover{box-shadow:0 2px 8px rgba(0,0,0,.12);transition:box-shadow .2s}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="impronta-anicino" viewBox="0 0 40 40">
+  <path d="M20 6 L20 30" stroke="#54595d" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M20 8 L8 16 M20 8 L14 18 M20 8 L20 19 M20 8 L26 18 M20 8 L32 16" stroke="#54595d" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="8" cy="16" r="2.4" fill="#54595d"/><circle cx="14" cy="18" r="2.4" fill="#54595d"/>
+  <circle cx="20" cy="19" r="2.4" fill="#54595d"/><circle cx="26" cy="18" r="2.4" fill="#54595d"/>
+  <circle cx="32" cy="16" r="2.4" fill="#54595d"/>
+  <path d="M14 33 q6 -3 12 0" stroke="#54595d" stroke-width="2" fill="none" stroke-linecap="round"/>
+</symbol>
+<symbol id="icon-ombrella" viewBox="0 0 48 48">
+  <path d="M24 12 L24 40" stroke="#6a8f3c" stroke-width="3" stroke-linecap="round"/>
+  <path d="M24 14 L10 22 M24 14 L17 24 M24 14 L24 25 M24 14 L31 24 M24 14 L38 22" stroke="#6a8f3c" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="10" cy="22" r="3.4" fill="#fdfdf5" stroke="#c9d6a8" stroke-width="1"/>
+  <circle cx="17" cy="24" r="3.4" fill="#fdfdf5" stroke="#c9d6a8" stroke-width="1"/>
+  <circle cx="24" cy="25" r="3.4" fill="#fdfdf5" stroke="#c9d6a8" stroke-width="1"/>
+  <circle cx="31" cy="24" r="3.4" fill="#fdfdf5" stroke="#c9d6a8" stroke-width="1"/>
+  <circle cx="38" cy="22" r="3.4" fill="#fdfdf5" stroke="#c9d6a8" stroke-width="1"/>
+  <path d="M16 38 q8 -4 16 0" stroke="#6a8f3c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</symbol>
+</defs>
+</svg>
+<div class="page">
+<div class="sitenotice"><a href="index.html"><b>← Wikascolemon</b></a> · da <b>Pokédex del Piceno</b>, l'enciclopedia (immaginaria) dei Pokémon della regione Piceno. <i>Pagina fan-made nel formato di Pokémon Central Wiki.</i></div>
+
+<div class="dexnav">
+  <span><a href="spesurde.html">← #014: Spesurde</a></span>
+  <span class="mid">#015 Anicino</span>
+  <span><a href="anisetta.html">#016: Anisetta →</a></span>
+</div>
+
+<h1>Anicino</h1>
+
+<div class="infobox">
+  <div class="head">
+    <div class="num">Pokédex del Piceno #015</div>
+    <div class="name">Anicino</div>
+    <div class="cat">Pokémon Anice</div>
+  </div>
+  <div class="art">
+    <div class="artph">Artwork di Anicino<br>in arrivo</div>
+    <div class="capt">Artwork di Anicino</div>
+  </div>
+  <div class="lang"><span>EN: Anicino</span><span>JA: アニスメ <i>Anisume</i></span></div>
+  <table>
+    <tr><th>Tipo</th><td><span class="type t-erba">Erba</span></td></tr>
+    <tr><th>Abilità</th><td>Clorofilla (prima)<br><i>Aromavelo</i> (speciale)</td></tr>
+    <tr><th>Sesso</th><td>50% maschi · 50% femmine</td></tr>
+    <tr><th>Altezza</th><td>0,3 m</td></tr>
+    <tr><th>Peso</th><td>1,8 kg</td></tr>
+    <tr><th>Tasso di cattura</th><td>255 (33,3%)</td></tr>
+    <tr><th>Uovo</th><td>Gruppo Erba<br>20 cicli (min. 5120 passi)</td></tr>
+    <tr><th>Pokédex regionali</th><td>Piceno #015</td></tr>
+    <tr><th>Tasso di allevamento</th><td>Medio-veloce</td></tr>
+    <tr><th>Esperienza base ceduta</th><td>56</td></tr>
+    <tr><th>Punti base ceduti</th><td>Totale: 1 — Dif. Sp. 1</td></tr>
+    <tr><th>Colore Pokédex</th><td>Verde</td></tr>
+    <tr><th>Impronta</th><td><svg width="26" height="26"><use href="#impronta-anicino"/></svg></td></tr>
+    <tr><th>Affetto di base</th><td>70</td></tr>
+  </table>
+</div>
+
+<p class="intro"><b class="pkmn">Anicino</b> è un Pokémon di tipo <b>Erba</b> dei campi e dei bordi strada appena fuori <b>Ascoli Piceno</b>. È una delle specie più comuni della valle: chi parte per la prima volta ne incontra uno entro poche centinaia di metri.</p>
+<p>Si <a href="#Evoluzioni">evolve</a> in <a href="anisetta.html">Anisetta</a> a partire dal livello 20, quando i semi finiscono di seccare e il calore che ha accumulato tutta l'estate comincia a uscire.</p>
+
+<div class="toc">
+  <div class="toctitle">Indice</div>
+  <ol>
+    <li><a href="#Biologia">Biologia</a>
+      <ol>
+        <li><a href="#Fisionomia">Fisionomia</a></li>
+        <li><a href="#Comportamento">Comportamento</a></li>
+        <li><a href="#Habitat">Habitat</a></li>
+        <li><a href="#Dieta">Dieta</a></li>
+      </ol>
+    </li>
+    <li><a href="#Dati_di_gioco">Dati di gioco</a>
+      <ol>
+        <li><a href="#Resistenze">Resistenze e vulnerabilità</a></li>
+        <li><a href="#Evoluzioni">Evoluzioni</a></li>
+        <li><a href="#Statistiche">Statistiche di base</a></li>
+        <li><a href="#Mosse">Mosse apprese</a></li>
+        <li><a href="#Voci">Voci Pokédex</a></li>
+      </ol>
+    </li>
+    <li><a href="#Raccolta">La raccolta di fine estate</a></li>
+    <li><a href="#Curiosita">Curiosità</a></li>
+    <li><a href="#Lingue">In altre lingue</a></li>
+  </ol>
+</div>
+
+<h2 id="Biologia">Biologia</h2>
+
+<h3 id="Fisionomia">Fisionomia</h3>
+<p>Anicino è una piantina di anice alta poco più di un palmo, con due gambette sottili e un fusto scanalato che gli fa da corpo. In cima porta un'<b>ombrella</b> di fiorellini bianchi disposti a raggiera, che tiene aperta di giorno e chiude a sera come un ombrellino. Gli occhi sono due semi scuri incastonati nel fusto. Le foglie basse, larghe e frastagliate, gli servono da braccia; quelle alte, sottili come fili, tremano al minimo movimento d'aria.</p>
+<h4>Differenze tra i sessi</h4>
+<p>Non vi sono differenze visibili tra maschi e femmine.</p>
+
+<h3 id="Comportamento">Comportamento</h3>
+<p>Vive in gruppi larghi e disordinati, mai da solo: dove ce n'è uno ce ne sono venti. È curioso e per niente timido — si avvicina ai passanti, li segue per un tratto di strada e poi torna indietro. Quando è contento diffonde un <b>profumo dolce</b> che si sente a diversi metri: è così che i gruppi si tengono insieme senza vedersi, e anche così che i raccoglitori li trovano.</p>
+<p>Non ha nessuna difesa seria. Se spaventato chiude l'ombrella, si irrigidisce e finge di essere una pianta qualunque, il che funziona meno di quanto lui creda.</p>
+
+<h3 id="Habitat">Habitat</h3>
+<p>Gli incolti, i bordi delle strade poderali e le fasce di campo lasciate a riposo attorno ad <b>Ascoli Piceno</b>, soprattutto lungo la Salaria verso valle. Predilige il terreno sassoso e il pieno sole, e non sale mai troppo di quota: sopra i settecento metri non ne trovi.</p>
+
+<h3 id="Dieta">Dieta</h3>
+<p>Luce, acqua e calore. Passa le ore centrali del giorno immobile al sole, accumulando il calore che gli servirà per l'evoluzione: un Anicino cresciuto all'ombra resta piccolo e non si evolve mai.</p>
+
+<h2 id="Dati_di_gioco">Dati di gioco</h2>
+
+<h3 id="Resistenze">Resistenze e vulnerabilità</h3>
+<div class="effbox">
+  <div class="effrow"><div class="efflabel">Debolezze</div><div class="effcells">
+    <span class="type t-fuoco">Fuoco</span><span class="effx">2×</span>
+    <span class="type t-ghiaccio">Ghiaccio</span><span class="effx">2×</span>
+    <span class="type t-veleno">Veleno</span><span class="effx">2×</span>
+    <span class="type t-volante">Volante</span><span class="effx">2×</span>
+    <span class="type t-coleot">Coleot</span><span class="effx">2×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Resistenze</div><div class="effcells">
+    <span class="type t-acqua">Acqua</span><span class="effx">½×</span>
+    <span class="type t-elettro">Elettro</span><span class="effx">½×</span>
+    <span class="type t-erba">Erba</span><span class="effx">½×</span>
+    <span class="type t-terra">Terra</span><span class="effx">½×</span>
+  </div></div>
+</div>
+<div class="notabene">Le cinque debolezze dell'Erba puro, senza nessuna compensazione: Anicino è fragile come dev'essere una specie di primo percorso. La sua utilità sta altrove — nel profumo, che in gioco significa incontri.</div>
+
+<h3 id="Evoluzioni">Evoluzioni</h3>
+<div class="evochain">
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm">Anicino</div>
+    <span class="type t-erba">Erba</span>
+  </div>
+  <div class="evoarrow"><span class="ar">→</span>Livello 20</div>
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm"><a href="anisetta.html">Anisetta</a></div>
+    <span class="type t-erba">Erba</span> <span class="type t-fuoco">Fuoco</span>
+  </div>
+</div>
+<div class="notabene">Nessuna condizione particolare: basta il livello. È una scelta voluta — una specie che il giocatore incontra nella prima ora deve poter vedere la propria forma finale senza cercarla.</div>
+
+<h3 id="Statistiche">Statistiche di base</h3>
+<div class="statbars">
+  <div class="statrow s-ps"><span class="sn">PS</span><span class="sv">45</span><div class="sb"><i style="width:30%"></i></div></div>
+  <div class="statrow s-att"><span class="sn">Attacco</span><span class="sv">40</span><div class="sb"><i style="width:27%"></i></div></div>
+  <div class="statrow s-dif"><span class="sn">Difesa</span><span class="sv">45</span><div class="sb"><i style="width:30%"></i></div></div>
+  <div class="statrow s-asp"><span class="sn">Att. Sp.</span><span class="sv">45</span><div class="sb"><i style="width:30%"></i></div></div>
+  <div class="statrow s-dsp"><span class="sn">Dif. Sp.</span><span class="sv">40</span><div class="sb"><i style="width:27%"></i></div></div>
+  <div class="statrow s-vel"><span class="sn">Velocità</span><span class="sv">25</span><div class="sb"><i style="width:17%"></i></div></div>
+  <div class="statrow"><span class="sn"><b>Totale</b></span><span class="sv"><b>240</b></span><div></div></div>
+</div>
+<div class="notabene">Duecentoquaranta: la fascia della fauna comune di inizio gioco. Non è un difetto di progettazione, è il suo mestiere — serve a essere catturato presto, allenato subito e portato fino al livello 20.</div>
+
+<h3 id="Mosse">Mosse apprese</h3>
+<h4>Aumentando di livello</h4>
+<table class="wtable">
+  <tr><th>Lv.</th><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td class="lvl">Inizio</td><td>Azione</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">40</td><td class="num">100%</td><td class="num">35</td></tr>
+  <tr><td class="lvl">Inizio</td><td>Profumino</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">100%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">5</td><td class="stab">Assorbimento</td><td><span class="type t-erba">Erba</span></td><td>Speciale</td><td class="num">20</td><td class="num">100%</td><td class="num">25</td></tr>
+  <tr><td class="lvl">9</td><td>Crescita</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">13</td><td class="stab">Fogliame</td><td><span class="type t-erba">Erba</span></td><td>Fisico</td><td class="num">40</td><td class="num">100%</td><td class="num">40</td></tr>
+  <tr><td class="lvl">17</td><td class="stab">Sonnifero</td><td><span class="type t-erba">Erba</span></td><td>Stato</td><td class="num">—</td><td class="num">75%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">21</td><td class="stab">Megassorbimento</td><td><span class="type t-erba">Erba</span></td><td>Speciale</td><td class="num">40</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">25</td><td class="stab">Foglielama</td><td><span class="type t-erba">Erba</span></td><td>Fisico</td><td class="num">55</td><td class="num">95%</td><td class="num">25</td></tr>
+  <tr><td class="lvl">29</td><td class="stab">Sintesi</td><td><span class="type t-erba">Erba</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">5</td></tr>
+  <tr><td class="lvl">33</td><td class="stab">Energipalla</td><td><span class="type t-erba">Erba</span></td><td>Speciale</td><td class="num">90</td><td class="num">100%</td><td class="num">10</td></tr>
+</table>
+<h4>Tramite MT/DT (selezione)</h4>
+<table class="wtable">
+  <tr><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td>Protezione</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Sostituto</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Riposo</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">5</td></tr>
+  <tr><td>Solarraggio</td><td><span class="type t-erba">Erba</span></td><td>Speciale</td><td class="num">120</td><td class="num">100%</td><td class="num">10</td></tr>
+</table>
+<p><small>Il <b>grassetto</b> indica una mossa che ha il bonus di tipo (STAB) quando viene usata da un Anicino.</small></p>
+
+<h3 id="Voci">Voci Pokédex</h3>
+<div class="dexentries">
+  <p><span class="ver">Versione Tronto</span> — <i>Cresce ai bordi delle strade a decine. Segue i passanti per un tratto, poi si ferma e torna indietro: non si allontana mai dal proprio campo.</i></p>
+  <p><span class="ver">Versione Laga</span> — <i>Chiude l'ombrella al tramonto e la riapre all'alba. Passa il giorno fermo al sole ad accumulare il calore che un giorno gli servirà tutto insieme.</i></p>
+</div>
+
+<h2 id="Raccolta">La raccolta di fine estate</h2>
+<div class="itembox">
+  <svg width="46" height="46"><use href="#icon-ombrella"/></svg>
+  <div><b>Ad agosto i campi si svuotano.</b> Quando i semi sono maturi i raccoglitori percorrono le fasce incolte e si portano via gli Anicino a decine — non per farne male, ma perché è da lì che comincia la lavorazione. Chi resta indietro sverna nel campo e riparte l'anno dopo. È l'unica specie del Piceno la cui popolazione conosca due stagioni così diverse: piena fino ad agosto, quasi deserta a settembre.</div>
+</div>
+
+<h2 id="Curiosita">Curiosità</h2>
+<ul>
+  <li>È il Pokémon con il <b>tasso di cattura più alto</b> del Pokédex del Piceno: 255, il massimo possibile.</li>
+  <li>L'ombrella chiusa la sera è un comportamento reale delle ombrellifere, che ripiegano l'infiorescenza col calo di temperatura.</li>
+  <li>Un Anicino cresciuto all'ombra non si evolve: nel gioco è solo colore, ma spiega perché nei boschi non se ne veda nemmeno uno.</li>
+  <li>Il suo profumo attira altri Pokémon: è la ragione per cui impara <i>Profumino</i> fin dall'inizio.</li>
+</ul>
+<h3>Origine</h3>
+<p>Anicino è la pianta dell'<b>anice verde</b> (<i>Pimpinella anisum</i>), l'ombrellifera da cui si ricava l'anisetta — il liquore che ad Ascoli Piceno è nato e che ad Ascoli si beve. La sua forma finale è il prodotto di quella pianta: la linea evolutiva ripercorre, senza dirlo, la lavorazione.</p>
+<h4>Origine del nome</h4>
+<p><b>Anicino</b> è il diminutivo affettuoso di <i>anice</i>, con lo stesso stampo di "Basilino" da basilico: le due piante domestiche del Piceno hanno nomi costruiti allo stesso modo.</p>
+<p>Il nome giapponese, アニスメ <i>Anisume</i>, unisce アニス <i>anisu</i> ("anice") e 芽 <i>me</i> ("germoglio").</p>
+
+<h2 id="Lingue">In altre lingue</h2>
+<table class="wtable">
+  <tr><th>Lingua</th><th>Nome</th><th>Origine</th></tr>
+  <tr><td><b>Giapponese</b></td><td>アニスメ <i>Anisume</i></td><td>Da <i>anisu</i> e <i>me</i>, "germoglio".</td></tr>
+  <tr><td><b>Inglese</b></td><td>Anicino</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Francese</b></td><td>Anicino</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Spagnolo</b></td><td>Anicino</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Tedesco</b></td><td>Anicino</td><td>Uguale al nome italiano.</td></tr>
+</table>
+
+<h2>Vedi anche</h2>
+<ul>
+  <li><a href="anisetta.html">Anisetta</a> — la sua evoluzione</li>
+  <li><a href="basilino.html">Basilino</a> — l'altra pianta domestica del Piceno</li>
+  <li><a href="banconio.html">Banconio</a> — chi lo aspetta all'altro capo della lavorazione</li>
+</ul>
+
+<div class="dexnav">
+  <span><a href="spesurde.html">← #014: Spesurde</a></span>
+  <span class="mid">#015 Anicino</span>
+  <span><a href="anisetta.html">#016: Anisetta →</a></span>
+</div>
+
+<div class="cats"><b>Categorie:</b> Pokémon · Pokémon della regione Piceno · Pokémon di tipo Erba · Gruppo Uova Erba · Pokémon di colore Verde</div>
+<div class="footer">Pagina fan-made ispirata al formato di Pokémon Central Wiki. L'anice verde e la sua coltivazione nel Piceno sono reali.</div>
+</div>
+</body>
+</html>
