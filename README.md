@@ -13,6 +13,7 @@ L'enciclopedia (immaginaria) dei Pokémon della vallata picena — schede fan-ma
 | #046 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |
 | #047 | [Segaccio](segaccio.html) | Pokémon Boscaiolo | Erba/Acciaio | Offida (Piceno) |
 | #048 | [Venagrox](venagrox.html) | Pokémon Trattore | Acciaio/Terra | Campagne del Piceno |
+| #049 | [Ciccharizard](ciccharizard.html) | Pokémon Maître | Buio/Spettro | Ascoli Piceno, centro storico (Piceno) |
 
 ## Pokédex del Piceno
 
