@@ -2,6 +2,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="640" viewBox="0 0 1024 640" role="img" aria-labelledby="title desc">
   <title id="title">Mappa illustrata della Regione Piceno</title>
   <desc id="desc">Mappa vettoriale in stile videogioco della valle del Tronto, da Acquasanta Terme alla costa adriatica.</desc>
+  <style>
+    #mountains,#water,#bridges,#settlements,#game-landmarks,#labels>g,#labels>text:first-of-type,#labels>text:last-of-type{display:none}
+  </style>
   <defs>
     <linearGradient id="land" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#79aa55"/>

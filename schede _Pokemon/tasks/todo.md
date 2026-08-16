@@ -134,3 +134,33 @@ La mappa esistente (`mappa_piceno_1.html`, PNG 1024×640 in base64) è il mondo 
 - Gli elementi territoriali persistono al ricaricamento, mentre spawn e POI preesistenti restano invariati.
 - Il livello territoriale rimane sotto gli overlay di gioco e usa lo stesso sistema di coordinate 1024×640.
 - Il configuratore resta statico, senza dipendenze esterne, e funziona sia desktop sia mobile.
+
+---
+
+# Piano: rendere eliminabili gli elementi già presenti sulla mappa
+
+## Causa e soluzione
+
+- La mappa attuale è caricata come un'unica `<image>`: montagne, città e altri elementi disegnati dentro `mappa_piceno.svg` non possono essere selezionati singolarmente.
+- Creare una variante di sfondo contenente soltanto gli elementi bloccati: terreno, mare, campi, strade, cornice, titolo, bussola e decorazioni non modificabili.
+- Trasformare gli elementi geografici iniziali in dati territoriali con ID stabili: montagne, città/borghi con etichetta, ponti, landmark e corsi d'acqua.
+- Conservare i boschi decorativi nello sfondo bloccato in questa fase; potranno diventare modificabili con un tipo dedicato se richiesto.
+
+## Task
+
+- [x] 1. Creare `mappa_piceno_base.svg`, derivata dalla mappa esistente ma senza duplicare gli elementi che diventeranno modificabili.
+- [x] 2. Definire un seed territoriale versione 1 con posizioni e nomi degli elementi iniziali nel sistema 1024×640.
+- [x] 3. Migrare i salvataggi esistenti aggiungendo il seed una sola volta, senza alterare spawn, POI o elementi territoriali creati dall'utente.
+- [x] 4. Rendere selezionabili, spostabili, modificabili ed eliminabili anche montagne, città/borghi, ponti, landmark e corsi d'acqua iniziali.
+- [x] 5. Registrare separatamente gli ID degli elementi base eliminati e aggiungere **Ripristina elementi iniziali**, senza cancellare gli elementi creati dall'utente.
+- [x] 6. Verificare che eliminare una città rimuova insieme simbolo ed etichetta e che il ripristino non produca duplicati.
+- [x] 7. Eseguire regressioni su vecchi salvataggi, elementi territoriali personalizzati, spawn/POI, ricaricamento, desktop/mobile e assenza di errori browser.
+- [x] 8. Aggiornare la documentazione tecnica necessaria; `AGENTS.md` non è presente nel progetto.
+
+## Criteri di accettazione
+
+- Ogni elemento geografico iniziale convertito può essere selezionato ed eliminato come un elemento aggiunto manualmente.
+- La cancellazione persiste dopo il ricaricamento ed è reversibile tramite il comando di ripristino.
+- Il ripristino reinserisce soltanto gli elementi base mancanti e non modifica gli elementi creati dall'utente.
+- Non restano copie visive dell'elemento eliminato nello sfondo SVG.
+- Spawn, POI e coordinate 1024×640 rimangono invariati.

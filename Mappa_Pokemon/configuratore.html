@@ -54,11 +54,12 @@ svg{display:block;width:100%;height:auto;border:1px solid var(--border);backgrou
   <button data-tool="struttura">&#9645; Struttura</button>
   <button id="btn-fine-corso" class="azione" hidden>&#10003; Termina corso</button>
   <button id="btn-annulla-corso" class="azione" hidden>&#10005; Annulla</button>
+  <button id="btn-ripristina-base" class="azione">&#8634; Ripristina elementi iniziali</button>
 </div>
 <div class="layout">
   <div class="mapcol">
     <svg id="svg" viewBox="0 0 1024 640" xmlns="http://www.w3.org/2000/svg">
-      <image id="sfondo" width="1024" height="640" href="mappa_piceno.svg"/>
+      <image id="sfondo" width="1024" height="640" href="mappa_piceno_base.svg"/>
       <g id="territorio"></g>
       <g id="layer"></g>
     </svg>
@@ -78,6 +79,50 @@ const POI_NOMI = { pokestop: 'PokéStop', palestra: 'Palestra', laboratorio: 'La
 const STRUTTURE = { edificio: 'Edificio', borgo: 'Borgo', ponte: 'Ponte', torre: 'Torre' };
 const CORSI_ACQUA = { fiume: 'Fiume', torrente: 'Torrente', canale: 'Canale' };
 const STORAGE_KEY = 'piceno-mappa-dati';
+const TERRITORIO_BASE_VERSION = 1;
+const TERRITORIO_BASE = [
+  { id: 'base-montagna-01', tipo: 'montagna', x: 52, y: 63, nome: '', scala: 1.43, base: true },
+  { id: 'base-montagna-02', tipo: 'montagna', x: 108, y: 83, nome: '', scala: 1.25, base: true },
+  { id: 'base-montagna-03', tipo: 'montagna', x: 171, y: 52, nome: '', scala: 1.5, base: true },
+  { id: 'base-montagna-04', tipo: 'montagna', x: 218, y: 108, nome: '', scala: 1.28, base: true },
+  { id: 'base-montagna-05', tipo: 'montagna', x: 58, y: 157, nome: '', scala: 1.25, base: true },
+  { id: 'base-montagna-06', tipo: 'montagna', x: 140, y: 188, nome: '', scala: 1.5, base: true },
+  { id: 'base-montagna-07', tipo: 'montagna', x: 208, y: 172, nome: '', scala: 1.25, base: true },
+  { id: 'base-montagna-08', tipo: 'montagna', x: 55, y: 263, nome: '', scala: 1.48, base: true },
+  { id: 'base-montagna-09', tipo: 'montagna', x: 114, y: 284, nome: '', scala: 1.3, base: true },
+  { id: 'base-montagna-10', tipo: 'montagna', x: 178, y: 261, nome: '', scala: 1.57, base: true },
+  { id: 'base-montagna-11', tipo: 'montagna', x: 54, y: 509, nome: '', scala: 1.48, base: true },
+  { id: 'base-montagna-12', tipo: 'montagna', x: 123, y: 527, nome: '', scala: 1.32, base: true },
+  { id: 'base-montagna-13', tipo: 'montagna', x: 188, y: 496, nome: '', scala: 1.48, base: true },
+  { id: 'base-montagna-14', tipo: 'montagna', x: 73, y: 589, nome: '', scala: 1.32, base: true },
+  { id: 'base-montagna-15', tipo: 'montagna', x: 155, y: 590, nome: '', scala: 1.52, base: true },
+  { id: 'base-citta-acquasanta', tipo: 'struttura', x: 94, y: 340, nome: 'Acquasanta Terme', struttura: 'borgo', scala: .7, base: true },
+  { id: 'base-citta-ascoli', tipo: 'struttura', x: 282, y: 343, nome: 'Ascoli Piceno', struttura: 'borgo', scala: .95, base: true },
+  { id: 'base-citta-appignano', tipo: 'struttura', x: 400, y: 200, nome: 'Appignano', struttura: 'borgo', scala: .7, base: true },
+  { id: 'base-citta-offida', tipo: 'struttura', x: 533, y: 134, nome: 'Offida', struttura: 'borgo', scala: .7, base: true },
+  { id: 'base-citta-castorano', tipo: 'struttura', x: 613, y: 228, nome: 'Castorano', struttura: 'borgo', scala: .7, base: true },
+  { id: 'base-citta-spinetoli', tipo: 'struttura', x: 669, y: 290, nome: 'Spinetoli', struttura: 'borgo', scala: .7, base: true },
+  { id: 'base-citta-monsampolo', tipo: 'struttura', x: 730, y: 243, nome: 'Monsampolo', struttura: 'borgo', scala: .7, base: true },
+  { id: 'base-citta-monteprandone', tipo: 'struttura', x: 788, y: 309, nome: 'Monteprandone', struttura: 'borgo', scala: .7, base: true },
+  { id: 'base-citta-san-benedetto', tipo: 'struttura', x: 873, y: 141, nome: 'San Benedetto', struttura: 'borgo', scala: .95, base: true },
+  { id: 'base-citta-porto-ascoli', tipo: 'struttura', x: 874, y: 267, nome: "Porto d'Ascoli", struttura: 'borgo', scala: .7, base: true },
+  { id: 'base-citta-sant-egidio', tipo: 'struttura', x: 564, y: 441, nome: "Sant'Egidio", struttura: 'borgo', scala: .7, base: true },
+  { id: 'base-citta-sant-omero', tipo: 'struttura', x: 694, y: 493, nome: "Sant'Omero", struttura: 'borgo', scala: .7, base: true },
+  { id: 'base-citta-nereto', tipo: 'struttura', x: 774, y: 437, nome: 'Nereto', struttura: 'borgo', scala: .7, base: true },
+  { id: 'base-citta-tortoreto', tipo: 'struttura', x: 859, y: 486, nome: 'Tortoreto', struttura: 'borgo', scala: .7, base: true },
+  { id: 'base-ponte-01', tipo: 'struttura', x: 293, y: 338, nome: '', struttura: 'ponte', scala: .65, base: true },
+  { id: 'base-ponte-02', tipo: 'struttura', x: 460, y: 287, nome: '', struttura: 'ponte', scala: .65, base: true },
+  { id: 'base-ponte-03', tipo: 'struttura', x: 585, y: 311, nome: '', struttura: 'ponte', scala: .65, base: true },
+  { id: 'base-ponte-04', tipo: 'struttura', x: 701, y: 285, nome: '', struttura: 'ponte', scala: .65, base: true },
+  { id: 'base-ponte-05', tipo: 'struttura', x: 816, y: 320, nome: '', struttura: 'ponte', scala: .65, base: true },
+  { id: 'base-landmark-01', tipo: 'struttura', x: 322, y: 397, nome: 'Centro avventura', struttura: 'edificio', scala: .75, base: true },
+  { id: 'base-landmark-02', tipo: 'struttura', x: 604, y: 171, nome: 'Santuario del bosco', struttura: 'torre', scala: .75, base: true },
+  { id: 'base-landmark-03', tipo: 'struttura', x: 824, y: 362, nome: 'Arena costiera', struttura: 'edificio', scala: .75, base: true },
+  { id: 'base-acqua-tronto', tipo: 'corso_acqua', nome: 'Fiume Tronto', categoria: 'fiume', larghezza: 12, base: true, punti: [{x:17,y:365},{x:88,y:329},{x:160,y:303},{x:229,y:339},{x:297,y:339},{x:360,y:285},{x:423,y:259},{x:491,y:272},{x:558,y:301},{x:618,y:291},{x:661,y:257},{x:720,y:271},{x:784,y:308},{x:833,y:309},{x:873,y:271}] },
+  { id: 'base-acqua-castignano', tipo: 'corso_acqua', nome: 'Torrente del Piceno', categoria: 'torrente', larghezza: 5, base: true, punti: [{x:362,y:161},{x:355,y:190},{x:388,y:226},{x:413,y:263}] },
+  { id: 'base-acqua-offida', tipo: 'corso_acqua', nome: 'Torrente Tesino', categoria: 'torrente', larghezza: 5, base: true, punti: [{x:548,y:106},{x:548,y:163},{x:590,y:206},{x:626,y:261}] },
+  { id: 'base-acqua-monteprandone', tipo: 'corso_acqua', nome: 'Fosso costiero', categoria: 'torrente', larghezza: 5, base: true, punti: [{x:707,y:131},{x:696,y:179},{x:723,y:230},{x:751,y:299}] }
+];
 
 const svg = document.getElementById('svg');
 const territorioLayer = document.getElementById('territorio');
@@ -97,9 +142,22 @@ function carica() {
 }
 function normalizzaDati(d) {
   if (d && Array.isArray(d.elementi)) {
-    return { ...d, versione: 2, territorio: Array.isArray(d.territorio) ? d.territorio : [] };
+    const territorio = Array.isArray(d.territorio) ? d.territorio.map(clonaElemento) : [];
+    const territorioBaseNascosto = Array.isArray(d.territorioBaseNascosto) ? [...new Set(d.territorioBaseNascosto)] : [];
+    if ((d.territorioBaseVersion || 0) < TERRITORIO_BASE_VERSION) aggiungiBaseMancanti(territorio, territorioBaseNascosto);
+    return { ...d, versione: 3, territorio, territorioBaseVersion: TERRITORIO_BASE_VERSION, territorioBaseNascosto };
   }
-  return { versione: 2, elementi: [], territorio: [] };
+  return { versione: 3, elementi: [], territorio: TERRITORIO_BASE.map(clonaElemento), territorioBaseVersion: TERRITORIO_BASE_VERSION, territorioBaseNascosto: [] };
+}
+function clonaElemento(el) {
+  return { ...el, punti: Array.isArray(el.punti) ? el.punti.map(p => ({ ...p })) : el.punti };
+}
+function aggiungiBaseMancanti(territorio, nascosti) {
+  const ids = new Set(territorio.map(el => el.id));
+  const esclusi = new Set(nascosti);
+  TERRITORIO_BASE.forEach(el => {
+    if (!ids.has(el.id) && !esclusi.has(el.id)) territorio.push(clonaElemento(el));
+  });
 }
 function salva() { localStorage.setItem(STORAGE_KEY, JSON.stringify(dati)); }
 
@@ -119,6 +177,7 @@ document.querySelectorAll('.toolbar button[data-tool]').forEach(b => {
 });
 document.getElementById('btn-fine-corso').addEventListener('click', () => terminaCorso(false));
 document.getElementById('btn-annulla-corso').addEventListener('click', () => terminaCorso(true));
+document.getElementById('btn-ripristina-base').addEventListener('click', ripristinaBase);
 
 function impostaTool(nuovoTool) {
   if (corsoInCorso && nuovoTool !== 'corso_acqua') terminaCorso(false);
@@ -231,9 +290,19 @@ function arr(n) { return Math.round(n); }
 function seleziona(id) { selId = id; disegna(); pannello(); }
 
 function cancella() {
+  const el = trova(selId);
+  if (el && el.base && !dati.territorioBaseNascosto.includes(el.id)) dati.territorioBaseNascosto.push(el.id);
   dati.elementi = dati.elementi.filter(e => e.id !== selId);
   dati.territorio = dati.territorio.filter(e => e.id !== selId);
   if (corsoInCorso === selId) { corsoInCorso = null; puntiCorsoIniziali = 0; aggiornaAzioniCorso(); }
+  salva();
+  seleziona(null);
+}
+
+function ripristinaBase() {
+  aggiungiBaseMancanti(dati.territorio, []);
+  dati.territorioBaseNascosto = [];
+  dati.territorioBaseVersion = TERRITORIO_BASE_VERSION;
   salva();
   seleziona(null);
 }
@@ -253,7 +322,9 @@ function testo(x, y, contenuto, classe) {
 
 function disegnaTerritorio() {
   territorioLayer.innerHTML = '';
-  for (const el of dati.territorio) {
+  const priorita = el => el.tipo === 'corso_acqua' ? 0 : el.tipo === 'montagna' ? 1 : el.struttura === 'ponte' ? 2 : 3;
+  const ordinati = [...dati.territorio].sort((a, b) => priorita(a) - priorita(b));
+  for (const el of ordinati) {
     const sel = el.id === selId ? ' sel' : '';
     if (el.tipo === 'corso_acqua') {
       if (!Array.isArray(el.punti) || !el.punti.length) continue;
@@ -289,8 +360,8 @@ function disegnaTerritorio() {
       g.appendChild(nodo('path', { d: borgo ? 'M-28 19V2L-17-8-8 0V-6L3-16 14-6V0L22-8 30 1V19Z' : 'M-22 19V-3L0-20 22-3V19Z', fill: '#f4e0b2', stroke: '#695442', 'stroke-width': 3, 'stroke-linejoin': 'round' }));
       g.appendChild(nodo('path', { d: borgo ? 'M-21 19V8H-13V19M-1 19V5H7V19M18 19V8H25V19' : 'M-6 19V5H6V19', fill: '#bd6652' }));
     }
-    g.appendChild(testo(0, -31, el.nome, 'etichetta'));
     territorioLayer.appendChild(g);
+    if (el.nome) territorioLayer.appendChild(testo(el.x, el.y - 31 * el.scala, el.nome, 'etichetta'));
   }
 }
 
@@ -328,6 +399,7 @@ function pannello() {
   }
   if (el.tipo === 'montagna') {
     box.innerHTML = '<h3>Montagna</h3>' +
+      (el.base ? '<p class="hint">Elemento iniziale: puoi eliminarlo e ripristinarlo dalla barra.</p>' : '') +
       '<label>Nome</label><input type="text" id="p-nome">' +
       '<label>Dimensione <span class="valore" id="p-scala-val">' + Math.round(el.scala * 100) + '%</span></label>' +
       '<input type="range" id="p-scala" min="50" max="200" value="' + Math.round(el.scala * 100) + '">' +
@@ -341,6 +413,7 @@ function pannello() {
     });
   } else if (el.tipo === 'struttura') {
     box.innerHTML = '<h3>Struttura</h3>' +
+      (el.base ? '<p class="hint">Elemento iniziale: simbolo ed etichetta vengono eliminati insieme.</p>' : '') +
       '<label>Tipo</label><select id="p-struttura">' + Object.entries(STRUTTURE).map(([k, v]) => '<option value="' + k + '"' + (k === el.struttura ? ' selected' : '') + '>' + v + '</option>').join('') + '</select>' +
       '<label>Nome</label><input type="text" id="p-nome">' +
       '<label>Dimensione <span class="valore" id="p-scala-val">' + Math.round(el.scala * 100) + '%</span></label>' +
@@ -356,6 +429,7 @@ function pannello() {
     });
   } else if (el.tipo === 'corso_acqua') {
     box.innerHTML = '<h3>Corso d\'acqua</h3>' +
+      (el.base ? '<p class="hint">Elemento iniziale: puoi eliminarlo e ripristinarlo dalla barra.</p>' : '') +
       '<label>Categoria</label><select id="p-categoria">' + Object.entries(CORSI_ACQUA).map(([k, v]) => '<option value="' + k + '"' + (k === el.categoria ? ' selected' : '') + '>' + v + '</option>').join('') + '</select>' +
       '<label>Nome</label><input type="text" id="p-nome">' +
       '<label>Larghezza <span class="valore" id="p-larghezza-val">' + el.larghezza + ' px</span></label>' +
@@ -416,9 +490,11 @@ function riepilogo() {
   const montagne = dati.territorio.filter(e => e.tipo === 'montagna').length;
   const corsi = dati.territorio.filter(e => e.tipo === 'corso_acqua').length;
   const strutture = dati.territorio.filter(e => e.tipo === 'struttura').length;
+  const nascosti = dati.territorioBaseNascosto.length;
   document.getElementById('riepilogo').innerHTML =
     '<h3>Riepilogo</h3>Zone spawn: <b>' + zone + '</b><br>Luoghi speciali: <b>' + poi + '</b>' +
-    '<br>Montagne: <b>' + montagne + '</b><br>Corsi d\'acqua: <b>' + corsi + '</b><br>Strutture: <b>' + strutture + '</b>';
+    '<br>Montagne: <b>' + montagne + '</b><br>Corsi d\'acqua: <b>' + corsi + '</b><br>Strutture: <b>' + strutture + '</b>' +
+    '<br>Elementi iniziali nascosti: <b>' + nascosti + '</b>';
 }
 
 disegna();
