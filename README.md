@@ -13,6 +13,9 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #001 | [Basilino](basilino.html) | Pokémon Mazzetto | Erba | Ascoli Piceno |
 | #002 | [Turibasil](turibasil.html) | Pokémon Chierichetto | Erba | Ascoli Piceno |
 | #003 | [Vescovasil](vescovasil.html) | Pokémon Cefaloforo | Erba/Terra | Ascoli Piceno |
+| #004 | [Puledrotto](puledrotto.html) | Pokémon Miccia | Fuoco | Ripatransone |
+| #005 | [Cavalbrace](cavalbrace.html) | Pokémon Scalpito | Fuoco | Ripatransone |
+| #006 | [Fuocavallo](fuocavallo.html) | Pokémon Girandola | Fuoco/Folletto | Ripatransone |
 | #044 | [Pito](pito.html) | Pokémon Cerbiatto | Roccia/Normale | Acquasanta Terme (Laga) |
 | #045 | [Pozza](pozza.html) | Pokémon Fracchia | Roccia/Veleno | Acquasanta Terme (Laga) |
 | #046 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |
