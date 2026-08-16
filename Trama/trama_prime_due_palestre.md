@@ -2,9 +2,10 @@
 
 > Trascrizione fedele di `Trama prime due palestre.pdf` (16/08/2026), in Markdown per poterci
 > lavorare e vedere i diff. Il PDF originale resta nella stessa cartella.
-> **Documento di lavoro**: contiene nomi di persone reali, alcuni come scherzo interno. Nella
-> versione distribuita del gioco vanno sostituiti con nomi di fantasia — vedi la sezione 6 del
-> [brief di progetto](../Wikascolemon/brief_piceno.html).
+> **Sui nomi**: il cast della storia (Oliver, Bobby Orange, Steven Callare, Elena Maranzini,
+> Daniel Hills e gli altri) è **inventato** — non sono persone reali. Fanno eccezione alcuni
+> capipalestra, che sono personaggi pubblici usati come parodia, e il riferimento a Parolisi,
+> che rimanda a un caso giudiziario pubblico e nella storia è un antagonista.
 
 ## Lega
 
