@@ -119,13 +119,13 @@ La mappa esistente (`mappa_piceno_1.html`, PNG 1024×640 in base64) è il mondo 
 
 ## Task
 
-- [ ] 1. Estendere il modello salvato aggiungendo `territorio`, con migrazione trasparente dei salvataggi versione 1 e conservazione integrale di `elementi`.
-- [ ] 2. Aggiungere toolbar, modalità di disegno e comandi di conclusione/annullamento per montagne, corsi d'acqua e strutture.
-- [ ] 3. Implementare il rendering vettoriale originale degli elementi territoriali nel nuovo livello SVG dedicato.
-- [ ] 4. Estendere selezione, trascinamento, modifica dei vertici, pannello proprietà, eliminazione e riepilogo.
-- [ ] 5. Verificare la persistenza dopo ricaricamento e la compatibilità con dati già presenti in `localStorage`.
-- [ ] 6. Eseguire le regressioni: creazione/spostamento/eliminazione di spawn e POI, disegno dei tre elementi territoriali, resa desktop/mobile, assenza di errori browser e validità HTML/SVG.
-- [ ] 7. Aggiornare la documentazione tecnica necessaria; aggiornare `AGENTS.md` solo se presente.
+- [x] 1. Estendere il modello salvato aggiungendo `territorio`, con migrazione trasparente dei salvataggi versione 1 e conservazione integrale di `elementi`.
+- [x] 2. Aggiungere toolbar, modalità di disegno e comandi di conclusione/annullamento per montagne, corsi d'acqua e strutture.
+- [x] 3. Implementare il rendering vettoriale originale degli elementi territoriali nel nuovo livello SVG dedicato.
+- [x] 4. Estendere selezione, trascinamento, modifica dei vertici, pannello proprietà, eliminazione e riepilogo.
+- [x] 5. Verificare la persistenza dopo ricaricamento e la compatibilità con dati già presenti in `localStorage`.
+- [x] 6. Eseguire le regressioni: creazione/spostamento/eliminazione di spawn e POI, disegno dei tre elementi territoriali, resa desktop/mobile, assenza di errori browser e validità HTML/SVG.
+- [x] 7. Aggiornare la documentazione tecnica necessaria; `AGENTS.md` non è presente.
 
 ## Criteri di accettazione
 
