@@ -63,27 +63,41 @@ For multi-step tasks, state a brief plan:
 Wikascolemon: a fan-made Pokédex wiki (in Italian) of imaginary Pokémon from the
 alta valle del Tronto / Piceno area, styled after Pokémon Central Wiki.
 
+**The goal is a Gen 3 ROM hack** on `pokeemerald-expansion` (project brief:
+`Wikascolemon/brief_piceno.html`). The wiki is where species are designed before they
+become game data. Consequences worth knowing:
+- The Gemini artwork is **concept reference and is fine as it is**. Sprites (64×64, 16 colours)
+  come later, in one pass, once the roster's concepts are settled — don't treat missing
+  sprites as a gap.
+- The region map is still at the concept stage. `configuratore.html` exists to shape it **by
+  hand**, whatever format it ends up feeding: the durable output is the geography, not the file.
+- Move categories follow the **modern physical/special split** (per move, not per type) — the
+  stat spreads in the wiki are designed on that assumption, so it must be enabled in the engine.
+
 ### Stack
 - Pure static HTML/CSS — no build tools, no JS frameworks, no dependencies
 - Each Pokémon page is a single self-contained `.html` file: inline `<style>`, embedded artwork (base64/SVG), UTF-8, Italian content
 
 ### Structure
-- `Wikascolemon/` — the published wiki (git repo, deployed via GitHub Pages: https://g95g95.github.io/Wikascolemon/). Contains `index.html`, `README.md`, and one page per Pokémon.
-- `schede _Pokemon/` — working/draft folder with page drafts and `tasks/todo.md` (current work plan). Not a git repo.
-<!-- TODO: confirm the exact draft → Wikascolemon promotion workflow -->
+The repo root is the whole project; everything below is tracked in git.
+- `Wikascolemon/` — the published wiki, and the only folder served online (https://g95g95.github.io/Wikascolemon/). Contains `index.html`, `README.md`, and one page per Pokémon.
+- `schede _Pokemon/` — draft pages, source artwork, and `tasks/todo.md` (current work plan).
+- `Mappa_Pokemon/` — the region map (layered SVG, `viewBox 0 0 1024 640`) and `configuratore.html`, the visual editor used to lay out terrain, settlements and points of interest by hand.
+
+Draft → published: the `crea-scheda` skill writes the draft in `schede _Pokemon/`, the `pubblica-scheda` skill copies it into `Wikascolemon/` and updates neighbouring navigation, `index.html` and `README.md`.
 
 ### Key Commands
 No build or test commands — pages are opened directly in a browser.
-Deploy = commit & push inside `Wikascolemon/` (GitHub Pages serves the branch).
+Deploy = push to `main` from the repo root. The workflow `.github/workflows/pages.yml` publishes the `Wikascolemon/` folder to GitHub Pages; anything outside that folder is versioned but not served.
 
 ### Conventions
 - New Pokémon pages: clone the structure of an existing page (e.g. `segaccio.html`) — keep the Pokémon Central Wiki look, type-color CSS variables, infobox, stats bars, responsive layout
 - Pages must stay fully self-contained: no external assets, links only between local pages
-- Sequential Pokédex numbering (#044 Pito, #045 Pozza, #046 Umito, #047 Segaccio, ...)
+- Pokédex numbering is **semantic, not sequential**: one single dex ("Pokédex del Piceno"), with blocks reserved by design (#001-003 Grass starter, #004-006 Fire, #007-009 Water, #044-049 taken). Gaps are deliberate — never assign "highest + 1". The authoritative table lives in the `crea-scheda` skill.
 - When adding a page: update navigation links in adjacent pages, `index.html`, and the `README.md` table
 
 ### External Dependencies
-- GitHub Pages site: https://g95g95.github.io/Wikascolemon/ (repo `Wikascolemon/`)
+- GitHub Pages site: https://g95g95.github.io/Wikascolemon/ (deployed by GitHub Actions, see Key Commands)
 
 ---
 
