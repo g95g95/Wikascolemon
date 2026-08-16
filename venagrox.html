@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venagrox - Pokédex della Laga</title>
+<style>
+:root{
+  --border:#a2a9b1; --panel:#f8f9fa; --text:#202122; --link:#3366cc; --red:#ba0000;
+  --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
+  --terra:#E0C068; --acqua:#6890F0; --lotta:#C03028; --acciaio:#B8B8D0;
+  --fuoco:#F08030; --volante:#A890F0; --psico:#F85888; --spettro:#705898;
+  --buio:#705848; --drago:#7038F8; --elettro:#F8D030; --folletto:#EE99AC;
+  --ghiaccio:#98D8D8; --coleot:#A8B820;
+  --accent1:#8a8aa8; --accent2:#c8a848;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--text);font:14px/1.6 "Segoe UI","Helvetica Neue",Arial,sans-serif}
+.page{max-width:1080px;margin:0 auto;padding:14px 20px 40px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+a.new{color:var(--red)}
+h1,h2{font-family:"Linux Libertine",Georgia,"Times New Roman",serif;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:4px;margin:20px 0 12px}
+h1{font-size:30px;margin-top:6px}
+h2{font-size:23px}
+h3{font-size:17px;margin:18px 0 8px}
+h4{font-size:15px;margin:14px 0 6px}
+.sitenotice{font-size:12px;color:#54595d;border-bottom:1px solid #eaecf0;padding-bottom:6px}
+.dexnav{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#f2efe2,#f8f9fa,#efe9f0);border:1px solid var(--border);border-radius:6px;padding:8px 14px;margin:12px 0;font-size:13px}
+.dexnav .mid{font-weight:700}
+.dexnav .dim{color:#9a9fa5}
+.type{display:inline-block;padding:2px 11px;border-radius:4px;color:#fff;font-weight:600;font-size:12px;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.18)}
+.t-roccia{background:var(--roccia)} .t-normale{background:var(--normale)} .t-veleno{background:var(--veleno)}
+.t-erba{background:var(--erba)} .t-terra{background:var(--terra);color:#5b4a12;text-shadow:none} .t-acqua{background:var(--acqua)}
+.t-lotta{background:var(--lotta)} .t-acciaio{background:var(--acciaio);color:#43436b;text-shadow:none} .t-fuoco{background:var(--fuoco)}
+.t-volante{background:var(--volante)} .t-psico{background:var(--psico)} .t-spettro{background:var(--spettro)}
+.t-buio{background:var(--buio)} .t-drago{background:var(--drago)} .t-elettro{background:var(--elettro);color:#6b5a10;text-shadow:none}
+.t-folletto{background:var(--folletto);color:#7c3350;text-shadow:none} .t-ghiaccio{background:var(--ghiaccio);color:#2a6a6a;text-shadow:none} .t-coleot{background:var(--coleot)}
+.infobox{float:right;width:308px;margin:0 0 16px 22px;border:1px solid var(--border);background:var(--panel);border-radius:8px;overflow:hidden;font-size:12.5px}
+.infobox .head{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff;text-align:center;padding:8px 10px}
+.infobox .head .num{font-size:12px;opacity:.9}
+.infobox .head .name{font-size:20px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.infobox .head .cat{font-size:12px;font-style:italic}
+.infobox .art{background:#fff;padding:8px;text-align:center;border-bottom:1px solid #eaecf0}
+.infobox .art svg{width:236px;height:236px}
+.infobox .art img{width:236px;height:236px;object-fit:contain}
+.infobox .art .capt{font-size:11px;color:#54595d}
+.infobox table{width:100%;border-collapse:collapse}
+.infobox th{background:#eef0f2;text-align:left;padding:5px 9px;width:41%;font-weight:600;vertical-align:top;border-top:1px solid #eaecf0}
+.infobox td{padding:5px 9px;border-top:1px solid #eaecf0;vertical-align:top}
+.infobox .lang{display:flex;justify-content:center;gap:14px;background:#eef0f2;padding:4px;font-size:11.5px;color:#54595d}
+.toc{display:inline-block;border:1px solid var(--border);background:var(--panel);padding:10px 18px;border-radius:6px;font-size:13px;margin:8px 0 4px}
+.toc .toctitle{font-weight:700;text-align:center}
+.toc ol{margin:6px 0 0;padding-left:22px}
+.toc ol ol{margin:0}
+.intro b.pkmn{font-size:15px}
+.wtable{border-collapse:collapse;margin:10px 0;font-size:13px}
+.wtable th,.wtable td{border:1px solid var(--border);padding:5px 10px}
+.wtable th{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff}
+.wtable td{background:#fff}
+.wtable tr:nth-child(even) td{background:#fafbfc}
+.wtable .lvl{text-align:center;font-weight:600}
+.wtable .num{text-align:center}
+.stab{font-weight:700}
+.effbox{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin:10px 0;max-width:760px}
+.effrow{display:flex;border-top:1px solid var(--border)}
+.effrow:first-child{border-top:none}
+.efflabel{width:130px;flex:0 0 130px;background:#eef0f2;padding:8px;font-weight:600;display:flex;align-items:center;font-size:12.5px}
+.effcells{padding:7px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;background:#fff}
+.effx{font-size:11px;color:#54595d;margin-left:2px}
+.evochain{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin:14px 0}
+.evocard{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:10px 12px;text-align:center;width:172px}
+.evocard svg{width:118px;height:118px}
+.evocard img{width:118px;height:118px;object-fit:contain}
+.evocard .nm{font-weight:700;margin:2px 0 6px}
+.evoarrow{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:11.5px;color:#54595d;width:130px;padding:0 4px}
+.evoarrow .ar{font-size:26px;color:#8b8f94;line-height:1}
+.statbars{max-width:640px}
+.statrow{display:flex;align-items:center;gap:10px;margin:4px 0}
+.statrow .sn{width:78px;flex:0 0 78px;font-weight:600;font-size:12.5px}
+.statrow .sv{width:34px;flex:0 0 34px;text-align:right;font-weight:700;font-size:13px}
+.statrow .sb{flex:1;background:#eef0f2;border:1px solid #dfe3e8;border-radius:4px;height:14px;overflow:hidden}
+.statrow .sb i{display:block;height:100%;border-radius:3px}
+.s-ps i{background:#FF5959}.s-att i{background:#F5AC78}.s-dif i{background:#FAE078}
+.s-asp i{background:#9DB7F5}.s-dsp i{background:#A7DB8D}.s-vel i{background:#FA92B2}
+.dexentries{max-width:820px}
+.dexentries .ver{font-weight:700}
+.itembox{border:1px solid #7fb1d8;background:#f0f7fc;border-radius:8px;padding:12px 16px;margin:14px 0;max-width:760px;display:flex;gap:14px;align-items:flex-start}
+.itembox svg{flex:0 0 46px}
+.notabene{border-left:4px solid var(--accent1);background:var(--panel);padding:8px 14px;margin:10px 0;max-width:780px;font-size:13px}
+.cats{border:1px solid var(--border);background:var(--panel);border-radius:6px;padding:8px 14px;margin-top:34px;font-size:12.5px}
+.footer{font-size:11.5px;color:#54595d;margin-top:14px}
+ul{margin:6px 0}
+@media (max-width:760px){
+  .infobox{float:none;width:100%;margin:12px 0}
+  .efflabel{width:96px;flex-basis:96px}
+  .evoarrow{width:100%}
+}
+@media (prefers-reduced-motion: no-preference){
+  .evocard:hover{box-shadow:0 2px 8px rgba(0,0,0,.12);transition:box-shadow .2s}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="impronta-venagrox" viewBox="0 0 40 40">
+  <rect x="6" y="4" width="10" height="32" rx="3" fill="#54595d"/>
+  <rect x="24" y="4" width="10" height="32" rx="3" fill="#54595d"/>
+  <path d="M6 10 h10 M6 17 h10 M6 24 h10 M6 31 h10 M24 10 h10 M24 17 h10 M24 24 h10 M24 31 h10" stroke="#fff" stroke-width="2"/>
+</symbol>
+<symbol id="art-venagrox" viewBox="0 0 240 240">
+  <rect x="0" y="196" width="240" height="30" fill="#c9b98a"/>
+  <path d="M0 200 q40 -8 80 -4 q60 6 120 -2 l40 2 v30 h-240 z" fill="#b3a06a"/>
+  <ellipse cx="120" cy="212" rx="98" ry="12" fill="#8a7a4e" opacity=".5"/>
+  <!-- fumo -->
+  <circle cx="52" cy="42" r="9" fill="#9aa0a8" opacity=".7"/>
+  <circle cx="46" cy="28" r="12" fill="#a8aeb6" opacity=".6"/>
+  <circle cx="40" cy="12" r="15" fill="#b8bec6" opacity=".5"/>
+  <circle cx="190" cy="40" r="8" fill="#9aa0a8" opacity=".7"/>
+  <circle cx="196" cy="26" r="11" fill="#a8aeb6" opacity=".6"/>
+  <circle cx="203" cy="11" r="14" fill="#b8bec6" opacity=".5"/>
+  <!-- tubi di scarico -->
+  <rect x="46" y="46" width="12" height="46" rx="3" fill="#4a4e58" stroke="#2c2f36" stroke-width="2"/>
+  <rect x="184" y="44" width="12" height="48" rx="3" fill="#4a4e58" stroke="#2c2f36" stroke-width="2"/>
+  <rect x="43" y="44" width="18" height="8" rx="3" fill="#2c2f36"/>
+  <rect x="181" y="42" width="18" height="8" rx="3" fill="#2c2f36"/>
+  <!-- ruote posteriori (gambe) -->
+  <circle cx="74" cy="180" r="42" fill="#23252b" stroke="#111216" stroke-width="4"/>
+  <circle cx="166" cy="180" r="42" fill="#23252b" stroke="#111216" stroke-width="4"/>
+  <g stroke="#3d4048" stroke-width="6" stroke-linecap="round">
+    <path d="M74 142 v10 M74 208 v10 M36 180 h10 M102 180 h10 M47 153 l7 7 M94 200 l7 7 M101 153 l-7 7 M54 200 l-7 7"/>
+    <path d="M166 142 v10 M166 208 v10 M128 180 h10 M194 180 h10 M139 153 l7 7 M186 200 l7 7 M193 153 l-7 7 M146 200 l-7 7"/>
+  </g>
+  <circle cx="74" cy="180" r="16" fill="#c8a848" stroke="#8a7020" stroke-width="3"/>
+  <circle cx="166" cy="180" r="16" fill="#c8a848" stroke="#8a7020" stroke-width="3"/>
+  <circle cx="74" cy="180" r="5" fill="#5b4a12"/>
+  <circle cx="166" cy="180" r="5" fill="#5b4a12"/>
+  <!-- torso: motore-cofano -->
+  <path d="M62 92 h116 q8 0 8 8 v52 q0 8 -8 8 h-116 q-8 0 -8 -8 v-52 q0 -8 8 -8 z" fill="#a83226" stroke="#5a1e16" stroke-width="3"/>
+  <path d="M62 92 h116 q8 0 8 8 v10 h-132 v-10 q0 -8 8 -8 z" fill="#c04a34" stroke="none"/>
+  <!-- griglia-bocca digrignante -->
+  <rect x="86" y="118" width="68" height="30" rx="6" fill="#2c2f36" stroke="#111216" stroke-width="2"/>
+  <g fill="#d8dde4">
+    <path d="M90 118 l8 12 8 -12 z"/><path d="M106 118 l8 12 8 -12 z"/><path d="M122 118 l8 12 8 -12 z"/><path d="M138 118 l8 12 8 -12 z"/>
+    <path d="M98 148 l8 -12 8 12 z"/><path d="M114 148 l8 -12 8 12 z"/><path d="M130 148 l8 -12 8 12 z"/>
+  </g>
+  <!-- fari-spalle -->
+  <circle cx="72" cy="106" r="7" fill="#f8d030" stroke="#8a7020" stroke-width="2"/>
+  <circle cx="168" cy="106" r="7" fill="#f8d030" stroke="#8a7020" stroke-width="2"/>
+  <!-- braccia -->
+  <path d="M60 100 q-26 4 -30 34 q-2 16 6 28" fill="none" stroke="#5a1e16" stroke-width="16" stroke-linecap="round"/>
+  <path d="M180 100 q26 4 30 34 q2 16 -6 28" fill="none" stroke="#5a1e16" stroke-width="16" stroke-linecap="round"/>
+  <path d="M60 100 q-26 4 -30 34 q-2 16 6 28" fill="none" stroke="#a83226" stroke-width="10" stroke-linecap="round"/>
+  <path d="M180 100 q26 4 30 34 q2 16 -6 28" fill="none" stroke="#a83226" stroke-width="10" stroke-linecap="round"/>
+  <!-- mani-benna -->
+  <g fill="#9aa0ad" stroke="#4a4e58" stroke-width="2">
+    <path d="M28 160 l-10 16 8 2 z"/><path d="M36 164 l-6 18 8 0 z"/><path d="M44 165 l0 18 8 -3 z"/>
+    <path d="M212 160 l10 16 -8 2 z"/><path d="M204 164 l6 18 -8 0 z"/><path d="M196 165 l0 18 -8 -3 z"/>
+  </g>
+  <!-- testa: cabina -->
+  <path d="M84 34 h72 q8 0 8 8 v46 h-88 v-46 q0 -8 8 -8 z" fill="#8a2a20" stroke="#5a1e16" stroke-width="3"/>
+  <rect x="88" y="42" width="64" height="30" rx="4" fill="#3a4a5a" stroke="#22303c" stroke-width="2"/>
+  <!-- occhi nel parabrezza -->
+  <path d="M94 58 l22 8 v6 h-22 z" fill="#f8d030"/>
+  <path d="M146 58 l-22 8 v6 h22 z" fill="#f8d030"/>
+  <circle cx="106" cy="66" r="2.6" fill="#5a1e16"/>
+  <circle cx="134" cy="66" r="2.6" fill="#5a1e16"/>
+  <!-- lampeggiante -->
+  <rect x="112" y="24" width="16" height="12" rx="4" fill="#e8901a" stroke="#8a5210" stroke-width="2"/>
+  <rect x="116" y="18" width="8" height="6" fill="#5a1e16"/>
+  <!-- graffi e ruggine -->
+  <path d="M70 128 l10 -3 M160 100 l12 4 M96 96 l14 -2" stroke="#5a1e16" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+  <circle cx="170" cy="134" r="4" fill="#7a5a2a" opacity=".7"/>
+  <circle cx="80" cy="140" r="3" fill="#7a5a2a" opacity=".7"/>
+</symbol>
+</defs>
+</svg>
+<div class="page">
+<div class="sitenotice"><a href="index.html"><b>← Wikascolemon</b></a> · da <b>Pokédex della Laga</b>, l'enciclopedia (immaginaria) dei Pokémon dell'alta valle del Tronto. <i>Pagina fan-made nel formato di Pokémon Central Wiki.</i></div>
+
+<div class="dexnav">
+  <span><a href="segaccio.html">← #047: Segaccio</a></span>
+  <span class="mid">#048 Venagrox</span>
+  <span class="dim">#049: ??? →</span>
+</div>
+
+<h1>Venagrox</h1>
+
+<div class="infobox">
+  <div class="head">
+    <div class="num">Pokédex della Laga #048</div>
+    <div class="name">Venagrox</div>
+    <div class="cat">Pokémon Trattore</div>
+  </div>
+  <div class="art">
+    <svg viewBox="0 0 240 240" role="img" aria-label="Artwork di Venagrox"><use href="#art-venagrox"/></svg>
+    <div class="capt">Artwork di Venagrox</div>
+  </div>
+  <div class="lang"><span>EN: Venagrox</span><span>JA: トラクドン <i>Torakudon</i></span></div>
+  <table>
+    <tr><th>Tipo</th><td><span class="type t-acciaio">Acciaio</span> <span class="type t-terra">Terra</span></td></tr>
+    <tr><th>Abilità</th><td>Testadura (prima)<br>Robustezza (seconda)<br><i>Piombatura</i> (speciale)</td></tr>
+    <tr><th>Sesso</th><td>Senza sesso</td></tr>
+    <tr><th>Altezza</th><td>3,4 m</td></tr>
+    <tr><th>Peso</th><td>1.240,0 kg</td></tr>
+    <tr><th>Tasso di cattura</th><td>3 (0,4%)</td></tr>
+    <tr><th>Uovo</th><td>Sconosciuto<br>(mai osservata riproduzione)</td></tr>
+    <tr><th>Pokédex regionali</th><td>Laga #048 · Piceno #116</td></tr>
+    <tr><th>Tasso di allevamento</th><td>—</td></tr>
+    <tr><th>Esperienza base ceduta</th><td>270</td></tr>
+    <tr><th>Punti base ceduti</th><td>Totale: 3 — Attacco 3</td></tr>
+    <tr><th>Colore Pokédex</th><td>Rosso</td></tr>
+    <tr><th>Impronta</th><td><svg width="26" height="26"><use href="#impronta-venagrox"/></svg></td></tr>
+    <tr><th>Affetto di base</th><td>0</td></tr>
+  </table>
+</div>
+
+<p class="intro"><b class="pkmn">Venagrox</b> è un Pokémon di doppio tipo <b>Acciaio</b>/<b>Terra</b> delle campagne del Piceno.</p>
+<p>Come <a href="segaccio.html">Segaccio</a>, non si <a href="#Evoluzioni">evolve</a> e non ha preevoluzioni: è una <b>specie singola</b>, e con ogni probabilità un <b>esemplare unico</b> — nessuno ha mai visto due Venagrox insieme, e nessuno si augura di vederli.</p>
+
+<div class="toc">
+  <div class="toctitle">Indice</div>
+  <ol>
+    <li><a href="#Biologia">Biologia</a>
+      <ol>
+        <li><a href="#Fisionomia">Fisionomia</a></li>
+        <li><a href="#Comportamento">Comportamento</a></li>
+        <li><a href="#Habitat">Habitat</a></li>
+        <li><a href="#Dieta">Dieta</a></li>
+      </ol>
+    </li>
+    <li><a href="#Dati_di_gioco">Dati di gioco</a>
+      <ol>
+        <li><a href="#Resistenze">Resistenze e vulnerabilità</a></li>
+        <li><a href="#Evoluzioni">Evoluzioni</a></li>
+        <li><a href="#Statistiche">Statistiche di base</a></li>
+        <li><a href="#Mosse">Mosse apprese</a></li>
+        <li><a href="#Voci">Voci Pokédex</a></li>
+      </ol>
+    </li>
+    <li><a href="#Paura">L'unica paura: Zio Peppe e Nonna</a></li>
+    <li><a href="#Curiosita">Curiosità</a></li>
+    <li><a href="#Lingue">In altre lingue</a></li>
+  </ol>
+</div>
+
+<h2 id="Biologia">Biologia</h2>
+
+<h3 id="Fisionomia">Fisionomia</h3>
+<p>Venagrox è un <b>gigantesco trattore antropomorfo</b>: una macchina agricola d'altri tempi che a un certo punto, per ragioni mai chiarite, si è alzata in piedi. Il torso è un cofano-motore rosso ruggine percorso da graffi e bugne; la testa è una cabina di guida il cui parabrezza incornicia due occhi gialli, stretti e perennemente irritati. Le gambe sono due enormi <b>ruote artigliate</b> che gli permettono di muoversi su qualsiasi pendio, e le braccia terminano in mani-benna a tre dita capaci tanto di sradicare un olmo quanto di affettare un salume con precisione da orologiaio.</p>
+<p>Dai due tubi di scappamento che gli spuntano dalle spalle esce un fumo denso e continuo, che aumenta quando è contrariato — cioè quasi sempre. La sua caratteristica più studiata è però invisibile: sotto la lamiera, tutto il corpo è foderato da uno spesso strato di <b>piombo</b>. Gli studiosi ritengono che sia una difesa contro radiazioni ed energie "moderne" di ogni genere; i contadini della zona, più semplicemente, dicono che «quello è fatto così perché non gli deve entrare niente, né i raggi né le opinioni».</p>
+<h4>Differenze tra i sessi</h4>
+<p>Venagrox è privo di sesso. Considerata l'esistenza di un solo esemplare noto, la questione è comunque puramente accademica.</p>
+
+<h3 id="Comportamento">Comportamento</h3>
+<p>Venagrox comunica esclusivamente a <b>grugniti</b>: brevi, catarrosi, apparentemente ostili. Per anni sono stati considerati semplici versi di stizza, finché un gruppo di ricercatori non li ha registrati e rallentati, scoprendo che si tratta di <b>critiche analitiche</b> perfettamente argomentate: valutazioni impietose ma tecnicamente ineccepibili su come i passanti guidano, potano, parcheggiano e vivono. Un solo grugnito, opportunamente decompresso, può contenere un'analisi di venti minuti.</p>
+<p>Nonostante l'aria perennemente minacciosa, Venagrox è mosso da un rigidissimo senso del dovere. È stato osservato più volte, di notte, sollevare i tombini delle contrade e calarsi a <b>riparare le fogne</b> senza che nessuno glielo avesse chiesto: al mattino l'acqua scorre di nuovo e l'unico segno del suo passaggio sono le impronte dei battistrada sull'asfalto. Non accetta ringraziamenti; se qualcuno tenta di ringraziarlo, grugnisce una critica sullo stato generale dell'impianto idraulico e se ne va.</p>
+<p>Produce inoltre <b>carni e salumi</b> di qualità considerata leggendaria in tutta la vallata. Come faccia, dove li produca e soprattutto <i>da cosa</i>, sono domande che nessuno ha mai avuto il coraggio di porgli. I salumi compaiono semplicemente, appesi e già stagionati, nelle cantine di chi se li merita — secondo un criterio di merito noto soltanto a lui.</p>
+
+<h3 id="Habitat">Habitat</h3>
+<p>Vive nelle <b>campagne del Piceno</b>, tra i campi della valle del Tronto e le contrade collinari attorno ad Ascoli. Non ha una tana: ara, di notte, campi che nessuno gli ha assegnato, e all'alba si ferma in mezzo a un appezzamento qualsiasi, immobile, in attesa. I contadini che al risveglio trovano il proprio campo arato meglio di come l'avrebbero arato loro provano un misto di gratitudine e umiliazione che in zona ha ormai un nome preciso: <i>la venagroxata</i>.</p>
+
+<h3 id="Dieta">Dieta</h3>
+<p>Si nutre di <b>gasolio agricolo</b>, che individua a chilometri di distanza, e di stoppie bruciate, che aspira direttamente dai campi dopo la mietitura. In caso di necessità può assorbire minerali dal terreno restando piantato per giorni con le ruote affondate nella terra — da fermo è indistinguibile da un trattore abbandonato, un equivoco che è costato caro a più di un ladro di mezzi agricoli.</p>
+
+<h2 id="Dati_di_gioco">Dati di gioco</h2>
+
+<h3 id="Resistenze">Resistenze e vulnerabilità</h3>
+<div class="effbox">
+  <div class="effrow"><div class="efflabel">Debolezze</div><div class="effcells">
+    <span class="type t-fuoco">Fuoco</span><span class="effx">2×</span>
+    <span class="type t-acqua">Acqua</span><span class="effx">2×</span>
+    <span class="type t-lotta">Lotta</span><span class="effx">2×</span>
+    <span class="type t-terra">Terra</span><span class="effx">2×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Danno normale</div><div class="effcells">
+    <span class="type t-erba">Erba</span><span class="type t-ghiaccio">Ghiaccio</span><span class="type t-spettro">Spettro</span><span class="type t-buio">Buio</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Resistenze</div><div class="effcells">
+    <span class="type t-coleot">Coleot</span><span class="effx">¼×</span>
+    <span class="type t-roccia">Roccia</span><span class="effx">¼×</span>
+    <span class="type t-acciaio">Acciaio</span><span class="effx">¼×</span>
+    <span class="type t-normale">Normale</span><span class="effx">½×</span>
+    <span class="type t-volante">Volante</span><span class="effx">½×</span>
+    <span class="type t-psico">Psico</span><span class="effx">½×</span>
+    <span class="type t-drago">Drago</span><span class="effx">½×</span>
+    <span class="type t-folletto">Folletto</span><span class="effx">½×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Immunità</div><div class="effcells">
+    <span class="type t-elettro">Elettro</span><span class="effx">0×</span>
+    <span class="type t-veleno">Veleno</span><span class="effx">0×</span>
+  </div></div>
+</div>
+<div class="notabene">La combinazione Acciaio/Terra rende Venagrox immune all'<b>Elettro</b> e al <b>Veleno</b> e resistente a otto tipi, ma gli lascia quattro debolezze pesanti. La sua abilità speciale <i>Piombatura</i> compensa la Difesa Speciale modesta: <b>dimezza il danno di tutte le mosse speciali</b> — la fodera di piombo, in chiave fantastica, non lascia passare nemmeno l'energia.</div>
+
+<h3 id="Evoluzioni">Evoluzioni</h3>
+<div class="evochain">
+  <div class="evocard">
+    <svg viewBox="0 0 240 240"><use href="#art-venagrox"/></svg>
+    <div class="nm">Venagrox</div>
+    <span class="type t-acciaio">Acciaio</span> <span class="type t-terra">Terra</span>
+  </div>
+</div>
+<div class="notabene"><b>Venagrox non si evolve.</b> Non ha forme precedenti né successive, e vista l'esistenza di un unico esemplare noto è probabile che il concetto stesso di "specie" gli stia stretto. Una teoria minoritaria sostiene che Venagrox non sia il primo stadio di niente, ma <i>l'ultimo stadio di qualcos'altro</i> — di cosa, nessuno ha voluto approfondire.</div>
+
+<h3 id="Statistiche">Statistiche di base</h3>
+<div class="statbars">
+  <div class="statrow s-ps"><span class="sn">PS</span><span class="sv">110</span><div class="sb"><i style="width:73%"></i></div></div>
+  <div class="statrow s-att"><span class="sn">Attacco</span><span class="sv">135</span><div class="sb"><i style="width:90%"></i></div></div>
+  <div class="statrow s-dif"><span class="sn">Difesa</span><span class="sv">130</span><div class="sb"><i style="width:87%"></i></div></div>
+  <div class="statrow s-asp"><span class="sn">Att. Sp.</span><span class="sv">40</span><div class="sb"><i style="width:27%"></i></div></div>
+  <div class="statrow s-dsp"><span class="sn">Dif. Sp.</span><span class="sv">70</span><div class="sb"><i style="width:47%"></i></div></div>
+  <div class="statrow s-vel"><span class="sn">Velocità</span><span class="sv">25</span><div class="sb"><i style="width:17%"></i></div></div>
+  <div class="statrow"><span class="sn"><b>Totale</b></span><span class="sv"><b>510</b></span><div></div></div>
+</div>
+<div class="notabene">Attacco e Difesa da colosso, Velocità da mezzo agricolo: Venagrox arriva sempre per ultimo, ma quando arriva la discussione è finita. Con <i>Piombatura</i> attiva, abbatterlo dalla distanza è un'illusione: l'unica via realistica è il Fuoco o la Lotta ravvicinata — sperando di sopravvivere ad <b>Armageddon</b>.</div>
+
+<h3 id="Mosse">Mosse apprese</h3>
+<h4>Aumentando di livello</h4>
+<table class="wtable">
+  <tr><th>Lv.</th><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td class="lvl">Inizio</td><td>Azione</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">40</td><td class="num">100%</td><td class="num">35</td></tr>
+  <tr><td class="lvl">Inizio</td><td>Ruggito</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">100%</td><td class="num">40</td></tr>
+  <tr><td class="lvl">7</td><td class="stab">Fangosberla</td><td><span class="type t-terra">Terra</span></td><td>Speciale</td><td class="num">20</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">13</td><td class="stab">Ferrartigli</td><td><span class="type t-acciaio">Acciaio</span></td><td>Fisico</td><td class="num">50</td><td class="num">95%</td><td class="num">35</td></tr>
+  <tr><td class="lvl">19</td><td class="stab">Magnitudo</td><td><span class="type t-terra">Terra</span></td><td>Fisico</td><td class="num">—</td><td class="num">100%</td><td class="num">30</td></tr>
+  <tr><td class="lvl">26</td><td class="stab">Difesaferrea</td><td><span class="type t-acciaio">Acciaio</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">33</td><td class="stab">Fossa</td><td><span class="type t-terra">Terra</span></td><td>Fisico</td><td class="num">80</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">40</td><td class="stab">Metaltestata</td><td><span class="type t-acciaio">Acciaio</span></td><td>Fisico</td><td class="num">80</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">48</td><td class="stab">Terremoto</td><td><span class="type t-terra">Terra</span></td><td>Fisico</td><td class="num">100</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">55</td><td class="stab">Meteorpugno</td><td><span class="type t-acciaio">Acciaio</span></td><td>Fisico</td><td class="num">90</td><td class="num">90%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">66</td><td class="stab"><b>Armageddon</b></td><td><span class="type t-terra">Terra</span></td><td>Fisico</td><td class="num">150</td><td class="num">90%</td><td class="num">5</td></tr>
+</table>
+<h4>Tramite MT/DT (selezione)</h4>
+<table class="wtable">
+  <tr><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td>Protezione</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Frana</td><td><span class="type t-roccia">Roccia</span></td><td>Fisico</td><td class="num">75</td><td class="num">90%</td><td class="num">10</td></tr>
+  <tr><td>Rocciotomba</td><td><span class="type t-roccia">Roccia</span></td><td>Fisico</td><td class="num">60</td><td class="num">95%</td><td class="num">15</td></tr>
+  <tr><td>Sostituto</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Riposo</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">5</td></tr>
+</table>
+<p><small>Il <b>grassetto</b> indica una mossa che ha il bonus di tipo (STAB) quando viene usata da un Venagrox. <b>Armageddon</b> è la sua mossa esclusiva: <i>colpisce tutti gli altri Pokémon in campo e costringe Venagrox a ricaricare nel turno successivo.</i> Nella descrizione in gioco: «Il colpo che pone fine a ogni discussione.»</small></p>
+
+<h3 id="Voci">Voci Pokédex</h3>
+<div class="dexentries">
+  <p><span class="ver">Versione Tronto</span> — <i>Di notte solleva i tombini e ripara le fogne delle contrade senza che nessuno glielo chieda. I suoi grugniti, registrati e rallentati, si sono rivelati critiche puntuali e tecnicamente ineccepibili.</i></p>
+  <p><span class="ver">Versione Laga</span> — <i>Produce carni e salumi di qualità leggendaria, ma nessuno ha mai osato chiedergli come. Il suo corpo è foderato di piombo. Teme soltanto due esseri al mondo: Zio Peppe e Nonna.</i></p>
+</div>
+
+<h2 id="Paura">L'unica paura: Zio Peppe e Nonna</h2>
+<div class="itembox">
+  <svg width="46" height="46"><use href="#impronta-venagrox"/></svg>
+  <div><b>Il colosso e i due anziani.</b> Venagrox non teme il fuoco, non teme la folla, non teme i Pokémon leggendari. Teme <b>Zio Peppe</b> e teme <b>Nonna</b>, due anziani abitanti della vallata, e nessuno sa esattamente perché. Testimoni riferiscono di averlo visto spegnere il motore e ritirarsi in retromarcia, in perfetto silenzio, al solo comparire di uno dei due in fondo alla strada. La teoria più accreditata è che siano le uniche due creature della valle ad avergli mai risposto a un grugnito, punto per punto, con una critica analitica migliore della sua. Da allora, quando li incrocia, il fumo dei suoi scarichi si fa sottile sottile.</div>
+</div>
+
+<h2 id="Curiosita">Curiosità</h2>
+<ul>
+  <li>Con 1.240 kg è di gran lunga il Pokémon <b>più pesante</b> del Pokédex della Laga.</li>
+  <li>È l'unico Pokémon del Pokédex della Laga con un <b>tasso di cattura pari a 3</b> e affetto di base pari a 0: anche da catturato, resta convinto di essere lui ad aver catturato l'allenatore.</li>
+  <li>La sua abilità speciale <i>Piombatura</i> è unica: nessun altro Pokémon della regione riduce il danno speciale grazie a un rivestimento del corpo.</li>
+  <li>Il rombo del suo motore è udibile a valle con anticipo tale che in alcune contrade viene usato come previsione del tempo: «se si sente Venagrox, domani si ara».</li>
+  <li>Non è mai stato osservato dormire: la mossa Riposo, nel suo caso, consiste nello spegnere il motore restando perfettamente vigile — i ricercatori non hanno ancora stabilito la differenza.</li>
+  <li>Le sue voci Pokédex sono le uniche della regione a nominare esplicitamente <b>persone reali della valle</b> come fonte di paura per un Pokémon.</li>
+</ul>
+<h3>Origine</h3>
+<p>Venagrox nasce dall'immaginario della <b>campagna picena meccanizzata</b>: il trattore d'epoca sempre acceso, il contadino burbero che lavora per tutti e non ringrazia nessuno, il norcino la cui produzione è leggendaria e i cui metodi non si domandano. La fodera di piombo riprende, in chiave fantastica, la proverbiale diffidenza contadina verso tutto ciò che è nuovo e invisibile: radiazioni, onde, opinioni.</p>
+<h4>Origine del nome</h4>
+<p><b>Venagrox</b> unisce <i>vena</i> (le vene d'acqua e di terra che conosce meglio di chiunque), <i>agro</i> (il campo coltivato, ma anche il carattere) e un suffisso meccanico-mostruoso in <i>-x</i>.</p>
+<p>Il nome giapponese, トラクドン <i>Torakudon</i>, unisce トラクター <i>torakutā</i> ("trattore") e il suffisso <i>-don</i> tipico dei colossi.</p>
+
+<h2 id="Lingue">In altre lingue</h2>
+<table class="wtable">
+  <tr><th>Lingua</th><th>Nome</th><th>Origine</th></tr>
+  <tr><td><b>Giapponese</b></td><td>トラクドン <i>Torakudon</i></td><td>Da トラクター <i>torakutā</i> e <i>-don</i>.</td></tr>
+  <tr><td><b>Inglese</b></td><td>Venagrox</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Francese</b></td><td>Venagrox</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Spagnolo</b></td><td>Venagrox</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Tedesco</b></td><td>Venagrox</td><td>Uguale al nome italiano.</td></tr>
+</table>
+
+<h2>Vedi anche</h2>
+<ul>
+  <li><a href="segaccio.html">Segaccio</a> — l'altra specie singola del Pokédex della Laga</li>
+  <li><a href="pito.html">Pito</a>, <a href="pozza.html">Pozza</a> e <a href="umito.html">Umito</a> — la linea evolutiva di Acquasanta</li>
+</ul>
+
+<div class="dexnav">
+  <span><a href="segaccio.html">← #047: Segaccio</a></span>
+  <span class="mid">#048 Venagrox</span>
+  <span class="dim">#049: ??? →</span>
+</div>
+
+<div class="cats"><b>Categorie:</b> Pokémon · Pokémon della regione Laga · Pokémon di tipo Acciaio · Pokémon di tipo Terra · Pokémon di doppio tipo · Pokémon senza evoluzioni · Pokémon senza sesso · Gruppo Uova Sconosciuto · Pokémon di colore Rosso</div>
+<div class="footer">Pagina fan-made ispirata al formato di Pokémon Central Wiki. La valle del Tronto e le contrade picene sono luoghi reali; Venagrox, Zio Peppe e Nonna sono personaggi di pura fantasia.</div>
+</div>
+</body>
+</html>
