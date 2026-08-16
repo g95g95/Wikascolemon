@@ -11,7 +11,18 @@ Crea una **bozza** di scheda in `schede _Pokemon/` (NON in `Wikascolemon/` — l
 
 Dal prompt dell'utente servono almeno: **nome**, **concept/personaggio**, **luogo del Piceno** di riferimento. Se mancano, chiedi. Tutto il resto (tipi, categoria, statistiche, mosse, lore) puoi inventarlo tu in modo coerente col concept — proponi e procedi, l'utente correggerà.
 
-Determina il **numero di Pokédex**: scansiona i file in `Wikascolemon/` e `schede _Pokemon/` per il numero più alto usato (`Pokédex della Laga #0NN`) e assegna il successivo. Numerazione attuale: #044 Pito, #045 Pozza, #046 Umito, #047 Segaccio, #048 Venagrox (bozza).
+Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Piceno** — e la numerazione è *semantica*, non progressiva: alcuni blocchi sono riservati dal brief di progetto (`brief_piceno.html`) e non vanno occupati.
+
+| Blocco | Destinazione |
+|---|---|
+| #001-#003 | Linea starter Erba: Basilino, Turibasil, Vescovasil ✅ |
+| #004-#006 | **Riservato** — linea starter Fuoco (da progettare) |
+| #007-#009 | **Riservato** — linea starter Acqua (da progettare) |
+| #010-#043 | Libero |
+| #044-#049 | Pito, Pozza, Umito, Segaccio, Venagrox, Ciccharizard ✅ |
+| #050+ | Prossimi liberi |
+
+Regola: scansiona i file in `Wikascolemon/` e `schede _Pokemon/`, e assegna il **primo numero libero coerente col concept** (una linea starter va nel suo blocco riservato; una specie qualsiasi prende il primo libero da #050 in su). Non assegnare mai "il più alto + 1" senza guardare la tabella. La navigazione `.dexnav` tollera i buchi: il vicino mancante si scrive `<span class="dim">#0NN: ???</span>`.
 
 ## 1. Clona il template
 
@@ -26,12 +37,12 @@ I colori dei 18 tipi sono già tutti in `:root` (`--roccia`, `--erba`, ecc.) con
 
 Tutte le sezioni vanno presenti, nello stesso ordine delle schede esistenti:
 
-1. `<title>NOME - Pokédex della Laga</title>`, `lang="it"`, charset UTF-8
+1. `<title>NOME - Pokédex del Piceno</title>`, `lang="it"`, charset UTF-8
 2. `.sitenotice` — link a `index.html`, identico alle altre schede
 3. `.dexnav` (in alto): `← #0NN-1: Precedente` · `#0NN Nome` · `#0NN+1: ??? →` (il successivo resta `??? ` con classe `dim` finché non esiste)
 4. `<h1>Nome</h1>`
 5. `.infobox` (float destro):
-   - `.head`: `.num` ("Pokédex della Laga #0NN"), `.name`, `.cat` ("Pokémon <Categoria>")
+   - `.head`: `.num` ("Pokédex del Piceno #0NN"), `.name`, `.cat` ("Pokémon <Categoria>")
    - `.art`: artwork (vedi §3) + `.capt` ("Artwork di NOME")
    - `.lang`: nomi EN e JA (con katakana + romaji)
    - `table` con le righe, in quest'ordine: Tipo, Abilità (prima/seconda/*speciale*), Sesso, Altezza, Peso, Tasso di cattura, Uovo (gruppo + cicli), Pokédex regionali, Tasso di allevamento, Esperienza base ceduta, Punti base ceduti, Colore Pokédex, Impronta (`<svg><use href="#impronta-..."/></svg>`), Affetto di base
@@ -49,7 +60,7 @@ Tutte le sezioni vanno presenti, nello stesso ordine delle schede esistenti:
 12. `<h2 id="Lingue">` — `.wtable` Lingua/Nome/Origine (Giapponese, Inglese, Francese, Spagnolo, Tedesco).
 13. `<h2>Vedi anche</h2>` — link alle schede correlate (relativi, es. `pito.html`).
 14. `.dexnav` (in basso, identica a quella in alto).
-15. `.cats` — "**Categorie:** Pokémon · Pokémon della regione Laga · Pokémon di tipo X · …" coerenti con la scheda.
+15. `.cats` — "**Categorie:** Pokémon · Pokémon della regione Piceno · Pokémon di tipo X · …" coerenti con la scheda.
 16. `.footer` — nota fan-made + riferimento alle località reali citate.
 
 ## 3. Artwork: con o senza immagine

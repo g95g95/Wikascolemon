@@ -10,10 +10,10 @@ Prende una scheda pronta (di norma una bozza in `schede _Pokemon/`) e la integra
 ## 0. Individua la scheda e verifica che sia pronta
 
 1. Identifica il file da pubblicare (dal prompt, o la bozza più recente in `schede _Pokemon/`). Il nome file pubblicato è il nome del Pokémon in minuscolo: `<nome>.html` (rinomina se la bozza ha suffissi tipo `_6`).
-2. Ricava dal file: **numero** (`Pokédex della Laga #0NN`), **nome**, **categoria**, **tipi**, **territorio** (dall'intro/Habitat) e una frase descrittiva per la card dell'indice.
+2. Ricava dal file: **numero** (`Pokédex del Piceno #0NN`), **nome**, **categoria**, **tipi**, **territorio** (dall'intro/Habitat) e una frase descrittiva per la card dell'indice.
 3. Controlli minimi prima di pubblicare (se falliscono, fermati e segnala — la sistemazione è compito di `crea-scheda`):
    - nessun asset esterno (immagini solo `data:` o SVG inline; se c'è un `.artph` placeholder, avvisa l'utente che uscirebbe senza artwork e chiedi conferma);
-   - numero successivo all'ultimo pubblicato, senza buchi né duplicati;
+   - numero **non duplicato** e coerente con i blocchi riservati del dex (vedi la tabella in `crea-scheda`); i buchi di numerazione sono voluti e vanno lasciati;
    - le due `.dexnav` interne coerenti col numero.
 
 ## 1. Copia nella wiki
@@ -36,7 +36,7 @@ Aggiorna anche la sezione "Vedi anche" della scheda precedente solo se il colleg
 
 ## 3. Aggiorna `index.html`
 
-Due punti da toccare, in coda a ciascuno:
+C'è **una sola sezione** («Pokédex del Piceno») e **un solo indice rapido**, entrambi ordinati per numero di dex: la nuova voce va inserita **al posto giusto in ordine numerico**, non in coda.
 
 1. **`.cards`** — nuova card sul modello delle esistenti:
 ```html
@@ -55,9 +55,9 @@ Attenzione: `index.html` ha in `:root` **solo i colori dei tipi già usati**. Se
 
 ## 4. Aggiorna `README.md`
 
-Aggiungi la riga alla tabella "Pokédex della Laga":
+Aggiungi la riga alla tabella "Pokédex del Piceno", **in ordine di numero**:
 ```
-| #0NN | [Nome](nome.html) | Pokémon Categoria | Tipo1/Tipo2 | Località (zona) |
+| #0NN | [Nome](nome.html) | Pokémon Categoria | Tipo1/Tipo2 | Località |
 ```
 
 ## 5. Deploy
