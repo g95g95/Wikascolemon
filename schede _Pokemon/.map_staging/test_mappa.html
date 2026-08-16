@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test mappa condivisa</title>
+<style>
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f6f6f6;margin:0;padding:20px;text-align:center}
+img{max-width:100%;height:auto;border:1px solid #a2a9b1}
+#esito{font-size:14px;margin:10px 0}
+.ok{color:#14866d}.err{color:#b32424}
+</style></head><body>
+<h2>Test: mappa vettoriale da <code>mappa_piceno.svg</code></h2>
+<p id="esito">caricamento…</p>
+<img id="mappa" alt="Regione Piceno">
+<script>
+const img = document.getElementById('mappa');
+const esito = document.getElementById('esito');
+img.onload = () => {
+  const ok = img.naturalWidth === 1024 && img.naturalHeight === 640;
+  esito.textContent = ok
+    ? 'OK: mappa caricata, ' + img.naturalWidth + '×' + img.naturalHeight
+    : 'ERRORE: dimensioni inattese ' + img.naturalWidth + '×' + img.naturalHeight;
+  esito.className = ok ? 'ok' : 'err';
+};
+img.onerror = () => { esito.textContent = 'ERRORE: immagine non decodificata'; esito.className = 'err'; };
+img.src = 'mappa_piceno.svg';
+</script>
+</body></html>
