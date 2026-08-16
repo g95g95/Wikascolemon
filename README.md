@@ -4,24 +4,21 @@ L'enciclopedia (immaginaria) dei Pokémon della vallata picena — schede fan-ma
 
 **Sito live:** https://g95g95.github.io/Wikascolemon/
 
-## Pokédex della Laga
+## Pokédex del Piceno
+
+Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrispondono a specie non ancora catalogate.
 
 | N° | Nome | Categoria | Tipi | Territorio |
 |----|------|-----------|------|------------|
+| #001 | [Basilino](basilino.html) | Pokémon Mazzetto | Erba | Ascoli Piceno |
+| #002 | [Turibasil](turibasil.html) | Pokémon Chierichetto | Erba | Ascoli Piceno |
+| #003 | [Vescovasil](vescovasil.html) | Pokémon Cefaloforo | Erba/Terra | Ascoli Piceno |
 | #044 | [Pito](pito.html) | Pokémon Cerbiatto | Roccia/Normale | Acquasanta Terme (Laga) |
 | #045 | [Pozza](pozza.html) | Pokémon Fracchia | Roccia/Veleno | Acquasanta Terme (Laga) |
 | #046 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |
-| #047 | [Segaccio](segaccio.html) | Pokémon Boscaiolo | Erba/Acciaio | Offida (Piceno) |
+| #047 | [Segaccio](segaccio.html) | Pokémon Boscaiolo | Erba/Acciaio | Offida |
 | #048 | [Venagrox](venagrox.html) | Pokémon Trattore | Acciaio/Terra | Campagne del Piceno |
-| #049 | [Ciccharizard](ciccharizard.html) | Pokémon Maître | Buio/Spettro | Ascoli Piceno, centro storico (Piceno) |
-
-## Pokédex del Piceno
-
-| N° | Nome | Categoria | Tipi | Territorio |
-|----|------|-----------|------|------------|
-| #001 | [Basilino](basilino.html) | Pokémon Mazzetto | Erba | Ascoli Piceno (Piceno) |
-| #002 | [Turibasil](turibasil.html) | Pokémon Chierichetto | Erba | Ascoli Piceno (Piceno) |
-| #003 | [Vescovasil](vescovasil.html) | Pokémon Cefaloforo | Erba/Terra | Ascoli Piceno (Piceno) |
+| #049 | [Ciccharizard](ciccharizard.html) | Pokémon Maître | Buio/Spettro | Ascoli Piceno, centro storico |
 
 La wiki è in espansione: nuove schede verranno aggiunte nel tempo.
 
