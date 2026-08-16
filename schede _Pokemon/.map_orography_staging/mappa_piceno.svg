@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="640" viewBox="0 0 1024 640" role="img" aria-labelledby="title desc">
+  <title id="title">Mappa illustrata della Regione Piceno</title>
+  <desc id="desc">Mappa vettoriale in stile videogioco della valle del Tronto, da Acquasanta Terme alla costa adriatica.</desc>
+  <defs>
+    <linearGradient id="land" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#79aa55"/>
+      <stop offset="0.36" stop-color="#99c86b"/>
+      <stop offset="0.76" stop-color="#c6dc83"/>
+      <stop offset="1" stop-color="#e0dc91"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#61c8cf"/>
+      <stop offset="0.42" stop-color="#3fa9c7"/>
+      <stop offset="1" stop-color="#2779ad"/>
+    </linearGradient>
+    <linearGradient id="river" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#459fca"/>
+      <stop offset="1" stop-color="#65cbd1"/>
+    </linearGradient>
+    <pattern id="fields" width="54" height="42" patternUnits="userSpaceOnUse" patternTransform="rotate(-9)">
+      <path d="M0 21H54M27 0V42" fill="none" stroke="#6a9e50" stroke-width="1" opacity=".18"/>
+      <path d="M0 7H54M0 35H54" fill="none" stroke="#fff6b0" stroke-width="1" opacity=".13"/>
+    </pattern>
+    <pattern id="waves" width="44" height="30" patternUnits="userSpaceOnUse">
+      <path d="M2 12c7-6 15-6 22 0s15 6 22 0" fill="none" stroke="#d8fbf6" stroke-width="2" opacity=".2"/>
+    </pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#28462f" flood-opacity=".35"/>
+    </filter>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.5" flood-color="#213b35" flood-opacity=".28"/>
+    </filter>
+    <symbol id="tree" viewBox="0 0 24 28">
+      <path d="M10 20h4v7h-4z" fill="#7b5635"/>
+      <path d="M12 1 4 13h4L3 20h18l-5-7h4z" fill="#246a48" stroke="#194b3b" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M12 3 8 13h3l-2 5h8l-4-6h3z" fill="#50a75f" opacity=".72"/>
+    </symbol>
+    <symbol id="mountain" viewBox="0 0 72 58">
+      <path d="M3 53 29 8l9 15L47 6l22 47z" fill="#667b68" stroke="#3c554a" stroke-width="3" stroke-linejoin="round"/>
+      <path d="m19 25 10-17 9 15 9-17 10 20-10-8-7 12-11-11z" fill="#e9efdb"/>
+      <path d="M3 53 29 8l-2 34 11-19 9-17-2 37 24 10z" fill="#4d695b" opacity=".5"/>
+    </symbol>
+    <symbol id="town" viewBox="0 0 38 34">
+      <path d="M5 15 13 8l6 5 7-8 8 10v15H5z" fill="#f7e7bd" stroke="#6c5942" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M12 18h7v12h-7zm13 2h5v6h-5z" fill="#bd6652"/>
+      <path d="M2 30h34" stroke="#6c5942" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="city" viewBox="0 0 54 48">
+      <path d="M3 42h48M7 42V22l10-8 8 7 9-13 13 14v20" fill="#f5dfae" stroke="#66533f" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M23 42V25h9v17M11 27h6v6h-6zm26 0h6v6h-6z" fill="#b85e4c"/>
+      <path d="M31 11h6v9h-6z" fill="#dc7357" stroke="#66533f" stroke-width="2"/>
+      <circle cx="34" cy="8" r="3" fill="#f5ca53"/>
+    </symbol>
+    <symbol id="bridge" viewBox="0 0 34 18">
+      <path d="M2 15h30M5 15C7 3 27 3 29 15" fill="none" stroke="#715745" stroke-width="4" stroke-linecap="round"/>
+      <path d="M7 12h20" stroke="#f2d39b" stroke-width="3"/>
+    </symbol>
+  </defs>
+
+  <g id="background">
+    <rect width="1024" height="640" fill="url(#land)"/>
+    <path d="M0 0h420C358 54 361 101 307 148c-47 41-24 103-72 148-58 54-139 62-235 58z" fill="#5d9650" opacity=".5"/>
+    <path d="M0 421c98-47 194-36 272-5 81 33 117 101 190 145 43 27 86 46 136 79H0z" fill="#73a84f" opacity=".4"/>
+    <path d="M235 0c39 63 110 63 151 119 37 50 9 103 50 145 44 46 132 43 182 84 39 33 57 86 119 102 54 14 109 6 156 51v139H396c-61-59-91-117-148-155-70-47-146-30-248-26V0z" fill="url(#fields)"/>
+  </g>
+
+  <g id="sea">
+    <path d="M900 0h124v640H888c9-58 29-105 17-156-11-47-35-92-24-144 10-48 35-83 27-132-9-53-28-91-15-140z" fill="url(#sea)" stroke="#246d8d" stroke-width="4"/>
+    <path d="M895 0c-12 54 7 96 13 142 8 57-18 91-27 141-10 54 13 102 24 151 12 54-7 98-18 147" fill="none" stroke="#e9ebad" stroke-width="25" opacity=".9"/>
+    <path d="M900 0c-12 54 7 96 13 142 8 57-18 91-27 141-10 54 13 102 24 151 12 54-7 98-18 147" fill="none" stroke="#f7f0bd" stroke-width="12"/>
+    <path d="M910 0h114v640H899c10-59 27-104 16-157-11-50-33-93-23-141 10-50 34-86 26-137-8-52-25-90-13-137z" fill="url(#waves)"/>
+    <path d="M951 36c25 16 47 16 73 0M945 122c25 16 51 16 79 0M947 226c24 15 49 15 77 0M941 338c27 17 54 17 83 0M945 451c25 16 51 16 79 0M934 560c29 18 58 18 90 0" fill="none" stroke="#d9f7ee" stroke-width="3" opacity=".48" stroke-linecap="round"/>
+  </g>
+
+  <g id="terrain-details">
+    <path d="M342 53c53-28 126-17 157 22 21 27 13 62-17 81-38 25-105 19-141-14-30-28-28-68 1-89z" fill="#8fbd60" opacity=".58"/>
+    <path d="M535 61c52-23 124-7 150 31 23 34 4 72-39 87-48 17-111-3-134-42-18-31-7-62 23-76z" fill="#a9cf70" opacity=".75"/>
+    <path d="M670 22c58-20 131 2 149 46 16 39-18 75-72 82-59 8-113-24-116-69-2-28 13-50 39-59z" fill="#b7d77c" opacity=".72"/>
+    <path d="M462 415c55-28 127-19 166 22 37 38 25 84-25 108-52 25-125 12-160-31-30-37-22-78 19-99z" fill="#aed172" opacity=".66"/>
+    <path d="M662 450c58-20 135 5 159 53 18 38-6 77-56 92-59 18-132-13-148-65-11-34 7-66 45-80z" fill="#c3d989" opacity=".68"/>
+    <path d="M250 503c46-24 105-10 126 30 18 35-5 74-50 87-49 15-101-10-111-53-7-29 6-51 35-64z" fill="#65994e" opacity=".35"/>
+    <path d="M388 194c47-21 93-11 114 20 17 26 4 53-27 65-39 15-86-2-102-35-11-23-5-40 15-50z" fill="#7caf57" opacity=".43"/>
+  </g>
+
+  <g id="mountains" filter="url(#softShadow)">
+    <use href="#mountain" x="8" y="28" width="88" height="70"/>
+    <use href="#mountain" x="70" y="52" width="76" height="61"/>
+    <use href="#mountain" x="125" y="15" width="92" height="74"/>
+    <use href="#mountain" x="179" y="76" width="78" height="63"/>
+    <use href="#mountain" x="20" y="126" width="76" height="61"/>
+    <use href="#mountain" x="94" y="151" width="92" height="74"/>
+    <use href="#mountain" x="170" y="141" width="76" height="61"/>
+    <use href="#mountain" x="9" y="226" width="91" height="73"/>
+    <use href="#mountain" x="74" y="252" width="79" height="64"/>
+    <use href="#mountain" x="130" y="222" width="96" height="77"/>
+    <use href="#mountain" x="8" y="472" width="91" height="73"/>
+    <use href="#mountain" x="83" y="494" width="80" height="65"/>
+    <use href="#mountain" x="142" y="459" width="91" height="73"/>
+    <use href="#mountain" x="33" y="556" width="80" height="65"/>
+    <use href="#mountain" x="108" y="553" width="93" height="74"/>
+  </g>
+
+  <g id="forests" opacity=".96">
+    <g>
+      <use href="#tree" x="218" y="35" width="24" height="28"/><use href="#tree" x="246" y="18" width="22" height="26"/>
+      <use href="#tree" x="272" y="46" width="25" height="29"/><use href="#tree" x="230" y="75" width="26" height="30"/>
+      <use href="#tree" x="279" y="91" width="23" height="27"/><use href="#tree" x="315" y="58" width="23" height="27"/>
+      <use href="#tree" x="249" y="119" width="24" height="28"/><use href="#tree" x="302" y="126" width="25" height="29"/>
+    </g>
+    <g>
+      <use href="#tree" x="205" y="392" width="25" height="29"/><use href="#tree" x="236" y="414" width="22" height="26"/>
+      <use href="#tree" x="177" y="424" width="25" height="29"/><use href="#tree" x="216" y="452" width="24" height="28"/>
+      <use href="#tree" x="263" y="454" width="26" height="30"/><use href="#tree" x="185" y="486" width="23" height="27"/>
+    </g>
+    <g opacity=".75">
+      <use href="#tree" x="394" y="76" width="20" height="24"/><use href="#tree" x="425" y="97" width="22" height="26"/>
+      <use href="#tree" x="458" y="75" width="20" height="24"/><use href="#tree" x="470" y="122" width="21" height="25"/>
+      <use href="#tree" x="420" y="137" width="20" height="24"/>
+    </g>
+    <g opacity=".72">
+      <use href="#tree" x="500" y="485" width="21" height="25"/><use href="#tree" x="532" y="503" width="22" height="26"/>
+      <use href="#tree" x="568" y="475" width="21" height="25"/><use href="#tree" x="595" y="519" width="21" height="25"/>
+      <use href="#tree" x="545" y="548" width="22" height="26"/>
+    </g>
+  </g>
+
+  <g id="water">
+    <path d="M17 365c58-25 83-68 143-62 53 5 82 49 137 36 53-13 74-72 126-80 53-9 84 40 135 42 55 3 91-45 143-44 48 1 76 46 123 51 36 4 65-12 89-37" fill="none" stroke="#2d6d8d" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17 365c58-25 83-68 143-62 53 5 82 49 137 36 53-13 74-72 126-80 53-9 84 40 135 42 55 3 91-45 143-44 48 1 76 46 123 51 36 4 65-12 89-37" fill="none" stroke="url(#river)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M36 363c45-20 73-51 121-51m163 15c39-21 59-57 101-61m155 22c32-10 53-27 83-25m128 46c29 3 55-7 76-28" fill="none" stroke="#c2f3e3" stroke-width="2.5" opacity=".7" stroke-linecap="round"/>
+    <path d="M362 161c-9 32 2 51 26 65 15 9 20 21 25 37M548 106c-5 43 10 76 42 100 19 14 32 30 36 55M707 131c-20 38-14 72 16 99 20 18 30 43 28 69" fill="none" stroke="#6bbbc1" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+  </g>
+
+  <g id="roads" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M55 379c63-25 85-51 139-45 54 7 76 37 125 24 50-13 75-66 126-68 49-2 81 33 132 31 52-2 84-37 133-35 49 2 83 38 128 40 38 2 60-10 86-27" stroke="#6b5942" stroke-width="14"/>
+    <path d="M55 379c63-25 85-51 139-45 54 7 76 37 125 24 50-13 75-66 126-68 49-2 81 33 132 31 52-2 84-37 133-35 49 2 83 38 128 40 38 2 60-10 86-27" stroke="#f3c878" stroke-width="8"/>
+    <path d="M55 379c63-25 85-51 139-45 54 7 76 37 125 24 50-13 75-66 126-68 49-2 81 33 132 31 52-2 84-37 133-35 49 2 83 38 128 40 38 2 60-10 86-27" stroke="#fff0aa" stroke-width="2" stroke-dasharray="8 11" opacity=".8"/>
+    <path d="M891 40c-1 59 21 100 12 156-7 42-25 72-18 117 8 53 30 95 22 146-6 41-20 83-16 140" stroke="#6b5942" stroke-width="13"/>
+    <path d="M891 40c-1 59 21 100 12 156-7 42-25 72-18 117 8 53 30 95 22 146-6 41-20 83-16 140" stroke="#f3c878" stroke-width="7"/>
+    <path d="M287 344c23-75 67-137 126-181M453 289c17-67 53-117 96-160M579 319c17-74 61-130 122-172M691 286c25-60 67-96 113-128M703 322c-5 71-15 125-5 194M813 326c-17 61-29 113-19 164M557 321c-18 65-17 121 15 176" stroke="#806d4e" stroke-width="8"/>
+    <path d="M287 344c23-75 67-137 126-181M453 289c17-67 53-117 96-160M579 319c17-74 61-130 122-172M691 286c25-60 67-96 113-128M703 322c-5 71-15 125-5 194M813 326c-17 61-29 113-19 164M557 321c-18 65-17 121 15 176" stroke="#edc477" stroke-width="4"/>
+  </g>
+
+  <g id="bridges" filter="url(#softShadow)">
+    <use href="#bridge" x="276" y="329" width="34" height="18"/>
+    <use href="#bridge" x="443" y="278" width="34" height="18"/>
+    <use href="#bridge" x="568" y="302" width="34" height="18"/>
+    <use href="#bridge" x="684" y="276" width="34" height="18"/>
+    <use href="#bridge" x="799" y="311" width="34" height="18"/>
+  </g>
+
+  <g id="settlements" filter="url(#shadow)">
+    <use href="#town" x="75" y="323" width="38" height="34"/>
+    <use href="#city" x="255" y="319" width="54" height="48"/>
+    <use href="#town" x="381" y="183" width="38" height="34"/>
+    <use href="#town" x="514" y="117" width="38" height="34"/>
+    <use href="#town" x="594" y="211" width="38" height="34"/>
+    <use href="#town" x="650" y="273" width="38" height="34"/>
+    <use href="#town" x="711" y="226" width="38" height="34"/>
+    <use href="#town" x="769" y="292" width="38" height="34"/>
+    <use href="#city" x="846" y="117" width="54" height="48"/>
+    <use href="#town" x="855" y="250" width="38" height="34"/>
+    <use href="#town" x="545" y="424" width="38" height="34"/>
+    <use href="#town" x="675" y="476" width="38" height="34"/>
+    <use href="#town" x="755" y="420" width="38" height="34"/>
+    <use href="#town" x="840" y="469" width="38" height="34"/>
+  </g>
+
+  <g id="labels" font-family="Trebuchet MS,Segoe UI,sans-serif" text-anchor="middle" fill="#30443b" stroke="#f7f0ce" stroke-width="4" paint-order="stroke" stroke-linejoin="round">
+    <g font-size="13" font-weight="700">
+      <text x="94" y="317">Acquasanta Terme</text>
+      <text x="282" y="312" font-size="16">Ascoli Piceno</text>
+      <text x="400" y="177">Appignano</text>
+      <text x="533" y="111">Offida</text>
+      <text x="613" y="205">Castorano</text>
+      <text x="669" y="267">Spinetoli</text>
+      <text x="730" y="220">Monsampolo</text>
+      <text x="788" y="286">Monteprandone</text>
+      <text x="873" y="108" font-size="15">San Benedetto</text>
+      <text x="874" y="244">Porto d’Ascoli</text>
+      <text x="564" y="418">Sant’Egidio</text>
+      <text x="694" y="470">Sant’Omero</text>
+      <text x="774" y="414">Nereto</text>
+      <text x="859" y="463">Tortoreto</text>
+    </g>
+    <text x="476" y="355" font-size="12" font-weight="700" fill="#28708c">FIUME TRONTO</text>
+    <text x="954" y="360" transform="rotate(90 954 360)" font-size="17" font-weight="700" letter-spacing="4" fill="#e8ffff" stroke="#24789a" stroke-width="3">MARE ADRIATICO</text>
+    <text x="92" y="198" transform="rotate(-64 92 198)" font-size="14" font-weight="700" letter-spacing="2" fill="#eef2dc" stroke="#3b5d47" stroke-width="5">MONTI SIBILLINI</text>
+  </g>
+
+  <g id="game-landmarks" filter="url(#shadow)">
+    <g transform="translate(322 397)">
+      <circle r="15" fill="#4f8fd7" stroke="#f8efc4" stroke-width="4"/>
+      <path d="M-5 6V-5l5-4 5 4V6z" fill="#fff" stroke="#294e80" stroke-width="2"/>
+      <circle cy="1" r="2" fill="#e85b4d"/>
+    </g>
+    <g transform="translate(604 171)">
+      <circle r="15" fill="#69ad5a" stroke="#f8efc4" stroke-width="4"/>
+      <path d="M0-9 8 5H-8z" fill="#fff" stroke="#32623b" stroke-width="2"/>
+      <circle cy="1" r="2" fill="#f2c84d"/>
+    </g>
+    <g transform="translate(824 362)">
+      <circle r="15" fill="#d87952" stroke="#f8efc4" stroke-width="4"/>
+      <path d="M-7 7V-4h14V7M-9-4h18L5-9H-5z" fill="#fff" stroke="#7b3f31" stroke-width="2"/>
+    </g>
+  </g>
+
+  <g id="title-card" filter="url(#shadow)">
+    <path d="M30 24h225l13 13-13 57H30L17 81V37z" fill="#fff4c8" stroke="#48664c" stroke-width="4"/>
+    <path d="M30 24h225l-9 15H38z" fill="#77b45c" opacity=".8"/>
+    <text x="142" y="58" text-anchor="middle" font-family="Trebuchet MS,Segoe UI,sans-serif" font-size="24" font-weight="800" fill="#344d42" letter-spacing="2">REGIONE PICENO</text>
+    <text x="142" y="78" text-anchor="middle" font-family="Trebuchet MS,Segoe UI,sans-serif" font-size="11" font-weight="700" fill="#6f6a4d" letter-spacing="3">VALLE DEL TRONTO</text>
+  </g>
+
+  <g id="compass" transform="translate(830 62)" filter="url(#softShadow)">
+    <circle r="27" fill="#fff5ce" stroke="#49674f" stroke-width="3"/>
+    <path d="M0-21 6 0 0 21-6 0z" fill="#d85c4b" stroke="#6b4137" stroke-width="2"/>
+    <path d="M-21 0 0-6 21 0 0 6z" fill="#e7cf78" stroke="#6b6140" stroke-width="2"/>
+    <circle r="4" fill="#fff" stroke="#49674f" stroke-width="2"/>
+    <text x="0" y="-34" text-anchor="middle" font-family="Trebuchet MS,Segoe UI,sans-serif" font-size="12" font-weight="800" fill="#344d42">N</text>
+  </g>
+
+  <rect x="5" y="5" width="1014" height="630" rx="12" fill="none" stroke="#385647" stroke-width="9"/>
+  <rect x="12" y="12" width="1000" height="616" rx="8" fill="none" stroke="#f4e6ad" stroke-width="3" opacity=".85"/>
+</svg>

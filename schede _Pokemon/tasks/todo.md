@@ -88,17 +88,49 @@ La mappa esistente (`mappa_piceno_1.html`, PNG 1024×640 in base64) è il mondo 
 
 ## Task
 
-- [ ] 1. Recuperare o ricostruire il contesto mancante di `Mappa_Pokemon/`: verificare la vecchia mappa, il configuratore e le coordinate esistenti prima di modificare l'integrazione.
-- [ ] 2. Definire la gerarchia SVG e una palette originale coerente con un gioco di cattura mostri: mare, pianura, colline, Appennini, fiume Tronto, boschi, strade, città e landmark.
-- [ ] 3. Disegnare la nuova mappa vettoriale del Piceno nello stesso sistema di coordinate della mappa precedente, con dettaglio maggiore nelle aree utili al gioco e semplificazione nelle zone di contorno.
-- [ ] 4. Integrare l'SVG come sfondo sostitutivo nel configuratore e nel gioco, mantenendo separato il livello interattivo di spawn, POI e giocatore.
-- [ ] 5. Aggiornare solo la documentazione di progetto necessaria; aggiornare `AGENTS.md` esclusivamente se viene introdotta una nuova regola di business o di integrazione.
-- [ ] 6. Eseguire i test di regressione disponibili e controlli specifici: validità SVG/HTML, assenza di dipendenze esterne, compatibilità `file://`, coordinate invarianti, resa desktop/mobile e leggibilità con overlay di gioco.
+- [x] 1. Recuperare il contesto reale in `../Mappa_Pokemon/`: verificare la vecchia mappa, il configuratore e le coordinate esistenti prima di modificare l'integrazione.
+- [x] 2. Definire la gerarchia SVG e una palette originale coerente con un gioco di cattura mostri: mare, pianura, colline, Appennini, fiume Tronto, boschi, strade, città e landmark.
+- [x] 3. Disegnare la nuova mappa vettoriale del Piceno nello stesso sistema di coordinate 1024×640 della mappa precedente, con dettaglio maggiore nelle aree utili al gioco e semplificazione nelle zone di contorno.
+- [x] 4. Integrare l'SVG come sfondo sostitutivo nel configuratore e nella pagina di test, mantenendo separato il livello interattivo di spawn e POI.
+- [ ] 4b. Collegare lo stesso SVG a `gioco.html` quando verrà realizzato: il file di gioco non esiste ancora.
+- [x] 5. Aggiornare solo la documentazione di progetto necessaria; `AGENTS.md` non è presente e non sono state introdotte nuove regole di business.
+- [x] 6. Eseguire i test di regressione disponibili e controlli specifici: validità SVG/HTML, assenza di dipendenze esterne, compatibilità statica, coordinate invarianti, resa desktop/mobile e leggibilità con overlay di gioco.
 
 ## Criteri di accettazione
 
 - La mappa è un SVG realmente editabile e scalabile senza perdita, non contiene screenshot, tile o immagini incorporate.
 - La geografia del Piceno rimane riconoscibile e coerente con il riferimento, ma l'aspetto è un'illustrazione originale da videogioco.
 - Spawn, POI e movimento del giocatore restano nello stesso sistema di coordinate o vengono migrati in modo verificabile.
-- La nuova base sostituisce la vecchia mappa senza rompere configuratore, salvataggi o schede Pokédex.
+- La nuova base sostituisce la vecchia mappa nel configuratore senza rompere salvataggi o schede Pokédex ed è pronta per il futuro `gioco.html`.
 - Tutti i controlli di regressione passano e la resa è verificata almeno a 1024×640, desktop widescreen e mobile.
+
+---
+
+# Piano: editor degli elementi territoriali nel configuratore
+
+## Comportamento previsto
+
+- Separare visivamente la toolbar in strumenti di gioco e strumenti territoriali, senza cambiare le funzioni esistenti.
+- Aggiungere tre strumenti: **Montagna**, **Corso d'acqua** e **Struttura**.
+- Montagne e strutture si inseriscono con un clic, si trascinano, si ridimensionano e si eliminano come gli elementi già presenti.
+- Le strutture possono essere classificate almeno come edificio, borgo, ponte o torre, con nome e dimensione modificabili.
+- I corsi d'acqua si disegnano per punti successivi; il tracciato selezionato mostra vertici trascinabili e permette di modificare nome, categoria (fiume, torrente o canale) e larghezza.
+- Disegnare gli elementi territoriali in un livello SVG separato sotto spawn e POI, così non coprono né alterano i dati di gioco.
+
+## Task
+
+- [ ] 1. Estendere il modello salvato aggiungendo `territorio`, con migrazione trasparente dei salvataggi versione 1 e conservazione integrale di `elementi`.
+- [ ] 2. Aggiungere toolbar, modalità di disegno e comandi di conclusione/annullamento per montagne, corsi d'acqua e strutture.
+- [ ] 3. Implementare il rendering vettoriale originale degli elementi territoriali nel nuovo livello SVG dedicato.
+- [ ] 4. Estendere selezione, trascinamento, modifica dei vertici, pannello proprietà, eliminazione e riepilogo.
+- [ ] 5. Verificare la persistenza dopo ricaricamento e la compatibilità con dati già presenti in `localStorage`.
+- [ ] 6. Eseguire le regressioni: creazione/spostamento/eliminazione di spawn e POI, disegno dei tre elementi territoriali, resa desktop/mobile, assenza di errori browser e validità HTML/SVG.
+- [ ] 7. Aggiornare la documentazione tecnica necessaria; aggiornare `AGENTS.md` solo se presente.
+
+## Criteri di accettazione
+
+- Il configuratore permette di creare, modificare, spostare e cancellare montagne, corsi d'acqua e strutture senza modificare manualmente l'SVG di base.
+- Un corso d'acqua può avere più segmenti e i singoli vertici possono essere riposizionati.
+- Gli elementi territoriali persistono al ricaricamento, mentre spawn e POI preesistenti restano invariati.
+- Il livello territoriale rimane sotto gli overlay di gioco e usa lo stesso sistema di coordinate 1024×640.
+- Il configuratore resta statico, senza dipendenze esterne, e funziona sia desktop sia mobile.

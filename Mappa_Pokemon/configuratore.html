@@ -43,7 +43,7 @@ svg{display:block;width:100%;height:auto;border:1px solid var(--border);backgrou
 <div class="layout">
   <div class="mapcol">
     <svg id="svg" viewBox="0 0 1024 640" xmlns="http://www.w3.org/2000/svg">
-      <image id="sfondo" width="1024" height="640" style="image-rendering:pixelated"/>
+      <image id="sfondo" width="1024" height="640" href="mappa_piceno.svg"/>
       <g id="layer"></g>
     </svg>
     <p class="hint">Scegli uno strumento e clicca sulla mappa per piazzare un elemento. Trascina per spostare, <b>Canc</b> per eliminare l'elemento selezionato. Tutto si salva da solo nel browser.</p>
@@ -54,7 +54,6 @@ svg{display:block;width:100%;height:auto;border:1px solid var(--border);backgrou
   </div>
 </div>
 </div>
-<script src="mappa_piceno.js"></script>
 <script>
 'use strict';
 const POKEMON = ['Pito', 'Pozza', 'Umito', 'Segaccio', 'Venagrox', 'Ciccharizard'];
@@ -64,8 +63,6 @@ const STORAGE_KEY = 'piceno-mappa-dati';
 
 const svg = document.getElementById('svg');
 const layer = document.getElementById('layer');
-document.getElementById('sfondo').setAttribute('href', MAPPA_PICENO);
-
 let dati = carica();
 let tool = 'seleziona';
 let selId = null;
