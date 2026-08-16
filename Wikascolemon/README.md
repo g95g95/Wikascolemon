@@ -20,7 +20,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #008 | [Brasero](brasero.html) | Pokémon Griglia | Acqua | Rio Castellano, Ascoli Piceno |
 | #009 | [Compadrone](compadrone.html) | Pokémon Compare | Acqua/Lotta | Rio Castellano e Tronto |
 | #010 | [Banconio](banconio.html) | Pokémon Avventore | Normale | Bar storici di Ascoli e della valle |
-| #011 | [Brio](brio.html) | Pokémon Fuggevole | Normale/Folletto | Valle Castellana (Laga) |
+| #011 | [Bree](bree.html) | Pokémon Fuggevole | Normale/Folletto | Valle Castellana (Laga) |
 | #012 | [Felignoto](felignoto.html) | Pokémon Diceria | Buio/Folletto | Campagne dell'ascolano |
 | #013 | [Carpentrap](carpentrap.html) | Pokémon Ponteggio | Acciaio/Lotta | Ascoli Piceno, centro storico |
 | #014 | [Spesurde](spesurde.html) | Pokémon Sorda | Veleno/Terra | Monti Sibillini |
