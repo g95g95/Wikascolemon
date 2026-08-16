@@ -157,7 +157,7 @@ function terminaCorso(annulla) {
   corsoInCorso = null;
   puntiCorsoIniziali = 0;
   salva();
-  aggiornaAzioniCorso();
+  impostaTool('seleziona');
   seleziona(trova(id) ? id : null);
 }
 
@@ -319,7 +319,6 @@ function disegna() {
   riepilogo();
 }
 
-// --- pannello proprieta ---
 function pannello() {
   const box = document.getElementById('proprieta');
   const el = selId && trova(selId);
@@ -327,7 +326,59 @@ function pannello() {
     box.innerHTML = '<h3>Propriet&agrave;</h3><p class="vuoto">Nessun elemento selezionato.</p>';
     return;
   }
-  if (el.tipo === 'zona') {
+  if (el.tipo === 'montagna') {
+    box.innerHTML = '<h3>Montagna</h3>' +
+      '<label>Nome</label><input type="text" id="p-nome">' +
+      '<label>Dimensione <span class="valore" id="p-scala-val">' + Math.round(el.scala * 100) + '%</span></label>' +
+      '<input type="range" id="p-scala" min="50" max="200" value="' + Math.round(el.scala * 100) + '">' +
+      '<button id="btn-cancella">Elimina montagna</button>';
+    box.querySelector('#p-nome').value = el.nome;
+    box.querySelector('#p-nome').addEventListener('input', e => { el.nome = e.target.value; salva(); disegna(); });
+    box.querySelector('#p-scala').addEventListener('input', e => {
+      el.scala = +e.target.value / 100;
+      box.querySelector('#p-scala-val').textContent = e.target.value + '%';
+      salva(); disegna();
+    });
+  } else if (el.tipo === 'struttura') {
+    box.innerHTML = '<h3>Struttura</h3>' +
+      '<label>Tipo</label><select id="p-struttura">' + Object.entries(STRUTTURE).map(([k, v]) => '<option value="' + k + '"' + (k === el.struttura ? ' selected' : '') + '>' + v + '</option>').join('') + '</select>' +
+      '<label>Nome</label><input type="text" id="p-nome">' +
+      '<label>Dimensione <span class="valore" id="p-scala-val">' + Math.round(el.scala * 100) + '%</span></label>' +
+      '<input type="range" id="p-scala" min="50" max="200" value="' + Math.round(el.scala * 100) + '">' +
+      '<button id="btn-cancella">Elimina struttura</button>';
+    box.querySelector('#p-nome').value = el.nome;
+    box.querySelector('#p-struttura').addEventListener('change', e => { el.struttura = e.target.value; salva(); disegna(); });
+    box.querySelector('#p-nome').addEventListener('input', e => { el.nome = e.target.value; salva(); disegna(); });
+    box.querySelector('#p-scala').addEventListener('input', e => {
+      el.scala = +e.target.value / 100;
+      box.querySelector('#p-scala-val').textContent = e.target.value + '%';
+      salva(); disegna();
+    });
+  } else if (el.tipo === 'corso_acqua') {
+    box.innerHTML = '<h3>Corso d\'acqua</h3>' +
+      '<label>Categoria</label><select id="p-categoria">' + Object.entries(CORSI_ACQUA).map(([k, v]) => '<option value="' + k + '"' + (k === el.categoria ? ' selected' : '') + '>' + v + '</option>').join('') + '</select>' +
+      '<label>Nome</label><input type="text" id="p-nome">' +
+      '<label>Larghezza <span class="valore" id="p-larghezza-val">' + el.larghezza + ' px</span></label>' +
+      '<input type="range" id="p-larghezza" min="3" max="20" value="' + el.larghezza + '">' +
+      '<p class="hint">Vertici: ' + el.punti.length + '. Trascina i cerchi rossi per correggere il percorso.</p>' +
+      (corsoInCorso === el.id ? '' : '<button id="btn-estendi">Continua tracciato</button>') +
+      '<button id="btn-cancella">Elimina corso</button>';
+    box.querySelector('#p-nome').value = el.nome;
+    box.querySelector('#p-categoria').addEventListener('change', e => { el.categoria = e.target.value; salva(); disegna(); });
+    box.querySelector('#p-nome').addEventListener('input', e => { el.nome = e.target.value; salva(); disegna(); });
+    box.querySelector('#p-larghezza').addEventListener('input', e => {
+      el.larghezza = +e.target.value;
+      box.querySelector('#p-larghezza-val').textContent = el.larghezza + ' px';
+      salva(); disegna();
+    });
+    const estendi = box.querySelector('#btn-estendi');
+    if (estendi) estendi.addEventListener('click', () => {
+      corsoInCorso = el.id;
+      puntiCorsoIniziali = el.punti.length;
+      impostaTool('corso_acqua');
+      pannello();
+    });
+  } else if (el.tipo === 'zona') {
     box.innerHTML = '<h3>Zona spawn</h3>' +
       '<label>Pok&eacute;mon</label><select id="p-pokemon">' +
       POKEMON.map(p => '<option' + (p === el.pokemon ? ' selected' : '') + '>' + p + '</option>').join('') + '</select>' +
@@ -354,15 +405,20 @@ function pannello() {
     box.querySelector('#p-nota').value = el.nota;
     box.querySelector('#p-nome').addEventListener('input', e => { el.nome = e.target.value; salva(); disegna(); });
   }
-  box.querySelector('#p-nota').addEventListener('input', e => { el.nota = e.target.value; salva(); });
+  const nota = box.querySelector('#p-nota');
+  if (nota) nota.addEventListener('input', e => { el.nota = e.target.value; salva(); });
   box.querySelector('#btn-cancella').addEventListener('click', cancella);
 }
 
 function riepilogo() {
   const zone = dati.elementi.filter(e => e.tipo === 'zona').length;
   const poi = dati.elementi.length - zone;
+  const montagne = dati.territorio.filter(e => e.tipo === 'montagna').length;
+  const corsi = dati.territorio.filter(e => e.tipo === 'corso_acqua').length;
+  const strutture = dati.territorio.filter(e => e.tipo === 'struttura').length;
   document.getElementById('riepilogo').innerHTML =
-    '<h3>Riepilogo</h3>Zone spawn: <b>' + zone + '</b><br>Luoghi speciali: <b>' + poi + '</b>';
+    '<h3>Riepilogo</h3>Zone spawn: <b>' + zone + '</b><br>Luoghi speciali: <b>' + poi + '</b>' +
+    '<br>Montagne: <b>' + montagne + '</b><br>Corsi d\'acqua: <b>' + corsi + '</b><br>Strutture: <b>' + strutture + '</b>';
 }
 
 disegna();

@@ -7,9 +7,12 @@
 body{font-family:'Segoe UI',Arial,sans-serif;background:#f6f6f6;color:#202122;margin:0}
 .page{max-width:1200px;margin:0 auto;background:#fff;border:1px solid var(--border);padding:14px 18px}
 h1{font-family:Georgia,serif;font-weight:normal;border-bottom:1px solid var(--border);font-size:24px;margin:4px 0 10px}
-.toolbar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.toolbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px}
 .toolbar button{font-size:13px;padding:6px 10px;border:1px solid var(--border);background:var(--panel);border-radius:4px;cursor:pointer}
 .toolbar button.attivo{background:#36c;color:#fff;border-color:#24478f}
+.toolbar button.azione{background:#fff8d6;border-color:#a47d24}
+.toolbar button[hidden]{display:none}
+.toolgroup{font-size:11px;font-weight:700;color:#54595d;text-transform:uppercase;letter-spacing:.06em;margin-left:4px}
 .layout{display:flex;gap:12px;align-items:flex-start}
 .mapcol{flex:1;min-width:0}
 svg{display:block;width:100%;height:auto;border:1px solid var(--border);background:var(--panel);touch-action:none}
@@ -29,21 +32,34 @@ svg{display:block;width:100%;height:auto;border:1px solid var(--border);backgrou
 .zona.sel{fill:rgba(48,160,80,.4);stroke:#e01818;stroke-width:3}
 .poi{cursor:move;stroke-width:2}
 .poi.sel{stroke:#e01818!important;stroke-width:3}
+.territorio-item{cursor:move}
+.territorio-item .selezione{display:none}
+.territorio-item.sel .selezione{display:block}
+.vertice{fill:#fff;stroke:#e01818;stroke-width:2;cursor:move}
+.corso-acqua{cursor:move}
 .etichetta{font-size:11px;font-family:'Segoe UI',Arial,sans-serif;fill:#202122;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;pointer-events:none;text-anchor:middle}
 </style></head><body>
 <div class="page">
 <h1>Configuratore mappa &mdash; Regione Piceno</h1>
 <div class="toolbar">
+  <span class="toolgroup">Gioco</span>
   <button data-tool="seleziona" class="attivo">&#10132; Seleziona / sposta</button>
   <button data-tool="zona">&#9679; Zona spawn</button>
   <button data-tool="pokestop">&#9670; Pok&eacute;Stop</button>
   <button data-tool="palestra">&#9632; Palestra</button>
   <button data-tool="laboratorio">&#9650; Laboratorio</button>
+  <span class="toolgroup">Territorio</span>
+  <button data-tool="montagna">&#9650; Montagna</button>
+  <button data-tool="corso_acqua">&#8779; Corso d'acqua</button>
+  <button data-tool="struttura">&#9645; Struttura</button>
+  <button id="btn-fine-corso" class="azione" hidden>&#10003; Termina corso</button>
+  <button id="btn-annulla-corso" class="azione" hidden>&#10005; Annulla</button>
 </div>
 <div class="layout">
   <div class="mapcol">
     <svg id="svg" viewBox="0 0 1024 640" xmlns="http://www.w3.org/2000/svg">
       <image id="sfondo" width="1024" height="640" href="mappa_piceno.svg"/>
+      <g id="territorio"></g>
       <g id="layer"></g>
     </svg>
     <p class="hint">Scegli uno strumento e clicca sulla mappa per piazzare un elemento. Trascina per spostare, <b>Canc</b> per eliminare l'elemento selezionato. Tutto si salva da solo nel browser.</p>
@@ -59,26 +75,36 @@ svg{display:block;width:100%;height:auto;border:1px solid var(--border);backgrou
 const POKEMON = ['Pito', 'Pozza', 'Umito', 'Segaccio', 'Venagrox', 'Ciccharizard'];
 const RARITA = { comune: 'Comune', raro: 'Raro', molto_raro: 'Molto raro' };
 const POI_NOMI = { pokestop: 'PokéStop', palestra: 'Palestra', laboratorio: 'Laboratorio' };
+const STRUTTURE = { edificio: 'Edificio', borgo: 'Borgo', ponte: 'Ponte', torre: 'Torre' };
+const CORSI_ACQUA = { fiume: 'Fiume', torrente: 'Torrente', canale: 'Canale' };
 const STORAGE_KEY = 'piceno-mappa-dati';
 
 const svg = document.getElementById('svg');
+const territorioLayer = document.getElementById('territorio');
 const layer = document.getElementById('layer');
 let dati = carica();
 let tool = 'seleziona';
 let selId = null;
-let drag = null; // {id, dx, dy, mosso}
+let drag = null;
+let corsoInCorso = null;
+let puntiCorsoIniziali = 0;
 
 function carica() {
   try {
-    const d = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (d && Array.isArray(d.elementi)) return d;
+    return normalizzaDati(JSON.parse(localStorage.getItem(STORAGE_KEY)));
   } catch (e) {}
-  return { versione: 1, elementi: [] };
+  return normalizzaDati(null);
+}
+function normalizzaDati(d) {
+  if (d && Array.isArray(d.elementi)) {
+    return { ...d, versione: 2, territorio: Array.isArray(d.territorio) ? d.territorio : [] };
+  }
+  return { versione: 2, elementi: [], territorio: [] };
 }
 function salva() { localStorage.setItem(STORAGE_KEY, JSON.stringify(dati)); }
 
 function nuovoId() { return 'el' + Math.random().toString(36).slice(2, 9); }
-function trova(id) { return dati.elementi.find(e => e.id === id); }
+function trova(id) { return dati.elementi.find(e => e.id === id) || dati.territorio.find(e => e.id === id); }
 
 function puntoSvg(evt) {
   const pt = svg.createSVGPoint();
@@ -86,33 +112,89 @@ function puntoSvg(evt) {
   return pt.matrixTransform(svg.getScreenCTM().inverse());
 }
 
-// --- toolbar ---
-document.querySelectorAll('.toolbar button').forEach(b => {
+document.querySelectorAll('.toolbar button[data-tool]').forEach(b => {
   b.addEventListener('click', () => {
-    tool = b.dataset.tool;
-    document.querySelectorAll('.toolbar button').forEach(x => x.classList.toggle('attivo', x === b));
+    impostaTool(b.dataset.tool);
   });
 });
+document.getElementById('btn-fine-corso').addEventListener('click', () => terminaCorso(false));
+document.getElementById('btn-annulla-corso').addEventListener('click', () => terminaCorso(true));
 
-// --- creazione / drag ---
+function impostaTool(nuovoTool) {
+  if (corsoInCorso && nuovoTool !== 'corso_acqua') terminaCorso(false);
+  tool = nuovoTool;
+  document.querySelectorAll('.toolbar button[data-tool]').forEach(b => b.classList.toggle('attivo', b.dataset.tool === tool));
+  aggiornaAzioniCorso();
+}
+function aggiornaAzioniCorso() {
+  const visibile = !!corsoInCorso;
+  document.getElementById('btn-fine-corso').hidden = !visibile;
+  document.getElementById('btn-annulla-corso').hidden = !visibile;
+}
+
+function aggiungiPuntoCorso(p) {
+  let el = corsoInCorso && trova(corsoInCorso);
+  if (!el) {
+    el = { id: nuovoId(), tipo: 'corso_acqua', nome: 'Nuovo corso', categoria: 'fiume', larghezza: 8, punti: [] };
+    dati.territorio.push(el);
+    corsoInCorso = el.id;
+    puntiCorsoIniziali = 0;
+  }
+  el.punti.push({ x: arr(p.x), y: arr(p.y) });
+  salva();
+  seleziona(el.id);
+  aggiornaAzioniCorso();
+}
+
+function terminaCorso(annulla) {
+  const id = corsoInCorso;
+  if (!id) return;
+  const el = trova(id);
+  if (el && (annulla || el.punti.length < 2)) {
+    if (puntiCorsoIniziali === 0) dati.territorio = dati.territorio.filter(e => e.id !== id);
+    else el.punti = el.punti.slice(0, puntiCorsoIniziali);
+  }
+  corsoInCorso = null;
+  puntiCorsoIniziali = 0;
+  salva();
+  impostaTool('seleziona');
+  seleziona(trova(id) ? id : null);
+}
+
 svg.addEventListener('pointerdown', evt => {
   const p = puntoSvg(evt);
   const bersaglio = evt.target.closest('[data-id]');
   if (bersaglio) {
     const el = trova(bersaglio.dataset.id);
     seleziona(el.id);
-    drag = { id: el.id, dx: el.x - p.x, dy: el.y - p.y, mosso: false };
+    if (el.tipo === 'corso_acqua' && bersaglio.dataset.vertice !== undefined) {
+      drag = { id: el.id, modo: 'vertice', indice: +bersaglio.dataset.vertice, mosso: false };
+    } else if (el.tipo === 'corso_acqua') {
+      drag = { id: el.id, modo: 'corso', startX: p.x, startY: p.y, punti: el.punti.map(q => ({ ...q })), mosso: false };
+    } else {
+      drag = { id: el.id, modo: 'punto', dx: el.x - p.x, dy: el.y - p.y, mosso: false };
+    }
     svg.setPointerCapture(evt.pointerId);
     return;
   }
   if (tool === 'seleziona') { seleziona(null); return; }
-  const el = tool === 'zona'
-    ? { id: nuovoId(), tipo: 'zona', x: arr(p.x), y: arr(p.y), r: 40, pokemon: POKEMON[0], rarita: 'comune', nota: '' }
-    : { id: nuovoId(), tipo: tool, x: arr(p.x), y: arr(p.y), nome: POI_NOMI[tool], nota: '' };
-  dati.elementi.push(el);
+  if (tool === 'corso_acqua') { aggiungiPuntoCorso(p); return; }
+  let el;
+  if (tool === 'montagna') {
+    el = { id: nuovoId(), tipo: 'montagna', x: arr(p.x), y: arr(p.y), nome: 'Montagna', scala: 1 };
+    dati.territorio.push(el);
+  } else if (tool === 'struttura') {
+    el = { id: nuovoId(), tipo: 'struttura', x: arr(p.x), y: arr(p.y), nome: 'Struttura', struttura: 'edificio', scala: 1 };
+    dati.territorio.push(el);
+  } else {
+    el = tool === 'zona'
+      ? { id: nuovoId(), tipo: 'zona', x: arr(p.x), y: arr(p.y), r: 40, pokemon: POKEMON[0], rarita: 'comune', nota: '' }
+      : { id: nuovoId(), tipo: tool, x: arr(p.x), y: arr(p.y), nome: POI_NOMI[tool], nota: '' };
+    dati.elementi.push(el);
+  }
   salva();
   seleziona(el.id);
-  drag = { id: el.id, dx: 0, dy: 0, mosso: false };
+  drag = { id: el.id, modo: 'punto', dx: 0, dy: 0, mosso: false };
   svg.setPointerCapture(evt.pointerId);
 });
 svg.addEventListener('pointermove', evt => {
@@ -120,8 +202,17 @@ svg.addEventListener('pointermove', evt => {
   const p = puntoSvg(evt);
   const el = trova(drag.id);
   if (!el) return;
-  el.x = arr(Math.max(0, Math.min(1024, p.x + drag.dx)));
-  el.y = arr(Math.max(0, Math.min(640, p.y + drag.dy)));
+  if (drag.modo === 'vertice') {
+    el.punti[drag.indice] = { x: arr(Math.max(0, Math.min(1024, p.x))), y: arr(Math.max(0, Math.min(640, p.y))) };
+  } else if (drag.modo === 'corso') {
+    const xs = drag.punti.map(q => q.x), ys = drag.punti.map(q => q.y);
+    const dx = Math.max(-Math.min(...xs), Math.min(1024 - Math.max(...xs), p.x - drag.startX));
+    const dy = Math.max(-Math.min(...ys), Math.min(640 - Math.max(...ys), p.y - drag.startY));
+    el.punti = drag.punti.map(q => ({ x: arr(q.x + dx), y: arr(q.y + dy) }));
+  } else {
+    el.x = arr(Math.max(0, Math.min(1024, p.x + drag.dx)));
+    el.y = arr(Math.max(0, Math.min(640, p.y + drag.dy)));
+  }
   drag.mosso = true;
   disegna();
 });
@@ -130,7 +221,10 @@ svg.addEventListener('pointerup', () => {
   drag = null;
 });
 document.addEventListener('keydown', evt => {
-  if (evt.key === 'Delete' && selId && !/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) cancella();
+  const inCampo = /INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName);
+  if (evt.key === 'Enter' && corsoInCorso && !inCampo) terminaCorso(false);
+  else if (evt.key === 'Escape' && corsoInCorso && !inCampo) terminaCorso(true);
+  else if (evt.key === 'Delete' && selId && !inCampo) cancella();
 });
 function arr(n) { return Math.round(n); }
 
@@ -138,6 +232,8 @@ function seleziona(id) { selId = id; disegna(); pannello(); }
 
 function cancella() {
   dati.elementi = dati.elementi.filter(e => e.id !== selId);
+  dati.territorio = dati.territorio.filter(e => e.id !== selId);
+  if (corsoInCorso === selId) { corsoInCorso = null; puntiCorsoIniziali = 0; aggiornaAzioniCorso(); }
   salva();
   seleziona(null);
 }
@@ -149,7 +245,57 @@ function nodo(tag, attrs) {
   for (const k in attrs) n.setAttribute(k, attrs[k]);
   return n;
 }
+function testo(x, y, contenuto, classe) {
+  const t = nodo('text', { x, y, 'class': classe || 'etichetta' });
+  t.textContent = contenuto;
+  return t;
+}
+
+function disegnaTerritorio() {
+  territorioLayer.innerHTML = '';
+  for (const el of dati.territorio) {
+    const sel = el.id === selId ? ' sel' : '';
+    if (el.tipo === 'corso_acqua') {
+      if (!Array.isArray(el.punti) || !el.punti.length) continue;
+      const punti = el.punti.map(p => p.x + ',' + p.y).join(' ');
+      const g = nodo('g', { 'class': 'corso-acqua' + sel, 'data-id': el.id });
+      if (el.punti.length === 1) {
+        g.appendChild(nodo('circle', { cx: el.punti[0].x, cy: el.punti[0].y, r: 6, fill: '#57bdd0', stroke: '#2d6d8d', 'stroke-width': 3, 'data-id': el.id }));
+      } else {
+        g.appendChild(nodo('polyline', { points: punti, fill: 'none', stroke: el.id === selId ? '#e01818' : '#2d6d8d', 'stroke-width': el.larghezza + 5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'data-id': el.id }));
+        g.appendChild(nodo('polyline', { points: punti, fill: 'none', stroke: el.categoria === 'canale' ? '#4ea9c0' : '#62c4d1', 'stroke-width': el.larghezza, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'data-id': el.id }));
+      }
+      const centro = el.punti[Math.floor(el.punti.length / 2)];
+      g.appendChild(testo(centro.x, centro.y - el.larghezza - 7, el.nome, 'etichetta'));
+      if (el.id === selId) {
+        el.punti.forEach((p, i) => g.appendChild(nodo('circle', { cx: p.x, cy: p.y, r: 6, 'class': 'vertice', 'data-id': el.id, 'data-vertice': i })));
+      }
+      territorioLayer.appendChild(g);
+      continue;
+    }
+    const g = nodo('g', { 'class': 'territorio-item' + sel, 'data-id': el.id, transform: 'translate(' + el.x + ' ' + el.y + ') scale(' + el.scala + ')' });
+    g.appendChild(nodo('ellipse', { cx: 0, cy: 3, rx: 34, ry: 29, fill: 'none', stroke: '#e01818', 'stroke-width': 3, 'class': 'selezione' }));
+    if (el.tipo === 'montagna') {
+      g.appendChild(nodo('path', { d: 'M-28 20 -8-18 1-3 11-23 30 20Z', fill: '#607866', stroke: '#385246', 'stroke-width': 3, 'stroke-linejoin': 'round' }));
+      g.appendChild(nodo('path', { d: 'M-17 2 -8-18 1-3 11-23 21-3 11-10 3 5 -8-7Z', fill: '#edf0db' }));
+    } else if (el.struttura === 'ponte') {
+      g.appendChild(nodo('path', { d: 'M-27 14H27M-22 14C-19-14 19-14 22 14', fill: 'none', stroke: '#6f5543', 'stroke-width': 7, 'stroke-linecap': 'round' }));
+      g.appendChild(nodo('path', { d: 'M-20 8H20', stroke: '#f0cf94', 'stroke-width': 4, 'stroke-linecap': 'round' }));
+    } else if (el.struttura === 'torre') {
+      g.appendChild(nodo('path', { d: 'M-14 19V-12L-18-17H18L14-12V19ZM-7-2H7V19H-7Z', fill: '#f1deb0', stroke: '#68513f', 'stroke-width': 3, 'fill-rule': 'evenodd' }));
+      g.appendChild(nodo('path', { d: 'M-18-17V-24H-10V-18H-4V-24H4V-18H10V-24H18V-17', fill: '#bd6652', stroke: '#68513f', 'stroke-width': 3 }));
+    } else {
+      const borgo = el.struttura === 'borgo';
+      g.appendChild(nodo('path', { d: borgo ? 'M-28 19V2L-17-8-8 0V-6L3-16 14-6V0L22-8 30 1V19Z' : 'M-22 19V-3L0-20 22-3V19Z', fill: '#f4e0b2', stroke: '#695442', 'stroke-width': 3, 'stroke-linejoin': 'round' }));
+      g.appendChild(nodo('path', { d: borgo ? 'M-21 19V8H-13V19M-1 19V5H7V19M18 19V8H25V19' : 'M-6 19V5H6V19', fill: '#bd6652' }));
+    }
+    g.appendChild(testo(0, -31, el.nome, 'etichetta'));
+    territorioLayer.appendChild(g);
+  }
+}
+
 function disegna() {
+  disegnaTerritorio();
   layer.innerHTML = '';
   for (const el of dati.elementi) {
     const sel = el.id === selId ? ' sel' : '';
@@ -173,7 +319,6 @@ function disegna() {
   riepilogo();
 }
 
-// --- pannello proprieta ---
 function pannello() {
   const box = document.getElementById('proprieta');
   const el = selId && trova(selId);
@@ -181,7 +326,59 @@ function pannello() {
     box.innerHTML = '<h3>Propriet&agrave;</h3><p class="vuoto">Nessun elemento selezionato.</p>';
     return;
   }
-  if (el.tipo === 'zona') {
+  if (el.tipo === 'montagna') {
+    box.innerHTML = '<h3>Montagna</h3>' +
+      '<label>Nome</label><input type="text" id="p-nome">' +
+      '<label>Dimensione <span class="valore" id="p-scala-val">' + Math.round(el.scala * 100) + '%</span></label>' +
+      '<input type="range" id="p-scala" min="50" max="200" value="' + Math.round(el.scala * 100) + '">' +
+      '<button id="btn-cancella">Elimina montagna</button>';
+    box.querySelector('#p-nome').value = el.nome;
+    box.querySelector('#p-nome').addEventListener('input', e => { el.nome = e.target.value; salva(); disegna(); });
+    box.querySelector('#p-scala').addEventListener('input', e => {
+      el.scala = +e.target.value / 100;
+      box.querySelector('#p-scala-val').textContent = e.target.value + '%';
+      salva(); disegna();
+    });
+  } else if (el.tipo === 'struttura') {
+    box.innerHTML = '<h3>Struttura</h3>' +
+      '<label>Tipo</label><select id="p-struttura">' + Object.entries(STRUTTURE).map(([k, v]) => '<option value="' + k + '"' + (k === el.struttura ? ' selected' : '') + '>' + v + '</option>').join('') + '</select>' +
+      '<label>Nome</label><input type="text" id="p-nome">' +
+      '<label>Dimensione <span class="valore" id="p-scala-val">' + Math.round(el.scala * 100) + '%</span></label>' +
+      '<input type="range" id="p-scala" min="50" max="200" value="' + Math.round(el.scala * 100) + '">' +
+      '<button id="btn-cancella">Elimina struttura</button>';
+    box.querySelector('#p-nome').value = el.nome;
+    box.querySelector('#p-struttura').addEventListener('change', e => { el.struttura = e.target.value; salva(); disegna(); });
+    box.querySelector('#p-nome').addEventListener('input', e => { el.nome = e.target.value; salva(); disegna(); });
+    box.querySelector('#p-scala').addEventListener('input', e => {
+      el.scala = +e.target.value / 100;
+      box.querySelector('#p-scala-val').textContent = e.target.value + '%';
+      salva(); disegna();
+    });
+  } else if (el.tipo === 'corso_acqua') {
+    box.innerHTML = '<h3>Corso d\'acqua</h3>' +
+      '<label>Categoria</label><select id="p-categoria">' + Object.entries(CORSI_ACQUA).map(([k, v]) => '<option value="' + k + '"' + (k === el.categoria ? ' selected' : '') + '>' + v + '</option>').join('') + '</select>' +
+      '<label>Nome</label><input type="text" id="p-nome">' +
+      '<label>Larghezza <span class="valore" id="p-larghezza-val">' + el.larghezza + ' px</span></label>' +
+      '<input type="range" id="p-larghezza" min="3" max="20" value="' + el.larghezza + '">' +
+      '<p class="hint">Vertici: ' + el.punti.length + '. Trascina i cerchi rossi per correggere il percorso.</p>' +
+      (corsoInCorso === el.id ? '' : '<button id="btn-estendi">Continua tracciato</button>') +
+      '<button id="btn-cancella">Elimina corso</button>';
+    box.querySelector('#p-nome').value = el.nome;
+    box.querySelector('#p-categoria').addEventListener('change', e => { el.categoria = e.target.value; salva(); disegna(); });
+    box.querySelector('#p-nome').addEventListener('input', e => { el.nome = e.target.value; salva(); disegna(); });
+    box.querySelector('#p-larghezza').addEventListener('input', e => {
+      el.larghezza = +e.target.value;
+      box.querySelector('#p-larghezza-val').textContent = el.larghezza + ' px';
+      salva(); disegna();
+    });
+    const estendi = box.querySelector('#btn-estendi');
+    if (estendi) estendi.addEventListener('click', () => {
+      corsoInCorso = el.id;
+      puntiCorsoIniziali = el.punti.length;
+      impostaTool('corso_acqua');
+      pannello();
+    });
+  } else if (el.tipo === 'zona') {
     box.innerHTML = '<h3>Zona spawn</h3>' +
       '<label>Pok&eacute;mon</label><select id="p-pokemon">' +
       POKEMON.map(p => '<option' + (p === el.pokemon ? ' selected' : '') + '>' + p + '</option>').join('') + '</select>' +
@@ -208,15 +405,20 @@ function pannello() {
     box.querySelector('#p-nota').value = el.nota;
     box.querySelector('#p-nome').addEventListener('input', e => { el.nome = e.target.value; salva(); disegna(); });
   }
-  box.querySelector('#p-nota').addEventListener('input', e => { el.nota = e.target.value; salva(); });
+  const nota = box.querySelector('#p-nota');
+  if (nota) nota.addEventListener('input', e => { el.nota = e.target.value; salva(); });
   box.querySelector('#btn-cancella').addEventListener('click', cancella);
 }
 
 function riepilogo() {
   const zone = dati.elementi.filter(e => e.tipo === 'zona').length;
   const poi = dati.elementi.length - zone;
+  const montagne = dati.territorio.filter(e => e.tipo === 'montagna').length;
+  const corsi = dati.territorio.filter(e => e.tipo === 'corso_acqua').length;
+  const strutture = dati.territorio.filter(e => e.tipo === 'struttura').length;
   document.getElementById('riepilogo').innerHTML =
-    '<h3>Riepilogo</h3>Zone spawn: <b>' + zone + '</b><br>Luoghi speciali: <b>' + poi + '</b>';
+    '<h3>Riepilogo</h3>Zone spawn: <b>' + zone + '</b><br>Luoghi speciali: <b>' + poi + '</b>' +
+    '<br>Montagne: <b>' + montagne + '</b><br>Corsi d\'acqua: <b>' + corsi + '</b><br>Strutture: <b>' + strutture + '</b>';
 }
 
 disegna();
