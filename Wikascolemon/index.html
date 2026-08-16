@@ -10,7 +10,7 @@
   --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
   --terra:#E0C068; --acqua:#6890F0; --acciaio:#B8B8D0;
   --buio:#705848; --spettro:#705898; --fuoco:#F08030; --folletto:#EE99AC; --lotta:#C03028;
-  --coleot:#A8B820; --psico:#F85888;
+  --coleot:#A8B820; --psico:#F85888; --volante:#A890F0;
   --accent1:#5aa63e; --accent2:#8f8fae;
 }
 *{box-sizing:border-box}
@@ -30,7 +30,7 @@ h2{font-size:23px}
 .t-erba{background:var(--erba)} .t-acciaio{background:var(--acciaio);color:#43436b;text-shadow:none} .t-terra{background:var(--terra);color:#5b4a12;text-shadow:none}
 .t-buio{background:var(--buio)} .t-spettro{background:var(--spettro)} .t-fuoco{background:var(--fuoco)}
 .t-acqua{background:var(--acqua)} .t-lotta{background:var(--lotta)}
-.t-coleot{background:var(--coleot)} .t-psico{background:var(--psico)}
+.t-coleot{background:var(--coleot)} .t-psico{background:var(--psico)} .t-volante{background:var(--volante)}
 .t-folletto{background:var(--folletto);color:#7c3350;text-shadow:none}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:14px;margin:16px 0}
 .card{border:1px solid var(--border);border-radius:8px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
@@ -198,6 +198,30 @@ h2{font-size:23px}
     <a class="go" href="anisetta.html">Vai alla scheda →</a>
   </div>
   <div class="card">
+    <div class="head"><div class="num">#017</div><div class="nm">Tamburino</div><div class="cat">Pokémon Tamburo</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-normale">Normale</span></div>
+      Apre la fila del suo sestiere nel corteo della Quintana. Si muove in gruppo e cambia passo tutto insieme: d'estate ad Ascoli non si dorme, ed è colpa sua.
+    </div>
+    <a class="go" href="tamburino.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#018</div><div class="nm">Sbandiera</div><div class="cat">Pokémon Vessillo</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-normale">Normale</span><span class="type t-volante">Volante</span></div>
+      Lo sbandieratore: lancia la bandiera più in alto del campanile e la riprende senza guardare. I suoi drappi non hanno ancora colore.
+    </div>
+    <a class="go" href="sbandiera.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#019</div><div class="nm">Quintanaro</div><div class="cat">Pokémon Cavaliere</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-acciaio">Acciaio</span></div>
+      Il cavaliere della Quintana, unico Pokémon del Piceno con <b>sei forme</b>: una per sestiere, ciascuna con un secondo tipo diverso, decisa dal luogo dell'evoluzione.
+    </div>
+    <a class="go" href="quintanaro.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
     <div class="head"><div class="num">#044</div><div class="nm">Pito</div><div class="cat">Pokémon Cerbiatto</div></div>
     <div class="body">
       <div class="types"><span class="type t-roccia">Roccia</span><span class="type t-normale">Normale</span></div>
@@ -274,6 +298,9 @@ h2{font-size:23px}
   <tr><td>#014</td><td><a href="spesurde.html"><b>Spesurde</b></a></td><td>Pokémon Sorda</td><td><span class="type t-veleno">Veleno</span> <span class="type t-terra">Terra</span></td><td>Monti Sibillini</td></tr>
   <tr><td>#015</td><td><a href="anicino.html"><b>Anicino</b></a></td><td>Pokémon Anice</td><td><span class="type t-erba">Erba</span></td><td>Campi attorno ad Ascoli Piceno</td></tr>
   <tr><td>#016</td><td><a href="anisetta.html"><b>Anisetta</b></a></td><td>Pokémon Ammazzacaffè</td><td><span class="type t-erba">Erba</span> <span class="type t-spettro">Spettro</span></td><td>Ascoli Piceno, Piazza del Popolo</td></tr>
+  <tr><td>#017</td><td><a href="tamburino.html"><b>Tamburino</b></a></td><td>Pokémon Tamburo</td><td><span class="type t-normale">Normale</span></td><td>Ascoli Piceno, vie e piazze</td></tr>
+  <tr><td>#018</td><td><a href="sbandiera.html"><b>Sbandiera</b></a></td><td>Pokémon Vessillo</td><td><span class="type t-normale">Normale</span> <span class="type t-volante">Volante</span></td><td>Ascoli Piceno, vie e piazze</td></tr>
+  <tr><td>#019</td><td><a href="quintanaro.html"><b>Quintanaro</b></a></td><td>Pokémon Cavaliere</td><td><span class="type t-acciaio">Acciaio</span> + sestiere</td><td>Ascoli Piceno, i sei sestieri</td></tr>
   <tr><td>#044</td><td><a href="pito.html"><b>Pito</b></a></td><td>Pokémon Cerbiatto</td><td><span class="type t-roccia">Roccia</span> <span class="type t-normale">Normale</span></td><td>Acquasanta Terme (Laga)</td></tr>
   <tr><td>#045</td><td><a href="pozza.html"><b>Pozza</b></a></td><td>Pokémon Fracchia</td><td><span class="type t-roccia">Roccia</span> <span class="type t-veleno">Veleno</span></td><td>Acquasanta Terme (Laga)</td></tr>
   <tr><td>#046</td><td><a href="umito.html"><b>Umito</b></a></td><td>Pokémon Cervosacro</td><td><span class="type t-roccia">Roccia</span> <span class="type t-erba">Erba</span></td><td>Acquasanta Terme (Laga)</td></tr>

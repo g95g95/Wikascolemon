@@ -20,7 +20,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #007-#009 | Linea starter Acqua: Tuffito, Brasero, Compadrone ✅ |
 | #010-#014 | Banconio · Bree → Felignoto · Carpentrap · Spesurde ✅ |
 | #015-#016 | Anicino → Anisetta ✅ |
-| #017-#020 | Tamburino → Sbandiera → Quintanaro · Moro ✅ *(bozze)* |
+| #017-#019 | Tamburino → Sbandiera → Quintanaro ✅ |
+| #020 | Moro ✅ *(bozza, in attesa di artwork)* |
 | #021-#043 | Libero |
 | #044-#049 | Pito, Pozza, Umito, Segaccio, Venagrox, Ciccharizard ✅ |
 | #050-#149 | Libero |
