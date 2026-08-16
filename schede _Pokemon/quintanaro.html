@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quintanaro - Pokédex del Piceno</title>
+<style>
+:root{
+  --border:#a2a9b1; --panel:#f8f9fa; --text:#202122; --link:#3366cc; --red:#ba0000;
+  --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
+  --terra:#E0C068; --acqua:#6890F0; --lotta:#C03028; --acciaio:#B8B8D0;
+  --fuoco:#F08030; --volante:#A890F0; --psico:#F85888; --spettro:#705898;
+  --buio:#705848; --drago:#7038F8; --elettro:#F8D030; --folletto:#EE99AC;
+  --ghiaccio:#98D8D8; --coleot:#A8B820;
+  --accent1:#9a9ab8; --accent2:#6f6f8e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--text);font:14px/1.6 "Segoe UI","Helvetica Neue",Arial,sans-serif}
+.page{max-width:1080px;margin:0 auto;padding:14px 20px 40px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+a.new{color:var(--red)}
+h1,h2{font-family:"Linux Libertine",Georgia,"Times New Roman",serif;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:4px;margin:20px 0 12px}
+h1{font-size:30px;margin-top:6px}
+h2{font-size:23px}
+h3{font-size:17px;margin:18px 0 8px}
+h4{font-size:15px;margin:14px 0 6px}
+.sitenotice{font-size:12px;color:#54595d;border-bottom:1px solid #eaecf0;padding-bottom:6px}
+.dexnav{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#f2efe2,#f8f9fa,#efe9f0);border:1px solid var(--border);border-radius:6px;padding:8px 14px;margin:12px 0;font-size:13px}
+.dexnav .mid{font-weight:700}
+.dexnav .dim{color:#9a9fa5}
+.type{display:inline-block;padding:2px 11px;border-radius:4px;color:#fff;font-weight:600;font-size:12px;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.18)}
+.t-roccia{background:var(--roccia)} .t-normale{background:var(--normale)} .t-veleno{background:var(--veleno)}
+.t-erba{background:var(--erba)} .t-terra{background:var(--terra);color:#5b4a12;text-shadow:none} .t-acqua{background:var(--acqua)}
+.t-lotta{background:var(--lotta)} .t-acciaio{background:var(--acciaio);color:#43436b;text-shadow:none} .t-fuoco{background:var(--fuoco)}
+.t-volante{background:var(--volante)} .t-psico{background:var(--psico)} .t-spettro{background:var(--spettro)}
+.t-buio{background:var(--buio)} .t-drago{background:var(--drago)} .t-elettro{background:var(--elettro);color:#6b5a10;text-shadow:none}
+.t-folletto{background:var(--folletto);color:#7c3350;text-shadow:none} .t-ghiaccio{background:var(--ghiaccio);color:#2a6a6a;text-shadow:none} .t-coleot{background:var(--coleot)}
+.infobox{float:right;width:308px;margin:0 0 16px 22px;border:1px solid var(--border);background:var(--panel);border-radius:8px;overflow:hidden;font-size:12.5px}
+.infobox .head{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff;text-align:center;padding:8px 10px}
+.infobox .head .num{font-size:12px;opacity:.9}
+.infobox .head .name{font-size:20px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.infobox .head .cat{font-size:12px;font-style:italic}
+.infobox .art{background:#fff;padding:8px;text-align:center;border-bottom:1px solid #eaecf0}
+.infobox .art svg{width:236px;height:236px}
+.infobox .art img{width:236px;height:236px;object-fit:contain}
+.artph{width:236px;height:236px;margin:0 auto;border:2px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;color:#72777d;font-size:12px;padding:10px;background:#fcfcfc}
+.infobox .art .capt{font-size:11px;color:#54595d}
+.infobox table{width:100%;border-collapse:collapse}
+.infobox th{background:#eef0f2;text-align:left;padding:5px 9px;width:41%;font-weight:600;vertical-align:top;border-top:1px solid #eaecf0}
+.infobox td{padding:5px 9px;border-top:1px solid #eaecf0;vertical-align:top}
+.infobox .lang{display:flex;justify-content:center;gap:14px;background:#eef0f2;padding:4px;font-size:11.5px;color:#54595d}
+.toc{display:inline-block;border:1px solid var(--border);background:var(--panel);padding:10px 18px;border-radius:6px;font-size:13px;margin:8px 0 4px}
+.toc .toctitle{font-weight:700;text-align:center}
+.toc ol{margin:6px 0 0;padding-left:22px}
+.toc ol ol{margin:0}
+.intro b.pkmn{font-size:15px}
+.wtable{border-collapse:collapse;margin:10px 0;font-size:13px}
+.wtable th,.wtable td{border:1px solid var(--border);padding:5px 10px}
+.wtable th{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff}
+.wtable td{background:#fff}
+.wtable tr:nth-child(even) td{background:#fafbfc}
+.wtable .lvl{text-align:center;font-weight:600}
+.wtable .num{text-align:center}
+.stab{font-weight:700}
+.effbox{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin:10px 0;max-width:760px}
+.effrow{display:flex;border-top:1px solid var(--border)}
+.effrow:first-child{border-top:none}
+.efflabel{width:130px;flex:0 0 130px;background:#eef0f2;padding:8px;font-weight:600;display:flex;align-items:center;font-size:12.5px}
+.effcells{padding:7px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;background:#fff}
+.effx{font-size:11px;color:#54595d;margin-left:2px}
+.evochain{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin:14px 0}
+.evocard{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:10px 12px;text-align:center;width:172px}
+.evocard svg{width:118px;height:118px}
+.evocard img{width:118px;height:118px;object-fit:contain}
+.evocard .nm{font-weight:700;margin:2px 0 6px}
+.evoarrow{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:11.5px;color:#54595d;width:130px;padding:0 4px}
+.evoarrow .ar{font-size:26px;color:#8b8f94;line-height:1}
+.statbars{max-width:640px}
+.statrow{display:flex;align-items:center;gap:10px;margin:4px 0}
+.statrow .sn{width:78px;flex:0 0 78px;font-weight:600;font-size:12.5px}
+.statrow .sv{width:34px;flex:0 0 34px;text-align:right;font-weight:700;font-size:13px}
+.statrow .sb{flex:1;background:#eef0f2;border:1px solid #dfe3e8;border-radius:4px;height:14px;overflow:hidden}
+.statrow .sb i{display:block;height:100%;border-radius:3px}
+.s-ps i{background:#FF5959}.s-att i{background:#F5AC78}.s-dif i{background:#FAE078}
+.s-asp i{background:#9DB7F5}.s-dsp i{background:#A7DB8D}.s-vel i{background:#FA92B2}
+.dexentries{max-width:820px}
+.dexentries .ver{font-weight:700}
+.itembox{border:1px solid #7fb1d8;background:#f0f7fc;border-radius:8px;padding:12px 16px;margin:14px 0;max-width:760px;display:flex;gap:14px;align-items:flex-start}
+.itembox svg{flex:0 0 46px}
+.notabene{border-left:4px solid var(--accent1);background:var(--panel);padding:8px 14px;margin:10px 0;max-width:780px;font-size:13px}
+.cats{border:1px solid var(--border);background:var(--panel);border-radius:6px;padding:8px 14px;margin-top:34px;font-size:12.5px}
+.footer{font-size:11.5px;color:#54595d;margin-top:14px}
+ul{margin:6px 0}
+@media (max-width:760px){
+  .infobox{float:none;width:100%;margin:12px 0}
+  .efflabel{width:96px;flex-basis:96px}
+  .evoarrow{width:100%}
+}
+@media (prefers-reduced-motion: no-preference){
+  .evocard:hover{box-shadow:0 2px 8px rgba(0,0,0,.12);transition:box-shadow .2s}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="impronta-quintanaro" viewBox="0 0 40 40">
+  <path d="M20 4 L31 11 v13 q0 8 -11 12 q-11 -4 -11 -12 V11 z" fill="#54595d"/>
+  <path d="M20 10 v14 M14 16 h12" stroke="#f8f9fa" stroke-width="2"/>
+</symbol>
+<symbol id="icon-scudo" viewBox="0 0 48 48">
+  <path d="M24 4 L38 12 v14 q0 10 -14 18 q-14 -8 -14 -18 V12 z" fill="#d8d8e4" stroke="#7a7a96" stroke-width="1.8"/>
+  <circle cx="24" cy="22" r="11" fill="none" stroke="#7a7a96" stroke-width="1.4"/>
+  <circle cx="24" cy="22" r="7.5" fill="none" stroke="#7a7a96" stroke-width="1.4"/>
+  <circle cx="24" cy="22" r="4" fill="none" stroke="#7a7a96" stroke-width="1.4"/>
+  <circle cx="24" cy="22" r="1.8" fill="#c4442f"/>
+</symbol>
+</defs>
+</svg>
+<div class="page">
+<div class="sitenotice"><a href="index.html"><b>← Wikascolemon</b></a> · da <b>Pokédex del Piceno</b>, l'enciclopedia (immaginaria) dei Pokémon della regione Piceno. <i>Pagina fan-made nel formato di Pokémon Central Wiki.</i></div>
+
+<div class="dexnav">
+  <span><a href="sbandiera.html">← #018: Sbandiera</a></span>
+  <span class="mid">#019 Quintanaro</span>
+  <span class="dim">#020: ??? →</span>
+</div>
+
+<h1>Quintanaro</h1>
+
+<div class="infobox">
+  <div class="head">
+    <div class="num">Pokédex del Piceno #019</div>
+    <div class="name">Quintanaro</div>
+    <div class="cat">Pokémon Cavaliere</div>
+  </div>
+  <div class="art">
+    <div class="artph">Artwork di Quintanaro<br>in arrivo</div>
+    <div class="capt">Artwork di Quintanaro (forma Sant'Emidio)</div>
+  </div>
+  <div class="lang"><span>EN: Quintanaro</span><span>JA: ロクマチキシ <i>Rokumachikishi</i></span></div>
+  <table>
+    <tr><th>Tipo</th><td><span class="type t-acciaio">Acciaio</span> + <b>tipo del sestiere</b><br><small>Sei forme, vedi <a href="#Sestieri">I sei sestieri</a></small></td></tr>
+    <tr><th>Abilità</th><td>Intimidazione (prima)<br><i>Sguardofermo</i> (speciale)</td></tr>
+    <tr><th>Sesso</th><td>50% maschi · 50% femmine</td></tr>
+    <tr><th>Altezza</th><td>1,9 m</td></tr>
+    <tr><th>Peso</th><td>112,0 kg</td></tr>
+    <tr><th>Tasso di cattura</th><td>45 (11,9%)</td></tr>
+    <tr><th>Uovo</th><td>Gruppo Umanoide<br>20 cicli (min. 5120 passi)</td></tr>
+    <tr><th>Pokédex regionali</th><td>Piceno #019</td></tr>
+    <tr><th>Tasso di allevamento</th><td>Medio-veloce</td></tr>
+    <tr><th>Esperienza base ceduta</th><td>181</td></tr>
+    <tr><th>Punti base ceduti</th><td>Totale: 3 — Attacco 2, Difesa 1</td></tr>
+    <tr><th>Colore Pokédex</th><td>Grigio</td></tr>
+    <tr><th>Impronta</th><td><svg width="26" height="26"><use href="#impronta-quintanaro"/></svg></td></tr>
+    <tr><th>Affetto di base</th><td>70</td></tr>
+  </table>
+</div>
+
+<p class="intro"><b class="pkmn">Quintanaro</b> è un Pokémon di tipo <b>Acciaio</b> di <b>Ascoli Piceno</b>, forma finale della linea del corteo della <b>Quintana</b>. È l'unica specie del Piceno che esiste in <b>sei forme</b>: una per ciascun sestiere della città, ognuna con un secondo tipo diverso.</p>
+<p>Non si incontra allo stato brado. Si ottiene facendo evolvere uno <a href="sbandiera.html">Sbandiera</a> dentro un sestiere: il luogo dell'evoluzione decide i colori, il tipo e — secondo i quintanari — tutto il resto.</p>
+
+<div class="toc">
+  <div class="toctitle">Indice</div>
+  <ol>
+    <li><a href="#Biologia">Biologia</a>
+      <ol>
+        <li><a href="#Fisionomia">Fisionomia</a></li>
+        <li><a href="#Comportamento">Comportamento</a></li>
+        <li><a href="#Habitat">Habitat</a></li>
+        <li><a href="#Dieta">Dieta</a></li>
+      </ol>
+    </li>
+    <li><a href="#Dati_di_gioco">Dati di gioco</a>
+      <ol>
+        <li><a href="#Resistenze">Resistenze e vulnerabilità</a></li>
+        <li><a href="#Evoluzioni">Evoluzioni</a></li>
+        <li><a href="#Statistiche">Statistiche di base</a></li>
+        <li><a href="#Mosse">Mosse apprese</a></li>
+        <li><a href="#Voci">Voci Pokédex</a></li>
+      </ol>
+    </li>
+    <li><a href="#Sestieri">I sei sestieri</a></li>
+    <li><a href="#Curiosita">Curiosità</a></li>
+    <li><a href="#Lingue">In altre lingue</a></li>
+  </ol>
+</div>
+
+<h2 id="Biologia">Biologia</h2>
+
+<h3 id="Fisionomia">Fisionomia</h3>
+<p>Quintanaro è alto quanto una persona adulta e pesa più del doppio. Il corpo è coperto da una <b>corazza a piastre</b> sovrapposte, cresciuta con lui e non indossata: sotto non c'è niente da togliere. Sul braccio sinistro porta uno scudo tondo che è parte dell'avambraccio; nella destra una <b>lancia</b> lunga e sottile che tiene sempre abbassata, mai puntata, finché non serve.</p>
+<p>L'elmo ha una fessura orizzontale da cui non si vede nulla — Quintanaro non guarda: <b>mira</b>. Il cimiero e i drappi che gli scendono dalle spalle portano i due colori del suo sestiere, e sono l'unica parte di lui che cambia da forma a forma.</p>
+<h4>Differenze tra i sessi</h4>
+<p>Non vi sono differenze visibili tra maschi e femmine.</p>
+
+<h3 id="Comportamento">Comportamento</h3>
+<p>Silenzioso, formale, incapace di rancore verso un avversario e incapace di dimenticare uno sgarbo verso il proprio sestiere. Due Quintanaro di sestieri diversi che si incontrano non si salutano e non si attaccano: si osservano, e uno dei due cambia strada. Se invece si trovano davanti a un bersaglio, partono entrambi.</p>
+<p>In lotta carica sempre in linea retta e sempre tre volte: la prima per misurare, la seconda per correggere, la terza per colpire.</p>
+
+<h3 id="Habitat">Habitat</h3>
+<p>Il centro storico di <b>Ascoli Piceno</b>, ciascuno entro i confini del proprio sestiere, che non oltrepassa quasi mai. In estate si sposta verso <b>Campo Squarcia</b>, dove passa intere giornate a guardare la pista vuota.</p>
+
+<h3 id="Dieta">Dieta</h3>
+<p>Mangia poco e sempre alla stessa ora. Nelle settimane che precedono la giostra smette quasi del tutto, e nessuno è mai riuscito a fargli cambiare abitudine.</p>
+
+<h2 id="Dati_di_gioco">Dati di gioco</h2>
+
+<h3 id="Resistenze">Resistenze e vulnerabilità</h3>
+<p><small>Le efficacie cambiano da forma a forma. Qui sotto è riportata la <b>forma Sant'Emidio</b> (Acciaio/Folletto); il confronto fra tutte e sei è nella sezione <a href="#Sestieri">I sei sestieri</a>.</small></p>
+<div class="effbox">
+  <div class="effrow"><div class="efflabel">Debolezze</div><div class="effcells">
+    <span class="type t-fuoco">Fuoco</span><span class="effx">2×</span>
+    <span class="type t-terra">Terra</span><span class="effx">2×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Resistenze</div><div class="effcells">
+    <span class="type t-coleot">Coleot</span><span class="effx">¼×</span>
+    <span class="type t-normale">Normale</span><span class="effx">½×</span>
+    <span class="type t-erba">Erba</span><span class="effx">½×</span>
+    <span class="type t-ghiaccio">Ghiaccio</span><span class="effx">½×</span>
+    <span class="type t-volante">Volante</span><span class="effx">½×</span>
+    <span class="type t-psico">Psico</span><span class="effx">½×</span>
+    <span class="type t-roccia">Roccia</span><span class="effx">½×</span>
+    <span class="type t-buio">Buio</span><span class="effx">½×</span>
+    <span class="type t-folletto">Folletto</span><span class="effx">½×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Immunità</div><div class="effcells">
+    <span class="type t-veleno">Veleno</span><span class="effx">0×</span>
+    <span class="type t-drago">Drago</span><span class="effx">0×</span>
+  </div></div>
+</div>
+<div class="notabene">Due sole debolezze, nove resistenze e due immunità: la forma Sant'Emidio è di gran lunga la più solida delle sei, e non è un caso — è quella del sestiere della Cattedrale. Il Folletto cancella la debolezza alla Lotta che l'Acciaio si porta dietro.</div>
+
+<h3 id="Evoluzioni">Evoluzioni</h3>
+<div class="evochain">
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm"><a href="tamburino.html">Tamburino</a></div>
+    <span class="type t-normale">Normale</span>
+  </div>
+  <div class="evoarrow"><span class="ar">→</span>Livello 22</div>
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm"><a href="sbandiera.html">Sbandiera</a></div>
+    <span class="type t-normale">Normale</span> <span class="type t-volante">Volante</span>
+  </div>
+  <div class="evoarrow"><span class="ar">→</span>Salendo di livello<br>in un <b>sestiere</b> di Ascoli</div>
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm">Quintanaro</div>
+    <span class="type t-acciaio">Acciaio</span> <span class="type t-normale">+ sestiere</span>
+  </div>
+</div>
+<div class="notabene">L'evoluzione è definitiva: una volta preso il colore di un sestiere, un Quintanaro non lo cambia più. Per avere tutte e sei le forme bisogna crescere sei Sbandiera e farli evolvere in sei posti diversi della stessa città.</div>
+
+<h3 id="Statistiche">Statistiche di base</h3>
+<div class="statbars">
+  <div class="statrow s-ps"><span class="sn">PS</span><span class="sv">85</span><div class="sb"><i style="width:57%"></i></div></div>
+  <div class="statrow s-att"><span class="sn">Attacco</span><span class="sv">115</span><div class="sb"><i style="width:77%"></i></div></div>
+  <div class="statrow s-dif"><span class="sn">Difesa</span><span class="sv">100</span><div class="sb"><i style="width:67%"></i></div></div>
+  <div class="statrow s-asp"><span class="sn">Att. Sp.</span><span class="sv">55</span><div class="sb"><i style="width:37%"></i></div></div>
+  <div class="statrow s-dsp"><span class="sn">Dif. Sp.</span><span class="sv">75</span><div class="sb"><i style="width:50%"></i></div></div>
+  <div class="statrow s-vel"><span class="sn">Velocità</span><span class="sv">60</span><div class="sb"><i style="width:40%"></i></div></div>
+  <div class="statrow"><span class="sn"><b>Totale</b></span><span class="sv"><b>490</b></span><div></div></div>
+</div>
+<div class="notabene">Attaccante fisico corazzato e lento: colpisce durissimo e incassa, ma con 60 di Velocità parte quasi sempre per secondo. È il prezzo dell'armatura, e in gioco significa che <i>Tornata</i> va impostata sapendo di prendere un colpo prima.</div>
+
+<h3 id="Mosse">Mosse apprese</h3>
+<h4>Aumentando di livello</h4>
+<table class="wtable">
+  <tr><th>Lv.</th><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td class="lvl">Evo</td><td class="stab"><b>Tornata</b></td><td><span class="type t-acciaio">Acciaio</span></td><td>Fisico</td><td class="num">30</td><td class="num">100%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">Inizio</td><td>Azione</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">40</td><td class="num">100%</td><td class="num">35</td></tr>
+  <tr><td class="lvl">Inizio</td><td>Attacco Rapido</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">40</td><td class="num">100%</td><td class="num">30</td></tr>
+  <tr><td class="lvl">Inizio</td><td class="stab">Metalartiglio</td><td><span class="type t-acciaio">Acciaio</span></td><td>Fisico</td><td class="num">50</td><td class="num">95%</td><td class="num">35</td></tr>
+  <tr><td class="lvl">26</td><td>Nitrocarica</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">60</td><td class="num">100%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">32</td><td class="stab">Testataferro</td><td><span class="type t-acciaio">Acciaio</span></td><td>Fisico</td><td class="num">80</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">38</td><td>Danzaspada</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">44</td><td>Fossa</td><td><span class="type t-terra">Terra</span></td><td>Fisico</td><td class="num">80</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">50</td><td class="stab">Ferrotestata</td><td><span class="type t-acciaio">Acciaio</span></td><td>Fisico</td><td class="num">100</td><td class="num">75%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">57</td><td>Doppiocolpo</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">35</td><td class="num">90%</td><td class="num">10</td></tr>
+</table>
+<h4>Tramite MT/DT (selezione)</h4>
+<table class="wtable">
+  <tr><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td>Protezione</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Sostituto</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Riposo</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">5</td></tr>
+  <tr><td>Terremoto</td><td><span class="type t-terra">Terra</span></td><td>Fisico</td><td class="num">100</td><td class="num">100%</td><td class="num">10</td></tr>
+</table>
+<p><small>Il <b>grassetto</b> indica una mossa che ha il bonus di tipo (STAB) quando viene usata da un Quintanaro. <b>Tornata</b> è la sua mossa esclusiva: la potenza <b>raddoppia a ogni turno consecutivo</b> in cui viene usata, fino alla terza tornata, poi riparte da capo. Sono i tre assalti della giostra: la prima passata misura, la seconda corregge, la terza colpisce. Descrizione in gioco: «Alla terza non sbaglia».</small></p>
+
+<h3 id="Voci">Voci Pokédex</h3>
+<div class="dexentries">
+  <p><span class="ver">Versione Tronto</span> — <i>Nell'elmo ha una fessura da cui non si vede quasi nulla. Non gli serve guardare: gli serve sapere dov'è il centro.</i></p>
+  <p><span class="ver">Versione Laga</span> — <i>Porta i colori del luogo in cui è cresciuto e non li cambia per nessun motivo. Due Quintanaro di sestieri diversi non si salutano, ma davanti a un bersaglio partono insieme.</i></p>
+</div>
+
+<h2 id="Sestieri">I sei sestieri</h2>
+<div class="itembox">
+  <svg width="46" height="46"><use href="#icon-scudo"/></svg>
+  <div><b>Sei forme, un solo Pokémon.</b> Ad Ascoli i sestieri sono sei, ciascuno con i propri colori, la propria sede e il proprio pezzo di città. Un Quintanaro appartiene per sempre a quello in cui si è evoluto: cambia il cimiero, cambiano i drappi, e cambia il modo in cui combatte. La base resta <b>Acciaio</b>; il secondo tipo lo dà il sestiere.</div>
+</div>
+<table class="wtable">
+  <tr><th>Sestiere</th><th>Colori</th><th>Tipo</th><th>In lotta</th></tr>
+  <tr><td><b>Piazzarola</b></td><td>bianco e rosso</td><td><span class="type t-acciaio">Acciaio</span> <span class="type t-roccia">Roccia</span></td><td>Il più corazzato e il più esposto: <b>4×</b> a Lotta e Terra, ma ¼ a Normale e Volante.</td></tr>
+  <tr><td><b>Porta Maggiore</b></td><td>nero e verde</td><td><span class="type t-acciaio">Acciaio</span> <span class="type t-buio">Buio</span></td><td>Due immunità (Veleno e Psico) al prezzo di una <b>4×</b> alla Lotta.</td></tr>
+  <tr><td><b>Porta Romana</b></td><td>rosso e azzurro</td><td><span class="type t-acciaio">Acciaio</span> <span class="type t-psico">Psico</span></td><td>Nessuna debolezza raddoppiata; teme Fuoco, Terra, Spettro e Buio.</td></tr>
+  <tr><td><b>Porta Solestà</b></td><td>giallo e blu</td><td><span class="type t-acciaio">Acciaio</span> <span class="type t-acqua">Acqua</span></td><td>Perde la debolezza al Fuoco: solo tre punti deboli, Lotta, Terra ed Elettro.</td></tr>
+  <tr><td><b>Porta Tufilla</b></td><td>rosso e nero</td><td><span class="type t-acciaio">Acciaio</span> <span class="type t-fuoco">Fuoco</span></td><td>Nove resistenze, ma <b>4×</b> alla Terra: o domina o cade in un colpo.</td></tr>
+  <tr><td><b>Sant'Emidio</b></td><td>rosso e verde</td><td><span class="type t-acciaio">Acciaio</span> <span class="type t-folletto">Folletto</span></td><td>La più solida: due sole debolezze, nove resistenze, due immunità.</td></tr>
+</table>
+<div class="notabene">La scelta del sestiere non è cosmetica: fra la forma Sant'Emidio e la forma Piazzarola cambia il modo di giocare la squadra intera. È anche il motivo per cui, ad Ascoli, la domanda «di che sestiere sei?» non è mai una domanda innocente.</div>
+
+<h2 id="Curiosita">Curiosità</h2>
+<ul>
+  <li>È l'unico Pokémon del Pokédex del Piceno con <b>forme multiple</b>, e l'unico il cui tipo dipende dal luogo dell'evoluzione.</li>
+  <li>Le sei forme differiscono solo nei colori: sotto l'armatura sono identiche, il che è esattamente ciò che accade nel corteo vero.</li>
+  <li>La sua mossa <i>Tornata</i> riproduce le tre passate della giostra sulla pista a forma di otto.</li>
+  <li>Passa le giornate d'estate a guardare la pista vuota di Campo Squarcia: aspetta il fantoccio girevole che vi compare due volte l'anno.</li>
+  <li>Non è mai stato osservato un Quintanaro allo stato brado: esistono solo quelli cresciuti da uno <a href="sbandiera.html">Sbandiera</a>.</li>
+</ul>
+<h3>Origine</h3>
+<p>Quintanaro è il <b>cavaliere della Giostra della Quintana</b> di Ascoli Piceno, che due volte l'anno — a luglio per la Madonna della Pace e la prima domenica d'agosto per Sant'Emidio — corre tre tornate su una pista a otto per colpire il bersaglio sullo scudo del <b>Moro</b>, un fantoccio girevole che sul braccio opposto portava un flagello per chi passava troppo lento. I sei sestieri reali sono Piazzarola, Porta Maggiore, Porta Romana, Porta Solestà, Porta Tufilla e Sant'Emidio.</p>
+<h4>Origine del nome</h4>
+<p><b>Quintanaro</b> è il nome con cui ad Ascoli si chiama chi vive la Quintana: non il cavaliere soltanto, ma chiunque appartenga a un sestiere. La specie porta il nome dell'appartenenza, non del mestiere.</p>
+<p>Il nome giapponese, ロクマチキシ <i>Rokumachikishi</i>, unisce 六町 <i>rokumachi</i> ("sei quartieri") e 騎士 <i>kishi</i> ("cavaliere").</p>
+
+<h2 id="Lingue">In altre lingue</h2>
+<table class="wtable">
+  <tr><th>Lingua</th><th>Nome</th><th>Origine</th></tr>
+  <tr><td><b>Giapponese</b></td><td>ロクマチキシ <i>Rokumachikishi</i></td><td>Da <i>rokumachi</i>, "sei quartieri", e <i>kishi</i>, "cavaliere".</td></tr>
+  <tr><td><b>Inglese</b></td><td>Quintanaro</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Francese</b></td><td>Quintanaro</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Spagnolo</b></td><td>Quintanaro</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Tedesco</b></td><td>Quintanaro</td><td>Uguale al nome italiano.</td></tr>
+</table>
+
+<h2>Vedi anche</h2>
+<ul>
+  <li><a href="tamburino.html">Tamburino</a> e <a href="sbandiera.html">Sbandiera</a> — le sue pre-evoluzioni</li>
+  <li><a href="carpentrap.html">Carpentrap</a> — l'altro Pokémon d'acciaio del centro di Ascoli</li>
+</ul>
+
+<div class="dexnav">
+  <span><a href="sbandiera.html">← #018: Sbandiera</a></span>
+  <span class="mid">#019 Quintanaro</span>
+  <span class="dim">#020: ??? →</span>
+</div>
+
+<div class="cats"><b>Categorie:</b> Pokémon · Pokémon della regione Piceno · Pokémon di tipo Acciaio · Pokémon di doppio tipo · Pokémon con forme multiple · Gruppo Uova Umanoide · Pokémon di colore Grigio · Linea evolutiva della Quintana</div>
+<div class="footer">Pagina fan-made ispirata al formato di Pokémon Central Wiki. La Giostra della Quintana, i suoi sei sestieri e la Sfida al Moro sono reali.</div>
+</div>
+</body>
+</html>

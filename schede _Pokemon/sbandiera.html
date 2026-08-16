@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sbandiera - Pokédex del Piceno</title>
+<style>
+:root{
+  --border:#a2a9b1; --panel:#f8f9fa; --text:#202122; --link:#3366cc; --red:#ba0000;
+  --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
+  --terra:#E0C068; --acqua:#6890F0; --lotta:#C03028; --acciaio:#B8B8D0;
+  --fuoco:#F08030; --volante:#A890F0; --psico:#F85888; --spettro:#705898;
+  --buio:#705848; --drago:#7038F8; --elettro:#F8D030; --folletto:#EE99AC;
+  --ghiaccio:#98D8D8; --coleot:#A8B820;
+  --accent1:#c9b04a; --accent2:#9a8fd8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--text);font:14px/1.6 "Segoe UI","Helvetica Neue",Arial,sans-serif}
+.page{max-width:1080px;margin:0 auto;padding:14px 20px 40px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+a.new{color:var(--red)}
+h1,h2{font-family:"Linux Libertine",Georgia,"Times New Roman",serif;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:4px;margin:20px 0 12px}
+h1{font-size:30px;margin-top:6px}
+h2{font-size:23px}
+h3{font-size:17px;margin:18px 0 8px}
+h4{font-size:15px;margin:14px 0 6px}
+.sitenotice{font-size:12px;color:#54595d;border-bottom:1px solid #eaecf0;padding-bottom:6px}
+.dexnav{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#f2efe2,#f8f9fa,#efe9f0);border:1px solid var(--border);border-radius:6px;padding:8px 14px;margin:12px 0;font-size:13px}
+.dexnav .mid{font-weight:700}
+.dexnav .dim{color:#9a9fa5}
+.type{display:inline-block;padding:2px 11px;border-radius:4px;color:#fff;font-weight:600;font-size:12px;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.18)}
+.t-roccia{background:var(--roccia)} .t-normale{background:var(--normale)} .t-veleno{background:var(--veleno)}
+.t-erba{background:var(--erba)} .t-terra{background:var(--terra);color:#5b4a12;text-shadow:none} .t-acqua{background:var(--acqua)}
+.t-lotta{background:var(--lotta)} .t-acciaio{background:var(--acciaio);color:#43436b;text-shadow:none} .t-fuoco{background:var(--fuoco)}
+.t-volante{background:var(--volante)} .t-psico{background:var(--psico)} .t-spettro{background:var(--spettro)}
+.t-buio{background:var(--buio)} .t-drago{background:var(--drago)} .t-elettro{background:var(--elettro);color:#6b5a10;text-shadow:none}
+.t-folletto{background:var(--folletto);color:#7c3350;text-shadow:none} .t-ghiaccio{background:var(--ghiaccio);color:#2a6a6a;text-shadow:none} .t-coleot{background:var(--coleot)}
+.infobox{float:right;width:308px;margin:0 0 16px 22px;border:1px solid var(--border);background:var(--panel);border-radius:8px;overflow:hidden;font-size:12.5px}
+.infobox .head{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff;text-align:center;padding:8px 10px}
+.infobox .head .num{font-size:12px;opacity:.9}
+.infobox .head .name{font-size:20px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.infobox .head .cat{font-size:12px;font-style:italic}
+.infobox .art{background:#fff;padding:8px;text-align:center;border-bottom:1px solid #eaecf0}
+.infobox .art svg{width:236px;height:236px}
+.infobox .art img{width:236px;height:236px;object-fit:contain}
+.artph{width:236px;height:236px;margin:0 auto;border:2px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;color:#72777d;font-size:12px;padding:10px;background:#fcfcfc}
+.infobox .art .capt{font-size:11px;color:#54595d}
+.infobox table{width:100%;border-collapse:collapse}
+.infobox th{background:#eef0f2;text-align:left;padding:5px 9px;width:41%;font-weight:600;vertical-align:top;border-top:1px solid #eaecf0}
+.infobox td{padding:5px 9px;border-top:1px solid #eaecf0;vertical-align:top}
+.infobox .lang{display:flex;justify-content:center;gap:14px;background:#eef0f2;padding:4px;font-size:11.5px;color:#54595d}
+.toc{display:inline-block;border:1px solid var(--border);background:var(--panel);padding:10px 18px;border-radius:6px;font-size:13px;margin:8px 0 4px}
+.toc .toctitle{font-weight:700;text-align:center}
+.toc ol{margin:6px 0 0;padding-left:22px}
+.toc ol ol{margin:0}
+.intro b.pkmn{font-size:15px}
+.wtable{border-collapse:collapse;margin:10px 0;font-size:13px}
+.wtable th,.wtable td{border:1px solid var(--border);padding:5px 10px}
+.wtable th{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff}
+.wtable td{background:#fff}
+.wtable tr:nth-child(even) td{background:#fafbfc}
+.wtable .lvl{text-align:center;font-weight:600}
+.wtable .num{text-align:center}
+.stab{font-weight:700}
+.effbox{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin:10px 0;max-width:760px}
+.effrow{display:flex;border-top:1px solid var(--border)}
+.effrow:first-child{border-top:none}
+.efflabel{width:130px;flex:0 0 130px;background:#eef0f2;padding:8px;font-weight:600;display:flex;align-items:center;font-size:12.5px}
+.effcells{padding:7px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;background:#fff}
+.effx{font-size:11px;color:#54595d;margin-left:2px}
+.evochain{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin:14px 0}
+.evocard{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:10px 12px;text-align:center;width:172px}
+.evocard svg{width:118px;height:118px}
+.evocard img{width:118px;height:118px;object-fit:contain}
+.evocard .nm{font-weight:700;margin:2px 0 6px}
+.evoarrow{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:11.5px;color:#54595d;width:130px;padding:0 4px}
+.evoarrow .ar{font-size:26px;color:#8b8f94;line-height:1}
+.statbars{max-width:640px}
+.statrow{display:flex;align-items:center;gap:10px;margin:4px 0}
+.statrow .sn{width:78px;flex:0 0 78px;font-weight:600;font-size:12.5px}
+.statrow .sv{width:34px;flex:0 0 34px;text-align:right;font-weight:700;font-size:13px}
+.statrow .sb{flex:1;background:#eef0f2;border:1px solid #dfe3e8;border-radius:4px;height:14px;overflow:hidden}
+.statrow .sb i{display:block;height:100%;border-radius:3px}
+.s-ps i{background:#FF5959}.s-att i{background:#F5AC78}.s-dif i{background:#FAE078}
+.s-asp i{background:#9DB7F5}.s-dsp i{background:#A7DB8D}.s-vel i{background:#FA92B2}
+.dexentries{max-width:820px}
+.dexentries .ver{font-weight:700}
+.itembox{border:1px solid #7fb1d8;background:#f0f7fc;border-radius:8px;padding:12px 16px;margin:14px 0;max-width:760px;display:flex;gap:14px;align-items:flex-start}
+.itembox svg{flex:0 0 46px}
+.notabene{border-left:4px solid var(--accent1);background:var(--panel);padding:8px 14px;margin:10px 0;max-width:780px;font-size:13px}
+.cats{border:1px solid var(--border);background:var(--panel);border-radius:6px;padding:8px 14px;margin-top:34px;font-size:12.5px}
+.footer{font-size:11.5px;color:#54595d;margin-top:14px}
+ul{margin:6px 0}
+@media (max-width:760px){
+  .infobox{float:none;width:100%;margin:12px 0}
+  .efflabel{width:96px;flex-basis:96px}
+  .evoarrow{width:100%}
+}
+@media (prefers-reduced-motion: no-preference){
+  .evocard:hover{box-shadow:0 2px 8px rgba(0,0,0,.12);transition:box-shadow .2s}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="impronta-sbandiera" viewBox="0 0 40 40">
+  <path d="M13 4 v32" stroke="#54595d" stroke-width="3" stroke-linecap="round"/>
+  <path d="M14 6 q10 3 18 -1 q-4 8 0 15 q-9 4 -18 1 z" fill="#54595d"/>
+</symbol>
+<symbol id="icon-bandiera" viewBox="0 0 48 48">
+  <path d="M14 4 v40" stroke="#9c8f74" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M16 7 q12 4 22 -1 q-5 10 0 18 q-11 5 -22 1 z" fill="#e0c94a" stroke="#a08f2c" stroke-width="1.4"/>
+  <path d="M16 16 q11 4 22 0" stroke="#3b6fb5" stroke-width="3" fill="none"/>
+  <circle cx="14" cy="4" r="2.6" fill="#9c8f74"/>
+</symbol>
+</defs>
+</svg>
+<div class="page">
+<div class="sitenotice"><a href="index.html"><b>← Wikascolemon</b></a> · da <b>Pokédex del Piceno</b>, l'enciclopedia (immaginaria) dei Pokémon della regione Piceno. <i>Pagina fan-made nel formato di Pokémon Central Wiki.</i></div>
+
+<div class="dexnav">
+  <span><a href="tamburino.html">← #017: Tamburino</a></span>
+  <span class="mid">#018 Sbandiera</span>
+  <span><a href="quintanaro.html">#019: Quintanaro →</a></span>
+</div>
+
+<h1>Sbandiera</h1>
+
+<div class="infobox">
+  <div class="head">
+    <div class="num">Pokédex del Piceno #018</div>
+    <div class="name">Sbandiera</div>
+    <div class="cat">Pokémon Vessillo</div>
+  </div>
+  <div class="art">
+    <div class="artph">Artwork di Sbandiera<br>in arrivo</div>
+    <div class="capt">Artwork di Sbandiera</div>
+  </div>
+  <div class="lang"><span>EN: Sbandiera</span><span>JA: ハタマワシ <i>Hatamawashi</i></span></div>
+  <table>
+    <tr><th>Tipo</th><td><span class="type t-normale">Normale</span> <span class="type t-volante">Volante</span></td></tr>
+    <tr><th>Abilità</th><td>Sguardofermo (prima)<br><i>Intimidazione</i> (speciale)</td></tr>
+    <tr><th>Sesso</th><td>50% maschi · 50% femmine</td></tr>
+    <tr><th>Altezza</th><td>1,3 m</td></tr>
+    <tr><th>Peso</th><td>34,0 kg</td></tr>
+    <tr><th>Tasso di cattura</th><td>120 (26,7%)</td></tr>
+    <tr><th>Uovo</th><td>Gruppo Umanoide<br>20 cicli (min. 5120 passi)</td></tr>
+    <tr><th>Pokédex regionali</th><td>Piceno #018</td></tr>
+    <tr><th>Tasso di allevamento</th><td>Medio-veloce</td></tr>
+    <tr><th>Esperienza base ceduta</th><td>142</td></tr>
+    <tr><th>Punti base ceduti</th><td>Totale: 2 — Velocità 2</td></tr>
+    <tr><th>Colore Pokédex</th><td>Giallo</td></tr>
+    <tr><th>Impronta</th><td><svg width="26" height="26"><use href="#impronta-sbandiera"/></svg></td></tr>
+    <tr><th>Affetto di base</th><td>70</td></tr>
+  </table>
+</div>
+
+<p class="intro"><b class="pkmn">Sbandiera</b> è un Pokémon di doppio tipo <b>Normale</b>/<b>Volante</b> di <b>Ascoli Piceno</b>, stadio intermedio della linea del corteo della <b>Quintana</b>. È lo sbandieratore: la bandiera che lancia in aria non cade mai, e non è mai stato chiarito se la riprenda lui o se torni da sola.</p>
+<p>Si <a href="#Evoluzioni">evolve</a> in <a href="quintanaro.html">Quintanaro</a> salendo di livello dentro uno dei <b>sei sestieri</b> di Ascoli: quello in cui si trova al momento dell'evoluzione decide per sempre i suoi colori.</p>
+
+<div class="toc">
+  <div class="toctitle">Indice</div>
+  <ol>
+    <li><a href="#Biologia">Biologia</a>
+      <ol>
+        <li><a href="#Fisionomia">Fisionomia</a></li>
+        <li><a href="#Comportamento">Comportamento</a></li>
+        <li><a href="#Habitat">Habitat</a></li>
+        <li><a href="#Dieta">Dieta</a></li>
+      </ol>
+    </li>
+    <li><a href="#Dati_di_gioco">Dati di gioco</a>
+      <ol>
+        <li><a href="#Resistenze">Resistenze e vulnerabilità</a></li>
+        <li><a href="#Evoluzioni">Evoluzioni</a></li>
+        <li><a href="#Statistiche">Statistiche di base</a></li>
+        <li><a href="#Mosse">Mosse apprese</a></li>
+        <li><a href="#Voci">Voci Pokédex</a></li>
+      </ol>
+    </li>
+    <li><a href="#Lancio">Il lancio</a></li>
+    <li><a href="#Curiosita">Curiosità</a></li>
+    <li><a href="#Lingue">In altre lingue</a></li>
+  </ol>
+</div>
+
+<h2 id="Biologia">Biologia</h2>
+
+<h3 id="Fisionomia">Fisionomia</h3>
+<p>Sbandiera è slanciato e asciutto, alto quanto un ragazzo. Le braccia sono lunghe e finiscono in <b>mani a tre dita</b> fatte per stringere l'asta. Sulla schiena porta due <b>drappi</b> di stoffa pesante che tiene arrotolati e che apre solo quando serve: aperti sono più larghi di lui e funzionano da vele. Non ha ali — <b>plana</b>, e lo fa reggendosi alla propria bandiera.</p>
+<p>I colori dei drappi restano indefiniti, tra il crema e l'ocra, finché non si evolve: è l'unico stadio della linea che non appartiene ancora a nessuno.</p>
+<h4>Differenze tra i sessi</h4>
+<p>Non vi sono differenze visibili tra maschi e femmine.</p>
+
+<h3 id="Comportamento">Comportamento</h3>
+<p>Passa le giornate a lanciare qualunque cosa in aria e a riprenderla. Lo fa da solo per ore, e sbaglia pochissimo. È vanitoso: se qualcuno lo guarda, alza il lancio; se nessuno lo guarda, si allena lo stesso, ma senza esagerare.</p>
+<p>In lotta apre i drappi tutti insieme per apparire il doppio: quasi sempre l'avversario indietreggia prima ancora del primo colpo.</p>
+
+<h3 id="Habitat">Habitat</h3>
+<p>Piazze, cortili e mura di <b>Ascoli Piceno</b>. Predilige i posti da cui si può saltare in basso senza farsi male: scalinate, terrazzi, il parapetto del ponte. Non lo si trova in campagna, dove non c'è nessuno che guardi.</p>
+
+<h3 id="Dieta">Dieta</h3>
+<p>Onnivoro. Mangia poco e in fretta, sempre in piedi e con un occhio all'asta appoggiata al muro.</p>
+
+<h2 id="Dati_di_gioco">Dati di gioco</h2>
+
+<h3 id="Resistenze">Resistenze e vulnerabilità</h3>
+<div class="effbox">
+  <div class="effrow"><div class="efflabel">Debolezze</div><div class="effcells">
+    <span class="type t-elettro">Elettro</span><span class="effx">2×</span>
+    <span class="type t-ghiaccio">Ghiaccio</span><span class="effx">2×</span>
+    <span class="type t-roccia">Roccia</span><span class="effx">2×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Resistenze</div><div class="effcells">
+    <span class="type t-erba">Erba</span><span class="effx">½×</span>
+    <span class="type t-coleot">Coleot</span><span class="effx">½×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Immunità</div><div class="effcells">
+    <span class="type t-spettro">Spettro</span><span class="effx">0×</span>
+    <span class="type t-terra">Terra</span><span class="effx">0×</span>
+  </div></div>
+</div>
+<div class="notabene">Il Volante cancella la debolezza alla Lotta del Normale e aggiunge l'immunità alla Terra: <b>due immunità</b> in cambio di tre debolezze comuni. È il profilo classico degli uccelli di inizio gioco, e qui arriva da uno che non vola nemmeno.</div>
+
+<h3 id="Evoluzioni">Evoluzioni</h3>
+<div class="evochain">
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm"><a href="tamburino.html">Tamburino</a></div>
+    <span class="type t-normale">Normale</span>
+  </div>
+  <div class="evoarrow"><span class="ar">→</span>Livello 22</div>
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm">Sbandiera</div>
+    <span class="type t-normale">Normale</span> <span class="type t-volante">Volante</span>
+  </div>
+  <div class="evoarrow"><span class="ar">→</span>Salendo di livello<br>in un <b>sestiere</b> di Ascoli</div>
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm"><a href="quintanaro.html">Quintanaro</a></div>
+    <span class="type t-acciaio">Acciaio</span> <span class="type t-normale">+ sestiere</span>
+  </div>
+</div>
+<div class="notabene">È lo snodo della linea: il sestiere in cui Sbandiera si evolve determina il secondo tipo del <a href="quintanaro.html">Quintanaro</a> e non è più modificabile. Sei luoghi, sei esiti diversi.</div>
+
+<h3 id="Statistiche">Statistiche di base</h3>
+<div class="statbars">
+  <div class="statrow s-ps"><span class="sn">PS</span><span class="sv">65</span><div class="sb"><i style="width:43%"></i></div></div>
+  <div class="statrow s-att"><span class="sn">Attacco</span><span class="sv">80</span><div class="sb"><i style="width:53%"></i></div></div>
+  <div class="statrow s-dif"><span class="sn">Difesa</span><span class="sv">60</span><div class="sb"><i style="width:40%"></i></div></div>
+  <div class="statrow s-asp"><span class="sn">Att. Sp.</span><span class="sv">55</span><div class="sb"><i style="width:37%"></i></div></div>
+  <div class="statrow s-dsp"><span class="sn">Dif. Sp.</span><span class="sv">60</span><div class="sb"><i style="width:40%"></i></div></div>
+  <div class="statrow s-vel"><span class="sn">Velocità</span><span class="sv">80</span><div class="sb"><i style="width:53%"></i></div></div>
+  <div class="statrow"><span class="sn"><b>Totale</b></span><span class="sv"><b>400</b></span><div></div></div>
+</div>
+<div class="notabene">Quattrocento equilibrati sull'Attacco e sulla Velocità: uno stadio intermedio che si usa volentieri per un bel pezzo di gioco, senza essere una scelta definitiva.</div>
+
+<h3 id="Mosse">Mosse apprese</h3>
+<h4>Aumentando di livello</h4>
+<table class="wtable">
+  <tr><th>Lv.</th><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td class="lvl">Evo</td><td class="stab">Attacco d'Ala</td><td><span class="type t-volante">Volante</span></td><td>Fisico</td><td class="num">60</td><td class="num">100%</td><td class="num">35</td></tr>
+  <tr><td class="lvl">Inizio</td><td class="stab">Azione</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">40</td><td class="num">100%</td><td class="num">35</td></tr>
+  <tr><td class="lvl">Inizio</td><td class="stab">Attacco Rapido</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">40</td><td class="num">100%</td><td class="num">30</td></tr>
+  <tr><td class="lvl">15</td><td class="stab">Urlorabbia</td><td><span class="type t-normale">Normale</span></td><td>Speciale</td><td class="num">50</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">19</td><td>Agilità</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">30</td></tr>
+  <tr><td class="lvl">26</td><td class="stab">Turbine</td><td><span class="type t-volante">Volante</span></td><td>Speciale</td><td class="num">40</td><td class="num">100%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">31</td><td class="stab">Corposcontro</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">85</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">37</td><td class="stab">Aeroassalto</td><td><span class="type t-volante">Volante</span></td><td>Fisico</td><td class="num">75</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">43</td><td>Danzaspada</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">49</td><td class="stab">Vento di Bandiera</td><td><span class="type t-volante">Volante</span></td><td>Fisico</td><td class="num">90</td><td class="num">95%</td><td class="num">10</td></tr>
+</table>
+<h4>Tramite MT/DT (selezione)</h4>
+<table class="wtable">
+  <tr><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td>Protezione</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Sostituto</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Riposo</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">5</td></tr>
+  <tr><td>Facciata</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">70</td><td class="num">100%</td><td class="num">20</td></tr>
+</table>
+<p><small>Il <b>grassetto</b> indica una mossa che ha il bonus di tipo (STAB) quando viene usata da uno Sbandiera. <b>Vento di Bandiera</b> è la mossa caratteristica della specie: il drappo aperto colpisce di taglio e può far indietreggiare l'avversario.</small></p>
+
+<h3 id="Voci">Voci Pokédex</h3>
+<div class="dexentries">
+  <p><span class="ver">Versione Tronto</span> — <i>Lancia la bandiera più in alto del campanile e la riprende senza guardare. Nessuno ha mai capito se sia lui a riprenderla o lei a tornare.</i></p>
+  <p><span class="ver">Versione Laga</span> — <i>I suoi drappi non hanno ancora colore. Li prenderà il giorno in cui sceglierà da che parte stare, e da quel giorno non cambierà più.</i></p>
+</div>
+
+<h2 id="Lancio">Il lancio</h2>
+<div class="itembox">
+  <svg width="46" height="46"><use href="#icon-bandiera"/></svg>
+  <div><b>Aria e stoffa.</b> Nel corteo gli sbandieratori sono la parte che tutti aspettano: lanci incrociati, bandiere che si sfiorano a mezz'aria e ricadono in mano al lanciatore giusto. Per uno Sbandiera non è spettacolo — è il modo in cui si misura con gli altri della sua età. Chi sbaglia due lanci di fila resta indietro di un anno, e non si evolve.</div>
+</div>
+
+<h2 id="Curiosita">Curiosità</h2>
+<ul>
+  <li>Non ha ali, eppure è di tipo Volante: plana aggrappato alla propria bandiera.</li>
+  <li>È l'unico Pokémon del Piceno i cui colori non sono ancora definiti: li acquista solo evolvendosi.</li>
+  <li>L'immunità alla Terra gli arriva dal Volante, ed è il motivo per cui in lotta salta i terremoti restando appeso al drappo.</li>
+  <li>La sua abilità <i>Intimidazione</i> è letterale: apre i drappi e sembra il doppio.</li>
+</ul>
+<h3>Origine</h3>
+<p>Sbandiera è lo <b>sbandieratore</b> del corteo della Quintana di Ascoli Piceno, una delle figure più riconoscibili della rievocazione insieme ai musici con chiarine e tamburi. La bandiera pesante, l'asta lunga e i lanci incrociati sono quelli veri dei gruppi dei sestieri.</p>
+<h4>Origine del nome</h4>
+<p><b>Sbandiera</b> viene dal verbo <i>sbandierare</i>, e conserva anche il secondo significato: mettere in mostra. È il tratto che lo definisce.</p>
+<p>Il nome giapponese, ハタマワシ <i>Hatamawashi</i>, unisce 旗 <i>hata</i> ("bandiera") e 回し <i>mawashi</i> ("far roteare").</p>
+
+<h2 id="Lingue">In altre lingue</h2>
+<table class="wtable">
+  <tr><th>Lingua</th><th>Nome</th><th>Origine</th></tr>
+  <tr><td><b>Giapponese</b></td><td>ハタマワシ <i>Hatamawashi</i></td><td>Da <i>hata</i>, "bandiera", e <i>mawashi</i>, "roteare".</td></tr>
+  <tr><td><b>Inglese</b></td><td>Sbandiera</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Francese</b></td><td>Sbandiera</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Spagnolo</b></td><td>Sbandiera</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Tedesco</b></td><td>Sbandiera</td><td>Uguale al nome italiano.</td></tr>
+</table>
+
+<h2>Vedi anche</h2>
+<ul>
+  <li><a href="tamburino.html">Tamburino</a> — la sua pre-evoluzione</li>
+  <li><a href="quintanaro.html">Quintanaro</a> — la sua evoluzione, e le sue sei forme</li>
+</ul>
+
+<div class="dexnav">
+  <span><a href="tamburino.html">← #017: Tamburino</a></span>
+  <span class="mid">#018 Sbandiera</span>
+  <span><a href="quintanaro.html">#019: Quintanaro →</a></span>
+</div>
+
+<div class="cats"><b>Categorie:</b> Pokémon · Pokémon della regione Piceno · Pokémon di tipo Normale · Pokémon di tipo Volante · Pokémon di doppio tipo · Gruppo Uova Umanoide · Pokémon di colore Giallo · Linea evolutiva della Quintana</div>
+<div class="footer">Pagina fan-made ispirata al formato di Pokémon Central Wiki. Gli sbandieratori del corteo della Quintana di Ascoli Piceno sono reali.</div>
+</div>
+</body>
+</html>

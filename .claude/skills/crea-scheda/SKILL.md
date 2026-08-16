@@ -19,7 +19,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #004-#006 | Linea starter Fuoco: Puledrotto, Cavalbrace, Fuocavallo ✅ |
 | #007-#009 | Linea starter Acqua: Tuffito, Brasero, Compadrone ✅ |
 | #010-#014 | Banconio · Bree → Felignoto · Carpentrap · Spesurde ✅ |
-| #015-#043 | Libero |
+| #015-#019 | Anicino → Anisetta · Tamburino → Sbandiera → Quintanaro ✅ *(bozze)* |
+| #020-#043 | Libero |
 | #044-#049 | Pito, Pozza, Umito, Segaccio, Venagrox, Ciccharizard ✅ |
 | #050-#149 | Libero |
 | **#150** | **Pretalien ✅ — chiude il Pokédex.** Numero finale: non superarlo e non riassegnarlo. |
