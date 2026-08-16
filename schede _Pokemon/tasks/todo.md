@@ -164,3 +164,65 @@ La mappa esistente (`mappa_piceno_1.html`, PNG 1024×640 in base64) è il mondo 
 - Il ripristino reinserisce soltanto gli elementi base mancanti e non modifica gli elementi creati dall'utente.
 - Non restano copie visive dell'elemento eliminato nello sfondo SVG.
 - Spawn, POI e coordinate 1024×640 rimangono invariati.
+
+---
+
+# Piano approvato: demo statica "Pokémon Ascoli"
+
+## Ambito della prima demo
+
+- Creare in `Pokemon_Ascoli/` un gioco browser statico, in italiano, senza trama e con ambientazione diurna fissa.
+- Usare una griglia reale a celle da 16×16 pixel, visuale top-down originale ispirata ai JRPG portatili di terza generazione, viewport logica 240×160 e scaling senza smoothing.
+- Avviare la partita all'uscita della stazione ferroviaria di Ascoli Piceno; mostrare subito la scelta dello starter tra Basilino, Puledrotto e Tuffito al livello 5.
+- Usare lo sprite provvisorio di Oliver fornito dall'utente, con movimento cella per cella, quattro direzioni, animazione e telecamera a inseguimento.
+- Realizzare sette mappe esterne collegate: Centro Storico, Porta Maggiore, Monticelli, Campo Parignano, Borgo Chiaro, Borgo Solestà e Porta Cartara. Gli interni restano fuori da questa fase.
+
+## Geografia e collegamenti approvati
+
+- Centro Storico: Piazza del Popolo, Piazza Arringo, Cattedrale e Battistero, Palazzo dei Capitani e Teatro Ventidio Basso; incontri urbani a bassa frequenza.
+- Porta Maggiore: stazione iniziale, Piazza Immacolata e Ponte di Porta Maggiore; incontri nelle aree verdi e periferiche.
+- Monticelli: Ospedale Mazzoni, Little Bar, benzinaio di fronte all'ospedale e Pizzeria Mosè; incontri nelle celle esterne attorno ai quattro luoghi con uguale probabilità.
+- Campo Parignano: Cinema Odeon, Chiesa del Sacro Cuore e Sant'Emidio alle Grotte; quest'ultima area è esplorabile, inizialmente vuota e con incontri molto rari.
+- Borgo Chiaro: Stadio Cino e Lillo Del Duca e aree esterne circostanti come zona incontri.
+- Borgo Solestà: Porta Solestà, Ponte Romano, asse urbano, area verde/sportiva e margine collinare.
+- Porta Cartara: Rio Castellano, rive esplorabili con incontri e acqua non attraversabile; ponte pedonale verso il Centro Storico.
+- Collegamenti: Centro–Porta Maggiore, Porta Maggiore–Monticelli, Centro–Campo Parignano, Campo Parignano–Borgo Chiaro, Centro–Borgo Solestà, Borgo Solestà–Campo Parignano, Borgo Solestà–Borgo Chiaro, Borgo Chiaro–Porta Maggiore e Centro–Porta Cartara.
+- Dimensionare i percorsi per circa due minuti di attraversamento medio per quartiere, mantenendo la geografia riconoscibile ma compressa.
+
+## Sistemi di gioco
+
+- Incontri casuali soltanto nelle celle configurate; tabelle per quartiere con specie, livello minimo/massimo, peso e frequenza modificabili.
+- Dati delle schede HTML come fonte per nomi, tipi, statistiche, mosse, livelli ed evoluzioni; usare nella demo i Pokémon base che dispongono di sprite.
+- Lotta a turni essenziale con quattro mosse, PS, statistiche e tipi, cambio, borsa, fuga e cattura; niente abilità o effetti avanzati nella prima demo.
+- Inventario iniziale: 10 Ball e 5 Pozioni. Squadra massima di sei; catture eccedenti nel Deposito accessibile dal menu.
+- Menu: Squadra, Borsa, Pokédex, Deposito, Salva e Impostazioni. Pokédex con sagoma/dati minimi dopo l'avvistamento, dati completi e collegamento alla scheda HTML dopo la cattura.
+- Sconfitta totale: ritorno alla stazione, squadra curata e nessuna perdita di strumenti.
+- Controlli tastiera/frecce/WASD e comandi touch; salvataggio automatico locale, esportazione/importazione JSON e ripristino.
+- Effetti sonori essenziali; musica rimandata.
+
+## Configuratore
+
+- Fornire un editor visuale per selezionare il quartiere e modificare tile, collisioni, passaggi, zone e tabelle incontri, edifici/attività e NPC.
+- Salvare le modifiche in `localStorage` e permettere esportazione/importazione JSON compatibile con il gioco.
+- Lasciare attività commerciali, livelli, rarità, dialoghi e movimenti NPC modificabili senza intervenire sul codice.
+
+## Task
+
+- [x] 1. Creare struttura statica, dati condivisi e controlli di integrità delle schede/sprite.
+- [x] 2. Implementare rendering pixel-perfect, sette tilemap, collisioni, movimento, telecamera e transizioni.
+- [x] 3. Integrare sprite provvisorio di Oliver, controlli desktop/touch e schermata starter.
+- [x] 4. Implementare incontri, battaglie, cattura, squadra, deposito, inventario e sconfitta.
+- [x] 5. Implementare menu, Pokédex, salvataggio automatico ed export/import/reset JSON.
+- [x] 6. Implementare configuratore visuale completo e compatibile con i dati del gioco.
+- [x] 7. Aggiungere NPC ambientali essenziali e relativi controlli configurabili.
+- [ ] 8. Eseguire regressioni automatiche, test browser desktop/mobile e verifica del funzionamento statico.
+  - [x] Regressioni automatiche, asset e flusso desktop: avvio, starter, movimento, menu, incontro, lotta, Pozione e cattura.
+  - [ ] Ripetere la verifica visiva con viewport mobile: il controllo del browser si è disconnesso durante il cambio di viewport.
+
+## Criteri di accettazione
+
+- Il gioco si avvia senza server e senza dipendenze esterne moderne, funziona da file statici su desktop e mobile e non richiede chiavi API.
+- Il giocatore parte dalla stazione, sceglie lo starter e può visitare tutte e sette le mappe, incontrare, combattere e catturare Pokémon.
+- Il configuratore modifica realmente il comportamento del gioco tramite dati esportabili e importabili.
+- Le schede e gli sprite preesistenti non vengono modificati; i nuovi asset sono originali e separati.
+- I test di regressione e i controlli browser previsti risultano superati.
