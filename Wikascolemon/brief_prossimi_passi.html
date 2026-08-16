@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prossimi passi — Pokémon Piceno</title>
+<style>
+:root{--border:#a2a9b1;--panel:#f8f9fa;--acc:#78C850}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f6f6f6;color:#202122;margin:0;line-height:1.55}
+.page{max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--border);padding:22px 28px}
+h1{font-family:Georgia,serif;font-weight:normal;border-bottom:3px solid var(--acc);font-size:28px;margin:4px 0 4px}
+h2{font-family:Georgia,serif;font-weight:normal;border-bottom:1px solid var(--border);font-size:21px;margin-top:28px}
+h3{font-size:16px;margin:18px 0 6px}
+.sub{color:#54595d;font-size:14px;margin-bottom:14px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:10px 0}
+th,td{border:1px solid var(--border);padding:5px 8px;text-align:left;vertical-align:top}
+th{background:var(--panel)}
+.notabene{background:#fdf3e3;border:1px solid #e5c98e;padding:8px 12px;font-size:13.5px;margin:12px 0}
+.ok{color:#1d7a2e;font-weight:bold}
+.warn{color:#b3261e;font-weight:bold}
+ul,ol{margin:6px 0 10px 22px;padding:0}
+li{margin:3px 0}
+code{background:var(--panel);border:1px solid var(--border);padding:0 4px;border-radius:3px;font-size:12.5px}
+.footer{font-size:11.5px;color:#54595d;border-top:1px solid var(--border);margin-top:22px;padding-top:8px}
+.step{border-left:4px solid var(--acc);background:var(--panel);padding:2px 14px;margin:14px 0}
+.step h3{margin-top:10px}
+.meta{font-size:12.5px;color:#54595d;margin:4px 0 8px}
+</style></head><body>
+<div class="page">
+
+<h1>Prossimi passi — Pokémon Piceno</h1>
+<div class="sub">Stato al 16 agosto 2026 · complementare a <a href="brief_piceno.html">brief di progetto</a> e <a href="brief_sprite.html">brief sprite</a></div>
+
+<h2>1. Dove siamo</h2>
+<table>
+<tr><th>Pezzo</th><th>Stato</th></tr>
+<tr><td><b>20 schede Pokédex</b> complete di lore, statistiche, learnset ed efficacie</td><td class="ok">Fatto</td></tr>
+<tr><td>Le <b>tre linee iniziali</b> (#001-#009), tutte con lo stesso profilo 310 → 405 → 530</td><td class="ok">Fatto</td></tr>
+<tr><td><b>#150 Pretalien</b>: il dex ha un tetto dichiarato</td><td class="ok">Fatto</td></tr>
+<tr><td>Motore scelto, split fisico/speciale deciso, specifiche sprite scritte</td><td class="ok">Fatto</td></tr>
+<tr><td>Mappa vettoriale a livelli + configuratore per lavorarla a mano</td><td>Alpha</td></tr>
+<tr><td><b>Trama, palestre, percorsi, antagonista</b></td><td class="warn">Da fare — è il collo di bottiglia</td></tr>
+<tr><td><b>Nessuna riga di gioco</b>: il fork di <code>pokeemerald-expansion</code> non esiste ancora</td><td class="warn">Da fare</td></tr>
+</table>
+
+<h2>2. La cosa da guardare in faccia: il dex ha le punte, non il corpo</h2>
+<p>Delle 20 specie: <b>9 sono iniziali</b>, <b>1 è il mitico finale</b>, <b>7 sono personaggi singolari</b>
+(Segaccio, Venagrox, Ciccharizard, Banconio, Carpentrap, Brio→Felignoto) e <b>3</b> sono la linea di
+Pito. Sono tutte specie <i>speciali</i>: rare, uniche, memorabili.</p>
+<div class="notabene"><b>Mancano i Pokémon comuni.</b> Oggi un giocatore che esce dal laboratorio e
+imbocca il primo percorso <b>non ha niente da catturare</b>: non esiste l'equivalente del passerotto,
+del roditore, dell'insetto del cespuglio. Sono le specie che nessuno ricorda e senza cui il gioco
+non esiste — e sono esattamente il buco <code>#014-#043</code>.</p>
+<p>Per la demo "2 medaglie" del brief servono 35-40 specie. Ne abbiamo 20, di cui poche catturabili
+davvero. Il prossimo blocco di schede dovrebbe puntare lì: <b>8-12 specie comuni</b> della valle —
+uccelli, roditori, insetti, pesci del Tronto, qualcosa di erbaceo per i campi — con linee evolutive
+brevi e concept semplici. Non sono meno importanti: sono il tessuto.</p>
+
+<h2>3. I prossimi passi, in ordine</h2>
+
+<div class="step">
+<h3>A. La trama e l'ossatura della regione <span class="meta">— in corso</span></h3>
+<div class="meta">Blocca tutto il resto: l'ordine dei percorsi decide dove vivono le specie, che decide la mappa, che decide il livello degli incontri.</div>
+<p>Perché sblocchi davvero il lavoro a valle, la trama deve rispondere a queste domande:</p>
+<ul>
+<li>Le <b>8 città-palestra</b> e il tipo di ciascun capopalestra, in ordine.</li>
+<li>Il <b>percorso principale</b>: da dove parte il giocatore, in che ordine attraversa la valle, dove finisce.</li>
+<li>Dove sta il <b>laboratorio</b> e chi è il Professore (proposte aperte: Oliva, Anisetta).</li>
+<li>Chi è il <b>rivale</b> e quante volte lo si incontra.</li>
+<li>I <b>due o tre snodi</b> del team antagonista, e come il conflitto "festa contro quiete" arriva a Polesio.</li>
+<li>I <b>luoghi obbligati</b> già scritti nelle schede: Cripta del Duomo, Sant'Emidio alle Grotte (evoluzione di Turibasil), l'ottava di Pasqua a Ripatransone (Fuocavallo), le quattro testimonianze di Felignoto, Pretare per Pretalien.</li>
+</ul>
+<div class="notabene">Attenzione a una cosa che la trama eredita: <b>quattro specie su venti sono
+arrivate da fuori</b> — Segaccio dai Balcani, la linea di Tuffito dall'Atlantico, Carpentrap dall'altra
+sponda del Mediterraneo. Il brief lo elencava fra i temi «mai dichiarati, solo suggeriti»: a quota
+quattro è la spina dorsale del dex, e la trama farebbe bene a tenerne conto invece di scoprirlo dopo.</div>
+</div>
+
+<div class="step">
+<h3>B. Allineare la mappa al dex</h3>
+<div class="meta">La geografia del dex è già più avanti dell'SVG: dodici luoghi citati dalle schede non esistono sulla mappa.</div>
+<table>
+<tr><th>Da aggiungere</th><th>Perché</th></tr>
+<tr><td><b>Ripatransone</b> (e le colline coi filari)</td><td>Casa dell'intera linea Fuoco #004-#006</td></tr>
+<tr><td><b>Rio Castellano</b> (dalla sorgente alla confluenza in Ascoli)</td><td>Casa dell'intera linea Acqua #007-#009 e sorgente di Brio</td></tr>
+<tr><td><b>Valle Castellana</b>, <b>San Giacomo</b>, <b>Laturo</b></td><td>Habitat di Brio; Laturo è un borgo abbandonato, ottimo come luogo</td></tr>
+<tr><td><b>Venarotta</b>, <b>Gimigliano/Galligiano</b>, <b>Roccafluvione</b></td><td>Tre delle quattro testimonianze che fanno evolvere Brio</td></tr>
+<tr><td><b>Venagrande</b>, <b>Polesio</b></td><td>Venagrox, e il nodo narrativo dell'antagonista</td></tr>
+<tr><td><b>Pretare</b> e il <b>Monte Vettore</b></td><td>Pretalien, cioè la fine del gioco</td></tr>
+</table>
+<p>Il configuratore serve proprio a questo: si aggiungono a mano, sul <code>viewBox 1024×640</code>
+già in uso, senza toccare l'SVG a mano.</p>
+</div>
+
+<div class="step">
+<h3>C. Fase 0 tecnica: far compilare la ROM a una persona sola</h3>
+<div class="meta">Obiettivo minimo e non negoziabile. Finché nessuno compila, il progetto è un archivio di documenti.</div>
+<ol>
+<li>Fork privato di <code>rh-hideout/pokeemerald-expansion</code>.</li>
+<li>Toolchain su WSL2 o macOS, build pulita di Smeraldo vanilla che parte in mGBA.</li>
+<li>Attivare lo <b>split fisico/speciale</b> nella config: è la prima cosa, prima di inserire qualunque specie.</li>
+<li>Primo commit "hello Piceno": una mappa di prova con un NPC che dice una frase in italiano.</li>
+</ol>
+<p>Chi non compila lavora comunque: mappa, schede, sprite, testi.</p>
+</div>
+
+<div class="step">
+<h3>D. Il dex come dati, non come HTML</h3>
+<div class="meta">A 20 schede è il momento giusto: a 40 sarà una riscrittura.</div>
+<p>Oggi statistiche, learnset ed evoluzioni vivono <b>solo</b> dentro le pagine wiki. Quando si
+comincerà a bilanciare in gioco, ROM e wiki divergeranno il primo giorno. La cura è una
+<b>fonte unica</b>: un <code>dex/&lt;nome&gt;.json</code> per specie e due generatori — uno che produce la
+pagina wiki, uno che produce i file C (<code>species_info.h</code>, learnset, testi Pokédex).</p>
+<p>Effetto collaterale utile: le verifiche che oggi facciamo a mano su ogni scheda nuova (efficacie
+di tipo, somma delle statistiche, larghezza delle barre, navigazione) diventano un controllo
+automatico. Su cinque schede consegnate, tre avevano un errore di efficacia.</p>
+</div>
+
+<div class="step">
+<h3>E. Un solo sprite, per misurare</h3>
+<div class="meta">Non tutti: uno.</div>
+<p>Gli sprite si faranno in un'unica passata a roster chiuso, ma <b>un pilota adesso</b> dice quanto
+costa davvero una specie: 2 ore o 8? Da quel numero si ricava il piano vero. Il candidato è
+<b>Banconio</b> — forma compatta, pochi materiali, colori spenti. Specifiche nel
+<a href="brief_sprite.html">brief sprite</a>.</p>
+</div>
+
+<h2>4. Decisioni ancora aperte</h2>
+<table>
+<tr><th>Cosa</th><th>Nota</th></tr>
+<tr><td><b>Ciccharizard</b></td><td>Da rivalutare, come già deciso: 12 caratteri contro il limite di 10, il nome contiene un marchio Nintendo, e con BST 540 starebbe sopra ogni capopalestra.</td></tr>
+<tr><td>Titoli definitivi delle <b>due versioni</b> e differenze fra loro</td><td>Oggi "Tronto" e "Laga" sono provvisori e restano solo nelle voci Pokédex.</td></tr>
+<tr><td><b>Pretalien e la Sibilla appenninica</b></td><td>Il brief prevedeva la Sibilla come leggendario di copertina; ora il #150 è Pretalien. Non si escludono, ma occupano lo stesso posto emotivo: vanno messi in relazione.</td></tr>
+<tr><td>Nome del <b>Professore</b> e del laboratorio</td><td>Proposte in sospeso dal brief di progetto.</td></tr>
+</table>
+
+<h2>5. Cosa non fare adesso</h2>
+<ul>
+<li><b>Non</b> disegnare tutti gli sprite: il roster non è chiuso, si rifarebbero.</li>
+<li><b>Non</b> aprire il codice del gioco prima di sapere l'ordine dei percorsi: si mappa due volte.</li>
+<li><b>Non</b> aggiungere altri Pokémon-personaggio finché mancano le specie comuni. Sono la parte
+divertente da inventare, ed è proprio per questo che il tessuto resta indietro.</li>
+</ul>
+
+<div class="footer">Documento di lavoro del progetto <i>Pokémon Piceno</i>. Fan game non ufficiale,
+gratuito e senza finalità commerciali. Pokémon è un marchio di Nintendo/Creatures Inc./GAME FREAK inc.</div>
+</div>
+</body>
+</html>
