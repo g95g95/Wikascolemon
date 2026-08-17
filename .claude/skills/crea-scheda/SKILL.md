@@ -22,7 +22,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #015-#016 | Anicino → Anisetta ✅ |
 | #017-#020 | Tamburino → Sbandiera → Quintanaro · Moro ✅ |
 | #021-#023 | Tifotto → Sciarpone → Capultrà ✅ |
-| #024-#043 | Libero |
+| #024-#026 | Soldatino → Batterino → Dehor ✅ |
+| #027-#043 | Libero |
 | #044-#049 | Pito, Pozza, Umito, Segaccio, Venagrox, Ciccharizard ✅ |
 | #050-#149 | Libero |
 | **#150** | **Pretalien ✅ — chiude il Pokédex.** Numero finale: non superarlo e non riassegnarlo. |
