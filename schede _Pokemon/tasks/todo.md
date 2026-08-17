@@ -229,6 +229,29 @@ La mappa esistente (`mappa_piceno_1.html`, PNG 1024×640 in base64) è il mondo 
 
 ---
 
+# Piano: correggere i lati dei Pokémon durante la lotta
+
+## Causa verificata
+
+- I dati della lotta sono corretti: il Pokémon selvatico usa nome, livello e sprite frontale dell'incontro, mentre il Pokémon della squadra usa i propri dati e lo sprite posteriore.
+- Il problema è nel layout: attualmente il Pokémon della squadra è mostrato a sinistra e quello selvatico a destra.
+
+## Task
+
+- [x] 1. Invertire soltanto i due schieramenti visivi: Pokémon selvatico a sinistra e Pokémon della squadra a destra.
+- [x] 2. Spostare coerentemente ombre e schede PS, evitando sovrapposizioni e mantenendo leggibili nome, livello e salute.
+- [x] 3. Aggiungere una regressione sul contratto di posizionamento dei due schieramenti.
+- [x] 4. Eseguire la suite automatica e verificare visivamente una lotta su desktop e mobile.
+
+## Criteri di accettazione
+
+- Il Pokémon incontrato appare a sinistra con lo sprite frontale.
+- Il Pokémon già posseduto appare a destra con lo sprite posteriore.
+- Nome, livello, PS e sprite restano associati al Pokémon corretto.
+- Nessun elemento della schermata di lotta si sovrappone su desktop o mobile.
+
+---
+
 # Piano approvato: pubblicazione GitHub Pages di Pokémon Ascoli
 
 - [x] Conservare la wiki esistente alla radice del sito pubblicato.
