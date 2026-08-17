@@ -1,3 +1,22 @@
+# Piano: ridurre i quartieri della demo Pokémon Ascoli a scala Gen 3
+
+Le sette mappe sono 256×160 tile (~270 schermate ciascuna): la città sembra vuota per aritmetica.
+Target: 40×30 – 60×40 tile per quartiere, stessi landmark, stessi collegamenti.
+
+## Task
+
+- [x] 1. `data.js`: ridisegnare le 7 mappe (48×36 città, 60×40 Monticelli e Porta Cartara) con strade, acque, ponti, edifici, piazze, etichette, zone incontro, passaggi reciproci e NPC alle nuove coordinate; `start`/`respawn` sulla strada davanti alla stazione → verifica: `node tests/regression.mjs`.
+- [x] 2. `game.js` + `configuratore.js`: chiave di configurazione `V2` (le vecchie override in localStorage puntano a coordinate 256×160) e guardia in `startSession`: salvataggio con posizione fuori mappa o bloccata → ripristino a `data.start` → verifica: salvataggio vecchio non lascia il giocatore dentro un muro.
+- [x] 3. `configuratore.js`: canvas dimensionato sulla mappa corrente (scala 16 px/tile), griglia per tile, clamp del cursore su `width/height` reali invece dei fissi 255/159 → verifica: apertura configuratore, click sull'ultimo tile.
+- [x] 4. `tests/regression.mjs`: asserzioni su dimensioni 40-60 × 30-40, oggetti dentro i limiti, spawn/start non su acqua o edificio → verifica: test verdi.
+
+## Criteri di accettazione
+
+- Ogni quartiere è fra 40×30 e 60×40; landmark richiesti dal test invariati; percorso a piedi fra tutti i quartieri possibile.
+- Test verdi; nessuna dipendenza aggiunta; nessuna feature nuova al motore.
+
+---
+
 # Piano: Gioco "Pokémon GO del Piceno" (virtuale-prima, predisposto al GPS)
 
 Cartella di lavoro: `Mappa_Pokemon/`. Due file HTML + un file dati condiviso.
@@ -164,6 +183,35 @@ La mappa esistente (`mappa_piceno_1.html`, PNG 1024×640 in base64) è il mondo 
 - Il ripristino reinserisce soltanto gli elementi base mancanti e non modifica gli elementi creati dall'utente.
 - Non restano copie visive dell'elemento eliminato nello sfondo SVG.
 - Spawn, POI e coordinate 1024×640 rimangono invariati.
+
+---
+
+# Piano: sprite overworld di tutti i Pokémon
+
+## Ambito
+
+- Convertire i 16 Pokémon presenti nelle schede HTML: Banconio, Basilino, Brasero, Cavalbrace, Ciccharizard, Compadrone, Fuocavallo, Pito, Pozza, Puledrotto, Segaccio, Tuffito, Turibasil, Umito, Venagrox e Vescovasil.
+- Usare per ogni Pokémon l'artwork principale della relativa scheda come riferimento di identità; i file sorgente duplicati di Ciccharizard e Venagrox non generano output aggiuntivi.
+- Applicare la skill locale `.agents/skills/image-to-overworld-sprites/` con la modalità integrata `imagegen` e sfondo antracite `#242628`.
+- Salvare gli asset finali come frame separati in `sprite/<pokemon>/`, con nomi `front_1.png`...`front_4.png`, `back_1.png`...`back_4.png`, `left_1.png`...`left_4.png` e `right_1.png`...`right_4.png`.
+
+## Task
+
+- [x] 1. Estrarre in staging gli artwork principali incorporati nelle 16 schede, senza modificare le schede originali.
+- [x] 2. Analizzare per ogni Pokémon silhouette, palette e tratti identitari da preservare.
+- [x] 3. Generare un foglio 4×4 coerente per ciascun Pokémon: 16 frame, righe fronte/retro/sinistra/destra e quattro pose per direzione.
+- [x] 4. Validare ogni foglio per identità, griglia, direzioni, scala, baseline, palette, pixel art e assenza di testo/scenari; effettuare fino a tre tentativi mirati se necessario.
+- [x] 5. Dividere ogni foglio validato in 16 PNG individuali e salvarli nella directory dedicata al Pokémon.
+- [x] 6. Verificare che `sprite/` contenga esattamente 16 directory e 256 frame PNG finali, tutti leggibili e senza output mancanti o duplicati.
+- [x] 7. Eseguire i controlli di regressione disponibili e confermare che nessuna scheda HTML o immagine sorgente sia stata alterata.
+
+## Criteri di accettazione
+
+- Ogni Pokémon ha una directory dedicata sotto `sprite/` contenente esattamente 16 frame PNG separati.
+- I frame rappresentano le quattro direzioni e un ciclo di camminata coerente, mantenendo l'organizzazione validata della griglia 4×4 usata in generazione.
+- I tratti riconoscibili dell'artwork sorgente restano leggibili e coerenti in tutti i frame.
+- Tutti gli asset condividono il linguaggio visivo pixel-art overworld da JRPG portatile dei primi anni 2000, senza copiare personaggi esistenti.
+- Le schede e gli asset sorgente restano invariati.
 
 ---
 

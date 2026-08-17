@@ -4,8 +4,8 @@
   const data = window.PokemonAscoliData;
   const canvas = document.getElementById('editorCanvas');
   const ctx = canvas.getContext('2d');
-  const storageKey = 'pokemonAscoliConfigV1';
-  const scale = 4;
+  const storageKey = 'pokemonAscoliConfigV2';
+  const scale = 16;
   const ui = Object.fromEntries([
     'mapSelect', 'tileType', 'brushSize', 'collisionValue', 'encounterRate', 'cursorInfo',
     'objectName', 'objectWidth', 'objectHeight', 'objectColor', 'destinationMap', 'spawnX',
@@ -99,6 +99,8 @@
   function draw() {
     const base = currentBaseMap();
     const custom = currentConfig();
+    canvas.width = base.width * scale;
+    canvas.height = base.height * scale;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = colorForTile(base.baseTile);
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -145,10 +147,10 @@
 
     ctx.strokeStyle = 'rgba(18,29,22,.13)';
     ctx.lineWidth = 1;
-    for (let x = 0; x <= canvas.width; x += 16 * scale) {
+    for (let x = 0; x <= canvas.width; x += scale) {
       ctx.beginPath(); ctx.moveTo(x + .5, 0); ctx.lineTo(x + .5, canvas.height); ctx.stroke();
     }
-    for (let y = 0; y <= canvas.height; y += 16 * scale) {
+    for (let y = 0; y <= canvas.height; y += scale) {
       ctx.beginPath(); ctx.moveTo(0, y + .5); ctx.lineTo(canvas.width, y + .5); ctx.stroke();
     }
   }
@@ -167,8 +169,8 @@
   function canvasPoint(event) {
     const box = canvas.getBoundingClientRect();
     return {
-      x: Math.max(0, Math.min(255, Math.floor((event.clientX - box.left) / box.width * currentBaseMap().width))),
-      y: Math.max(0, Math.min(159, Math.floor((event.clientY - box.top) / box.height * currentBaseMap().height)))
+      x: Math.max(0, Math.min(currentBaseMap().width - 1, Math.floor((event.clientX - box.left) / box.width * currentBaseMap().width))),
+      y: Math.max(0, Math.min(currentBaseMap().height - 1, Math.floor((event.clientY - box.top) / box.height * currentBaseMap().height)))
     };
   }
 

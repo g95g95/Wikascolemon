@@ -122,159 +122,161 @@
   const zone = (x, y, w, h, rate, table) => ({ x, y, w, h, rate, table });
   const transition = (x, y, w, h, to, spawnX, spawnY, label) => ({ x, y, w, h, to, spawnX, spawnY, label });
   const npc = (x, y, name, dialogue, movement = 'fermo') => ({ x, y, name, dialogue, movement });
-  const common = { width: 256, height: 160 };
+  const city = { width: 48, height: 36 };
+  const wide = { width: 60, height: 40 };
+  const tall = { width: 48, height: 40 };
 
   const maps = {
     centro_storico: {
-      ...common, name: 'Centro Storico', baseTile: 'travertino', encounterTable: [
+      ...city, name: 'Centro Storico', baseTile: 'travertino', encounterTable: [
         { species: 'banconio', minLevel: 4, maxLevel: 4, weight: 55 },
         { species: 'basilino', minLevel: 5, maxLevel: 5, weight: 35 },
         { species: 'ciccharizard', minLevel: 8, maxLevel: 8, weight: 10 }
       ],
-      roads: [rect(0, 72, 256, 18), rect(118, 0, 22, 160), rect(20, 30, 170, 18), rect(58, 112, 90, 18)],
+      roads: [rect(0, 17, 48, 3), rect(22, 0, 4, 36), rect(0, 7, 36, 2), rect(10, 26, 18, 2)],
       waters: [], bridges: [],
       buildings: [
-        building(68, 52, 42, 17, 'Palazzo dei Capitani', '#b89068', 'monumento'),
-        building(24, 17, 45, 20, 'Teatro Ventidio Basso', '#a8755f', 'teatro'),
-        building(150, 94, 52, 30, 'Cattedrale di Sant’Emidio', '#c09b70', 'chiesa'),
-        building(207, 102, 15, 15, 'Battistero', '#c7a77d', 'chiesa')
+        building(13, 10, 8, 4, 'Palazzo dei Capitani', '#b89068', 'monumento'),
+        building(4, 2, 9, 4, 'Teatro Ventidio Basso', '#a8755f', 'teatro'),
+        building(29, 22, 10, 6, 'Cattedrale di Sant’Emidio', '#c09b70', 'chiesa'),
+        building(40, 23, 3, 3, 'Battistero', '#c7a77d', 'chiesa')
       ],
-      plazas: [rect(62, 68, 58, 28, 'piazza'), rect(142, 88, 86, 44, 'piazza')],
-      labels: [{ x: 78, y: 82, text: 'Piazza del Popolo' }, { x: 160, y: 110, text: 'Piazza Arringo' }],
-      encounterZones: [zone(10, 20, 226, 120, 0.035, 'default')],
+      plazas: [rect(12, 14, 10, 7, 'piazza'), rect(27, 20, 18, 10, 'piazza')],
+      labels: [{ x: 17, y: 16, text: 'Piazza del Popolo' }, { x: 33, y: 21, text: 'Piazza Arringo' }],
+      encounterZones: [zone(2, 4, 44, 28, 0.035, 'default')],
       transitions: [
-        transition(254, 76, 2, 10, 'porta_maggiore', 3, 80, 'Ponte di Porta Maggiore'),
-        transition(124, 0, 12, 2, 'campo_parignano', 130, 157, 'Ponte Nuovo'),
-        transition(0, 36, 2, 12, 'borgo_solesta', 252, 42, 'Porta Solestà'),
-        transition(80, 158, 12, 2, 'porta_cartara', 86, 3, 'Porta Cartara')
+        transition(46, 17, 2, 3, 'porta_maggiore', 3, 18, 'Ponte di Porta Maggiore'),
+        transition(22, 0, 4, 2, 'campo_parignano', 24, 37, 'Ponte Nuovo'),
+        transition(0, 7, 2, 2, 'borgo_solesta', 44, 8, 'Porta Solestà'),
+        transition(22, 34, 4, 2, 'porta_cartara', 24, 3, 'Porta Cartara')
       ],
       npcs: [
-        npc(84, 99, 'Cittadino', 'Piazza del Popolo è il salotto della città.', 'orizzontale'),
-        npc(186, 135, 'Visitatrice', 'Il travertino cambia colore con la luce.', 'fermo')
+        npc(16, 19, 'Cittadino', 'Piazza del Popolo è il salotto della città.', 'orizzontale'),
+        npc(36, 29, 'Visitatrice', 'Il travertino cambia colore con la luce.', 'fermo')
       ]
     },
     porta_maggiore: {
-      ...common, name: 'Porta Maggiore', baseTile: 'erba', encounterTable: [
+      ...city, name: 'Porta Maggiore', baseTile: 'erba', encounterTable: [
         { species: 'pito', minLevel: 4, maxLevel: 4, weight: 55 },
         { species: 'basilino', minLevel: 5, maxLevel: 5, weight: 35 },
         { species: 'banconio', minLevel: 6, maxLevel: 6, weight: 10 }
       ],
-      roads: [rect(0, 74, 256, 18), rect(24, 60, 18, 32), rect(88, 40, 42, 70), rect(144, 0, 18, 92)],
-      waters: [rect(0, 64, 14, 36, 'water')], bridges: [rect(0, 75, 18, 16, 'bridge')],
+      roads: [rect(0, 17, 48, 3), rect(4, 14, 3, 8), rect(17, 9, 8, 14), rect(28, 0, 3, 20)],
+      waters: [rect(0, 15, 3, 7, 'water')], bridges: [rect(0, 17, 4, 3, 'bridge')],
       buildings: [
-        building(17, 43, 38, 20, 'Stazione ferroviaria', '#9b6f57', 'stazione'),
-        building(96, 42, 26, 18, 'Chiesa dell’Immacolata', '#c5a677', 'chiesa')
+        building(4, 9, 8, 4, 'Stazione ferroviaria', '#9b6f57', 'stazione'),
+        building(19, 9, 5, 4, 'Chiesa dell’Immacolata', '#c5a677', 'chiesa')
       ],
-      plazas: [rect(82, 62, 54, 42, 'piazza')],
-      labels: [{ x: 91, y: 82, text: 'Piazza Immacolata' }, { x: 17, y: 87, text: 'Ponte di Porta Maggiore' }],
-      encounterZones: [zone(54, 18, 28, 34, 0.08, 'default'), zone(168, 20, 66, 40, 0.08, 'default'), zone(178, 104, 62, 42, 0.08, 'default')],
+      plazas: [rect(16, 13, 10, 9, 'piazza')],
+      labels: [{ x: 21, y: 15, text: 'Piazza Immacolata' }, { x: 4, y: 22, text: 'Ponte di Porta Maggiore' }],
+      encounterZones: [zone(10, 3, 6, 7, 0.08, 'default'), zone(33, 4, 12, 9, 0.08, 'default'), zone(34, 24, 12, 9, 0.08, 'default')],
       transitions: [
-        transition(0, 76, 2, 10, 'centro_storico', 252, 80, 'Centro Storico'),
-        transition(254, 76, 2, 10, 'monticelli', 3, 80, 'Monticelli'),
-        transition(146, 0, 14, 2, 'borgo_chiaro', 150, 157, 'Borgo Chiaro')
+        transition(0, 17, 2, 3, 'centro_storico', 45, 18, 'Centro Storico'),
+        transition(46, 17, 2, 3, 'monticelli', 3, 19, 'Monticelli'),
+        transition(28, 0, 3, 2, 'borgo_chiaro', 29, 37, 'Borgo Chiaro')
       ],
       npcs: [
-        npc(36, 92, 'Viaggiatore', 'Benvenuto ad Ascoli Piceno!', 'fermo'),
-        npc(112, 108, 'Abitante', 'Da qui puoi raggiungere facilmente il centro.', 'verticale')
+        npc(7, 20, 'Viaggiatore', 'Benvenuto ad Ascoli Piceno!', 'fermo'),
+        npc(22, 24, 'Abitante', 'Da qui puoi raggiungere facilmente il centro.', 'verticale')
       ]
     },
     monticelli: {
-      ...common, name: 'Monticelli', baseTile: 'erba', encounterTable: [
+      ...wide, name: 'Monticelli', baseTile: 'erba', encounterTable: [
         { species: 'pito', minLevel: 7, maxLevel: 7, weight: 45 },
         { species: 'segaccio', minLevel: 8, maxLevel: 8, weight: 30 },
         { species: 'banconio', minLevel: 7, maxLevel: 7, weight: 20 },
         { species: 'venagrox', minLevel: 10, maxLevel: 10, weight: 5 }
       ],
-      roads: [rect(0, 74, 256, 20), rect(64, 40, 18, 84), rect(150, 28, 18, 112), rect(208, 42, 18, 80)],
+      roads: [rect(0, 18, 60, 4), rect(14, 9, 3, 22), rect(35, 6, 3, 28), rect(49, 10, 3, 20)],
       waters: [], bridges: [], plazas: [],
       buildings: [
-        building(96, 34, 55, 38, 'Ospedale Mazzoni', '#d5d8d2', 'ospedale'),
-        building(50, 96, 28, 18, 'Little Bar', '#b46c52', 'attività'),
-        building(168, 96, 30, 20, 'Benzinaio', '#ddc453', 'attività'),
-        building(208, 52, 34, 22, 'Pizzeria Mosè', '#bb604b', 'attività')
+        building(21, 8, 12, 8, 'Ospedale Mazzoni', '#d5d8d2', 'ospedale'),
+        building(7, 24, 6, 4, 'Little Bar', '#b46c52', 'attività'),
+        building(39, 24, 7, 4, 'Benzinaio', '#ddc453', 'attività'),
+        building(52, 12, 7, 5, 'Pizzeria Mosè', '#bb604b', 'attività')
       ],
       labels: [],
       encounterZones: [
-        zone(86, 24, 76, 58, 0.1, 'default'), zone(40, 86, 48, 38, 0.1, 'default'),
-        zone(158, 86, 50, 40, 0.1, 'default'), zone(198, 42, 54, 42, 0.1, 'default')
+        zone(19, 3, 15, 14, 0.1, 'default'), zone(6, 22, 10, 8, 0.1, 'default'),
+        zone(38, 22, 10, 9, 0.1, 'default'), zone(46, 10, 12, 9, 0.1, 'default')
       ],
-      transitions: [transition(0, 76, 2, 10, 'porta_maggiore', 252, 80, 'Porta Maggiore')],
-      npcs: [npc(122, 82, 'Infermiere', 'La zona dell’ospedale è sempre molto frequentata.', 'orizzontale')]
+      transitions: [transition(0, 18, 2, 4, 'porta_maggiore', 45, 18, 'Porta Maggiore')],
+      npcs: [npc(28, 17, 'Infermiere', 'La zona dell’ospedale è sempre molto frequentata.', 'orizzontale')]
     },
     campo_parignano: {
-      ...common, name: 'Campo Parignano', baseTile: 'erba', encounterTable: [
+      ...tall, name: 'Campo Parignano', baseTile: 'erba', encounterTable: [
         { species: 'basilino', minLevel: 6, maxLevel: 6, weight: 50 },
         { species: 'pito', minLevel: 7, maxLevel: 7, weight: 40 },
         { species: 'banconio', minLevel: 8, maxLevel: 8, weight: 10 }
       ],
-      roads: [rect(0, 72, 256, 18), rect(122, 0, 20, 160), rect(178, 18, 18, 82)],
-      waters: [rect(0, 146, 256, 12, 'water')], bridges: [rect(122, 142, 20, 18, 'bridge')], plazas: [],
+      roads: [rect(0, 17, 48, 3), rect(22, 0, 4, 40), rect(34, 4, 3, 16)],
+      waters: [rect(0, 35, 48, 3, 'water')], bridges: [rect(22, 34, 4, 6, 'bridge')], plazas: [],
       buildings: [
-        building(86, 52, 42, 24, 'Cinema Odeon', '#a6654f', 'cinema'),
-        building(139, 48, 28, 30, 'Chiesa del Sacro Cuore', '#c1a179', 'chiesa'),
-        building(198, 18, 37, 26, 'Sant’Emidio alle Grotte', '#8f785f', 'monumento')
+        building(16, 11, 6, 4, 'Cinema Odeon', '#a6654f', 'cinema'),
+        building(26, 10, 5, 5, 'Chiesa del Sacro Cuore', '#c1a179', 'chiesa'),
+        building(38, 4, 7, 5, 'Sant’Emidio alle Grotte', '#8f785f', 'monumento')
       ],
-      labels: [{ x: 198, y: 48, text: 'Area delle Grotte' }],
-      encounterZones: [zone(74, 40, 106, 54, 0.09, 'default'), zone(186, 8, 60, 48, 0.02, 'default')],
+      labels: [{ x: 41, y: 11, text: 'Area delle Grotte' }],
+      encounterZones: [zone(14, 9, 20, 8, 0.09, 'default'), zone(37, 2, 10, 10, 0.02, 'default')],
       transitions: [
-        transition(124, 158, 14, 2, 'centro_storico', 130, 3, 'Ponte Nuovo'),
-        transition(0, 74, 2, 12, 'borgo_solesta', 252, 82, 'Borgo Solestà'),
-        transition(254, 74, 2, 12, 'borgo_chiaro', 3, 80, 'Borgo Chiaro')
+        transition(22, 38, 4, 2, 'centro_storico', 24, 3, 'Ponte Nuovo'),
+        transition(0, 17, 2, 3, 'borgo_solesta', 45, 18, 'Borgo Solestà'),
+        transition(46, 17, 2, 3, 'borgo_chiaro', 3, 18, 'Borgo Chiaro')
       ],
-      npcs: [npc(114, 96, 'Spettatore', 'All’Odeon c’è sempre qualche locandina nuova.', 'fermo')]
+      npcs: [npc(20, 20, 'Spettatore', 'All’Odeon c’è sempre qualche locandina nuova.', 'fermo')]
     },
     borgo_chiaro: {
-      ...common, name: 'Borgo Chiaro', baseTile: 'erba', encounterTable: [
+      ...tall, name: 'Borgo Chiaro', baseTile: 'erba', encounterTable: [
         { species: 'pito', minLevel: 8, maxLevel: 8, weight: 50 },
         { species: 'puledrotto', minLevel: 8, maxLevel: 8, weight: 30 },
         { species: 'segaccio', minLevel: 9, maxLevel: 9, weight: 20 }
       ],
-      roads: [rect(0, 74, 256, 18), rect(142, 0, 18, 160), rect(54, 0, 18, 90)], waters: [], bridges: [], plazas: [],
-      buildings: [building(82, 38, 104, 62, 'Stadio Cino e Lillo Del Duca', '#a7a9a4', 'stadio')],
-      labels: [{ x: 107, y: 66, text: 'STADIO' }],
-      encounterZones: [zone(68, 24, 132, 92, 0.1, 'default')],
+      roads: [rect(0, 17, 48, 3), rect(28, 0, 3, 40), rect(10, 0, 3, 20)], waters: [], bridges: [], plazas: [],
+      buildings: [building(15, 6, 12, 8, 'Stadio Cino e Lillo Del Duca', '#a7a9a4', 'stadio')],
+      labels: [{ x: 21, y: 16, text: 'STADIO' }],
+      encounterZones: [zone(13, 3, 20, 12, 0.1, 'default')],
       transitions: [
-        transition(0, 76, 2, 10, 'campo_parignano', 252, 80, 'Campo Parignano'),
-        transition(56, 0, 14, 2, 'borgo_solesta', 202, 157, 'Borgo Solestà'),
-        transition(144, 158, 16, 2, 'porta_maggiore', 152, 3, 'Porta Maggiore')
+        transition(0, 17, 2, 3, 'campo_parignano', 45, 18, 'Campo Parignano'),
+        transition(10, 0, 3, 2, 'borgo_solesta', 40, 37, 'Borgo Solestà'),
+        transition(28, 38, 3, 2, 'porta_maggiore', 29, 3, 'Porta Maggiore')
       ],
-      npcs: [npc(123, 112, 'Tifoso', 'Lo stadio è il cuore di Borgo Chiaro.', 'orizzontale')]
+      npcs: [npc(24, 21, 'Tifoso', 'Lo stadio è il cuore di Borgo Chiaro.', 'orizzontale')]
     },
     borgo_solesta: {
-      ...common, name: 'Borgo Solestà', baseTile: 'erba', encounterTable: [
+      ...tall, name: 'Borgo Solestà', baseTile: 'erba', encounterTable: [
         { species: 'pito', minLevel: 6, maxLevel: 6, weight: 50 },
         { species: 'segaccio', minLevel: 7, maxLevel: 7, weight: 30 },
         { species: 'basilino', minLevel: 6, maxLevel: 6, weight: 20 }
       ],
-      roads: [rect(0, 72, 256, 18), rect(92, 30, 18, 112), rect(190, 70, 18, 90)],
-      waters: [rect(234, 0, 14, 160, 'water')], bridges: [rect(228, 34, 28, 18, 'bridge'), rect(228, 74, 28, 18, 'bridge')],
+      roads: [rect(0, 17, 48, 3), rect(17, 7, 3, 28), rect(39, 16, 3, 24), rect(30, 8, 18, 2)],
+      waters: [rect(43, 0, 3, 40, 'water')], bridges: [rect(41, 8, 7, 2, 'bridge'), rect(41, 17, 7, 3, 'bridge')],
       buildings: [
-        building(18, 42, 60, 24, 'Borgo residenziale', '#b67859', 'quartiere'),
-        building(34, 104, 48, 26, 'Area sportiva', '#7eaa68', 'sport'),
-        building(145, 20, 52, 28, 'Margine collinare', '#77985c', 'collina')
+        building(3, 9, 11, 5, 'Borgo residenziale', '#b67859', 'quartiere'),
+        building(5, 23, 9, 6, 'Area sportiva', '#7eaa68', 'sport'),
+        building(27, 3, 10, 5, 'Margine collinare', '#77985c', 'collina')
       ],
-      plazas: [], labels: [{ x: 216, y: 44, text: 'Ponte Romano' }, { x: 206, y: 58, text: 'Porta Solestà' }],
-      encounterZones: [zone(20, 94, 78, 50, 0.1, 'default'), zone(132, 8, 78, 52, 0.08, 'default')],
+      plazas: [], labels: [{ x: 41, y: 7, text: 'Ponte Romano' }, { x: 38, y: 12, text: 'Porta Solestà' }],
+      encounterZones: [zone(3, 21, 15, 12, 0.1, 'default'), zone(24, 2, 15, 10, 0.08, 'default')],
       transitions: [
-        transition(254, 36, 2, 12, 'centro_storico', 3, 42, 'Ponte Romano'),
-        transition(254, 76, 2, 12, 'campo_parignano', 3, 80, 'Campo Parignano'),
-        transition(194, 158, 16, 2, 'borgo_chiaro', 62, 3, 'Borgo Chiaro')
+        transition(46, 8, 2, 2, 'centro_storico', 3, 8, 'Ponte Romano'),
+        transition(46, 17, 2, 3, 'campo_parignano', 3, 18, 'Campo Parignano'),
+        transition(39, 38, 3, 2, 'borgo_chiaro', 11, 3, 'Borgo Chiaro')
       ],
-      npcs: [npc(63, 86, 'Residente', 'Il ponte romano conduce dritto al centro.', 'verticale')]
+      npcs: [npc(12, 20, 'Residente', 'Il ponte romano conduce dritto al centro.', 'verticale')]
     },
     porta_cartara: {
-      ...common, name: 'Porta Cartara', baseTile: 'erba', encounterTable: [
+      ...wide, name: 'Porta Cartara', baseTile: 'erba', encounterTable: [
         { species: 'tuffito', minLevel: 6, maxLevel: 6, weight: 65 },
         { species: 'pito', minLevel: 7, maxLevel: 7, weight: 30 },
         { species: 'basilino', minLevel: 7, maxLevel: 7, weight: 5 }
       ],
-      roads: [rect(78, 0, 20, 160), rect(0, 42, 256, 16), rect(0, 104, 256, 16)],
-      waters: [rect(0, 66, 256, 34, 'water')], bridges: [rect(78, 62, 20, 42, 'bridge')],
-      buildings: [building(110, 22, 48, 24, 'Porta Cartara', '#a97a5d', 'porta')], plazas: [],
-      labels: [{ x: 104, y: 82, text: 'RIO CASTELLANO' }],
-      encounterZones: [zone(0, 54, 256, 12, 0.12, 'default'), zone(0, 100, 256, 14, 0.12, 'default')],
-      transitions: [transition(80, 0, 16, 2, 'centro_storico', 86, 156, 'Centro Storico')],
-      npcs: [npc(111, 112, 'Pescatore', 'I Tuffito si muovono in gruppo lungo il Rio Castellano.', 'fermo')]
+      roads: [rect(22, 0, 4, 40), rect(0, 10, 60, 3), rect(0, 27, 60, 3)],
+      waters: [rect(0, 16, 60, 8, 'water')], bridges: [rect(22, 15, 4, 10, 'bridge')],
+      buildings: [building(28, 4, 10, 5, 'Porta Cartara', '#a97a5d', 'porta')], plazas: [],
+      labels: [{ x: 30, y: 21, text: 'RIO CASTELLANO' }],
+      encounterZones: [zone(0, 13, 60, 3, 0.12, 'default'), zone(0, 24, 60, 3, 0.12, 'default')],
+      transitions: [transition(22, 0, 4, 2, 'centro_storico', 24, 33, 'Centro Storico')],
+      npcs: [npc(30, 30, 'Pescatore', 'I Tuffito si muovono in gruppo lungo il Rio Castellano.', 'fermo')]
     }
   };
 
@@ -295,7 +297,7 @@
   };
 
   window.PokemonAscoliData = {
-    version: 1,
+    version: 2,
     title: 'Pokémon Ascoli',
     tileSize: 16,
     viewport: { width: 240, height: 160 },
@@ -304,8 +306,8 @@
     maps,
     typeChart,
     starters: ['basilino', 'puledrotto', 'tuffito'],
-    start: { map: 'porta_maggiore', x: 34, y: 66, direction: 'down' },
-    respawn: { map: 'porta_maggiore', x: 34, y: 66, direction: 'down' },
+    start: { map: 'porta_maggiore', x: 5, y: 15, direction: 'down' },
+    respawn: { map: 'porta_maggiore', x: 5, y: 15, direction: 'down' },
     initialItems: { ball: 10, potion: 5, acquasanta: 0 }
   };
 }());
