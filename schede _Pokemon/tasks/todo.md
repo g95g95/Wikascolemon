@@ -233,4 +233,4 @@ La mappa esistente (`mappa_piceno_1.html`, PNG 1024×640 in base64) è il mondo 
 
 - [x] Conservare la wiki esistente alla radice del sito pubblicato.
 - [x] Copiare la demo statica in `/Pokemon_Ascoli/` durante il workflow Pages.
-- [ ] Validare l'artefatto, pubblicare su `main` e verificare il link live.
+- [x] Validare l'artefatto, pubblicare su `main` e verificare il link live.
