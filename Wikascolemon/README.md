@@ -39,6 +39,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #027 | [Traffichiex](traffichiex.html) | Pokémon Smistatore | Normale/Psico | Ascoli Piceno, stadio e Prefettura |
 | #028 | [Forox](forox.html) | Pokémon Avvocato | Terra/Psico | Ascoli Piceno, Tribunale e Prefettura |
 | #029 | [Notaiax](notaiax.html) | Pokémon Rogito | Veleno/Buio | Ascoli Piceno, centro storico |
+| #030 | [Maranzino](maranzino.html) | Pokémon Ciclomolesto | Elettro | San Benedetto del Tronto, ciclabile |
 | #044 | [Pito](pito.html) | Pokémon Cerbiatto | Roccia/Normale | Acquasanta Terme (Laga) |
 | #045 | [Pozza](pozza.html) | Pokémon Fracchia | Roccia/Veleno | Acquasanta Terme (Laga) |
 | #046 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |

@@ -24,7 +24,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #021-#023 | Tifotto → Sciarpone → Capultrà ✅ |
 | #024-#026 | Soldatino → Batterino → Dehor ✅ |
 | #027-#029 | Traffichiex → Forox · Notaiax ✅ |
-| #030-#043 | Libero |
+| #030 | Maranzino ✅ |
+| #031-#043 | Libero |
 | #044-#049 | Pito, Pozza, Umito, Segaccio, Venagrox, Ciccharizard ✅ |
 | #050-#149 | Libero |
 | **#150** | **Pretalien ✅ — chiude il Pokédex.** Numero finale: non superarlo e non riassegnarlo. |
