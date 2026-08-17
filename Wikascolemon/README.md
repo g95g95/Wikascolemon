@@ -29,6 +29,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #017 | [Tamburino](tamburino.html) | Pokémon Tamburo | Normale | Ascoli Piceno, vie e piazze |
 | #018 | [Sbandiera](sbandiera.html) | Pokémon Vessillo | Normale/Volante | Ascoli Piceno, vie e piazze |
 | #019 | [Quintanaro](quintanaro.html) | Pokémon Cavaliere | Acciaio + sestiere | Ascoli Piceno, i sei sestieri |
+| #020 | [Moro](moro.html) | Pokémon Saraceno | Acciaio/Spettro | Ascoli Piceno, Campo Squarcia |
 | #044 | [Pito](pito.html) | Pokémon Cerbiatto | Roccia/Normale | Acquasanta Terme (Laga) |
 | #045 | [Pozza](pozza.html) | Pokémon Fracchia | Roccia/Veleno | Acquasanta Terme (Laga) |
 | #046 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |
