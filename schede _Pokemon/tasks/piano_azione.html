@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Pokémon Piceno — Piano d'azione</title>
+<style>
+  @page { size: A4; margin: 22mm 20mm 22mm 20mm; }
+  :root {
+    --ink: #1f2421; --muted: #5d6660; --line: #d7dbd6; --panel: #f4f6f3;
+    --acc: #3f7a3a; --acc-soft: #e5efe1;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; font-size: 10.5pt; line-height: 1.5; color: var(--ink); }
+  h1, h2, h3, .cover-title { font-family: Georgia, "Times New Roman", serif; font-weight: normal; letter-spacing: .01em; }
+  h1 { font-size: 22pt; margin: 0 0 4mm; }
+  h2 { break-after: avoid; page-break-after: avoid; font-size: 15pt; margin: 9mm 0 3mm; padding-bottom: 1.5mm; border-bottom: 1px solid var(--line); color: var(--ink); }
+  h2 span.num { color: var(--acc); margin-right: 3mm; }
+  h3 { font-size: 11.5pt; margin: 5mm 0 1.5mm; color: var(--acc); }
+  p { margin: 0 0 2.5mm; }
+  ul, ol { margin: 0 0 3mm 5mm; padding: 0; }
+  li { margin: 0 0 1.2mm; }
+  table { border-collapse: collapse; width: 100%; font-size: 9.5pt; margin: 2mm 0 4mm; page-break-inside: auto; }
+  th, td { text-align: left; vertical-align: top; padding: 1.8mm 2.5mm; border-bottom: 1px solid var(--line); }
+  th { font-weight: 600; color: var(--muted); font-size: 8.5pt; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1.5px solid var(--ink); }
+  tr { page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  thead tr { break-after: avoid; page-break-after: avoid; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .lead { font-size: 11.5pt; color: var(--muted); }
+  .callout { background: var(--panel); border-left: 3px solid var(--acc); padding: 3mm 4mm; margin: 4mm 0; page-break-inside: avoid; }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout.rec { background: var(--acc-soft); }
+  .kicker { font-size: 8.5pt; text-transform: uppercase; letter-spacing: .12em; color: var(--acc); font-weight: 600; margin-bottom: 1mm; }
+  .cols { display: flex; gap: 6mm; page-break-inside: avoid; }
+  .cols > div { flex: 1; }
+  .card { border: 1px solid var(--line); padding: 3mm 4mm; page-break-inside: avoid; }
+  .card h3 { margin-top: 0; }
+  .fine { font-size: 8.5pt; color: var(--muted); }
+  .break { page-break-before: always; }
+  .cover { height: 250mm; display: flex; flex-direction: column; justify-content: space-between; }
+  .cover-title { font-size: 34pt; line-height: 1.15; margin: 0 0 6mm; }
+  .cover-sub { font-size: 13pt; color: var(--muted); max-width: 120mm; }
+  .cover-rule { width: 28mm; height: 2px; background: var(--acc); margin: 10mm 0 8mm; }
+  .cover-meta { font-size: 9.5pt; color: var(--muted); border-top: 1px solid var(--line); padding-top: 4mm; }
+  .cover-meta b { color: var(--ink); font-weight: 600; }
+  .status { display: inline-block; font-size: 8pt; padding: 0 1.8mm; border-radius: 2px; border: 1px solid var(--line); color: var(--muted); vertical-align: middle; }
+  .status.done { border-color: var(--acc); color: var(--acc); }
+  .status.todo { border-color: #b3261e; color: #b3261e; }
+  .toc { columns: 2; column-gap: 8mm; font-size: 10pt; }
+  .toc div { break-inside: avoid; padding: 1mm 0; border-bottom: 1px dotted var(--line); }
+  .toc .n { color: var(--acc); display: inline-block; width: 6mm; }
+  .check li { list-style: none; position: relative; padding-left: 6mm; }
+  .check li::before { content: ""; position: absolute; left: 0; top: 1.4mm; width: 3.2mm; height: 3.2mm; border: 1px solid var(--muted); border-radius: 1px; }
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div>
+    <div class="kicker">Wikascolemon · Pokémon Piceno</div>
+    <div class="cover-title">Piano d'azione<br>per il gioco</div>
+    <div class="cover-rule"></div>
+    <div class="cover-sub">Diagnosi della demo, scelta del prodotto, cosa manca a layout e ambientazione, e come far lavorare il gruppo senza scrivere codice.</div>
+  </div>
+  <div class="cover-meta">
+    <b>Stato al 17 agosto 2026</b> · complementare al brief di progetto, al brief sprite e ai prossimi passi (16 agosto).<br>
+    Documento di lavoro interno — versione 1.0
+  </div>
+</section>
+
+<section class="break">
+  <h1>Indice</h1>
+  <div class="toc">
+    <div><span class="n">1</span> In una pagina</div>
+    <div><span class="n">2</span> Dove siamo</div>
+    <div><span class="n">3</span> Perché la città sembra vuota</div>
+    <div><span class="n">4</span> Cosa manca: layout e ambientazione</div>
+    <div><span class="n">5</span> La decisione a monte: quale gioco</div>
+    <div><span class="n">6</span> Sequenza di lavoro</div>
+    <div><span class="n">7</span> Il gruppo: chi fa cosa, senza codice</div>
+    <div><span class="n">8</span> Organizzazione settimanale</div>
+    <div><span class="n">9</span> I prossimi trenta giorni</div>
+  </div>
+
+  <h2><span class="num">1</span>In una pagina</h2>
+  <p class="lead">Il progetto ha già le idee (20 schede, tre linee iniziali, motore scelto) ma non ha ancora un gioco. La demo nel browser esiste e funziona; il ROM hack, che è il traguardo dichiarato, non ha ancora una riga. La città della demo sembra vuota per tre ragioni misurabili: scala sbagliata di dieci volte (ora corretta), nessun tileset riconoscibile, nessun ciclo di gioco.</p>
+  <div class="callout rec">
+    <div class="kicker">Raccomandazione</div>
+    <p><b>Il ROM hack è il prodotto; la demo browser è il banco di prova.</b> Si congela la demo come fetta verticale piccola e densa, si porta a compilare Smeraldo una persona sola, e da lì il gruppo lavora a lotti settimanali con fogli di calcolo, editor a mouse e disegno — mai con codice. La conversione in dati la fanno il coordinatore e Claude.</p>
+  </div>
+  <p>Il passo che sblocca tutto il resto è lo stesso di ieri: <b>la trama su una pagina</b> (città-palestra in ordine, percorso principale, laboratorio, rivale). Finché manca, nessuno sa cosa mettere in Piazza del Popolo — quindi resta vuota per definizione, non per mancanza di braccia.</p>
+</section>
+
+<section>
+  <h2><span class="num">2</span>Dove siamo</h2>
+  <table>
+    <thead><tr><th style="width:62%">Pezzo</th><th>Stato</th></tr></thead>
+    <tbody>
+    <tr><td>20 schede Pokédex con lore, statistiche, learnset ed efficacie</td><td><span class="status done">fatto</span></td></tr>
+    <tr><td>Tre linee iniziali (#001-#009), motore scelto, split fisico/speciale deciso, specifiche sprite</td><td><span class="status done">fatto</span></td></tr>
+    <tr><td>Demo browser <i>Pokémon Ascoli</i>: 7 quartieri, 16 specie, 36 mosse, lotta, cattura, salvataggio, configuratore</td><td><span class="status done">funziona</span></td></tr>
+    <tr><td>Quartieri della demo ridotti a scala Gen 3 (48×36 – 60×40 tile)</td><td><span class="status done">fatto il 17/8</span></td></tr>
+    <tr><td>Mappa vettoriale della regione + configuratore per lavorarla a mano</td><td><span class="status">alpha</span></td></tr>
+    <tr><td>Trama, palestre, percorsi, antagonista</td><td><span class="status todo">da fare — collo di bottiglia</span></td></tr>
+    <tr><td>Fork di pokeemerald-expansion che compila</td><td><span class="status todo">da fare</span></td></tr>
+    <tr><td>Fauna di fascia bassa (8-12 specie da 200-320 di totale) per i primi percorsi</td><td><span class="status todo">da fare</span></td></tr>
+  </tbody></table>
+</section>
+
+<section>
+  <h2><span class="num">3</span>Perché la città sembra vuota</h2>
+  <p>Numeri della demo prima dell'intervento del 17 agosto: sette quartieri di 256×160 tile con vista di 15×10, cioè circa 270 schermate ciascuno; in tutto 18 edifici e 9 personaggi su 287.000 celle. Littleroot in Smeraldo è 20×20; una città grande come Rustboro circa 50×40.</p>
+  <table>
+    <thead><tr><th>Quartiere</th><th class="num">Prima</th><th class="num">Ora</th><th class="num">Edifici</th><th class="num">NPC</th></tr></thead>
+    <tbody>
+    <tr><td>Centro Storico</td><td class="num">256×160</td><td class="num">48×36</td><td class="num">4</td><td class="num">2</td></tr>
+    <tr><td>Porta Maggiore</td><td class="num">256×160</td><td class="num">48×36</td><td class="num">2</td><td class="num">2</td></tr>
+    <tr><td>Monticelli</td><td class="num">256×160</td><td class="num">60×40</td><td class="num">4</td><td class="num">1</td></tr>
+    <tr><td>Campo Parignano</td><td class="num">256×160</td><td class="num">48×40</td><td class="num">3</td><td class="num">1</td></tr>
+    <tr><td>Borgo Chiaro</td><td class="num">256×160</td><td class="num">48×40</td><td class="num">1</td><td class="num">1</td></tr>
+    <tr><td>Borgo Solestà</td><td class="num">256×160</td><td class="num">48×40</td><td class="num">3</td><td class="num">1</td></tr>
+    <tr><td>Porta Cartara</td><td class="num">256×160</td><td class="num">60×40</td><td class="num">1</td><td class="num">1</td></tr>
+  </tbody></table>
+  <h3>Le cinque cause, in ordine di peso</h3>
+  <ol>
+    <li><b>Scala.</b> Risolta: da ~270 a 12-16 schermate per quartiere. Il vuoto era aritmetico.</li>
+    <li><b>Niente tileset.</b> Il motore disegna sei colori piatti; un edificio è un rettangolo con etichetta. Mancano proprio le cose che fanno «Ascoli».</li>
+    <li><b>Niente interni, niente porte.</b> Non esiste il concetto di «entrare»: niente bar-Centro, alimentari, case, palestra.</li>
+    <li><b>Nessun ciclo di gioco.</b> Nel motore non esistono allenatori, oggetti a terra, cartelli, medaglie, rivale, eventi. Un mondo senza «vado lì perché…» sembra vuoto anche se è pieno.</li>
+    <li><b>Densità.</b> 1-2 personaggi per quartiere contro gli 8-15 di una città Gen 3; nel Centro un'unica zona di incontro copre tutto.</li>
+  </ol>
+</section>
+
+<section>
+  <h2><span class="num">4</span>Cosa manca: layout e ambientazione</h2>
+  <p>In ordine di resa per costo. Vale per la demo e, identico, per il ROM hack.</p>
+  <table>
+    <thead><tr><th style="width:5%">#</th><th style="width:30%">Intervento</th><th>Perché conta</th><th style="width:16%">Costo</th></tr></thead>
+    <tbody>
+    <tr><td>1</td><td>Mappe «a schermate»</td><td>Ogni schermata di 15×10 deve avere almeno una cosa: edificio, personaggio, cartello, oggetto.</td><td>basso, fatto in parte</td></tr>
+    <tr><td>2</td><td>Tileset ascolano minimo (15-20 tile)</td><td>Muro e tetto in travertino, portico, porta, finestra, torre, ponte in pietra, scala, vicolo lastricato, fontana, muretto, siepe, olivo, cipresso, filare, greto del Tronto, erba alta.</td><td>medio, 1 persona che disegna</td></tr>
+    <tr><td>3</td><td>Porte + 3-4 interni riusabili</td><td>Bar-Centro (cura e deposito, tema anisetta), alimentari-Mart, casa generica con un personaggio, palestra.</td><td>medio</td></tr>
+    <tr><td>4</td><td>Cartelli</td><td>Una riga di testo davanti a ogni luogo: costo quasi nullo, identità immediata.</td><td>basso</td></tr>
+    <tr><td>5</td><td>8-12 personaggi per mappa</td><td>Ciascuno con una battuta legata al lore delle schede (Cripta del Duomo, Sant'Emidio alle Grotte, Rio Castellano…).</td><td>basso, è scrittura</td></tr>
+    <tr><td>6</td><td>Percorsi distinti dalle città</td><td>Erba alta delimitata, allenatori, oggetti, dislivelli.</td><td>medio</td></tr>
+    <tr><td>7</td><td>Un obiettivo</td><td>Una palestra, un rivale che sfida sul Ponte Maggiore, un evento del Professore. Anche uno solo.</td><td>medio</td></tr>
+    <tr><td>8</td><td>Solo dopo: audio, meteo, giorno/notte</td><td>Rifiniture; non risolvono il vuoto.</td><td>—</td></tr>
+  </tbody></table>
+</section>
+
+<section>
+  <h2><span class="num">5</span>La decisione a monte: quale gioco</h2>
+  <p>Oggi ci sono due giochi in embrione che non comunicano: la demo browser (JavaScript, con un suo configuratore) e il ROM hack su pokeemerald-expansion. Quello che si disegna nel configuratore JS <b>non si trasferisce</b> in porymap: ogni ora spesa a riempire il Centro Storico nel browser va rifatta se il traguardo è la ROM.</p>
+  <div class="cols">
+    <div class="card">
+      <h3>Opzione A — ROM hack è il prodotto</h3>
+      <p><b>Consigliata.</b> La demo resta un prototipo per bilanciamento, prova di layout e per mostrare qualcosa con un link. La si congela come fetta verticale piccola ma densa e non riceve più funzioni al motore.</p>
+      <p>Tutto il resto — mosse, stati, IA, evoluzioni, audio, salvataggi, PC, negozi, allenatori — in pokeemerald-expansion <b>esiste già</b>.</p>
+    </div>
+    <div class="card">
+      <h3>Opzione B — il browser è il prodotto</h3>
+      <p>Zero toolchain, si apre un file, si gioca da telefono. Ma si riscrive un motore Pokémon a mano: realisticamente si arriva a un «Pokémon-like» con un decimo delle meccaniche.</p>
+      <p>Legittimo se il progetto è più «gioco per gli amici» che ROM hack; in quel caso va riscritto il brief.</p>
+    </div>
+  </div>
+  <div class="callout">
+    <p>In entrambi i casi il passo sbloccante è la <b>trama su una pagina</b>: le otto città-palestra e il tipo di ciascun capopalestra in ordine; il percorso principale; dove sta il laboratorio e chi è il Professore; il rivale e quante volte lo si incontra; i due o tre snodi dell'antagonista.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">6</span>Sequenza di lavoro (opzione A)</h2>
+  <table>
+    <thead><tr><th style="width:6%">Fase</th><th style="width:28%">Obiettivo</th><th>Contenuto</th><th style="width:16%">Chi</th></tr></thead>
+    <tbody>
+    <tr><td>0</td><td>Trama su una pagina</td><td>Una riunione, non un romanzo: lista città-palestra, cosa succede in ciascuna, laboratorio, rivale, antagonista.</td><td>tutto il gruppo</td></tr>
+    <tr><td>1</td><td>Compila una persona</td><td>Fork privato di pokeemerald-expansion; toolchain su WSL2; build pulita di Smeraldo che parte in mGBA; split fisico/speciale attivato prima di qualunque specie; commit «hello Piceno» con un personaggio che parla italiano.</td><td>coordinatore + Claude</td></tr>
+    <tr><td>2</td><td>Fetta verticale</td><td>Primo paese + Percorso 1 + bar-Centro + consegna dello starter. Serve a rodare la pipeline, non a fare contenuto.</td><td>coordinatore, 1 mapper</td></tr>
+    <tr><td>3</td><td>Lotti settimanali</td><td>Il gruppo consegna dialoghi, cartelli, allenatori, mappe, sprite; il coordinatore importa; la build aggiornata torna al gruppo entro pochi giorni.</td><td>tutti</td></tr>
+    <tr><td>4</td><td>Demo «2 medaglie»</td><td>Il traguardo pubblico già scritto nel brief: Arquata → Acquasanta → Ascoli, 35-40 specie, due palestre, primo incontro con l'antagonista.</td><td>tutti</td></tr>
+  </tbody></table>
+  <p class="fine">La demo browser, nel frattempo: un solo intervento dimostrativo sul Centro Storico (porta + interno del bar-Centro, sei cartelli, dieci personaggi) perché il gruppo veda il target di densità prima di compilare i fogli. Poi si congela.</p>
+
+  <h2><span class="num">7</span>Il gruppo: chi fa cosa, senza codice</h2>
+  <p>Principio: <b>loro producono contenuti in formati che già usano; il coordinatore e Claude convertono in dati.</b> Tre regole: mai git, JSON o HTML; a ciascuno un modello con una riga di esempio già compilata e una definizione di «fatto»; una riga = un oggetto.</p>
+  <table>
+    <thead><tr><th style="width:22%">Contenuto</th><th style="width:22%">Strumento</th><th>Formato di consegna</th><th style="width:16%">Chi converte</th></tr></thead>
+    <tbody>
+    <tr><td><b>Dialoghi dei personaggi</b> — il buco più grande e più facile</td><td>Google Sheets</td><td>mappa · dove (a parole) · nome · aspetto · movimento (fermo / orizzontale / verticale) · battuta 1/2/3 · condizione («dopo la 1ª medaglia»)</td><td>Claude, in blocco</td></tr>
+    <tr><td>Cartelli e nomi dei luoghi</td><td>Sheets</td><td>luogo · testo (max due righe)</td><td>Claude</td></tr>
+    <tr><td>Allenatori</td><td>Sheets</td><td>nome · classe · dove · squadra (specie + livello) · battuta prima/dopo · ricompensa</td><td>Claude</td></tr>
+    <tr><td>Testi di trama (Professore, rivale, antagonista)</td><td>Docs</td><td>scena → battute numerate</td><td>Claude → poryscript</td></tr>
+    <tr><td>Bozze di mappa</td><td>carta a quadretti fotografata · Sheets con celle colorate (E erba, S strada, A acqua, C casa, T albero…) · il configuratore della demo</td><td>foto · foglio · JSON esportato</td><td>Claude / coordinatore</td></tr>
+    <tr><td>Mappe definitive (ROM)</td><td><b>porymap</b>: editor grafico a mouse; per Windows e macOS si scarica la release e si usa, senza installazione (ultima 6.3.1). Serve solo il repo compilabile da aprirgli.</td><td>già nel formato finale; gli script degli eventi li scrivono coordinatore e Claude</td><td>nessuno</td></tr>
+    <tr><td>Sprite 64×64</td><td>Piskel (browser, gratis) o Aseprite; specifiche nel brief sprite; oppure carta a quadretti fotografata</td><td>PNG</td><td>skill <i>image-to-overworld-sprites</i></td></tr>
+    <tr><td>Fauna di fascia bassa</td><td>Sheets</td><td>nome · animale o oggetto di base · tipo · un'idea in una riga · dove vive</td><td>coordinatore + <i>crea-scheda</i></td></tr>
+    <tr><td>Ricerca sul campo</td><td>telefono</td><td>foto di scorci di Ascoli e frazioni, modi di dire, tipi umani da parodiare, nomi di locali</td><td>diventano tile, NPC, lore</td></tr>
+    <tr><td>Playtest</td><td>mGBA o browser + Google Form / gruppo Telegram</td><td>«dove ero, cosa ho fatto, cosa mi aspettavo» + screenshot</td><td>coordinatore</td></tr>
+    <tr><td>Revisione del lore</td><td>lettura delle schede</td><td>lista di incoerenze</td><td>—</td></tr>
+  </tbody></table>
+</section>
+
+<section>
+  <h2><span class="num">8</span>Organizzazione settimanale</h2>
+  <div class="cols">
+    <div class="card">
+      <h3>Ruoli</h3>
+      <ul>
+        <li><b>1 mapper</b> — porymap (o il configuratore della demo nella fase di prova).</li>
+        <li><b>1-2 writer</b> — dialoghi, cartelli, allenatori, testi di trama.</li>
+        <li><b>1-2 su sprite</b> — solo se qualcuno disegna; altrimenti placeholder finché il roster non è stabile.</li>
+        <li><b>Tutti</b> — playtest e ricerca fotografica.</li>
+        <li><b>Coordinatore</b> — importazione, build, revisione con Claude.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Il ciclo</h3>
+      <ol>
+        <li>Lunedì: lotto della settimana assegnato (dieci righe a testa, non di più).</li>
+        <li>Durante la settimana: consegna nei fogli condivisi.</li>
+        <li>Fine settimana: importazione e build.</li>
+        <li>Il gruppo vede le proprie battute nel gioco entro pochi giorni. È questo che tiene la gente motivata.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="callout">
+    <p><b>Infrastruttura minima:</b> una cartella condivisa <i>contenuti/</i> (Drive va benissimo) con un foglio per tipo; il gruppo Telegram già in uso come canale unico; un modulo per il playtest. Niente altro.</p>
+  </div>
+
+  <h2><span class="num">9</span>I prossimi trenta giorni</h2>
+  <ul class="check">
+    <li>Riunione «trama su una pagina»: città-palestra in ordine, laboratorio, rivale, antagonista.</li>
+    <li>Decisione formale A/B, scritta nel brief.</li>
+    <li>Fork di pokeemerald-expansion; build di Smeraldo vanilla che parte in mGBA su una macchina.</li>
+    <li>Split fisico/speciale attivato; commit «hello Piceno».</li>
+    <li>Fogli condivisi creati con una riga di esempio: dialoghi, cartelli, allenatori, fauna di fascia bassa.</li>
+    <li>porymap scaricato dal mapper; prima mappa di prova aperta.</li>
+    <li>Demo browser: Centro Storico riempito come dimostrazione di densità, poi congelata.</li>
+    <li>Allineare la mappa della regione ai dodici luoghi citati dalle schede e non ancora sull'SVG.</li>
+    <li>Primo lotto settimanale consegnato e importato: cinquanta battute in gioco.</li>
+  </ul>
+  <p class="fine">Note di onestà: la valutazione della demo è fatta su codice e dati, non con un playtest visivo; le release di porymap sono state verificate ma non provate su Windows in questa sede.</p>
+</section>
+
+</body>
+</html>

@@ -139,14 +139,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .battle-screen { background: #6ca167; }
 .battle-stage { position: relative; width: 100%; height: 100%; background: linear-gradient(#8fc98a 0 58%, #d8c08b 58%); }
 .battle-stage::before, .battle-stage::after { content: ""; position: absolute; width: 84px; height: 16px; border-radius: 50%; background: rgba(52, 83, 47, .35); }
-.battle-stage::before { right: 20px; top: 61px; }
-.battle-stage::after { left: 18px; top: 113px; }
+.battle-stage::before { left: 20px; top: 61px; }
+.battle-stage::after { right: 18px; top: 113px; }
 .battle-sprite { position: absolute; width: 64px; height: 64px; object-fit: contain; image-rendering: pixelated; z-index: 2; }
-.enemy-sprite { right: 28px; top: 11px; }
-.ally-sprite { left: 28px; top: 59px; }
+.enemy-sprite { left: 28px; top: 11px; }
+.ally-sprite { right: 28px; top: 59px; }
 .battle-card { position: absolute; z-index: 3; width: 104px; padding: 5px 7px; border: 2px solid #293328; background: #f2ead6; color: #18201b; font-size: .62rem; box-shadow: 2px 2px 0 rgba(0,0,0,.3); }
-.enemy-card { top: 12px; left: 10px; }
-.ally-card { top: 74px; right: 10px; }
+.enemy-card { top: 82px; left: 10px; }
+.ally-card { top: 12px; right: 10px; }
 .hp-track { height: 6px; margin-top: 4px; overflow: hidden; border: 1px solid #233025; background: #433b32; }
 .hp-track i { display: block; width: 100%; height: 100%; background: #5fbb5b; }
 .battle-message { position: absolute; z-index: 5; left: 0; right: 0; bottom: 0; min-height: 42px; padding: 7px 9px; border-top: 3px double #403629; background: #f5ead1; color: #172019; font-size: .67rem; line-height: 1.25; }

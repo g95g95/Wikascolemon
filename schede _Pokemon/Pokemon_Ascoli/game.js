@@ -16,7 +16,7 @@
   ].map(id => [id, document.getElementById(id)]));
 
   const STORAGE_KEY = 'pokemonAscoliSaveV1';
-  const CONFIG_KEY = 'pokemonAscoliConfigV1';
+  const CONFIG_KEY = 'pokemonAscoliConfigV2';
   const directions = {
     up: { x: 0, y: -1, row: 1 },
     down: { x: 0, y: 1, row: 0 },
@@ -124,10 +124,10 @@
 
   function startSession(loaded) {
     save = loaded;
-    const stored = save.player || data.start;
+    let stored = save.player || data.start;
+    if (!maps[stored.map] || isBlocked(maps[stored.map], stored.x, stored.y, true)) stored = data.start;
     player = { ...stored, renderX: stored.x, renderY: stored.y, frame: 0 };
-    currentMap = maps[player.map] || maps[data.start.map];
-    if (!maps[player.map]) player.map = data.start.map;
+    currentMap = maps[player.map];
     initNpcs();
     ui.titleScreen.hidden = true;
     if (!save.starter) {

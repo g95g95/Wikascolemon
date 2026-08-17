@@ -14,14 +14,31 @@ assert.equal(Object.keys(data.maps).length, 7, 'Devono esistere sette quartieri'
 assert.deepEqual(Array.from(data.starters), ['basilino', 'puledrotto', 'tuffito']);
 assert.equal(data.start.map, 'porta_maggiore');
 
+const inRect = (x, y, item) => x >= item.x && y >= item.y && x < item.x + item.w && y < item.y + item.h;
+const walkable = (map, x, y) => {
+  if (x < 0 || y < 0 || x >= map.width || y >= map.height) return false;
+  if (map.buildings.some(item => inRect(x, y, item))) return false;
+  if (map.bridges.some(item => inRect(x, y, item))) return true;
+  return !map.waters.some(item => inRect(x, y, item));
+};
+const insideMap = (map, item) => item.x >= 0 && item.y >= 0 && item.x + (item.w || 1) <= map.width && item.y + (item.h || 1) <= map.height;
+
+for (const point of [data.start, data.respawn]) assert.ok(walkable(data.maps[point.map], point.x, point.y), 'Punto di partenza percorribile');
+
 for (const [mapId, map] of Object.entries(data.maps)) {
-  assert.ok(map.width > 0 && map.height > 0, `${mapId}: dimensioni valide`);
+  assert.ok(map.width >= 40 && map.width <= 60 && map.height >= 30 && map.height <= 40, `${mapId}: dimensioni fra 40×30 e 60×40 (scala Gen 3)`);
+  for (const key of ['roads', 'waters', 'bridges', 'plazas', 'buildings', 'encounterZones', 'transitions', 'npcs']) {
+    for (const item of map[key] || []) assert.ok(insideMap(map, item), `${mapId}: ${key} dentro la mappa`);
+  }
+  for (const item of map.npcs) assert.ok(walkable(map, item.x, item.y), `${mapId}: NPC ${item.name} su cella percorribile`);
   assert.ok(Array.isArray(map.transitions) && map.transitions.length > 0, `${mapId}: almeno un passaggio`);
   assert.ok(Array.isArray(map.encounterTable) && map.encounterTable.length > 0, `${mapId}: tabella incontri`);
   for (const exit of map.transitions) {
     assert.ok(data.maps[exit.to], `${mapId}: destinazione ${exit.to} esistente`);
     assert.ok(exit.spawnX >= 0 && exit.spawnX < data.maps[exit.to].width, `${mapId}: spawn X valido`);
     assert.ok(exit.spawnY >= 0 && exit.spawnY < data.maps[exit.to].height, `${mapId}: spawn Y valido`);
+    assert.ok(walkable(data.maps[exit.to], exit.spawnX, exit.spawnY), `${mapId}: arrivo in ${exit.to} su cella percorribile`);
+    assert.ok(!data.maps[exit.to].transitions.some(back => inRect(exit.spawnX, exit.spawnY, back)), `${mapId}: arrivo in ${exit.to} fuori dai passaggi`);
     assert.ok(data.maps[exit.to].transitions.some(back => back.to === mapId), `${mapId}: collegamento reciproco con ${exit.to}`);
   }
   for (const encounter of map.encounterTable) {
@@ -65,5 +82,11 @@ for (const htmlName of ['index.html', 'configuratore.html']) {
     assert.ok(fs.existsSync(path.join(gameDir, style)), `${htmlName}: stile ${style} presente`);
   }
 }
+
+const styles = fs.readFileSync(path.join(gameDir, 'styles.css'), 'utf8');
+assert.match(styles, /\.enemy-sprite\s*\{[^}]*left:\s*28px;/, 'Il Pokémon selvatico deve apparire a sinistra');
+assert.match(styles, /\.ally-sprite\s*\{[^}]*right:\s*28px;/, 'Il Pokémon della squadra deve apparire a destra');
+assert.match(styles, /\.enemy-card\s*\{[^}]*left:\s*10px;/, 'La scheda del selvatico deve apparire accanto al selvatico');
+assert.match(styles, /\.ally-card\s*\{[^}]*right:\s*10px;/, 'La scheda della squadra deve apparire accanto al Pokémon della squadra');
 
 console.log(`OK: ${Object.keys(data.maps).length} mappe, ${Object.keys(data.species).length} Pokémon, ${Object.keys(data.moves).length} mosse.`);
