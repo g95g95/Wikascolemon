@@ -19,8 +19,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v4
+      - name: Prepara sito e demo
+        shell: bash
+        run: |
+          mkdir -p _site/Pokemon_Ascoli
+          cp -R Wikascolemon/. _site/
+          cp -R "schede _Pokemon/Pokemon_Ascoli/." _site/Pokemon_Ascoli/
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: Wikascolemon
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4

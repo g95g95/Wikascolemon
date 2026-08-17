@@ -226,3 +226,11 @@ La mappa esistente (`mappa_piceno_1.html`, PNG 1024×640 in base64) è il mondo 
 - Il configuratore modifica realmente il comportamento del gioco tramite dati esportabili e importabili.
 - Le schede e gli sprite preesistenti non vengono modificati; i nuovi asset sono originali e separati.
 - I test di regressione e i controlli browser previsti risultano superati.
+
+---
+
+# Piano approvato: pubblicazione GitHub Pages di Pokémon Ascoli
+
+- [x] Conservare la wiki esistente alla radice del sito pubblicato.
+- [x] Copiare la demo statica in `/Pokemon_Ascoli/` durante il workflow Pages.
+- [ ] Validare l'artefatto, pubblicare su `main` e verificare il link live.
