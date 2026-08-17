@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Traffichiex - Pokédex del Piceno</title>
+<style>
+:root{
+  --border:#a2a9b1; --panel:#f8f9fa; --text:#202122; --link:#3366cc; --red:#ba0000;
+  --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
+  --terra:#E0C068; --acqua:#6890F0; --lotta:#C03028; --acciaio:#B8B8D0;
+  --fuoco:#F08030; --volante:#A890F0; --psico:#F85888; --spettro:#705898;
+  --buio:#705848; --drago:#7038F8; --elettro:#F8D030; --folletto:#EE99AC;
+  --ghiaccio:#98D8D8; --coleot:#A8B820;
+  --accent1:#8a8a68; --accent2:#F85888;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--text);font:14px/1.6 "Segoe UI","Helvetica Neue",Arial,sans-serif}
+.page{max-width:1080px;margin:0 auto;padding:14px 20px 40px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+a.new{color:var(--red)}
+h1,h2{font-family:"Linux Libertine",Georgia,"Times New Roman",serif;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:4px;margin:20px 0 12px}
+h1{font-size:30px;margin-top:6px}
+h2{font-size:23px}
+h3{font-size:17px;margin:18px 0 8px}
+h4{font-size:15px;margin:14px 0 6px}
+.sitenotice{font-size:12px;color:#54595d;border-bottom:1px solid #eaecf0;padding-bottom:6px}
+.dexnav{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#efeee4,#f8f9fa,#f9e9ee);border:1px solid var(--border);border-radius:6px;padding:8px 14px;margin:12px 0;font-size:13px}
+.dexnav .mid{font-weight:700}
+.dexnav .dim{color:#9a9fa5}
+.type{display:inline-block;padding:2px 11px;border-radius:4px;color:#fff;font-weight:600;font-size:12px;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.18)}
+.t-roccia{background:var(--roccia)} .t-normale{background:var(--normale)} .t-veleno{background:var(--veleno)}
+.t-erba{background:var(--erba)} .t-terra{background:var(--terra);color:#5b4a12;text-shadow:none} .t-acqua{background:var(--acqua)}
+.t-lotta{background:var(--lotta)} .t-acciaio{background:var(--acciaio);color:#43436b;text-shadow:none} .t-fuoco{background:var(--fuoco)}
+.t-volante{background:var(--volante)} .t-psico{background:var(--psico)} .t-spettro{background:var(--spettro)}
+.t-buio{background:var(--buio)} .t-drago{background:var(--drago)} .t-elettro{background:var(--elettro);color:#6b5a10;text-shadow:none}
+.t-folletto{background:var(--folletto);color:#7c3350;text-shadow:none} .t-ghiaccio{background:var(--ghiaccio);color:#2a6a6a;text-shadow:none} .t-coleot{background:var(--coleot)}
+.infobox{float:right;width:308px;margin:0 0 16px 22px;border:1px solid var(--border);background:var(--panel);border-radius:8px;overflow:hidden;font-size:12.5px}
+.infobox .head{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff;text-align:center;padding:8px 10px}
+.infobox .head .num{font-size:12px;opacity:.9}
+.infobox .head .name{font-size:20px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.infobox .head .cat{font-size:12px;font-style:italic}
+.infobox .art{background:#fff;padding:8px;text-align:center;border-bottom:1px solid #eaecf0}
+.infobox .art svg{width:236px;height:236px}
+.infobox .art img{width:236px;height:236px;object-fit:contain}
+.artph{width:236px;height:236px;margin:0 auto;border:2px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;color:#72777d;font-size:12px;padding:10px;background:#fcfcfc}
+.infobox .art .capt{font-size:11px;color:#54595d}
+.infobox table{width:100%;border-collapse:collapse}
+.infobox th{background:#eef0f2;text-align:left;padding:5px 9px;width:41%;font-weight:600;vertical-align:top;border-top:1px solid #eaecf0}
+.infobox td{padding:5px 9px;border-top:1px solid #eaecf0;vertical-align:top}
+.infobox .lang{display:flex;justify-content:center;gap:14px;background:#eef0f2;padding:4px;font-size:11.5px;color:#54595d}
+.toc{display:inline-block;border:1px solid var(--border);background:var(--panel);padding:10px 18px;border-radius:6px;font-size:13px;margin:8px 0 4px}
+.toc .toctitle{font-weight:700;text-align:center}
+.toc ol{margin:6px 0 0;padding-left:22px}
+.toc ol ol{margin:0}
+.intro b.pkmn{font-size:15px}
+.wtable{border-collapse:collapse;margin:10px 0;font-size:13px}
+.wtable th,.wtable td{border:1px solid var(--border);padding:5px 10px}
+.wtable th{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff}
+.wtable td{background:#fff}
+.wtable tr:nth-child(even) td{background:#fafbfc}
+.wtable .lvl{text-align:center;font-weight:600}
+.wtable .num{text-align:center}
+.stab{font-weight:700}
+.effbox{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin:10px 0;max-width:760px}
+.effrow{display:flex;border-top:1px solid var(--border)}
+.effrow:first-child{border-top:none}
+.efflabel{width:130px;flex:0 0 130px;background:#eef0f2;padding:8px;font-weight:600;display:flex;align-items:center;font-size:12.5px}
+.effcells{padding:7px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;background:#fff}
+.effx{font-size:11px;color:#54595d;margin-left:2px}
+.evochain{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin:14px 0}
+.evocard{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:10px 12px;text-align:center;width:172px}
+.evocard svg{width:118px;height:118px}
+.evocard img{width:118px;height:118px;object-fit:contain}
+.evocard .nm{font-weight:700;margin:2px 0 6px}
+.evoarrow{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:11.5px;color:#54595d;width:130px;padding:0 4px}
+.evoarrow .ar{font-size:26px;color:#8b8f94;line-height:1}
+.statbars{max-width:640px}
+.statrow{display:flex;align-items:center;gap:10px;margin:4px 0}
+.statrow .sn{width:78px;flex:0 0 78px;font-weight:600;font-size:12.5px}
+.statrow .sv{width:34px;flex:0 0 34px;text-align:right;font-weight:700;font-size:13px}
+.statrow .sb{flex:1;background:#eef0f2;border:1px solid #dfe3e8;border-radius:4px;height:14px;overflow:hidden}
+.statrow .sb i{display:block;height:100%;border-radius:3px}
+.s-ps i{background:#FF5959}.s-att i{background:#F5AC78}.s-dif i{background:#FAE078}
+.s-asp i{background:#9DB7F5}.s-dsp i{background:#A7DB8D}.s-vel i{background:#FA92B2}
+.dexentries{max-width:820px}
+.dexentries .ver{font-weight:700}
+.itembox{border:1px solid #7fb1d8;background:#f0f7fc;border-radius:8px;padding:12px 16px;margin:14px 0;max-width:760px;display:flex;gap:14px;align-items:flex-start}
+.itembox svg{flex:0 0 46px}
+.notabene{border-left:4px solid var(--accent1);background:var(--panel);padding:8px 14px;margin:10px 0;max-width:780px;font-size:13px}
+.cats{border:1px solid var(--border);background:var(--panel);border-radius:6px;padding:8px 14px;margin-top:34px;font-size:12.5px}
+.footer{font-size:11.5px;color:#54595d;margin-top:14px}
+ul{margin:6px 0}
+@media (max-width:760px){
+  .infobox{float:none;width:100%;margin:12px 0}
+  .efflabel{width:96px;flex-basis:96px}
+  .evoarrow{width:100%}
+}
+@media (prefers-reduced-motion: no-preference){
+  .evocard:hover{box-shadow:0 2px 8px rgba(0,0,0,.12);transition:box-shadow .2s}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="icon-taccuino" viewBox="0 0 48 48">
+  <rect x="10" y="6" width="28" height="36" rx="3" fill="#f6f1df" stroke="#8a8a68" stroke-width="1.5"/>
+  <path d="M10 12 h28 M15 18 h18 M15 24 h18 M15 30 h12" stroke="#c9c4ad" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="14" cy="8.5" r="1.4" fill="#8a8a68"/><circle cx="20" cy="8.5" r="1.4" fill="#8a8a68"/><circle cx="26" cy="8.5" r="1.4" fill="#8a8a68"/><circle cx="32" cy="8.5" r="1.4" fill="#8a8a68"/>
+  <path d="M30 40 L40 22 l4 2 -10 18 z" fill="#F85888" stroke="#a03a5a" stroke-width="1"/>
+  <path d="M30 40 l-1 4 4 -2 z" fill="#3a3a3a"/>
+</symbol>
+<symbol id="impronta-traffichiex" viewBox="0 0 40 40">
+  <rect x="10" y="7" width="20" height="26" rx="2" fill="#54595d"/>
+  <path d="M14 14 h12 M14 19 h12 M14 24 h8" stroke="#f8f9fa" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M28 33 l6 -10 -3 -1.5 -6 10 z" fill="#54595d"/>
+</symbol>
+</defs>
+</svg>
+<div class="page">
+<div class="sitenotice">da <b>Pokédex del Piceno</b>, l'enciclopedia (immaginaria) dei Pokémon della regione Piceno. <i>Pagina fan-made nel formato di Pokémon Central Wiki.</i></div>
+
+<div class="dexnav">
+  <span><a href="dehor.html">← #026: Dehor</a></span>
+  <span class="mid">#027 Traffichiex</span>
+  <span><a href="forox.html">#028: Forox →</a></span>
+</div>
+
+<h1>Traffichiex</h1>
+
+<div class="infobox">
+  <div class="head">
+    <div class="num">Pokédex del Piceno #027</div>
+    <div class="name">Traffichiex</div>
+    <div class="cat">Pokémon Smistatore</div>
+  </div>
+  <div class="art">
+    <div class="artph">Artwork di Traffichiex<br>in arrivo</div>
+    <div class="capt">Artwork di Traffichiex</div>
+  </div>
+  <div class="lang"><span>EN: Traffichiex</span><span>JA: テチョリン <i>Techorin</i></span></div>
+  <table>
+    <tr><th>Tipo</th><td><span class="type t-normale">Normale</span> <span class="type t-psico">Psico</span></td></tr>
+    <tr><th>Abilità</th><td>Presagio (prima)<br>Sincronismo (seconda)<br><i>Raccomandazione</i> (speciale)</td></tr>
+    <tr><th>Sesso</th><td>50% maschi · 50% femmine</td></tr>
+    <tr><th>Altezza</th><td>0,6 m</td></tr>
+    <tr><th>Peso</th><td>4,2 kg</td></tr>
+    <tr><th>Tasso di cattura</th><td>190 (24,8%)</td></tr>
+    <tr><th>Uovo</th><td>Gruppo Umanoide<br>20 cicli (min. 5120 passi)</td></tr>
+    <tr><th>Pokédex regionali</th><td>Piceno #027</td></tr>
+    <tr><th>Tasso di allevamento</th><td>Medio-veloce</td></tr>
+    <tr><th>Esperienza base ceduta</th><td>62</td></tr>
+    <tr><th>Punti base ceduti</th><td>Totale: 1 — Velocità 1</td></tr>
+    <tr><th>Colore Pokédex</th><td>Beige</td></tr>
+    <tr><th>Impronta</th><td><svg width="26" height="26"><use href="#impronta-traffichiex"/></svg></td></tr>
+    <tr><th>Affetto di base</th><td>50</td></tr>
+  </table>
+</div>
+
+<p class="intro"><b class="pkmn">Traffichiex</b> è un Pokémon di doppio tipo <b>Normale</b>/<b>Psico</b> di <b>Ascoli Piceno</b>: lo si incontra attorno alle grandi strutture della città — lo <b>stadio</b>, il <b>Palazzo di Vetro</b>, la <b>Prefettura</b> — dove c'è sempre qualcuno da sistemare e qualcosa da smistare.</p>
+<p>Si <a href="#Evoluzioni">evolve</a> in <a href="forox.html">Forox</a> a partire dal livello 32. È il primo stadio della <b>filiera burocratica</b> del Pokédex del Piceno, che culmina — senza evolversi — nel rarissimo <a href="notaiax.html">Notaiax</a>.</p>
+
+<div class="toc">
+  <div class="toctitle">Indice</div>
+  <ol>
+    <li><a href="#Biologia">Biologia</a>
+      <ol>
+        <li><a href="#Fisionomia">Fisionomia</a></li>
+        <li><a href="#Comportamento">Comportamento</a></li>
+        <li><a href="#Habitat">Habitat</a></li>
+        <li><a href="#Dieta">Dieta</a></li>
+      </ol>
+    </li>
+    <li><a href="#Dati_di_gioco">Dati di gioco</a>
+      <ol>
+        <li><a href="#Resistenze">Resistenze e vulnerabilità</a></li>
+        <li><a href="#Evoluzioni">Evoluzioni</a></li>
+        <li><a href="#Statistiche">Statistiche di base</a></li>
+        <li><a href="#Mosse">Mosse apprese</a></li>
+        <li><a href="#Voci">Voci Pokédex</a></li>
+      </ol>
+    </li>
+    <li><a href="#Taccuino">Il taccuino</a></li>
+    <li><a href="#Curiosita">Curiosità</a></li>
+    <li><a href="#Lingue">In altre lingue</a></li>
+  </ol>
+</div>
+
+<h2 id="Biologia">Biologia</h2>
+
+<h3 id="Fisionomia">Fisionomia</h3>
+<p>Traffichiex è un piccolo <b>taccuino antropomorfo</b>, alto poco più di mezzo metro: un blocco a spirale color avorio, con la copertina rigida che gli fa da schiena e le pagine che si aprono a ventaglio quando si agita. Due braccine sottili spuntano dai lati della rilegatura, e le gambe — corte, veloci — sono fatte di fogli arrotolati. Gli occhi sono due cerchietti d'inchiostro, tondi e vispi, sempre puntati su qualcuno.</p>
+<p>Non si separa mai dalla sua <b>penna</b>: una biro rossa, più lunga di lui, che tiene sotto braccio come un bastone da passeggio o infilata nella spirale come una piuma sul cappello. La usa per tutto — annotare, indicare, battere sul tavolo per attirare l'attenzione — ma soprattutto per <b>scrivere nomi</b>. Le pagine di un Traffichiex sono sempre piene per metà, e nessuno è mai riuscito a leggerle: la grafia cambia a seconda di chi guarda.</p>
+<h4>Differenze tra i sessi</h4>
+<p>Le femmine hanno la spirale della rilegatura color argento anziché ottone e la copertina appena più larga. La biro è rossa in entrambi i sessi.</p>
+
+<h3 id="Comportamento">Comportamento</h3>
+<p>Simpatico, chiacchierone, <b>sempre in mezzo</b>. Traffichiex non sta mai fermo: gira attorno agli ingressi delle grandi strutture, saluta tutti per nome, batte la penna sul taccuino e prende nota. Nel giro di un pomeriggio sa chi entra, chi esce, chi cerca cosa e chi conosce chi.</p>
+<p>La sua abilità più nota è quella di <b>piazzare e smistare</b>: un Pokémon selvatico che vaga per lo stadio senza posto viene preso per una zampa, annotato e accompagnato dove Traffichiex ritiene che debba stare — una tribuna, un ufficio, un corridoio della Prefettura. Non chiede il permesso e non spiega il criterio, ma il criterio c'è sempre: il Pokémon smistato finisce, immancabilmente, in un posto dove qualcuno gli deve un favore. I ricercatori del Piceno lo descrivono come «un ufficio collocamento con le gambe».</p>
+
+<h3 id="Habitat">Habitat</h3>
+<p>Le pertinenze delle <b>grandi strutture di potere secondario</b> di Ascoli Piceno: i piazzali dello <b>stadio Del Duca</b> nei giorni feriali, l'atrio del <b>Palazzo di Vetro</b>, i corridoi e le sale d'attesa della <b>Prefettura</b>. Non lo si trova nei posti dove si decide davvero — lì ci va il suo stadio evoluto — ma in quelli dove si <i>passa</i>, e dove passando si può essere annotati.</p>
+
+<h3 id="Dieta">Dieta</h3>
+<p>Si nutre di <b>caffè d'ufficio</b>, brioche di sala d'attesa e, a quanto pare, di <b>fotocopie</b>: le assorbe attraverso le pagine e le usa per crescere. Un Traffichiex ben nutrito ha sempre qualche foglio in più.</p>
+
+<h2 id="Dati_di_gioco">Dati di gioco</h2>
+
+<h3 id="Resistenze">Resistenze e vulnerabilità</h3>
+<div class="effbox">
+  <div class="effrow"><div class="efflabel">Debolezze</div><div class="effcells">
+    <span class="type t-coleot">Coleot</span><span class="effx">2×</span>
+    <span class="type t-buio">Buio</span><span class="effx">2×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Resistenze</div><div class="effcells">
+    <span class="type t-psico">Psico</span><span class="effx">½×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Immunità</div><div class="effcells">
+    <span class="type t-spettro">Spettro</span><span class="effx">0×</span>
+  </div></div>
+</div>
+<div class="notabene">La combinazione Normale/Psico annulla la debolezza alla Lotta del tipo Normale (Lotta è neutra) e ottiene l'immunità agli Spettro. Restano scoperte le mosse <b>Buio</b> e <b>Coleot</b>: chi lavora nell'ombra o si infila nelle pratiche lo mette in difficoltà.</div>
+
+<h3 id="Evoluzioni">Evoluzioni</h3>
+<div class="evochain">
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Traffichiex<br>in arrivo</div>
+    <div class="nm">Traffichiex</div>
+    <span class="type t-normale">Normale</span> <span class="type t-psico">Psico</span>
+  </div>
+  <div class="evoarrow"><span class="ar">→</span><span>Livello 32</span></div>
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Forox<br>in arrivo</div>
+    <div class="nm"><a href="forox.html">Forox</a></div>
+    <span class="type t-terra">Terra</span> <span class="type t-psico">Psico</span>
+  </div>
+</div>
+<div class="notabene">Al livello 32 il taccuino ha annotato abbastanza nomi da <b>passare dall'altra parte della scrivania</b>: diventa Forox, l'avvocato. <a href="notaiax.html">Notaiax</a> non fa parte della linea evolutiva — è il vertice della stessa filiera, ma ci si nasce.</div>
+
+<h3 id="Statistiche">Statistiche di base</h3>
+<div class="statbars">
+  <div class="statrow s-ps"><span class="sn">PS</span><span class="sv">50</span><div class="sb"><i style="width:33%"></i></div></div>
+  <div class="statrow s-att"><span class="sn">Attacco</span><span class="sv">35</span><div class="sb"><i style="width:23%"></i></div></div>
+  <div class="statrow s-dif"><span class="sn">Difesa</span><span class="sv">45</span><div class="sb"><i style="width:30%"></i></div></div>
+  <div class="statrow s-asp"><span class="sn">Att. Sp.</span><span class="sv">65</span><div class="sb"><i style="width:43%"></i></div></div>
+  <div class="statrow s-dsp"><span class="sn">Dif. Sp.</span><span class="sv">55</span><div class="sb"><i style="width:37%"></i></div></div>
+  <div class="statrow s-vel"><span class="sn">Velocità</span><span class="sv">70</span><div class="sb"><i style="width:47%"></i></div></div>
+  <div class="statrow"><span class="sn"><b>Totale</b></span><span class="sv"><b>320</b></span><div></div></div>
+</div>
+<div class="notabene">Statistiche da primo stadio: fragile, ma <b>veloce</b> e con un Attacco Speciale discreto. In lotta vale per quello che fa entrare e uscire, non per quello che colpisce.</div>
+
+<h3 id="Mosse">Mosse apprese</h3>
+<h4>Aumentando di livello</h4>
+<table class="wtable">
+  <tr><th>Lv.</th><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td class="lvl">Inizio</td><td class="stab">Azione</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">40</td><td class="num">100%</td><td class="num">35</td></tr>
+  <tr><td class="lvl">Inizio</td><td class="stab">Confusione</td><td><span class="type t-psico">Psico</span></td><td>Speciale</td><td class="num">50</td><td class="num">100%</td><td class="num">25</td></tr>
+  <tr><td class="lvl">6</td><td>Fermosguardo</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">100%</td><td class="num">30</td></tr>
+  <tr><td class="lvl">9</td><td>Boato</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">12</td><td><b>Smistamento</b></td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">16</td><td class="stab">Psicoraggio</td><td><span class="type t-psico">Psico</span></td><td>Speciale</td><td class="num">65</td><td class="num">100%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">20</td><td>Riflesso</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">24</td><td>Cambiagiro</td><td><span class="type t-coleot">Coleot</span></td><td>Fisico</td><td class="num">70</td><td class="num">100%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">28</td><td class="stab">Comete</td><td><span class="type t-normale">Normale</span></td><td>Speciale</td><td class="num">60</td><td class="num">—%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">33</td><td>Ipnosi</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">60%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">38</td><td class="stab">Psichico</td><td><span class="type t-psico">Psico</span></td><td>Speciale</td><td class="num">90</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">44</td><td class="stab">Divinazione</td><td><span class="type t-psico">Psico</span></td><td>Speciale</td><td class="num">120</td><td class="num">100%</td><td class="num">10</td></tr>
+</table>
+<h4>Tramite MT/DT (selezione)</h4>
+<table class="wtable">
+  <tr><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td>Protezione</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Sostituto</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Baratto</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td>Riposo</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">5</td></tr>
+  <tr><td>Sonnolalia</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+</table>
+<p><small>Il <b>grassetto</b> indica una mossa che ha il bonus di tipo (STAB) quando viene usata da un Traffichiex. <b>Smistamento</b> è la sua mossa esclusiva: <i>rimanda in squadra il Pokémon bersaglio e lo sostituisce con un compagno scelto da chi la usa — non a caso, come Boato: è Traffichiex a decidere chi entra. Fallisce se il bersaglio è l'ultimo Pokémon in grado di lottare.</i> Descrizione in gioco: «Un timbro, una firma, e sei da un'altra parte».</small></p>
+
+<h3 id="Voci">Voci Pokédex</h3>
+<div class="dexentries">
+  <p><span class="ver">Versione Tronto</span> — <i>Gira attorno allo stadio e alla Prefettura con una biro più lunga di lui. Prende nota di tutti quelli che passano, e nessuno ha mai capito con quale grafia.</i></p>
+  <p><span class="ver">Versione Laga</span> — <i>Piazza i Pokémon senza posto dove ritiene che debbano stare. Non chiede il permesso: quando te ne accorgi, sei già stato smistato.</i></p>
+</div>
+
+<h2 id="Taccuino">Il taccuino</h2>
+<div class="itembox">
+  <svg width="46" height="46"><use href="#icon-taccuino"/></svg>
+  <div><b>Le pagine che nessuno legge.</b> Il corpo di Traffichiex è un taccuino, e il taccuino è pieno: nomi, frecce, numeri di telefono, «da richiamare», «gli deve un favore», «cugino di». Chiunque provi a sbirciare vede solo una calligrafia che cambia a ogni sguardo — un effetto della componente Psico che i ricercatori chiamano <i>riservatezza d'ufficio</i>.<br><br>
+  In gioco, un Traffichiex catturato con l'abilità <i>Raccomandazione</i> conserva le sue annotazioni: se viene mandato in un Centro Pokémon o in una Palestra della regione, ogni tanto un NPC saluta l'allenatore per nome «perché gliel'ha detto lui». Non serve a nulla di concreto. Ma è così che funziona.</div>
+</div>
+
+<h2 id="Curiosita">Curiosità</h2>
+<ul>
+  <li>L'abilità speciale <i>Raccomandazione</i> dà priorità +1 alle sue mosse di stato: Smistamento e Boato arrivano prima che l'avversario possa fare qualsiasi cosa. Una spintarella al momento giusto.</li>
+  <li>Traffichiex è, con <a href="tifotto.html">Tifotto</a>, il Pokémon più facile da incontrare nei pressi dello stadio Del Duca — ma a differenza sua non entra mai: <b>resta ai cancelli</b>, dove il traffico è più interessante.</li>
+  <li>Se lo si lascia nella squadra a lungo, tende a <b>riordinare l'ordine dei Pokémon</b> in squadra a modo suo. Gli allenatori giurano che lo faccia sul serio; il gioco, in effetti, lo fa.</li>
+  <li>Non è mai stato visto scrivere nulla che riguardi sé stesso.</li>
+</ul>
+<h3>Origine</h3>
+<p>Traffichiex nasce dalla figura del <b>traffichino</b> di provincia: quello che «conosce uno» in ogni ufficio, che si trova sempre nei pressi delle grandi strutture — lo stadio, la Prefettura, il palazzo di rappresentanza — e che, senza avere alcun potere formale, riesce a piazzare, spostare e sistemare chiunque. Il taccuino con la penna è l'attributo classico del personaggio: l'agenda dei favori, dei nomi e dei numeri.</p>
+<p>Il tipo Normale/Psico traduce l'idea che il suo potere non stia nella forza ma nel <b>sapere chi va dove</b>; l'evoluzione in <a href="forox.html">Forox</a> — un avvocato — segue la carriera naturale del personaggio, dall'atrio all'aula.</p>
+<h4>Origine del nome</h4>
+<p><b>Traffichiex</b> unisce <i>trafficare</i> / <i>traffichino</i> al suffisso <i>-ex</i>, in continuità con gli altri Pokémon-mestiere della filiera burocratica (<a href="forox.html">Forox</a>, <a href="notaiax.html">Notaiax</a>).</p>
+<p>Il nome giapponese, テチョリン <i>Techorin</i>, viene da 手帳 <i>techō</i> ("taccuino, agenda") con il diminutivo vezzeggiativo <i>-rin</i>.</p>
+
+<h2 id="Lingue">In altre lingue</h2>
+<table class="wtable">
+  <tr><th>Lingua</th><th>Nome</th><th>Origine</th></tr>
+  <tr><td><b>Giapponese</b></td><td>テチョリン <i>Techorin</i></td><td>Da <i>techō</i> (taccuino) e <i>-rin</i>.</td></tr>
+  <tr><td><b>Inglese</b></td><td>Traffichiex</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Francese</b></td><td>Traffichiex</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Spagnolo</b></td><td>Traffichiex</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Tedesco</b></td><td>Traffichiex</td><td>Uguale al nome italiano.</td></tr>
+</table>
+
+<h2>Vedi anche</h2>
+<ul>
+  <li><a href="forox.html">Forox</a> — la sua evoluzione, l'avvocato</li>
+  <li><a href="notaiax.html">Notaiax</a> — il vertice della filiera burocratica</li>
+  <li><a href="tifotto.html">Tifotto</a> e <a href="sciarpone.html">Sciarpone</a> — gli altri frequentatori dello stadio, spesso smistati da lui</li>
+</ul>
+
+<div class="dexnav">
+  <span><a href="dehor.html">← #026: Dehor</a></span>
+  <span class="mid">#027 Traffichiex</span>
+  <span><a href="forox.html">#028: Forox →</a></span>
+</div>
+
+<div class="cats"><b>Categorie:</b> Pokémon · Pokémon della regione Piceno · Pokémon di tipo Normale · Pokémon di tipo Psico · Pokémon di doppio tipo · Pokémon che si evolvono al livello 32 · Gruppo Uova Umanoide · Pokémon di colore Beige</div>
+<div class="footer">Pagina fan-made ispirata al formato di Pokémon Central Wiki. Lo stadio Cino e Lillo Del Duca e la Prefettura di Ascoli Piceno sono luoghi reali; il personaggio è di fantasia.</div>
+</div>
+</body>
+</html>

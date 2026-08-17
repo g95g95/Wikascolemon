@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forox - Pokédex del Piceno</title>
+<style>
+:root{
+  --border:#a2a9b1; --panel:#f8f9fa; --text:#202122; --link:#3366cc; --red:#ba0000;
+  --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
+  --terra:#E0C068; --acqua:#6890F0; --lotta:#C03028; --acciaio:#B8B8D0;
+  --fuoco:#F08030; --volante:#A890F0; --psico:#F85888; --spettro:#705898;
+  --buio:#705848; --drago:#7038F8; --elettro:#F8D030; --folletto:#EE99AC;
+  --ghiaccio:#98D8D8; --coleot:#A8B820;
+  --accent1:#2b2b30; --accent2:#c9a84a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--text);font:14px/1.6 "Segoe UI","Helvetica Neue",Arial,sans-serif}
+.page{max-width:1080px;margin:0 auto;padding:14px 20px 40px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+a.new{color:var(--red)}
+h1,h2{font-family:"Linux Libertine",Georgia,"Times New Roman",serif;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:4px;margin:20px 0 12px}
+h1{font-size:30px;margin-top:6px}
+h2{font-size:23px}
+h3{font-size:17px;margin:18px 0 8px}
+h4{font-size:15px;margin:14px 0 6px}
+.sitenotice{font-size:12px;color:#54595d;border-bottom:1px solid #eaecf0;padding-bottom:6px}
+.dexnav{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#e9e9ec,#f8f9fa,#f5efdd);border:1px solid var(--border);border-radius:6px;padding:8px 14px;margin:12px 0;font-size:13px}
+.dexnav .mid{font-weight:700}
+.dexnav .dim{color:#9a9fa5}
+.type{display:inline-block;padding:2px 11px;border-radius:4px;color:#fff;font-weight:600;font-size:12px;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.18)}
+.t-roccia{background:var(--roccia)} .t-normale{background:var(--normale)} .t-veleno{background:var(--veleno)}
+.t-erba{background:var(--erba)} .t-terra{background:var(--terra);color:#5b4a12;text-shadow:none} .t-acqua{background:var(--acqua)}
+.t-lotta{background:var(--lotta)} .t-acciaio{background:var(--acciaio);color:#43436b;text-shadow:none} .t-fuoco{background:var(--fuoco)}
+.t-volante{background:var(--volante)} .t-psico{background:var(--psico)} .t-spettro{background:var(--spettro)}
+.t-buio{background:var(--buio)} .t-drago{background:var(--drago)} .t-elettro{background:var(--elettro);color:#6b5a10;text-shadow:none}
+.t-folletto{background:var(--folletto);color:#7c3350;text-shadow:none} .t-ghiaccio{background:var(--ghiaccio);color:#2a6a6a;text-shadow:none} .t-coleot{background:var(--coleot)}
+.infobox{float:right;width:308px;margin:0 0 16px 22px;border:1px solid var(--border);background:var(--panel);border-radius:8px;overflow:hidden;font-size:12.5px}
+.infobox .head{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff;text-align:center;padding:8px 10px}
+.infobox .head .num{font-size:12px;opacity:.9}
+.infobox .head .name{font-size:20px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.infobox .head .cat{font-size:12px;font-style:italic}
+.infobox .art{background:#fff;padding:8px;text-align:center;border-bottom:1px solid #eaecf0}
+.infobox .art svg{width:236px;height:236px}
+.infobox .art img{width:236px;height:236px;object-fit:contain}
+.artph{width:236px;height:236px;margin:0 auto;border:2px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;color:#72777d;font-size:12px;padding:10px;background:#fcfcfc}
+.infobox .art .capt{font-size:11px;color:#54595d}
+.infobox table{width:100%;border-collapse:collapse}
+.infobox th{background:#eef0f2;text-align:left;padding:5px 9px;width:41%;font-weight:600;vertical-align:top;border-top:1px solid #eaecf0}
+.infobox td{padding:5px 9px;border-top:1px solid #eaecf0;vertical-align:top}
+.infobox .lang{display:flex;justify-content:center;gap:14px;background:#eef0f2;padding:4px;font-size:11.5px;color:#54595d}
+.toc{display:inline-block;border:1px solid var(--border);background:var(--panel);padding:10px 18px;border-radius:6px;font-size:13px;margin:8px 0 4px}
+.toc .toctitle{font-weight:700;text-align:center}
+.toc ol{margin:6px 0 0;padding-left:22px}
+.toc ol ol{margin:0}
+.intro b.pkmn{font-size:15px}
+.wtable{border-collapse:collapse;margin:10px 0;font-size:13px}
+.wtable th,.wtable td{border:1px solid var(--border);padding:5px 10px}
+.wtable th{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff}
+.wtable td{background:#fff}
+.wtable tr:nth-child(even) td{background:#fafbfc}
+.wtable .lvl{text-align:center;font-weight:600}
+.wtable .num{text-align:center}
+.stab{font-weight:700}
+.effbox{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin:10px 0;max-width:760px}
+.effrow{display:flex;border-top:1px solid var(--border)}
+.effrow:first-child{border-top:none}
+.efflabel{width:130px;flex:0 0 130px;background:#eef0f2;padding:8px;font-weight:600;display:flex;align-items:center;font-size:12.5px}
+.effcells{padding:7px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;background:#fff}
+.effx{font-size:11px;color:#54595d;margin-left:2px}
+.evochain{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin:14px 0}
+.evocard{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:10px 12px;text-align:center;width:172px}
+.evocard svg{width:118px;height:118px}
+.evocard img{width:118px;height:118px;object-fit:contain}
+.evocard .nm{font-weight:700;margin:2px 0 6px}
+.evoarrow{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:11.5px;color:#54595d;width:130px;padding:0 4px}
+.evoarrow .ar{font-size:26px;color:#8b8f94;line-height:1}
+.statbars{max-width:640px}
+.statrow{display:flex;align-items:center;gap:10px;margin:4px 0}
+.statrow .sn{width:78px;flex:0 0 78px;font-weight:600;font-size:12.5px}
+.statrow .sv{width:34px;flex:0 0 34px;text-align:right;font-weight:700;font-size:13px}
+.statrow .sb{flex:1;background:#eef0f2;border:1px solid #dfe3e8;border-radius:4px;height:14px;overflow:hidden}
+.statrow .sb i{display:block;height:100%;border-radius:3px}
+.s-ps i{background:#FF5959}.s-att i{background:#F5AC78}.s-dif i{background:#FAE078}
+.s-asp i{background:#9DB7F5}.s-dsp i{background:#A7DB8D}.s-vel i{background:#FA92B2}
+.dexentries{max-width:820px}
+.dexentries .ver{font-weight:700}
+.itembox{border:1px solid #7fb1d8;background:#f0f7fc;border-radius:8px;padding:12px 16px;margin:14px 0;max-width:760px;display:flex;gap:14px;align-items:flex-start}
+.itembox svg{flex:0 0 46px}
+.notabene{border-left:4px solid var(--accent1);background:var(--panel);padding:8px 14px;margin:10px 0;max-width:780px;font-size:13px}
+.cats{border:1px solid var(--border);background:var(--panel);border-radius:6px;padding:8px 14px;margin-top:34px;font-size:12.5px}
+.footer{font-size:11.5px;color:#54595d;margin-top:14px}
+ul{margin:6px 0}
+@media (max-width:760px){
+  .infobox{float:none;width:100%;margin:12px 0}
+  .efflabel{width:96px;flex-basis:96px}
+  .evoarrow{width:100%}
+}
+@media (prefers-reduced-motion: no-preference){
+  .evocard:hover{box-shadow:0 2px 8px rgba(0,0,0,.12);transition:box-shadow .2s}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="icon-toga" viewBox="0 0 48 48">
+  <path d="M12 10 L24 6 L36 10 L40 44 L8 44 Z" fill="#2b2b30"/>
+  <path d="M20 8 L24 22 L28 8" fill="#f8f9fa"/>
+  <path d="M18 24 h12 v3 h-12 z" fill="#c9a84a"/>
+  <path d="M22 26 h4 v14 h-4 z" fill="#f8f9fa" opacity=".9"/>
+  <path d="M15 40 h18" stroke="#c9a84a" stroke-width="2" stroke-linecap="round"/>
+</symbol>
+<symbol id="impronta-forox" viewBox="0 0 40 40">
+  <ellipse cx="20" cy="26" rx="8" ry="6.5" fill="#54595d"/>
+  <ellipse cx="10" cy="17" rx="3.2" ry="4" fill="#54595d"/>
+  <ellipse cx="16.5" cy="12" rx="3.2" ry="4" fill="#54595d"/>
+  <ellipse cx="23.5" cy="12" rx="3.2" ry="4" fill="#54595d"/>
+  <ellipse cx="30" cy="17" rx="3.2" ry="4" fill="#54595d"/>
+</symbol>
+</defs>
+</svg>
+<div class="page">
+<div class="sitenotice">da <b>Pokédex del Piceno</b>, l'enciclopedia (immaginaria) dei Pokémon della regione Piceno. <i>Pagina fan-made nel formato di Pokémon Central Wiki.</i></div>
+
+<div class="dexnav">
+  <span><a href="traffichiex.html">← #027: Traffichiex</a></span>
+  <span class="mid">#028 Forox</span>
+  <span><a href="notaiax.html">#029: Notaiax →</a></span>
+</div>
+
+<h1>Forox</h1>
+
+<div class="infobox">
+  <div class="head">
+    <div class="num">Pokédex del Piceno #028</div>
+    <div class="name">Forox</div>
+    <div class="cat">Pokémon Avvocato</div>
+  </div>
+  <div class="art">
+    <div class="artph">Artwork di Forox<br>in arrivo</div>
+    <div class="capt">Artwork di Forox</div>
+  </div>
+  <div class="lang"><span>EN: Forox</span><span>JA: ベンゴネコ <i>Bengoneko</i></span></div>
+  <table>
+    <tr><th>Tipo</th><td><span class="type t-terra">Terra</span> <span class="type t-psico">Psico</span></td></tr>
+    <tr><th>Abilità</th><td>Prepotenza (prima)<br>Presagio (seconda)<br><i>Cavillo</i> (speciale)</td></tr>
+    <tr><th>Sesso</th><td>50% maschi · 50% femmine</td></tr>
+    <tr><th>Altezza</th><td>1,7 m</td></tr>
+    <tr><th>Peso</th><td>62,0 kg</td></tr>
+    <tr><th>Tasso di cattura</th><td>60 (15,7%)</td></tr>
+    <tr><th>Uovo</th><td>Gruppo Umanoide<br>20 cicli (min. 5120 passi)</td></tr>
+    <tr><th>Pokédex regionali</th><td>Piceno #028</td></tr>
+    <tr><th>Tasso di allevamento</th><td>Medio-veloce</td></tr>
+    <tr><th>Esperienza base ceduta</th><td>168</td></tr>
+    <tr><th>Punti base ceduti</th><td>Totale: 2 — Att. Sp. 2</td></tr>
+    <tr><th>Colore Pokédex</th><td>Nero</td></tr>
+    <tr><th>Impronta</th><td><svg width="26" height="26"><use href="#impronta-forox"/></svg></td></tr>
+    <tr><th>Affetto di base</th><td>50</td></tr>
+  </table>
+</div>
+
+<p class="intro"><b class="pkmn">Forox</b> è un Pokémon di doppio tipo <b>Terra</b>/<b>Psico</b> di <b>Ascoli Piceno</b>: un grande gatto nero antropomorfo che si trova al <b>Tribunale</b> e alla <b>Prefettura</b>, e che nei giorni di partita va allo <b>stadio</b>. Conosce a memoria tutte le costituzioni e tutte le legislazioni della regione — comprese quelle che non sono ancora state scritte.</p>
+<p>Si <a href="#Evoluzioni">evolve</a> da <a href="traffichiex.html">Traffichiex</a> a partire dal livello 32. È lo stadio finale della linea, e il secondo gradino della <b>filiera burocratica</b> che ha per vertice — non evolutivo — il leggendario <a href="notaiax.html">Notaiax</a>.</p>
+
+<div class="toc">
+  <div class="toctitle">Indice</div>
+  <ol>
+    <li><a href="#Biologia">Biologia</a>
+      <ol>
+        <li><a href="#Fisionomia">Fisionomia</a></li>
+        <li><a href="#Comportamento">Comportamento</a></li>
+        <li><a href="#Habitat">Habitat</a></li>
+        <li><a href="#Dieta">Dieta</a></li>
+      </ol>
+    </li>
+    <li><a href="#Dati_di_gioco">Dati di gioco</a>
+      <ol>
+        <li><a href="#Resistenze">Resistenze e vulnerabilità</a></li>
+        <li><a href="#Evoluzioni">Evoluzioni</a></li>
+        <li><a href="#Statistiche">Statistiche di base</a></li>
+        <li><a href="#Mosse">Mosse apprese</a></li>
+        <li><a href="#Voci">Voci Pokédex</a></li>
+      </ol>
+    </li>
+    <li><a href="#Ricorso">Il ricorso</a></li>
+    <li><a href="#Curiosita">Curiosità</a></li>
+    <li><a href="#Lingue">In altre lingue</a></li>
+  </ol>
+</div>
+
+<h2 id="Biologia">Biologia</h2>
+
+<h3 id="Fisionomia">Fisionomia</h3>
+<p>Forox è un <b>gatto nero antropomorfo</b> alto quasi un metro e settanta, largo di spalle e di pancia, con un pelo corto e lucidissimo che sembra sempre appena spazzolato. Cammina eretto, con calma, le zampe posteriori robuste piantate a terra come se ogni pavimento fosse suo. Il muso è tondo e simpatico, con baffi lunghi e ben separati e due grandi occhi gialli, socchiusi, che danno l'impressione di essere sempre un passo avanti a chi parla.</p>
+<p>Attorno al collo porta una <b>gorgiera bianca</b> di pelo più lungo, che ricorda il collare della toga, e sul petto una macchia chiara a forma di cravattino. Le zampe anteriori sono grandi e morbide, con artigli che tiene sempre ritratti: non ne ha bisogno. Quando parla — e parla molto — gesticola con la zampa destra come chi ha una penna in mano anche quando non ce l'ha: è l'unica eredità visibile del <a href="traffichiex.html">taccuino</a> che era.</p>
+<h4>Differenze tra i sessi</h4>
+<p>Le femmine hanno la gorgiera più corta e gli occhi verdi anziché gialli. In aula non si nota alcuna differenza.</p>
+
+<h3 id="Comportamento">Comportamento</h3>
+<p>Grande, tranquillo, <b>simpatico</b>: Forox saluta tutti, fa le fusa ai cancellieri e ha una battuta pronta per ogni sala d'attesa. Poi apre bocca sul merito, e la sala si zittisce. Conosce a memoria <b>tutte le costituzioni</b>, tutti i codici, tutte le circolari e le leggine regionali; cita commi e sentenze con la stessa naturalezza con cui un altro gatto farebbe le fusa. Non alza mai la voce: le sue arringhe sono lunghe, avvolgenti, impossibili da interrompere, e finiscono sempre con l'avversario che si chiede come abbia fatto a trovarsi dalla parte del torto.</p>
+<p>Nei giorni di partita va allo <b>stadio</b>, dove è una piccola autorità: i <a href="tifotto.html">Tifotto</a> e gli <a href="sciarpone.html">Sciarpone</a> selvatici lo <b>seguono e gli obbediscono</b> — li dispone in tribuna con un gesto della zampa, li fa alzare, li fa sedere, li manda a prendere il caffè. Con <a href="capultra.html">Capultrà</a>, invece, se la gioca: il capo ultras non riconosce alcuna autorità che non venga dalla curva, e i due passano interi secondi tempi a fronteggiarsi tra la Sud e la tribuna. Nessuno dei due ha mai vinto davvero.</p>
+<p>La sua caratteristica più famosa, però, è che <b>non si lascia sconfiggere da chiunque</b>: se l'allenatore che lo affronta non ha ancora l'esperienza sufficiente, al momento di cadere Forox si rialza, sistema la gorgiera e <a href="#Ricorso">presenta ricorso</a>.</p>
+
+<h3 id="Habitat">Habitat</h3>
+<p>Il <b>Tribunale</b> e la <b>Prefettura</b> di Ascoli Piceno — le aule, i corridoi, la sala avvocati e i bar convenzionati — sono i suoi luoghi d'elezione. Frequenta lo <b>stadio Del Duca</b> nei giorni di partita e, occasionalmente, il Palazzo di Vetro, dove ha ancora qualche conoscenza dei tempi in cui era un Traffichiex.</p>
+
+<h3 id="Dieta">Dieta</h3>
+<p>Onnivoro e di buona forchetta: pranzi di lavoro, olive all'ascolana della mensa del Tribunale, caffè in quantità. Come tutti i Pokémon della filiera burocratica assorbe <b>carta</b> — fascicoli, atti, gazzette ufficiali — che digerisce lentamente e ricorda per sempre.</p>
+
+<h2 id="Dati_di_gioco">Dati di gioco</h2>
+
+<h3 id="Resistenze">Resistenze e vulnerabilità</h3>
+<div class="effbox">
+  <div class="effrow"><div class="efflabel">Debolezze</div><div class="effcells">
+    <span class="type t-acqua">Acqua</span><span class="effx">2×</span>
+    <span class="type t-erba">Erba</span><span class="effx">2×</span>
+    <span class="type t-ghiaccio">Ghiaccio</span><span class="effx">2×</span>
+    <span class="type t-coleot">Coleot</span><span class="effx">2×</span>
+    <span class="type t-spettro">Spettro</span><span class="effx">2×</span>
+    <span class="type t-buio">Buio</span><span class="effx">2×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Resistenze</div><div class="effcells">
+    <span class="type t-veleno">Veleno</span><span class="effx">½×</span>
+    <span class="type t-roccia">Roccia</span><span class="effx">½×</span>
+    <span class="type t-lotta">Lotta</span><span class="effx">½×</span>
+    <span class="type t-psico">Psico</span><span class="effx">½×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Immunità</div><div class="effcells">
+    <span class="type t-elettro">Elettro</span><span class="effx">0×</span>
+  </div></div>
+</div>
+<div class="notabene">Sei debolezze sono tante, e la peggiore è il <b>Buio</b>: contro <a href="capultra.html">Capultrà</a> (Buio/Lotta, immune alle sue mosse Psico) Forox parte svantaggiato sulla carta, e se la gioca solo grazie alle mosse Terra e all'abilità <i>Cavillo</i>. Con l'abilità speciale, ogni colpo superefficace che subisce costa all'avversario uno stadio di Precisione — <i>contesta il colpo</i>.</div>
+
+<h3 id="Evoluzioni">Evoluzioni</h3>
+<div class="evochain">
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Traffichiex<br>in arrivo</div>
+    <div class="nm"><a href="traffichiex.html">Traffichiex</a></div>
+    <span class="type t-normale">Normale</span> <span class="type t-psico">Psico</span>
+  </div>
+  <div class="evoarrow"><span class="ar">→</span><span>Livello 32</span></div>
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Forox<br>in arrivo</div>
+    <div class="nm">Forox</div>
+    <span class="type t-terra">Terra</span> <span class="type t-psico">Psico</span>
+  </div>
+</div>
+<div class="notabene">Evolvendosi Forox <b>perde il tipo Normale e acquisisce il Terra</b>: il taccuino ha messo radici, e da chi smistava è diventato chi decide. <a href="notaiax.html">Notaiax</a> non è una sua evoluzione: si nasce Notaiax, non lo si diventa.</div>
+
+<h3 id="Statistiche">Statistiche di base</h3>
+<div class="statbars">
+  <div class="statrow s-ps"><span class="sn">PS</span><span class="sv">85</span><div class="sb"><i style="width:57%"></i></div></div>
+  <div class="statrow s-att"><span class="sn">Attacco</span><span class="sv">90</span><div class="sb"><i style="width:60%"></i></div></div>
+  <div class="statrow s-dif"><span class="sn">Difesa</span><span class="sv">80</span><div class="sb"><i style="width:53%"></i></div></div>
+  <div class="statrow s-asp"><span class="sn">Att. Sp.</span><span class="sv">100</span><div class="sb"><i style="width:67%"></i></div></div>
+  <div class="statrow s-dsp"><span class="sn">Dif. Sp.</span><span class="sv">85</span><div class="sb"><i style="width:57%"></i></div></div>
+  <div class="statrow s-vel"><span class="sn">Velocità</span><span class="sv">60</span><div class="sb"><i style="width:40%"></i></div></div>
+  <div class="statrow"><span class="sn"><b>Totale</b></span><span class="sv"><b>500</b></span><div></div></div>
+</div>
+<div class="notabene">Statistiche solide e bilanciate, con l'<b>Attacco Speciale</b> in evidenza: parla, e fa male. È lento — non ha fretta, ha ragione — e la sua vera forza sta nel <a href="#Ricorso">ricorso</a>, che nelle prime fasi del gioco lo rende di fatto insconfiggibile.</div>
+
+<h3 id="Mosse">Mosse apprese</h3>
+<h4>Aumentando di livello</h4>
+<table class="wtable">
+  <tr><th>Lv.</th><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td class="lvl">Evo</td><td class="stab"><b>Arringa</b></td><td><span class="type t-psico">Psico</span></td><td>Speciale</td><td class="num">90</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">Inizio</td><td>Azione</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">40</td><td class="num">100%</td><td class="num">35</td></tr>
+  <tr><td class="lvl">Inizio</td><td class="stab">Confusione</td><td><span class="type t-psico">Psico</span></td><td>Speciale</td><td class="num">50</td><td class="num">100%</td><td class="num">25</td></tr>
+  <tr><td class="lvl">Inizio</td><td>Fermosguardo</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">100%</td><td class="num">30</td></tr>
+  <tr><td class="lvl">Inizio</td><td>Boato</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">16</td><td class="stab">Psicoraggio</td><td><span class="type t-psico">Psico</span></td><td>Speciale</td><td class="num">65</td><td class="num">100%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">20</td><td>Riflesso</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">24</td><td class="stab">Fangobomba</td><td><span class="type t-terra">Terra</span></td><td>Speciale</td><td class="num">65</td><td class="num">85%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">28</td><td>Comete</td><td><span class="type t-normale">Normale</span></td><td>Speciale</td><td class="num">60</td><td class="num">—%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">36</td><td>Ipnosi</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">60%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">40</td><td class="stab">Terrforza</td><td><span class="type t-terra">Terra</span></td><td>Speciale</td><td class="num">90</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">45</td><td class="stab">Psichico</td><td><span class="type t-psico">Psico</span></td><td>Speciale</td><td class="num">90</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">50</td><td>Sgranocchio</td><td><span class="type t-buio">Buio</span></td><td>Fisico</td><td class="num">80</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">56</td><td class="stab">Terremoto</td><td><span class="type t-terra">Terra</span></td><td>Fisico</td><td class="num">100</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">62</td><td class="stab">Divinazione</td><td><span class="type t-psico">Psico</span></td><td>Speciale</td><td class="num">120</td><td class="num">100%</td><td class="num">10</td></tr>
+</table>
+<h4>Tramite MT/DT (selezione)</h4>
+<table class="wtable">
+  <tr><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td>Protezione</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Sostituto</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Baratto</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td>Attaccalite</td><td><span class="type t-buio">Buio</span></td><td>Stato</td><td class="num">—</td><td class="num">100%</td><td class="num">20</td></tr>
+  <tr><td>Palla Ombra</td><td><span class="type t-spettro">Spettro</span></td><td>Speciale</td><td class="num">80</td><td class="num">100%</td><td class="num">15</td></tr>
+</table>
+<p><small>Il <b>grassetto</b> indica una mossa che ha il bonus di tipo (STAB) quando viene usata da un Forox. <b>Arringa</b> è la sua mossa esclusiva, appresa all'evoluzione: <i>infligge danno e per tre turni impedisce al bersaglio di usare la stessa mossa due volte di seguito (come Tormento) — nessuno può ripetere la stessa obiezione davanti a Forox.</i> Descrizione in gioco: «Con permesso, vostro onore. Anzi, senza».</small></p>
+
+<h3 id="Voci">Voci Pokédex</h3>
+<div class="dexentries">
+  <p><span class="ver">Versione Tronto</span> — <i>Conosce a memoria tutte le costituzioni, comprese quelle abrogate. Se lo si contraddice, cita il comma esatto e continua a fare le fusa.</i></p>
+  <p><span class="ver">Versione Laga</span> — <i>Allo stadio i Tifotto e gli Sciarpone gli obbediscono con un gesto della zampa. Solo Capultrà gli tiene testa, e nessuno dei due ha mai vinto davvero.</i></p>
+</div>
+
+<h2 id="Ricorso">Il ricorso</h2>
+<div class="itembox">
+  <svg width="46" height="46"><use href="#icon-toga"/></svg>
+  <div><b>«Forox presenta ricorso!»</b> Un Forox selvatico o avversario può essere <b>sconfitto solo da un allenatore con esperienza sufficiente</b>. In gioco la regola è secca: se chi lo affronta ha <b>meno di quattro Medaglie</b>, nel momento in cui un colpo lo porterebbe a 0 PS Forox resta a 1 PS, presenta ricorso e la lotta termina — senza esperienza, senza premio, senza cattura. Si può scappare, si può perdere, ma non si può vincere.<br><br>
+  Dalla quarta Medaglia in poi il ricorso non viene più accolto e Forox lotta come chiunque altro (e si può catturare). Lo stesso vale per chi lo ha nel proprio Pokédex per averlo ricevuto in scambio: finché l'allenatore non ha l'esperienza richiesta, il Forox in squadra <b>non obbedisce agli ordini che ritiene infondati</b> — cioè, di norma, a tutti — e passa il turno a consultare il codice.<br><br>
+  Il Pokédex del Piceno segnala che la regola non è un privilegio: è la sua natura. Un avvocato non perde una causa perché l'avversario ha colpito più forte. La perde quando l'avversario <i>sa</i>.</div>
+</div>
+
+<h2 id="Curiosita">Curiosità</h2>
+<ul>
+  <li>È l'unico Pokémon del Piceno a cui obbediscono i <a href="tifotto.html">Tifotto</a> e gli <a href="sciarpone.html">Sciarpone</a> selvatici: nelle lotte allo stadio i due, se presenti sul campo, tendono a usare <i>Aiuto</i> a suo favore.</li>
+  <li>Il duello con <a href="capultra.html">Capultrà</a> è uno dei momenti fissi delle giornate di partita: nella storia del gioco i due si affrontano una volta, in coppia con l'allenatore, e il risultato dipende da chi ha scelto meglio i compagni.</li>
+  <li>Sebbene sia di tipo Terra, non scava mai: <b>si fa scavare</b>. È stato osservato mentre convinceva un <a href="carpentrap.html">Carpentrap</a> a fargli un passaggio sotto la Prefettura, con un'arringa di undici minuti.</li>
+  <li>Il colore del pelo, un nero assoluto, ha dato origine alla superstizione locale per cui incrociare un Forox porta sfortuna. Il Pokédex precisa: solo se si è dalla parte del torto.</li>
+  <li>Malgrado tutto è un ottimo compagno di squadra: affettuoso, ordinato, e con la memoria migliore della regione. Ricorda ogni mossa che gli è stata insegnata anche dopo averla dimenticata.</li>
+</ul>
+<h3>Origine</h3>
+<p>Forox è l'<b>avvocato di provincia</b>: la figura che frequenta il Tribunale e la Prefettura, che conosce tutti e da tutti è conosciuta, e che nei giorni di partita si sposta allo stadio con la stessa autorevolezza. Il gatto nero antropomorfo unisce la fama del gatto — furbo, indipendente, dalle sette vite — al colore della toga; la gorgiera bianca è il collare della toga stessa.</p>
+<p>Il tipo Terra rappresenta il <b>radicamento nel territorio e nelle sue regole</b>: il diritto come suolo, la costituzione come fondamenta. Il Psico è la memoria e la parola. La regola del ricorso traduce in meccanica di gioco un'osservazione di buon senso: contro certi avversari non basta essere forti, bisogna essere <i>preparati</i>.</p>
+<h4>Origine del nome</h4>
+<p><b>Forox</b> viene da <i>foro</i> — nel senso di tribunale, il "foro di Ascoli" — con il suffisso <i>-ox</i> già usato per <a href="venagrox.html">Venagrox</a>. Si sente anche l'eco di <i>ferox</i>, che gli sta bene solo in aula.</p>
+<p>Il nome giapponese, ベンゴネコ <i>Bengoneko</i>, unisce 弁護 <i>bengo</i> ("difesa legale", da cui 弁護士 <i>bengoshi</i>, avvocato) e 猫 <i>neko</i> ("gatto").</p>
+
+<h2 id="Lingue">In altre lingue</h2>
+<table class="wtable">
+  <tr><th>Lingua</th><th>Nome</th><th>Origine</th></tr>
+  <tr><td><b>Giapponese</b></td><td>ベンゴネコ <i>Bengoneko</i></td><td>Da <i>bengo</i> e <i>neko</i>.</td></tr>
+  <tr><td><b>Inglese</b></td><td>Forox</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Francese</b></td><td>Forox</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Spagnolo</b></td><td>Forox</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Tedesco</b></td><td>Forox</td><td>Uguale al nome italiano.</td></tr>
+</table>
+
+<h2>Vedi anche</h2>
+<ul>
+  <li><a href="traffichiex.html">Traffichiex</a> — la sua preevoluzione, il taccuino</li>
+  <li><a href="notaiax.html">Notaiax</a> — il vertice della filiera burocratica</li>
+  <li><a href="capultra.html">Capultrà</a> — il rivale delle giornate di partita</li>
+  <li><a href="felignoto.html">Felignoto</a> — l'altro felino misterioso della regione</li>
+</ul>
+
+<div class="dexnav">
+  <span><a href="traffichiex.html">← #027: Traffichiex</a></span>
+  <span class="mid">#028 Forox</span>
+  <span><a href="notaiax.html">#029: Notaiax →</a></span>
+</div>
+
+<div class="cats"><b>Categorie:</b> Pokémon · Pokémon della regione Piceno · Pokémon di tipo Terra · Pokémon di tipo Psico · Pokémon di doppio tipo · Pokémon che si evolvono al livello 32 · Gruppo Uova Umanoide · Pokémon di colore Nero</div>
+<div class="footer">Pagina fan-made ispirata al formato di Pokémon Central Wiki. Il Tribunale, la Prefettura e lo stadio Del Duca di Ascoli Piceno sono luoghi reali; il personaggio è di fantasia.</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notaiax - Pokédex del Piceno</title>
+<style>
+:root{
+  --border:#a2a9b1; --panel:#f8f9fa; --text:#202122; --link:#3366cc; --red:#ba0000;
+  --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
+  --terra:#E0C068; --acqua:#6890F0; --lotta:#C03028; --acciaio:#B8B8D0;
+  --fuoco:#F08030; --volante:#A890F0; --psico:#F85888; --spettro:#705898;
+  --buio:#705848; --drago:#7038F8; --elettro:#F8D030; --folletto:#EE99AC;
+  --ghiaccio:#98D8D8; --coleot:#A8B820;
+  --accent1:#A040A0; --accent2:#3b2f2f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--text);font:14px/1.6 "Segoe UI","Helvetica Neue",Arial,sans-serif}
+.page{max-width:1080px;margin:0 auto;padding:14px 20px 40px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+a.new{color:var(--red)}
+h1,h2{font-family:"Linux Libertine",Georgia,"Times New Roman",serif;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:4px;margin:20px 0 12px}
+h1{font-size:30px;margin-top:6px}
+h2{font-size:23px}
+h3{font-size:17px;margin:18px 0 8px}
+h4{font-size:15px;margin:14px 0 6px}
+.sitenotice{font-size:12px;color:#54595d;border-bottom:1px solid #eaecf0;padding-bottom:6px}
+.dexnav{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#f2e6f2,#f8f9fa,#e9e4e2);border:1px solid var(--border);border-radius:6px;padding:8px 14px;margin:12px 0;font-size:13px}
+.dexnav .mid{font-weight:700}
+.dexnav .dim{color:#9a9fa5}
+.type{display:inline-block;padding:2px 11px;border-radius:4px;color:#fff;font-weight:600;font-size:12px;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.18)}
+.t-roccia{background:var(--roccia)} .t-normale{background:var(--normale)} .t-veleno{background:var(--veleno)}
+.t-erba{background:var(--erba)} .t-terra{background:var(--terra);color:#5b4a12;text-shadow:none} .t-acqua{background:var(--acqua)}
+.t-lotta{background:var(--lotta)} .t-acciaio{background:var(--acciaio);color:#43436b;text-shadow:none} .t-fuoco{background:var(--fuoco)}
+.t-volante{background:var(--volante)} .t-psico{background:var(--psico)} .t-spettro{background:var(--spettro)}
+.t-buio{background:var(--buio)} .t-drago{background:var(--drago)} .t-elettro{background:var(--elettro);color:#6b5a10;text-shadow:none}
+.t-folletto{background:var(--folletto);color:#7c3350;text-shadow:none} .t-ghiaccio{background:var(--ghiaccio);color:#2a6a6a;text-shadow:none} .t-coleot{background:var(--coleot)}
+.infobox{float:right;width:308px;margin:0 0 16px 22px;border:1px solid var(--border);background:var(--panel);border-radius:8px;overflow:hidden;font-size:12.5px}
+.infobox .head{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff;text-align:center;padding:8px 10px}
+.infobox .head .num{font-size:12px;opacity:.9}
+.infobox .head .name{font-size:20px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.infobox .head .cat{font-size:12px;font-style:italic}
+.infobox .art{background:#fff;padding:8px;text-align:center;border-bottom:1px solid #eaecf0}
+.infobox .art svg{width:236px;height:236px}
+.infobox .art img{width:236px;height:236px;object-fit:contain}
+.artph{width:236px;height:236px;margin:0 auto;border:2px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;color:#72777d;font-size:12px;padding:10px;background:#fcfcfc}
+.infobox .art .capt{font-size:11px;color:#54595d}
+.infobox table{width:100%;border-collapse:collapse}
+.infobox th{background:#eef0f2;text-align:left;padding:5px 9px;width:41%;font-weight:600;vertical-align:top;border-top:1px solid #eaecf0}
+.infobox td{padding:5px 9px;border-top:1px solid #eaecf0;vertical-align:top}
+.infobox .lang{display:flex;justify-content:center;gap:14px;background:#eef0f2;padding:4px;font-size:11.5px;color:#54595d}
+.toc{display:inline-block;border:1px solid var(--border);background:var(--panel);padding:10px 18px;border-radius:6px;font-size:13px;margin:8px 0 4px}
+.toc .toctitle{font-weight:700;text-align:center}
+.toc ol{margin:6px 0 0;padding-left:22px}
+.toc ol ol{margin:0}
+.intro b.pkmn{font-size:15px}
+.wtable{border-collapse:collapse;margin:10px 0;font-size:13px}
+.wtable th,.wtable td{border:1px solid var(--border);padding:5px 10px}
+.wtable th{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff}
+.wtable td{background:#fff}
+.wtable tr:nth-child(even) td{background:#fafbfc}
+.wtable .lvl{text-align:center;font-weight:600}
+.wtable .num{text-align:center}
+.stab{font-weight:700}
+.effbox{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin:10px 0;max-width:760px}
+.effrow{display:flex;border-top:1px solid var(--border)}
+.effrow:first-child{border-top:none}
+.efflabel{width:130px;flex:0 0 130px;background:#eef0f2;padding:8px;font-weight:600;display:flex;align-items:center;font-size:12.5px}
+.effcells{padding:7px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;background:#fff}
+.effx{font-size:11px;color:#54595d;margin-left:2px}
+.evochain{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin:14px 0}
+.evocard{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:10px 12px;text-align:center;width:172px}
+.evocard svg{width:118px;height:118px}
+.evocard img{width:118px;height:118px;object-fit:contain}
+.evocard .nm{font-weight:700;margin:2px 0 6px}
+.evoarrow{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:11.5px;color:#54595d;width:130px;padding:0 4px}
+.evoarrow .ar{font-size:26px;color:#8b8f94;line-height:1}
+.statbars{max-width:640px}
+.statrow{display:flex;align-items:center;gap:10px;margin:4px 0}
+.statrow .sn{width:78px;flex:0 0 78px;font-weight:600;font-size:12.5px}
+.statrow .sv{width:34px;flex:0 0 34px;text-align:right;font-weight:700;font-size:13px}
+.statrow .sb{flex:1;background:#eef0f2;border:1px solid #dfe3e8;border-radius:4px;height:14px;overflow:hidden}
+.statrow .sb i{display:block;height:100%;border-radius:3px}
+.s-ps i{background:#FF5959}.s-att i{background:#F5AC78}.s-dif i{background:#FAE078}
+.s-asp i{background:#9DB7F5}.s-dsp i{background:#A7DB8D}.s-vel i{background:#FA92B2}
+.dexentries{max-width:820px}
+.dexentries .ver{font-weight:700}
+.itembox{border:1px solid #7fb1d8;background:#f0f7fc;border-radius:8px;padding:12px 16px;margin:14px 0;max-width:760px;display:flex;gap:14px;align-items:flex-start}
+.itembox svg{flex:0 0 46px}
+.notabene{border-left:4px solid var(--accent1);background:var(--panel);padding:8px 14px;margin:10px 0;max-width:780px;font-size:13px}
+.cats{border:1px solid var(--border);background:var(--panel);border-radius:6px;padding:8px 14px;margin-top:34px;font-size:12.5px}
+.footer{font-size:11.5px;color:#54595d;margin-top:14px}
+ul{margin:6px 0}
+@media (max-width:760px){
+  .infobox{float:none;width:100%;margin:12px 0}
+  .efflabel{width:96px;flex-basis:96px}
+  .evoarrow{width:100%}
+}
+@media (prefers-reduced-motion: no-preference){
+  .evocard:hover{box-shadow:0 2px 8px rgba(0,0,0,.12);transition:box-shadow .2s}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="icon-sigillo" viewBox="0 0 48 48">
+  <rect x="8" y="10" width="32" height="30" rx="2" fill="#f6f1df" stroke="#8a8a68" stroke-width="1.5"/>
+  <path d="M13 17 h22 M13 22 h22 M13 27 h14" stroke="#c9c4ad" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="33" cy="32" r="7" fill="#A040A0" stroke="#5a2a5a" stroke-width="1"/>
+  <path d="M33 26.5 a5.5 5.5 0 1 1 -3.9 1.6" fill="none" stroke="#f8f9fa" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="29" cy="28.5" r="1.3" fill="#f8f9fa"/>
+  <path d="M6 44 h36" stroke="#3b2f2f" stroke-width="2" stroke-linecap="round"/>
+</symbol>
+<symbol id="impronta-notaiax" viewBox="0 0 40 40">
+  <path d="M20 8 a12 12 0 1 1 -8.5 3.5" fill="none" stroke="#54595d" stroke-width="5" stroke-linecap="round"/>
+  <path d="M11.5 11.5 l-1 5 5 -1 z" fill="#54595d"/>
+  <circle cx="20" cy="8" r="3.2" fill="#54595d"/>
+</symbol>
+</defs>
+</svg>
+<div class="page">
+<div class="sitenotice">da <b>Pokédex del Piceno</b>, l'enciclopedia (immaginaria) dei Pokémon della regione Piceno. <i>Pagina fan-made nel formato di Pokémon Central Wiki.</i></div>
+
+<div class="dexnav">
+  <span><a href="forox.html">← #028: Forox</a></span>
+  <span class="mid">#029 Notaiax</span>
+  <span class="dim">#030: ??? →</span>
+</div>
+
+<h1>Notaiax</h1>
+
+<div class="infobox">
+  <div class="head">
+    <div class="num">Pokédex del Piceno #029</div>
+    <div class="name">Notaiax</div>
+    <div class="cat">Pokémon Rogito</div>
+  </div>
+  <div class="art">
+    <div class="artph">Artwork di Notaiax<br>in arrivo</div>
+    <div class="capt">Artwork di Notaiax</div>
+  </div>
+  <div class="lang"><span>EN: Notaiax</span><span>JA: コウショボロス <i>Kōshoboros</i></span></div>
+  <table>
+    <tr><th>Tipo</th><td><span class="type t-veleno">Veleno</span> <span class="type t-buio">Buio</span></td></tr>
+    <tr><th>Abilità</th><td>Prepotenza (prima)<br><i>Segreto Professionale</i> (speciale)</td></tr>
+    <tr><th>Sesso</th><td>Sconosciuto</td></tr>
+    <tr><th>Altezza</th><td>3,4 m (1,2 m in cerchio)</td></tr>
+    <tr><th>Peso</th><td>88,8 kg</td></tr>
+    <tr><th>Tasso di cattura</th><td>3 (0,4%)</td></tr>
+    <tr><th>Uovo</th><td>Sconosciuto (non allevabile)<br>120 cicli (min. 30720 passi)</td></tr>
+    <tr><th>Pokédex regionali</th><td>Piceno #029</td></tr>
+    <tr><th>Tasso di allevamento</th><td>Lento</td></tr>
+    <tr><th>Esperienza base ceduta</th><td>290</td></tr>
+    <tr><th>Punti base ceduti</th><td>Totale: 3 — Att. Sp. 3</td></tr>
+    <tr><th>Colore Pokédex</th><td>Nero</td></tr>
+    <tr><th>Impronta</th><td><svg width="26" height="26"><use href="#impronta-notaiax"/></svg></td></tr>
+    <tr><th>Affetto di base</th><td>0</td></tr>
+  </table>
+</div>
+
+<p class="intro"><b class="pkmn">Notaiax</b> è un Pokémon <b>leggendario</b> di doppio tipo <b>Veleno</b>/<b>Buio</b> del <b>centro storico di Ascoli Piceno</b>. È un serpente che si morde la coda, e la sua pelle è un <b>codice penale</b>. Ne esistono pochissimi esemplari; non si trova mai in giro, ma soltanto in particolari edifici del centro, dove parla un dialetto esemplare e si nasconde.</p>
+<p>Non si <a href="#Evoluzioni">evolve</a> e non ha preevoluzioni. È il vertice della <b>filiera burocratica</b> del Pokédex del Piceno — <a href="traffichiex.html">Traffichiex</a>, <a href="forox.html">Forox</a> — ma non ne fa parte per evoluzione: Notaiax <b>ci si nasce</b>. Per potenza è sotto a <a href="venagrox.html">Venagrox</a>, ma è l'unico Pokémon della regione capace di far finire nei guai <b>Zio Peppe e Nonna</b>.</p>
+
+<div class="toc">
+  <div class="toctitle">Indice</div>
+  <ol>
+    <li><a href="#Biologia">Biologia</a>
+      <ol>
+        <li><a href="#Fisionomia">Fisionomia</a></li>
+        <li><a href="#Comportamento">Comportamento</a></li>
+        <li><a href="#Habitat">Habitat</a></li>
+        <li><a href="#Dieta">Dieta</a></li>
+      </ol>
+    </li>
+    <li><a href="#Dati_di_gioco">Dati di gioco</a>
+      <ol>
+        <li><a href="#Resistenze">Resistenze e vulnerabilità</a></li>
+        <li><a href="#Evoluzioni">Evoluzioni</a></li>
+        <li><a href="#Statistiche">Statistiche di base</a></li>
+        <li><a href="#Mosse">Mosse apprese</a></li>
+        <li><a href="#Voci">Voci Pokédex</a></li>
+      </ol>
+    </li>
+    <li><a href="#Studio">Lo studio</a></li>
+    <li><a href="#Curiosita">Curiosità</a></li>
+    <li><a href="#Lingue">In altre lingue</a></li>
+  </ol>
+</div>
+
+<h2 id="Biologia">Biologia</h2>
+
+<h3 id="Fisionomia">Fisionomia</h3>
+<p>Notaiax è un <b>serpente che si morde la coda</b>: disteso misura oltre tre metri, ma nessuno l'ha mai visto disteso. Sta sempre chiuso in cerchio, la testa che stringe l'estremità della coda tra i denti, e in quella posizione occupa poco più di un metro — la misura, dicono, di una scrivania. Il corpo è massiccio, liscio, di un nero profondo con riflessi viola.</p>
+<p>La sua pelle è un <b>codice penale</b>. Non in senso figurato: ogni squama è una pagina, e sulle pagine sono stampati, in caratteri minuti e perfettamente leggibili, gli articoli — dal primo, sulla nuca, all'ultimo, sulla punta della coda. Il punto in cui i denti stringono la coda è sempre <b>l'articolo che si sta applicando in quel momento</b>; quando Notaiax cambia idea, allenta la presa, la coda scorre di qualche squama, e il morso si richiude su un comma diverso. Gli occhi sono piccoli, sottili, di un giallo spento; la lingua, biforcuta, è una <b>penna stilografica</b> con la punta d'oro.</p>
+<h4>Differenze tra i sessi</h4>
+<p>Notaiax non ha sesso. Il Pokédex del Piceno registra che nessuno ha mai osato chiederglielo.</p>
+
+<h3 id="Comportamento">Comportamento</h3>
+<p><b>Schivo</b>. Notaiax non cerca nessuno: se ne sta chiuso in cerchio nella penombra di uno studio del centro storico e aspetta che siano gli altri a venire da lui — e vengono tutti, prima o poi. Parla poco e in un <b>dialetto ascolano esemplare</b>, antico e preciso, che i ricercatori registrano come il più puro della regione: le vocali sono quelle giuste, le consonanti quelle di una volta, e ogni frase finisce con una cifra.</p>
+<p>Non attacca mai per primo. Ma se finisce nel Pokédex di un allenatore — cioè se un allenatore lo incontra, lo affronta, e sopravvive abbastanza da vederlo registrato — diventa <b>letale</b>: da quel momento Notaiax sa chi sei, sa dove sei, e la prossima volta userà <a href="#Mosse">Black Mamba</a>. Ha una pazienza infinita e una memoria migliore di quella di <a href="forox.html">Forox</a>: non dimentica una firma.</p>
+<p>La sua fama più inquietante riguarda i due personaggi che <a href="venagrox.html">Venagrox</a> teme più di ogni cosa: <b>Zio Peppe e Nonna</b>. La <i>Paura Atavica</i> su Notaiax non ha effetto — anzi, se in una lotta sono presenti Zio Peppe o Nonna, è Notaiax a <b>convocarli</b>: le carte, immancabilmente, non sono in regola, e i loro Pokémon perdono il turno.</p>
+
+<h3 id="Habitat">Habitat</h3>
+<p>Solo il <b>centro storico di Ascoli Piceno</b>, e solo dentro <b>particolari edifici</b>: gli studi ai piani nobili dei palazzi tra Piazza del Popolo e Piazza Arringo, dietro portoni con la targa d'ottone. Non si trova nelle vie, nelle piazze, nei bar. Ne esistono <b>pochissimi esemplari</b> — il Pokédex del Piceno ne conta tre — e ciascuno sta nel suo studio da tempo immemorabile.</p>
+
+<h3 id="Dieta">Dieta</h3>
+<p><b>Parcelle.</b> Notaiax si nutre di banconote — che poi, cosparse di neurotossina, restituisce come arma — e di carta bollata. Non ha bisogno di mangiare spesso, ma quando mangia, mangia molto.</p>
+
+<h2 id="Dati_di_gioco">Dati di gioco</h2>
+
+<h3 id="Resistenze">Resistenze e vulnerabilità</h3>
+<div class="effbox">
+  <div class="effrow"><div class="efflabel">Debolezze</div><div class="effcells">
+    <span class="type t-terra">Terra</span><span class="effx">2×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Resistenze</div><div class="effcells">
+    <span class="type t-erba">Erba</span><span class="effx">½×</span>
+    <span class="type t-veleno">Veleno</span><span class="effx">½×</span>
+    <span class="type t-spettro">Spettro</span><span class="effx">½×</span>
+    <span class="type t-buio">Buio</span><span class="effx">½×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Immunità</div><div class="effcells">
+    <span class="type t-psico">Psico</span><span class="effx">0×</span>
+  </div></div>
+</div>
+<div class="notabene">Una sola debolezza — la <b>Terra</b> — e l'immunità al Psico: chi cerca di leggergli nel pensiero non trova nulla, perché tutto è coperto dal <i>Segreto Professionale</i>. L'abilità speciale rende Notaiax immune anche alle mosse di stato dirette (Tossina, Ipnosi, Attaccalite, Fermosguardo…): non lo si può indagare. La Terra, invece, lo colpisce doppio: è l'unico terreno su cui non ha titolo.</div>
+
+<h3 id="Evoluzioni">Evoluzioni</h3>
+<div class="evochain">
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Notaiax<br>in arrivo</div>
+    <div class="nm">Notaiax</div>
+    <span class="type t-veleno">Veleno</span> <span class="type t-buio">Buio</span>
+  </div>
+</div>
+<div class="notabene"><b>Notaiax non si evolve.</b> È il vertice della filiera burocratica di <a href="traffichiex.html">Traffichiex</a> e <a href="forox.html">Forox</a>, ma non ci si arriva salendo di livello: <b>Notaiax ci si nasce</b>. Da sempre, e — a giudicare da quanto ne esistono — non spesso.</div>
+
+<h3 id="Statistiche">Statistiche di base</h3>
+<div class="statbars">
+  <div class="statrow s-ps"><span class="sn">PS</span><span class="sv">90</span><div class="sb"><i style="width:60%"></i></div></div>
+  <div class="statrow s-att"><span class="sn">Attacco</span><span class="sv">85</span><div class="sb"><i style="width:57%"></i></div></div>
+  <div class="statrow s-dif"><span class="sn">Difesa</span><span class="sv">80</span><div class="sb"><i style="width:53%"></i></div></div>
+  <div class="statrow s-asp"><span class="sn">Att. Sp.</span><span class="sv">125</span><div class="sb"><i style="width:83%"></i></div></div>
+  <div class="statrow s-dsp"><span class="sn">Dif. Sp.</span><span class="sv">100</span><div class="sb"><i style="width:67%"></i></div></div>
+  <div class="statrow s-vel"><span class="sn">Velocità</span><span class="sv">80</span><div class="sb"><i style="width:53%"></i></div></div>
+  <div class="statrow"><span class="sn"><b>Totale</b></span><span class="sv"><b>560</b></span><div></div></div>
+</div>
+<div class="notabene">Totale da leggendario, appena <b>sotto a <a href="venagrox.html">Venagrox</a></b> (570) e sopra a tutto il resto della regione. L'<b>Attacco Speciale</b> a 125 è il più alto del Pokédex del Piceno: <a href="#Mosse">Black Mamba</a> con lo STAB, da quella base, chiude quasi qualunque pratica in un turno.</div>
+
+<h3 id="Mosse">Mosse apprese</h3>
+<h4>Aumentando di livello</h4>
+<table class="wtable">
+  <tr><th>Lv.</th><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td class="lvl">Inizio</td><td class="stab">Morso</td><td><span class="type t-buio">Buio</span></td><td>Fisico</td><td class="num">60</td><td class="num">100%</td><td class="num">25</td></tr>
+  <tr><td class="lvl">Inizio</td><td class="stab">Velenodenti</td><td><span class="type t-veleno">Veleno</span></td><td>Fisico</td><td class="num">50</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">Inizio</td><td>Fermosguardo</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">100%</td><td class="num">30</td></tr>
+  <tr><td class="lvl">Inizio</td><td>Attaccalite</td><td><span class="type t-buio">Buio</span></td><td>Stato</td><td class="num">—</td><td class="num">100%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">8</td><td>Tossina</td><td><span class="type t-veleno">Veleno</span></td><td>Stato</td><td class="num">—</td><td class="num">90%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">15</td><td class="stab">Garanzia</td><td><span class="type t-buio">Buio</span></td><td>Fisico</td><td class="num">60</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">22</td><td class="stab">Velenoshock</td><td><span class="type t-veleno">Veleno</span></td><td>Speciale</td><td class="num">65</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">29</td><td class="stab">Sgranocchio</td><td><span class="type t-buio">Buio</span></td><td>Fisico</td><td class="num">80</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">36</td><td class="stab">Neropulsar</td><td><span class="type t-buio">Buio</span></td><td>Speciale</td><td class="num">80</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">43</td><td>Ipnosi</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">60%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">50</td><td>Terrforza</td><td><span class="type t-terra">Terra</span></td><td>Speciale</td><td class="num">90</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">57</td><td class="stab"><b>Black Mamba</b></td><td><span class="type t-veleno">Veleno</span></td><td>Speciale</td><td class="num">120</td><td class="num">90%</td><td class="num">5</td></tr>
+  <tr><td class="lvl">64</td><td>Palla Ombra</td><td><span class="type t-spettro">Spettro</span></td><td>Speciale</td><td class="num">80</td><td class="num">100%</td><td class="num">15</td></tr>
+</table>
+<h4>Tramite MT/DT (selezione)</h4>
+<table class="wtable">
+  <tr><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td>Protezione</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Sostituto</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Baratto</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td>Terremoto</td><td><span class="type t-terra">Terra</span></td><td>Fisico</td><td class="num">100</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td>Riposo</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">5</td></tr>
+</table>
+<p><small>Il <b>grassetto</b> indica una mossa che ha il bonus di tipo (STAB) quando viene usata da un Notaiax. <b>Black Mamba</b> è la sua mossa esclusiva: <i>spara ettolitri di banconote cosparse di veleno neurotossico. Avvelena sempre gravemente il bersaglio e ha il 30% di probabilità di paralizzarlo; dopo l'uso, l'Attacco Speciale di Notaiax scende di uno stadio — le banconote, in fondo, sono finite addosso a qualcun altro.</i> Descrizione in gioco: «Il conto arriva dopo. Il veleno, subito».</small></p>
+
+<h3 id="Voci">Voci Pokédex</h3>
+<div class="dexentries">
+  <p><span class="ver">Versione Tronto</span> — <i>Un serpente che si morde la coda, chiuso in cerchio in uno studio del centro storico. La sua pelle è un codice penale: l'articolo che sta mordendo è quello che si applica a te.</i></p>
+  <p><span class="ver">Versione Laga</span> — <i>Ne esistono pochissimi e non escono mai. Parla un dialetto perfetto e non attacca per primo — ma se finisci nel suo registro, la prossima volta ti aspetta Black Mamba.</i></p>
+</div>
+
+<h2 id="Studio">Lo studio</h2>
+<div class="itembox">
+  <svg width="46" height="46"><use href="#icon-sigillo"/></svg>
+  <div><b>«Firma ècche, ècche e ècche. Lu rèste è affare mì.»</b> È la sola frase che il Pokédex del Piceno sia riuscito a registrare per intero da un Notaiax — nel dialetto ascolano più esemplare che gli studiosi ricordino. Il resto è un mormorio di articoli e cifre, e un fruscio di banconote.<br><br>
+  In gioco, Notaiax non si incontra vagando: è un <b>incontro fisso</b>, uno per ciascuno dei tre studi del centro storico, accessibili solo dopo aver ottenuto tutte le Medaglie della regione. Nessuno dei tre attacca finché non lo si sfida. Ma sfidarne uno significa <b>entrare nel suo registro</b>: da quel momento, in ogni lotta successiva contro un Notaiax, il primo colpo che riceve l'allenatore è sempre Black Mamba. È l'unico Pokémon della regione a ricordarsi di te tra una lotta e l'altra.<br><br>
+  <b>Zio Peppe e Nonna.</b> I due sono gli unici che <a href="venagrox.html">Venagrox</a> tema, e sono a loro volta gli unici che temano Notaiax. Non è una questione di forza: è che, quando Notaiax convoca, <i>le carte non sono mai in regola</i>. Il Pokédex del Piceno non specifica quali carte. Nessuno gliel'ha chiesto.</div>
+</div>
+
+<h2 id="Curiosita">Curiosità</h2>
+<ul>
+  <li>Ha l'<b>Attacco Speciale più alto</b> del Pokédex del Piceno (125), ma un totale di statistiche inferiore a <a href="venagrox.html">Venagrox</a>: il trattore resta il più forte della regione, il notaio il più pericoloso.</li>
+  <li>Il suo <b>affetto di base è 0</b>: l'unico del Pokédex, insieme a nessun altro. Non è ostilità — è distacco professionale.</li>
+  <li>Le squame-pagina si aggiornano da sole quando cambia la legge. I ricercatori hanno osservato un esemplare <b>cambiare pelle</b> nella notte tra un decreto e la sua pubblicazione in Gazzetta.</li>
+  <li>Il morso sulla coda non è mai lo stesso articolo per due allenatori diversi. Chi ha provato a leggerlo durante la lotta riferisce sempre che «era esattamente il suo caso».</li>
+  <li>Condivide con <a href="spesurde.html">Spesurde</a> la natura di serpente velenoso e la pazienza; a differenza sua, non aspetta sui sassi. Aspetta dietro una scrivania, che è peggio.</li>
+  <li>Con <a href="banconio.html">Banconio</a> ha un rapporto complicato: entrambi trattano banconote, ma per scopi opposti.</li>
+</ul>
+<h3>Origine</h3>
+<p>Notaiax è il <b>notaio</b> — la figura professionale più discreta, rara e temuta della vita di provincia: chi non si trova mai in giro, riceve solo su appuntamento in uno studio del centro storico, parla il dialetto delle famiglie antiche e passa alla storia per le sue parcelle. L'<b>uroboro</b>, il serpente che si morde la coda, è il simbolo del ciclo che si chiude su sé stesso: qui è la legge che rimanda alla legge, il rogito che rimanda al rogito, l'atto che serve per fare l'atto.</p>
+<p>La <b>pelle-codice penale</b> gioca sull'idea che la legge non sia qualcosa che il notaio conosce, ma qualcosa che <i>indossa</i>. Il tipo Veleno/Buio riprende la neurotossina del mamba nero — il serpente più letale d'Africa, da cui il nome della mossa — e la discrezione dell'ombra. Il centro storico di Ascoli, con i suoi palazzi in travertino tra Piazza del Popolo e Piazza Arringo, è il luogo dove studi di questo tipo si trovano davvero.</p>
+<h4>Origine del nome</h4>
+<p><b>Notaiax</b> unisce <i>notaio</i> al suffisso <i>-ax</i>, che dà al nome un suono da leggendario e chiude la serie della filiera burocratica: Traffichi<i>ex</i>, For<i>ox</i>, Notai<i>ax</i>.</p>
+<p>Il nome giapponese, コウショボロス <i>Kōshoboros</i>, fonde 公証 <i>kōshō</i> ("autenticazione notarile", da cui 公証人 <i>kōshōnin</i>, notaio) e ウロボロス <i>uroboros</i>, l'uroboro.</p>
+
+<h2 id="Lingue">In altre lingue</h2>
+<table class="wtable">
+  <tr><th>Lingua</th><th>Nome</th><th>Origine</th></tr>
+  <tr><td><b>Giapponese</b></td><td>コウショボロス <i>Kōshoboros</i></td><td>Da <i>kōshō</i> e <i>uroboros</i>.</td></tr>
+  <tr><td><b>Inglese</b></td><td>Notaiax</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Francese</b></td><td>Notaiax</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Spagnolo</b></td><td>Notaiax</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Tedesco</b></td><td>Notaiax</td><td>Uguale al nome italiano.</td></tr>
+</table>
+
+<h2>Vedi anche</h2>
+<ul>
+  <li><a href="traffichiex.html">Traffichiex</a> e <a href="forox.html">Forox</a> — la filiera burocratica di cui è il vertice</li>
+  <li><a href="venagrox.html">Venagrox</a> — l'unico Pokémon della regione più forte di lui, e l'altro che ha a che fare con Zio Peppe e Nonna</li>
+  <li><a href="spesurde.html">Spesurde</a> — l'altro serpente velenoso del Piceno</li>
+  <li><a href="pretalien.html">Pretalien</a> — l'altro Pokémon leggendario del Pokédex del Piceno</li>
+</ul>
+
+<div class="dexnav">
+  <span><a href="forox.html">← #028: Forox</a></span>
+  <span class="mid">#029 Notaiax</span>
+  <span class="dim">#030: ??? →</span>
+</div>
+
+<div class="cats"><b>Categorie:</b> Pokémon · Pokémon della regione Piceno · Pokémon leggendari · Pokémon di tipo Veleno · Pokémon di tipo Buio · Pokémon di doppio tipo · Pokémon senza evoluzioni · Pokémon senza sesso · Gruppo Uova Sconosciuto · Pokémon di colore Nero</div>
+<div class="footer">Pagina fan-made ispirata al formato di Pokémon Central Wiki. Il centro storico di Ascoli Piceno, Piazza del Popolo e Piazza Arringo sono luoghi reali; il personaggio, gli studi e la frase in dialetto sono di fantasia.</div>
+</div>
+</body>
+</html>
