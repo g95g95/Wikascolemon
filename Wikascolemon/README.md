@@ -26,6 +26,9 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #014 | [Spesurde](spesurde.html) | Pokémon Sorda | Veleno/Terra | Monti Sibillini |
 | #015 | [Anicino](anicino.html) | Pokémon Anice | Erba | Campi attorno ad Ascoli Piceno |
 | #016 | [Anisetta](anisetta.html) | Pokémon Ammazzacaffè | Erba/Spettro | Ascoli Piceno, Piazza del Popolo |
+| #017 | [Tamburino](tamburino.html) | Pokémon Tamburo | Normale | Ascoli Piceno, vie e piazze |
+| #018 | [Sbandiera](sbandiera.html) | Pokémon Vessillo | Normale/Volante | Ascoli Piceno, vie e piazze |
+| #019 | [Quintanaro](quintanaro.html) | Pokémon Cavaliere | Acciaio + sestiere | Ascoli Piceno, i sei sestieri |
 | #044 | [Pito](pito.html) | Pokémon Cerbiatto | Roccia/Normale | Acquasanta Terme (Laga) |
 | #045 | [Pozza](pozza.html) | Pokémon Fracchia | Roccia/Veleno | Acquasanta Terme (Laga) |
 | #046 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |
