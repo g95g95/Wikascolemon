@@ -252,6 +252,29 @@ La mappa esistente (`mappa_piceno_1.html`, PNG 1024×640 in base64) è il mondo 
 
 ---
 
+# Piano correttivo: associare ogni scheda PS al proprio Pokémon
+
+## Causa verificata
+
+- Gli sprite sono ora sui lati richiesti: Pokémon selvatico a sinistra e Pokémon della squadra a destra.
+- Le schede PS sono però rimaste sul lato opposto: a sinistra compare la scheda della squadra accanto al selvatico e a destra quella del selvatico accanto al Pokémon della squadra.
+
+## Task
+
+- [x] 1. Mantenere il Pokémon selvatico a sinistra e quello della squadra a destra.
+- [x] 2. Riposizionare la scheda del selvatico nello stesso gruppo visivo dello sprite selvatico e la scheda della squadra nello stesso gruppo dello sprite alleato.
+- [x] 3. Calcolare spaziature che evitino sovrapposizioni tra sprite, schede PS, messaggio e pulsanti sia su desktop sia su mobile.
+- [x] 4. Aggiornare la regressione affinché verifichi l'associazione visiva corretta, non soltanto il lato dei singoli elementi.
+- [x] 5. Eseguire regressioni, controlli di sintassi e una battaglia reale con verifica visiva desktop/mobile.
+
+## Criteri di accettazione
+
+- Nello stesso lato/gruppo visivo compaiono sempre nome, livello, PS e sprite del medesimo Pokémon.
+- Incontrando Banconio con Basilino in squadra, Banconio e la sua scheda risultano chiaramente associati a sinistra, mentre Basilino e la sua scheda risultano associati a destra.
+- La schermata resta leggibile e senza sovrapposizioni su desktop e mobile.
+
+---
+
 # Piano approvato: pubblicazione GitHub Pages di Pokémon Ascoli
 
 - [x] Conservare la wiki esistente alla radice del sito pubblicato.

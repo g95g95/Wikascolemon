@@ -69,7 +69,7 @@ for (const htmlName of ['index.html', 'configuratore.html']) {
 const styles = fs.readFileSync(path.join(gameDir, 'styles.css'), 'utf8');
 assert.match(styles, /\.enemy-sprite\s*\{[^}]*left:\s*28px;/, 'Il Pokémon selvatico deve apparire a sinistra');
 assert.match(styles, /\.ally-sprite\s*\{[^}]*right:\s*28px;/, 'Il Pokémon della squadra deve apparire a destra');
-assert.match(styles, /\.enemy-card\s*\{[^}]*right:\s*10px;/, 'La scheda del selvatico deve restare separata dal suo sprite');
-assert.match(styles, /\.ally-card\s*\{[^}]*left:\s*10px;/, 'La scheda della squadra deve restare separata dal suo sprite');
+assert.match(styles, /\.enemy-card\s*\{[^}]*left:\s*10px;/, 'La scheda del selvatico deve apparire accanto al selvatico');
+assert.match(styles, /\.ally-card\s*\{[^}]*right:\s*10px;/, 'La scheda della squadra deve apparire accanto al Pokémon della squadra');
 
 console.log(`OK: ${Object.keys(data.maps).length} mappe, ${Object.keys(data.species).length} Pokémon, ${Object.keys(data.moves).length} mosse.`);
