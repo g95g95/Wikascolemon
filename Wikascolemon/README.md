@@ -43,6 +43,9 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #031 | [Lettino](lettino.html) | Pokémon Prendisole | Terra/Acqua | Spiagge della costa picena |
 | #032 | [Ombrellone](ombrellone.html) | Pokémon Ombra | Terra/Acqua | Spiagge della costa picena |
 | #033 | [Salvatorre](salvatorre.html) | Pokémon Vedetta | Terra/Acqua | Spiagge della costa picena |
+| #034 | [Bagnetto](bagnetto.html) | Pokémon Stagionale | Acqua | San Benedetto del Tronto |
+| #035 | [Coperto](coperto.html) | Pokémon Servizio | Acqua/Normale | San Benedetto del Tronto |
+| #036 | [Mixaro](mixaro.html) | Pokémon Consolle | Elettro/Buio | San Benedetto del Tronto |
 | #044 | [Pito](pito.html) | Pokémon Cerbiatto | Roccia/Normale | Acquasanta Terme (Laga) |
 | #045 | [Pozza](pozza.html) | Pokémon Fracchia | Roccia/Veleno | Acquasanta Terme (Laga) |
 | #046 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |

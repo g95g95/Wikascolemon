@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coperto - Pokédex del Piceno</title>
+<style>
+:root{
+  --border:#a2a9b1; --panel:#f8f9fa; --text:#202122; --link:#3366cc; --red:#ba0000;
+  --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
+  --terra:#E0C068; --acqua:#6890F0; --lotta:#C03028; --acciaio:#B8B8D0;
+  --fuoco:#F08030; --volante:#A890F0; --psico:#F85888; --spettro:#705898;
+  --buio:#705848; --drago:#7038F8; --elettro:#F8D030; --folletto:#EE99AC;
+  --ghiaccio:#98D8D8; --coleot:#A8B820;
+  --accent1:#6890F0; --accent2:#A8A878;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--text);font:14px/1.6 "Segoe UI","Helvetica Neue",Arial,sans-serif}
+.page{max-width:1080px;margin:0 auto;padding:14px 20px 40px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+a.new{color:var(--red)}
+h1,h2{font-family:"Linux Libertine",Georgia,"Times New Roman",serif;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:4px;margin:20px 0 12px}
+h1{font-size:30px;margin-top:6px}
+h2{font-size:23px}
+h3{font-size:17px;margin:18px 0 8px}
+h4{font-size:15px;margin:14px 0 6px}
+.sitenotice{font-size:12px;color:#54595d;border-bottom:1px solid #eaecf0;padding-bottom:6px}
+.dexnav{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#e6eef8,#f8f9fa,#f2f2e6);border:1px solid var(--border);border-radius:6px;padding:8px 14px;margin:12px 0;font-size:13px}
+.dexnav .mid{font-weight:700}
+.dexnav .dim{color:#9a9fa5}
+.type{display:inline-block;padding:2px 11px;border-radius:4px;color:#fff;font-weight:600;font-size:12px;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.18)}
+.t-roccia{background:var(--roccia)} .t-normale{background:var(--normale)} .t-veleno{background:var(--veleno)}
+.t-erba{background:var(--erba)} .t-terra{background:var(--terra);color:#5b4a12;text-shadow:none} .t-acqua{background:var(--acqua)}
+.t-lotta{background:var(--lotta)} .t-acciaio{background:var(--acciaio);color:#43436b;text-shadow:none} .t-fuoco{background:var(--fuoco)}
+.t-volante{background:var(--volante)} .t-psico{background:var(--psico)} .t-spettro{background:var(--spettro)}
+.t-buio{background:var(--buio)} .t-drago{background:var(--drago)} .t-elettro{background:var(--elettro);color:#6b5a10;text-shadow:none}
+.t-folletto{background:var(--folletto);color:#7c3350;text-shadow:none} .t-ghiaccio{background:var(--ghiaccio);color:#2a6a6a;text-shadow:none} .t-coleot{background:var(--coleot)}
+.infobox{float:right;width:308px;margin:0 0 16px 22px;border:1px solid var(--border);background:var(--panel);border-radius:8px;overflow:hidden;font-size:12.5px}
+.infobox .head{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff;text-align:center;padding:8px 10px}
+.infobox .head .num{font-size:12px;opacity:.9}
+.infobox .head .name{font-size:20px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.infobox .head .cat{font-size:12px;font-style:italic}
+.infobox .art{background:#fff;padding:8px;text-align:center;border-bottom:1px solid #eaecf0}
+.infobox .art svg{width:236px;height:236px}
+.infobox .art img{width:236px;height:236px;object-fit:contain}
+.artph{width:236px;height:236px;margin:0 auto;border:2px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;color:#72777d;font-size:12px;padding:10px;background:#fcfcfc}
+.infobox .art .capt{font-size:11px;color:#54595d}
+.infobox table{width:100%;border-collapse:collapse}
+.infobox th{background:#eef0f2;text-align:left;padding:5px 9px;width:41%;font-weight:600;vertical-align:top;border-top:1px solid #eaecf0}
+.infobox td{padding:5px 9px;border-top:1px solid #eaecf0;vertical-align:top}
+.infobox .lang{display:flex;justify-content:center;gap:14px;background:#eef0f2;padding:4px;font-size:11.5px;color:#54595d}
+.toc{display:inline-block;border:1px solid var(--border);background:var(--panel);padding:10px 18px;border-radius:6px;font-size:13px;margin:8px 0 4px}
+.toc .toctitle{font-weight:700;text-align:center}
+.toc ol{margin:6px 0 0;padding-left:22px}
+.toc ol ol{margin:0}
+.intro b.pkmn{font-size:15px}
+.wtable{border-collapse:collapse;margin:10px 0;font-size:13px}
+.wtable th,.wtable td{border:1px solid var(--border);padding:5px 10px}
+.wtable th{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff}
+.wtable td{background:#fff}
+.wtable tr:nth-child(even) td{background:#fafbfc}
+.wtable .lvl{text-align:center;font-weight:600}
+.wtable .num{text-align:center}
+.stab{font-weight:700}
+.effbox{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin:10px 0;max-width:760px}
+.effrow{display:flex;border-top:1px solid var(--border)}
+.effrow:first-child{border-top:none}
+.efflabel{width:130px;flex:0 0 130px;background:#eef0f2;padding:8px;font-weight:600;display:flex;align-items:center;font-size:12.5px}
+.effcells{padding:7px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;background:#fff}
+.effx{font-size:11px;color:#54595d;margin-left:2px}
+.evochain{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin:14px 0}
+.evocard{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:10px 12px;text-align:center;width:172px}
+.evocard svg{width:118px;height:118px}
+.evocard img{width:118px;height:118px;object-fit:contain}
+.evocard .nm{font-weight:700;margin:2px 0 6px}
+.evoarrow{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:11.5px;color:#54595d;width:130px;padding:0 4px}
+.evoarrow .ar{font-size:26px;color:#8b8f94;line-height:1}
+.statbars{max-width:640px}
+.statrow{display:flex;align-items:center;gap:10px;margin:4px 0}
+.statrow .sn{width:78px;flex:0 0 78px;font-weight:600;font-size:12.5px}
+.statrow .sv{width:34px;flex:0 0 34px;text-align:right;font-weight:700;font-size:13px}
+.statrow .sb{flex:1;background:#eef0f2;border:1px solid #dfe3e8;border-radius:4px;height:14px;overflow:hidden}
+.statrow .sb i{display:block;height:100%;border-radius:3px}
+.s-ps i{background:#FF5959}.s-att i{background:#F5AC78}.s-dif i{background:#FAE078}
+.s-asp i{background:#9DB7F5}.s-dsp i{background:#A7DB8D}.s-vel i{background:#FA92B2}
+.dexentries{max-width:820px}
+.dexentries .ver{font-weight:700}
+.itembox{border:1px solid #7fb1d8;background:#f0f7fc;border-radius:8px;padding:12px 16px;margin:14px 0;max-width:760px;display:flex;gap:14px;align-items:flex-start}
+.itembox svg{flex:0 0 46px}
+.notabene{border-left:4px solid var(--accent1);background:var(--panel);padding:8px 14px;margin:10px 0;max-width:780px;font-size:13px}
+.cats{border:1px solid var(--border);background:var(--panel);border-radius:6px;padding:8px 14px;margin-top:34px;font-size:12.5px}
+.footer{font-size:11.5px;color:#54595d;margin-top:14px}
+ul{margin:6px 0}
+@media (max-width:760px){
+  .infobox{float:none;width:100%;margin:12px 0}
+  .efflabel{width:96px;flex-basis:96px}
+  .evoarrow{width:100%}
+}
+@media (prefers-reduced-motion: no-preference){
+  .evocard:hover{box-shadow:0 2px 8px rgba(0,0,0,.12);transition:box-shadow .2s}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="impronta-coperto" viewBox="0 0 40 40">
+  <ellipse cx="20" cy="20" rx="14" ry="7" fill="none" stroke="#54595d" stroke-width="2.4"/>
+  <ellipse cx="20" cy="20" rx="7" ry="3.4" fill="none" stroke="#54595d" stroke-width="2"/>
+  <path d="M20 27 v6" stroke="#54595d" stroke-width="2.2" stroke-linecap="round"/>
+</symbol>
+<symbol id="icon-ordine" viewBox="0 0 48 48">
+  <rect x="12" y="7" width="24" height="32" rx="3" fill="#f7f4ea" stroke="#8a7d63" stroke-width="1.8"/>
+  <path d="M17 15 h14 M17 21 h14 M17 27 h10" stroke="#8a8a6d" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M28 33 l3 3 l7 -8" fill="none" stroke="#6890F0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+</defs>
+</svg>
+<div class="page">
+<div class="sitenotice"><a href="index.html"><b>← Wikascolemon</b></a> · da <b>Pokédex del Piceno</b>, l'enciclopedia (immaginaria) dei Pokémon della regione Piceno. <i>Pagina fan-made nel formato di Pokémon Central Wiki.</i></div>
+
+<div class="dexnav">
+  <span><a href="bagnetto.html">← #034: Bagnetto</a></span>
+  <span class="mid">#035 Coperto</span>
+  <span><a href="mixaro.html">#036: Mixaro →</a></span>
+</div>
+
+<h1>Coperto</h1>
+
+<div class="infobox">
+  <div class="head">
+    <div class="num">Pokédex del Piceno #035</div>
+    <div class="name">Coperto</div>
+    <div class="cat">Pokémon Servizio</div>
+  </div>
+  <div class="art">
+    <div class="artph">Artwork di Coperto<br>in arrivo</div>
+    <div class="capt">Artwork di Coperto</div>
+  </div>
+  <div class="lang"><span>EN: Coperto</span><span>JA: ハコビーノ <i>Hakobīno</i></span></div>
+  <table>
+    <tr><th>Tipo</th><td><span class="type t-acqua">Acqua</span> <span class="type t-normale">Normale</span></td></tr>
+    <tr><th>Abilità</th><td>Multipresa (prima)<br><i>Doppio Turno</i> (speciale)</td></tr>
+    <tr><th>Sesso</th><td>50% ♂ · 50% ♀</td></tr>
+    <tr><th>Altezza</th><td>1,8 m</td></tr>
+    <tr><th>Peso</th><td>68,0 kg</td></tr>
+    <tr><th>Tasso di cattura</th><td>75 (16,7%)</td></tr>
+    <tr><th>Uovo</th><td>Umanoide<br>20 cicli</td></tr>
+    <tr><th>Pokédex regionali</th><td>Piceno #035</td></tr>
+    <tr><th>Tasso di allevamento</th><td>Medio-lento</td></tr>
+    <tr><th>Esperienza base ceduta</th><td>142</td></tr>
+    <tr><th>Punti base ceduti</th><td>Totale: 2 — Velocità 1, Dif. Sp. 1</td></tr>
+    <tr><th>Colore Pokédex</th><td>Bianco</td></tr>
+    <tr><th>Impronta</th><td><svg width="26" height="26"><use href="#impronta-coperto"/></svg></td></tr>
+    <tr><th>Affetto di base</th><td>70</td></tr>
+  </table>
+</div>
+
+<p class="intro"><b class="pkmn">Coperto</b> è un Pokémon di doppio tipo <b>Acqua</b>/<b>Normale</b> dei <b>chalet e delle terrazze di San Benedetto del Tronto</b>. È il cameriere stagionale: quello a cui tutti danno ordini, ma a cui almeno <b>tutti parlano</b>.</p>
+<p>Si evolve da <a href="bagnetto.html">Bagnetto</a> salendo di livello di notte conoscendo una mossa basata sul suono, e si evolve in <a href="mixaro.html">Mixaro</a> mandando KO un <a href="maranzino.html">Maranzino</a>.</p>
+
+<div class="toc">
+  <div class="toctitle">Indice</div>
+  <ol>
+    <li><a href="#Biologia">Biologia</a>
+      <ol>
+        <li><a href="#Fisionomia">Fisionomia</a></li>
+        <li><a href="#Comportamento">Comportamento</a></li>
+        <li><a href="#Habitat">Habitat</a></li>
+        <li><a href="#Dieta">Dieta</a></li>
+      </ol>
+    </li>
+    <li><a href="#Dati_di_gioco">Dati di gioco</a>
+      <ol>
+        <li><a href="#Resistenze">Resistenze e vulnerabilità</a></li>
+        <li><a href="#Evoluzioni">Evoluzioni</a></li>
+        <li><a href="#Statistiche">Statistiche di base</a></li>
+        <li><a href="#Mosse">Mosse apprese</a></li>
+        <li><a href="#Voci">Voci Pokédex</a></li>
+      </ol>
+    </li>
+    <li><a href="#Sala">La sala</a></li>
+    <li><a href="#Curiosita">Curiosità</a></li>
+    <li><a href="#Lingue">In altre lingue</a></li>
+  </ol>
+</div>
+
+<h2 id="Biologia">Biologia</h2>
+
+<h3 id="Fisionomia">Fisionomia</h3>
+<p>Coperto è più alto e più asciutto di quando era <a href="bagnetto.html">Bagnetto</a>, con le occhiaie di chi finisce alle due e ricomincia alle undici. Indossa la <b>camicia bianca</b> d'ordinanza — sempre stirata, sempre con una macchia recente che non ha avuto tempo di trattare — e il <b>grembiule lungo</b> nero annodato in vita, con dentro il cavatappi, il blocchetto e il resto degli altri. Ai piedi, scarpe nere da lavoro; sotto la camicia, ancora perfettamente visibile, l'<b>abbronzatura da bagnino</b> della stagione precedente.</p>
+<p>Al collo tiene il <b>fischietto</b>: non serve più a niente, ma non lo ha tolto. Le mani sono la sua evoluzione vera — palmi larghi, dita forti, capaci di reggere <b>fino a sei piatti</b> in equilibrio senza guardarli, un'abilità che i ricercatori hanno classificato come <i>Multipresa</i>.</p>
+<h4>Differenze tra i sessi</h4>
+<p>Nessuna differenza documentata. Il grembiule è identico e la macchia arriva alla stessa ora.</p>
+
+<h3 id="Comportamento">Comportamento</h3>
+<p>Coperto vive <b>in movimento perpetuo</b> tra cucina e sala, e non si siede mai durante il servizio. La sua giornata è fatta di <b>ordini ricevuti</b> — dai clienti, dal cuoco, dal titolare, dal cliente del tavolo accanto che si è ricordato una cosa — e la specie ha sviluppato una tolleranza sovrumana: registra tutto, obietta niente, sorride sempre.</p>
+<p>Rispetto al suo stadio precedente, che nessuno guardava, Coperto è finalmente <b>visibile</b>: tutti gli parlano, tutti sanno come si chiama, tutti hanno bisogno di lui — per portare, non per salvare. È un gradino più su nella gerarchia della costa e un gradino più giù nell'utilità, e la specie lo sa benissimo.</p>
+<p>La sua pazienza ha però un limite documentato, ed è sempre lo stesso: il cliente rumoroso che tiene la musica alta al tavolo e commenta chi passa. Il giorno in cui un Coperto <b>mette a tacere un <a href="maranzino.html">Maranzino</a></b> è il giorno in cui capisce di poter stare dall'altra parte della cassa.</p>
+
+<h3 id="Habitat">Habitat</h3>
+<p>Le terrazze dei chalet, i ristoranti del lungomare e le rotonde sul mare di <b>San Benedetto del Tronto</b>, da maggio a settembre, con punte di sofferenza a Ferragosto. Fuori stagione, come tutta la linea, scompare nell'entroterra.</p>
+
+<h3 id="Dieta">Dieta</h3>
+<p>Mangia in piedi alle sedici, in un momento morto tra i due servizi: pasta avanzata, pane, caffè. È il pasto più veloce documentato nel Pokédex del Piceno, e viene consumato appoggiato al frigorifero.</p>
+
+<h2 id="Dati_di_gioco">Dati di gioco</h2>
+
+<h3 id="Resistenze">Resistenze e vulnerabilità</h3>
+<div class="effbox">
+  <div class="effrow"><div class="efflabel">Debolezze</div><div class="effcells">
+    <span class="type t-erba">Erba</span><span class="effx">2×</span>
+    <span class="type t-elettro">Elettro</span><span class="effx">2×</span>
+    <span class="type t-lotta">Lotta</span><span class="effx">2×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Resistenze</div><div class="effcells">
+    <span class="type t-fuoco">Fuoco</span><span class="effx">½×</span>
+    <span class="type t-acqua">Acqua</span><span class="effx">½×</span>
+    <span class="type t-ghiaccio">Ghiaccio</span><span class="effx">½×</span>
+    <span class="type t-acciaio">Acciaio</span><span class="effx">½×</span>
+  </div></div>
+  <div class="effrow"><div class="efflabel">Immunità</div><div class="effcells">
+    <span class="type t-spettro">Spettro</span><span class="effx">0×</span>
+  </div></div>
+</div>
+<div class="notabene">Il Normale aggiunge una debolezza alla Lotta e in cambio dà l'<b>immunità allo Spettro</b>: dopo tre mesi di sala, un Coperto non si spaventa più di niente. La debolezza all'<b>Elettro</b>, però, resta — ed è la ragione per cui il suo scontro con <a href="maranzino.html">Maranzino</a> è una vittoria sudata e non una passeggiata.</div>
+
+<h3 id="Evoluzioni">Evoluzioni</h3>
+<div class="evochain">
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm"><a href="bagnetto.html">Bagnetto</a></div>
+    <span class="type t-acqua">Acqua</span>
+  </div>
+  <div class="evoarrow"><span class="ar">→</span><span>Salendo di livello di notte<br>conoscendo una mossa<br>basata sul suono</span></div>
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm">Coperto</div>
+    <span class="type t-acqua">Acqua</span> <span class="type t-normale">Normale</span>
+  </div>
+  <div class="evoarrow"><span class="ar">→</span><span>Mandando KO<br>un <a href="maranzino.html">Maranzino</a></span></div>
+  <div class="evocard">
+    <div class="artph" style="width:118px;height:118px;font-size:11px">Artwork<br>in arrivo</div>
+    <div class="nm"><a href="mixaro.html">Mixaro</a></div>
+    <span class="type t-elettro">Elettro</span> <span class="type t-buio">Buio</span>
+  </div>
+</div>
+<div class="notabene">L'evoluzione in Mixaro non dipende dal livello, ma da un <b>singolo evento</b>: mandare KO un <a href="maranzino.html">Maranzino</a>. Non serve batterne dieci, ne basta uno — quello giusto, la sera giusta, dopo il tavolo di troppo. È l'unica evoluzione del Pokédex del Piceno che si attiva <b>vincendo contro una specie precisa</b>, e i ricercatori la considerano meno una prova di forza che un <b>cambio di prospettiva</b>.</div>
+
+<h3 id="Statistiche">Statistiche di base</h3>
+<div class="statbars">
+  <div class="statrow s-ps"><span class="sn">PS</span><span class="sv">85</span><div class="sb"><i style="width:57%"></i></div></div>
+  <div class="statrow s-att"><span class="sn">Attacco</span><span class="sv">70</span><div class="sb"><i style="width:47%"></i></div></div>
+  <div class="statrow s-dif"><span class="sn">Difesa</span><span class="sv">65</span><div class="sb"><i style="width:43%"></i></div></div>
+  <div class="statrow s-asp"><span class="sn">Att. Sp.</span><span class="sv">60</span><div class="sb"><i style="width:40%"></i></div></div>
+  <div class="statrow s-dsp"><span class="sn">Dif. Sp.</span><span class="sv">90</span><div class="sb"><i style="width:60%"></i></div></div>
+  <div class="statrow s-vel"><span class="sn">Velocità</span><span class="sv">70</span><div class="sb"><i style="width:47%"></i></div></div>
+  <div class="statrow"><span class="sn"><b>Totale</b></span><span class="sv"><b>440</b></span><div></div></div>
+</div>
+<div class="notabene">La <b>Difesa Speciale a 90</b> è il ritratto della specie: tre mesi di lamentele, richieste e osservazioni non richieste creano una corazza che nessun'altra statistica sa dare. Con <i>Doppio Turno</i>, se non subisce danni in un turno, il successivo agisce due volte — perché quando la sala si svuota per un attimo, un Coperto fa il lavoro di due.</div>
+
+<h3 id="Mosse">Mosse apprese</h3>
+<h4>Aumentando di livello</h4>
+<table class="wtable">
+  <tr><th>Lv.</th><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td class="lvl">Inizio</td><td class="stab">Pistolacqua</td><td><span class="type t-acqua">Acqua</span></td><td>Speciale</td><td class="num">40</td><td class="num">100%</td><td class="num">25</td></tr>
+  <tr><td class="lvl">Inizio</td><td class="stab">Rimbombo</td><td><span class="type t-normale">Normale</span></td><td>Speciale</td><td class="num">60</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">Evo</td><td class="stab"><b>Sei Piatti</b></td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">25</td><td class="num">100%</td><td class="num">10</td></tr>
+  <tr><td class="lvl">26</td><td>Aiuto</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">31</td><td class="stab">Idropulsar</td><td><span class="type t-acqua">Acqua</span></td><td>Speciale</td><td class="num">60</td><td class="num">100%</td><td class="num">20</td></tr>
+  <tr><td class="lvl">36</td><td class="stab">Ultrattacco</td><td><span class="type t-normale">Normale</span></td><td>Fisico</td><td class="num">80</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">42</td><td>Agilità</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">30</td></tr>
+  <tr><td class="lvl">48</td><td class="stab">Surf</td><td><span class="type t-acqua">Acqua</span></td><td>Speciale</td><td class="num">90</td><td class="num">100%</td><td class="num">15</td></tr>
+  <tr><td class="lvl">54</td><td class="stab">Ipervoce</td><td><span class="type t-normale">Normale</span></td><td>Speciale</td><td class="num">90</td><td class="num">100%</td><td class="num">10</td></tr>
+</table>
+<h4>Tramite MT/DT (selezione)</h4>
+<table class="wtable">
+  <tr><th>Mossa</th><th>Tipo</th><th>Cat.</th><th>Pot.</th><th>Prec.</th><th>PP</th></tr>
+  <tr><td>Protezione</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Sostituto</td><td><span class="type t-normale">Normale</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">10</td></tr>
+  <tr><td>Sgambetto</td><td><span class="type t-buio">Buio</span></td><td>Fisico</td><td class="num">60</td><td class="num">100%</td><td class="num">20</td></tr>
+  <tr><td>Riposo</td><td><span class="type t-psico">Psico</span></td><td>Stato</td><td class="num">—</td><td class="num">—%</td><td class="num">5</td></tr>
+</table>
+<p><small>Il <b>grassetto</b> indica una mossa che ha il bonus di tipo (STAB) quando viene usata da un Coperto. <b>Sei Piatti</b> è la sua mossa esclusiva: colpisce <b>da due a sei volte</b> in un turno, e <b>non manca mai</b> — l'equilibrio è tutto nel polso. Se colpisce tutte e sei le volte, la Difesa di Coperto aumenta di un livello: quando il carico arriva intero al tavolo, la giornata si raddrizza. Descrizione in gioco: «Permesso, scotta».</small></p>
+
+<h3 id="Voci">Voci Pokédex</h3>
+<div class="dexentries">
+  <p><span class="ver">Versione Tronto</span> — <i>Regge sei piatti senza guardarli e ricorda ordini che nessuno ha scritto. Non si siede da maggio.</i></p>
+  <p><span class="ver">Versione Laga</span> — <i>Tiene ancora al collo il fischietto di quando stava sulla torretta. Non serve più a niente, ma toglierselo gli sembrerebbe un tradimento.</i></p>
+</div>
+
+<h2 id="Sala">La sala</h2>
+<div class="itembox">
+  <svg width="46" height="46"><use href="#icon-ordine"/></svg>
+  <div><b>Il gradino di mezzo.</b> Nella gerarchia della costa picena, Coperto occupa la posizione più ambigua: sopra il <a href="bagnetto.html">bagnino</a>, che nessuno guarda, e sotto il <a href="mixaro.html">DJ</a>, che tutti guardano. È il primo stadio della linea a cui <b>la gente rivolge la parola</b> — e lo fa per dargli ordini. I ricercatori hanno annotato che è anche l'unico dei tre stadi a conoscere per nome tutti gli altri lavoratori della spiaggia: dal bancone si vede tutto, e chi porta i piatti attraversa ogni tavolo di questa storia.</div>
+</div>
+
+<h2 id="Curiosita">Curiosità</h2>
+<ul>
+  <li>Il nome della specie viene dalla voce che compare in fondo al conto e che nessun cliente ha mai capito del tutto.</li>
+  <li>Conserva il <b>fischietto</b> di quando era Bagnetto. Nessun esemplare lo ha mai usato in sala, ma nessuno se l'è mai tolto.</li>
+  <li>Ha l'<b>abbronzatura della stagione precedente</b> ancora visibile sotto la camicia: la carriera avanza più in fretta di quanto sbiadisca la pelle.</li>
+  <li>La sua Difesa Speciale è più alta di quella di quasi tutti i Pokémon del Piceno di pari livello. Ferragosto lascia il segno.</li>
+  <li>È l'unico Pokémon del Pokédex che si evolve <b>vincendo contro una specie precisa</b>. La specie in questione ha protestato, ma nessuno l'ha ascoltata.</li>
+</ul>
+<h3>Origine</h3>
+<p>Coperto è il <b>cameriere stagionale</b> della riviera: doppi turni, camicia bianca, il pasto in piedi alle sedici, il quaderno degli ordini e la pazienza come principale competenza professionale. È il gradino intermedio della carriera stagionale della costa picena — quello in cui si guadagna di più che in torretta, si viene finalmente visti, e si scopre che essere visti significa soprattutto <b>ricevere ordini</b>. Il nome è la voce del conto: quella che si paga per il solo fatto di sedersi.</p>
+<h4>Origine del nome</h4>
+<p><b>Coperto</b> è il termine reale della ristorazione italiana per il posto a tavola e la relativa voce di spesa. Detto di una persona, suona come qualcuno che c'è ma non si vede del tutto.</p>
+<p>Il nome giapponese, ハコビーノ <i>Hakobīno</i>, viene da 運ぶ <i>hakobu</i>, "portare, trasportare".</p>
+
+<h2 id="Lingue">In altre lingue</h2>
+<table class="wtable">
+  <tr><th>Lingua</th><th>Nome</th><th>Origine</th></tr>
+  <tr><td><b>Giapponese</b></td><td>ハコビーノ <i>Hakobīno</i></td><td>Da <i>hakobu</i>, "portare".</td></tr>
+  <tr><td><b>Inglese</b></td><td>Coperto</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Francese</b></td><td>Coperto</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Spagnolo</b></td><td>Coperto</td><td>Uguale al nome italiano.</td></tr>
+  <tr><td><b>Tedesco</b></td><td>Coperto</td><td>Uguale al nome italiano.</td></tr>
+</table>
+
+<h2>Vedi anche</h2>
+<ul>
+  <li><a href="bagnetto.html">Bagnetto</a> e <a href="mixaro.html">Mixaro</a> — gli altri stadi della carriera stagionale</li>
+  <li><a href="maranzino.html">Maranzino</a> — l'ostacolo da superare, letteralmente</li>
+  <li><a href="dehor.html">Dehor</a> — il collega d'arredo che fa sedere la gente che poi lui dovrà servire</li>
+</ul>
+
+<div class="dexnav">
+  <span><a href="bagnetto.html">← #034: Bagnetto</a></span>
+  <span class="mid">#035 Coperto</span>
+  <span><a href="mixaro.html">#036: Mixaro →</a></span>
+</div>
+
+<div class="cats"><b>Categorie:</b> Pokémon · Pokémon della regione Piceno · Pokémon di tipo Acqua · Pokémon di tipo Normale · Pokémon di doppio tipo · Pokémon con evoluzioni · Pokémon di colore Bianco · Linea evolutiva stagionale</div>
+<div class="footer">Pagina fan-made ispirata al formato di Pokémon Central Wiki. I camerieri stagionali della riviera sono reali, e a Ferragosto non si siedono mai.</div>
+</div>
+</body>
+</html>
