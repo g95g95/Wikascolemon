@@ -46,12 +46,22 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #034 | [Bagnetto](bagnetto.html) | Pokémon Stagionale | Acqua | San Benedetto del Tronto |
 | #035 | [Coperto](coperto.html) | Pokémon Servizio | Acqua/Normale | San Benedetto del Tronto |
 | #036 | [Mixaro](mixaro.html) | Pokémon Consolle | Elettro/Buio | San Benedetto del Tronto |
+| #037 | [Cozzetta](cozzetta.html) | Pokémon Mitilo | Acqua | Costa picena (San Benedetto, Grottammare, Cupra) |
+| #038 | [Scoglieràx](scoglierax.html) | Pokémon Frangiflutti | Acqua/Roccia | Costa picena (frangiflutti) |
+| #039 | [Alghetta](alghetta.html) | Pokémon Alga | Acqua/Erba | Costa picena |
+| #040 | [Mucillax](mucillax.html) | Pokémon Mucillagine | Acqua/Veleno | Costa picena (acque inquinate) |
+| #041 | [Pef'na](pefna.html) | Pokémon Turione | Erba | Campagna picena (Offida, Castorano, Colli del Tronto) |
+| #042 | [Ca'ità](caita.html) | Pokémon Adunanza | Normale/Erba | Campagna picena |
+| #043 | [Totera](totera.html) | Pokémon Pannocchia | Erba | Vallata del Tronto (campi di mais) |
 | #044 | [Pito](pito.html) | Pokémon Cerbiatto | Roccia/Normale | Acquasanta Terme (Laga) |
 | #045 | [Pozza](pozza.html) | Pokémon Fracchia | Roccia/Veleno | Acquasanta Terme (Laga) |
 | #046 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |
 | #047 | [Segaccio](segaccio.html) | Pokémon Boscaiolo | Erba/Acciaio | Offida |
 | #048 | [Venagrox](venagrox.html) | Pokémon Trattore | Acciaio/Terra | Campagne del Piceno |
 | #049 | [Ciccharizard](ciccharizard.html) | Pokémon Maître | Buio/Spettro | Ascoli Piceno, centro storico |
+| #050 | [Cignalò](cignalo.html) | Pokémon Cinghialetto | Normale/Terra | Monti della Laga (Acquasanta, Arquata, Montegallo) |
+| #051 | [Bracignale](bracignale.html) | Pokémon Carbonaia | Fuoco/Terra | Monti della Laga |
+| #052 | [Caciara](caciara.html) | Pokémon Frastuono | Ghiaccio | Monti Sibillini (Vettore, Forca di Presta, Castelluccio) |
 | #150 | [Pretalien](pretalien.html) | Pokémon Testimone | Coleot/Psico | Pretare, Monte Vettore |
 
 La wiki è in espansione: nuove schede verranno aggiunte nel tempo.

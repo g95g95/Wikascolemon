@@ -10,7 +10,8 @@
   --roccia:#B8A038; --normale:#A8A878; --veleno:#A040A0; --erba:#78C850;
   --terra:#E0C068; --acqua:#6890F0; --acciaio:#B8B8D0;
   --buio:#705848; --spettro:#705898; --fuoco:#F08030; --folletto:#EE99AC; --lotta:#C03028;
-  --coleot:#A8B820; --psico:#F85888; --volante:#A890F0; --elettro:#F8D030;
+  --ghiaccio:#98D8D8; --coleot:#A8B820; --psico:#F85888; --volante:#A890F0;
+ --elettro:#F8D030;
   --accent1:#5aa63e; --accent2:#8f8fae;
 }
 *{box-sizing:border-box}
@@ -33,6 +34,7 @@ h2{font-size:23px}
 .t-coleot{background:var(--coleot)} .t-psico{background:var(--psico)} .t-volante{background:var(--volante)}
 .t-elettro{background:var(--elettro);color:#6b5a10;text-shadow:none}
 .t-folletto{background:var(--folletto);color:#7c3350;text-shadow:none}
+.t-ghiaccio{background:var(--ghiaccio);color:#2a6a6a;text-shadow:none}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:14px;margin:16px 0}
 .card{border:1px solid var(--border);border-radius:8px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
 .card .head{background:linear-gradient(120deg,var(--accent1),var(--accent2));color:#fff;padding:8px 12px}
@@ -359,6 +361,62 @@ h2{font-size:23px}
     <a class="go" href="mixaro.html">Vai alla scheda →</a>
   </div>
   <div class="card">
+    <div class="head"><div class="num">#037</div><div class="nm">Cozzetta</div><div class="cat">Pokémon Mitilo</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-acqua">Acqua</span></div>
+      Una cozza anonima e mite dei frangiflutti: non spicca in niente, ma a livello 30 si evolve in Scoglieràx.
+    </div>
+    <a class="go" href="cozzetta.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#038</div><div class="nm">Scoglieràx</div><div class="cat">Pokémon Frangiflutti</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-acqua">Acqua</span><span class="type t-roccia">Roccia</span></div>
+      Uno scoglio muscoloso ricoperto di cozze, con lo sguardo di sfida di chi regge le mareggiate da solo.
+    </div>
+    <a class="go" href="scoglierax.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#039</div><div class="nm">Alghetta</div><div class="cat">Pokémon Alga</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-acqua">Acqua</span><span class="type t-erba">Erba</span></div>
+      Alga di costa serena e leggera. Si evolve in Mucillax solo dove la variabile <i>Escherichia coli</i> supera la soglia.
+    </div>
+    <a class="go" href="alghetta.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#040</div><div class="nm">Mucillax</div><div class="cat">Pokémon Mucillagine</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-acqua">Acqua</span><span class="type t-veleno">Veleno</span></div>
+      La mucillagine estiva fatta Pokémon: viscida, tossica e malinconica, nasce dalle acque con divieto di balneazione.
+    </div>
+    <a class="go" href="mucillax.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#041</div><div class="nm">Pef'na</div><div class="cat">Pokémon Turione</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-erba">Erba</span></div>
+      Asparago selvatico antropomorfo, pucciosissimo, che spunta in mezzo ai campi. Più Pef'na insieme possono fondersi in Ca'ità.
+    </div>
+    <a class="go" href="pefna.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#042</div><div class="nm">Ca'ità</div><div class="cat">Pokémon Adunanza</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-normale">Normale</span><span class="type t-erba">Erba</span></div>
+      Volpe molto obesa e depressa nata dalla fusione di più Pef'na; porta ancora le punte d'asparago sul dorso.
+    </div>
+    <a class="go" href="caita.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#043</div><div class="nm">Totera</div><div class="cat">Pokémon Pannocchia</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-erba">Erba</span></div>
+      La pannocchia dei campi di mais della vallata del Tronto («totera» in dialetto). Non si evolve.
+    </div>
+    <a class="go" href="totera.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
     <div class="head"><div class="num">#044</div><div class="nm">Pito</div><div class="cat">Pokémon Cerbiatto</div></div>
     <div class="body">
       <div class="types"><span class="type t-roccia">Roccia</span><span class="type t-normale">Normale</span></div>
@@ -405,6 +463,30 @@ h2{font-size:23px}
       Elegante barista in frac, metà ornitorinco e metà gatto, dei locali notturni del centro di Ascoli. Ascolta chiunque si sieda al bancone ed evoca gli spiriti antichi della città.
     </div>
     <a class="go" href="ciccharizard.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#050</div><div class="nm">Cignalò</div><div class="cat">Pokémon Cinghialetto</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-normale">Normale</span><span class="type t-terra">Terra</span></div>
+      Cucciolo di cinghiale tozzo e testardo dei boschi della Laga. Si evolve in Bracignale a livello 26.
+    </div>
+    <a class="go" href="cignalo.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#051</div><div class="nm">Bracignale</div><div class="cat">Pokémon Carbonaia</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-fuoco">Fuoco</span><span class="type t-terra">Terra</span></div>
+      Il cinghiale di fuoco: criniera in fiamme e zanne incandescenti, nato tra le carbonaie della Laga.
+    </div>
+    <a class="go" href="bracignale.html">Vai alla scheda →</a>
+  </div>
+  <div class="card">
+    <div class="head"><div class="num">#052</div><div class="nm">Caciara</div><div class="cat">Pokémon Frastuono</div></div>
+    <div class="body">
+      <div class="types"><span class="type t-ghiaccio">Ghiaccio</span></div>
+      Creatura di neve e cristalli di ghiaccio, chiassosa e caotica come dice il nome: «caciara».
+    </div>
+    <a class="go" href="caciara.html">Vai alla scheda →</a>
   </div>
   <div class="card">
     <div class="head"><div class="num">#150</div><div class="nm">Pretalien</div><div class="cat">Pokémon Testimone</div></div>
@@ -455,12 +537,22 @@ h2{font-size:23px}
   <tr><td>#034</td><td><a href="bagnetto.html"><b>Bagnetto</b></a></td><td>Pokémon Stagionale</td><td><span class="type t-acqua">Acqua</span></td><td>San Benedetto del Tronto</td></tr>
   <tr><td>#035</td><td><a href="coperto.html"><b>Coperto</b></a></td><td>Pokémon Servizio</td><td><span class="type t-acqua">Acqua</span> <span class="type t-normale">Normale</span></td><td>San Benedetto del Tronto</td></tr>
   <tr><td>#036</td><td><a href="mixaro.html"><b>Mixaro</b></a></td><td>Pokémon Consolle</td><td><span class="type t-elettro">Elettro</span> <span class="type t-buio">Buio</span></td><td>San Benedetto del Tronto</td></tr>
+  <tr><td>#037</td><td><a href="cozzetta.html"><b>Cozzetta</b></a></td><td>Pokémon Mitilo</td><td><span class="type t-acqua">Acqua</span></td><td>Costa picena (San Benedetto, Grottammare, Cupra)</td></tr>
+  <tr><td>#038</td><td><a href="scoglierax.html"><b>Scoglieràx</b></a></td><td>Pokémon Frangiflutti</td><td><span class="type t-acqua">Acqua</span> <span class="type t-roccia">Roccia</span></td><td>Costa picena (frangiflutti)</td></tr>
+  <tr><td>#039</td><td><a href="alghetta.html"><b>Alghetta</b></a></td><td>Pokémon Alga</td><td><span class="type t-acqua">Acqua</span> <span class="type t-erba">Erba</span></td><td>Costa picena</td></tr>
+  <tr><td>#040</td><td><a href="mucillax.html"><b>Mucillax</b></a></td><td>Pokémon Mucillagine</td><td><span class="type t-acqua">Acqua</span> <span class="type t-veleno">Veleno</span></td><td>Costa picena (acque inquinate)</td></tr>
+  <tr><td>#041</td><td><a href="pefna.html"><b>Pef'na</b></a></td><td>Pokémon Turione</td><td><span class="type t-erba">Erba</span></td><td>Campagna picena (Offida, Castorano, Colli del Tronto)</td></tr>
+  <tr><td>#042</td><td><a href="caita.html"><b>Ca'ità</b></a></td><td>Pokémon Adunanza</td><td><span class="type t-normale">Normale</span> <span class="type t-erba">Erba</span></td><td>Campagna picena</td></tr>
+  <tr><td>#043</td><td><a href="totera.html"><b>Totera</b></a></td><td>Pokémon Pannocchia</td><td><span class="type t-erba">Erba</span></td><td>Vallata del Tronto (campi di mais)</td></tr>
   <tr><td>#044</td><td><a href="pito.html"><b>Pito</b></a></td><td>Pokémon Cerbiatto</td><td><span class="type t-roccia">Roccia</span> <span class="type t-normale">Normale</span></td><td>Acquasanta Terme (Laga)</td></tr>
   <tr><td>#045</td><td><a href="pozza.html"><b>Pozza</b></a></td><td>Pokémon Fracchia</td><td><span class="type t-roccia">Roccia</span> <span class="type t-veleno">Veleno</span></td><td>Acquasanta Terme (Laga)</td></tr>
   <tr><td>#046</td><td><a href="umito.html"><b>Umito</b></a></td><td>Pokémon Cervosacro</td><td><span class="type t-roccia">Roccia</span> <span class="type t-erba">Erba</span></td><td>Acquasanta Terme (Laga)</td></tr>
   <tr><td>#047</td><td><a href="segaccio.html"><b>Segaccio</b></a></td><td>Pokémon Boscaiolo</td><td><span class="type t-erba">Erba</span> <span class="type t-acciaio">Acciaio</span></td><td>Offida</td></tr>
   <tr><td>#048</td><td><a href="venagrox.html"><b>Venagrox</b></a></td><td>Pokémon Trattore</td><td><span class="type t-acciaio">Acciaio</span> <span class="type t-terra">Terra</span></td><td>Campagne del Piceno</td></tr>
   <tr><td>#049</td><td><a href="ciccharizard.html"><b>Ciccharizard</b></a></td><td>Pokémon Maître</td><td><span class="type t-buio">Buio</span> <span class="type t-spettro">Spettro</span></td><td>Ascoli Piceno, centro storico</td></tr>
+  <tr><td>#050</td><td><a href="cignalo.html"><b>Cignalò</b></a></td><td>Pokémon Cinghialetto</td><td><span class="type t-normale">Normale</span> <span class="type t-terra">Terra</span></td><td>Monti della Laga (Acquasanta, Arquata, Montegallo)</td></tr>
+  <tr><td>#051</td><td><a href="bracignale.html"><b>Bracignale</b></a></td><td>Pokémon Carbonaia</td><td><span class="type t-fuoco">Fuoco</span> <span class="type t-terra">Terra</span></td><td>Monti della Laga</td></tr>
+  <tr><td>#052</td><td><a href="caciara.html"><b>Caciara</b></a></td><td>Pokémon Frastuono</td><td><span class="type t-ghiaccio">Ghiaccio</span></td><td>Monti Sibillini (Vettore, Forca di Presta, Castelluccio)</td></tr>
   <tr><td>#150</td><td><a href="pretalien.html"><b>Pretalien</b></a></td><td>Pokémon Testimone</td><td><span class="type t-coleot">Coleot</span> <span class="type t-psico">Psico</span></td><td>Pretare, Monte Vettore</td></tr>
 </table>
 

@@ -27,9 +27,10 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #030 | Maranzino ✅ |
 | #031-#033 | Lettino → Ombrellone → Salvatorre ✅ |
 | #034-#036 | Bagnetto → Coperto → Mixaro ✅ *(placeholder artwork)* |
-| #037-#043 | Libero |
+| #037-#043 | Cozzetta → Scoglieràx · Alghetta → Mucillax · Pef'na → Ca'ità · Totera *(bozze)* |
 | #044-#049 | Pito, Pozza, Umito, Segaccio, Venagrox, Ciccharizard ✅ |
-| #050-#149 | Libero |
+| #050-#052 | Cignalò → Bracignale · Caciara *(bozze)* |
+| #053-#149 | Libero |
 | **#150** | **Pretalien ✅ — chiude il Pokédex.** Numero finale: non superarlo e non riassegnarlo. |
 
 ⚠️ **Prima di assegnare un numero, fai `git fetch origin` e leggi i numeri da `origin/main`.** Sul dex lavorano più agenti in parallelo, e la tabella qui sopra è una copia locale che invecchia: è già successo **due volte** che una linea nuova nascesse su numeri occupati poche ore prima (Maranzino contro Traffichiex, e la linea della spiaggia contro Forox/Notaiax/Maranzino). La verità sono i file pubblicati, non questa tabella.
