@@ -1,3 +1,129 @@
+# Piano: dalla trama "prime due palestre" a una demo giocabile
+
+Annotato il 20/08/2026. **In attesa di approvazione.**
+
+## Premessa e assunzioni (da confermare)
+
+1. **Motore = `schede _Pokemon/Pokemon_Ascoli/`** (canvas JS, 7 quartieri di Ascoli, 17 specie,
+   lotte selvatiche, cattura, evoluzione, salvataggio). Il brief punta a `pokeemerald-expansion`,
+   ma quel fork non esiste e nessuno compila: l'unico motore *funzionante* è questo. Il piano lo
+   porta a una demo completa della trama fino alla 2ª medaglia; i dati (specie, mosse, mappe,
+   allenatori) restano in JSON/JS separati dal codice così da poter essere trasposti nella ROM
+   in seguito. Se invece si vuole partire subito dalla ROM, il piano cambia radicalmente (Fase 0
+   tecnica del brief) — dirlo ora.
+2. **Scope = la trama scritta**: Ascoli → Salaria → Castel di Lama (Veleno) → costa (Acqua).
+   Le palestre 3-8, la Lega, Polesio/antagonista e il leggendario restano roadmap (Fase G).
+3. **Nomi**: i personaggi reali (Parolisi, Grieco, Hallissey, capipalestra-VIP) nella build
+   giocabile diventano nomi di fantasia, come chiede il brief §6; la trama interna può tenerli.
+4. Lo starter si **cattura** nel luogo scelto (Ripatransone / Rio Castellano / Sant'Emidio alle
+   Grotte), non lo consegna un Professore: la trama non ne prevede uno, Bobby ne fa le veci.
+
+## Cosa manca rispetto a un Gen 3 (Rubino/Zaffiro/Smeraldo)
+
+| Pezzo | Oggi | Serve |
+|---|---|---|
+| Lotte contro allenatori, line-of-sight, ricompensa in soldi | no | sì |
+| Capipalestra, medaglie, palestra con puzzle minimo | no | 2 |
+| Eventi/script con flag (palestra chiusa, agguato, sblocco strade) | no | sì |
+| Rivale | no | 2-3 incontri |
+| Soldi, Market (tabaccheria), strumenti oltre Ball/Pozione | no | sì |
+| Centro Pokémon = bar ("Che te faccio?"), Box PC | deposito sì, cura no | sì |
+| Stati (VEL/PAR/SON/BRN), critici, STAB, priorità, precisione mosse | parziale | sì |
+| IA nemica (oggi: mossa a caso?) | da verificare | scelta per efficacia |
+| Mappe fuori Ascoli | 0 | ~10 |
+| Specie catturabili di fascia bassa (BST 200-320) | 1 (Pito) | 8-12 |
+| Specie in motore | 17 | tutte le 54 della wiki |
+| Sprite battaglia | 17 specie | tutte le specie usate |
+| Sprite overworld NPC distinti (Bobby, Steven, Elena, rivale, capipalestra) | solo giocatore | sì |
+| Musica/SFX | beep | opzionale |
+| Pubblicazione online | non servita | `Wikascolemon/gioco/` |
+
+## Fasi e task
+
+### A. Bibbia di design (blocca tutto il resto) → `Trama/bibbia.md`
+- [ ] A1. Ordine definitivo delle **8 palestre** con città, capopalestra, tipo, livello asso
+      (Castel di Lama/Veleno L14, costa/Acqua L20 fissi dalla trama; proposte per le altre 6).
+- [ ] A2. **Percorso principale** della demo, mappa per mappa, con livelli incontri e allenatori.
+- [ ] A3. **Rivale** (chi, dove lo si incontra: stazione, Maltignano, costa).
+- [ ] A4. Cast con **nomi di gioco** (fittizi) ↔ nomi interni.
+- [ ] A5. **Distribuzione specie**: quali delle 54 vivono in quali mappe della demo, e lista delle
+      8-12 specie di fascia bassa da inventare (uccello, roditore, insetto, pesce del Tronto,
+      erbacea da campi, crostaceo costiero…), con tipi e BST.
+- [ ] A6. Squadre di tutti gli allenatori (≈15 normali + 2 capipalestra + rivale).
+→ verifica: il documento risponde alle 6 domande di `brief_prossimi_passi` §3A.
+
+### B. Specie mancanti (wiki prima, gioco dopo)
+- [ ] B1. Schede delle 8-12 specie di fascia bassa con `crea-scheda` (artwork via `codex exec`),
+      pubblicate con `pubblica-scheda`.
+- [ ] B2. Script `tools/build-dex.mjs`: estrae numero, tipi, statistiche, learnset, evoluzioni
+      da `Wikascolemon/*.html` e genera `Pokemon_Ascoli/species.json` (fonte unica; la wiki resta
+      autorevole). Il test verifica somma BST e tipi contro le pagine.
+- [ ] B3. Mosse: tabella completa in `moves.json` (tutte quelle dei learnset, con categoria
+      fisico/speciale per mossa, effetti di stato, priorità).
+→ verifica: `node tests/regression.mjs` verde; ogni specie della wiki è nel motore.
+
+### C. Motore di gioco
+- [ ] C1. **Eventi e flag**: `save.flags`, NPC/transizioni/edifici condizionati da flag, dialoghi
+      a più pagine e scelte (sì/no, scelta del luogo dello starter).
+- [ ] C2. **Allenatori**: entità `trainer` con sguardo (line-of-sight), squadra, dialogo
+      pre/post, soldi; lotta a squadre con switch forzato; flag "sconfitto".
+- [ ] C3. **Battaglia Gen 3**: STAB, critici, stati con effetti in lotta, priorità, precisione,
+      IA che preferisce la mossa più efficace; exp di gruppo; soldi.
+- [ ] C4. **Bar-Centro** (cura + PC) e **Market** (compra/vendi: Ball, Pozione, Antidoto, Repellente).
+- [ ] C5. **Palestre e medaglie**: schermata allenatore con medaglie; medaglia 1 sblocca
+      Spinetoli, medaglia 2 chiude la demo con titoli.
+- [ ] C6. **Intro**: arrivo in treno, nome del giocatore, Bobby al bar di Porta Maggiore.
+- [ ] C7. **Configuratore palestre e allenatori** (richiesta del 20/08):
+      - `Mappa_Pokemon/configuratore.html` (mappa vera): POI "Palestra" con capopalestra, tipo,
+        ordine, città; export nello stesso JSON.
+      - `Pokemon_Ascoli/configuratore.html` (pixel): strumento "Palestra" (edificio + capopalestra
+        + medaglia) e strumento "Allenatore" (posizione, direzione/raggio di sguardo, classe,
+        sprite, squadra specie+livello+mosse, dialoghi pre/post, soldi) con form guidato, lista
+        per mappa, duplica/elimina; salva in localStorage ed esporta `trainers.json` letto dal gioco.
+→ verifica: test di regressione estesi + un test di "playthrough" scriptato (stato → eventi →
+  flag) che percorre l'intera demo senza UI.
+
+### D. Mondo
+- [ ] D1. Revisione delle 7 mappe di Ascoli per la trama (bar di Bobby a Porta Maggiore, Callare
+      e Happy Coffee, Ventidio Basso chiuso, Sant'Emidio alle Grotte come luogo-starter).
+- [ ] D2. Mappe nuove: **Rio Castellano** e **Ripatransone** (starter), **Marino del Tronto**,
+      **Oasi**, **Maltignano** (salita), **Castel di Lama** (+ palestra Free Spirit),
+      **Spinetoli**, **Centobuchi**, **Costa** (Ristoro al Porto, spiaggia, Jonathan/palestra).
+      Scala Gen 3 (40×30–60×40), con incontri e allenatori da A2/A6.
+- [ ] D3. Nuovi tile necessari (sabbia, mare, collina, asfalto, binari) in `drawTile`.
+→ verifica: percorso a piedi completo da stazione a Jonathan; test sui limiti mappa.
+
+### E. Asset
+- [ ] E1. Sprite battaglia front/back per le specie nuove e per quelle della wiki usate nella demo
+      (dall'artwork Gemini, pipeline coerente con i 17 già fatti).
+- [ ] E2. Overworld sprite 4 direzioni per Bobby, Steven, Elena, rivale, 2 capipalestra, tipi
+      allenatore generici (skill `image-to-overworld-sprites`).
+- [ ] E3. Icone medaglie, schermata titolo.
+
+### F. Rifinitura e pubblicazione
+- [ ] F1. Testi e dialoghi in italiano/dialetto per tutti gli NPC della demo.
+- [ ] F2. Bilanciamento: curva livelli per arrivare alla 2ª palestra a L20-22 senza grinding.
+- [ ] F3. Copia della build in `Wikascolemon/gioco/` + link dall'indice della wiki; deploy.
+- [ ] F4. Aggiornare `CLAUDE.md`, README, brief con lo stato reale.
+→ verifica: partita completa da zero a seconda medaglia in browser; test verdi; sito online.
+
+### G. Roadmap oltre la demo (non in questo piano)
+Palestre 3-8 (Remigio/montagna, Ossini/Ventidio Basso, Santa Polisia tardi…), sottotrama
+San Giacomo, Polesio e Di Silvestro, Lega (Curti, Celani, Castelli, Fioravanti, Rozzi),
+leggendario (picchio vs Sibilla vs Pretalien), eventuale porting a pokeemerald-expansion.
+
+## Ordine di esecuzione
+A → B2/B3 e C in parallelo → D → B1/E (man mano che servono) → F.
+Ogni fase chiude con commit e test verdi; le schede nuove passano dalla wiki come sempre.
+
+## Criteri di accettazione della demo
+- Si gioca da `file://` e da GitHub Pages, zero dipendenze.
+- Trama eseguibile esattamente come scritta in `Trama/trama_prime_due_palestre.md`.
+- Nessun nome di persona reale nei testi di gioco.
+- Tutti i dati di gioco provengono da JSON generati/validati, non da costanti sparse.
+
+---
+
 # Piano: Cerqua (evoluzione di Totera) → #044, con slittamento di +1 di tutto il blocco successivo
 
 Da fare, **non ancora fatto**. Annotato il 20/08/2026 su richiesta di Jacopo.
