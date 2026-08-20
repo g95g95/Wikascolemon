@@ -215,6 +215,14 @@
   // Mostri
   // ---------------------------------------------------------------------
 
+  // Cura completa (bar, sconfitta): PS, stato e PP di tutte le mosse.
+  function restoreMonster(monster) {
+    monster.hp = monster.stats.hp;
+    monster.status = null;
+    monster.sleepTurns = 0;
+    (monster.moves || []).forEach(slot => { slot.pp = slot.maxPp; });
+  }
+
   function hasItem(itemId) {
     return !!(save.items && save.items[itemId] > 0);
   }
@@ -504,7 +512,7 @@
       });
     },
     async heal() {
-      save.team.forEach(monster => { monster.hp = monster.stats.hp; monster.status = null; monster.sleepTurns = 0; });
+      save.team.forEach(restoreMonster);
       save.lastHeal = { map: player.map, x: player.x, y: player.y };
       autoSave();
     },
@@ -1184,7 +1192,7 @@
   }
 
   function handleWipe() {
-    save.team.forEach(monster => { monster.hp = monster.stats.hp; monster.status = null; monster.sleepTurns = 0; });
+    save.team.forEach(restoreMonster);
     if (battle && battle.kind === 'trainer') {
       save.money = Math.floor((save.money || 0) / 2);
       showToast('Hai perso metà dei tuoi Talleri.');
@@ -1780,6 +1788,6 @@
   requestAnimationFrame(gameLoop);
 
   window.PokemonAscoliGame = {
-    _debug: { migrateSave, loadTrainers, freshSave }
+    _debug: { migrateSave, loadTrainers, freshSave, restoreMonster }
   };
 }());

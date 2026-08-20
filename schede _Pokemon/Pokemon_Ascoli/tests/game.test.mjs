@@ -179,3 +179,13 @@ assert.ok(Game && Game._debug, 'game.js espone window.PokemonAscoliGame._debug p
 }
 
 console.log('game.test.mjs: tutti i test superati.');
+
+// --- la cura (bar, sconfitta) ripristina anche i PP, non solo PS e stato ---
+{
+  const monster = context.window.PokemonAscoliBattle.createMonster('basilino', 12);
+  monster.hp = 1; monster.status = 'psn'; monster.moves.forEach(slot => { slot.pp = 0; });
+  Game._debug.restoreMonster(monster);
+  assert.equal(monster.hp, monster.stats.hp, 'PS pieni dopo la cura');
+  assert.equal(monster.status, null, 'stato rimosso dopo la cura');
+  assert.ok(monster.moves.every(slot => slot.pp === slot.maxPp), 'PP di tutte le mosse al massimo dopo la cura');
+}
