@@ -423,7 +423,8 @@
       return;
     }
 
-    const building = (currentMap.buildings || []).find(item => item.door && item.door.x === x && item.door.y === y);
+    // la cella-porta vale sia davanti al giocatore sia sotto i suoi piedi (ci si arriva camminandoci sopra)
+    const building = (currentMap.buildings || []).find(item => item.door && ((item.door.x === x && item.door.y === y) || (item.door.x === player.x && item.door.y === player.y)));
     if (building) {
       playSound('confirm');
       runScript(buildingScript(building));
@@ -718,6 +719,7 @@
     mode = 'dialogue';
     if (defeated) {
       await runner.run([{ say: trainer.lost, name: trainer.name }]);
+      closeDialogue();
       mode = 'world';
       return;
     }
@@ -748,6 +750,7 @@
       }
       autoSave();
     }
+    closeDialogue();
     mode = 'world';
   }
 

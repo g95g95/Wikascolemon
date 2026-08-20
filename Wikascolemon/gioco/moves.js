@@ -1693,6 +1693,71 @@
     },
     "description": "Assorbe gran parte del danno inflitto come cura."
   },
+  "ritirata": {
+    "name": "Ritirata",
+    "type": "Acqua",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 40,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Si ritira nel guscio e aumenta la Difesa."
+  },
+  "acido": {
+    "name": "Acido",
+    "type": "Veleno",
+    "category": "Speciale",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "spDefense",
+      "stages": -1,
+      "chance": 10
+    },
+    "description": "Spruzzo di acido: può ridurre la Difesa Speciale."
+  },
+  "cappottone": {
+    "name": "Cappottone",
+    "type": "Coleottero",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": {
+      "kind": "custom",
+      "id": "cappottone"
+    },
+    "description": "è la sua mossa esclusiva: ricopre di bava il lato avversario del campo, e da quel momento ogni Pokémon avversario che usa una mossa fisica da contatto ha il 30% di probabilità di"
+  },
+  "entomoblocco": {
+    "name": "Entomoblocco",
+    "type": "Coleottero",
+    "category": "Speciale",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "speed",
+      "stages": -1,
+      "chance": 30
+    },
+    "description": "Raffica d'insetti che può ridurre la Velocità."
+  },
   "sgomento": {
     "name": "Sgomento",
     "type": "Spettro",
@@ -3249,6 +3314,55 @@
     },
     "description": "Colpisce due volte in rapida successione."
   },
+  "ferrartigli": {
+    "name": "Ferrartigli",
+    "type": "Acciaio",
+    "category": "Fisico",
+    "power": 50,
+    "accuracy": 95,
+    "pp": 35,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 10
+    },
+    "description": "Artigli d'acciaio che possono abbassare la Difesa."
+  },
+  "spazzabrace": {
+    "name": "Spazzabrace",
+    "type": "Fuoco",
+    "category": "Fisico",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 20
+    },
+    "description": "è la sua mossa esclusiva: un colpo di mezzaluna che fa danno e"
+  },
+  "codacciaio": {
+    "name": "Codacciaio",
+    "type": "Acciaio",
+    "category": "Fisico",
+    "power": 100,
+    "accuracy": 75,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 30
+    },
+    "description": "Colpo di coda d'acciaio che può ridurre la Difesa."
+  },
   "fischio_lungo": {
     "name": "Fischio Lungo",
     "type": "Normale",
@@ -3275,6 +3389,20 @@
       "kind": "protect"
     },
     "description": "Protegge la squadra dalle mosse ad area per un turno."
+  },
+  "sambucata": {
+    "name": "Sambucata",
+    "type": "Erba",
+    "category": "Fisico",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "flinch",
+      "chance": 20
+    },
+    "description": "è la sua mossa esclusiva, appresa all'evoluzione: un colpo di ramo calato"
   },
   "vento_di_bandiera": {
     "name": "Vento di Bandiera",
@@ -3607,23 +3735,6 @@
       "ratio": 0.5
     },
     "description": "Colpisce con le corna assorbendo metà del danno."
-  },
-  "ferrartigli": {
-    "name": "Ferrartigli",
-    "type": "Acciaio",
-    "category": "Fisico",
-    "power": 50,
-    "accuracy": 95,
-    "pp": 35,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "defense",
-      "stages": -1,
-      "chance": 10
-    },
-    "description": "Artigli d'acciaio che possono abbassare la Difesa."
   },
   "battiterra": {
     "name": "Battiterra",

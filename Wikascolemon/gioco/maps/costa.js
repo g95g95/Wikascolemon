@@ -71,7 +71,7 @@
       npc(30, 68, 'Pescatore del porto', 'Stammatina ho ripreso le reti, ma li pesci moderni so\' furbi.', 'fermo'),
       // Ivo e Teo, "i congressisti": prima del flag, script lungo con dialogo alternato
       {
-        x: 60, y: 86, name: 'Ivo', movement: 'fermo', when: { notFlag: 'ivo_teo_visti' },
+        x: 60, y: 86, name: 'Ivo', sprite: 'ivo', movement: 'fermo', when: { notFlag: 'ivo_teo_visti' },
         script: [
           { say: 'Ehm... salve. Siamo solo due villeggianti, eh, niente di che.', name: 'Ivo' },
           { say: 'Sì sì, congressisti. Qui pé lu congresso. Mica pé antro.', name: 'Teo' },
@@ -86,16 +86,16 @@
         ]
       },
       {
-        x: 61, y: 86, name: 'Teo', movement: 'fermo', when: { notFlag: 'ivo_teo_visti' },
+        x: 61, y: 86, name: 'Teo', sprite: 'teo', movement: 'fermo', when: { notFlag: 'ivo_teo_visti' },
         dialogue: 'Aspetta che parla prima Ivo, dai.'
       },
       // dopo il flag: coppia gemella, battuta di commiato
       {
-        x: 60, y: 86, name: 'Ivo', movement: 'fermo', when: { flag: 'ivo_teo_visti' },
+        x: 60, y: 86, name: 'Ivo', sprite: 'ivo', movement: 'fermo', when: { flag: 'ivo_teo_visti' },
         dialogue: 'Noi se retiramo davero, stavolta. Bona fortuna co\' Riccio.'
       },
       {
-        x: 61, y: 86, name: 'Teo', movement: 'fermo', when: { flag: 'ivo_teo_visti' },
+        x: 61, y: 86, name: 'Teo', sprite: 'teo', movement: 'fermo', when: { flag: 'ivo_teo_visti' },
         dialogue: 'E salutace er congresso, se ce passi.'
       }
     ]

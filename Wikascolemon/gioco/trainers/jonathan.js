@@ -2,7 +2,7 @@
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     jonathan_nando_puledrotto: {
       map: 'jonathan', x: 72, y: 53, direction: 'down', sight: 4,
-      class: 'rivale', name: 'Nando', sprite: null,
+      class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [
         { species: 'cavalbrace', level: 19 },
         { species: 'tifotto', level: 17 },
@@ -15,7 +15,7 @@
     },
     jonathan_nando_tuffito: {
       map: 'jonathan', x: 72, y: 52, direction: 'down', sight: 4,
-      class: 'rivale', name: 'Nando', sprite: null,
+      class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [
         { species: 'brasero', level: 19 },
         { species: 'tifotto', level: 17 },
@@ -28,7 +28,7 @@
     },
     jonathan_nando_basilino: {
       map: 'jonathan', x: 72, y: 51, direction: 'down', sight: 4,
-      class: 'rivale', name: 'Nando', sprite: null,
+      class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [
         { species: 'turibasil', level: 19 },
         { species: 'tifotto', level: 17 },

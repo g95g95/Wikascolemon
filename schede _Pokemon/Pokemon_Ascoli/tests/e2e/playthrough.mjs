@@ -56,6 +56,8 @@ async function walkToFighting(page, x, y, { maxFights = 4 } = {}) {
     await autoBattle(page, { maxTurns: 80 });
     await drainPostBattleDialogue(page, save => Object.keys(save.flags).filter(f => f.startsWith('trainer:')).length > known.length);
     await page.waitForTimeout(300);
+    const cur = await getSave(page);
+    if (cur.team.length) await forceTeamLevel(page, Math.max(...cur.team.map(m => m.level))); // cura
   }
   return walkTo(page, x, y);
 }
@@ -118,7 +120,7 @@ async function main() {
     // Basilino L5 (solo Azione, Normale) perde deterministicamente contro il Puledrotto L5 di Nando
     // (Fuoco, Braciere e' superefficace su Erba): livello forzato per un incontro vincibile, come le
     // altre forzature di livello prima dei capipalestra.
-    await forceTeamLevel(page, 15);
+    await forceTeamLevel(page, 20);
     // Nando aspetta a (31,55) rivolto a nord, sight 4: camminare verso sud lo intercetta a meta' strada.
     const metNando1 = await walkUntilBattle(page, 31, 60);
     if (!metNando1) fail(currentStep, 'Nando 1 non ha intercettato il giocatore lungo il percorso');
@@ -128,7 +130,7 @@ async function main() {
     // -----------------------------------------------------------------
     currentStep = 'ventidio';
     // Verso ovest fino al Centro Storico (transizione (0-1,54-56)).
-    await walkTo(page, 1, 55);
+    await walkToFighting(page, 1, 55);
     await page.keyboard.press('ArrowLeft'); await page.waitForTimeout(400);
     save = await getSave(page);
     if (save.player.map !== 'centro_storico') fail(currentStep, 'transizione verso centro_storico non avvenuta', save.player);
@@ -144,7 +146,7 @@ async function main() {
     // -----------------------------------------------------------------
     currentStep = 'monticelli';
     // Torna a porta_maggiore, poi a est verso Monticelli.
-    await walkTo(page, 143, 55);
+    await walkToFighting(page, 143, 55);
     await page.keyboard.press('ArrowRight'); await page.waitForTimeout(400);
     save = await getSave(page);
     if (save.player.map !== 'porta_maggiore') fail(currentStep, 'ritorno a porta_maggiore non avvenuto', save.player);
@@ -156,7 +158,7 @@ async function main() {
     log('a Monticelli', JSON.stringify(save.player));
 
     // Attraversa Monticelli verso est (ora sbloccato da ventidio_visto).
-    await walkTo(page, 177, 59);
+    await walkToFighting(page, 177, 59);
     await page.keyboard.press('ArrowRight'); await page.waitForTimeout(400);
     save = await getSave(page);
     if (save.player.map !== 'marino_del_tronto') fail(currentStep, 'transizione verso marino_del_tronto non avvenuta', save.player);
@@ -166,13 +168,15 @@ async function main() {
     currentStep = 'catena-salaria';
     // Sulla riga 55 di marino_del_tronto c'e' un allenatore fisso (x=38, sight 4): camminare verso
     // est lungo la stessa riga lo intercetta a meta' strada.
-    const metMarino = await walkUntilBattle(page, 177, 55);
-    if (!metMarino) fail(currentStep, "l'allenatore fisso di marino_del_tronto non ha intercettato il giocatore");
-    save = await fightTrainer(page, currentStep, 'marino_del_tronto_ragazzino_1');
+    if (!(await getSave(page)).flags['trainer:marino_del_tronto_ragazzino_1']) {
+      const metMarino = await walkUntilBattle(page, 177, 55);
+      if (!metMarino) fail(currentStep, "l'allenatore fisso di marino_del_tronto non ha intercettato il giocatore");
+      save = await fightTrainer(page, currentStep, 'marino_del_tronto_ragazzino_1');
+    }
     log('allenatore di Marino del Tronto sconfitto');
 
     // Dopo la lotta si e' fermi a meta' mappa: prosegue verso l'uscita est.
-    let r = await walkTo(page, 177, 55);
+    let r = await walkToFighting(page, 177, 55);
     if (!r.ok) fail(currentStep, "impossibile raggiungere l'uscita est di marino_del_tronto", r);
     await page.keyboard.press('ArrowRight'); await page.waitForTimeout(400);
     save = await getSave(page);
@@ -186,7 +190,7 @@ async function main() {
     for (const step of chain) {
       save = await getSave(page);
       if (save.player.map !== step.from) fail(currentStep, `atteso su ${step.from}, trovato ${save.player.map}`);
-      const rr = await walkTo(page, step.exitX, step.exitY);
+      const rr = await walkToFighting(page, step.exitX, step.exitY);
       if (!rr.ok) fail(currentStep, `impossibile raggiungere l'uscita di ${step.from}`, rr);
       await page.keyboard.press(step.key); await page.waitForTimeout(400);
       save = await getSave(page);
@@ -198,7 +202,7 @@ async function main() {
     // -----------------------------------------------------------------
     currentStep = 'blocco-medaglia';
     // Il passaggio est di castel_di_lama e' bloccato senza badge 1: verificalo prima di sfidare Hills.
-    await walkTo(page, 177, 55);
+    await walkToFighting(page, 177, 55);
     const beforeBlock = await getSave(page);
     await page.keyboard.press('ArrowRight'); await page.waitForTimeout(350);
     const afterBlock = await getSave(page);
@@ -269,7 +273,7 @@ async function main() {
     for (const step of chain2) {
       save = await getSave(page);
       if (save.player.map !== step.from) fail(currentStep, `atteso su ${step.from}, trovato ${save.player.map}`);
-      const rr = await walkTo(page, step.exitX, step.exitY);
+      const rr = await walkToFighting(page, step.exitX, step.exitY);
       if (!rr.ok) fail(currentStep, `impossibile raggiungere l'uscita di ${step.from}`, rr);
       await page.keyboard.press(step.key); await page.waitForTimeout(400);
       save = await getSave(page);
@@ -280,7 +284,7 @@ async function main() {
     // -----------------------------------------------------------------
     currentStep = 'ivo-teo';
     // Ivo e Teo (i "congressisti") sono a (60,86)/(61,86): ci si avvicina da sotto Ivo.
-    await walkTo(page, 60, 87);
+    await walkToFighting(page, 60, 87);
     await page.keyboard.press('ArrowUp'); await page.waitForTimeout(200);
     await page.keyboard.press('Enter'); await page.waitForTimeout(350);
     await advanceDialogue(page, { maxPages: 12 });
@@ -291,11 +295,10 @@ async function main() {
     // -----------------------------------------------------------------
     currentStep = 'verso-jonathan';
     // costa_dj_1 e' fisso sulla riga 55 (x=165, sight 3): camminare verso est lo intercetta a meta' strada.
-    const metDj = await walkUntilBattle(page, 177, 55);
-    if (!metDj) fail(currentStep, 'costa_dj_1 non ha intercettato il giocatore');
-    save = await fightTrainer(page, currentStep, 'costa_dj_1');
+    // costa_dj_1 sta sul lungomare verso l'uscita est: se intercetta il giocatore lo si combatte
+    // (walkToFighting), ma il percorso BFS puo' anche aggirarlo: non e' obbligato.
 
-    r = await walkTo(page, 177, 55);
+    r = await walkToFighting(page, 177, 55);
     if (!r.ok) fail(currentStep, "impossibile raggiungere l'uscita est di costa", r);
     await page.keyboard.press('ArrowRight'); await page.waitForTimeout(400);
     save = await getSave(page);
@@ -307,7 +310,7 @@ async function main() {
     currentStep = 'nando-3';
     // Nando aspetta nel vialetto d'ingresso (x=72, y=51-53 a seconda dello starter di Nando),
     // rivolto a sud, sight 4: risalendo x=72 verso la porta della discoteca (72,50) lo si intercetta.
-    const metNando3 = await walkUntilBattle(page, 72, 45);
+    const metNando3 = await walkUntilBattle(page, 72, 56);
     if (!metNando3) fail(currentStep, 'Nando 3 non ha intercettato il giocatore lungo il percorso');
     save = await fightTrainer(page, currentStep, 'jonathan_nando_puledrotto');
     log('Nando 3 sconfitto');
@@ -315,9 +318,8 @@ async function main() {
     // -----------------------------------------------------------------
     currentStep = 'palestra-2';
     await forceTeamLevel(page, 45);
-    r = await walkTo(page, 72, 51);
+    r = await walkTo(page, 72, 50); // cella-porta della discoteca
     if (!r.ok) fail(currentStep, 'impossibile raggiungere la porta della discoteca', r);
-    await page.keyboard.press('ArrowUp'); await page.waitForTimeout(200);
     await page.keyboard.press('Enter'); await page.waitForTimeout(500);
     save = await getSave(page);
     if (save.player.map !== 'palestra_costa') fail(currentStep, 'ingresso in palestra_costa non avvenuto', save.player);

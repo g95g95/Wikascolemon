@@ -49,7 +49,7 @@
       transition(178, 54, 2, 4, 'spinetoli_centobuchi', 6, 55, 'Spinetoli', { when: { badge: 1 }, blockedText: 'Senza la Medaglia Spirito non si passa.' })
     ],
     npcs: [
-      npc(90, 51, 'Cartello', 'Castel di Lama — qui c\'era il Free Spirit', 'fermo'),
+      npc(87, 51, 'Cartello', 'Castel di Lama — qui c\'era il Free Spirit', 'fermo'),
       npc(24, 25, 'Anziano', ['Ah, il Free Spirit... quello sì che era un bar.', 'Mo\' è \'na palestra, boh, so\' cose che càpeno.'], 'fermo'),
       npc(60, 30, 'Passante', 'A Castel de Lama se magna bono, fidete.', 'orizzontale'),
       npc(40, 70, 'Ragazza', 'Il campo sportivo la sera è pieno de gente.', 'verticale')

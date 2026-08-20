@@ -109,16 +109,16 @@ usa `zanzi` al posto del secondo Mucillax) e le tabelle incontri di Marino/Oasi/
 - [x] B1-verifica — `node tools/build-dex.mjs`, test verdi, 8 schede online.
 
 ### E. Asset
-- [ ] E1. Sprite battaglia front/back per le specie usate nella demo (oggi 17 su 57: mancano tutte le costiere, le campestri e le 8 nuove).
-- [ ] E2. Sprite overworld 4 direzioni (`assets/npc/<sprite>.png`, formato di `oliver-sheet.png`) per Bobby, Steven, Elena, Nando, Hills, Riccio e per le 15 classi; `game.js` li carica già se esistono.
-- [ ] E3. Icone medaglie, schermata titolo, suono (opzionale).
+- [x] E1. Sprite battaglia front/back per le specie usate nella demo: 33 linee generate il 20/08 con Codex (48 specie coperte su 48 usate).
+- [x] E2. (parziale: 17 fogli su 23 — mancano `bro_security`, `dj`, `turista`, `congressista`, `rivale`, `capopalestra`: quota Codex esaurita fino al 23/08; il motore ripiega sui rettangoli colorati) Sprite overworld 4 direzioni (`assets/npc/<sprite>.png`, formato di `oliver-sheet.png`) per Bobby, Steven, Elena, Nando, Hills, Riccio e per le 15 classi; `game.js` li carica già se esistono.
+- [ ] E3. Icone medaglie, schermata titolo, suono (opzionale — non fatto).
 
 ### F. Rifinitura e pubblicazione
-- [ ] F1. Testi e dialoghi definitivi di tutti gli NPC della demo (italiano con colore ascolano).
-- [ ] F2. Bilanciamento: L14-15 alla 1ª palestra, L21-22 alla 2ª senza grinding; curva exp cubica già attiva.
+- [x] F1. (coperto da D1-D2 e D4.2; rifinitura redazionale ancora possibile) Testi e dialoghi definitivi di tutti gli NPC della demo (italiano con colore ascolano).
+- [x] F2. (`tools/simulate-balance.mjs`, exp ×1.8, Hills L9-12) Bilanciamento: L14-15 alla 1ª palestra, L21-22 alla 2ª senza grinding; curva exp cubica già attiva.
 - [x] F3. Build in `Wikascolemon/gioco/` + link dall'indice della wiki; deploy. (Può essere anticipata per far provare lo stato attuale.)
-- [ ] F4. Test di playthrough scriptato in Chromium (riusare lo script del verificatore dalla scratchpad, portarlo in `tests/e2e/` con `playwright-core` come dipendenza di sviluppo opzionale) che percorre stazione → 2ª medaglia.
-- [ ] F5. Aggiornare `CLAUDE.md`, README del gioco, brief.
+- [x] F4. (`tests/e2e/`, PLAYTHROUGH OK in ~14 min il 20/08) Test di playthrough scriptato in Chromium (riusare lo script del verificatore dalla scratchpad, portarlo in `tests/e2e/` con `playwright-core` come dipendenza di sviluppo opzionale) che percorre stazione → 2ª medaglia.
+- [x] F5. Aggiornare `CLAUDE.md`, README del gioco, brief.
 
 ### G. Roadmap oltre la demo (non in questo piano)
 Palestre 3-8, sottotrama San Giacomo, Polesio e Di Silvestro, Lega, leggendario (picchio/Sibilla/Pretalien), porting a pokeemerald-expansion.

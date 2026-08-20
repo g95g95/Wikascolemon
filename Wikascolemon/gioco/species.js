@@ -978,7 +978,7 @@
     "wiki": "../cavalbrace.html"
   },
   "cavedi": {
-    "number": 63,
+    "number": 66,
     "name": "Cavedì",
     "types": [
       "Acqua"
@@ -1035,7 +1035,7 @@
     "wiki": "../cavedi.html"
   },
   "cavedone": {
-    "number": 64,
+    "number": 67,
     "name": "Cavedòne",
     "types": [
       "Acqua"
@@ -1171,6 +1171,64 @@
     "evolution": null,
     "wiki": "../cerqua.html"
   },
+  "ciammarica": {
+    "number": 57,
+    "name": "Ciammarica",
+    "types": [
+      "Coleottero"
+    ],
+    "base": [
+      70,
+      45,
+      95,
+      55,
+      80,
+      20
+    ],
+    "catchRate": 190,
+    "expYield": 60,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ritirata"
+      ],
+      [
+        9,
+        "riduttore"
+      ],
+      [
+        14,
+        "acido"
+      ],
+      [
+        18,
+        "cappottone"
+      ],
+      [
+        24,
+        "entomoblocco"
+      ],
+      [
+        30,
+        "fangobomba"
+      ],
+      [
+        38,
+        "corposcontro"
+      ],
+      [
+        46,
+        "gigassorbimento"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../ciammarica.html"
+  },
   "ciccharizard": {
     "number": 50,
     "name": "Ciccharizard",
@@ -1297,7 +1355,7 @@
     "wiki": "../cignalo.html"
   },
   "ciuci": {
-    "number": 57,
+    "number": 60,
     "name": "Ciucì",
     "types": [
       "Normale",
@@ -1351,7 +1409,7 @@
     "wiki": "../ciuci.html"
   },
   "ciucione": {
-    "number": 58,
+    "number": 61,
     "name": "Ciuciòne",
     "types": [
       "Normale",
@@ -2845,6 +2903,71 @@
     "evolution": null,
     "wiki": "../quintanaro.html"
   },
+  "retrabbie": {
+    "number": 58,
+    "name": "Retrabbiə",
+    "types": [
+      "Fuoco",
+      "Acciaio"
+    ],
+    "base": [
+      60,
+      65,
+      90,
+      40,
+      45,
+      25
+    ],
+    "catchRate": 140,
+    "expYield": 55,
+    "growth": "medio",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "sbadiglio"
+      ],
+      [
+        8,
+        "braciere"
+      ],
+      [
+        12,
+        "ferrartigli"
+      ],
+      [
+        16,
+        "spazzabrace"
+      ],
+      [
+        22,
+        "ruotafuoco"
+      ],
+      [
+        28,
+        "riposo"
+      ],
+      [
+        34,
+        "lanciafiamme"
+      ],
+      [
+        40,
+        "codacciaio"
+      ],
+      [
+        48,
+        "metaltestata"
+      ]
+    ],
+    "evolution": {
+      "into": "sammaro"
+    },
+    "wiki": "../retrabbie.html"
+  },
   "salvatorre": {
     "number": 33,
     "name": "Salvatorre",
@@ -2903,6 +3026,65 @@
     ],
     "evolution": null,
     "wiki": "../salvatorre.html"
+  },
+  "sammaro": {
+    "number": 59,
+    "name": "Sammarò",
+    "types": [
+      "Erba",
+      "Acciaio"
+    ],
+    "base": [
+      75,
+      100,
+      105,
+      55,
+      80,
+      40
+    ],
+    "catchRate": 60,
+    "expYield": 160,
+    "growth": "medio",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "frustata"
+      ],
+      [
+        1,
+        "sambucata"
+      ],
+      [
+        20,
+        "ferrartigli"
+      ],
+      [
+        26,
+        "foglielama"
+      ],
+      [
+        32,
+        "sintesi"
+      ],
+      [
+        38,
+        "codacciaio"
+      ],
+      [
+        44,
+        "mazzuolegno"
+      ],
+      [
+        52,
+        "metaltestata"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../sammaro.html"
   },
   "sbandiera": {
     "number": 18,
@@ -3229,7 +3411,7 @@
     "wiki": "../soldatino.html"
   },
   "sorci": {
-    "number": 59,
+    "number": 62,
     "name": "Sorcì",
     "types": [
       "Normale"
@@ -3278,7 +3460,7 @@
     "wiki": "../sorci.html"
   },
   "sorcione": {
-    "number": 60,
+    "number": 63,
     "name": "Sorcione",
     "types": [
       "Normale"
@@ -4063,7 +4245,7 @@
     "wiki": "../vlurde.html"
   },
   "zanzarax": {
-    "number": 62,
+    "number": 65,
     "name": "Zanzarax",
     "types": [
       "Coleottero",
@@ -4118,7 +4300,7 @@
     "wiki": "../zanzarax.html"
   },
   "zanzi": {
-    "number": 61,
+    "number": 64,
     "name": "Zanzì",
     "types": [
       "Coleottero",

@@ -152,6 +152,7 @@ export async function defaultObstacles(page, mapId) {
     const save = JSON.parse(localStorage.getItem('pokemonAscoliSaveV1'));
     const trainers = Object.entries(window.PokemonAscoliTrainers.trainers)
       .filter(([, t]) => t.map === mapId)
+      .filter(([id]) => !save.flags['trainer:' + id]) // gli sconfitti non bloccano (game.js isBlocked)
       .filter(([, t]) => {
         const w = t.when;
         if (!w) return true;
