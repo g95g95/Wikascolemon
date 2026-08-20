@@ -74,6 +74,8 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #055 | [Vlurde](vlurde.html) | Pokémon Fascina | Fuoco/Erba | Offida (vicoli e corso Serpente Aureo) |
 | #056 | [Moccolo](moccolo.html) | Pokémon Lampioncino | Fuoco/Folletto | Castignano (vicoli e piazzette) |
 | #057 | [Ciammarica](ciammarica.html) | Pokémon Chiocciola | Coleottero | Piceno (orti, muretti a secco, travertino) |
+| #058 | [Retrabbiə](retrabbie.html) | Pokémon Paletta | Fuoco/Acciaio | Contado ascolano (forni a legna e panifici storici) |
+| #059 | [Sammarò](sammaro.html) | Pokémon Sambuco | Erba/Acciaio | Contado ascolano (campi, fossi e margini dei coltivi) |
 | #150 | [Pretalien](pretalien.html) | Pokémon Testimone | Coleot/Psico | Pretare, Monte Vettore |
 
 La wiki è in espansione: nuove schede verranno aggiunte nel tempo.
