@@ -64,6 +64,8 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #052 | [Bracignale](bracignale.html) | Pokémon Carbonaia | Fuoco/Terra | Monti della Laga |
 | #053 | [Caciara](caciara.html) | Pokémon Frastuono | Ghiaccio | Monti Sibillini (Vettore, Forca di Presta, Castelluccio) |
 | #054 | [Pətò](peto.html) | Pokémon Ruota | Normale/Volante | Contado ascolano (Castorano, Appignano del Tronto, Venarotta) |
+| #055 | [Vlurde](vlurde.html) | Pokémon Fascina | Fuoco/Erba | Offida (vicoli e corso Serpente Aureo) |
+| #056 | [Moccolo](moccolo.html) | Pokémon Lampioncino | Fuoco/Folletto | Castignano (vicoli e piazzette) |
 | #150 | [Pretalien](pretalien.html) | Pokémon Testimone | Coleot/Psico | Pretare, Monte Vettore |
 
 La wiki è in espansione: nuove schede verranno aggiunte nel tempo.
