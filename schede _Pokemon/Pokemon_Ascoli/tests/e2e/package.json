@@ -1,0 +1,9 @@
+{
+  "name": "pokemon-ascoli-e2e",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Dipendenza di sviluppo opzionale per il playthrough end-to-end (tests/e2e/run.mjs). Non serve per giocare o per i test unitari (node tests/*.mjs).",
+  "devDependencies": {
+    "playwright-core": "^1.48.0"
+  }
+}

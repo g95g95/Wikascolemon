@@ -1701,8 +1701,14 @@
     "accuracy": null,
     "pp": 40,
     "priority": 0,
-    "effect": null,
-    "description": ""
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Si ritira nel guscio e aumenta la Difesa."
   },
   "acido": {
     "name": "Acido",
@@ -1712,8 +1718,14 @@
     "accuracy": 100,
     "pp": 30,
     "priority": 0,
-    "effect": null,
-    "description": ""
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "spDefense",
+      "stages": -1,
+      "chance": 10
+    },
+    "description": "Spruzzo di acido: può ridurre la Difesa Speciale."
   },
   "cappottone": {
     "name": "Cappottone",
@@ -1723,7 +1735,10 @@
     "accuracy": null,
     "pp": 10,
     "priority": 0,
-    "effect": null,
+    "effect": {
+      "kind": "custom",
+      "id": "cappottone"
+    },
     "description": "è la sua mossa esclusiva: ricopre di bava il lato avversario del campo, e da quel momento ogni Pokémon avversario che usa una mossa fisica da contatto ha il 30% di probabilità di"
   },
   "entomoblocco": {
@@ -1734,8 +1749,14 @@
     "accuracy": 100,
     "pp": 20,
     "priority": 0,
-    "effect": null,
-    "description": ""
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "speed",
+      "stages": -1,
+      "chance": 30
+    },
+    "description": "Raffica d'insetti che può ridurre la Velocità."
   },
   "sgomento": {
     "name": "Sgomento",
@@ -3318,7 +3339,11 @@
     "accuracy": 100,
     "pp": 15,
     "priority": 0,
-    "effect": null,
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 20
+    },
     "description": "è la sua mossa esclusiva: un colpo di mezzaluna che fa danno e"
   },
   "codacciaio": {
@@ -3329,8 +3354,14 @@
     "accuracy": 75,
     "pp": 15,
     "priority": 0,
-    "effect": null,
-    "description": ""
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 30
+    },
+    "description": "Colpo di coda d'acciaio che può ridurre la Difesa."
   },
   "fischio_lungo": {
     "name": "Fischio Lungo",
@@ -3367,7 +3398,10 @@
     "accuracy": 100,
     "pp": 15,
     "priority": 0,
-    "effect": null,
+    "effect": {
+      "kind": "flinch",
+      "chance": 20
+    },
     "description": "è la sua mossa esclusiva, appresa all'evoluzione: un colpo di ramo calato"
   },
   "vento_di_bandiera": {

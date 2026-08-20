@@ -2,6 +2,16 @@
   "abbattimento": {
     "description": "Colpo di roccia scagliato dall'alto."
   },
+  "acido": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "spDefense",
+      "stages": -1,
+      "chance": 10
+    },
+    "description": "Spruzzo di acido: può ridurre la Difesa Speciale."
+  },
   "acquagetto": {
     "description": "Un getto d'acqua che colpisce con forza."
   },
@@ -278,6 +288,13 @@
   "cambiagiro": {
     "description": "Attacco veloce e diretto."
   },
+  "cappottone": {
+    "effect": {
+      "kind": "custom",
+      "id": "cappottone"
+    },
+    "description": "Ricopre di bava il campo avversario: chi attacca per contatto rischia la paralisi (mossa di Ciammarica)."
+  },
   "carineria": {
     "effect": {
       "kind": "stat",
@@ -323,6 +340,16 @@
       "max": 6
     },
     "description": "Colpisce da due a sei volte in sequenza (mossa di Batterino)."
+  },
+  "codacciaio": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 30
+    },
+    "description": "Colpo di coda d'acciaio che può ridurre la Difesa."
   },
   "codaditalco": {
     "description": "Colpo di coda ripetuto."
@@ -574,6 +601,16 @@
       "chance": 10
     },
     "description": "Una sfera di energia naturale."
+  },
+  "entomoblocco": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "speed",
+      "stages": -1,
+      "chance": 30
+    },
+    "description": "Raffica d'insetti che può ridurre la Velocità."
   },
   "facciata": {
     "description": "Un attacco diretto e onesto."
@@ -1336,6 +1373,16 @@
     },
     "description": "Abbassa la precisione avversaria; in doppio aumenta l'Attacco dell'alleato (mossa di Banconio)."
   },
+  "ritirata": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Si ritira nel guscio e aumenta la Difesa."
+  },
   "ronzio": {
     "effect": {
       "kind": "stat",
@@ -1387,6 +1434,13 @@
       "id": "sabbiotomba"
     },
     "description": "Intrappola il bersaglio in un vortice di sabbia che infligge danno nei turni successivi."
+  },
+  "sambucata": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 20
+    },
+    "description": "Colpo di ramo calato dall'alto che può far tentennare (mossa di Sammarò)."
   },
   "sassata": {
     "description": "Un sasso scagliato con forza."
@@ -1504,6 +1558,14 @@
       "chance": 75
     },
     "description": "Un profumo soporifero che spesso abbassa la Velocità."
+  },
+  "spazzabrace": {
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 20
+    },
+    "description": "Colpo di mezzaluna infuocato che può scottare (mossa di Retrabbiə)."
   },
   "spruzzo": {
     "description": "Un piccolo spruzzo d'acqua."

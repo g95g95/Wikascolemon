@@ -125,12 +125,17 @@
   }
 
   // --- Esperienza / livelli / evoluzione ---
+  // Moltiplicatore di bilanciamento (task F2, tools/simulate-balance.mjs): la curva livelli è
+  // n^3 per tutti (più ripida della "medio-lento" standard), quindi l'exp grezza va scalata
+  // per centrare i livelli attesi (bibbia.md §3: L14-15 alla 1ª palestra, L21-22 alla 2ª) senza
+  // grinding, con la sequenza demo (starter + 1 cattura per mappa, 3 selvatici + allenatori).
+  const EXP_BALANCE_MULTIPLIER = 1.8;
   function expGain(defeated, options) {
     const opts = options || {};
     const species = speciesCatalog()[defeated.species];
     const participants = opts.participants || 1;
     const base = Math.floor((species.expYield * defeated.level / 7) / participants);
-    return Math.floor(base * (opts.trainer ? 1.5 : 1));
+    return Math.floor(base * (opts.trainer ? 1.5 : 1) * EXP_BALANCE_MULTIPLIER);
   }
 
   function expToNext(monster) {

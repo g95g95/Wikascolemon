@@ -51,7 +51,10 @@ node tools/build-gioco.mjs               # pubblica in Wikascolemon/gioco/
 node tools/build-dex.mjs                 # rigenera species.js/moves.js dalla wiki
 ```
 
-`tests/e2e/run.mjs` (playthrough Chromium) non esiste ancora. Non esiste `tools/simulate-balance.mjs`.
+Test end-to-end: `node tests/e2e/run.mjs` (playthrough Chromium, opzionale — vedi `tests/e2e/README.md`).
+
+Simulazione di bilanciamento (livelli/allenatori lungo il percorso della demo, 3 starter, 20 seed
+ciascuno di default): `node tools/simulate-balance.mjs [seedBase] [seedCount]`.
 
 ## Aggiungere una mappa
 

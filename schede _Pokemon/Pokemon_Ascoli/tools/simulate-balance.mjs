@@ -216,7 +216,6 @@ function simulateRun(starterId, seed) {
     const trainerId = encounter.prefix + NANDO_SUFFIX[starterId];
     const trainer = trainersData.trainers[trainerId];
     if (!trainer) return;
-    healParty(party);
     const result = fightTrainer(party, trainer.team, rng, true);
     trainerRecords.push({
       id: trainerId, leadLevelAtArrival: currentLeadLevel(),
@@ -225,8 +224,9 @@ function simulateRun(starterId, seed) {
   }
 
   for (const stop of ROUTE) {
-    if (stop.healBefore) healParty(party);
-    // incontri selvatici "di passaggio" prima degli allenatori della mappa (tranne la palestra)
+    // Il giocatore torna al bar prima di ogni sfida (comportamento normale: non affronta un
+    // allenatore con la squadra a metà PS), come specificato dal task F2.
+    healParty(party);
     if (!stop.healBefore) {
       playWildEncounters(stop.map, WILD_ENCOUNTERS_PER_MAP);
       maybeCatch(stop.map);

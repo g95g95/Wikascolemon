@@ -3,7 +3,7 @@
     palestra_castel_di_lama_allievo_1: {
       map: 'palestra_castel_di_lama', x: 11, y: 13, direction: 'down', sight: 3,
       class: 'ragazzino', name: 'Cencio', sprite: null,
-      team: [{ species: 'zanzi', level: 10 }, { species: 'mucillax', level: 11 }],
+      team: [{ species: 'zanzi', level: 8 }, { species: 'mucillax', level: 9 }],
       before: ['Ehi, qui non si passa senza una sfida!', 'Vediamo se meriti di arrivare da Hills.'],
       after: ['Vabbè, daje, passa pure.'],
       lost: 'Passa pure, dai, m\'hai già battuto.',
@@ -12,7 +12,7 @@
     palestra_castel_di_lama_allieva_1: {
       map: 'palestra_castel_di_lama', x: 12, y: 8, direction: 'down', sight: 3,
       class: 'ragazzina', name: 'Miriam', sprite: null,
-      team: [{ species: 'mucillax', level: 11 }, { species: 'pefna', level: 11 }],
+      team: [{ species: 'mucillax', level: 9 }, { species: 'pefna', level: 9 }],
       before: ['Anche tu vuoi la Medaglia Spirito?', 'Prima devi passà da me!'],
       after: ['Uffa, va bene, vai da Hills.'],
       lost: 'Dai, tanto hai già vinto tu.',
@@ -22,9 +22,9 @@
       map: 'palestra_castel_di_lama', x: 11, y: 3, direction: 'down', sight: 0,
       class: 'capopalestra', name: 'Daniel Hills', sprite: 'hills',
       team: [
-        { species: 'zanzi', level: 11 },
-        { species: 'mucillax', level: 12 },
-        { species: 'pozza', level: 14 }
+        { species: 'zanzi', level: 9 },
+        { species: 'mucillax', level: 10 },
+        { species: 'pozza', level: 12 }
       ],
       before: [
         'Il Free Spirit ha chiuso, mo\' qui comando io.',

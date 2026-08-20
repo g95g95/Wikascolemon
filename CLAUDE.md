@@ -106,7 +106,7 @@ Deploy = push to `main` from the repo root. The workflow `.github/workflows/page
 ### Conventions
 - New Pokémon pages: clone the structure of an existing page (e.g. `segaccio.html`) — keep the Pokémon Central Wiki look, type-color CSS variables, infobox, stats bars, responsive layout
 - Pages must stay fully self-contained: no external assets, links only between local pages
-- Pokédex numbering is **semantic, not sequential**: one single dex ("Pokédex del Piceno"), with blocks reserved by design (#001-003 Grass starter, #004-006 Fire, #007-009 Water, #044-064 taken — #057-064 are the 4 Salaria lines). Gaps are deliberate — never assign "highest + 1"; the first free number is #065. The authoritative table lives in the `crea-scheda` skill.
+- Pokédex numbering is **semantic, not sequential**: one single dex ("Pokédex del Piceno"), with blocks reserved by design (#001-003 Grass starter, #004-006 Fire, #007-009 Water, #044-067 taken — #057-059 Ciammarica, Retrabbiə, Sammarò; #060-067 the 4 Salaria lines). Gaps are deliberate — never assign "highest + 1"; the first free number is #068. The authoritative table lives in the `crea-scheda` skill.
 - When adding a page: update navigation links in adjacent pages, `index.html`, and the `README.md` table
 
 ### External Dependencies
