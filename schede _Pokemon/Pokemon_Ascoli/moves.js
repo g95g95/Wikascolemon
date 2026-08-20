@@ -360,7 +360,7 @@
       "kind": "custom",
       "id": "ripescaggio"
     },
-    "description": "è la sua mossa esclusiva: si tuffa e riporta a riva l'alleato in difficoltà —"
+    "description": "è la sua mossa esclusiva: si tuffa e riporta a riva l'alleato che ne ha più bisogno, curandolo di una parte dei PS — riflette il legame di questa specie con chi pesca lungo l'argine, sempre pronta a \"ripescare\" un compagno in difficoltà."
   },
   "aiuto": {
     "name": "Aiuto",
@@ -574,7 +574,7 @@
     "pp": 5,
     "priority": 0,
     "effect": null,
-    "description": "Un attacco fulmineo e potentissimo."
+    "description": "uno scatto brevissimo ma devastante, capace di colpire con la massima potenza nonostante la mole — lo stesso guizzo residuo dei tempi in cui era Sorcì, tenuto in serbo per le emergenze."
   },
   "fogliamagica": {
     "name": "Fogliamagica",
@@ -1540,6 +1540,77 @@
     },
     "description": "è la corsa a rotta di collo che anticipa la festa: potentissima, ma il contraccolpo lo ferisce."
   },
+  "attacco_rapido": {
+    "name": "Attacco Rapido",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 1,
+    "effect": null,
+    "description": "colpisce sempre per primo indipendentemente dalla Velocità dell'avversario, la stessa scattata fulminea con cui Sorcì svuota un ramo d'ulivo prima che l'agricoltore se ne accorga."
+  },
+  "colpocoda": {
+    "name": "Colpocoda",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Un colpo di coda che abbassa la Difesa avversaria."
+  },
+  "attacco_fanghiglia": {
+    "name": "Attacco Fanghiglia",
+    "type": "Acqua",
+    "category": "Speciale",
+    "power": 55,
+    "accuracy": 95,
+    "pp": 20,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 30
+    },
+    "description": "Fango lanciato con forza che può paralizzare."
+  },
+  "fermosguardo": {
+    "name": "Fermosguardo",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "speed",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Uno sguardo fermo che abbassa la Velocità avversaria."
+  },
+  "idropompa": {
+    "name": "Idropompa",
+    "type": "Acqua",
+    "category": "Speciale",
+    "power": 110,
+    "accuracy": 80,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "è la sua mossa esclusiva finale: un getto d'acqua ad altissima pressione, la stessa forza con cui la corrente ha scavato la sua buca — potente ma con precisione ridotta, perché anche Cavedòne, quando si scopre, rischia di sbagliare mira."
+  },
   "chicco_doro": {
     "name": "Chicco d'Oro",
     "type": "Erba",
@@ -1621,23 +1692,6 @@
       "ratio": 0.75
     },
     "description": "Assorbe gran parte del danno inflitto come cura."
-  },
-  "colpocoda": {
-    "name": "Colpocoda",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 30,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "defense",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Un colpo di coda che abbassa la Difesa avversaria."
   },
   "sgomento": {
     "name": "Sgomento",
@@ -1801,6 +1855,75 @@
     "effect": null,
     "description": "Una rincorsa che precede il colpo."
   },
+  "beccata": {
+    "name": "Beccata",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 35,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": null,
+    "description": "Colpisce con il becco."
+  },
+  "bricioleria": {
+    "name": "Bricioleria",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": {
+      "kind": "heal",
+      "ratio": 0.25
+    },
+    "description": "ruba un boccone al bersaglio e cura Ciuciòne di una piccola percentuale dei suoi PS massimi — da capobranco, la usa non per fame ma per principio: quel boccone spettava a lui."
+  },
+  "turbine": {
+    "name": "Turbine",
+    "type": "Volante",
+    "category": "Speciale",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "Un vortice d'aria che colpisce il bersaglio."
+  },
+  "attacco_dala": {
+    "name": "Attacco d'Ala",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": null,
+    "description": "Colpisce con le ali spiegate."
+  },
+  "facciata": {
+    "name": "Facciata",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "Un attacco diretto e onesto."
+  },
+  "baldeali": {
+    "name": "Baldeali",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Colpisce con potenza dopo un balzo aereo."
+  },
   "comparanza": {
     "name": "Comparanza",
     "type": "Lotta",
@@ -1963,17 +2086,6 @@
     "effect": null,
     "description": "Un raggio di luce lunare."
   },
-  "idropompa": {
-    "name": "Idropompa",
-    "type": "Acqua",
-    "category": "Speciale",
-    "power": 110,
-    "accuracy": 80,
-    "pp": 5,
-    "priority": 0,
-    "effect": null,
-    "description": "Un potente getto d'acqua ad alta pressione."
-  },
   "diceria": {
     "name": "Diceria",
     "type": "Buio",
@@ -2040,23 +2152,6 @@
       "id": "confuse_chance"
     },
     "description": "Un'onda psichica che può confondere il bersaglio."
-  },
-  "fermosguardo": {
-    "name": "Fermosguardo",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 30,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "speed",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Uno sguardo fermo che abbassa la Velocità avversaria."
   },
   "boato": {
     "name": "Boato",
@@ -2469,17 +2564,6 @@
     },
     "description": "è la sua mossa esclusiva: la potenza"
   },
-  "attacco_rapido": {
-    "name": "Attacco Rapido",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 30,
-    "priority": 1,
-    "effect": null,
-    "description": "Colpisce per primo quasi sempre."
-  },
   "metalartiglio": {
     "name": "Metalartiglio",
     "type": "Acciaio",
@@ -2561,21 +2645,6 @@
     },
     "description": "infligge danno Veleno e ha probabilità aumentata di avvelenare il bersaglio, con più chance di successo quanto più PS mancano a Mucillax — colpisce peggio quando è \"più concentrato\"."
   },
-  "attacco_fanghiglia": {
-    "name": "Attacco Fanghiglia",
-    "type": "Acqua",
-    "category": "Speciale",
-    "power": 55,
-    "accuracy": 95,
-    "pp": 20,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "par",
-      "chance": 30
-    },
-    "description": "Fango lanciato con forza che può paralizzare."
-  },
   "disgusto": {
     "name": "Disgusto",
     "type": "Veleno",
@@ -2589,7 +2658,7 @@
       "status": "psn",
       "chance": 100
     },
-    "description": "Provoca disgusto e avvelena il bersaglio."
+    "description": "provoca disgusto nel bersaglio e lo avvelena — è il ronzio-punzecchiata che rovina ogni serata d'estate sul Tronto."
   },
   "tossina": {
     "name": "Tossina",
@@ -2820,17 +2889,6 @@
     "effect": null,
     "description": "Una raffica di energia clorofilliana."
   },
-  "beccata": {
-    "name": "Beccata",
-    "type": "Volante",
-    "category": "Fisico",
-    "power": 35,
-    "accuracy": 100,
-    "pp": 35,
-    "priority": 0,
-    "effect": null,
-    "description": "Colpisce con il becco."
-  },
   "stridio": {
     "name": "Stridio",
     "type": "Normale",
@@ -2847,17 +2905,6 @@
       "chance": 100
     },
     "description": "Uno stridio acuto che abbassa molto la Difesa avversaria."
-  },
-  "attacco_dala": {
-    "name": "Attacco d'Ala",
-    "type": "Volante",
-    "category": "Fisico",
-    "power": 60,
-    "accuracy": 100,
-    "pp": 35,
-    "priority": 0,
-    "effect": null,
-    "description": "Colpisce con le ali spiegate."
   },
   "provocazione": {
     "name": "Provocazione",
@@ -2887,17 +2934,6 @@
     },
     "description": "è la sua mossa esclusiva: una raffica sonora di borbottii gorgoglianti e visibilmente offesi che può"
   },
-  "facciata": {
-    "name": "Facciata",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 70,
-    "accuracy": 100,
-    "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": "Un attacco diretto e onesto."
-  },
   "aeroassalto": {
     "name": "Aeroassalto",
     "type": "Volante",
@@ -2908,17 +2944,6 @@
     "priority": 0,
     "effect": null,
     "description": "Assalto dall'alto in picchiata."
-  },
-  "baldeali": {
-    "name": "Baldeali",
-    "type": "Volante",
-    "category": "Fisico",
-    "power": 120,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": "Colpisce con potenza dopo un balzo aereo."
   },
   "turbosabbia": {
     "name": "Turbosabbia",
@@ -3142,7 +3167,7 @@
       "stages": -1,
       "chance": 10
     },
-    "description": "Un ronzio che può abbassare la Difesa Speciale."
+    "description": "un frastuono acuto e prolungato prodotto dalle quattro ali, così forte da stordire i sensi del bersaglio — il verso caratteristico che ha dato il nome alla specie."
   },
   "barriera": {
     "name": "Barriera",
@@ -3250,17 +3275,6 @@
       "kind": "protect"
     },
     "description": "Protegge la squadra dalle mosse ad area per un turno."
-  },
-  "turbine": {
-    "name": "Turbine",
-    "type": "Volante",
-    "category": "Speciale",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": "Un vortice d'aria che colpisce il bersaglio."
   },
   "vento_di_bandiera": {
     "name": "Vento di Bandiera",

@@ -109,6 +109,9 @@
     },
     "description": "Testata che può far tentennare il bersaglio."
   },
+  "attacco_dala": {
+    "description": "Colpisce con le ali spiegate."
+  },
   "attacco_fanghiglia": {
     "effect": {
       "kind": "status",
@@ -251,6 +254,13 @@
     },
     "description": "Colpisce anche i bersagli nascosti sottoterra (mossa di Bracignale)."
   },
+  "bricioleria": {
+    "effect": {
+      "kind": "heal",
+      "ratio": 0.25
+    },
+    "description": "Ruba un boccone al bersaglio e recupera un quarto dei PS massimi (mossa di Ciucì)."
+  },
   "bruciapelo": {
     "priority": 1,
     "description": "Agisce sempre per primo solo appena sceso in campo (mossa di Puledrotto)."
@@ -291,6 +301,13 @@
       "chance": 30
     },
     "description": "Boato gelato che può far tentennare (mossa di Caciara)."
+  },
+  "chicco_doro": {
+    "effect": {
+      "kind": "custom",
+      "id": "triple_hit_spread"
+    },
+    "description": "Tre colpi in sequenza, ciascuno può colpire un bersaglio diverso (mossa della linea di Totera)."
   },
   "chiusascatto": {
     "effect": {
@@ -887,6 +904,9 @@
     },
     "description": "Onde d'acqua pulsanti che possono confondere."
   },
+  "incantavoce": {
+    "description": "Un canto incantato che colpisce con energia magica."
+  },
   "incanto": {
     "effect": {
       "kind": "stat",
@@ -896,9 +916,6 @@
       "chance": 100
     },
     "description": "Un canto ammaliante che abbassa l'Attacco avversario."
-  },
-  "incantavoce": {
-    "description": "Un canto incantato che colpisce con energia magica."
   },
   "incrocolpo": {
     "description": "Colpo incrociato molto potente."
@@ -1283,6 +1300,9 @@
   },
   "rintocco": {
     "description": "Un rintocco sonoro e diretto."
+  },
+  "rip_temerario": {
+    "description": "Un attacco temerario e potentissimo."
   },
   "ripescaggio": {
     "effect": {
@@ -1728,18 +1748,5 @@
   },
   "zuffa": {
     "description": "Una zuffa fortissima ma che lascia esausti."
-  },
-  "rip_temerario": {
-    "description": "Un attacco temerario e potentissimo."
-  },
-  "attacco_dala": {
-    "description": "Colpisce con le ali spiegate."
-  },
-  "chicco_doro": {
-    "effect": {
-      "kind": "custom",
-      "id": "triple_hit_spread"
-    },
-    "description": "Tre colpi in sequenza, ciascuno può colpire un bersaglio diverso (mossa della linea di Totera)."
   }
 }

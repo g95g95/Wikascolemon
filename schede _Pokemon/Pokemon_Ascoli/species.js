@@ -977,6 +977,137 @@
     },
     "wiki": "../cavalbrace.html"
   },
+  "cavedi": {
+    "number": 63,
+    "name": "Cavedì",
+    "types": [
+      "Acqua"
+    ],
+    "base": [
+      40,
+      35,
+      40,
+      40,
+      35,
+      50
+    ],
+    "catchRate": 200,
+    "expYield": 48,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "spruzzo"
+      ],
+      [
+        1,
+        "ringhio"
+      ],
+      [
+        1,
+        "correntina"
+      ],
+      [
+        6,
+        "attacco_rapido"
+      ],
+      [
+        10,
+        "ripescaggio"
+      ],
+      [
+        14,
+        "bolla"
+      ],
+      [
+        18,
+        "idrogetto"
+      ],
+      [
+        22,
+        "colpocoda"
+      ]
+    ],
+    "evolution": {
+      "into": "cavedone",
+      "level": 25
+    },
+    "wiki": "../cavedi.html"
+  },
+  "cavedone": {
+    "number": 64,
+    "name": "Cavedòne",
+    "types": [
+      "Acqua"
+    ],
+    "base": [
+      80,
+      70,
+      70,
+      65,
+      60,
+      65
+    ],
+    "catchRate": 75,
+    "expYield": 158,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "spruzzo"
+      ],
+      [
+        1,
+        "ringhio"
+      ],
+      [
+        6,
+        "attacco_rapido"
+      ],
+      [
+        10,
+        "ripescaggio"
+      ],
+      [
+        14,
+        "bolla"
+      ],
+      [
+        18,
+        "idrogetto"
+      ],
+      [
+        22,
+        "colpocoda"
+      ],
+      [
+        25,
+        "correntina"
+      ],
+      [
+        28,
+        "cascata"
+      ],
+      [
+        34,
+        "bollaraggio"
+      ],
+      [
+        40,
+        "attacco_fanghiglia"
+      ],
+      [
+        46,
+        "fermosguardo"
+      ],
+      [
+        52,
+        "idropompa"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../cavedone.html"
+  },
   "cerqua": {
     "number": 44,
     "name": "Cerqua",
@@ -1164,6 +1295,115 @@
       "level": 26
     },
     "wiki": "../cignalo.html"
+  },
+  "ciuci": {
+    "number": 57,
+    "name": "Ciucì",
+    "types": [
+      "Normale",
+      "Volante"
+    ],
+    "base": [
+      40,
+      45,
+      35,
+      30,
+      35,
+      60
+    ],
+    "catchRate": 255,
+    "expYield": 50,
+    "growth": "veloce",
+    "learnset": [
+      [
+        1,
+        "beccata"
+      ],
+      [
+        1,
+        "rimbalzello"
+      ],
+      [
+        1,
+        "bricioleria"
+      ],
+      [
+        5,
+        "attacco_rapido"
+      ],
+      [
+        9,
+        "ringhio"
+      ],
+      [
+        13,
+        "turbine"
+      ],
+      [
+        18,
+        "attacco_dala"
+      ]
+    ],
+    "evolution": {
+      "into": "ciucione",
+      "level": 18
+    },
+    "wiki": "../ciuci.html"
+  },
+  "ciucione": {
+    "number": 58,
+    "name": "Ciuciòne",
+    "types": [
+      "Normale",
+      "Volante"
+    ],
+    "base": [
+      70,
+      75,
+      60,
+      50,
+      55,
+      90
+    ],
+    "catchRate": 120,
+    "expYield": 145,
+    "growth": "veloce",
+    "learnset": [
+      [
+        1,
+        "beccata"
+      ],
+      [
+        1,
+        "attacco_rapido"
+      ],
+      [
+        1,
+        "bricioleria"
+      ],
+      [
+        1,
+        "ringhio"
+      ],
+      [
+        22,
+        "turbine"
+      ],
+      [
+        27,
+        "attacco_dala"
+      ],
+      [
+        33,
+        "facciata"
+      ],
+      [
+        40,
+        "baldeali"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../ciucione.html"
   },
   "compadrone": {
     "number": 9,
@@ -2988,6 +3228,109 @@
     },
     "wiki": "../soldatino.html"
   },
+  "sorci": {
+    "number": 59,
+    "name": "Sorcì",
+    "types": [
+      "Normale"
+    ],
+    "base": [
+      35,
+      50,
+      30,
+      25,
+      30,
+      65
+    ],
+    "catchRate": 255,
+    "expYield": 39,
+    "growth": "veloce",
+    "learnset": [
+      [
+        1,
+        "attrito"
+      ],
+      [
+        1,
+        "attacco_rapido"
+      ],
+      [
+        5,
+        "ringhio"
+      ],
+      [
+        9,
+        "morso"
+      ],
+      [
+        13,
+        "codaditalco"
+      ],
+      [
+        17,
+        "facciata"
+      ]
+    ],
+    "evolution": {
+      "into": "sorcione",
+      "level": 20
+    },
+    "wiki": "../sorci.html"
+  },
+  "sorcione": {
+    "number": 60,
+    "name": "Sorcione",
+    "types": [
+      "Normale"
+    ],
+    "base": [
+      65,
+      85,
+      55,
+      40,
+      50,
+      95
+    ],
+    "catchRate": 90,
+    "expYield": 145,
+    "growth": "veloce",
+    "learnset": [
+      [
+        1,
+        "attrito"
+      ],
+      [
+        1,
+        "facciata"
+      ],
+      [
+        1,
+        "morso"
+      ],
+      [
+        20,
+        "rip_temerario"
+      ],
+      [
+        24,
+        "assillo"
+      ],
+      [
+        30,
+        "danzaspada"
+      ],
+      [
+        36,
+        "ultrattacco"
+      ],
+      [
+        42,
+        "ultrarapido"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../sorcione.html"
+  },
   "spesurde": {
     "number": 14,
     "name": "Spesurde",
@@ -3718,6 +4061,107 @@
     ],
     "evolution": null,
     "wiki": "../vlurde.html"
+  },
+  "zanzarax": {
+    "number": 62,
+    "name": "Zanzarax",
+    "types": [
+      "Coleottero",
+      "Veleno"
+    ],
+    "base": [
+      55,
+      75,
+      45,
+      70,
+      50,
+      90
+    ],
+    "catchRate": 120,
+    "expYield": 142,
+    "growth": "veloce",
+    "learnset": [
+      [
+        1,
+        "attrito"
+      ],
+      [
+        1,
+        "velenpuntura"
+      ],
+      [
+        1,
+        "disgusto"
+      ],
+      [
+        1,
+        "assorbimento"
+      ],
+      [
+        10,
+        "velenoshock"
+      ],
+      [
+        18,
+        "attacco_rapido"
+      ],
+      [
+        26,
+        "ronzio"
+      ],
+      [
+        34,
+        "velenodenti"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../zanzarax.html"
+  },
+  "zanzi": {
+    "number": 61,
+    "name": "Zanzì",
+    "types": [
+      "Coleottero",
+      "Veleno"
+    ],
+    "base": [
+      30,
+      40,
+      25,
+      35,
+      30,
+      60
+    ],
+    "catchRate": 235,
+    "expYield": 36,
+    "growth": "veloce",
+    "learnset": [
+      [
+        1,
+        "attrito"
+      ],
+      [
+        1,
+        "velenpuntura"
+      ],
+      [
+        1,
+        "disgusto"
+      ],
+      [
+        1,
+        "velenoshock"
+      ],
+      [
+        5,
+        "assorbimento"
+      ]
+    ],
+    "evolution": {
+      "into": "zanzarax",
+      "level": 10
+    },
+    "wiki": "../zanzi.html"
   }
 };
   if (typeof window !== 'undefined') window.PokemonAscoliSpecies = api;

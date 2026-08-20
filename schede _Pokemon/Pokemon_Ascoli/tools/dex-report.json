@@ -121,6 +121,22 @@
       "ok": true
     },
     {
+      "id": "cavedi",
+      "number": 63,
+      "name": "Cavedì",
+      "statTotal": 240,
+      "statSum": 240,
+      "ok": true
+    },
+    {
+      "id": "cavedone",
+      "number": 64,
+      "name": "Cavedòne",
+      "statTotal": 410,
+      "statSum": 410,
+      "ok": true
+    },
+    {
       "id": "cerqua",
       "number": 44,
       "name": "Cerqua",
@@ -142,6 +158,22 @@
       "name": "Cignalò",
       "statTotal": 275,
       "statSum": 275,
+      "ok": true
+    },
+    {
+      "id": "ciuci",
+      "number": 57,
+      "name": "Ciucì",
+      "statTotal": 245,
+      "statSum": 245,
+      "ok": true
+    },
+    {
+      "id": "ciucione",
+      "number": 58,
+      "name": "Ciuciòne",
+      "statTotal": 400,
+      "statSum": 400,
       "ok": true
     },
     {
@@ -369,6 +401,22 @@
       "ok": true
     },
     {
+      "id": "sorci",
+      "number": 59,
+      "name": "Sorcì",
+      "statTotal": 235,
+      "statSum": 235,
+      "ok": true
+    },
+    {
+      "id": "sorcione",
+      "number": 60,
+      "name": "Sorcione",
+      "statTotal": 390,
+      "statSum": 390,
+      "ok": true
+    },
+    {
       "id": "spesurde",
       "number": 14,
       "name": "Spesurde",
@@ -454,6 +502,22 @@
       "name": "Vlurde",
       "statTotal": 480,
       "statSum": 480,
+      "ok": true
+    },
+    {
+      "id": "zanzarax",
+      "number": 62,
+      "name": "Zanzarax",
+      "statTotal": 385,
+      "statSum": 385,
+      "ok": true
+    },
+    {
+      "id": "zanzi",
+      "number": 61,
+      "name": "Zanzì",
+      "statTotal": 220,
+      "statSum": 220,
       "ok": true
     }
   ],
