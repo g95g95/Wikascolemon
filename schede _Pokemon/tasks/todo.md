@@ -1,3 +1,63 @@
+# Piano: Cerqua (evoluzione di Totera) → #044, con slittamento di +1 di tutto il blocco successivo
+
+Da fare, **non ancora fatto**. Annotato il 20/08/2026 su richiesta di Jacopo.
+
+Cerqua è l'evoluzione di **Totera (#043)** e va messa subito dopo, quindi prende il **#044**,
+che oggi è di Pito. Tutto ciò che sta da #044 in su slitta avanti di uno. **#150 Pretalien
+non si tocca** (è fuori blocco, numero riservato per il leggendario).
+
+## Rinumerazione
+
+| Oggi | Domani | Pokémon |
+|---|---|---|
+| — | **#044** | **Cerqua** (nuova, da scrivere) |
+| #044 | #045 | Pito |
+| #045 | #046 | Pozza |
+| #046 | #047 | Umito |
+| #047 | #048 | Segaccio |
+| #048 | #049 | Venagrox |
+| #049 | #050 | Ciccharizard |
+| #050 | #051 | Cignalò |
+| #051 | #052 | Bracignale |
+| #052 | #053 | Caciara |
+| #150 | #150 | Pretalien (invariato) |
+
+⚠️ Il blocco #044-#049 sono le sei schede più vecchie della wiki (i tre starter originari più
+Segaccio, Venagrox, Ciccharizard): erano "riservate per disegno" e finora mai toccate. Con
+questo giro hanno smesso di esserlo: la nota sulla numerazione in `CLAUDE.md` è stata aggiornata
+(diceva "#044-049 taken", ora dice "#045-050 taken, #044 reserved for Cerqua").
+
+## Task
+
+**Rinumerazione eseguita il 20/08/2026** (punti 2, 4, 5, 6): il #044 è ora libero e riservato a Cerqua.
+
+- [ ] 1. Scrivere la scheda di **Cerqua** come evoluzione di Totera (quercia adulta: Totera è
+      il "Pokémon Pannocchia", Cerqua è la cerqua = quercia in dialetto piceno). Coerenza da
+      curare: tipi, linea evolutiva dichiarata su **entrambe** le schede, stat superiori a
+      Totera → verifica: somma statistiche = totale dichiarato, barre = `round(valore/150*100)%`,
+      efficacie di tipo ricalcolate dalla type chart.
+- [x] 2. Rinumerate le **9 schede** da Pito a Caciara, +1 ciascuna (4 punti per file):
+      verificato che ogni scheda porti un solo numero e che non resti alcun riferimento vecchio.
+- [ ] 3. **Da fare quando Cerqua esiste**: ripuntare le dexnav che oggi scavalcano il buco —
+      il "successivo" di **Totera** (`totera.html`, 2 punti) e il "precedente" di **Pito**
+      (`pito.html`, 2 punti) devono diventare `#044: Cerqua`. Ora sono collegati direttamente
+      fra loro, coi numeri giusti: la navigazione non è rotta, ma salta il #044.
+- [x] 4. Aggiornati `index.html` e la tabella del `README.md` → 57 schede, #001-#043 e
+      #045-#053 senza duplicati, più #150. Nessuna classe `.t-<tipo>` nuova (nessun mon nuovo).
+- [x] 5. Rifatti gli stessi passi sulle bozze in `schede _Pokemon/` (10 file; `segaccio_6.html`
+      è la bozza di Segaccio), sulla tabella della skill `crea-scheda` — con la riga
+      **#044 Cerqua RISERVATO** — sulla skill `pubblica-scheda` e sulla riga della numerazione
+      in `CLAUDE.md`. Toccato anche `brief_piceno.html`, che elencava i numeri vecchi.
+- [x] 6. Commit + push, deploy verificato.
+
+## Criteri di accettazione
+
+- Nessun numero duplicato; unico buco il **#044**, riservato a Cerqua; #150 invariato.
+- Ogni dexnav punta al vicino corretto in entrambe le direzioni.
+- Nessun riferimento residuo alla vecchia numerazione in HTML, README, index o skill.
+
+---
+
 # Piano: ridurre i quartieri della demo Pokémon Ascoli a scala Gen 3
 
 Le sette mappe sono 256×160 tile (~270 schermate ciascuna): la città sembra vuota per aritmetica.

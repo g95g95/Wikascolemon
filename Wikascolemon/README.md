@@ -53,15 +53,15 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #041 | [Pef'na](pefna.html) | Pokémon Turione | Erba | Campagna picena (Offida, Castorano, Colli del Tronto) |
 | #042 | [Ca'ità](caita.html) | Pokémon Adunanza | Normale/Erba | Campagna picena |
 | #043 | [Totera](totera.html) | Pokémon Pannocchia | Erba | Vallata del Tronto (campi di mais) |
-| #044 | [Pito](pito.html) | Pokémon Cerbiatto | Roccia/Normale | Acquasanta Terme (Laga) |
-| #045 | [Pozza](pozza.html) | Pokémon Fracchia | Roccia/Veleno | Acquasanta Terme (Laga) |
-| #046 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |
-| #047 | [Segaccio](segaccio.html) | Pokémon Boscaiolo | Erba/Acciaio | Offida |
-| #048 | [Venagrox](venagrox.html) | Pokémon Trattore | Acciaio/Terra | Campagne del Piceno |
-| #049 | [Ciccharizard](ciccharizard.html) | Pokémon Maître | Buio/Spettro | Ascoli Piceno, centro storico |
-| #050 | [Cignalò](cignalo.html) | Pokémon Cinghialetto | Normale/Terra | Monti della Laga (Acquasanta, Arquata, Montegallo) |
-| #051 | [Bracignale](bracignale.html) | Pokémon Carbonaia | Fuoco/Terra | Monti della Laga |
-| #052 | [Caciara](caciara.html) | Pokémon Frastuono | Ghiaccio | Monti Sibillini (Vettore, Forca di Presta, Castelluccio) |
+| #045 | [Pito](pito.html) | Pokémon Cerbiatto | Roccia/Normale | Acquasanta Terme (Laga) |
+| #046 | [Pozza](pozza.html) | Pokémon Fracchia | Roccia/Veleno | Acquasanta Terme (Laga) |
+| #047 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |
+| #048 | [Segaccio](segaccio.html) | Pokémon Boscaiolo | Erba/Acciaio | Offida |
+| #049 | [Venagrox](venagrox.html) | Pokémon Trattore | Acciaio/Terra | Campagne del Piceno |
+| #050 | [Ciccharizard](ciccharizard.html) | Pokémon Maître | Buio/Spettro | Ascoli Piceno, centro storico |
+| #051 | [Cignalò](cignalo.html) | Pokémon Cinghialetto | Normale/Terra | Monti della Laga (Acquasanta, Arquata, Montegallo) |
+| #052 | [Bracignale](bracignale.html) | Pokémon Carbonaia | Fuoco/Terra | Monti della Laga |
+| #053 | [Caciara](caciara.html) | Pokémon Frastuono | Ghiaccio | Monti Sibillini (Vettore, Forca di Presta, Castelluccio) |
 | #150 | [Pretalien](pretalien.html) | Pokémon Testimone | Coleot/Psico | Pretare, Monte Vettore |
 
 La wiki è in espansione: nuove schede verranno aggiunte nel tempo.

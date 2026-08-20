@@ -22,7 +22,7 @@ Copia il file in `Wikascolemon/<nome>.html`. La bozza in `schede _Pokemon/` può
 
 ## 2. Aggiorna la navigazione della scheda precedente
 
-Nella scheda `#0NN-1` (es. `segaccio.html` per la #048), nelle **due** `.dexnav` (alto e basso) sostituisci:
+Nella scheda `#0NN-1` (es. `segaccio.html` per la #049), nelle **due** `.dexnav` (alto e basso) sostituisci:
 
 ```html
 <span class="dim">#0NN: ??? →</span>
