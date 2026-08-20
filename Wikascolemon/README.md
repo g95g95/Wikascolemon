@@ -53,6 +53,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #041 | [Pef'na](pefna.html) | Pokémon Turione | Erba | Campagna picena (Offida, Castorano, Colli del Tronto) |
 | #042 | [Ca'ità](caita.html) | Pokémon Adunanza | Normale/Erba | Campagna picena |
 | #043 | [Totera](totera.html) | Pokémon Pannocchia | Erba | Vallata del Tronto (campi di mais) |
+| #044 | [Cerqua](cerqua.html) | Pokémon Quercia | Erba/Terra | Vallata del Tronto (crinali e bordi dei campi) |
 | #045 | [Pito](pito.html) | Pokémon Cerbiatto | Roccia/Normale | Acquasanta Terme (Laga) |
 | #046 | [Pozza](pozza.html) | Pokémon Fracchia | Roccia/Veleno | Acquasanta Terme (Laga) |
 | #047 | [Umito](umito.html) | Pokémon Cervosacro | Roccia/Erba | Acquasanta Terme (Laga) |

@@ -29,30 +29,30 @@ questo giro hanno smesso di esserlo: la nota sulla numerazione in `CLAUDE.md` è
 
 ## Task
 
-**Rinumerazione eseguita il 20/08/2026** (punti 2, 4, 5, 6): il #044 è ora libero e riservato a Cerqua.
+**Piano completato il 20/08/2026.** Rinumerazione e scheda di Cerqua pubblicate.
 
-- [ ] 1. Scrivere la scheda di **Cerqua** come evoluzione di Totera (quercia adulta: Totera è
-      il "Pokémon Pannocchia", Cerqua è la cerqua = quercia in dialetto piceno). Coerenza da
-      curare: tipi, linea evolutiva dichiarata su **entrambe** le schede, stat superiori a
-      Totera → verifica: somma statistiche = totale dichiarato, barre = `round(valore/150*100)%`,
-      efficacie di tipo ricalcolate dalla type chart.
-- [x] 2. Rinumerate le **9 schede** da Pito a Caciara, +1 ciascuna (4 punti per file):
-      verificato che ogni scheda porti un solo numero e che non resti alcun riferimento vecchio.
-- [ ] 3. **Da fare quando Cerqua esiste**: ripuntare le dexnav che oggi scavalcano il buco —
-      il "successivo" di **Totera** (`totera.html`, 2 punti) e il "precedente" di **Pito**
-      (`pito.html`, 2 punti) devono diventare `#044: Cerqua`. Ora sono collegati direttamente
-      fra loro, coi numeri giusti: la navigazione non è rotta, ma salta il #044.
-- [x] 4. Aggiornati `index.html` e la tabella del `README.md` → 57 schede, #001-#043 e
-      #045-#053 senza duplicati, più #150. Nessuna classe `.t-<tipo>` nuova (nessun mon nuovo).
-- [x] 5. Rifatti gli stessi passi sulle bozze in `schede _Pokemon/` (10 file; `segaccio_6.html`
-      è la bozza di Segaccio), sulla tabella della skill `crea-scheda` — con la riga
-      **#044 Cerqua RISERVATO** — sulla skill `pubblica-scheda` e sulla riga della numerazione
-      in `CLAUDE.md`. Toccato anche `brief_piceno.html`, che elencava i numeri vecchi.
+- [x] 1. Scritta la scheda di **Cerqua** (arrivata già pronta in Downloads, artwork incorporato):
+      Erba/Terra, "Pokémon Quercia", evoluzione di Totera dal livello 36, 485 di totale
+      (90/100/120/60/85/30). Validata: somma statistiche giusta, barre `round(v/150*100)%`
+      corrette su tutte e sei, efficacie ricalcolate a mano dalla type chart e coincidenti
+      (Ghiaccio 4×, Fuoco/Volante/Coleottero 2×, Terra/Roccia ½×, Elettro 0×), ancore del
+      sommario tutte esistenti, nessun asset esterno.
+- [x] 2. Rinumerate le **9 schede** da Pito a Caciara, +1 ciascuna (4 punti per file).
+- [x] 3. Dexnav ripuntate: il "successivo" di **Totera** e il "precedente" di **Pito** ora
+      passano da Cerqua #044. Sistemata anche l'**incoerenza di contenuto**: la scheda di
+      Totera dichiarava "Totera non si evolve" in tre punti (intro, riquadro Evoluzioni,
+      card dell'indice) — ora mostra la catena a due stadi verso Cerqua.
+- [x] 4. Aggiornati `index.html` (card + riga dell'indice rapido, in posizione numerica) e la
+      tabella del `README.md`. Nessuna classe `.t-<tipo>` nuova: `.t-erba` e `.t-terra`
+      c'erano già sia nell'indice sia in `totera.html`.
+- [x] 5. Bozze in `schede _Pokemon/` allineate, tabella della skill `crea-scheda` aggiornata
+      (#044 Cerqua ✅, primo libero #054), skill `pubblica-scheda` e `CLAUDE.md` idem.
 - [x] 6. Commit + push, deploy verificato.
+
 
 ## Criteri di accettazione
 
-- Nessun numero duplicato; unico buco il **#044**, riservato a Cerqua; #150 invariato.
+- Nessun numero duplicato, nessun buco: #001-#053 contigui + #150 invariato.
 - Ogni dexnav punta al vicino corretto in entrambe le direzioni.
 - Nessun riferimento residuo alla vecchia numerazione in HTML, README, index o skill.
 
