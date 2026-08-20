@@ -12,18 +12,92 @@ Approvato il 20/08/2026; riscritto il 20/08/2026 dopo il completamento dei punti
 - Configuratori: mappa vera (POI Palestra + precompila 8); pixel (strumenti Allenatore e Palestra, validazione, export/import → override `pokemonAscoliTrainersV1`).
 - Verifica in Chromium headless: partita reale, 2 bug corretti; 7 suite verdi.
 
-## Cosa manca, in ordine
+## Piano di implementazione F3 → D (flottiglia) → D4 → B1
 
-### D. Mondo (blocca la trama)
-- [ ] D1. Ritocco delle 7 mappe di Ascoli: Bar Callare e Happy Coffee come Centri, Ventidio Basso con porta e script "chiuso per riprese" (imposta flag `ventidio_chiuso_visto` che apre la Salaria), Sant'Emidio alle Grotte come luogo-starter Erba, Rio Castellano luogo-starter Acqua. → verifica: regression + percorso a piedi.
-- [ ] D2. Nuove mappe (scala 40×30–60×40) con incontri, allenatori e passaggi reciproci, secondo bibbia §3: **Ripatransone** (corriera dalla stazione), **Marino del Tronto**, **Oasi**, **Maltignano**, **Castel di Lama** + palestra Free Spirit, **Spinetoli/Centobuchi**, **Costa** (Ristoro al Porto, spiaggia), **Jonathan** + palestra. → verifica: test su limiti/reciprocità; gating via `when` (Salaria dopo Ventidio, Spinetoli dopo medaglia 1).
-- [ ] D3. Tile nuovi in `drawTile`: sabbia, mare, collina/pendio, asfalto, binari, interno palestra.
-- [ ] D4. Script di trama: stazione (arrivo), Bobby/Steven/Elena al bar, Ventidio chiuso, Hills sconfitto ("la costa, l'habitat delle femmine"), Ivo e Teo sulla spiaggia, Bro della Security a catena, Riccio, titoli di coda della demo. Rivale Nando ×3.
+Regole della flottiglia: Fable orchestra; τ facile → Sonnet, medio → Opus, difficile → Fable.
+Ogni agente possiede file disgiunti, non committa, lascia i test verdi; dopo ogni ondata verifica
+scettica in Chromium e commit.
 
-### B1. Specie nuove (fascia bassa)
-- [ ] Quattro linee a due stadi (passerotto, topo, zanzara, cavedano) con `crea-scheda` + `pubblica-scheda`. Numeri: **#057-#064** (#055 Vlurde e #056 Moccolo sono stati presi il 20/08). Poi `node tools/build-dex.mjs`.
-- [ ] Catalogare le 7 mosse inventate ancora "da catalogare" in `tools/moves-catalog.json`.
-- [ ] Evoluzioni non standard presenti in `dex-overrides.json` (notte, amicizia, Grattaevinci, sestiere, fusione, KO di Maranzino…): decidere quali il motore supporta nella demo; le altre restano lore.
+### F3. Online subito a `/gioco` (sequenziale, 1 agente)
+- [ ] F3.1 τ=facile/Sonnet — `tools/build-gioco.mjs`: copia in `Wikascolemon/gioco/` i file di gioco
+      (`index.html`, `game.js`, `data.js`, `species.js`, `moves.js`, `trainers.js`, `battle.js`, `events.js`,
+      `styles.css`, `configuratore.*`, `assets/`, `README.md`), cancellando prima la destinazione;
+      verifica che i link wiki `../<id>.html` risolvano da lì (→ `Wikascolemon/<id>.html`).
+      `tests/regression.mjs`: se `Wikascolemon/gioco/` esiste, i file devono essere identici ai sorgenti
+      (così nessuno edita la build a mano). → verifica: `node tools/build-gioco.mjs && node tests/regression.mjs`.
+- [ ] F3.2 τ=facile/Sonnet — `Wikascolemon/index.html`: riquadro «Gioca» con due link (`gioco/` = in
+      sviluppo, `demo/` = demo originale) nello stile della pagina; `README.md` della wiki idem.
+- [ ] F3.3 Orchestratore — commit, push, controllo che https://g95g95.github.io/Wikascolemon/gioco/ parta
+      (title screen, nuova partita, Bobby).
+
+### D0. Preparazione per la flottiglia (sequenziale, prima di D1-D2)
+- [ ] D0.1 τ=medio/Opus — spezzare `data.js`: ogni mappa in `maps/<id>.js` che fa
+      `window.PokemonAscoliMaps = window.PokemonAscoliMaps || {}; window.PokemonAscoliMaps.<id> = {...}`
+      usando helper condivisi in `maps/_helpers.js` (`building, rect, zone, transition, npc, city, wide, tall`);
+      stesso split per gli allenatori: `trainers/<mapId>.js` che estende `window.PokemonAscoliTrainers.trainers`
+      con `Object.assign` (classi e gyms restano in `trainers.js`);
+      `data.js` tiene tile/start/items e fa `maps: window.PokemonAscoliMaps`; `index.html`/`configuratore.html`
+      caricano `maps/_helpers.js` + un `<script>` per mappa + un `<script>` per file allenatori;
+      `tests/regression.mjs` e `tests/trainers.test.mjs` caricano i file in vm e tolgono il vincolo «7 mappe» (→ «≥ 7»).
+      `tools/build-gioco.mjs` copia anche `maps/` e `trainers/`. → verifica: tutti i test verdi, gioco identico a prima.
+- [ ] D0.2 τ=facile/Sonnet — `drawTile` in `game.js`: nuovi tile `sabbia`, `mare` (blocca, come water),
+      `pendio` (percorribile, righe oblique), `asfalto`, `binari` (blocca), `ghiaia`, `pavimento` (interni),
+      `albero` (già blocca, ora disegnato); stessa palette Gen 3; il configuratore li elenca nel select
+      `tileType` e in `colorForTile`. → verifica: `node --check`, screenshot in Chromium di una mappa di prova.
+- [ ] D0.3 τ=facile/Sonnet — `tests/maps.test.mjs`: per ogni mappa, oltre ai controlli esistenti: ogni
+      `door` adiacente all'edificio e percorribile; tabella incontri con livelli dentro la fascia dichiarata
+      in `map.levelRange` (nuovo campo `[min,max]`); ogni allenatore di quella mappa dentro i limiti e su
+      cella percorribile; ogni script/`when` valido (`validateScript`); percorso a piedi BFS dalla stazione
+      a ogni mappa raggiungibile (ignorando `when`). Il test gira già su Ascoli.
+- [ ] D0.4 Orchestratore — `Trama/bibbia.md` §3 → tabella di consegna per agente: id mappa, dimensioni,
+      mappe confinanti con coordinate dei passaggi (decise QUI, così due agenti vicini combaciano),
+      landmark, specie e livelli, allenatori (classe, squadra, posizione indicativa), script richiesti.
+      Le coordinate dei passaggi sono l'unico accoppiamento fra agenti: vanno fissate prima.
+
+### D1-D2. Mappe — ondata parallela (un agente per mappa: `maps/<id>.js` + `trainers/<id>.js`)
+| Agente | Mappa | τ/modello | Note |
+|---|---|---|---|
+| D1-a | `porta_maggiore` + `centro_storico` (ritocco) | medio/Opus | Bar Callare Centro, Ventidio con `door` + script «chiuso per riprese» → flag `ventidio_visto`; corriera per Ripatransone alla stazione (`transition` con `when`) |
+| D1-b | `campo_parignano` + `porta_cartara` (ritocco) | facile/Sonnet | Happy Coffee Centro; cartelli «Sant'Emidio alle Grotte» / «Rio Castellano» come luoghi-starter (lore, lo starter lo dà Bobby) |
+| D2-a | `ripatransone` | medio/Opus | colline con filari, piazza, bar; incontri Pef'na, Pətò raro; 1 allenatore; solo corriera |
+| D2-b | `marino_del_tronto` | medio/Opus | Salaria «Percorso 1», L4-7; 3 allenatori; `when:{flag:'ventidio_visto'}` all'ingresso da Monticelli |
+| D2-c | `oasi` | medio/Opus | laghetto, canneto, L5-8; 2 allenatori; incontri in acqua (pesca) |
+| D2-d | `maltignano` | medio/Opus | salita a tornanti con `pendio`, L7-10; 3 allenatori + rivale Nando (script, lotta 2) |
+| D2-e | `castel_di_lama` + `palestra_castel_di_lama` (interno) | difficile/Fable | città + edificio Free Spirit con `interior:'gym'` → warp nell'interno; interno con 2 allievi e Hills; script medaglia 1 + MT; dialogo post-sconfitta |
+| D2-f | `spinetoli_centobuchi` | facile/Sonnet | pianura, L12-16; 4 allenatori; ingresso con `when:{badge:1}` |
+| D2-g | `costa` | difficile/Fable | Ristoro al Porto (bar), spiaggia con `sabbia`/`mare`, L15-19; 5 allenatori; script Ivo e Teo (agguato respinto); passaggio allo Jonathan |
+| D2-h | `jonathan` + `palestra_costa` (interno) | difficile/Fable | discoteca: 3 Bro della Security a catena, rivale Nando (lotta 3) all'ingresso, Riccio; medaglia 2; titoli di coda della demo (overlay `creditsScreen`: unico tocco a `game.js`/`index.html`, assegnato solo a questo agente) |
+
+Ogni agente: legge la riga di D0.4, `ARCHITETTURA.md`, una mappa esistente come modello; consegna mappa,
+allenatori, script; `node tests/*.mjs` verdi; screenshot della mappa dal configuratore.
+- [ ] D-verifica τ=difficile/Fable — playthrough in Chromium stazione → medaglia 2 (con livelli forzati),
+      controllo dei passaggi fra mappe adiacenti, dei blocchi `when`, di ogni allenatore (sguardo), delle
+      due palestre. Poi commit.
+
+### D4. Script di trama trasversali (sequenziale, dopo D1-D2)
+- [ ] D4.1 τ=medio/Opus — intro: arrivo in treno (schermata nera → binari → Bobby che aspetta), nome
+      giocatore (prompt nell'overlay titolo), Steven ed Elena al bar che spiegano il piano (3-4 pagine),
+      Bobby: scelta del luogo (già fatto) + benedizione. Rivale Nando, lotta 1 subito fuori dal bar.
+- [ ] D4.2 τ=facile/Sonnet — testi degli NPC di colore delle 7 mappe di Ascoli riallineati alla trama
+      (degrado, bande, bar chiusi), 2-3 NPC per mappa.
+- [ ] D4.3 τ=medio/Opus — tabella `Trama/flag.md`: tutti i flag usati, chi li imposta, chi li legge;
+      test che ogni flag letto sia impostato da qualche script (e viceversa).
+
+### B1. Specie nuove (parallela, 4 agenti + 1 per le mosse; nessun file in comune)
+Numeri **#057-#064** (#055 Vlurde e #056 Moccolo presi il 20/08). Nomi da confermare da bibbia §5.
+| Agente | Linea | τ/modello |
+|---|---|---|
+| B1-a | #057 Ciucì → #058 Ciuciòne (Normale/Volante, 245→400, ev. L18) | medio/Opus |
+| B1-b | #059 Sorcì → #060 Sorcione (Normale, 235→390, L20) | medio/Opus |
+| B1-c | #061 Zanzì → #062 Zanzarax (Coleottero/Veleno, 220→385, L10) | medio/Opus |
+| B1-d | #063 Cavedì → #064 Cavedòne (Acqua, 240→410, L25) | medio/Opus |
+| B1-e | catalogare le 7 mosse inventate in `tools/moves-catalog.json` + decidere in `dex-overrides.json` quali evoluzioni non standard supporta la demo (night/friendship/item) e quali restano lore | difficile/Fable |
+
+Ogni agente B1-a..d: skill `crea-scheda` (artwork via `codex exec`), learnset coerente con
+`moves-catalog.json`, bozza in `schede _Pokemon/`, NON pubblica. L'orchestratore pubblica in sequenza con
+`pubblica-scheda` (index/README/dexnav sono file condivisi), rigenera il dex, aggiorna `trainers/` (Hills
+usa `zanzi` al posto del secondo Mucillax) e le tabelle incontri di Marino/Oasi/Maltignano/Rio Castellano.
+- [ ] B1-verifica — `node tools/build-dex.mjs`, test verdi, 8 schede online.
 
 ### E. Asset
 - [ ] E1. Sprite battaglia front/back per le specie usate nella demo (oggi 17 su 57: mancano tutte le costiere, le campestri e le 8 nuove).
@@ -40,8 +114,8 @@ Approvato il 20/08/2026; riscritto il 20/08/2026 dopo il completamento dei punti
 ### G. Roadmap oltre la demo (non in questo piano)
 Palestre 3-8, sottotrama San Giacomo, Polesio e Di Silvestro, Lega, leggendario (picchio/Sibilla/Pretalien), porting a pokeemerald-expansion.
 
-## Ordine consigliato
-F3 (online subito) → D1-D2 con flottiglia (una mappa per agente, file `data.js` diviso in `maps/<id>.js` per evitare collisioni) → D4 → B1 → E → F1-F2 → F4-F5.
+## Ordine
+F3 → D0 → D1-D2 (flottiglia, 10 agenti) → D-verifica → D4 → B1 (flottiglia, 5 agenti) → E → F1-F2 → F4-F5.
 
 ## Criteri di accettazione della demo
 - Si gioca da `file://` e da GitHub Pages, zero dipendenze.
