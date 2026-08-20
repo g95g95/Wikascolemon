@@ -1,0 +1,18 @@
+{
+  "pito": { "evolution": { "into": "pozza", "level": 21, "wet": true } },
+  "pozza": { "evolution": { "into": "umito", "item": "acquasanta" } },
+  "turibasil": { "evolution": { "into": "vescovasil", "level": 36, "location": "campo_parignano" } },
+  "sbandiera": { "evolution": { "into": "quintanaro", "location": "sestiere" } },
+  "alghetta": { "evolution": { "into": "mucillax", "location": "ecoli" } },
+  "bagnetto": { "evolution": { "into": "coperto", "night": true, "knowsSoundMove": true } },
+  "batterino": { "evolution": { "into": "dehor", "level": 15, "item": "grattaevinci" } },
+  "bree": { "evolution": { "into": "felignoto", "location": "avvistamenti" } },
+  "cavalbrace": { "evolution": { "into": "fuocavallo", "level": 36, "night": true } },
+  "coperto": { "evolution": { "into": "mixaro", "defeat": "maranzino" } },
+  "ombrellone": { "evolution": { "into": "salvatorre", "level": 36, "partySpecies": "bagnino" } },
+  "pefna": { "evolution": { "into": "caita", "level": 20, "fusion": true } },
+  "sciarpone": { "evolution": { "into": "capultra", "night": true, "knowsSoundMove": true } },
+  "soldatino": { "evolution": { "into": "batterino", "level": 15, "item": "grattaevinci" } },
+  "tifotto": { "evolution": { "into": "sciarpone", "friendship": true } },
+  "totera": { "evolution": { "into": "cerqua", "level": 36 } }
+}

@@ -1,0 +1,445 @@
+{
+  "species": [
+    {
+      "id": "alghetta",
+      "number": 39,
+      "name": "Alghetta",
+      "statTotal": 280,
+      "statSum": 280,
+      "ok": true
+    },
+    {
+      "id": "anicino",
+      "number": 15,
+      "name": "Anicino",
+      "statTotal": 240,
+      "statSum": 240,
+      "ok": true
+    },
+    {
+      "id": "anisetta",
+      "number": 16,
+      "name": "Anisetta",
+      "statTotal": 450,
+      "statSum": 450,
+      "ok": true
+    },
+    {
+      "id": "bagnetto",
+      "number": 34,
+      "name": "Bagnetto",
+      "statTotal": 360,
+      "statSum": 360,
+      "ok": true
+    },
+    {
+      "id": "banconio",
+      "number": 10,
+      "name": "Banconio",
+      "statTotal": 465,
+      "statSum": 465,
+      "ok": true
+    },
+    {
+      "id": "basilino",
+      "number": 1,
+      "name": "Basilino",
+      "statTotal": 310,
+      "statSum": 310,
+      "ok": true
+    },
+    {
+      "id": "batterino",
+      "number": 25,
+      "name": "Batterino",
+      "statTotal": 420,
+      "statSum": 420,
+      "ok": true
+    },
+    {
+      "id": "bracignale",
+      "number": 52,
+      "name": "Bracignale",
+      "statTotal": 465,
+      "statSum": 465,
+      "ok": true
+    },
+    {
+      "id": "brasero",
+      "number": 8,
+      "name": "Brasero",
+      "statTotal": 405,
+      "statSum": 405,
+      "ok": true
+    },
+    {
+      "id": "bree",
+      "number": 11,
+      "name": "Bree",
+      "statTotal": 435,
+      "statSum": 435,
+      "ok": true
+    },
+    {
+      "id": "caciara",
+      "number": 53,
+      "name": "Caciara",
+      "statTotal": 335,
+      "statSum": 335,
+      "ok": true
+    },
+    {
+      "id": "caita",
+      "number": 42,
+      "name": "Ca'ità",
+      "statTotal": 455,
+      "statSum": 455,
+      "ok": true
+    },
+    {
+      "id": "capultra",
+      "number": 23,
+      "name": "Capultrà",
+      "statTotal": 515,
+      "statSum": 515,
+      "ok": true
+    },
+    {
+      "id": "carpentrap",
+      "number": 13,
+      "name": "Carpentrap",
+      "statTotal": 470,
+      "statSum": 470,
+      "ok": true
+    },
+    {
+      "id": "cavalbrace",
+      "number": 5,
+      "name": "Cavalbrace",
+      "statTotal": 405,
+      "statSum": 405,
+      "ok": true
+    },
+    {
+      "id": "cerqua",
+      "number": 44,
+      "name": "Cerqua",
+      "statTotal": 485,
+      "statSum": 485,
+      "ok": true
+    },
+    {
+      "id": "ciccharizard",
+      "number": 50,
+      "name": "Ciccharizard",
+      "statTotal": 540,
+      "statSum": 540,
+      "ok": true
+    },
+    {
+      "id": "cignalo",
+      "number": 51,
+      "name": "Cignalò",
+      "statTotal": 275,
+      "statSum": 275,
+      "ok": true
+    },
+    {
+      "id": "compadrone",
+      "number": 9,
+      "name": "Compadrone",
+      "statTotal": 530,
+      "statSum": 530,
+      "ok": true
+    },
+    {
+      "id": "coperto",
+      "number": 35,
+      "name": "Coperto",
+      "statTotal": 440,
+      "statSum": 440,
+      "ok": true
+    },
+    {
+      "id": "cozzetta",
+      "number": 37,
+      "name": "Cozzetta",
+      "statTotal": 230,
+      "statSum": 230,
+      "ok": true
+    },
+    {
+      "id": "dehor",
+      "number": 26,
+      "name": "Dehor",
+      "statTotal": 510,
+      "statSum": 510,
+      "ok": true
+    },
+    {
+      "id": "felignoto",
+      "number": 12,
+      "name": "Felignoto",
+      "statTotal": 505,
+      "statSum": 505,
+      "ok": true
+    },
+    {
+      "id": "forox",
+      "number": 28,
+      "name": "Forox",
+      "statTotal": 500,
+      "statSum": 500,
+      "ok": true
+    },
+    {
+      "id": "fuocavallo",
+      "number": 6,
+      "name": "Fuocavallo",
+      "statTotal": 530,
+      "statSum": 530,
+      "ok": true
+    },
+    {
+      "id": "lettino",
+      "number": 31,
+      "name": "Lettino",
+      "statTotal": 270,
+      "statSum": 270,
+      "ok": true
+    },
+    {
+      "id": "maranzino",
+      "number": 30,
+      "name": "Maranzino",
+      "statTotal": 430,
+      "statSum": 430,
+      "ok": true
+    },
+    {
+      "id": "mixaro",
+      "number": 36,
+      "name": "Mixaro",
+      "statTotal": 510,
+      "statSum": 510,
+      "ok": true
+    },
+    {
+      "id": "moro",
+      "number": 20,
+      "name": "Moro",
+      "statTotal": 510,
+      "statSum": 510,
+      "ok": true
+    },
+    {
+      "id": "mucillax",
+      "number": 40,
+      "name": "Mucillax",
+      "statTotal": 410,
+      "statSum": 410,
+      "ok": true
+    },
+    {
+      "id": "notaiax",
+      "number": 29,
+      "name": "Notaiax",
+      "statTotal": 560,
+      "statSum": 560,
+      "ok": true
+    },
+    {
+      "id": "ombrellone",
+      "number": 32,
+      "name": "Ombrellone",
+      "statTotal": 400,
+      "statSum": 400,
+      "ok": true
+    },
+    {
+      "id": "pefna",
+      "number": 41,
+      "name": "Pef'na",
+      "statTotal": 250,
+      "statSum": 250,
+      "ok": true
+    },
+    {
+      "id": "peto",
+      "number": 54,
+      "name": "Pətò",
+      "statTotal": 410,
+      "statSum": 410,
+      "ok": true
+    },
+    {
+      "id": "pito",
+      "number": 45,
+      "name": "Pito",
+      "statTotal": 278,
+      "statSum": 278,
+      "ok": true
+    },
+    {
+      "id": "pozza",
+      "number": 46,
+      "name": "Pozza",
+      "statTotal": 392,
+      "statSum": 392,
+      "ok": true
+    },
+    {
+      "id": "pretalien",
+      "number": 150,
+      "name": "Pretalien",
+      "statTotal": 600,
+      "statSum": 600,
+      "ok": true
+    },
+    {
+      "id": "puledrotto",
+      "number": 4,
+      "name": "Puledrotto",
+      "statTotal": 310,
+      "statSum": 310,
+      "ok": true
+    },
+    {
+      "id": "quintanaro",
+      "number": 19,
+      "name": "Quintanaro",
+      "statTotal": 490,
+      "statSum": 490,
+      "ok": true
+    },
+    {
+      "id": "salvatorre",
+      "number": 33,
+      "name": "Salvatorre",
+      "statTotal": 500,
+      "statSum": 500,
+      "ok": true
+    },
+    {
+      "id": "sbandiera",
+      "number": 18,
+      "name": "Sbandiera",
+      "statTotal": 400,
+      "statSum": 400,
+      "ok": true
+    },
+    {
+      "id": "sciarpone",
+      "number": 22,
+      "name": "Sciarpone",
+      "statTotal": 410,
+      "statSum": 410,
+      "ok": true
+    },
+    {
+      "id": "scoglierax",
+      "number": 38,
+      "name": "Scoglieràx",
+      "statTotal": 480,
+      "statSum": 480,
+      "ok": true
+    },
+    {
+      "id": "segaccio",
+      "number": 48,
+      "name": "Segaccio",
+      "statTotal": 465,
+      "statSum": 465,
+      "ok": true
+    },
+    {
+      "id": "soldatino",
+      "number": 24,
+      "name": "Soldatino",
+      "statTotal": 250,
+      "statSum": 250,
+      "ok": true
+    },
+    {
+      "id": "spesurde",
+      "number": 14,
+      "name": "Spesurde",
+      "statTotal": 460,
+      "statSum": 460,
+      "ok": true
+    },
+    {
+      "id": "tamburino",
+      "number": 17,
+      "name": "Tamburino",
+      "statTotal": 240,
+      "statSum": 240,
+      "ok": true
+    },
+    {
+      "id": "tifotto",
+      "number": 21,
+      "name": "Tifotto",
+      "statTotal": 280,
+      "statSum": 280,
+      "ok": true
+    },
+    {
+      "id": "totera",
+      "number": 43,
+      "name": "Totera",
+      "statTotal": 290,
+      "statSum": 290,
+      "ok": true
+    },
+    {
+      "id": "traffichiex",
+      "number": 27,
+      "name": "Traffichiex",
+      "statTotal": 320,
+      "statSum": 320,
+      "ok": true
+    },
+    {
+      "id": "tuffito",
+      "number": 7,
+      "name": "Tuffito",
+      "statTotal": 310,
+      "statSum": 310,
+      "ok": true
+    },
+    {
+      "id": "turibasil",
+      "number": 2,
+      "name": "Turibasil",
+      "statTotal": 405,
+      "statSum": 405,
+      "ok": true
+    },
+    {
+      "id": "umito",
+      "number": 47,
+      "name": "Umito",
+      "statTotal": 519,
+      "statSum": 519,
+      "ok": true
+    },
+    {
+      "id": "venagrox",
+      "number": 49,
+      "name": "Venagrox",
+      "statTotal": 570,
+      "statSum": 570,
+      "ok": true
+    },
+    {
+      "id": "vescovasil",
+      "number": 3,
+      "name": "Vescovasil",
+      "statTotal": 530,
+      "statSum": 530,
+      "ok": true
+    }
+  ],
+  "anomalies": []
+}

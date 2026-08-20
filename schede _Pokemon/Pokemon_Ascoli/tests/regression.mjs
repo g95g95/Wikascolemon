@@ -7,6 +7,8 @@ import { fileURLToPath } from 'node:url';
 const testDir = path.dirname(fileURLToPath(import.meta.url));
 const gameDir = path.resolve(testDir, '..');
 const context = { window: {} };
+vm.runInNewContext(fs.readFileSync(path.join(gameDir, 'species.js'), 'utf8'), context);
+vm.runInNewContext(fs.readFileSync(path.join(gameDir, 'moves.js'), 'utf8'), context);
 vm.runInNewContext(fs.readFileSync(path.join(gameDir, 'data.js'), 'utf8'), context);
 const data = context.window.PokemonAscoliData;
 
@@ -48,15 +50,54 @@ for (const [mapId, map] of Object.entries(data.maps)) {
   }
 }
 
+// Sprite disponibili solo per gli starter e per le specie usate nelle tabelle incontri delle
+// mappe: le altre specie generate dalla wiki non hanno ancora sprite (verranno fatti in un
+// secondo momento). Non falliamo per queste, ma segnaliamo quante mancano.
+const spritesRequiredFor = new Set(data.starters);
+for (const map of Object.values(data.maps)) {
+  for (const encounter of map.encounterTable) spritesRequiredFor.add(encounter.species);
+}
+
+const dexReportPath = path.join(gameDir, 'tools', 'dex-report.json');
+const dexReport = fs.existsSync(dexReportPath) ? JSON.parse(fs.readFileSync(dexReportPath, 'utf8')) : null;
+
+const seenNumbers = new Map();
+let missingSpriteCount = 0;
+let missingDraftCount = 0;
 for (const [speciesId, species] of Object.entries(data.species)) {
   assert.equal(species.base.length, 6, `${speciesId}: sei statistiche`);
   assert.ok(species.learnset.length > 0, `${speciesId}: learnset presente`);
-  assert.ok(fs.existsSync(path.resolve(gameDir, species.wiki)), `${speciesId}: scheda wiki presente`);
-  for (const direction of ['front', 'back']) {
-    assert.ok(fs.existsSync(path.join(gameDir, 'assets', 'battle', `${speciesId}-${direction}.png`)), `${speciesId}: sprite ${direction}`);
+  assert.ok(fs.existsSync(path.join(gameDir, '..', '..', 'Wikascolemon', `${speciesId}.html`)), `${speciesId}: scheda pubblicata presente in Wikascolemon/`);
+  // La copia "bozza" in schede _Pokemon/ può essere disallineata dal nome file pubblicato
+  // (es. segaccio_6.html vs segaccio.html): non è un errore di dati, si segnala soltanto.
+  if (!fs.existsSync(path.resolve(gameDir, species.wiki))) missingDraftCount += 1;
+
+  assert.ok(!seenNumbers.has(species.number), `${speciesId}: numero Pokédex ${species.number} duplicato (già usato da ${seenNumbers.get(species.number)})`);
+  seenNumbers.set(species.number, speciesId);
+
+  const sum = species.base.reduce((a, b) => a + b, 0);
+  if (dexReport) {
+    const reportEntry = dexReport.species.find(s => s.id === speciesId);
+    if (reportEntry) assert.equal(sum, reportEntry.statTotal, `${speciesId}: somma statistiche (${sum}) diversa dal Totale della wiki (${reportEntry.statTotal})`);
   }
+
+  if (spritesRequiredFor.has(speciesId)) {
+    for (const direction of ['front', 'back']) {
+      assert.ok(fs.existsSync(path.join(gameDir, 'assets', 'battle', `${speciesId}-${direction}.png`)), `${speciesId}: sprite ${direction}`);
+    }
+  } else {
+    for (const direction of ['front', 'back']) {
+      if (!fs.existsSync(path.join(gameDir, 'assets', 'battle', `${speciesId}-${direction}.png`))) missingSpriteCount += 1;
+    }
+  }
+
   for (const [, moveId] of species.learnset) assert.ok(data.moves[moveId], `${speciesId}: mossa ${moveId} definita`);
+  if (species.evolution && species.evolution.into) {
+    assert.ok(data.species[species.evolution.into], `${speciesId}: evolution.into "${species.evolution.into}" esistente`);
+  }
 }
+console.log(`Sprite mancanti (specie non ancora in gioco): ${missingSpriteCount}`);
+console.log(`Bozze disallineate in "schede _Pokemon/" (nome file diverso dal pubblicato): ${missingDraftCount}`);
 
 const playerSheet = path.join(gameDir, 'assets', 'player', 'oliver-sheet.png');
 assert.ok(fs.existsSync(playerSheet), 'Foglio sprite di Oliver presente');

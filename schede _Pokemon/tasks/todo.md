@@ -83,6 +83,25 @@ Annotato il 20/08/2026. **Approvato il 20/08/2026** (assunzioni confermate; aggi
 → verifica: test di regressione estesi + un test di "playthrough" scriptato (stato → eventi →
   flag) che percorre l'intera demo senza UI.
 
+## Esecuzione punti 1-3 (flottiglia, 20/08/2026) — Fable orchestra, τ decide il modello
+
+Contratti fra moduli: `Pokemon_Ascoli/ARCHITETTURA.md`.
+
+**Ondata 1 (parallela, file disgiunti)**
+- [ ] W1-A τ=difficile/Fable — `tools/build-dex.mjs` → `species.js`, `moves.js`, `moves-catalog.json`, `dex-overrides.json`; `data.js` senza specie; test dex.
+- [ ] W1-B τ=difficile/Fable — `battle.js` puro (stati, critici, STAB, priorità, PP, IA, cattura, exp) + `tests/battle.test.mjs`.
+- [ ] W1-C τ=medio/Opus — `events.js` (condizioni, script, runner) + `tests/events.test.mjs`.
+- [ ] W1-D τ=facile/Sonnet — `trainers.js` (classi, allenatori di esempio, palestre) + `tests/trainers.test.mjs`.
+- [ ] W1-E τ=facile/Sonnet — `Mappa_Pokemon/configuratore.html`: POI Palestra con campi e precompilazione delle 8.
+
+**Ondata 2 (dopo la 1)**
+- [ ] W2-A τ=difficile/Fable — integrazione in `game.js`/`index.html`: battle.js (lotte allenatori, switch, soldi, stati in UI, PP, apprendimento mosse), events.js (dialoghi a pagine, scelte, flag, NPC/passaggi condizionati, porte: bar cura, market, palestra), medaglie/scheda allenatore, save v2.
+- [ ] W2-B τ=medio/Opus — configuratore pixel: strumenti Palestra e Allenatore (form squadra, sguardo, dialoghi) → override `pokemonAscoliTrainersV1`.
+- [ ] W2-C τ=facile/Sonnet — sprite overworld per classi allenatore + 6 personaggi (assets/npc), rendering con sheet.
+
+**Ondata 3**
+- [ ] W3 verifica-scettica su tutto + test verdi + commit/push.
+
 ### D. Mondo
 - [ ] D1. Revisione delle 7 mappe di Ascoli per la trama (bar di Bobby a Porta Maggiore, Callare
       e Happy Coffee, Ventidio Basso chiuso, Sant'Emidio alle Grotte come luogo-starter).

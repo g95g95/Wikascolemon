@@ -1,0 +1,1694 @@
+{
+  "abbattimento": {
+    "description": "Colpo di roccia scagliato dall'alto."
+  },
+  "acquagetto": {
+    "description": "Un getto d'acqua che colpisce con forza."
+  },
+  "adunanza": {
+    "effect": {
+      "kind": "custom",
+      "id": "adunanza"
+    },
+    "description": "Aumenta la Difesa in proporzione ai turioni residui (mossa di Ca'ità)."
+  },
+  "aeroassalto": {
+    "priority": 0,
+    "description": "Assalto dall'alto in picchiata."
+  },
+  "agilita": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "speed",
+      "stages": 2,
+      "chance": 100
+    },
+    "description": "Rilassa il corpo e aumenta di molto la Velocità."
+  },
+  "aiuto": {
+    "effect": {
+      "kind": "custom",
+      "id": "aiuto"
+    },
+    "description": "Usa una mossa a caso tra quelle della squadra."
+  },
+  "armageddon": {
+    "effect": {
+      "kind": "custom",
+      "id": "recharge"
+    },
+    "description": "Attacco Buio devastante: il turno successivo occorre ricaricare."
+  },
+  "aromaterapia": {
+    "effect": {
+      "kind": "custom",
+      "id": "cure_team_status"
+    },
+    "description": "Un profumo che cura i problemi di stato dell'intera squadra."
+  },
+  "arringa": {
+    "effect": {
+      "kind": "custom",
+      "id": "disable_like"
+    },
+    "description": "Impedisce per tre turni la ripetizione della stessa mossa (mossa di Forox)."
+  },
+  "ascolto": {
+    "effect": {
+      "kind": "custom",
+      "id": "heal_cure_ally"
+    },
+    "description": "Cura la confusione e metà PS di un alleato (mossa di Ciccharizard)."
+  },
+  "assillo": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "attack",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Un fastidio continuo che abbassa l'Attacco avversario."
+  },
+  "assorbi": {
+    "effect": {
+      "kind": "drain",
+      "ratio": 0.5
+    },
+    "description": "Assorbe metà del danno inflitto come cura."
+  },
+  "assorbicorno": {
+    "effect": {
+      "kind": "drain",
+      "ratio": 0.5
+    },
+    "description": "Colpisce con le corna assorbendo metà del danno."
+  },
+  "assorbimento": {
+    "effect": {
+      "kind": "drain",
+      "ratio": 0.5
+    },
+    "description": "Assorbe metà del danno inflitto come cura."
+  },
+  "attaccalite": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Un attacco verbale che abbassa la Difesa avversaria."
+  },
+  "attaccatesta": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Testata che può far tentennare il bersaglio."
+  },
+  "attacco_fanghiglia": {
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 30
+    },
+    "description": "Fango lanciato con forza che può paralizzare."
+  },
+  "attacco_rapido": {
+    "priority": 1,
+    "description": "Colpisce per primo quasi sempre."
+  },
+  "attaccorapido": {
+    "priority": 1,
+    "description": "Colpisce per primo quasi sempre."
+  },
+  "attrito": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "speed",
+      "stages": -1,
+      "chance": 10
+    },
+    "description": "Attrito che può ridurre la Velocità avversaria."
+  },
+  "azione": {
+    "description": "Colpo semplice senza fronzoli."
+  },
+  "baldeali": {
+    "description": "Colpisce con potenza dopo un balzo aereo."
+  },
+  "baraonda": {
+    "effect": {
+      "kind": "custom",
+      "id": "confuse_self_after"
+    },
+    "description": "Attacco potente che confonde chi lo usa nel turno successivo."
+  },
+  "barriera": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 2,
+      "chance": 100
+    },
+    "description": "Crea una barriera che aumenta di molto la Difesa."
+  },
+  "battipiedi": {
+    "description": "Colpo pesante sferrato con i piedi."
+  },
+  "battiterra": {
+    "description": "Colpisce il terreno per colpire il bersaglio."
+  },
+  "battuta": {
+    "effect": {
+      "kind": "custom",
+      "id": "double_hit_boost"
+    },
+    "description": "Colpisce due volte, il secondo colpo raddoppiato se il primo va a segno (mossa di Carpentrap)."
+  },
+  "battutina": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "spDefense",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Una battuta pungente che abbassa la Difesa Speciale avversaria."
+  },
+  "beccata": {
+    "description": "Colpisce con il becco."
+  },
+  "black_mamba": {
+    "effect": {
+      "kind": "custom",
+      "id": "black_mamba"
+    },
+    "description": "Avvelena sempre gravemente, 30% di paralisi, poi abbassa l'Attacco Speciale di chi la usa (mossa di Notaiax)."
+  },
+  "boato": {
+    "effect": {
+      "kind": "custom",
+      "id": "roar"
+    },
+    "description": "Costringe il bersaglio a essere sostituito."
+  },
+  "bolgia": {
+    "effect": {
+      "kind": "custom",
+      "id": "bolgia"
+    },
+    "description": "Mossa sonora che raddoppia potenza se un alleato è stato KO o colpito super efficacemente nel turno precedente (mossa di Capultrà)."
+  },
+  "bolla": {
+    "description": "Bolle scagliate con forza."
+  },
+  "bolla_acida": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "spDefense",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Bolle acide che abbassano la Difesa Speciale avversaria."
+  },
+  "bollaraggio": {
+    "description": "Un raggio di bolle pressurizzate."
+  },
+  "bomba_fango": {
+    "description": "Una palla di fango scagliata con forza."
+  },
+  "bordata": {
+    "description": "Colpo di roccia che lascia il bersaglio scoperto."
+  },
+  "bottintesta": {
+    "description": "Testata potente."
+  },
+  "botto": {
+    "description": "Colpo secco e diretto."
+  },
+  "braccio_martello": {
+    "description": "Un colpo pesantissimo sferrato con il braccio."
+  },
+  "braciere": {
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Fiamme che possono scottare il bersaglio."
+  },
+  "braciscavo": {
+    "effect": {
+      "kind": "custom",
+      "id": "ignore_dig_like"
+    },
+    "description": "Colpisce anche i bersagli nascosti sottoterra (mossa di Bracignale)."
+  },
+  "bruciapelo": {
+    "priority": 1,
+    "description": "Agisce sempre per primo solo appena sceso in campo (mossa di Puledrotto)."
+  },
+  "calmamente": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "spDefense",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Si calma, aumentando la propria Difesa Speciale."
+  },
+  "cambiagiro": {
+    "description": "Attacco veloce e diretto."
+  },
+  "carineria": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "attack",
+      "stages": -2,
+      "chance": 100
+    },
+    "description": "Un'espressione carina che abbassa molto l'Attacco avversario."
+  },
+  "cascata": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 20
+    },
+    "description": "Colpisce come una cascata, può far tentennare."
+  },
+  "cassa_toracica": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Boato gelato che può far tentennare (mossa di Caciara)."
+  },
+  "chiusascatto": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Si chiude di scatto sul bersaglio (mossa di Lettino)."
+  },
+  "cincin": {
+    "effect": {
+      "kind": "multi",
+      "min": 2,
+      "max": 6
+    },
+    "description": "Colpisce da due a sei volte in sequenza (mossa di Batterino)."
+  },
+  "codaditalco": {
+    "description": "Colpo di coda ripetuto."
+  },
+  "colonia": {
+    "effect": {
+      "kind": "custom",
+      "id": "colonia"
+    },
+    "description": "Aumenta la Difesa Speciale di tutti gli altri Pef'na in squadra per due turni (mossa di Pef'na)."
+  },
+  "colpo_sordo": {
+    "effect": {
+      "kind": "custom",
+      "id": "colpo_sordo"
+    },
+    "description": "Agisce sempre per prima; se il bersaglio non ha ancora agito lo avvelena gravemente (mossa di Spesurde).",
+    "priority": 3
+  },
+  "colpo_vitale": {
+    "description": "Colpisce nei punti vitali."
+  },
+  "colpocoda": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Un colpo di coda che abbassa la Difesa avversaria."
+  },
+  "colpodifango": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "accuracy",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Fango che può abbassare la precisione avversaria."
+  },
+  "colpokarate": {
+    "description": "Un colpo secco in stile karate."
+  },
+  "comete": {
+    "description": "Una pioggia di piccole comete."
+  },
+  "comparanza": {
+    "effect": {
+      "kind": "custom",
+      "id": "comparanza"
+    },
+    "description": "Aumenta Attacco e Difesa di chi la usa, e in doppio anche dell'alleato (mossa di Compadrone)."
+  },
+  "confondiraggio": {
+    "effect": {
+      "kind": "custom",
+      "id": "confuse_only"
+    },
+    "description": "Un raggio che confonde il bersaglio."
+  },
+  "confusione": {
+    "effect": {
+      "kind": "custom",
+      "id": "confuse_chance"
+    },
+    "description": "Un'onda psichica che può confondere il bersaglio."
+  },
+  "contatore": {
+    "effect": {
+      "kind": "custom",
+      "id": "counter"
+    },
+    "description": "Restituisce il doppio del danno fisico subito nel turno.",
+    "priority": -5
+  },
+  "convito_degli_antichi": {
+    "description": "Un attacco spettrale devastante ma impreciso."
+  },
+  "corpolento": {
+    "description": "Colpisce con tutto il peso del corpo."
+  },
+  "corpomasso": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Attacco massiccio che può far tentennare."
+  },
+  "corposcontro": {
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 30
+    },
+    "description": "Scontro fisico che può paralizzare."
+  },
+  "correntina": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "speed",
+      "stages": -1,
+      "chance": 30
+    },
+    "description": "Un'onda che può abbassare la Velocità del bersaglio (mossa di Alghetta)."
+  },
+  "corretto": {
+    "effect": {
+      "kind": "custom",
+      "id": "corretto"
+    },
+    "description": "Cura i problemi di stato e aumenta l'Attacco Speciale (mossa di Anisetta)."
+  },
+  "cosmoforza": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Attinge energia cosmica, aumentando Difesa e Difesa Speciale."
+  },
+  "crescita": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "spAttack",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Fa crescere il corpo, aumentando l'Attacco Speciale."
+  },
+  "danzaspada": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "attack",
+      "stages": 2,
+      "chance": 100
+    },
+    "description": "Una danza di guerra che aumenta molto l'Attacco."
+  },
+  "desiderio": {
+    "effect": {
+      "kind": "custom",
+      "id": "wish"
+    },
+    "description": "Cura PS al Pokémon in campo nel turno successivo."
+  },
+  "dialettica_critica": {
+    "effect": {
+      "kind": "custom",
+      "id": "clear_stats_field"
+    },
+    "description": "Annulla le modifiche alle statistiche e gli effetti di campo (mossa di Venagrox)."
+  },
+  "diceria": {
+    "effect": {
+      "kind": "custom",
+      "id": "diceria"
+    },
+    "description": "Il danno aumenta del 50% ogni volta che è già stata usata nella lotta (mossa di Felignoto)."
+  },
+  "difesa_del_forestiero": {
+    "effect": {
+      "kind": "custom",
+      "id": "difesa_del_forestiero"
+    },
+    "description": "Intercetta la mossa diretta al compagno con meno PS, riducendone il danno del 75% (mossa di Ciccharizard)."
+  },
+  "difesaferrea": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 2,
+      "chance": 100
+    },
+    "description": "Irrigidisce il corpo, aumentando molto la Difesa."
+  },
+  "differita": {
+    "effect": {
+      "kind": "custom",
+      "id": "differita"
+    },
+    "description": "Agisce sempre per ultima; se ha già subito danni nel turno la potenza aumenta del 50% (mossa di Tifotto).",
+    "priority": -6
+  },
+  "disarma": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "attack",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Fa abbassare la guardia, riducendo l'Attacco avversario."
+  },
+  "disgusto": {
+    "effect": {
+      "kind": "status",
+      "status": "psn",
+      "chance": 100
+    },
+    "description": "Provoca disgusto e avvelena il bersaglio."
+  },
+  "divinazione": {
+    "description": "Un attacco psichico potente e preciso."
+  },
+  "doppiasberla": {
+    "effect": {
+      "kind": "multi",
+      "min": 2,
+      "max": 2
+    },
+    "description": "Colpisce due volte in rapida successione."
+  },
+  "doppiocolpo": {
+    "effect": {
+      "kind": "multi",
+      "min": 2,
+      "max": 2
+    },
+    "description": "Colpisce due volte in rapida successione."
+  },
+  "doppioteam": {
+    "effect": {
+      "kind": "custom",
+      "id": "evasion_up"
+    },
+    "description": "Crea illusioni di sé stesso, aumentando l'elusione."
+  },
+  "dropbeat": {
+    "effect": {
+      "kind": "custom",
+      "id": "dropbeat"
+    },
+    "description": "Carica per un turno (aumentando la Velocità di tutti in campo) poi colpisce tutti gli avversari a potenza raddoppiata (mossa di Mixaro)."
+  },
+  "energipalla": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "spDefense",
+      "stages": -1,
+      "chance": 10
+    },
+    "description": "Una sfera di energia naturale."
+  },
+  "facciata": {
+    "description": "Un attacco diretto e onesto."
+  },
+  "falcifoglia": {
+    "description": "Foglie affilate come lame."
+  },
+  "fanghiglia": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "accuracy",
+      "stages": -1,
+      "chance": 30
+    },
+    "description": "Fanghiglia che può abbassare la precisione avversaria."
+  },
+  "fangobomba": {
+    "effect": {
+      "kind": "status",
+      "status": "psn",
+      "chance": 30
+    },
+    "description": "Una bomba di fango che può avvelenare."
+  },
+  "fangosberla": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "accuracy",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Uno schizzo di fango che abbassa sempre la precisione avversaria."
+  },
+  "fascino": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "attack",
+      "stages": -2,
+      "chance": 100
+    },
+    "description": "Ammalia il bersaglio, abbassando molto il suo Attacco."
+  },
+  "favorino": {
+    "effect": {
+      "kind": "custom",
+      "id": "favorino"
+    },
+    "description": "Il bersaglio non può più lasciare il campo; il suo Attacco cala e recupera PS a fine turno (mossa di Dehor)."
+  },
+  "fendente": {
+    "description": "Un taglio netto e preciso."
+  },
+  "fermosguardo": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "speed",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Uno sguardo fermo che abbassa la Velocità avversaria."
+  },
+  "ferrartigli": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 10
+    },
+    "description": "Artigli d'acciaio che possono abbassare la Difesa."
+  },
+  "ferrotestata": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Una testata d'acciaio che può far tentennare."
+  },
+  "filiera_corta": {
+    "effect": {
+      "kind": "custom",
+      "id": "filiera_corta"
+    },
+    "description": "Crea una razione casuale che cura un alleato (mossa di Venagrox)."
+  },
+  "fintoattacco": {
+    "description": "Un finto attacco che colpisce comunque."
+  },
+  "fintofinale": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -2,
+      "chance": 100
+    },
+    "description": "Un'esibizione plateale che abbassa molto la Difesa avversaria."
+  },
+  "fischio": {
+    "effect": {
+      "kind": "status",
+      "status": "slp",
+      "chance": 100
+    },
+    "description": "Un fischio ipnotico che fa addormentare."
+  },
+  "fischio_lungo": {
+    "effect": {
+      "kind": "custom",
+      "id": "fischio_lungo"
+    },
+    "description": "Protegge la squadra per un turno: nessuno può andare KO (mossa di Salvatorre).",
+    "priority": 4
+  },
+  "fissita": {
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 100
+    },
+    "description": "Immobilizza il bersaglio, paralizzandolo."
+  },
+  "flagello": {
+    "effect": {
+      "kind": "custom",
+      "id": "flagello"
+    },
+    "description": "La potenza aumenta quanto più l'avversario è lento, fino a 150 (mossa di Moro)."
+  },
+  "fogliamagica": {
+    "description": "Foglie tagliate che non mancano quasi mai."
+  },
+  "fogliame": {
+    "description": "Foglie scagliate con forza."
+  },
+  "foglielama": {
+    "description": "Foglie affilate come lame."
+  },
+  "fortezza": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 2,
+      "chance": 100
+    },
+    "description": "Si fortifica, aumentando molto la Difesa."
+  },
+  "fortificazione": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Irrigidisce i muscoli, aumentando la Difesa."
+  },
+  "forza_lunare": {
+    "description": "Un raggio di luce lunare."
+  },
+  "forzaluna": {
+    "description": "Un raggio di luce lunare."
+  },
+  "fossa": {
+    "description": "Colpisce da un buco nel terreno."
+  },
+  "frana": {
+    "description": "Una frana di roccia che travolge il bersaglio."
+  },
+  "frustata": {
+    "description": "Un colpo di ramo scattante."
+  },
+  "fulmine": {
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 10
+    },
+    "description": "Una scarica elettrica che può paralizzare."
+  },
+  "fuococarica": {
+    "effect": {
+      "kind": "recoil",
+      "ratio": 0.33
+    },
+    "description": "Carica furiosa avvolta dalle fiamme: il contraccolpo ferisce anche chi la usa (mossa di Cavalbrace)."
+  },
+  "fuocopugno": {
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Un pugno di fuoco che può scottare."
+  },
+  "garanzia": {
+    "description": "Un colpo secco e sicuro."
+  },
+  "gelo_nevoso": {
+    "description": "Una tempesta di neve gelida."
+  },
+  "geoforza": {
+    "description": "Energia della terra scatenata in un'esplosione."
+  },
+  "ghiannata": {
+    "effect": {
+      "kind": "custom",
+      "id": "ghiannata"
+    },
+    "description": "Ignora ogni modifica alle statistiche del bersaglio (mossa di Cerqua)."
+  },
+  "ghigliottina": {
+    "effect": {
+      "kind": "custom",
+      "id": "oh_ko"
+    },
+    "description": "Mette KO il bersaglio in un solo colpo se va a segno."
+  },
+  "gigassorbimento": {
+    "effect": {
+      "kind": "drain",
+      "ratio": 0.75
+    },
+    "description": "Assorbe gran parte del danno inflitto come cura."
+  },
+  "girandola": {
+    "effect": {
+      "kind": "custom",
+      "id": "girandola"
+    },
+    "description": "Infligge danno, aumenta la Velocità di chi la usa e in doppio colpisce entrambi gli avversari (mossa di Fuocavallo)."
+  },
+  "gloglottio": {
+    "effect": {
+      "kind": "custom",
+      "id": "confuse_chance"
+    },
+    "description": "Borbottii sonori che possono confondere il bersaglio (mossa di Pətò)."
+  },
+  "granchiomartello": {
+    "description": "Un colpo di chela potente."
+  },
+  "granfisico": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "attack",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Rafforza il fisico, aumentando l'Attacco."
+  },
+  "grido_lacerante": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "spAttack",
+      "stages": -2,
+      "chance": 100
+    },
+    "description": "Un grido straziante che abbassa molto l'Attacco Speciale avversario."
+  },
+  "grugnito": {
+    "effect": {
+      "kind": "custom",
+      "id": "grugnito"
+    },
+    "description": "Abbassa la Velocità di tutti gli avversari senza infliggere danno (mossa di Cignalò)."
+  },
+  "guardia_ampia": {
+    "effect": {
+      "kind": "protect"
+    },
+    "description": "Protegge la squadra dalle mosse ad area per un turno."
+  },
+  "guscio_chiuso": {
+    "effect": {
+      "kind": "custom",
+      "id": "guscio_chiuso"
+    },
+    "description": "Aumenta di due stadi Difesa e Difesa Speciale, ma impedisce ogni altra azione nel turno (mossa di Cozzetta)."
+  },
+  "idrogetto": {
+    "description": "Un getto d'acqua pressurizzata."
+  },
+  "idropompa": {
+    "description": "Un potente getto d'acqua ad alta pressione."
+  },
+  "idropompa_a_salve": {
+    "effect": {
+      "kind": "custom",
+      "id": "idropompa_a_salve"
+    },
+    "description": "Getti d'acqua a bassa potenza, versione depotenziata dell'Idropompa (mossa di Cozzetta)."
+  },
+  "idropulsar": {
+    "effect": {
+      "kind": "custom",
+      "id": "confuse_chance"
+    },
+    "description": "Onde d'acqua pulsanti che possono confondere."
+  },
+  "incantavoce": {
+    "description": "Un canto incantato che colpisce con energia magica."
+  },
+  "incrocolpo": {
+    "description": "Colpo incrociato molto potente."
+  },
+  "involucro": {
+    "effect": {
+      "kind": "custom",
+      "id": "involucro"
+    },
+    "description": "Aumenta molto Difesa e Difesa Speciale e cura i problemi di stato, ma non si può agire nel turno successivo (mossa di Pretalien)."
+  },
+  "iperfuria": {
+    "effect": {
+      "kind": "multi",
+      "min": 2,
+      "max": 2
+    },
+    "description": "Colpisce furiosamente due volte."
+  },
+  "ipervoce": {
+    "description": "Un'onda sonora fortissima."
+  },
+  "ipnosi": {
+    "effect": {
+      "kind": "status",
+      "status": "slp",
+      "chance": 100
+    },
+    "description": "Ipnotizza il bersaglio, addormentandolo."
+  },
+  "jnen": {
+    "effect": {
+      "kind": "custom",
+      "id": "jnen"
+    },
+    "description": "Annulla l'effetto dell'ultima mossa di stato avversaria e ne impedisce l'uso per un turno (mossa di Banconio)."
+  },
+  "lanciafiamme": {
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Fiamme intense che possono scottare."
+  },
+  "lecca": {
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 30
+    },
+    "description": "Una leccata che può paralizzare."
+  },
+  "legapaglia": {
+    "effect": {
+      "kind": "drain",
+      "ratio": 0.5
+    },
+    "description": "Paglia che assorbe metà del danno inflitto come cura."
+  },
+  "lucidatura": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Lucida la superficie, aumentando la Difesa."
+  },
+  "malocchio": {
+    "effect": {
+      "kind": "custom",
+      "id": "impede_switch"
+    },
+    "description": "Uno sguardo che impedisce la fuga o la sostituzione."
+  },
+  "marchiafuoco": {
+    "description": "Un marchio di fuoco potentissimo ma impreciso."
+  },
+  "marea_rossa": {
+    "effect": {
+      "kind": "custom",
+      "id": "marea_rossa"
+    },
+    "description": "Veleno il cui successo aumenta quanto meno PS restano a chi la usa (mossa della linea di Mucillax)."
+  },
+  "martelcolpo": {
+    "description": "Un colpo pesante e potente."
+  },
+  "mazzuolegno": {
+    "description": "Un colpo di legno pesantissimo."
+  },
+  "megassorbimento": {
+    "effect": {
+      "kind": "drain",
+      "ratio": 0.5
+    },
+    "description": "Assorbe metà del danno inflitto come cura."
+  },
+  "metalartiglio": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "attack",
+      "stages": 1,
+      "chance": 10
+    },
+    "description": "Artigli d'acciaio che possono aumentare l'Attacco."
+  },
+  "metaltestata": {
+    "description": "Una testata metallica pesante."
+  },
+  "morso": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Un morso che può far tentennare."
+  },
+  "neropulsar": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 20
+    },
+    "description": "Un'onda oscura che può far tentennare."
+  },
+  "neroshock": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Uno shock oscuro che può far tentennare."
+  },
+  "nevischio": {
+    "effect": {
+      "kind": "status",
+      "status": "frz",
+      "chance": 10
+    },
+    "description": "Nevischio gelido che può congelare."
+  },
+  "nitrocarica": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "speed",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Una carica di fuoco che aumenta anche la propria Velocità."
+  },
+  "notteguaio": {
+    "description": "Un attacco oscuro e diretto."
+  },
+  "notteprofonda": {
+    "description": "Un attacco oscuro potente."
+  },
+  "ombra_fresca": {
+    "effect": {
+      "kind": "custom",
+      "id": "ombra_fresca"
+    },
+    "description": "Crea per cinque turni una zona d'ombra: danni speciali ridotti e nessuna scottatura per gli alleati (mossa di Ombrellone)."
+  },
+  "ombra_notturna": {
+    "description": "Un colpo di puro tipo Spettro, danno fisso pari al livello."
+  },
+  "ombraferoce": {
+    "description": "Un attacco spettrale feroce."
+  },
+  "ondaboato": {
+    "effect": {
+      "kind": "custom",
+      "id": "recharge"
+    },
+    "description": "Un'onda d'urto fortissima: il turno successivo occorre ricaricare."
+  },
+  "ondacarica": {
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 10
+    },
+    "description": "Un'onda elettrica che può paralizzare."
+  },
+  "palla_ombra": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "spDefense",
+      "stages": -1,
+      "chance": 20
+    },
+    "description": "Una sfera oscura che può abbassare la Difesa Speciale."
+  },
+  "palude": {
+    "description": "Un'onda di fango e melma."
+  },
+  "paralizzante": {
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 75
+    },
+    "description": "Polline urticante che paralizza spesso."
+  },
+  "partecipazione": {
+    "effect": {
+      "kind": "custom",
+      "id": "partecipazione"
+    },
+    "description": "Prolunga di un turno l'ultima mossa di stato usata da un alleato (mossa di Ciccharizard)."
+  },
+  "passaggio": {
+    "description": "Una scossa elettrica ad ampio raggio."
+  },
+  "pestone": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Un pestone che può far tentennare."
+  },
+  "pietrataglio": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 10
+    },
+    "description": "Una lama di roccia che può far tentennare."
+  },
+  "pistolacqua": {
+    "description": "Un getto d'acqua rapido."
+  },
+  "ponteggio": {
+    "effect": {
+      "kind": "custom",
+      "id": "ponteggio"
+    },
+    "description": "Riduce per cinque turni i danni fisici subiti dalla squadra (mossa di Carpentrap)."
+  },
+  "posto_fisso": {
+    "effect": {
+      "kind": "custom",
+      "id": "posto_fisso"
+    },
+    "description": "Aumenta Difesa e Difesa Speciale, ma impedisce la sostituzione forzata (mossa di Sciarpone)."
+  },
+  "presa": {
+    "description": "Una presa energica."
+  },
+  "profumino": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "accuracy",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Un profumo che confonde i sensi e abbassa la precisione avversaria."
+  },
+  "provocazione": {
+    "effect": {
+      "kind": "custom",
+      "id": "taunt"
+    },
+    "description": "Provoca il bersaglio impedendogli di usare mosse di stato per alcuni turni."
+  },
+  "psichico": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "spDefense",
+      "stages": -1,
+      "chance": 10
+    },
+    "description": "Un forte attacco psichico."
+  },
+  "psicoraggio": {
+    "description": "Un raggio di energia psichica."
+  },
+  "pugno_di_scoglio": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Danno fisico con probabilità aumentata di far tentennare (mossa di Scoglieràx)."
+  },
+  "raddrizzafogna": {
+    "effect": {
+      "kind": "custom",
+      "id": "raddrizzafogna"
+    },
+    "description": "Elimina trappole e campi avversi dal proprio lato (mossa di Venagrox)."
+  },
+  "radicamento": {
+    "effect": {
+      "kind": "custom",
+      "id": "radicamento"
+    },
+    "description": "Mette radici, curando PS ogni turno ma impedendo la fuga."
+  },
+  "rafficlorofilla": {
+    "description": "Una raffica di energia clorofilliana."
+  },
+  "rafforzatore": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "attack",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Rafforza il corpo, aumentando l'Attacco."
+  },
+  "raggio_gelo": {
+    "effect": {
+      "kind": "status",
+      "status": "frz",
+      "chance": 10
+    },
+    "description": "Un raggio gelido che può congelare."
+  },
+  "rapidattacco": {
+    "priority": 1,
+    "description": "Colpisce per primo quasi sempre."
+  },
+  "resistenza": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Aumenta la resistenza fisica."
+  },
+  "rete_di_fili": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "speed",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Ragnatele appiccicose che abbassano la Velocità avversaria."
+  },
+  "riduttore": {
+    "description": "Un colpo potente ma impreciso."
+  },
+  "riflesso": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Crea un'immagine riflessa che aumenta la Difesa."
+  },
+  "rimbalzello": {
+    "description": "Un colpo che rimbalza sul bersaglio."
+  },
+  "rimbalzo": {
+    "description": "Un balzo potente che colpisce con forza."
+  },
+  "rimbombo": {
+    "description": "Un boato sonoro fortissimo."
+  },
+  "rincorsa": {
+    "description": "Una rincorsa che precede il colpo."
+  },
+  "ringhio": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "attack",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Un ringhio che intimidisce, abbassando l'Attacco avversario."
+  },
+  "rintocco": {
+    "description": "Un rintocco sonoro e diretto."
+  },
+  "ripescaggio": {
+    "effect": {
+      "kind": "custom",
+      "id": "ripescaggio"
+    },
+    "description": "Cura metà PS di un alleato e i suoi problemi di stato, ma Bagnetto salta il turno successivo (mossa di Bagnetto)."
+  },
+  "ripicca": {
+    "priority": 1,
+    "description": "Colpisce con priorità aumentata dopo un torto subito."
+  },
+  "riposo": {
+    "effect": {
+      "kind": "custom",
+      "id": "rest"
+    },
+    "description": "Cura completamente PS e stato, ma fa addormentare chi la usa per due turni."
+  },
+  "ripresa": {
+    "effect": {
+      "kind": "heal",
+      "ratio": 0.5
+    },
+    "description": "Recupera metà dei propri PS massimi."
+  },
+  "risata_sana": {
+    "effect": {
+      "kind": "custom",
+      "id": "risata_sana"
+    },
+    "description": "Abbassa la precisione avversaria; in doppio aumenta l'Attacco dell'alleato (mossa di Banconio)."
+  },
+  "ronzio": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "spDefense",
+      "stages": -1,
+      "chance": 10
+    },
+    "description": "Un ronzio che può abbassare la Difesa Speciale."
+  },
+  "ruggito": {
+    "effect": {
+      "kind": "custom",
+      "id": "roar"
+    },
+    "description": "Costringe il bersaglio a essere sostituito."
+  },
+  "ruotafuoco": {
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Una ruota di fuoco che può scottare."
+  },
+  "ruspa": {
+    "description": "Un colpo che smuove la terra."
+  },
+  "russare": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Un attacco sonoro usabile solo dormendo, che può far tentennare."
+  },
+  "sabbiattacco": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "accuracy",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Sabbia negli occhi che abbassa la precisione avversaria."
+  },
+  "sabbiotomba": {
+    "effect": {
+      "kind": "custom",
+      "id": "sabbiotomba"
+    },
+    "description": "Intrappola il bersaglio in un vortice di sabbia che infligge danno nei turni successivi."
+  },
+  "sassata": {
+    "description": "Un sasso scagliato con forza."
+  },
+  "sbadiglio": {
+    "effect": {
+      "kind": "custom",
+      "id": "yawn"
+    },
+    "description": "Un lungo sbadiglio: il bersaglio si addormenta al termine del turno successivo."
+  },
+  "sberla": {
+    "description": "Una sberla potente ma imprecisa."
+  },
+  "sbigoattacco": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 100
+    },
+    "description": "Colpisce sempre per primo e fa tentennare, ma solo appena sceso in campo.",
+    "priority": 2
+  },
+  "scattomatto": {
+    "effect": {
+      "kind": "custom",
+      "id": "scattomatto"
+    },
+    "description": "Infligge danno e aumenta molto la Velocità, ma il turno successivo non si può agire (mossa di Bree)."
+  },
+  "scavare": {
+    "description": "Si nasconde sottoterra e colpisce al turno successivo."
+  },
+  "sconfinata": {
+    "effect": {
+      "kind": "custom",
+      "id": "sconfinata"
+    },
+    "description": "Agisce per prima se nel turno precedente il bersaglio ha usato una mossa di stato (mossa di Segaccio)."
+  },
+  "sei_piatti": {
+    "effect": {
+      "kind": "custom",
+      "id": "sei_piatti"
+    },
+    "description": "Colpisce da due a sei volte senza mai mancare; se colpisce tutte le volte aumenta la Difesa (mossa di Coperto)."
+  },
+  "sfocatura": {
+    "effect": {
+      "kind": "custom",
+      "id": "sfocatura"
+    },
+    "description": "Aumenta molto l'elusione; ogni schivata riduce la precisione della mossa avversaria successiva (mossa di Pretalien)."
+  },
+  "sgomento": {
+    "priority": 1,
+    "description": "Colpisce per primo con un grido spaventoso."
+  },
+  "sgraffignata": {
+    "description": "Una graffiata rapida e diretta."
+  },
+  "sgranocchio": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 20
+    },
+    "description": "Un morso che può abbassare la Difesa avversaria."
+  },
+  "sintesi": {
+    "effect": {
+      "kind": "heal",
+      "ratio": 0.5
+    },
+    "description": "Recupera PS assorbendo energia solare."
+  },
+  "smistamento": {
+    "effect": {
+      "kind": "custom",
+      "id": "smistamento"
+    },
+    "description": "Costringe il bersaglio a essere sostituito con un compagno scelto da chi la usa (mossa di Traffichiex)."
+  },
+  "solarraggio": {
+    "description": "Accumula luce solare e colpisce con un raggio potentissimo."
+  },
+  "solito": {
+    "effect": {
+      "kind": "custom",
+      "id": "solito"
+    },
+    "description": "Ripristina metà PS e cura lo stato di tutta la squadra, solo la prima volta in campo (mossa di Banconio)."
+  },
+  "solo_piombo": {
+    "effect": {
+      "kind": "custom",
+      "id": "solo_piombo"
+    },
+    "description": "Respinge chi attacca a contatto, infliggendo danno (mossa di Venagrox)."
+  },
+  "sonnifero": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "speed",
+      "stages": -1,
+      "chance": 75
+    },
+    "description": "Un profumo soporifero che spesso abbassa la Velocità."
+  },
+  "spruzzo": {
+    "description": "Un piccolo spruzzo d'acqua."
+  },
+  "staffetta": {
+    "effect": {
+      "kind": "custom",
+      "id": "baton_pass"
+    },
+    "description": "Passa il turno a un compagno mantenendo le modifiche alle statistiche."
+  },
+  "stappo": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "priority": 1,
+    "description": "Parte come un proiettile: priorità aumentata e può far tentennare (mossa di Soldatino)."
+  },
+  "stordiscappo": {
+    "effect": {
+      "kind": "custom",
+      "id": "roar"
+    },
+    "description": "Costringe il bersaglio a essere sostituito."
+  },
+  "stridio": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -2,
+      "chance": 100
+    },
+    "description": "Uno stridio acuto che abbassa molto la Difesa avversaria."
+  },
+  "superpotere": {
+    "effect": {
+      "kind": "custom",
+      "id": "superpower"
+    },
+    "description": "Un colpo fortissimo che abbassa Attacco e Difesa di chi lo usa."
+  },
+  "surf": {
+    "description": "Una grande onda che travolge il bersaglio."
+  },
+  "teletrasporto": {
+    "effect": {
+      "kind": "custom",
+      "id": "flee"
+    },
+    "description": "Permette di fuggire immediatamente dalla lotta."
+  },
+  "terrapicco": {
+    "description": "Un colpo che fa tremare il terreno."
+  },
+  "terrasanta": {
+    "effect": {
+      "kind": "custom",
+      "id": "terrasanta"
+    },
+    "description": "Per cinque turni nessuno può usare mosse di tipo Terra (mossa di Vescovasil)."
+  },
+  "terremoto": {
+    "description": "Un violento terremoto che scuote il campo."
+  },
+  "terrempesta": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Una tempesta di terra che abbassa la Difesa avversaria."
+  },
+  "terrforza": {
+    "description": "Un'esplosione di energia della terra."
+  },
+  "testataferro": {
+    "description": "Una testata metallica pesante."
+  },
+  "tornata": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "attack",
+      "stages": 1,
+      "chance": 30
+    },
+    "description": "Un colpo d'acciaio che può aumentare l'Attacco."
+  },
+  "tossina": {
+    "effect": {
+      "kind": "status",
+      "status": "psn",
+      "chance": 90
+    },
+    "description": "Un veleno che si aggrava turno dopo turno."
+  },
+  "tuonopugno": {
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 10
+    },
+    "description": "Un pugno elettrico che può paralizzare."
+  },
+  "tuonoshock": {
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 10
+    },
+    "description": "Una scarica elettrica che può paralizzare."
+  },
+  "turbine": {
+    "description": "Un vortice d'aria che colpisce il bersaglio."
+  },
+  "turbosabbia": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Sabbia scagliata con forza che abbassa la Difesa avversaria."
+  },
+  "ultrarapido": {
+    "description": "Un attacco fulmineo e potentissimo."
+  },
+  "ultrattacco": {
+    "description": "Un colpo violento e diretto."
+  },
+  "ululato_di_guerra": {
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "attack",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Un grido di battaglia che aumenta l'Attacco."
+  },
+  "urlo": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "attack",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Un urlo che abbassa l'Attacco avversario."
+  },
+  "urlorabbia": {
+    "description": "Un urlo carico di rabbia."
+  },
+  "velenodenti": {
+    "effect": {
+      "kind": "status",
+      "status": "psn",
+      "chance": 30
+    },
+    "description": "Un morso velenoso che può avvelenare."
+  },
+  "velenoshock": {
+    "effect": {
+      "kind": "status",
+      "status": "psn",
+      "chance": 30
+    },
+    "description": "Uno shock velenoso che può avvelenare."
+  },
+  "velenospina": {
+    "effect": {
+      "kind": "status",
+      "status": "psn",
+      "chance": 30
+    },
+    "description": "Spine velenose che possono avvelenare."
+  },
+  "velenpuntura": {
+    "effect": {
+      "kind": "status",
+      "status": "psn",
+      "chance": 20
+    },
+    "description": "Una puntura velenosa che può avvelenare."
+  },
+  "vento_di_bandiera": {
+    "effect": {
+      "kind": "custom",
+      "id": "vento_di_bandiera"
+    },
+    "description": "Un colpo di taglio che può far indietreggiare l'avversario (mossa di Sbandiera)."
+  },
+  "vento_ghiacciato": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "speed",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Un vento gelido che abbassa sempre la Velocità avversaria."
+  },
+  "vigorcolpo": {
+    "description": "Un colpo pieno di vigore."
+  },
+  "vigorspinta": {
+    "description": "Una spinta energica."
+  },
+  "vocedincanto": {
+    "description": "Un canto incantato."
+  },
+  "zampata": {
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Una zampata infuocata che può scottare."
+  },
+  "zannata": {
+    "effect": {
+      "kind": "flinch",
+      "chance": 10
+    },
+    "description": "Un morso che può far tentennare."
+  },
+  "zuffa": {
+    "description": "Una zuffa fortissima ma che lascia esausti."
+  },
+  "rip_temerario": {
+    "description": "Un attacco temerario e potentissimo."
+  },
+  "attacco_dala": {
+    "description": "Colpisce con le ali spiegate."
+  },
+  "chicco_doro": {
+    "effect": {
+      "kind": "custom",
+      "id": "triple_hit_spread"
+    },
+    "description": "Tre colpi in sequenza, ciascuno può colpire un bersaglio diverso (mossa della linea di Totera)."
+  }
+}

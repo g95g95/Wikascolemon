@@ -1,121 +1,6 @@
 (function () {
-  const move = (name, type, category, power, accuracy, effect = null) => ({
-    name, type, category, power, accuracy, effect
-  });
-
-  const moves = {
-    azione: move('Azione', 'Normale', 'Fisico', 40, 100),
-    ruggito: move('Ruggito', 'Normale', 'Stato', 0, 100, { target: 'enemy', stat: 'attack', stages: -1 }),
-    crescita: move('Crescita', 'Normale', 'Stato', 0, 100, { target: 'self', stat: 'spAttack', stages: 1 }),
-    fogliame: move('Fogliame', 'Erba', 'Fisico', 40, 100),
-    fogliamagica: move('Fogliamagica', 'Erba', 'Speciale', 60, 100),
-    sonnifero: move('Sonnifero', 'Erba', 'Stato', 0, 75, { target: 'enemy', stat: 'speed', stages: -1 }),
-    braciere: move('Braciere', 'Fuoco', 'Speciale', 40, 100),
-    bruciapelo: move('Bruciapelo', 'Normale', 'Fisico', 40, 100),
-    nitrocarica: move('Nitrocarica', 'Fuoco', 'Fisico', 50, 100, { target: 'self', stat: 'speed', stages: 1 }),
-    pestone: move('Pestone', 'Normale', 'Fisico', 65, 100),
-    bolla: move('Bolla', 'Acqua', 'Speciale', 40, 100),
-    fortificazione: move('Fortificazione', 'Normale', 'Stato', 0, 100, { target: 'self', stat: 'defense', stages: 1 }),
-    presa: move('Presa', 'Normale', 'Fisico', 55, 100),
-    idrogetto: move('Idrogetto', 'Acqua', 'Fisico', 40, 100),
-    turbosabbia: move('Turbosabbia', 'Terra', 'Stato', 0, 100, { target: 'enemy', stat: 'defense', stages: -1 }),
-    sassata: move('Sassata', 'Roccia', 'Fisico', 50, 90),
-    bottintesta: move('Bottintesta', 'Normale', 'Fisico', 70, 100),
-    fangosberla: move('Fangosberla', 'Terra', 'Speciale', 20, 100),
-    velenospina: move('Velenospina', 'Veleno', 'Fisico', 15, 100),
-    assorbicorno: move('Assorbicorno', 'Erba', 'Fisico', 75, 100, { drain: 0.5 }),
-    frustata: move('Frustata', 'Erba', 'Fisico', 45, 100),
-    fendente: move('Fendente', 'Normale', 'Fisico', 50, 95),
-    difesaferrea: move('Difesaferrea', 'Acciaio', 'Stato', 0, 100, { target: 'self', stat: 'defense', stages: 2 }),
-    sberla: move('Sberla', 'Normale', 'Fisico', 60, 85),
-    risatasana: move('Risata Sana', 'Normale', 'Stato', 0, 100, { target: 'self', stat: 'spDefense', stages: 1 }),
-    ferrartigli: move('Ferrartigli', 'Acciaio', 'Fisico', 50, 95),
-    battiterra: move('Battiterra', 'Terra', 'Fisico', 60, 100),
-    solopiombo: move('Solo Piombo', 'Acciaio', 'Fisico', 80, 100),
-    colpocoda: move('Colpocoda', 'Normale', 'Stato', 0, 100, { target: 'enemy', stat: 'defense', stages: -1 }),
-    sgomento: move('Sgomento', 'Spettro', 'Fisico', 30, 100),
-    ascolto: move('Ascolto', 'Psico', 'Stato', 0, 100, { target: 'self', stat: 'spDefense', stages: 1 }),
-    ombranotturna: move('Ombra Notturna', 'Spettro', 'Speciale', 55, 100),
-    neropulsar: move('Neropulsar', 'Buio', 'Speciale', 80, 100),
-    vigorcolpo: move('Vigorcolpo', 'Lotta', 'Fisico', 75, 100),
-    incantavoce: move('Incantavoce', 'Folletto', 'Speciale', 40, 100),
-    geoforza: move('Geoforza', 'Terra', 'Speciale', 90, 100)
-  };
-
-  const species = {
-    basilino: {
-      number: 1, name: 'Basilino', types: ['Erba'], base: [50, 40, 60, 65, 55, 40], catchRate: 120,
-      learnset: [[1, 'azione'], [1, 'crescita'], [5, 'fogliame'], [9, 'sonnifero'], [13, 'fogliamagica']],
-      evolution: { level: 17, into: 'turibasil' }, wiki: '../basilino.html'
-    },
-    turibasil: {
-      number: 2, name: 'Turibasil', types: ['Erba'], base: [65, 50, 80, 85, 75, 50], catchRate: 60,
-      learnset: [[1, 'azione'], [1, 'crescita'], [1, 'fogliame'], [9, 'sonnifero'], [13, 'fogliamagica']],
-      evolution: { level: 36, into: 'vescovasil', location: 'campo_parignano' }, wiki: '../turibasil.html'
-    },
-    vescovasil: {
-      number: 3, name: 'Vescovasil', types: ['Erba', 'Terra'], base: [80, 65, 105, 110, 100, 70], catchRate: 30,
-      learnset: [[1, 'geoforza'], [1, 'azione'], [1, 'fogliame'], [1, 'sonnifero'], [13, 'fogliamagica']], wiki: '../vescovasil.html'
-    },
-    puledrotto: {
-      number: 4, name: 'Puledrotto', types: ['Fuoco'], base: [45, 60, 40, 45, 40, 80], catchRate: 120,
-      learnset: [[1, 'azione'], [1, 'ruggito'], [5, 'braciere'], [9, 'bruciapelo'], [13, 'nitrocarica'], [18, 'pestone']],
-      evolution: { level: 17, into: 'cavalbrace' }, wiki: '../puledrotto.html'
-    },
-    cavalbrace: {
-      number: 5, name: 'Cavalbrace', types: ['Fuoco'], base: [60, 80, 55, 60, 55, 95], catchRate: 60,
-      learnset: [[1, 'azione'], [1, 'ruggito'], [1, 'braciere'], [9, 'bruciapelo'], [13, 'nitrocarica'], [20, 'pestone']],
-      evolution: { level: 36, into: 'fuocavallo' }, wiki: '../cavalbrace.html'
-    },
-    fuocavallo: {
-      number: 6, name: 'Fuocavallo', types: ['Fuoco', 'Folletto'], base: [70, 110, 70, 85, 70, 125], catchRate: 30,
-      learnset: [[1, 'incantavoce'], [1, 'azione'], [1, 'braciere'], [1, 'bruciapelo'], [13, 'nitrocarica'], [20, 'pestone']], wiki: '../fuocavallo.html'
-    },
-    tuffito: {
-      number: 7, name: 'Tuffito', types: ['Acqua'], base: [60, 65, 60, 35, 50, 40], catchRate: 120,
-      learnset: [[1, 'azione'], [1, 'bolla'], [5, 'fortificazione'], [9, 'presa'], [13, 'idrogetto']],
-      evolution: { level: 17, into: 'brasero' }, wiki: '../tuffito.html'
-    },
-    brasero: {
-      number: 8, name: 'Brasero', types: ['Acqua'], base: [80, 85, 80, 45, 65, 50], catchRate: 60,
-      learnset: [[1, 'azione'], [1, 'bolla'], [1, 'fortificazione'], [9, 'presa'], [13, 'idrogetto'], [20, 'braciere']],
-      evolution: { level: 36, into: 'compadrone' }, wiki: '../brasero.html'
-    },
-    compadrone: {
-      number: 9, name: 'Compadrone', types: ['Acqua', 'Lotta'], base: [100, 115, 95, 55, 85, 80], catchRate: 30,
-      learnset: [[1, 'vigorcolpo'], [1, 'azione'], [1, 'idrogetto'], [1, 'presa'], [20, 'braciere']], wiki: '../compadrone.html'
-    },
-    pito: {
-      number: 44, name: 'Pito', types: ['Roccia', 'Normale'], base: [42, 64, 60, 28, 40, 44], catchRate: 180,
-      learnset: [[1, 'azione'], [1, 'ruggito'], [5, 'turbosabbia'], [9, 'sassata'], [17, 'bottintesta']],
-      evolution: { level: 21, into: 'pozza', wet: true }, wiki: '../pito.html'
-    },
-    pozza: {
-      number: 45, name: 'Pozza', types: ['Roccia', 'Veleno'], base: [72, 94, 90, 44, 62, 30], catchRate: 90,
-      learnset: [[1, 'fangosberla'], [1, 'azione'], [1, 'velenospina'], [9, 'sassata'], [17, 'bottintesta']],
-      evolution: { item: 'acquasanta', into: 'umito' }, wiki: '../pozza.html'
-    },
-    umito: {
-      number: 46, name: 'Umito', types: ['Roccia', 'Erba'], base: [84, 102, 96, 52, 74, 111], catchRate: 30,
-      learnset: [[1, 'assorbicorno'], [1, 'azione'], [9, 'sassata'], [21, 'fogliame']], wiki: '../umito.html'
-    },
-    segaccio: {
-      number: 47, name: 'Segaccio', types: ['Erba', 'Acciaio'], base: [85, 125, 95, 40, 65, 55], catchRate: 80,
-      learnset: [[1, 'azione'], [1, 'ruggito'], [6, 'frustata'], [11, 'fendente'], [16, 'difesaferrea']], wiki: '../segaccio_6.html'
-    },
-    banconio: {
-      number: 10, name: 'Banconio', types: ['Normale'], base: [110, 85, 100, 40, 90, 40], catchRate: 100,
-      learnset: [[1, 'azione'], [1, 'ruggito'], [7, 'sberla'], [12, 'fortificazione'], [17, 'risatasana']], wiki: '../banconio.html'
-    },
-    venagrox: {
-      number: 48, name: 'Venagrox', types: ['Acciaio', 'Terra'], base: [125, 145, 135, 55, 80, 30], catchRate: 25,
-      learnset: [[1, 'ruggito'], [1, 'ferrartigli'], [7, 'battiterra'], [18, 'solopiombo']], wiki: '../venagrox.html'
-    },
-    ciccharizard: {
-      number: 49, name: 'Ciccharizard', types: ['Buio', 'Spettro'], base: [90, 70, 85, 115, 120, 60], catchRate: 35,
-      learnset: [[1, 'colpocoda'], [1, 'sgomento'], [7, 'ascolto'], [13, 'ombranotturna'], [25, 'neropulsar']], wiki: '../ciccharizard.html'
-    }
-  };
+  const moves = window.PokemonAscoliMoves;
+  const species = window.PokemonAscoliSpecies;
 
   const building = (x, y, w, h, name, color = '#bd805d', kind = 'edificio') => ({ x, y, w, h, name, color, kind });
   const rect = (x, y, w, h, type = 'road') => ({ x, y, w, h, type });
@@ -296,6 +181,14 @@
     Psico: { Lotta: 2, Buio: 0, Acciaio: 0.5 }
   };
 
+  const items = {
+    ball: { name: 'Ball', price: 200, battle: true },
+    potion: { name: 'Pozione', price: 300, battle: true },
+    antidote: { name: 'Antidoto', price: 100, battle: true },
+    repel: { name: 'Repellente', price: 350, battle: false },
+    acquasanta: { name: 'Acquasanta', price: null, battle: false }
+  };
+
   window.PokemonAscoliData = {
     version: 2,
     title: 'Pokémon Ascoli',
@@ -305,9 +198,11 @@
     species,
     maps,
     typeChart,
+    items,
     starters: ['basilino', 'puledrotto', 'tuffito'],
     start: { map: 'porta_maggiore', x: 5, y: 15, direction: 'down' },
     respawn: { map: 'porta_maggiore', x: 5, y: 15, direction: 'down' },
-    initialItems: { ball: 10, potion: 5, acquasanta: 0 }
+    initialItems: { ball: 5, potion: 2, antidote: 0, repel: 0, acquasanta: 0 }
   };
+  if (typeof module !== 'undefined') module.exports = window.PokemonAscoliData;
 }());

@@ -32,6 +32,7 @@ svg{display:block;width:100%;height:auto;border:1px solid var(--border);backgrou
 .zona.sel{fill:rgba(48,160,80,.4);stroke:#e01818;stroke-width:3}
 .poi{cursor:move;stroke-width:2}
 .poi.sel{stroke:#e01818!important;stroke-width:3}
+.poi-numero{font-size:11px;font-weight:700;fill:#fff;text-anchor:middle;pointer-events:none;stroke:none}
 .territorio-item{cursor:move}
 .territorio-item .selezione{display:none}
 .territorio-item.sel .selezione{display:block}
@@ -55,6 +56,7 @@ svg{display:block;width:100%;height:auto;border:1px solid var(--border);backgrou
   <button id="btn-fine-corso" class="azione" hidden>&#10003; Termina corso</button>
   <button id="btn-annulla-corso" class="azione" hidden>&#10005; Annulla</button>
   <button id="btn-ripristina-base" class="azione">&#8634; Ripristina elementi iniziali</button>
+  <button id="btn-precompila-palestre" class="azione">&#9632; Precompila le 8 palestre della bibbia</button>
 </div>
 <div class="layout">
   <div class="mapcol">
@@ -78,6 +80,17 @@ const RARITA = { comune: 'Comune', raro: 'Raro', molto_raro: 'Molto raro' };
 const POI_NOMI = { pokestop: 'PokéStop', palestra: 'Palestra', laboratorio: 'Laboratorio' };
 const STRUTTURE = { edificio: 'Edificio', borgo: 'Borgo', ponte: 'Ponte', torre: 'Torre' };
 const CORSI_ACQUA = { fiume: 'Fiume', torrente: 'Torrente', canale: 'Canale' };
+const TIPI_POKEMON = ['Normale', 'Fuoco', 'Acqua', 'Erba', 'Elettro', 'Ghiaccio', 'Lotta', 'Veleno', 'Terra', 'Volante', 'Psico', 'Coleottero', 'Roccia', 'Spettro', 'Drago', 'Buio', 'Acciaio', 'Folletto'];
+const PALESTRE_BIBBIA = [
+  { ordine: 1, citta: 'Castel di Lama', capopalestra: 'Daniel Hills', tipoPokemon: 'Veleno', livelloAsso: 14 },
+  { ordine: 2, citta: 'Costa (San Benedetto)', capopalestra: 'Riccio', tipoPokemon: 'Acqua', livelloAsso: 20 },
+  { ordine: 3, citta: 'Ascoli Ventidio Basso', capopalestra: 'Ossidio', tipoPokemon: 'Normale', livelloAsso: 24 },
+  { ordine: 4, citta: 'Ascoli Campo Squarcia', capopalestra: 'Il Gladiatore', tipoPokemon: 'Acciaio', livelloAsso: 28 },
+  { ordine: 5, citta: 'Offida', capopalestra: 'Nero Marcoré', tipoPokemon: 'Erba', livelloAsso: 32 },
+  { ordine: 6, citta: 'Valle Castellana', capopalestra: 'Remigio', tipoPokemon: 'Roccia', livelloAsso: 36 },
+  { ordine: 7, citta: 'Acquasanta Terme', capopalestra: 'Clavio Oro', tipoPokemon: 'Buio', livelloAsso: 40 },
+  { ordine: 8, citta: 'Polesio', capopalestra: 'Polisia', tipoPokemon: 'Folletto', livelloAsso: 44 }
+];
 const STORAGE_KEY = 'piceno-mappa-dati';
 const TERRITORIO_BASE_VERSION = 1;
 const TERRITORIO_BASE = [
@@ -178,6 +191,7 @@ document.querySelectorAll('.toolbar button[data-tool]').forEach(b => {
 document.getElementById('btn-fine-corso').addEventListener('click', () => terminaCorso(false));
 document.getElementById('btn-annulla-corso').addEventListener('click', () => terminaCorso(true));
 document.getElementById('btn-ripristina-base').addEventListener('click', ripristinaBase);
+document.getElementById('btn-precompila-palestre').addEventListener('click', precompilaPalestre);
 
 function impostaTool(nuovoTool) {
   if (corsoInCorso && nuovoTool !== 'corso_acqua') terminaCorso(false);
@@ -307,6 +321,22 @@ function ripristinaBase() {
   seleziona(null);
 }
 
+function precompilaPalestre() {
+  const esistenti = new Set(dati.elementi.filter(e => e.tipo === 'palestra').map(e => e.ordine));
+  PALESTRE_BIBBIA.forEach((p, i) => {
+    if (esistenti.has(p.ordine)) return;
+    dati.elementi.push({
+      id: nuovoId(), tipo: 'palestra', x: 40, y: 60 + 60 * i,
+      nome: POI_NOMI.palestra, nota: '',
+      ordine: p.ordine, citta: p.citta, capopalestra: p.capopalestra,
+      tipoPokemon: p.tipoPokemon, livelloAsso: p.livelloAsso
+    });
+  });
+  salva();
+  disegna();
+  pannello();
+}
+
 // --- rendering ---
 const NS = 'http://www.w3.org/2000/svg';
 function nodo(tag, attrs) {
@@ -379,11 +409,17 @@ function disegna() {
     } else {
       let f;
       if (el.tipo === 'pokestop') f = nodo('rect', { x: el.x - 7, y: el.y - 7, width: 14, height: 14, transform: 'rotate(45 ' + el.x + ' ' + el.y + ')', fill: '#3868e8', stroke: '#182878', 'class': 'poi' + sel, 'data-id': el.id });
-      else if (el.tipo === 'palestra') f = nodo('rect', { x: el.x - 8, y: el.y - 8, width: 16, height: 16, fill: '#e04830', stroke: '#781810', 'class': 'poi' + sel, 'data-id': el.id });
+      else if (el.tipo === 'palestra') {
+        f = nodo('g', {});
+        f.appendChild(nodo('rect', { x: el.x - 9, y: el.y - 9, width: 18, height: 18, fill: '#e04830', stroke: '#781810', 'class': 'poi' + sel, 'data-id': el.id }));
+        if (el.ordine) f.appendChild(testo(el.x, el.y + 4, el.ordine, 'poi-numero'));
+      }
       else f = nodo('polygon', { points: (el.x) + ',' + (el.y - 9) + ' ' + (el.x - 9) + ',' + (el.y + 8) + ' ' + (el.x + 9) + ',' + (el.y + 8), fill: '#8a4fbf', stroke: '#4d2a70', 'class': 'poi' + sel, 'data-id': el.id });
       layer.appendChild(f);
       const t = nodo('text', { x: el.x, y: el.y - 12, 'class': 'etichetta' });
-      t.textContent = el.nome;
+      t.textContent = el.tipo === 'palestra' && el.ordine
+        ? 'P' + el.ordine + (el.capopalestra ? ' · ' + el.capopalestra : '') + (el.tipoPokemon ? ' (' + el.tipoPokemon + ')' : '')
+        : el.nome;
       layer.appendChild(t);
     }
   }
@@ -470,6 +506,28 @@ function pannello() {
       box.querySelector('#p-r-val').textContent = el.r + ' px';
       salva(); disegna();
     });
+  } else if (el.tipo === 'palestra') {
+    box.innerHTML = '<h3>Palestra</h3>' +
+      '<label>Ordine (1-8)</label><input type="text" inputmode="numeric" id="p-ordine" value="">' +
+      '<label>Citt&agrave;/luogo</label><input type="text" id="p-citta" value="">' +
+      '<label>Capopalestra</label><input type="text" id="p-capopalestra" value="">' +
+      '<label>Tipo</label><select id="p-tipopokemon">' +
+      '<option value="">&mdash;</option>' +
+      TIPI_POKEMON.map(t => '<option' + (t === el.tipoPokemon ? ' selected' : '') + '>' + t + '</option>').join('') + '</select>' +
+      '<label>Livello asso</label><input type="text" inputmode="numeric" id="p-livelloasso" value="">' +
+      '<label>Note</label><textarea id="p-note" rows="3" style="width:100%;box-sizing:border-box;padding:4px;border:1px solid var(--border);border-radius:3px;font-size:13px;font-family:inherit"></textarea>' +
+      '<button id="btn-cancella">Elimina palestra</button>';
+    box.querySelector('#p-ordine').value = el.ordine || '';
+    box.querySelector('#p-citta').value = el.citta || '';
+    box.querySelector('#p-capopalestra').value = el.capopalestra || '';
+    box.querySelector('#p-livelloasso').value = el.livelloAsso || '';
+    box.querySelector('#p-note').value = el.note || '';
+    box.querySelector('#p-ordine').addEventListener('input', e => { el.ordine = e.target.value ? +e.target.value : undefined; salva(); disegna(); });
+    box.querySelector('#p-citta').addEventListener('input', e => { el.citta = e.target.value; salva(); disegna(); });
+    box.querySelector('#p-capopalestra').addEventListener('input', e => { el.capopalestra = e.target.value; salva(); disegna(); });
+    box.querySelector('#p-tipopokemon').addEventListener('change', e => { el.tipoPokemon = e.target.value; salva(); disegna(); });
+    box.querySelector('#p-livelloasso').addEventListener('input', e => { el.livelloAsso = e.target.value ? +e.target.value : undefined; salva(); });
+    box.querySelector('#p-note').addEventListener('input', e => { el.note = e.target.value; salva(); });
   } else {
     box.innerHTML = '<h3>' + POI_NOMI[el.tipo] + '</h3>' +
       '<label>Nome</label><input type="text" id="p-nome" value="">' +
