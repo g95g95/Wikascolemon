@@ -11,7 +11,7 @@
   Battle.configure({ species: data.species, moves: data.moves });
 
   const ui = Object.fromEntries([
-    'locationName', 'locationBanner', 'toast', 'labelLayer', 'titleScreen', 'newGameButton', 'continueButton',
+    'viewport', 'locationName', 'locationBanner', 'toast', 'labelLayer', 'titleScreen', 'newGameButton', 'continueButton', 'playerNameInput',
     'dialogueScreen', 'dialogueName', 'dialogueText', 'dialogueChoices', 'dialogueClose',
     'learnMoveScreen', 'learnMoveText', 'learnMoveChoices',
     'shopScreen', 'shopList', 'shopMoney', 'shopClose', 'creditsScreen', 'creditsClose',
@@ -117,8 +117,10 @@
   // ---------------------------------------------------------------------
 
   function freshSave() {
+    const typedName = (ui.playerNameInput && ui.playerNameInput.value || '').trim().slice(0, 10);
     return {
       version: 2,
+      name: typedName || 'Oliver',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       player: { ...data.start },
@@ -137,6 +139,7 @@
   }
 
   function migrateSave(parsed) {
+    parsed.name = parsed.name || 'Oliver';
     if (parsed.version === 2) return parsed;
     // v1 -> v2
     parsed.version = 2;
@@ -174,8 +177,9 @@
 
   function startSession(loaded) {
     save = loaded;
+    const isNewGame = !save.flags.intro_vista;
     let stored = save.player || data.start;
-    if (!maps[stored.map] || isBlocked(maps[stored.map], stored.x, stored.y, true)) stored = data.start;
+    if (isNewGame || !maps[stored.map] || isBlocked(maps[stored.map], stored.x, stored.y, true)) stored = data.start;
     player = { ...stored, renderX: stored.x, renderY: stored.y, frame: 0 };
     currentMap = maps[player.map];
     initNpcs();
@@ -184,6 +188,12 @@
     showLocation(currentMap.name);
     updateLocation();
     autoSave();
+    if (isNewGame) playIntroFade();
+  }
+
+  function playIntroFade() {
+    ui.viewport.classList.add('intro-fade');
+    setTimeout(() => ui.viewport.classList.remove('intro-fade'), 1000);
   }
 
   // ---------------------------------------------------------------------
@@ -449,7 +459,7 @@
     async say(name, text) {
       return new Promise(resolve => {
         ui.dialogueName.textContent = name || '';
-        ui.dialogueText.textContent = text;
+        ui.dialogueText.textContent = text.replace(/\{player\}/g, save.name || 'Oliver');
         ui.dialogueChoices.hidden = true;
         ui.dialogueChoices.innerHTML = '';
         ui.dialogueScreen.hidden = false;
@@ -1258,7 +1268,7 @@
       return `<div class="badge-slot ${earned ? 'earned' : ''}">${earned ? (trainersData.trainers[gym.leader].gym.badgeName || '') : (gym ? gym.name : '—')}</div>`;
     }).join('');
     ui.menuContent.innerHTML = `<h2>Allenatore</h2>
-      <p>Nome: <strong>Oliver</strong></p>
+      <p>Nome: <strong>${save.name || 'Oliver'}</strong></p>
       <p>Talleri: <strong>${save.money}</strong></p>
       <p>Passi: <strong>${save.steps || 0}</strong></p>
       <p>Pokédex: <strong>${caughtCount}</strong> catturati / <strong>${seenCount}</strong> visti</p>

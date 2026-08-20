@@ -11,7 +11,8 @@ npc/transitions/trainers e gli `if`/`setFlag`/`clearFlag` dentro tutti gli scrip
 
 | Flag | Impostato da | Letto da | Note |
 |---|---|---|---|
-| `starter_scelto` | `porta_maggiore` npc **Bobby**, tutte e tre le scelte dello starter (`choice[0..2]`) | `porta_maggiore` npc **Bobby** (`when`, per non far ridare lo starter) e le 4 transition in uscita da `porta_maggiore` (`centro_storico`, `monticelli`, `borgo_chiaro`, `ripatransone`) | Sblocca l'uscita dalla città iniziale finché non si è scelto lo starter |
+| `intro_vista` | `porta_maggiore` npc **Bobby** (variante alla stazione, `when: { notFlag: 'intro_vista' }`), nel suo script di benvenuto | `porta_maggiore` npc **Bobby** alla stazione (`when`, per non ripetere l'intro), npc **Bobby** al bar (`when`, insieme a `notFlag: 'starter_scelto'`), npc **Steven** e npc **Elena** al bar (`when`, stessa condizione) | Impostato subito dopo l'arrivo in treno; sposta la scelta dello starter dalla stazione al bar di Bobby |
+| `starter_scelto` | `porta_maggiore` npc **Bobby** (bar), tutte e tre le scelte dello starter (`choice[0..2]`) | `porta_maggiore` npc **Bobby** (`when`, per non far ridare lo starter) e le 4 transition in uscita da `porta_maggiore` (`centro_storico`, `monticelli`, `borgo_chiaro`, `ripatransone`) | Sblocca l'uscita dalla città iniziale finché non si è scelto lo starter |
 | `starter_basilino` | Bobby, scelta "Sant'Emidio alle Grotte" | `trainer:jonathan_nando_puledrotto.when`, `trainer:maltignano_nando_puledrotto.when` | Se il giocatore ha scelto Basilino, il rivale Nando in quella mappa ha in squadra Puledrotto (contro-tipo narrativo) |
 | `starter_puledrotto` | Bobby, scelta "Rio Castellano" | `trainer:jonathan_nando_tuffito.when`, `trainer:maltignano_nando_tuffito.when` | Nando ha Tuffito |
 | `starter_tuffito` | Bobby, scelta "Ripatransone" | `trainer:jonathan_nando_basilino.when`, `trainer:maltignano_nando_basilino.when` | Nando ha Basilino |

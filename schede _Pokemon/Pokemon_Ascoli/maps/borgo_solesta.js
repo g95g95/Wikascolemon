@@ -21,7 +21,11 @@
       transition(142, 54, 2, 3, 'campo_parignano', 10, 55, 'Campo Parignano'),
       transition(120, 118, 3, 2, 'borgo_chiaro', 34, 10, 'Borgo Chiaro')
     ],
-    npcs: [npc(37, 61, 'Residente', 'Il ponte romano conduce dritto al centro.', 'verticale')]
+    npcs: [
+      npc(37, 61, 'Residente', 'Il ponte romano conduce dritto al centro.', 'verticale'),
+      npc(20, 90, 'Anziano', 'Quant\'anni fa qui c\'era un antro bar, mo\' è tutto chiuso.', 'fermo'),
+      npc(105, 22, 'Passante', 'Certe bande girano pé la collina, statte accorto de sera.', 'orizzontale')
+    ]
   };
   const map = window.PokemonAscoliMaps.borgo_solesta;
   map.roads.push(

@@ -44,7 +44,7 @@ scettica in Chromium e commit.
       `pendio` (percorribile, righe oblique), `asfalto`, `binari` (blocca), `ghiaia`, `pavimento` (interni),
       `albero` (già blocca, ora disegnato); stessa palette Gen 3; il configuratore li elenca nel select
       `tileType` e in `colorForTile`. → verifica: `node --check`, screenshot in Chromium di una mappa di prova.
-- [ ] D0.3 τ=facile/Sonnet — `tests/maps.test.mjs`: per ogni mappa, oltre ai controlli esistenti: ogni
+- [x] D0.3 τ=facile/Sonnet — `tests/maps.test.mjs`: per ogni mappa, oltre ai controlli esistenti: ogni
       `door` adiacente all'edificio e percorribile; tabella incontri con livelli dentro la fascia dichiarata
       in `map.levelRange` (nuovo campo `[min,max]`); ogni allenatore di quella mappa dentro i limiti e su
       cella percorribile; ogni script/`when` valido (`validateScript`); percorso a piedi BFS dalla stazione
@@ -54,12 +54,14 @@ scettica in Chromium e commit.
       `albero`, `levelRange`, BFS di raggiungibilità in `regression.mjs`.
 - [x] D0.6 τ=medio/Opus (richiesta del 20/08: «scritte sgranate») — etichette dei luoghi in un livello HTML
       `#labelLayer` sopra il canvas invece di `fillText` sul canvas 240×160.
-- [ ] D0.4 Orchestratore — `Trama/bibbia.md` §3 → tabella di consegna per agente: id mappa, dimensioni,
+- [x] D0.4 Orchestratore — `Trama/bibbia.md` §3 → tabella di consegna per agente: id mappa, dimensioni,
       mappe confinanti con coordinate dei passaggi (decise QUI, così due agenti vicini combaciano),
       landmark, specie e livelli, allenatori (classe, squadra, posizione indicativa), script richiesti.
       Le coordinate dei passaggi sono l'unico accoppiamento fra agenti: vanno fissate prima.
 
 ### D1-D2. Mappe — ondata parallela (un agente per mappa: `maps/<id>.js` + `trainers/<id>.js`)
+Ondata eseguita il 20/08/2026 (10 agenti, commit 3a6e40b), verificata (ca5e4bb). Tutte le righe ✅.
+
 | Agente | Mappa | τ/modello | Note |
 |---|---|---|---|
 | D1-a | `porta_maggiore` + `centro_storico` (ritocco) | medio/Opus | Bar Callare Centro, Ventidio con `door` + script «chiuso per riprese» → flag `ventidio_visto`; corriera per Ripatransone alla stazione (`transition` con `when`) |
@@ -75,21 +77,23 @@ scettica in Chromium e commit.
 
 Ogni agente: legge la riga di D0.4, `ARCHITETTURA.md`, una mappa esistente come modello; consegna mappa,
 allenatori, script; `node tests/*.mjs` verdi; screenshot della mappa dal configuratore.
-- [ ] D-verifica τ=difficile/Fable — playthrough in Chromium stazione → medaglia 2 (con livelli forzati),
+- [x] D-verifica τ=difficile/Fable — playthrough in Chromium stazione → medaglia 2 (con livelli forzati),
       controllo dei passaggi fra mappe adiacenti, dei blocchi `when`, di ogni allenatore (sguardo), delle
       due palestre. Poi commit.
 
 ### D4. Script di trama trasversali (sequenziale, dopo D1-D2)
-- [ ] D4.1 τ=medio/Opus — intro: arrivo in treno (schermata nera → binari → Bobby che aspetta), nome
+- [x] D4.1 τ=medio/Opus — intro: arrivo in treno (schermata nera → binari → Bobby che aspetta), nome
       giocatore (prompt nell'overlay titolo), Steven ed Elena al bar che spiegano il piano (3-4 pagine),
       Bobby: scelta del luogo (già fatto) + benedizione. Rivale Nando, lotta 1 subito fuori dal bar.
-- [ ] D4.2 τ=facile/Sonnet — testi degli NPC di colore delle 7 mappe di Ascoli riallineati alla trama
+- [x] D4.2 τ=facile/Sonnet — testi degli NPC di colore delle 7 mappe di Ascoli riallineati alla trama
       (degrado, bande, bar chiusi), 2-3 NPC per mappa.
-- [ ] D4.3 τ=medio/Opus — tabella `Trama/flag.md`: tutti i flag usati, chi li imposta, chi li legge;
+- [x] D4.3 τ=medio/Opus — tabella `Trama/flag.md`: tutti i flag usati, chi li imposta, chi li legge;
       test che ogni flag letto sia impostato da qualche script (e viceversa).
 
 ### B1. Specie nuove (parallela, 4 agenti + 1 per le mosse; nessun file in comune)
 Numeri **#057-#064** (#055 Vlurde e #056 Moccolo presi il 20/08). Nomi da confermare da bibbia §5.
+Eseguita il 20/08/2026: #057-064 pubblicate (139a0ab), tabelle incontri aggiornate (06dd129). Nota: Sorcì/Sorcione e Cavedì/Cavedòne sono mono-tipo come da bibbia; Ciuciòne ha una mossa esclusiva «Bricioleria» catalogata.
+
 | Agente | Linea | τ/modello |
 |---|---|---|
 | B1-a | #057 Ciucì → #058 Ciuciòne (Normale/Volante, 245→400, ev. L18) | medio/Opus |
@@ -102,7 +106,7 @@ Ogni agente B1-a..d: skill `crea-scheda` (artwork via `codex exec`), learnset co
 `moves-catalog.json`, bozza in `schede _Pokemon/`, NON pubblica. L'orchestratore pubblica in sequenza con
 `pubblica-scheda` (index/README/dexnav sono file condivisi), rigenera il dex, aggiorna `trainers/` (Hills
 usa `zanzi` al posto del secondo Mucillax) e le tabelle incontri di Marino/Oasi/Maltignano/Rio Castellano.
-- [ ] B1-verifica — `node tools/build-dex.mjs`, test verdi, 8 schede online.
+- [x] B1-verifica — `node tools/build-dex.mjs`, test verdi, 8 schede online.
 
 ### E. Asset
 - [ ] E1. Sprite battaglia front/back per le specie usate nella demo (oggi 17 su 57: mancano tutte le costiere, le campestri e le 8 nuove).
@@ -112,7 +116,7 @@ usa `zanzi` al posto del secondo Mucillax) e le tabelle incontri di Marino/Oasi/
 ### F. Rifinitura e pubblicazione
 - [ ] F1. Testi e dialoghi definitivi di tutti gli NPC della demo (italiano con colore ascolano).
 - [ ] F2. Bilanciamento: L14-15 alla 1ª palestra, L21-22 alla 2ª senza grinding; curva exp cubica già attiva.
-- [ ] F3. Build in `Wikascolemon/gioco/` + link dall'indice della wiki; deploy. (Può essere anticipata per far provare lo stato attuale.)
+- [x] F3. Build in `Wikascolemon/gioco/` + link dall'indice della wiki; deploy. (Può essere anticipata per far provare lo stato attuale.)
 - [ ] F4. Test di playthrough scriptato in Chromium (riusare lo script del verificatore dalla scratchpad, portarlo in `tests/e2e/` con `playwright-core` come dipendenza di sviluppo opzionale) che percorre stazione → 2ª medaglia.
 - [ ] F5. Aggiornare `CLAUDE.md`, README del gioco, brief.
 
