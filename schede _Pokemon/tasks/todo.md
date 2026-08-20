@@ -1,10 +1,10 @@
 # Piano: dalla trama "prime due palestre" a una demo giocabile
 
-Annotato il 20/08/2026. **In attesa di approvazione.**
+Annotato il 20/08/2026. **Approvato il 20/08/2026** (assunzioni confermate; aggiunto C7 configuratore, F0 snapshot demo).
 
 ## Premessa e assunzioni (da confermare)
 
-1. **Motore = `schede _Pokemon/Pokemon_Ascoli/`** (canvas JS, 7 quartieri di Ascoli, 17 specie,
+1. **Motore = `schede _Pokemon/Pokemon_Ascoli/`** — il gioco si costruisce a partire dalla demo, che resta pubblicata a `/demo`. (canvas JS, 7 quartieri di Ascoli, 17 specie,
    lotte selvatiche, cattura, evoluzione, salvataggio). Il brief punta a `pokeemerald-expansion`,
    ma quel fork non esiste e nessuno compila: l'unico motore *funzionante* è questo. Il piano lo
    porta a una demo completa della trama fino alla 2ª medaglia; i dati (specie, mosse, mappe,
@@ -103,7 +103,8 @@ Annotato il 20/08/2026. **In attesa di approvazione.**
 ### F. Rifinitura e pubblicazione
 - [ ] F1. Testi e dialoghi in italiano/dialetto per tutti gli NPC della demo.
 - [ ] F2. Bilanciamento: curva livelli per arrivare alla 2ª palestra a L20-22 senza grinding.
-- [ ] F3. Copia della build in `Wikascolemon/gioco/` + link dall'indice della wiki; deploy.
+- [x] F0. Snapshot della demo attuale in `Wikascolemon/demo/` (resta online a `/demo`, non si tocca più). Fatto il 20/08.
+- [ ] F3. Il gioco evolve *dalla* demo in `schede _Pokemon/Pokemon_Ascoli/`; la build va in `Wikascolemon/gioco/` + link dall'indice della wiki; deploy.
 - [ ] F4. Aggiornare `CLAUDE.md`, README, brief con lo stato reale.
 → verifica: partita completa da zero a seconda medaglia in browser; test verdi; sito online.
 
