@@ -63,6 +63,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #051 | [Cignalò](cignalo.html) | Pokémon Cinghialetto | Normale/Terra | Monti della Laga (Acquasanta, Arquata, Montegallo) |
 | #052 | [Bracignale](bracignale.html) | Pokémon Carbonaia | Fuoco/Terra | Monti della Laga |
 | #053 | [Caciara](caciara.html) | Pokémon Frastuono | Ghiaccio | Monti Sibillini (Vettore, Forca di Presta, Castelluccio) |
+| #054 | [Pətò](peto.html) | Pokémon Ruota | Normale/Volante | Contado ascolano (Castorano, Appignano del Tronto, Venarotta) |
 | #150 | [Pretalien](pretalien.html) | Pokémon Testimone | Coleot/Psico | Pretare, Monte Vettore |
 
 La wiki è in espansione: nuove schede verranno aggiunte nel tempo.
