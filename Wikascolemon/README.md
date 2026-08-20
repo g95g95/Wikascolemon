@@ -84,6 +84,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #065 | [Zanzarax](zanzarax.html) | Pokémon Zanzara Corazzata | Coleottero/Veleno | Oasi, Castel di Lama |
 | #066 | [Cavedì](cavedi.html) | Pokémon Pesciolino | Acqua | Rio Castellano, Oasi, Tronto |
 | #067 | [Cavedòne](cavedone.html) | Pokémon Buca Profonda | Acqua | Buche profonde del Tronto, Oasi |
+| #068 | [Bovfint](bovfint.html) | Pokémon Simulacro | Normale/Lotta | Offida (vie e piazze, il pomeriggio del venerdì grasso) |
 | #150 | [Pretalien](pretalien.html) | Pokémon Testimone | Coleot/Psico | Pretare, Monte Vettore |
 
 La wiki è in espansione: nuove schede verranno aggiunte nel tempo.

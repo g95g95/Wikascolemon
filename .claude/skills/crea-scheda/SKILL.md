@@ -36,12 +36,13 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #057 | Ciammarica ✅ |
 | #058-#059 | Retrabbiə → Sammarò ✅ |
 | #060-#067 | Ciucì → Ciuciòne · Sorcì → Sorcione · Zanzì → Zanzarax · Cavedì → Cavedòne ✅ — linee dei primi percorsi della Salaria |
-| #068-#149 | Libero |
+| #068 | Bovfint ✅ — il bove finto di Offida, stessa festa di Vlurde #055 |
+| #069-#149 | Libero |
 | **#150** | **Pretalien ✅ — chiude il Pokédex.** Numero finale: non superarlo e non riassegnarlo. |
 
 ⚠️ **Prima di assegnare un numero, fai `git fetch origin` e leggi i numeri da `origin/main`.** Sul dex lavorano più agenti in parallelo, e la tabella qui sopra è una copia locale che invecchia: è già successo **due volte** che una linea nuova nascesse su numeri occupati poche ore prima (Maranzino contro Traffichiex, e la linea della spiaggia contro Forox/Notaiax/Maranzino). La verità sono i file pubblicati, non questa tabella.
 
-Regola: scansiona i file in `Wikascolemon/` e `schede _Pokemon/`, e assegna il **primo numero libero coerente col concept** (una linea starter va nel suo blocco riservato; una specie qualsiasi prende il primo libero da #068 in su). Non assegnare mai "il più alto + 1" senza guardare la tabella. La navigazione `.dexnav` tollera i buchi: il vicino mancante si scrive `<span class="dim">#0NN: ???</span>`.
+Regola: scansiona i file in `Wikascolemon/` e `schede _Pokemon/`, e assegna il **primo numero libero coerente col concept** (una linea starter va nel suo blocco riservato; una specie qualsiasi prende il primo libero da #069 in su). Non assegnare mai "il più alto + 1" senza guardare la tabella. La navigazione `.dexnav` tollera i buchi: il vicino mancante si scrive `<span class="dim">#0NN: ???</span>`.
 
 ## 1. Clona il template
 
