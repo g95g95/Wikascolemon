@@ -119,7 +119,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .dialogue-choices { display: flex; flex-direction: column; gap: 4px; margin: 0 0 8px; }
 .dialogue-choices button { padding: 6px 8px; border: 2px solid #30382f; background: #fff8e8; color: #172019; font: 700 .68rem "Courier New", monospace; cursor: pointer; text-align: left; }
 
-.learn-move-panel, .shop-panel { width: min(92%, 480px); }
+.learn-move-panel, .shop-panel, .credits-panel { width: min(92%, 480px); }
+.credits-panel p { margin: 4px 0 10px; font-size: .78rem; line-height: 1.35; }
 .learn-move-panel p { margin: 4px 0 10px; font-size: .78rem; line-height: 1.35; }
 .learn-move-choices { display: flex; flex-direction: column; gap: 4px; }
 .learn-move-choices button { padding: 6px 8px; border: 2px solid #30382f; background: #fff8e8; color: #172019; font: 700 .7rem "Courier New", monospace; cursor: pointer; }

@@ -21,7 +21,10 @@
       zone(57, 9, 45, 42, 0.1, 'default'), zone(18, 66, 30, 24, 0.1, 'default'),
       zone(114, 66, 30, 27, 0.1, 'default'), zone(138, 30, 36, 27, 0.1, 'default')
     ],
-    transitions: [transition(0, 58, 2, 4, 'porta_maggiore', 136, 55, 'Porta Maggiore')],
+    transitions: [
+      transition(0, 58, 2, 4, 'porta_maggiore', 136, 55, 'Porta Maggiore'),
+      transition(178, 58, 2, 4, 'marino_del_tronto', 6, 55, 'Via Salaria', { when: { flag: 'ventidio_visto' }, blockedText: 'Prima passa dal Teatro Ventidio Basso in centro.' })
+    ],
     npcs: [npc(85, 52, 'Infermiere', 'La zona dell’ospedale è sempre molto frequentata.', 'orizzontale')]
   };
   const map = window.PokemonAscoliMaps.monticelli;
@@ -29,7 +32,7 @@
     // cornice di alberi (spessore 2), interrotta dal passaggio a ovest
     rect(0, 0, 180, 2, 'albero'), rect(0, 118, 180, 2, 'albero'),
     rect(0, 2, 2, 56, 'albero'), rect(0, 62, 2, 56, 'albero'),
-    rect(178, 2, 2, 116, 'albero'),
+    rect(178, 2, 2, 56, 'albero'), rect(178, 62, 2, 56, 'albero'),
     // boschetti nelle zone verdi lontane da strade/edifici/npc/passaggi
     rect(10, 20, 3, 2, 'albero'), rect(14, 23, 2, 3, 'albero'),
     rect(60, 90, 3, 2, 'albero'), rect(64, 93, 2, 3, 'albero'),

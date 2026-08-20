@@ -2,10 +2,10 @@
   const { building, rect, zone, transition, npc, wide } = window.PokemonAscoliMapHelpers;
   window.PokemonAscoliMaps = window.PokemonAscoliMaps || {};
   window.PokemonAscoliMaps.porta_cartara = {
-    ...wide, name: 'Porta Cartara', baseTile: 'erba', levelRange: [6, 7], encounterTable: [
-      { species: 'tuffito', minLevel: 6, maxLevel: 6, weight: 65 },
-      { species: 'pito', minLevel: 7, maxLevel: 7, weight: 30 },
-      { species: 'basilino', minLevel: 7, maxLevel: 7, weight: 5 }
+    ...wide, name: 'Porta Cartara', baseTile: 'erba', levelRange: [5, 7], encounterTable: [
+      { species: 'tuffito', minLevel: 5, maxLevel: 6, weight: 50 },
+      { species: 'soldatino', minLevel: 5, maxLevel: 7, weight: 35 },
+      { species: 'tamburino', minLevel: 6, maxLevel: 7, weight: 15 }
     ],
     roads: [rect(70, 0, 4, 120), rect(0, 33, 180, 3), rect(0, 84, 180, 3)],
     waters: [rect(0, 48, 180, 24, 'water')], bridges: [rect(70, 45, 4, 30, 'bridge')],
@@ -13,7 +13,12 @@
     labels: [{ x: 91, y: 64, text: 'RIO CASTELLANO' }],
     encounterZones: [zone(0, 39, 180, 9, 0.12, 'default'), zone(0, 72, 180, 9, 0.12, 'default')],
     transitions: [transition(70, 0, 4, 2, 'centro_storico', 73, 100, 'Centro Storico')],
-    npcs: [npc(91, 91, 'Pescatore', 'I Tuffito si muovono in gruppo lungo il Rio Castellano.', 'fermo')]
+    npcs: [
+      npc(91, 91, 'Pescatore', 'I Tuffito si muovono in gruppo lungo il Rio Castellano.', 'fermo'),
+      npc(60, 45, 'Cartello', 'Rio Castellano: qui Bobby diede il primo Tuffito a chi sceglieva l’acqua.', 'fermo'),
+      npc(45, 86, 'Lavandaia', 'Da ragazza si veniva qui a lavà li panni, mo\' nemmanco più.', 'fermo'),
+      npc(120, 35, 'Passante', 'Con l’acqua alta certe volte il fiume s\'ariprenne tutto.', 'verticale')
+    ]
   };
   const map = window.PokemonAscoliMaps.porta_cartara;
   map.roads.push(

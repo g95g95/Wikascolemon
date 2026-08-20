@@ -24,6 +24,7 @@
     potion: { name: 'Pozione', price: 300, battle: true },
     antidote: { name: 'Antidoto', price: 100, battle: true },
     repel: { name: 'Repellente', price: 350, battle: false },
+    grattaevinci: { name: 'Grattaevinci', price: 500, battle: false },
     acquasanta: { name: 'Acquasanta', price: null, battle: false },
     mt_velenospina: { name: 'MT Velenospina', price: null, battle: false },
     mt_idrogetto: { name: 'MT Idrogetto', price: null, battle: false }

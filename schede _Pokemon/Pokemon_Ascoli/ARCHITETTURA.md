@@ -108,10 +108,11 @@ Stato in salvataggio: `save.flags['trainer:<id>'] = true` quando sconfitto; `sav
 
 ## `battle.js` — `window.PokemonAscoliBattle` (puro)
 ```js
-createMonster(speciesId, level, { moves?, rng? }) → monster  // { uid, species, level, exp, hp, stats, moves:[{id, pp, maxPp}], status:null|'psn'|'par'|'brn'|'slp'|'frz', sleepTurns }
-calculateStats(speciesId, level) ; movesFor(speciesId, level) ; hydrateMonster(m)   // accetta anche il vecchio formato moves:['id']
+createMonster(speciesId, level, { moves?, rng? }) → monster  // { uid, species, level, exp, hp, stats, moves:[{id, pp, maxPp}], status:null|'psn'|'par'|'brn'|'slp'|'frz', sleepTurns, friendship }
+calculateStats(speciesId, level) ; movesFor(speciesId, level) ; hydrateMonster(m)   // accetta anche il vecchio formato moves:['id']; friendship default 0
 expToNext(monster) ; expGain(defeated, { trainer: bool, participants: n }) ; gainExperience(monster, amount, ctx) → { levelsGained, learned:[moveId], evolvedInto|null }
-   ctx = { map, hasItem(id) } per le condizioni di evoluzione (location, item)
+   ctx = { map, hasItem(id), mapHasWater } per le condizioni di evoluzione (location, item, wet). `friendship` cresce di 1 a ogni
+   livello guadagnato (in `gainExperience` stesso) ed evolve a >= 20 alla salita di livello. Vedi «Evoluzioni supportate dalla demo».
 typeMultiplier(moveType, targetTypes)
 chooseMove(attacker, defender, { rng }) → moveId         // IA: preferisce la mossa con danno atteso maggiore, un po' di rumore; mosse di stato ogni tanto
 turnOrder(a, actionA, b, actionB, rng) → ['player'|'enemy', ...]  // priorità, poi velocità (par dimezza), pari → rng
@@ -123,6 +124,21 @@ freshStages()
 ```
 `executeMove` rispetta precisione, stati (par 25% salta, slp/frz), STAB, critici (1/16), random
 0.85-1, categoria fisico/speciale per mossa, effetti secondari del catalogo. Non tocca DOM né save.
+
+### Evoluzioni supportate dalla demo
+
+La demo copre le prime due palestre (livelli fino a ~22). Le evoluzioni con condizioni non
+standard di `dex-overrides.json` sono trattate così:
+
+| Specie | Condizione (wiki) | Nella demo | Come |
+|---|---|---|---|
+| `pito → pozza` | Lv. 21 in un luogo umido | **Supportata** | `evolution.wet: true`; `ctx.mapHasWater` (booleano, calcolato da `game.js` sulla mappa corrente) sostituisce il concetto di "luogo umido" |
+| `tifotto → sciarpone` | Amicizia molto alta | **Supportata** | `evolution.friendship: true`; `monster.friendship` cresce di 1 a ogni livello guadagnato in `gainExperience`, evolve quando raggiunge ≥ 20 durante una salita di livello |
+| `pefna → caita` | Fusione, Lv. 20+ | **Supportata** (semplificata) | Trattata come evoluzione per livello semplice: `fusion: true` resta nei dati ma il motore ignora il campo e usa solo `level` |
+| `soldatino → batterino` | Grattaevinci, Lv. 15+, 33% per salto | **Supportata** (semplificata) | `evolution.item + level` già gestiti dal motore; niente probabilità del 33%, evolve al primo level-up ≥ 15 con l'oggetto in inventario. Item `grattaevinci` aggiunto a `data.js` (price 500) e allo shop del Tabacchi |
+| `alghetta → mucillax` | Livello con E. coli | **Supportata** (rimappata) | `location: 'ecoli'` non è una mappa del gioco: rimappata a `location: 'costa'` in `dex-overrides.json` |
+| `cavalbrace → fuocavallo`, `bagnetto → coperto`, `sciarpone → capultra` | di notte (+ mossa sonora) | **Lore, non evolve** | Nella demo è sempre giorno: `evolution.night: true` blocca esplicitamente l'evoluzione in `gainExperience`, a prescindere da `level`/`friendship` |
+| `ombrellone → salvatorre`, `coperto → mixaro`, `bree → felignoto`, `sbandiera → quintanaro` | condizioni fuori fascia demo (party species, KO avversario, avvistamenti, sestiere) | **Lore, non evolve** | Nessun campo riconosciuto dal motore (`level`/`friendship`/`wet`/`item` assenti o non impostati): restano `dex-overrides.json` con solo i campi narrativi, il `while` di `gainExperience` non entra nel ramo evoluzione e non rompe nulla |
 
 ## `events.js` — `window.PokemonAscoliEvents` (puro)
 Condizione: `{ flag: 'x' } | { notFlag: 'x' } | { badge: 1 } | { item: 'acquasanta' } | { all: [...] } | { any: [...] }`;

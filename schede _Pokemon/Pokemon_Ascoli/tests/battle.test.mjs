@@ -41,6 +41,66 @@ const species = {
     catchRate: 90, expYield: 60, growth: 'medio-veloce',
     learnset: [[1, 'azione'], [1, 'ombra']],
     evolution: null, wiki: '../spettrolo.html'
+  },
+  pito: {
+    number: 100, name: 'Pito', types: ['Acqua'], base: [40, 40, 40, 40, 40, 40],
+    catchRate: 190, expYield: 50, growth: 'medio-veloce',
+    learnset: [[1, 'azione']],
+    evolution: { into: 'pozza', level: 21, wet: true }, wiki: '../pito.html'
+  },
+  pozza: {
+    number: 101, name: 'Pozza', types: ['Acqua'], base: [60, 60, 60, 60, 60, 60],
+    catchRate: 90, expYield: 120, growth: 'medio-veloce',
+    learnset: [[1, 'azione']],
+    evolution: null, wiki: '../pozza.html'
+  },
+  tifotto: {
+    number: 102, name: 'Tifotto', types: ['Normale'], base: [45, 45, 45, 45, 45, 45],
+    catchRate: 190, expYield: 55, growth: 'medio-veloce',
+    learnset: [[1, 'azione']],
+    evolution: { into: 'sciarpone', friendship: true }, wiki: '../tifotto.html'
+  },
+  sciarpone: {
+    number: 103, name: 'Sciarpone', types: ['Normale'], base: [65, 65, 65, 65, 65, 65],
+    catchRate: 90, expYield: 130, growth: 'medio-veloce',
+    learnset: [[1, 'azione']],
+    evolution: null, wiki: '../sciarpone.html'
+  },
+  pefna: {
+    number: 104, name: "Pef'na", types: ['Erba'], base: [50, 50, 50, 50, 50, 50],
+    catchRate: 190, expYield: 60, growth: 'medio-veloce',
+    learnset: [[1, 'azione']],
+    evolution: { into: 'caita', level: 20, fusion: true }, wiki: '../pefna.html'
+  },
+  caita: {
+    number: 105, name: "Ca'ità", types: ['Erba'], base: [70, 70, 70, 70, 70, 70],
+    catchRate: 90, expYield: 140, growth: 'medio-veloce',
+    learnset: [[1, 'azione']],
+    evolution: null, wiki: '../caita.html'
+  },
+  cavalbrace: {
+    number: 106, name: 'Cavalbrace', types: ['Fuoco'], base: [55, 60, 50, 55, 50, 60],
+    catchRate: 90, expYield: 100, growth: 'medio-veloce',
+    learnset: [[1, 'azione']],
+    evolution: { into: 'fuocavallo', level: 36, night: true }, wiki: '../cavalbrace.html'
+  },
+  fuocavallo: {
+    number: 107, name: 'Fuocavallo', types: ['Fuoco'], base: [80, 90, 70, 80, 70, 90],
+    catchRate: 45, expYield: 170, growth: 'medio-veloce',
+    learnset: [[1, 'azione']],
+    evolution: null, wiki: '../fuocavallo.html'
+  },
+  ombrellone: {
+    number: 108, name: 'Ombrellone', types: ['Acqua'], base: [70, 60, 80, 60, 80, 40],
+    catchRate: 45, expYield: 180, growth: 'medio-veloce',
+    learnset: [[1, 'azione']],
+    evolution: { into: 'salvatorre', level: 36, partySpecies: 'bagnino' }, wiki: '../ombrellone.html'
+  },
+  salvatorre: {
+    number: 109, name: 'Salvatorre', types: ['Acqua'], base: [90, 80, 100, 80, 100, 50],
+    catchRate: 30, expYield: 220, growth: 'medio-veloce',
+    learnset: [[1, 'azione']],
+    evolution: null, wiki: '../salvatorre.html'
   }
 };
 
@@ -305,6 +365,58 @@ function seq(values) {
   const evoResult = battle.gainExperience(tuffitoMon2, 2000, { map: 'porta_cartara', hasItem: () => false });
   assert.strictEqual(tuffitoMon2.species, 'tuffotto', 'evoluzione con location corretta');
   assert.strictEqual(evoResult.evolvedInto, 'tuffotto');
+}
+
+// --- Evoluzione "wet": solo in una mappa con acqua ---
+{
+  const pitoDry = battle.createMonster('pito', 20);
+  battle.gainExperience(pitoDry, 10000, { map: 'altrove', hasItem: () => false, mapHasWater: false });
+  assert.strictEqual(pitoDry.species, 'pito', 'niente evoluzione senza acqua sulla mappa');
+
+  const pitoWet = battle.createMonster('pito', 20);
+  const wetResult = battle.gainExperience(pitoWet, 10000, { map: 'costa', hasItem: () => false, mapHasWater: true });
+  assert.strictEqual(pitoWet.species, 'pozza', 'evoluzione con mapHasWater true');
+  assert.strictEqual(wetResult.evolvedInto, 'pozza');
+}
+
+// --- Evoluzione "friendship": cresce di 1 per livello, scatta a >= 20 ---
+{
+  const tifotto = battle.createMonster('tifotto', 5);
+  assert.strictEqual(tifotto.friendship, 0, 'friendship parte da 0');
+
+  // sale 10 livelli: friendship arriva a 10, non ancora sufficiente
+  const partial = battle.gainExperience(tifotto, battle.expToNext({ level: 14 }) - tifotto.exp, {});
+  assert.ok(tifotto.friendship < 20, 'friendship non ancora a 20 dopo pochi livelli');
+  assert.strictEqual(tifotto.species, 'tifotto', 'niente evoluzione prima di friendship 20');
+
+  tifotto.friendship = 19;
+  const beforeLevel = tifotto.level;
+  const evoResult = battle.gainExperience(tifotto, battle.expToNext({ level: tifotto.level }) - tifotto.exp + 1, {});
+  assert.ok(tifotto.level > beforeLevel, 'sale almeno un livello');
+  assert.strictEqual(tifotto.species, 'sciarpone', 'evolve quando friendship raggiunge 20 salendo di livello');
+  assert.strictEqual(evoResult.evolvedInto, 'sciarpone');
+}
+
+// --- Evoluzione "fusion": trattata come evoluzione per livello semplice nella demo ---
+{
+  const pefna = battle.createMonster('pefna', 19);
+  const result = battle.gainExperience(pefna, battle.expToNext({ level: 19 }) - pefna.exp + 1, {});
+  assert.strictEqual(pefna.species, 'caita', 'pefna evolve per livello anche con fusion:true nella demo');
+  assert.strictEqual(result.evolvedInto, 'caita');
+}
+
+// --- Evoluzione "night": resta lore, non evolve mai nella demo ---
+{
+  const cavalbrace = battle.createMonster('cavalbrace', 35);
+  battle.gainExperience(cavalbrace, 50000, { map: 'altrove', hasItem: () => false, mapHasWater: false });
+  assert.strictEqual(cavalbrace.species, 'cavalbrace', 'night resta lore: nessuna evoluzione anche a livello alto');
+}
+
+// --- Evoluzione "partySpecies": fuori fascia demo, resta lore anche col level raggiunto ---
+{
+  const ombrellone = battle.createMonster('ombrellone', 35);
+  battle.gainExperience(ombrellone, 50000, { map: 'altrove', hasItem: () => false, mapHasWater: false });
+  assert.strictEqual(ombrellone.species, 'ombrellone', 'partySpecies non implementato: nessuna evoluzione anche a livello 36+');
 }
 
 // --- learnMove esplicito con sostituzione ---

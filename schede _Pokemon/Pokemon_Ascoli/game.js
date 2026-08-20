@@ -14,7 +14,7 @@
     'locationName', 'locationBanner', 'toast', 'labelLayer', 'titleScreen', 'newGameButton', 'continueButton',
     'dialogueScreen', 'dialogueName', 'dialogueText', 'dialogueChoices', 'dialogueClose',
     'learnMoveScreen', 'learnMoveText', 'learnMoveChoices',
-    'shopScreen', 'shopList', 'shopMoney', 'shopClose',
+    'shopScreen', 'shopList', 'shopMoney', 'shopClose', 'creditsScreen', 'creditsClose',
     'battleScreen', 'enemyName', 'enemyLevel', 'enemyHp', 'enemySprite', 'enemyStatus', 'enemyExclaim',
     'allyName', 'allyLevel', 'allyHp', 'allyHpText', 'allySprite', 'allyStatus', 'battleMessage',
     'battleActions', 'menuScreen', 'menuTabs', 'menuContent', 'menuClose', 'menuButton',
@@ -192,6 +192,10 @@
 
   function hasItem(itemId) {
     return !!(save.items && save.items[itemId] > 0);
+  }
+
+  function mapHasWater() {
+    return (currentMap.waters || []).length > 0;
   }
 
   function giveMonster(spec) {
@@ -410,7 +414,7 @@
       return [{ say: 'Che te faccio?', name: building.name }, { heal: true }, { say: 'Ecco fatto!', name: building.name }];
     }
     if (building.interior === 'market') {
-      return [{ shop: ['ball', 'potion', 'antidote', 'repel'] }];
+      return [{ shop: ['ball', 'potion', 'antidote', 'repel', 'grattaevinci'] }];
     }
     if (building.interior === 'gym') {
       return [{ say: 'La palestra è chiusa.' }];
@@ -593,6 +597,32 @@
   });
 
   // ---------------------------------------------------------------------
+  // Titoli di coda
+  // ---------------------------------------------------------------------
+
+  let creditsResolve = null;
+
+  function openCredits() {
+    return new Promise(resolve => {
+      creditsResolve = resolve;
+      mode = 'credits';
+      ui.creditsScreen.hidden = false;
+    });
+  }
+
+  function closeCredits() {
+    ui.creditsScreen.hidden = true;
+    if (mode === 'credits') mode = 'world';
+    if (creditsResolve) {
+      const resolve = creditsResolve;
+      creditsResolve = null;
+      resolve();
+    }
+  }
+
+  ui.creditsClose.addEventListener('click', closeCredits);
+
+  // ---------------------------------------------------------------------
   // Sguardo allenatori
   // ---------------------------------------------------------------------
 
@@ -682,6 +712,11 @@
           save.badges.sort((a, b) => a - b);
         }
         await runner.run([{ say: `Hai ottenuto la ${trainer.gym.badgeName}!` }]);
+        if (trainer.gym.badge === 2 && !save.flags.demo_finita) {
+          save.flags.demo_finita = true;
+          autoSave();
+          await openCredits();
+        }
       }
       autoSave();
     }
@@ -921,7 +956,7 @@
     ui.battleMessage.textContent = `${data.species[battle.wild.species].name} è esausto! ${data.species[winner.species].name} ottiene ${gain} ESP.`;
     renderBattle();
     await sleep(700);
-    const gainResult = Battle.gainExperience(winner, gain, { map: player.map, hasItem });
+    const gainResult = Battle.gainExperience(winner, gain, { map: player.map, hasItem, mapHasWater: mapHasWater() });
     if (gainResult.levelsGained > 0) {
       ui.battleMessage.textContent = `${data.species[winner.species].name} è salito al livello ${winner.level}!`;
       renderBattle();
@@ -1645,12 +1680,14 @@
       event.preventDefault();
       if (mode === 'dialogue') { if (dialogueResolve) { const r = dialogueResolve; dialogueResolve = null; r(); } return; }
       if (mode === 'battle') { advanceMessage(); return; }
+      if (mode === 'credits') { closeCredits(); return; }
       interact();
     }
     if (event.code === 'KeyM') openMenu();
     if (event.code === 'Escape' || event.code === 'KeyX') {
       if (mode === 'menu') closeMenu();
       else if (mode === 'battle') showBattleMain();
+      else if (mode === 'credits') closeCredits();
     }
   });
   document.addEventListener('keyup', event => {
@@ -1676,6 +1713,7 @@
   ui.touchA.addEventListener('click', () => {
     if (mode === 'dialogue') { if (dialogueResolve) { const r = dialogueResolve; dialogueResolve = null; r(); } return; }
     if (mode === 'battle') { advanceMessage(); return; }
+    if (mode === 'credits') { closeCredits(); return; }
     interact();
   });
   ui.touchB.addEventListener('click', () => {

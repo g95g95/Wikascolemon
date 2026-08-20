@@ -91,7 +91,8 @@
       stats,
       moves: finalIds.map(makeMoveSlot),
       status: null,
-      sleepTurns: 0
+      sleepTurns: 0,
+      friendship: 0
     };
   }
 
@@ -118,7 +119,8 @@
       hp: Math.min(Number.isFinite(monster.hp) ? monster.hp : stats.hp, stats.hp),
       moves,
       status: monster.status || null,
-      sleepTurns: monster.sleepTurns || 0
+      sleepTurns: monster.sleepTurns || 0,
+      friendship: monster.friendship || 0
     };
   }
 
@@ -166,6 +168,7 @@
       const oldMax = monster.stats.hp;
       monster.level += 1;
       levelsGained += 1;
+      monster.friendship = (monster.friendship || 0) + 1;
       monster.stats = calculateStats(monster.species, monster.level);
       monster.hp += monster.stats.hp - oldMax;
       const species = speciesCatalog()[monster.species];
@@ -179,10 +182,13 @@
         }
       });
       const evolution = species.evolution;
-      if (evolution && evolution.level && monster.level >= evolution.level) {
+      const levelOk = !evolution || !evolution.level || monster.level >= evolution.level;
+      const friendshipOk = !evolution || !evolution.friendship || (monster.friendship || 0) >= 20;
+      if (evolution && levelOk && friendshipOk && !evolution.night && !evolution.partySpecies && !evolution.knowsSoundMove && !evolution.defeat && (evolution.level || evolution.friendship)) {
         const locationOk = !evolution.location || (context.map === evolution.location);
         const itemOk = !evolution.item || (context.hasItem && context.hasItem(evolution.item));
-        if (locationOk && itemOk) {
+        const wetOk = !evolution.wet || context.mapHasWater;
+        if (locationOk && itemOk && wetOk) {
           monster.species = evolution.into;
           monster.stats = calculateStats(monster.species, monster.level);
           monster.hp = monster.stats.hp;

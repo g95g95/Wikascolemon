@@ -55,7 +55,7 @@
     ],
     "evolution": {
       "into": "mucillax",
-      "location": "ecoli"
+      "location": "costa"
     },
     "wiki": "../alghetta.html"
   },

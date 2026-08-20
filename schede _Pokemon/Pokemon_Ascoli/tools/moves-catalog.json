@@ -639,6 +639,14 @@
     },
     "description": "Una testata d'acciaio che può far tentennare."
   },
+  "fiammata": {
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Una fiammata potente che può scottare (mossa di Moccolo)."
+  },
   "filiera_corta": {
     "effect": {
       "kind": "custom",
@@ -699,6 +707,13 @@
   "foglielama": {
     "description": "Foglie affilate come lame."
   },
+  "fora_fora": {
+    "effect": {
+      "kind": "custom",
+      "id": "fora_fora"
+    },
+    "description": "Il grido della processione: mossa sonora di Stato che aumenta di un livello la Velocità di tutta la squadra e sveglia gli alleati addormentati (mossa esclusiva di Moccolo)."
+  },
   "fortezza": {
     "effect": {
       "kind": "stat",
@@ -748,6 +763,14 @@
       "ratio": 0.33
     },
     "description": "Carica furiosa avvolta dalle fiamme: il contraccolpo ferisce anche chi la usa (mossa di Cavalbrace)."
+  },
+  "fuocofatuo": {
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 100
+    },
+    "description": "Una fiamma spettrale che scotta sempre il bersaglio."
   },
   "fuocopugno": {
     "effect": {
@@ -863,6 +886,16 @@
       "id": "confuse_chance"
     },
     "description": "Onde d'acqua pulsanti che possono confondere."
+  },
+  "incanto": {
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "attack",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Un canto ammaliante che abbassa l'Attacco avversario."
   },
   "incantavoce": {
     "description": "Un canto incantato che colpisce con energia magica."
@@ -1366,6 +1399,13 @@
   "scavare": {
     "description": "Si nasconde sottoterra e colpisce al turno successivo."
   },
+  "scia_di_braci": {
+    "effect": {
+      "kind": "custom",
+      "id": "scia_di_braci"
+    },
+    "description": "Travolge il bersaglio in corsa e semina braci sul lato avversario, che bruciano chi entra in campo (mossa esclusiva di Vlurde)."
+  },
   "sconfinata": {
     "effect": {
       "kind": "custom",
@@ -1602,6 +1642,14 @@
   "urlorabbia": {
     "description": "Un urlo carico di rabbia."
   },
+  "vampata": {
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Una vampata di fuoco intensa che può scottare (mossa di Moccolo)."
+  },
   "velenodenti": {
     "effect": {
       "kind": "status",
@@ -1650,6 +1698,9 @@
       "chance": 100
     },
     "description": "Un vento gelido che abbassa sempre la Velocità avversaria."
+  },
+  "verdebufera": {
+    "description": "Una raffica devastante di foglie affilate."
   },
   "vigorcolpo": {
     "description": "Un colpo pieno di vigore."

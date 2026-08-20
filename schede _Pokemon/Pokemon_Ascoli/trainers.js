@@ -18,36 +18,6 @@
   };
 
   const trainers = {
-    castel_di_lama_hills: {
-      map: 'castel_di_lama', x: 0, y: 0, direction: 'down', sight: 0,
-      class: 'capopalestra', name: 'Daniel Hills', sprite: null,
-      team: [
-        { species: 'mucillax', level: 11 },
-        { species: 'mucillax', level: 12 },
-        { species: 'pozza', level: 14 }
-      ],
-      before: ['Al Free Spirit non entra chiunque.', 'Vediamo se meriti la Medaglia Spirito.'],
-      after: ['...tiè, hai vinto tu stavolta.'],
-      lost: 'Torna quando la tua squadra è più forte.',
-      money: null,
-      gym: { id: 'castel_di_lama', badge: 1, badgeName: 'Medaglia Spirito', type: 'Veleno', tm: 'velenospina' },
-      when: null
-    },
-    costa_riccio: {
-      map: 'costa', x: 0, y: 0, direction: 'down', sight: 0,
-      class: 'capopalestra', name: 'Riccio', sprite: null,
-      team: [
-        { species: 'cozzetta', level: 18 },
-        { species: 'lettino', level: 18 },
-        { species: 'ombrellone', level: 20 }
-      ],
-      before: ['Allo Jonathan la sfida è sempre aperta.', 'Speriamo tu regga meglio dell\'agguato de Ivo e Teo!'],
-      after: ['Embè, complimenti davvero.'],
-      lost: 'Torna a trovarmi quando sei più allenato.',
-      money: null,
-      gym: { id: 'costa', badge: 2, badgeName: 'Medaglia Balneare', type: 'Acqua', tm: 'idrogetto' },
-      when: null
-    }
   };
 
   const gyms = {

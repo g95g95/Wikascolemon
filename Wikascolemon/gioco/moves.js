@@ -2387,8 +2387,12 @@
     "accuracy": 85,
     "pp": 15,
     "priority": 0,
-    "effect": null,
-    "description": ""
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 100
+    },
+    "description": "Una fiamma spettrale che scotta sempre il bersaglio."
   },
   "incanto": {
     "name": "Incanto",
@@ -2398,8 +2402,14 @@
     "accuracy": 100,
     "pp": 20,
     "priority": 0,
-    "effect": null,
-    "description": ""
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "attack",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Un canto ammaliante che abbassa l'Attacco avversario."
   },
   "fora_fora": {
     "name": "Fòra Fòra",
@@ -2409,7 +2419,10 @@
     "accuracy": null,
     "pp": 15,
     "priority": 0,
-    "effect": null,
+    "effect": {
+      "kind": "custom",
+      "id": "fora_fora"
+    },
     "description": "è la sua mossa esclusiva, il grido vero della processione: una mossa"
   },
   "fiammata": {
@@ -2420,8 +2433,12 @@
     "accuracy": 100,
     "pp": 20,
     "priority": 0,
-    "effect": null,
-    "description": ""
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Una fiammata potente che può scottare (mossa di Moccolo)."
   },
   "vampata": {
     "name": "Vampata",
@@ -2431,8 +2448,12 @@
     "accuracy": 90,
     "pp": 5,
     "priority": 0,
-    "effect": null,
-    "description": ""
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Una vampata di fuoco intensa che può scottare (mossa di Moccolo)."
   },
   "flagello": {
     "name": "Flagello",
@@ -3704,7 +3725,10 @@
     "accuracy": 100,
     "pp": 10,
     "priority": 0,
-    "effect": null,
+    "effect": {
+      "kind": "custom",
+      "id": "scia_di_braci"
+    },
     "description": "è la sua mossa esclusiva: travolge il bersaglio in corsa e"
   },
   "verdebufera": {
@@ -3716,7 +3740,7 @@
     "pp": 5,
     "priority": 0,
     "effect": null,
-    "description": ""
+    "description": "Una raffica devastante di foglie affilate."
   }
 };
   if (typeof window !== 'undefined') window.PokemonAscoliMoves = api;
