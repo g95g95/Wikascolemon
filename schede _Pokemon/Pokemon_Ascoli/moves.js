@@ -2379,6 +2379,61 @@
     "effect": null,
     "description": "Un attacco oscuro potente."
   },
+  "fuocofatuo": {
+    "name": "Fuocofatuo",
+    "type": "Fuoco",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 85,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "incanto": {
+    "name": "Incanto",
+    "type": "Folletto",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "fora_fora": {
+    "name": "Fòra Fòra",
+    "type": "Folletto",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "è la sua mossa esclusiva, il grido vero della processione: una mossa"
+  },
+  "fiammata": {
+    "name": "Fiammata",
+    "type": "Fuoco",
+    "category": "Speciale",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "vampata": {
+    "name": "Vampata",
+    "type": "Fuoco",
+    "category": "Speciale",
+    "power": 130,
+    "accuracy": 90,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "flagello": {
     "name": "Flagello",
     "type": "Acciaio",
@@ -3640,6 +3695,28 @@
       "id": "terrasanta"
     },
     "description": "per cinque turni, nessun Pokémon in campo può usare mosse di tipo Terra."
+  },
+  "scia_di_braci": {
+    "name": "Scia di Braci",
+    "type": "Fuoco",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "è la sua mossa esclusiva: travolge il bersaglio in corsa e"
+  },
+  "verdebufera": {
+    "name": "Verdebufera",
+    "type": "Erba",
+    "category": "Speciale",
+    "power": 130,
+    "accuracy": 90,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
   }
 };
   if (typeof window !== 'undefined') window.PokemonAscoliMoves = api;

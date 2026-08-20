@@ -1826,6 +1826,61 @@
     "evolution": null,
     "wiki": "../mixaro.html"
   },
+  "moccolo": {
+    "number": 56,
+    "name": "Moccolo",
+    "types": [
+      "Fuoco",
+      "Folletto"
+    ],
+    "base": [
+      65,
+      45,
+      60,
+      110,
+      125,
+      75
+    ],
+    "catchRate": 60,
+    "expYield": 165,
+    "growth": "medio",
+    "learnset": [
+      [
+        1,
+        "braciere"
+      ],
+      [
+        1,
+        "vocedincanto"
+      ],
+      [
+        10,
+        "fuocofatuo"
+      ],
+      [
+        16,
+        "incanto"
+      ],
+      [
+        24,
+        "fora_fora"
+      ],
+      [
+        30,
+        "fiammata"
+      ],
+      [
+        38,
+        "forzaluna"
+      ],
+      [
+        46,
+        "vampata"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../moccolo.html"
+  },
   "moro": {
     "number": 20,
     "name": "Moro",
@@ -3604,6 +3659,65 @@
     ],
     "evolution": null,
     "wiki": "../vescovasil.html"
+  },
+  "vlurde": {
+    "number": 55,
+    "name": "Vlurde",
+    "types": [
+      "Fuoco",
+      "Erba"
+    ],
+    "base": [
+      65,
+      110,
+      55,
+      70,
+      55,
+      125
+    ],
+    "catchRate": 60,
+    "expYield": 165,
+    "growth": "medio",
+    "learnset": [
+      [
+        1,
+        "braciere"
+      ],
+      [
+        1,
+        "fogliame"
+      ],
+      [
+        10,
+        "nitrocarica"
+      ],
+      [
+        16,
+        "foglielama"
+      ],
+      [
+        22,
+        "ruotafuoco"
+      ],
+      [
+        28,
+        "scia_di_braci"
+      ],
+      [
+        35,
+        "agilita"
+      ],
+      [
+        42,
+        "lanciafiamme"
+      ],
+      [
+        50,
+        "verdebufera"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../vlurde.html"
   }
 };
   if (typeof window !== 'undefined') window.PokemonAscoliSpecies = api;

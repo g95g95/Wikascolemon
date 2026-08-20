@@ -225,6 +225,14 @@
       "ok": true
     },
     {
+      "id": "moccolo",
+      "number": 56,
+      "name": "Moccolo",
+      "statTotal": 480,
+      "statSum": 480,
+      "ok": true
+    },
+    {
       "id": "moro",
       "number": 20,
       "name": "Moro",
@@ -438,6 +446,14 @@
       "name": "Vescovasil",
       "statTotal": 530,
       "statSum": 530,
+      "ok": true
+    },
+    {
+      "id": "vlurde",
+      "number": 55,
+      "name": "Vlurde",
+      "statTotal": 480,
+      "statSum": 480,
       "ok": true
     }
   ],
