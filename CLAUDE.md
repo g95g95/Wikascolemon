@@ -80,20 +80,33 @@ become game data. Consequences worth knowing:
 
 ### Structure
 The repo root is the whole project; everything below is tracked in git.
-- `Wikascolemon/` — the published wiki, and the only folder served online (https://g95g95.github.io/Wikascolemon/). Contains `index.html`, `README.md`, and one page per Pokémon.
-- `schede _Pokemon/` — draft pages, source artwork, and `tasks/todo.md` (current work plan).
+- `Wikascolemon/` — the published wiki, and the only folder served online (https://g95g95.github.io/Wikascolemon/). Contains `index.html`, `README.md`, one page per Pokémon, plus the published game builds `gioco/` (current build, see below) and `demo/` (the original frozen demo, kept as-is).
+- `schede _Pokemon/` — draft pages, source artwork, and `tasks/todo.md` (current work plan). Also holds `Pokemon_Ascoli/`, the source of the ROM hack demo game (see below).
 - `Mappa_Pokemon/` — the region map (layered SVG, `viewBox 0 0 1024 640`) and `configuratore.html`, the visual editor used to lay out terrain, settlements and points of interest by hand.
 
 Draft → published: the `crea-scheda` skill writes the draft in `schede _Pokemon/`, the `pubblica-scheda` skill copies it into `Wikascolemon/` and updates neighbouring navigation, `index.html` and `README.md`.
 
+#### Game demo (`schede _Pokemon/Pokemon_Ascoli/`)
+Static browser game, source of truth for `Wikascolemon/gioco/`. Data is split one file per map
+(`maps/<id>.js`, scale 120-180×90-120 tiles) and one file per map's trainers (`trainers/<mapId>.js`);
+see `Pokemon_Ascoli/ARCHITETTURA.md` for the module contracts and `Pokemon_Ascoli/README.md` for
+how to play/extend it.
+- Publish: `node tools/build-gioco.mjs` copies the game into `Wikascolemon/gioco/`. **Never hand-edit
+  the build** — `tests/build.test.mjs` asserts it's byte-identical to the source and fails otherwise.
+- `tools/build-dex.mjs` regenerates `species.js`/`moves.js` from the wiki pages; run it after every
+  newly published Pokémon page.
+- Tests: `cd "schede _Pokemon/Pokemon_Ascoli"; for t in tests/*.mjs; do node $t; done` (all must pass
+  before publishing); `node tests/e2e/run.mjs` is an optional Chromium playthrough (not present yet).
+
 ### Key Commands
-No build or test commands — pages are opened directly in a browser.
+No build or test commands for the wiki pages — they're opened directly in a browser. The game demo
+has its own build/test commands, see above.
 Deploy = push to `main` from the repo root. The workflow `.github/workflows/pages.yml` publishes the `Wikascolemon/` folder to GitHub Pages; anything outside that folder is versioned but not served.
 
 ### Conventions
 - New Pokémon pages: clone the structure of an existing page (e.g. `segaccio.html`) — keep the Pokémon Central Wiki look, type-color CSS variables, infobox, stats bars, responsive layout
 - Pages must stay fully self-contained: no external assets, links only between local pages
-- Pokédex numbering is **semantic, not sequential**: one single dex ("Pokédex del Piceno"), with blocks reserved by design (#001-003 Grass starter, #004-006 Fire, #007-009 Water, #044-050 taken). Gaps are deliberate — never assign "highest + 1". The authoritative table lives in the `crea-scheda` skill.
+- Pokédex numbering is **semantic, not sequential**: one single dex ("Pokédex del Piceno"), with blocks reserved by design (#001-003 Grass starter, #004-006 Fire, #007-009 Water, #044-064 taken — #057-064 are the 4 Salaria lines). Gaps are deliberate — never assign "highest + 1"; the first free number is #065. The authoritative table lives in the `crea-scheda` skill.
 - When adding a page: update navigation links in adjacent pages, `index.html`, and the `README.md` table
 
 ### External Dependencies

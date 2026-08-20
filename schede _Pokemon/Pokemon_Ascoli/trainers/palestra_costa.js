@@ -29,7 +29,7 @@
     },
     costa_riccio: {
       map: 'palestra_costa', x: 14, y: 5, direction: 'down', sight: 0,
-      class: 'capopalestra', name: 'Riccio', sprite: null,
+      class: 'capopalestra', name: 'Riccio', sprite: 'riccio',
       team: [
         { species: 'cozzetta', level: 18 },
         { species: 'lettino', level: 18 },

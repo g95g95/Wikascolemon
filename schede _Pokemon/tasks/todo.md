@@ -92,7 +92,7 @@ allenatori, script; `node tests/*.mjs` verdi; screenshot della mappa dal configu
 
 ### B1. Specie nuove (parallela, 4 agenti + 1 per le mosse; nessun file in comune)
 Numeri **#057-#064** (#055 Vlurde e #056 Moccolo presi il 20/08). Nomi da confermare da bibbia §5.
-Eseguita il 20/08/2026: #057-064 pubblicate (139a0ab), tabelle incontri aggiornate (06dd129). Nota: Sorcì/Sorcione e Cavedì/Cavedòne sono mono-tipo come da bibbia; Ciuciòne ha una mossa esclusiva «Bricioleria» catalogata.
+Eseguita il 20/08/2026: pubblicate come #060-067 (un'altra sessione aveva preso #057-059 nel frattempo: rinumerate al merge), tabelle incontri aggiornate (06dd129). Nota: Sorcì/Sorcione e Cavedì/Cavedòne sono mono-tipo come da bibbia; Ciuciòne ha una mossa esclusiva «Bricioleria» catalogata.
 
 | Agente | Linea | τ/modello |
 |---|---|---|

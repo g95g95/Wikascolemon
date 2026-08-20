@@ -73,14 +73,17 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #054 | [Pətò](peto.html) | Pokémon Ruota | Normale/Volante | Contado ascolano (Castorano, Appignano del Tronto, Venarotta) |
 | #055 | [Vlurde](vlurde.html) | Pokémon Fascina | Fuoco/Erba | Offida (vicoli e corso Serpente Aureo) |
 | #056 | [Moccolo](moccolo.html) | Pokémon Lampioncino | Fuoco/Folletto | Castignano (vicoli e piazzette) |
-| #057 | [Ciucì](ciuci.html) | Pokémon Passerotto | Normale/Volante | Marino del Tronto, Oasi, Maltignano |
-| #058 | [Ciuciòne](ciucione.html) | Pokémon Passerone | Normale/Volante | Marino del Tronto, Oasi |
-| #059 | [Sorcì](sorci.html) | Pokémon Topocampo | Normale | Marino del Tronto, Maltignano (campi e oliveti) |
-| #060 | [Sorcione](sorcione.html) | Pokémon Ratto da Capannone | Normale | Marino del Tronto, Maltignano (capannoni) |
-| #061 | [Zanzì](zanzi.html) | Pokémon Zanzara | Coleottero/Veleno | Oasi, Maltignano, Castel di Lama |
-| #062 | [Zanzarax](zanzarax.html) | Pokémon Zanzara Corazzata | Coleottero/Veleno | Oasi, Castel di Lama |
-| #063 | [Cavedì](cavedi.html) | Pokémon Pesciolino | Acqua | Rio Castellano, Oasi, Tronto |
-| #064 | [Cavedòne](cavedone.html) | Pokémon Buca Profonda | Acqua | Buche profonde del Tronto, Oasi |
+| #057 | [Ciammarica](ciammarica.html) | Pokémon Chiocciola | Coleottero | Piceno (orti, muretti a secco, travertino) |
+| #058 | [Retrabbiə](retrabbie.html) | Pokémon Paletta | Fuoco/Acciaio | Contado ascolano (forni a legna e panifici storici) |
+| #059 | [Sammarò](sammaro.html) | Pokémon Sambuco | Erba/Acciaio | Contado ascolano (campi, fossi e margini dei coltivi) |
+| #060 | [Ciucì](ciuci.html) | Pokémon Passerotto | Normale/Volante | Marino del Tronto, Oasi, Maltignano |
+| #061 | [Ciuciòne](ciucione.html) | Pokémon Passerone | Normale/Volante | Marino del Tronto, Oasi |
+| #062 | [Sorcì](sorci.html) | Pokémon Topocampo | Normale | Marino del Tronto, Maltignano (campi e oliveti) |
+| #063 | [Sorcione](sorcione.html) | Pokémon Ratto da Capannone | Normale | Marino del Tronto, Maltignano (capannoni) |
+| #064 | [Zanzì](zanzi.html) | Pokémon Zanzara | Coleottero/Veleno | Oasi, Maltignano, Castel di Lama |
+| #065 | [Zanzarax](zanzarax.html) | Pokémon Zanzara Corazzata | Coleottero/Veleno | Oasi, Castel di Lama |
+| #066 | [Cavedì](cavedi.html) | Pokémon Pesciolino | Acqua | Rio Castellano, Oasi, Tronto |
+| #067 | [Cavedòne](cavedone.html) | Pokémon Buca Profonda | Acqua | Buche profonde del Tronto, Oasi |
 | #150 | [Pretalien](pretalien.html) | Pokémon Testimone | Coleot/Psico | Pretare, Monte Vettore |
 
 La wiki è in espansione: nuove schede verranno aggiunte nel tempo.

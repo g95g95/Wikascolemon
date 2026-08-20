@@ -29,7 +29,7 @@
     },
     maltignano_nando_puledrotto: {
       map: 'maltignano', x: 54, y: 19, direction: 'left', sight: 4,
-      class: 'rivale', name: 'Nando', sprite: null,
+      class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'puledrotto', level: 10 }, { species: 'tamburino', level: 9 }],
       before: [
         'Ah, sei tu quello che Bobby va dicenno in giro?',
@@ -42,7 +42,7 @@
     },
     maltignano_nando_tuffito: {
       map: 'maltignano', x: 55, y: 19, direction: 'left', sight: 4,
-      class: 'rivale', name: 'Nando', sprite: null,
+      class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'tuffito', level: 10 }, { species: 'tamburino', level: 9 }],
       before: [
         'Ah, sei tu quello che Bobby va dicenno in giro?',
@@ -55,7 +55,7 @@
     },
     maltignano_nando_basilino: {
       map: 'maltignano', x: 56, y: 19, direction: 'left', sight: 4,
-      class: 'rivale', name: 'Nando', sprite: null,
+      class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'basilino', level: 10 }, { species: 'tamburino', level: 9 }],
       before: [
         'Ah, sei tu quello che Bobby va dicenno in giro?',

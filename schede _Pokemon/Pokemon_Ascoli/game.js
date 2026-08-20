@@ -112,6 +112,21 @@
   const playerImage = new Image();
   playerImage.src = 'assets/player/oliver-sheet.png';
 
+  const npcSheets = {};
+  function npcSheet(name) {
+    if (!name) return null;
+    let entry = npcSheets[name];
+    if (!entry) {
+      const img = new Image();
+      entry = { img, failed: false };
+      img.onerror = () => { entry.failed = true; };
+      img.src = `assets/npc/${name}.png`;
+      npcSheets[name] = entry;
+    }
+    if (entry.failed || !entry.img.complete || !entry.img.naturalWidth) return null;
+    return entry.img;
+  }
+
   // ---------------------------------------------------------------------
   // Salvataggio
   // ---------------------------------------------------------------------
@@ -1559,11 +1574,21 @@
     worldLabelUsed.clear();
   }
 
+  function drawSpriteFrame(sheet, direction, x, y) {
+    const row = directions[direction].row;
+    ctx.drawImage(sheet, 0, row * 32, 32, 32, Math.round(x - 8), Math.round(y - 20), 32, 32);
+  }
+
   function drawNpcs(camera) {
     visibleRuntimeNpcs().forEach((npc, index) => {
       const x = npc.x * 16 - camera.x;
       const y = npc.y * 16 - camera.y;
       if (x < -16 || y < -20 || x > canvas.width || y > canvas.height) return;
+      const sheet = npcSheet(npc.sprite);
+      if (sheet) {
+        drawSpriteFrame(sheet, npc.direction || 'down', x, y);
+        return;
+      }
       ctx.fillStyle = index % 2 ? '#425d93' : '#8b4c49';
       ctx.fillRect(Math.round(x + 4), Math.round(y + 4), 8, 10);
       ctx.fillStyle = '#e6bb8b';
@@ -1580,6 +1605,11 @@
       const x = trainer.x * 16 - camera.x;
       const y = trainer.y * 16 - camera.y;
       if (x < -16 || y < -20 || x > canvas.width || y > canvas.height) return;
+      const sheet = npcSheet(trainer.sprite || (trainersData.classes[trainer.class] || {}).sprite);
+      if (sheet) {
+        drawSpriteFrame(sheet, trainer.direction || 'down', x, y);
+        return;
+      }
       const color = defeated ? '#6b6b6b' : (trainerColors[trainer.class] || '#8b4c49');
       ctx.fillStyle = color;
       ctx.fillRect(Math.round(x + 4), Math.round(y + 4), 8, 10);

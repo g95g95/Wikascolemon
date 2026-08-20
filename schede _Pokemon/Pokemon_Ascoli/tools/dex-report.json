@@ -122,7 +122,7 @@
     },
     {
       "id": "cavedi",
-      "number": 63,
+      "number": 66,
       "name": "Cavedì",
       "statTotal": 240,
       "statSum": 240,
@@ -130,7 +130,7 @@
     },
     {
       "id": "cavedone",
-      "number": 64,
+      "number": 67,
       "name": "Cavedòne",
       "statTotal": 410,
       "statSum": 410,
@@ -142,6 +142,14 @@
       "name": "Cerqua",
       "statTotal": 485,
       "statSum": 485,
+      "ok": true
+    },
+    {
+      "id": "ciammarica",
+      "number": 57,
+      "name": "Ciammarica",
+      "statTotal": 365,
+      "statSum": 365,
       "ok": true
     },
     {
@@ -162,7 +170,7 @@
     },
     {
       "id": "ciuci",
-      "number": 57,
+      "number": 60,
       "name": "Ciucì",
       "statTotal": 245,
       "statSum": 245,
@@ -170,7 +178,7 @@
     },
     {
       "id": "ciucione",
-      "number": 58,
+      "number": 61,
       "name": "Ciuciòne",
       "statTotal": 400,
       "statSum": 400,
@@ -353,11 +361,27 @@
       "ok": true
     },
     {
+      "id": "retrabbie",
+      "number": 58,
+      "name": "Retrabbiə",
+      "statTotal": 325,
+      "statSum": 325,
+      "ok": true
+    },
+    {
       "id": "salvatorre",
       "number": 33,
       "name": "Salvatorre",
       "statTotal": 500,
       "statSum": 500,
+      "ok": true
+    },
+    {
+      "id": "sammaro",
+      "number": 59,
+      "name": "Sammarò",
+      "statTotal": 455,
+      "statSum": 455,
       "ok": true
     },
     {
@@ -402,7 +426,7 @@
     },
     {
       "id": "sorci",
-      "number": 59,
+      "number": 62,
       "name": "Sorcì",
       "statTotal": 235,
       "statSum": 235,
@@ -410,7 +434,7 @@
     },
     {
       "id": "sorcione",
-      "number": 60,
+      "number": 63,
       "name": "Sorcione",
       "statTotal": 390,
       "statSum": 390,
@@ -506,7 +530,7 @@
     },
     {
       "id": "zanzarax",
-      "number": 62,
+      "number": 65,
       "name": "Zanzarax",
       "statTotal": 385,
       "statSum": 385,
@@ -514,7 +538,7 @@
     },
     {
       "id": "zanzi",
-      "number": 61,
+      "number": 64,
       "name": "Zanzì",
       "statTotal": 220,
       "statSum": 220,

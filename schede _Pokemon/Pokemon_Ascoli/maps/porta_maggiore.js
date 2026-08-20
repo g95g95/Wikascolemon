@@ -37,7 +37,7 @@
       npc(48, 68, 'Ragazza di quartiere', 'Le bande de la piazza fanno soo\' rumore, nient\'artro.', 'orizzontale'),
       npc(23, 44, 'Cliente deluso', 'Er bar de Bobby è chiuso dopo la rissa... ma pé fortuna cura ancora.', 'fermo'),
       {
-        x: 16, y: 45, name: 'Bobby', movement: 'fermo', when: { notFlag: 'intro_vista' },
+        x: 16, y: 45, name: 'Bobby', sprite: 'bobby', movement: 'fermo', when: { notFlag: 'intro_vista' },
         script: [
           {
             say: ['{player}, finalmente!', 'So\' n\'sacco d\'anni che nun ce vedimo, ma me servi tu.', 'Vieni al bar che te presento Steven e Elena.'],
@@ -48,7 +48,7 @@
         ]
       },
       {
-        x: 31, y: 50, name: 'Bobby', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
+        x: 31, y: 50, name: 'Bobby', sprite: 'bobby', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
         script: [
           { say: ['Ehò, uagliò! Vieni, vieni, che te presento chi conta veramente da ste parti.'], name: 'Bobby' },
           {
@@ -106,11 +106,11 @@
         ]
       },
       {
-        x: 29, y: 50, name: 'Steven', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
+        x: 29, y: 50, name: 'Steven', sprite: 'steven', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
         script: [{ say: 'Er bar Callare è sempre aperto, {player}. Passa quando vôi.', name: 'Steven' }]
       },
       {
-        x: 33, y: 50, name: 'Elena', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
+        x: 33, y: 50, name: 'Elena', sprite: 'elena', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
         script: [{ say: 'All\'Happy Coffee te tengo sempre un posto, {player}.', name: 'Elena' }]
       }
     ]

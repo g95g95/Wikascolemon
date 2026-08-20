@@ -11,7 +11,7 @@
     },
     porta_maggiore_nando_puledrotto: {
       map: 'porta_maggiore', x: 31, y: 55, direction: 'up', sight: 4,
-      class: 'rivale', name: 'Nando', sprite: null,
+      class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'puledrotto', level: 5 }],
       before: [
         'Ehó, fermo llà!',
@@ -24,7 +24,7 @@
     },
     porta_maggiore_nando_tuffito: {
       map: 'porta_maggiore', x: 31, y: 56, direction: 'up', sight: 4,
-      class: 'rivale', name: 'Nando', sprite: null,
+      class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'tuffito', level: 5 }],
       before: [
         'Ehó, fermo llà!',
@@ -37,7 +37,7 @@
     },
     porta_maggiore_nando_basilino: {
       map: 'porta_maggiore', x: 31, y: 57, direction: 'up', sight: 4,
-      class: 'rivale', name: 'Nando', sprite: null,
+      class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'basilino', level: 5 }],
       before: [
         'Ehó, fermo llà!',

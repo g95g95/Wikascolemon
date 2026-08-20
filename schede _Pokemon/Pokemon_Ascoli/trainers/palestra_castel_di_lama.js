@@ -20,7 +20,7 @@
     },
     castel_di_lama_hills: {
       map: 'palestra_castel_di_lama', x: 11, y: 3, direction: 'down', sight: 0,
-      class: 'capopalestra', name: 'Daniel Hills', sprite: null,
+      class: 'capopalestra', name: 'Daniel Hills', sprite: 'hills',
       team: [
         { species: 'zanzi', level: 11 },
         { species: 'mucillax', level: 12 },

@@ -79,14 +79,14 @@ che si costruirà col configuratore (task C7).
 ## 5. Specie nuove da inventare (fascia bassa)
 
 La wiki ha già 13 specie sotto 300 di BST; mancano quattro "archetipi" dei primi percorsi.
-Quattro linee a due stadi, **#057-#064** (pubblicate il 20/08/2026; #055-056 erano già di Vlurde e Moccolo):
+Quattro linee a due stadi, **#060-#067** (pubblicate il 20/08/2026; #055-059 erano già occupati da Vlurde, Moccolo, Ciammarica, Retrabbiə, Sammarò):
 
 | # | Linea | Tipo | BST | Habitat demo |
 |---|---|---|---|---|
-| 057→058 | Passerotto del Tronto (**Ciucì → Ciuciòne**) | Normale/Volante | 245 → 400, ev. L18 | Marino, Oasi, Maltignano |
-| 059→060 | Topo di campagna (**Sorcì → Sorcione**) | Normale | 235 → 390, ev. L20 | Marino, Maltignano |
-| 061→062 | Zanzara del Tronto (**Zanzì → Zanzarax**) | Coleottero/Veleno | 220 → 385, ev. L10 | Oasi, Maltignano, Castel di Lama (palestra 1) |
-| 063→064 | Cavedano del fiume (**Cavedì → Cavedòne**) | Acqua | 240 → 410, ev. L25 | Rio Castellano, Oasi (pesca) |
+| 060→061 | Passerotto del Tronto (**Ciucì → Ciuciòne**) | Normale/Volante | 245 → 400, ev. L18 | Marino, Oasi, Maltignano |
+| 062→063 | Topo di campagna (**Sorcì → Sorcione**) | Normale | 235 → 390, ev. L20 | Marino, Maltignano |
+| 064→065 | Zanzara del Tronto (**Zanzì → Zanzarax**) | Coleottero/Veleno | 220 → 385, ev. L10 | Oasi, Maltignano, Castel di Lama (palestra 1) |
+| 066→067 | Cavedano del fiume (**Cavedì → Cavedòne**) | Acqua | 240 → 410, ev. L25 | Rio Castellano, Oasi (pesca) |
 
 Tutte le altre specie della demo esistono già. Non si aggiungono altri Pokémon-personaggio.
 
