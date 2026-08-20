@@ -16,7 +16,11 @@
       transition(33, 0, 3, 2, 'borgo_solesta', 121, 112, 'Borgo Solestà'),
       transition(87, 118, 3, 2, 'porta_maggiore', 88, 10, 'Porta Maggiore')
     ],
-    npcs: [npc(73, 64, 'Tifoso', 'Lo stadio è il cuore di Borgo Chiaro.', 'orizzontale')]
+    npcs: [
+      npc(73, 64, 'Tifoso', 'Lo stadio è il cuore di Borgo Chiaro.', 'orizzontale'),
+      npc(55, 45, 'Steward', 'La domenica se riempie ancora, ma fori\' dallo stadio è tutto chiuso.', 'fermo'),
+      npc(100, 90, 'Residente', 'Certe bande se fanno vedè de sera, mejo passà de giorno.', 'verticale')
+    ]
   };
   const map = window.PokemonAscoliMaps.borgo_chiaro;
   map.roads.push(

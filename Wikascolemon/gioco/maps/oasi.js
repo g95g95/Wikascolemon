@@ -6,8 +6,9 @@
     encounterTable: [
       { species: 'soldatino', minLevel: 5, maxLevel: 8, weight: 35 },
       { species: 'alghetta', minLevel: 5, maxLevel: 8, weight: 30 },
-      { species: 'anicino', minLevel: 5, maxLevel: 7, weight: 20 },
-      { species: 'tamburino', minLevel: 6, maxLevel: 8, weight: 15 }
+      { species: 'zanzi', minLevel: 5, maxLevel: 7, weight: 10 },
+      { species: 'cavedi', minLevel: 5, maxLevel: 8, weight: 10 },
+      { species: 'ciuci', minLevel: 6, maxLevel: 8, weight: 15 }
     ],
     roads: [
       // strada principale ovest-est, righe 54-57 (deve restare collegata ai due passaggi)

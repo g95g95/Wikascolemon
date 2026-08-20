@@ -37,9 +37,37 @@
       npc(48, 68, 'Ragazza di quartiere', 'Le bande de la piazza fanno soo\' rumore, nient\'artro.', 'orizzontale'),
       npc(23, 44, 'Cliente deluso', 'Er bar de Bobby è chiuso dopo la rissa... ma pé fortuna cura ancora.', 'fermo'),
       {
-        x: 31, y: 50, name: 'Bobby', movement: 'fermo', when: { notFlag: 'starter_scelto' },
+        x: 16, y: 45, name: 'Bobby', movement: 'fermo', when: { notFlag: 'intro_vista' },
         script: [
-          { say: ['Ehò, uagliò! Nuovo da queste parti, eh?', 'Io so\' Bobby, tengo \'sto bar da na vita.', 'Se vuoi girà pé \'l Piceno t\'serve un compagno de viaggio.'], name: 'Bobby' },
+          {
+            say: ['{player}, finalmente!', 'So\' n\'sacco d\'anni che nun ce vedimo, ma me servi tu.', 'Vieni al bar che te presento Steven e Elena.'],
+            name: 'Bobby'
+          },
+          { setFlag: 'intro_vista' },
+          { warp: { map: 'porta_maggiore', x: 31, y: 51, direction: 'up' } }
+        ]
+      },
+      {
+        x: 31, y: 50, name: 'Bobby', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
+        script: [
+          { say: ['Ehò, uagliò! Vieni, vieni, che te presento chi conta veramente da ste parti.'], name: 'Bobby' },
+          {
+            say: [
+              'Io so\' Steven, tengo er bar Callare ar centro storico.',
+              'Da ste parti i bar so\' comme dei centri pé i pokémon: se cura, se ripo\'sa, se riparte.',
+              'Nel Piceno ce so\' otto palestre, ma so\' \'n mano a pochi — e pure la lega ormai è \'n affare privato, mica pé la gente.'
+            ],
+            name: 'Steven'
+          },
+          {
+            say: [
+              'E io so\' Elena, dell\'Happy Coffee a Campo Parignano.',
+              'Er degrado s\'è magnato \'sta valle: umani e pokémon che se fanno la guerra, bande, misteri che nun se chiariscono mai.',
+              'Bobby vo\' riaprì er su\' bar, e nnoialtri difendemo i nostri. Ma serve uno de fiducia che conosce bbene \'sto territorio.'
+            ],
+            name: 'Elena'
+          },
+          { say: ['Pé questo t\'ho chiamato, {player}. Tocca a tté sfidà le otto palestre e rimette\' a posto \'l Piceno.'], name: 'Bobby' },
           {
             choice: 'Dove vuoi iniziare?',
             options: [
@@ -76,6 +104,14 @@
             ]
           }
         ]
+      },
+      {
+        x: 29, y: 50, name: 'Steven', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
+        script: [{ say: 'Er bar Callare è sempre aperto, {player}. Passa quando vôi.', name: 'Steven' }]
+      },
+      {
+        x: 33, y: 50, name: 'Elena', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
+        script: [{ say: 'All\'Happy Coffee te tengo sempre un posto, {player}.', name: 'Elena' }]
       }
     ]
   };

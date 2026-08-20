@@ -11,7 +11,7 @@
   Battle.configure({ species: data.species, moves: data.moves });
 
   const ui = Object.fromEntries([
-    'locationName', 'locationBanner', 'toast', 'labelLayer', 'titleScreen', 'newGameButton', 'continueButton',
+    'viewport', 'locationName', 'locationBanner', 'toast', 'labelLayer', 'titleScreen', 'newGameButton', 'continueButton', 'playerNameInput',
     'dialogueScreen', 'dialogueName', 'dialogueText', 'dialogueChoices', 'dialogueClose',
     'learnMoveScreen', 'learnMoveText', 'learnMoveChoices',
     'shopScreen', 'shopList', 'shopMoney', 'shopClose', 'creditsScreen', 'creditsClose',
@@ -112,13 +112,30 @@
   const playerImage = new Image();
   playerImage.src = 'assets/player/oliver-sheet.png';
 
+  const npcSheets = {};
+  function npcSheet(name) {
+    if (!name) return null;
+    let entry = npcSheets[name];
+    if (!entry) {
+      const img = new Image();
+      entry = { img, failed: false };
+      img.onerror = () => { entry.failed = true; };
+      img.src = `assets/npc/${name}.png`;
+      npcSheets[name] = entry;
+    }
+    if (entry.failed || !entry.img.complete || !entry.img.naturalWidth) return null;
+    return entry.img;
+  }
+
   // ---------------------------------------------------------------------
   // Salvataggio
   // ---------------------------------------------------------------------
 
   function freshSave() {
+    const typedName = (ui.playerNameInput && ui.playerNameInput.value || '').trim().slice(0, 10);
     return {
       version: 2,
+      name: typedName || 'Oliver',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       player: { ...data.start },
@@ -137,6 +154,7 @@
   }
 
   function migrateSave(parsed) {
+    parsed.name = parsed.name || 'Oliver';
     if (parsed.version === 2) return parsed;
     // v1 -> v2
     parsed.version = 2;
@@ -174,8 +192,9 @@
 
   function startSession(loaded) {
     save = loaded;
+    const isNewGame = !save.flags.intro_vista;
     let stored = save.player || data.start;
-    if (!maps[stored.map] || isBlocked(maps[stored.map], stored.x, stored.y, true)) stored = data.start;
+    if (isNewGame || !maps[stored.map] || isBlocked(maps[stored.map], stored.x, stored.y, true)) stored = data.start;
     player = { ...stored, renderX: stored.x, renderY: stored.y, frame: 0 };
     currentMap = maps[player.map];
     initNpcs();
@@ -184,6 +203,12 @@
     showLocation(currentMap.name);
     updateLocation();
     autoSave();
+    if (isNewGame) playIntroFade();
+  }
+
+  function playIntroFade() {
+    ui.viewport.classList.add('intro-fade');
+    setTimeout(() => ui.viewport.classList.remove('intro-fade'), 1000);
   }
 
   // ---------------------------------------------------------------------
@@ -248,7 +273,7 @@
     if (['water', 'mare', 'muro', 'albero', 'binari'].includes(terrain)) return true;
     if ((map.buildings || []).some(item => pointInRect(x, y, item))) return true;
     if (!ignoreNpc && runtimeNpcs.some(item => item.x === x && item.y === y)) return true;
-    if (!ignoreNpc && save && activeTrainersOnMap().some(t => t.x === x && t.y === y)) return true;
+    if (!ignoreNpc && save && activeTrainersOnMap().some(t => t.x === x && t.y === y && !save.flags[Events.flagKeys.trainerFlag(t.id)])) return true;
     return false;
   }
 
@@ -449,7 +474,7 @@
     async say(name, text) {
       return new Promise(resolve => {
         ui.dialogueName.textContent = name || '';
-        ui.dialogueText.textContent = text;
+        ui.dialogueText.textContent = text.replace(/\{player\}/g, save.name || 'Oliver');
         ui.dialogueChoices.hidden = true;
         ui.dialogueChoices.innerHTML = '';
         ui.dialogueScreen.hidden = false;
@@ -705,6 +730,9 @@
       const reward = trainer.money != null ? trainer.money : Math.floor((classDef.moneyPerLevel || 10) * maxLevel);
       save.money = (save.money || 0) + reward;
       showToast(`Hai vinto ${reward} Talleri!`);
+      // beginTrainerBattle/endBattle leave mode = 'world': restore 'dialogue' so Invio/Spazio can
+      // dismiss the post-battle text (otherwise only a mouse click on "Continua" works).
+      mode = 'dialogue';
       await runner.run([{ say: trainer.after, name: trainer.name }]);
       if (trainer.gym) {
         if (!save.badges.includes(trainer.gym.badge)) {
@@ -1255,7 +1283,7 @@
       return `<div class="badge-slot ${earned ? 'earned' : ''}">${earned ? (trainersData.trainers[gym.leader].gym.badgeName || '') : (gym ? gym.name : '—')}</div>`;
     }).join('');
     ui.menuContent.innerHTML = `<h2>Allenatore</h2>
-      <p>Nome: <strong>Oliver</strong></p>
+      <p>Nome: <strong>${save.name || 'Oliver'}</strong></p>
       <p>Talleri: <strong>${save.money}</strong></p>
       <p>Passi: <strong>${save.steps || 0}</strong></p>
       <p>Pokédex: <strong>${caughtCount}</strong> catturati / <strong>${seenCount}</strong> visti</p>
@@ -1546,11 +1574,21 @@
     worldLabelUsed.clear();
   }
 
+  function drawSpriteFrame(sheet, direction, x, y) {
+    const row = directions[direction].row;
+    ctx.drawImage(sheet, 0, row * 32, 32, 32, Math.round(x - 8), Math.round(y - 20), 32, 32);
+  }
+
   function drawNpcs(camera) {
     visibleRuntimeNpcs().forEach((npc, index) => {
       const x = npc.x * 16 - camera.x;
       const y = npc.y * 16 - camera.y;
       if (x < -16 || y < -20 || x > canvas.width || y > canvas.height) return;
+      const sheet = npcSheet(npc.sprite);
+      if (sheet) {
+        drawSpriteFrame(sheet, npc.direction || 'down', x, y);
+        return;
+      }
       ctx.fillStyle = index % 2 ? '#425d93' : '#8b4c49';
       ctx.fillRect(Math.round(x + 4), Math.round(y + 4), 8, 10);
       ctx.fillStyle = '#e6bb8b';
@@ -1567,6 +1605,11 @@
       const x = trainer.x * 16 - camera.x;
       const y = trainer.y * 16 - camera.y;
       if (x < -16 || y < -20 || x > canvas.width || y > canvas.height) return;
+      const sheet = npcSheet(trainer.sprite || (trainersData.classes[trainer.class] || {}).sprite);
+      if (sheet) {
+        drawSpriteFrame(sheet, trainer.direction || 'down', x, y);
+        return;
+      }
       const color = defeated ? '#6b6b6b' : (trainerColors[trainer.class] || '#8b4c49');
       ctx.fillStyle = color;
       ctx.fillRect(Math.round(x + 4), Math.round(y + 4), 8, 10);

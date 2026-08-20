@@ -6,8 +6,8 @@
     encounterTable: [
       { species: 'cignalo', minLevel: 7, maxLevel: 10, weight: 35 },
       { species: 'pefna', minLevel: 7, maxLevel: 10, weight: 30 },
-      { species: 'tifotto', minLevel: 7, maxLevel: 9, weight: 20 },
-      { species: 'anicino', minLevel: 8, maxLevel: 10, weight: 15 }
+      { species: 'sorci', minLevel: 7, maxLevel: 9, weight: 20 },
+      { species: 'zanzi', minLevel: 8, maxLevel: 10, weight: 15 }
     ],
     roads: [
       // base ovest/est sulla fascia obbligata (righe 54-57), da cui parte la salita

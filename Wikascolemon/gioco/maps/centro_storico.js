@@ -47,8 +47,8 @@
       transition(70, 106, 4, 2, 'porta_cartara', 73, 10, 'Porta Cartara')
     ],
     npcs: [
-      npc(49, 58, 'Cittadino', 'Piazza del Popolo è il salotto della città.', 'orizzontale'),
-      npc(109, 88, 'Visitatrice', 'Il travertino cambia colore con la luce.', 'fermo'),
+      npc(49, 58, 'Cittadino', 'Bande de regazzi girano la notte, mo\' manco più en piazza se sta tranquilli.', 'orizzontale'),
+      npc(109, 88, 'Visitatrice', 'Quanti bar chiusi pé sto giro, era tutto \'n antra cosa.', 'fermo'),
       npc(25, 58, 'Steven', 'Il bar è mio, ma qui te curo la squadra come al centro medico.', 'fermo'),
       npc(30, 10, 'Ambulante', 'Fori\' dar teatro nun se fa\' più \'l botteghino, mo\' vennemo torroncini.', 'fermo'),
       npc(40, 40, 'Cronista di quartiere', 'Ossidio via pé le riprese? Boh, io un ciò creso mai.', 'orizzontale'),

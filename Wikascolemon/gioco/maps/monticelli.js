@@ -25,7 +25,11 @@
       transition(0, 58, 2, 4, 'porta_maggiore', 136, 55, 'Porta Maggiore'),
       transition(178, 58, 2, 4, 'marino_del_tronto', 6, 55, 'Via Salaria', { when: { flag: 'ventidio_visto' }, blockedText: 'Prima passa dal Teatro Ventidio Basso in centro.' })
     ],
-    npcs: [npc(85, 52, 'Infermiere', 'La zona dell’ospedale è sempre molto frequentata.', 'orizzontale')]
+    npcs: [
+      npc(85, 52, 'Infermiere', 'La zona dell’ospedale è sempre molto frequentata.', 'orizzontale'),
+      npc(125, 84, 'Benzinaio', 'Manco più li camion se fermeno qui, è tutto \'n calo.', 'fermo'),
+      npc(30, 90, 'Pensionato', 'Certe bande se so\' viste pure da ste parti, tié l\'occhi aperti.', 'fermo')
+    ]
   };
   const map = window.PokemonAscoliMaps.monticelli;
   map.roads.push(

@@ -88,6 +88,20 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .title-card h1 span { color: #8bd174; }
 .eyebrow { margin: 0 0 4px; color: #d9c990; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
 
+.pixel-input {
+  display: block;
+  width: 100%;
+  margin: 7px 0;
+  padding: 8px 10px;
+  border: 3px solid #17231a;
+  background: #fff8e8;
+  color: #1a251d;
+  box-shadow: inset -2px -2px 0 #aa9b7e, inset 2px 2px 0 #fff7df;
+  text-align: center;
+  font: 700 .85rem "Courier New", monospace;
+}
+.pixel-input::placeholder { color: #8a806a; }
+
 .pixel-button, .pixel-link {
   display: block;
   width: 100%;
@@ -147,6 +161,20 @@ button, a { -webkit-tap-highlight-color: transparent; }
   color: #fff4cf;
   font: 700 clamp(9px, 1.3vw + 6px, 13px)/1.2 "Segoe UI", Verdana, sans-serif;
   white-space: nowrap;
+}
+
+.intro-fade::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: #000;
+  animation: intro-fade-out 1s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes intro-fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 .location-banner, .toast {
