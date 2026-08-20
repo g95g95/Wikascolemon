@@ -16,12 +16,13 @@
       building(99, 31, 6, 6, 'Tabacchi', '#ddc453', 'attività', { door: { x: 103, y: 37 }, interior: 'market' })
     ],
     plazas: [rect(48, 39, 30, 27, 'piazza')],
-    labels: [{ x: 64, y: 46, text: 'Piazza Immacolata' }, { x: 13, y: 67, text: 'Ponte di Porta Maggiore' }],
+    labels: [{ x: 7, y: 28, text: 'Fermata corriera' }, { x: 64, y: 46, text: 'Piazza Immacolata' }, { x: 13, y: 67, text: 'Ponte di Porta Maggiore' }],
     encounterZones: [zone(30, 9, 18, 21, 0.08, 'default'), zone(99, 12, 36, 27, 0.08, 'default'), zone(102, 72, 36, 27, 0.08, 'default')],
     transitions: [
       transition(0, 54, 2, 3, 'centro_storico', 136, 55, 'Centro Storico', { when: { flag: 'starter_scelto' }, blockedText: 'Prima parla con Bobby al bar.' }),
       transition(142, 54, 2, 3, 'monticelli', 10, 58, 'Monticelli', { when: { flag: 'starter_scelto' }, blockedText: 'Prima parla con Bobby al bar.' }),
-      transition(87, 0, 3, 2, 'borgo_chiaro', 88, 112, 'Borgo Chiaro', { when: { flag: 'starter_scelto' }, blockedText: 'Prima parla con Bobby al bar.' })
+      transition(87, 0, 3, 2, 'borgo_chiaro', 88, 112, 'Borgo Chiaro', { when: { flag: 'starter_scelto' }, blockedText: 'Prima parla con Bobby al bar.' }),
+      transition(6, 29, 2, 4, 'ripatransone', 6, 55, 'Corriera per Ripatransone', { when: { flag: 'starter_scelto' }, blockedText: 'La corriera parte dopo che hai parlato con Bobby.' })
     ],
     npcs: [
       npc(22, 61, 'Viaggiatore', 'Benvenuto ad Ascoli Piceno!', 'fermo'),

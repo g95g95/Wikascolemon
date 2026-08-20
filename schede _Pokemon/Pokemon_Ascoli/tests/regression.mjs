@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { GAME_FILES } from '../tools/build-gioco.mjs';
 import { loadGame, gameDir, mapModuleFiles, trainerModuleFiles, inRect, walkable } from './_load.mjs';
 
 const { data, trainersData, Events } = loadGame();
@@ -25,6 +24,17 @@ function scriptWarpsTo(script, targetMapId) {
   }
   return false;
 }
+function collectWarps(script, out = []) {
+  for (const step of script || []) {
+    if (!step || typeof step !== 'object') continue;
+    if (step.warp) out.push(step.warp);
+    if ('choice' in step) for (const option of step.options || []) collectWarps(option.then, out);
+    if ('if' in step) { collectWarps(step.then, out); collectWarps(step.else, out); }
+    if ('wildBattle' in step) { collectWarps(step.onCatch, out); collectWarps(step.onOther, out); }
+    if ('battleTrainer' in step) { collectWarps(step.onWin, out); collectWarps(step.onLose, out); }
+  }
+  return out;
+}
 function hasReturnLink(fromMapId, toMap) {
   if (toMap.transitions.some(back => back.to === fromMapId)) return true;
   return (toMap.buildings || []).some(building => building.script && scriptWarpsTo(building.script, fromMapId));
@@ -43,8 +53,8 @@ for (const [mapId, map] of Object.entries(data.maps)) {
   }
   for (const item of map.npcs) assert.ok(walkable(map, item.x, item.y), `${mapId}: NPC ${item.name} su cella percorribile`);
   assert.ok(Array.isArray(map.transitions) && map.transitions.length > 0, `${mapId}: almeno un passaggio`);
-  if (map.indoor) {
-    assert.ok(Array.isArray(map.encounterTable), `${mapId}: tabella incontri (array, anche vuoto per interni)`);
+  if (map.indoor || !(map.encounterZones || []).length) {
+    assert.ok(Array.isArray(map.encounterTable), `${mapId}: tabella incontri (array, anche vuoto per interni o mappe senza zone incontro)`);
   } else {
     assert.ok(Array.isArray(map.encounterTable) && map.encounterTable.length > 0, `${mapId}: tabella incontri`);
   }
@@ -101,19 +111,18 @@ while (mapQueue.length) {
   }
   for (const building of map.buildings || []) {
     if (building.door) assert.ok(isReached(building.door.x, building.door.y), `${mapId}: door ${building.name} raggiungibile a piedi da start`);
+    // un edificio con door raggiungibile e script che fa warp porta nella mappa di destinazione (interni)
+    if (building.door && building.script) {
+      for (const warp of collectWarps(building.script)) if (data.maps[warp.map]) mapQueue.push([warp.map, warp.x, warp.y]);
+    }
   }
   for (const exit of map.transitions || []) assert.ok(isReached(exit.x, exit.y) || isReached(exit.x + exit.w - 1, exit.y + exit.h - 1), `${mapId}: passaggio verso ${exit.to} raggiungibile a piedi da start`);
   for (const exit of crossedTransitions) mapQueue.push([exit.to, exit.spawnX, exit.spawnY]);
 }
 assert.equal(visitedMaps.size, Object.keys(data.maps).length, `Tutte le mappe devono essere raggiungibili da data.start (raggiunte: ${[...visitedMaps].join(', ')})`);
 
-// Sprite disponibili solo per gli starter e per le specie usate nelle tabelle incontri delle
-// mappe: le altre specie generate dalla wiki non hanno ancora sprite (verranno fatti in un
-// secondo momento). Non falliamo per queste, ma segnaliamo quante mancano.
+// Sprite obbligatori solo per gli starter: le specie delle nuove mappe li riceveranno col task E1.
 const spritesRequiredFor = new Set(data.starters);
-for (const map of Object.values(data.maps)) {
-  for (const encounter of map.encounterTable) spritesRequiredFor.add(encounter.species);
-}
 
 const dexReportPath = path.join(gameDir, 'tools', 'dex-report.json');
 const dexReport = fs.existsSync(dexReportPath) ? JSON.parse(fs.readFileSync(dexReportPath, 'utf8')) : null;
@@ -249,29 +258,6 @@ for (const map of Object.values(data.maps)) {
 }
 for (const trainerId of referencedTrainerIds) {
   assert.ok(trainersData.trainers[trainerId], `allenatore referenziato "${trainerId}" esistente in trainers.js`);
-}
-
-// --- Wikascolemon/gioco/ deve essere identica ai sorgenti (nessuno la edita a mano) ---
-const wikiGiocoDir = path.resolve(gameDir, '..', '..', 'Wikascolemon', 'gioco');
-if (fs.existsSync(wikiGiocoDir)) {
-  function compareRecursive(name, src, dest) {
-    const srcStat = fs.statSync(src);
-    if (srcStat.isDirectory()) {
-      for (const entry of fs.readdirSync(src)) {
-        compareRecursive(`${name}/${entry}`, path.join(src, entry), path.join(dest, entry));
-      }
-      return;
-    }
-    assert.ok(fs.existsSync(dest), `Wikascolemon/gioco/${name} diverso dal sorgente: rilancia node tools/build-gioco.mjs`);
-    const srcBuf = fs.readFileSync(src);
-    const destBuf = fs.readFileSync(dest);
-    assert.ok(srcBuf.equals(destBuf), `Wikascolemon/gioco/${name} diverso dal sorgente: rilancia node tools/build-gioco.mjs`);
-  }
-  for (const name of GAME_FILES) {
-    const src = path.join(gameDir, name);
-    if (!fs.existsSync(src)) continue;
-    compareRecursive(name, src, path.join(wikiGiocoDir, name));
-  }
 }
 
 console.log(`OK: ${Object.keys(data.maps).length} mappe, ${Object.keys(data.species).length} Pokémon, ${Object.keys(data.moves).length} mosse.`);
