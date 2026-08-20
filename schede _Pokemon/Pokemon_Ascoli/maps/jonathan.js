@@ -6,7 +6,9 @@
     encounterTable: [],
     roads: [
       rect(0, 54, 144, 4, 'asfalto'),
-      // vialetto d'ingresso, largo una cella: passaggio obbligato dove attende Nando
+      // vialetto d'ingresso, largo una cella: passaggio obbligato dove attende Nando.
+      // Un allenatore gia' sconfitto non blocca piu' il movimento (isBlocked in game.js),
+      // quindi il vialetto resta percorribile dopo la sfida.
       rect(72, 50, 1, 4, 'travertino'),
       // parcheggio asfaltato davanti allo Jonathan
       rect(40, 58, 64, 20, 'asfalto'),

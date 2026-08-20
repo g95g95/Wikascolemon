@@ -1,7 +1,7 @@
 (function () {
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     jonathan_bro_security_1: {
-      map: 'palestra_costa', x: 14, y: 18, direction: 'up', sight: 2,
+      map: 'palestra_costa', x: 14, y: 18, direction: 'down', sight: 2,
       class: 'bro_security', name: 'Bro della Security', sprite: null,
       team: [{ species: 'cozzetta', level: 18 }],
       before: ['Alt. Prima passi da me.', 'La security dello Jonathan non si aggira.'],
@@ -10,7 +10,7 @@
       money: null, gym: null, when: null
     },
     jonathan_bro_security_2: {
-      map: 'palestra_costa', x: 14, y: 13, direction: 'up', sight: 3,
+      map: 'palestra_costa', x: 14, y: 13, direction: 'down', sight: 3,
       class: 'bro_security', name: 'Bro della Security', sprite: null,
       team: [{ species: 'lettino', level: 18 }],
       before: ['Secondo blocco. Manco a pensarci de passà.'],
@@ -19,7 +19,7 @@
       money: null, gym: null, when: null
     },
     jonathan_bro_security_3: {
-      map: 'palestra_costa', x: 14, y: 9, direction: 'up', sight: 3,
+      map: 'palestra_costa', x: 14, y: 9, direction: 'down', sight: 3,
       class: 'bro_security', name: 'Bro della Security', sprite: null,
       team: [{ species: 'bagnetto', level: 19 }, { species: 'mucillax', level: 18 }],
       before: ['Ultimo controllo prima de Riccio.', 'Se passi da me, sei degno della pista.'],

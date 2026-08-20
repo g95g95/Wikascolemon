@@ -34,7 +34,7 @@
       zone(90, 58, 50, 46, 0.06, 'default')
     ],
     transitions: [
-      transition(0, 54, 2, 4, 'porta_maggiore', 8, 31, 'Corriera per Ascoli')
+      transition(0, 54, 2, 4, 'porta_maggiore', 9, 31, 'Corriera per Ascoli')
     ],
     npcs: [
       npc(7, 52, 'Cartello', 'Fermata corriera — per Ascoli Piceno.', 'fermo'),

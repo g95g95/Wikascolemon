@@ -248,7 +248,7 @@
     if (['water', 'mare', 'muro', 'albero', 'binari'].includes(terrain)) return true;
     if ((map.buildings || []).some(item => pointInRect(x, y, item))) return true;
     if (!ignoreNpc && runtimeNpcs.some(item => item.x === x && item.y === y)) return true;
-    if (!ignoreNpc && save && activeTrainersOnMap().some(t => t.x === x && t.y === y)) return true;
+    if (!ignoreNpc && save && activeTrainersOnMap().some(t => t.x === x && t.y === y && !save.flags[Events.flagKeys.trainerFlag(t.id)])) return true;
     return false;
   }
 
@@ -705,6 +705,9 @@
       const reward = trainer.money != null ? trainer.money : Math.floor((classDef.moneyPerLevel || 10) * maxLevel);
       save.money = (save.money || 0) + reward;
       showToast(`Hai vinto ${reward} Talleri!`);
+      // beginTrainerBattle/endBattle leave mode = 'world': restore 'dialogue' so Invio/Spazio can
+      // dismiss the post-battle text (otherwise only a mouse click on "Continua" works).
+      mode = 'dialogue';
       await runner.run([{ say: trainer.after, name: trainer.name }]);
       if (trainer.gym) {
         if (!save.badges.includes(trainer.gym.badge)) {

@@ -166,4 +166,5 @@ mosse con pp, `status: null`).
 
 ## Test
 `node tests/regression.mjs` (dati e mappe) + `node tests/battle.test.mjs` + `node tests/events.test.mjs`
-+ `node tests/trainers.test.mjs`. Tutti verdi prima di ogni commit.
++ `node tests/trainers.test.mjs` + `node tests/flags.test.mjs` (copertura flag/badge/item nelle
+condizioni, vedi `Trama/flag.md`). Tutti verdi prima di ogni commit.
