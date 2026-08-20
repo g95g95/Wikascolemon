@@ -129,6 +129,25 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .shop-row button { padding: 3px 6px; border: 1px solid #3d473c; background: #efe5cd; cursor: pointer; font: inherit; }
 .shop-row .qty { min-width: 1.4em; text-align: center; }
 
+.label-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  overflow: hidden;
+  pointer-events: none;
+}
+.world-label {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  padding: 2px 5px;
+  border: 1px solid #211f19;
+  border-radius: 2px;
+  background: rgba(25, 31, 25, .82);
+  color: #fff4cf;
+  font: 700 clamp(9px, 1.3vw + 6px, 13px)/1.2 "Segoe UI", Verdana, sans-serif;
+  white-space: nowrap;
+}
+
 .location-banner, .toast {
   position: absolute;
   z-index: 8;

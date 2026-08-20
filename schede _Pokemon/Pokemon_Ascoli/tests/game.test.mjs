@@ -6,6 +6,8 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 
+import { mapModuleFiles, trainerModuleFiles } from './_load.mjs';
+
 const testDir = path.dirname(fileURLToPath(import.meta.url));
 const gameDir = path.resolve(testDir, '..');
 
@@ -119,8 +121,11 @@ function load(file) {
 
 load('species.js');
 load('moves.js');
+load('maps/_helpers.js');
+for (const file of mapModuleFiles()) load(file);
 load('data.js');
 load('trainers.js');
+for (const file of trainerModuleFiles()) load(file);
 load('battle.js');
 load('events.js');
 

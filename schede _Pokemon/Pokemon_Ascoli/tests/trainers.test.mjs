@@ -1,39 +1,11 @@
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
-import path from 'node:path';
-import vm from 'node:vm';
-import { fileURLToPath } from 'node:url';
+import { loadGame, walkable } from './_load.mjs';
 
-const testDir = path.dirname(fileURLToPath(import.meta.url));
-const gameDir = path.resolve(testDir, '..');
-const context = { window: {} };
-
-const speciesPath = path.join(gameDir, 'species.js');
-let species;
-if (fs.existsSync(speciesPath)) {
-  vm.runInContext(fs.readFileSync(speciesPath, 'utf8'), vm.createContext(context));
-  species = context.window.PokemonAscoliSpecies;
-} else {
-  vm.runInContext(fs.readFileSync(path.join(gameDir, 'data.js'), 'utf8'), vm.createContext(context));
-  species = context.window.PokemonAscoliData.species;
-}
-
-vm.runInContext(fs.readFileSync(path.join(gameDir, 'data.js'), 'utf8'), vm.createContext(context));
-const data = context.window.PokemonAscoliData;
-
-vm.runInContext(fs.readFileSync(path.join(gameDir, 'trainers.js'), 'utf8'), vm.createContext(context));
-const trainers = context.window.PokemonAscoliTrainers;
+const { data, trainersData: trainers } = loadGame();
+const species = data.species;
 
 assert.ok(trainers, 'window.PokemonAscoliTrainers deve esistere');
 assert.ok(trainers.classes && trainers.trainers && trainers.gyms, 'classes/trainers/gyms presenti');
-
-const inRect = (x, y, item) => x >= item.x && y >= item.y && x < item.x + item.w && y < item.y + item.h;
-const walkable = (map, x, y) => {
-  if (x < 0 || y < 0 || x >= map.width || y >= map.height) return false;
-  if (map.buildings.some(item => inRect(x, y, item))) return false;
-  if (map.bridges.some(item => inRect(x, y, item))) return true;
-  return !map.waters.some(item => inRect(x, y, item));
-};
 
 const validDirections = new Set(['up', 'down', 'left', 'right']);
 

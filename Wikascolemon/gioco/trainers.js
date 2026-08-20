@@ -18,60 +18,6 @@
   };
 
   const trainers = {
-    porta_maggiore_ragazzino_1: {
-      map: 'porta_maggiore', x: 22, y: 19, direction: 'down', sight: 4,
-      class: 'ragazzino', name: 'Tobia', sprite: null,
-      team: [{ species: 'pito', level: 6 }, { species: 'basilino', level: 7 }],
-      before: ['Ehi tu, fermo lì!', 'A Porta Maggiore ci si allena sul serio, sa!'],
-      after: ['Uffa, mi hai fregato.'],
-      lost: 'Torna quando hai allenato un po\' di più.',
-      money: null, gym: null, when: null
-    },
-    monticelli_campeggiatore_1: {
-      map: 'monticelli', x: 14, y: 20, direction: 'right', sight: 4,
-      class: 'campeggiatore', name: 'Gino', sprite: null,
-      team: [{ species: 'segaccio', level: 8 }, { species: 'venagrox', level: 7 }],
-      before: ['Sto campeggiando qui vicino all\'ospedale.', 'Ma un po\' di battaglia non guasta, dai!'],
-      after: ['Che sacco de botte, madò.'],
-      lost: 'Passa quando hai qualche livello in più, oh.',
-      money: null, gym: null, when: null
-    },
-    campo_parignano_contadino_1: {
-      map: 'campo_parignano', x: 22, y: 19, direction: 'up', sight: 3,
-      class: 'contadino', name: 'Marino', sprite: null,
-      team: [{ species: 'basilino', level: 6 }, { species: 'pito', level: 7 }, { species: 'banconio', level: 8 }],
-      before: ['Questi campi li lavoro da una vita.', 'Vediamo se i tuoi Pokémon reggono la fatica!'],
-      after: ['Embè, brao davvero.'],
-      lost: 'Ripassa quando hai fatto un po\' di allenamento, giovi\'.',
-      money: null, gym: null, when: null
-    },
-    borgo_chiaro_ciclista_1: {
-      map: 'borgo_chiaro', x: 28, y: 19, direction: 'left', sight: 4,
-      class: 'ciclista', name: 'Renzo', sprite: null,
-      team: [{ species: 'puledrotto', level: 8, moves: ['azione', 'braciere'] }, { species: 'segaccio', level: 9 }],
-      before: ['Sto facendo il giro dello stadio in bici.', 'Fermati un attimo, famo \'na sfida!'],
-      after: ['Mannaggia, che velocità.'],
-      lost: 'Allenati ancora e ci riproviamo.',
-      money: null, gym: null, when: null
-    },
-    borgo_solesta_gemelle_1: {
-      map: 'borgo_solesta', x: 17, y: 19, direction: 'right', sight: 3,
-      class: 'gemelle', name: 'Lia e Mia', sprite: null,
-      team: [{ species: 'pito', level: 6 }, { species: 'basilino', level: 6 }],
-      before: ['Siamo in due, lo sai!', 'Sfida doppia, che dici?'],
-      after: ['Uffa, insieme e abbiamo perso lo stesso.'],
-      lost: 'Torna a trovarci quando sei più forte, dai.',
-      money: null, gym: null, when: null
-    },
-    porta_cartara_pescatore_1: {
-      map: 'porta_cartara', x: 22, y: 10, direction: 'down', sight: 4,
-      class: 'pescatore', name: 'Nazzareno', sprite: null,
-      team: [{ species: 'tuffito', level: 7 }, { species: 'tuffito', level: 8 }],
-      before: ['Il Rio Castellano è pieno di Tuffito, sa.', 'Ne ho pescati due bboni, mo\' te fo\' vede\'!'],
-      after: ['Embè, m\'hai preso proprio.'],
-      lost: 'Torna a trovarmi al fiume quando hai allenato di più.',
-      money: null, gym: null, when: null
-    },
     castel_di_lama_hills: {
       map: 'castel_di_lama', x: 0, y: 0, direction: 'down', sight: 0,
       class: 'capopalestra', name: 'Daniel Hills', sprite: null,

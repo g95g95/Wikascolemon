@@ -19,19 +19,19 @@ Ogni agente possiede file disgiunti, non committa, lascia i test verdi; dopo ogn
 scettica in Chromium e commit.
 
 ### F3. Online subito a `/gioco` (sequenziale, 1 agente)
-- [ ] F3.1 τ=facile/Sonnet — `tools/build-gioco.mjs`: copia in `Wikascolemon/gioco/` i file di gioco
+- [x] F3.1 τ=facile/Sonnet — `tools/build-gioco.mjs`: copia in `Wikascolemon/gioco/` i file di gioco
       (`index.html`, `game.js`, `data.js`, `species.js`, `moves.js`, `trainers.js`, `battle.js`, `events.js`,
       `styles.css`, `configuratore.*`, `assets/`, `README.md`), cancellando prima la destinazione;
       verifica che i link wiki `../<id>.html` risolvano da lì (→ `Wikascolemon/<id>.html`).
       `tests/regression.mjs`: se `Wikascolemon/gioco/` esiste, i file devono essere identici ai sorgenti
       (così nessuno edita la build a mano). → verifica: `node tools/build-gioco.mjs && node tests/regression.mjs`.
-- [ ] F3.2 τ=facile/Sonnet — `Wikascolemon/index.html`: riquadro «Gioca» con due link (`gioco/` = in
+- [x] F3.2 τ=facile/Sonnet — `Wikascolemon/index.html`: riquadro «Gioca» con due link (`gioco/` = in
       sviluppo, `demo/` = demo originale) nello stile della pagina; `README.md` della wiki idem.
-- [ ] F3.3 Orchestratore — commit, push, controllo che https://g95g95.github.io/Wikascolemon/gioco/ parta
+- [x] F3.3 Orchestratore — commit, push, controllo che https://g95g95.github.io/Wikascolemon/gioco/ parta
       (title screen, nuova partita, Bobby).
 
 ### D0. Preparazione per la flottiglia (sequenziale, prima di D1-D2)
-- [ ] D0.1 τ=medio/Opus — spezzare `data.js`: ogni mappa in `maps/<id>.js` che fa
+- [x] D0.1 τ=medio/Opus — spezzare `data.js`: ogni mappa in `maps/<id>.js` che fa
       `window.PokemonAscoliMaps = window.PokemonAscoliMaps || {}; window.PokemonAscoliMaps.<id> = {...}`
       usando helper condivisi in `maps/_helpers.js` (`building, rect, zone, transition, npc, city, wide, tall`);
       stesso split per gli allenatori: `trainers/<mapId>.js` che estende `window.PokemonAscoliTrainers.trainers`
@@ -40,7 +40,7 @@ scettica in Chromium e commit.
       caricano `maps/_helpers.js` + un `<script>` per mappa + un `<script>` per file allenatori;
       `tests/regression.mjs` e `tests/trainers.test.mjs` caricano i file in vm e tolgono il vincolo «7 mappe» (→ «≥ 7»).
       `tools/build-gioco.mjs` copia anche `maps/` e `trainers/`. → verifica: tutti i test verdi, gioco identico a prima.
-- [ ] D0.2 τ=facile/Sonnet — `drawTile` in `game.js`: nuovi tile `sabbia`, `mare` (blocca, come water),
+- [x] D0.2 τ=facile/Sonnet — `drawTile` in `game.js`: nuovi tile `sabbia`, `mare` (blocca, come water),
       `pendio` (percorribile, righe oblique), `asfalto`, `binari` (blocca), `ghiaia`, `pavimento` (interni),
       `albero` (già blocca, ora disegnato); stessa palette Gen 3; il configuratore li elenca nel select
       `tileType` e in `colorForTile`. → verifica: `node --check`, screenshot in Chromium di una mappa di prova.
@@ -49,6 +49,11 @@ scettica in Chromium e commit.
       in `map.levelRange` (nuovo campo `[min,max]`); ogni allenatore di quella mappa dentro i limiti e su
       cella percorribile; ogni script/`when` valido (`validateScript`); percorso a piedi BFS dalla stazione
       a ogni mappa raggiungibile (ignorando `when`). Il test gira già su Ascoli.
+- [x] D0.5 τ=medio/Opus (richiesta del 20/08: «quartieri troppo piccoli») — scala ×3 delle 7 mappe
+      (`city` 144×108, `wide` 180×120, `tall` 144×120) con `tools/scale-maps.mjs`, cornice e boschetti di
+      `albero`, `levelRange`, BFS di raggiungibilità in `regression.mjs`.
+- [x] D0.6 τ=medio/Opus (richiesta del 20/08: «scritte sgranate») — etichette dei luoghi in un livello HTML
+      `#labelLayer` sopra il canvas invece di `fillText` sul canvas 240×160.
 - [ ] D0.4 Orchestratore — `Trama/bibbia.md` §3 → tabella di consegna per agente: id mappa, dimensioni,
       mappe confinanti con coordinate dei passaggi (decise QUI, così due agenti vicini combaciano),
       landmark, specie e livelli, allenatori (classe, squadra, posizione indicativa), script richiesti.

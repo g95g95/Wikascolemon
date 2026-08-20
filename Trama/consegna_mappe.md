@@ -36,6 +36,11 @@ mappa (strade, edifici, zone incontro, NPC, allenatori) è libero, entro i vinco
 - Campo nuovo obbligatorio: `levelRange: [min, max]` (fascia della riga qui sotto). I livelli
   della tabella incontri devono starci dentro; gli allenatori normali hanno livello ≤ max+1
   (`tests/maps.test.mjs`).
+- **Scala (richiesta del 20/08)**: le distanze sono triplicate rispetto alla demo. Le costanti sono
+  `city = 144×108`, `wide = 180×120`, `tall = 144×120`; i test accettano 120-180 × 90-120 per le
+  mappe esterne. Strade larghe 3-4 tile, edifici 6-16 tile di lato, il resto è spazio da riempire con
+  alberi, campi, filari, acqua: una mappa non deve sembrare vuota (almeno 25 elementi fra
+  roads/waters/buildings/plazas, più zone incontro che coprono il verde).
 - Mappe interne: `indoor: true`, `baseTile: 'pavimento'`, dimensioni libere (≥ 12×10, ≤ 60×40),
   `encounterTable: []`, `encounterZones: []`, bordo di `muro` disegnato con `roads`.
   L'uscita è una `transition` sull'ultima riga verso la cella-porta della città. L'ingresso dalla
@@ -65,27 +70,28 @@ mappa (strade, edifici, zone incontro, NPC, allenatori) è libero, entro i vinco
 ## Grafo e passaggi (coordinate FISSE)
 
 Tutte le mappe nuove della Salaria sono collegate in catena orizzontale: uscita **ovest**
-`transition(0, 18, 2, 4, …)` e uscita **est** `transition(58, 18, 2, 4, …)` (o `46` se larghe 48).
-La riga 18-21 deve essere strada percorribile per tutta la larghezza (almeno nelle celle di
-ingresso/uscita e nello spawn). Spawn sempre 2 celle dentro il bordo, sulla stessa riga 19.
+`transition(0, 54, 2, 4, …)` e uscita **est** `transition(W-2, 54, 2, 4, …)` con W = 180 (wide) o
+144 (city/tall). Le righe 54-57 devono essere strada percorribile almeno nelle celle di
+ingresso/uscita e nello spawn. Spawn sempre 6 celle dentro il bordo, riga 55: x=6 da ovest,
+x=W-7 da est (173 per W=180, 137 per W=144).
 
 | Mappa (id) | Dim. | Passaggi (rect → destinazione, spawn) | Condizione |
 |---|---|---|---|
-| `porta_maggiore` (esiste, 48×36) | — | **+** `transition(2, 9, 2, 4, 'ripatransone', 3, 18, 'Corriera per Ripatransone')` (fermata a sinistra della stazione) | `when: { flag: 'starter_scelto' }`, `blockedText: 'La corriera parte dopo che hai parlato con Bobby.'` |
-| `ripatransone` | 48×36 | `transition(0, 17, 2, 3, 'porta_maggiore', 4, 13, 'Corriera per Ascoli')` | — |
-| `monticelli` (esiste, 60×40) | — | **+** `transition(58, 18, 2, 4, 'marino_del_tronto', 2, 19, 'Via Salaria')` | `when: { flag: 'ventidio_visto' }`, `blockedText: 'Prima passa dal Teatro Ventidio Basso in centro.'` |
-| `marino_del_tronto` | 60×40 | O: `transition(0, 18, 2, 4, 'monticelli', 56, 19, 'Monticelli')` · E: `transition(58, 18, 2, 4, 'oasi', 2, 19, 'Oasi')` | — |
-| `oasi` | 48×40 | O: `transition(0, 18, 2, 4, 'marino_del_tronto', 56, 19, 'Marino del Tronto')` · E: `transition(46, 18, 2, 4, 'maltignano', 2, 19, 'Maltignano')` | — |
-| `maltignano` | 48×40 | O: `transition(0, 18, 2, 4, 'oasi', 44, 19, 'Oasi')` · E: `transition(46, 18, 2, 4, 'castel_di_lama', 2, 19, 'Castel di Lama')` | — |
-| `castel_di_lama` | 60×40 | O: `transition(0, 18, 2, 4, 'maltignano', 44, 19, 'Maltignano')` · E: `transition(58, 18, 2, 4, 'spinetoli_centobuchi', 2, 19, 'Spinetoli')` | E: `when: { badge: 1 }`, `blockedText: 'Senza la Medaglia Spirito non si passa.'` |
-| `palestra_castel_di_lama` | 20×16, indoor | uscita: `transition(9, 15, 2, 1, 'castel_di_lama', <doorX>, <doorY>, 'Uscita')` → cella-porta dell'edificio Free Spirit (scelta da D2-e) | — |
-| `spinetoli_centobuchi` | 60×40 | O: `transition(0, 18, 2, 4, 'castel_di_lama', 56, 19, 'Castel di Lama')` · E: `transition(58, 18, 2, 4, 'costa', 2, 19, 'Costa')` | — |
-| `costa` | 60×40 | O: `transition(0, 18, 2, 4, 'spinetoli_centobuchi', 56, 19, 'Spinetoli')` · E: `transition(58, 18, 2, 4, 'jonathan', 2, 19, 'Jonathan')` | — |
-| `jonathan` | 48×36 | O: `transition(0, 18, 2, 4, 'costa', 56, 19, 'Spiaggia')` | — |
-| `palestra_costa` | 24×18, indoor | uscita: `transition(11, 17, 2, 1, 'jonathan', <doorX>, <doorY>, 'Uscita')` → cella-porta (scelta da D2-h) | — |
+| `porta_maggiore` (esiste, 144×108) | — | **+** `transition(<fermataX>, <fermataY>, 2, 4, 'ripatransone', 6, 55, 'Corriera per Ripatransone')`: fermata a sinistra della stazione, coordinate scelte da D1-a su cella libera; lo spawn di ritorno da Ripatransone è la cella davanti alla fermata, scelta da D1-a e comunicata qui sotto (D2-a la legge da `maps/porta_maggiore.js` dopo che D1-a ha finito; in attesa usa `start` di `data.js`) | `when: { flag: 'starter_scelto' }`, `blockedText: 'La corriera parte dopo che hai parlato con Bobby.'` |
+| `ripatransone` | 144×108 | `transition(0, 54, 2, 4, 'porta_maggiore', <spawnX>, <spawnY>, 'Corriera per Ascoli')` → spawn = `data.start` (stazione) finché D1-a non fissa la fermata; l'orchestratore allinea alla fine | — |
+| `monticelli` (esiste, 180×120) | — | **+** `transition(178, 54, 2, 4, 'marino_del_tronto', 6, 55, 'Via Salaria')` (D2-b prolunga la strada principale fino al bordo est righe 54-57) | `when: { flag: 'ventidio_visto' }`, `blockedText: 'Prima passa dal Teatro Ventidio Basso in centro.'` |
+| `marino_del_tronto` | 180×120 | O: `transition(0, 54, 2, 4, 'monticelli', 173, 55, 'Monticelli')` · E: `transition(178, 54, 2, 4, 'oasi', 6, 55, 'Oasi')` | — |
+| `oasi` | 144×120 | O: `transition(0, 54, 2, 4, 'marino_del_tronto', 173, 55, 'Marino del Tronto')` · E: `transition(142, 54, 2, 4, 'maltignano', 6, 55, 'Maltignano')` | — |
+| `maltignano` | 144×120 | O: `transition(0, 54, 2, 4, 'oasi', 137, 55, 'Oasi')` · E: `transition(142, 54, 2, 4, 'castel_di_lama', 6, 55, 'Castel di Lama')` | — |
+| `castel_di_lama` | 180×120 | O: `transition(0, 54, 2, 4, 'maltignano', 137, 55, 'Maltignano')` · E: `transition(178, 54, 2, 4, 'spinetoli_centobuchi', 6, 55, 'Spinetoli')` | E: `when: { badge: 1 }`, `blockedText: 'Senza la Medaglia Spirito non si passa.'` |
+| `palestra_castel_di_lama` | 24×20, indoor | uscita: `transition(11, 19, 2, 1, 'castel_di_lama', <doorX>, <doorY>, 'Uscita')` → cella-porta dell'edificio Free Spirit (scelta da D2-e) | — |
+| `spinetoli_centobuchi` | 180×120 | O: `transition(0, 54, 2, 4, 'castel_di_lama', 173, 55, 'Castel di Lama')` · E: `transition(178, 54, 2, 4, 'costa', 6, 55, 'Costa')` | — |
+| `costa` | 180×120 | O: `transition(0, 54, 2, 4, 'spinetoli_centobuchi', 173, 55, 'Spinetoli')` · E: `transition(178, 54, 2, 4, 'jonathan', 6, 55, 'Jonathan')` | — |
+| `jonathan` | 144×108 | O: `transition(0, 54, 2, 4, 'costa', 173, 55, 'Spiaggia')` | — |
+| `palestra_costa` | 30×22, indoor | uscita: `transition(14, 21, 2, 1, 'jonathan', <doorX>, <doorY>, 'Uscita')` → cella-porta (scelta da D2-h) | — |
 
 Verifica incrociata: lo spawn in arrivo non deve cadere dentro un passaggio della mappa di arrivo
-(test esistente), quindi spawn a x=2 o x=56 (x=44 per le mappe 48) e mai a x=0-1 / 58-59.
+(test esistente), quindi spawn a x=6 o x=W-7 e mai nelle due colonne di bordo.
 
 ## Contenuto per agente
 

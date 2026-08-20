@@ -11,7 +11,7 @@
   Battle.configure({ species: data.species, moves: data.moves });
 
   const ui = Object.fromEntries([
-    'locationName', 'locationBanner', 'toast', 'titleScreen', 'newGameButton', 'continueButton',
+    'locationName', 'locationBanner', 'toast', 'labelLayer', 'titleScreen', 'newGameButton', 'continueButton',
     'dialogueScreen', 'dialogueName', 'dialogueText', 'dialogueChoices', 'dialogueClose',
     'learnMoveScreen', 'learnMoveText', 'learnMoveChoices',
     'shopScreen', 'shopList', 'shopMoney', 'shopClose',
@@ -221,7 +221,8 @@
     const override = map.tileOverrides && map.tileOverrides[keyFor(x, y)];
     if (override) return override;
     if ((map.bridges || []).some(item => pointInRect(x, y, item))) return 'bridge';
-    if ((map.waters || []).some(item => pointInRect(x, y, item))) return 'water';
+    const water = (map.waters || []).find(item => pointInRect(x, y, item));
+    if (water) return water.type || 'water';
     if ((map.plazas || []).some(item => pointInRect(x, y, item))) return 'piazza';
     const road = (map.roads || []).find(item => pointInRect(x, y, item));
     if (road) return road.type || 'road';
@@ -240,7 +241,7 @@
     if (override === false) return false;
     if (override === true) return true;
     const terrain = terrainAt(map, x, y);
-    if (['water', 'muro', 'albero'].includes(terrain)) return true;
+    if (['water', 'mare', 'muro', 'albero', 'binari'].includes(terrain)) return true;
     if ((map.buildings || []).some(item => pointInRect(x, y, item))) return true;
     if (!ignoreNpc && runtimeNpcs.some(item => item.x === x && item.y === y)) return true;
     if (!ignoreNpc && save && activeTrainersOnMap().some(t => t.x === x && t.y === y)) return true;
@@ -1360,6 +1361,81 @@
       ctx.fillRect(screenX, screenY, size, size);
       return;
     }
+    if (type === 'sabbia') {
+      ctx.fillStyle = '#e0cd9c';
+      ctx.fillRect(screenX, screenY, size, size);
+      ctx.fillStyle = '#c9b581';
+      ctx.fillRect(screenX + ((worldX * 5 + worldY * 3) % 12), screenY + 4, 1, 1);
+      ctx.fillRect(screenX + ((worldX * 7 + worldY) % 12), screenY + 9, 1, 1);
+      ctx.fillRect(screenX + ((worldX + worldY * 5) % 12), screenY + 12, 1, 1);
+      return;
+    }
+    if (type === 'mare') {
+      ctx.fillStyle = '#2e6e8e';
+      ctx.fillRect(screenX, screenY, size, size);
+      ctx.fillStyle = '#e8f4f7';
+      ctx.fillRect(screenX + ((worldX + worldY) % 3) * 3, screenY + 4, 7, 1);
+      ctx.fillRect(screenX + 5, screenY + 11, 8, 1);
+      return;
+    }
+    if (type === 'pendio') {
+      ctx.fillStyle = '#78a25e';
+      ctx.fillRect(screenX, screenY, size, size);
+      ctx.fillStyle = '#5b7d47';
+      const offset = (worldX * 3 + worldY * 7) % 4;
+      ctx.fillRect(screenX + offset, screenY + 2, 6, 1);
+      ctx.fillRect(screenX + offset + 2, screenY + 7, 6, 1);
+      ctx.fillRect(screenX + offset + 4, screenY + 12, 6, 1);
+      return;
+    }
+    if (type === 'asfalto') {
+      ctx.fillStyle = '#4a4a48';
+      ctx.fillRect(screenX, screenY, size, size);
+      if ((worldX + worldY) % 2 === 0) {
+        ctx.fillStyle = '#8a8a86';
+        ctx.fillRect(screenX + 6, screenY + 7, 4, 1);
+      }
+      return;
+    }
+    if (type === 'binari') {
+      ctx.fillStyle = '#8a8378';
+      ctx.fillRect(screenX, screenY, size, size);
+      ctx.fillStyle = '#4a463f';
+      ctx.fillRect(screenX, screenY + 4, size, 1);
+      ctx.fillRect(screenX, screenY + 11, size, 1);
+      ctx.fillStyle = '#6e5c42';
+      ctx.fillRect(screenX + 2, screenY + 5, 2, 6);
+      ctx.fillRect(screenX + 11, screenY + 5, 2, 6);
+      return;
+    }
+    if (type === 'ghiaia') {
+      ctx.fillStyle = '#a89e88';
+      ctx.fillRect(screenX, screenY, size, size);
+      ctx.fillStyle = '#8d8371';
+      ctx.fillRect(screenX + ((worldX * 3 + worldY) % 12), screenY + 3, 2, 1);
+      ctx.fillRect(screenX + ((worldX + worldY * 5) % 12), screenY + 8, 2, 1);
+      ctx.fillRect(screenX + ((worldX * 7 + worldY * 2) % 12), screenY + 13, 2, 1);
+      return;
+    }
+    if (type === 'pavimento') {
+      ctx.fillStyle = '#d8cfb8';
+      ctx.fillRect(screenX, screenY, size, size);
+      ctx.fillStyle = '#b8ac8f';
+      ctx.fillRect(screenX, screenY + 7, size, 1);
+      ctx.fillRect(screenX + 7, screenY, 1, size);
+      return;
+    }
+    if (type === 'albero') {
+      ctx.fillStyle = '#6da25c';
+      ctx.fillRect(screenX, screenY, size, size);
+      ctx.fillStyle = '#3d2f27';
+      ctx.fillRect(screenX + 6, screenY + 11, 4, 5);
+      ctx.fillStyle = '#2b5c33';
+      ctx.fillRect(screenX + 1, screenY, 14, 12);
+      ctx.fillStyle = '#357a3f';
+      ctx.fillRect(screenX + 3, screenY + 2, 10, 8);
+      return;
+    }
     ctx.fillStyle = '#6da25c';
     ctx.fillRect(screenX, screenY, size, size);
     ctx.fillStyle = '#548846';
@@ -1406,17 +1482,33 @@
     });
   }
 
+  const worldLabelPool = new Map();
+  const worldLabelUsed = new Set();
+
   function drawWorldLabel(text, worldX, worldY, camera) {
     const x = worldX * 16 - camera.x;
     const y = worldY * 16 - camera.y;
     if (x < -120 || x > canvas.width + 120 || y < -12 || y > canvas.height + 12) return;
-    ctx.font = '6px monospace';
-    ctx.textAlign = 'center';
-    const width = ctx.measureText(text).width + 6;
-    ctx.fillStyle = 'rgba(25,31,25,.82)';
-    ctx.fillRect(Math.round(x - width / 2), Math.round(y - 7), Math.ceil(width), 9);
-    ctx.fillStyle = '#fff4cf';
-    ctx.fillText(text, Math.round(x), Math.round(y));
+    const key = text + '@' + worldX + ',' + worldY;
+    let el = worldLabelPool.get(key);
+    if (!el) {
+      el = document.createElement('span');
+      el.className = 'world-label';
+      el.textContent = text;
+      ui.labelLayer.appendChild(el);
+      worldLabelPool.set(key, el);
+    }
+    el.style.left = (x / canvas.width * 100) + '%';
+    el.style.top = (y / canvas.height * 100) + '%';
+    el.hidden = false;
+    worldLabelUsed.add(key);
+  }
+
+  function flushWorldLabels() {
+    worldLabelPool.forEach((el, key) => {
+      if (!worldLabelUsed.has(key)) el.hidden = true;
+    });
+    worldLabelUsed.clear();
   }
 
   function drawNpcs(camera) {
@@ -1493,6 +1585,7 @@
     drawNpcs(camera);
     drawTrainers(camera);
     drawPlayer(camera);
+    flushWorldLabels();
   }
 
   function playSound(kind) {

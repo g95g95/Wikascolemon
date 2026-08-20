@@ -192,7 +192,9 @@
   function colorForTile(type) {
     return {
       erba: '#6da25c', road: '#a89572', travertino: '#b8ad91', piazza: '#cdbd98',
-      water: '#4389aa', bridge: '#9d754d', muro: '#5d5a50'
+      water: '#4389aa', bridge: '#9d754d', muro: '#5d5a50',
+      sabbia: '#e0cd9c', mare: '#2e6e8e', pendio: '#78a25e', asfalto: '#4a4a48',
+      binari: '#8a8378', ghiaia: '#a89e88', pavimento: '#d8cfb8', albero: '#2b5c33'
     }[type] || '#6da25c';
   }
 

@@ -2,10 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
-import { fileURLToPath } from 'node:url';
-
-const testDir = path.dirname(fileURLToPath(import.meta.url));
-const gameDir = path.resolve(testDir, '..');
+import { gameDir, mapModuleFiles, trainerModuleFiles } from './_load.mjs';
 
 // --- DOM finto minimo, come tests/regression.mjs fa per i controlli statici, ma qui serve
 // eseguire configuratore.js dentro un vm con document/canvas/localStorage fittizi: il modulo
@@ -86,7 +83,11 @@ context.document = makeDocument();
 context.window.document = context.document;
 vm.createContext(context);
 
-for (const file of ['species.js', 'moves.js', 'data.js', 'trainers.js']) {
+const configuratoreFiles = [
+  'species.js', 'moves.js', 'maps/_helpers.js', ...mapModuleFiles(),
+  'data.js', 'trainers.js', ...trainerModuleFiles()
+];
+for (const file of configuratoreFiles) {
   vm.runInContext(fs.readFileSync(path.join(gameDir, file), 'utf8'), context);
 }
 context.module = { exports: {} };

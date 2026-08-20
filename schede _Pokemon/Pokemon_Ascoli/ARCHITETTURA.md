@@ -7,7 +7,10 @@ espone un oggetto su `window` **e**, se `module` esiste, lo esporta per i test N
 DOM, niente `Math.random()` diretto (RNG iniettabile, default `Math.random`).
 
 Ordine degli script in `index.html`:
-`species.js` → `moves.js` → `data.js` → `trainers.js` → `battle.js` → `events.js` → `game.js`.
+`species.js` → `moves.js` → `maps/_helpers.js` → `maps/<id>.js` (uno per mappa) → `data.js` →
+`trainers.js` → `trainers/<mapId>.js` (uno per mappa con allenatori non-capopalestra) → `battle.js`
+→ `events.js` → `game.js`. `configuratore.html` usa lo stesso ordine fino a `trainers/<mapId>.js`,
+poi `configuratore.js` al posto di `battle.js`/`events.js`/`game.js`.
 
 ## Identificatori
 - id specie = slug ASCII minuscolo del nome senza apostrofi/accenti: `pefna`, `caita`, `peto`,
@@ -46,11 +49,24 @@ Gli effetti vengono da `tools/moves-catalog.json` (curato a mano: id mossa → e
 le mosse che la wiki cita ma il catalogo non conosce diventano attacchi semplici senza effetto e il
 generatore le elenca a fine esecuzione.
 
-## `data.js` (mappe, tile, start, strumenti)
-Non contiene più `species`/`moves`: li prende da `window.PokemonAscoliSpecies/Moves` e li riespone
-come `data.species` / `data.moves` per compatibilità.
+## `maps/` (una mappa per file, per lavorare in parallelo su mappe diverse)
+`maps/_helpers.js` espone `window.PokemonAscoliMapHelpers = { building, rect, zone, transition,
+npc, city, wide, tall }` (le stesse funzioni/costanti che prima stavano in cima a `data.js`).
+Ogni `maps/<id>.js` è una IIFE che, dopo aver caricato `_helpers.js`, fa
+`window.PokemonAscoliMaps.<id> = { ...città/dimensioni, name, baseTile, encounterTable, roads,
+waters, bridges, buildings, plazas, labels, encounterZones, transitions, npcs }` scrivendo su
+`window.PokemonAscoliMaps` (creato se assente). `data.js` prende l'intero oggetto con
+`maps: window.PokemonAscoliMaps` (nessuna copia). **File vuoti in `maps/` sono stub predisposti
+per agenti futuri**: vanno ignorati sia dal caricamento (`<script src>` in HTML) sia dai test
+(`tests/regression.mjs`/`tests/_load.mjs` saltano i file da 0 byte).
+
+## `data.js` (tile, start, strumenti; le mappe vengono da `maps/`)
+Non contiene più `species`/`moves`/mappe: prende `species`/`moves` da
+`window.PokemonAscoliSpecies/Moves` e le mappe da `window.PokemonAscoliMaps` (popolato da
+`maps/*.js`, caricati prima), e li riespone come `data.species` / `data.moves` / `data.maps` per
+compatibilità.
 Espone `window.PokemonAscoliData = { tileSize, start, respawn, starters, initialItems, items, maps }`.
-- `items`: catalogo `{ ball: { name: 'Ball', price: 200, battle: true }, potion: {...}, antidote, repel, acquasanta }`.
+- `items`: catalogo `{ ball: { name: 'Ball', price: 200, battle: true }, potion: {...}, antidote, repel, acquasanta, mt_velenospina, mt_idrogetto }` (le ultime due sono i premi delle palestre di Castel di Lama e Costa).
 - Ogni mappa, oltre ai campi attuali, può avere:
   - `npcs[i].when` (condizione, vedi events) e `npcs[i].script` (script, vedi events) in
     alternativa a `dialogue`; `npcs[i].sprite` (nome foglio in `assets/npc/`, opzionale).
@@ -61,7 +77,13 @@ Espone `window.PokemonAscoliData = { tileSize, start, respawn, starters, initial
     precedenza). Interagire rivolti verso la porta lancia: bar → cura squadra, market → negozio,
     gym → script della palestra.
 
-## `trainers.js` (dati allenatori + palestre; il configuratore li sovrascrive via localStorage)
+## `trainers.js` + `trainers/` (dati allenatori + palestre; il configuratore li sovrascrive via localStorage)
+`trainers.js` tiene `classes`, `gyms` e in `trainers` solo i capipalestra (le loro mappe,
+`castel_di_lama`/`costa`, non esistono ancora in `maps/`). Gli allenatori "normali" di ogni mappa
+già presente stanno in `trainers/<mapId>.js`, una IIFE per file che fa
+`Object.assign(window.PokemonAscoliTrainers.trainers, { <id>: {...} })` (caricata dopo
+`trainers.js`). Stessa regola di `maps/`: **file vuoti in `trainers/` sono stub futuri**, ignorati
+da caricamento e test.
 ```js
 window.PokemonAscoliTrainers = {
   classes: { ragazzino: { name: 'Ragazzino', moneyPerLevel: 16, sprite: 'ragazzino' }, bro_security: {...}, capopalestra: {...} },
