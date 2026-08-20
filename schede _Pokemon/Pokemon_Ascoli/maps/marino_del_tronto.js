@@ -6,8 +6,8 @@
     encounterTable: [
       { species: 'tifotto', minLevel: 4, maxLevel: 7, weight: 35 },
       { species: 'totera', minLevel: 4, maxLevel: 7, weight: 30 },
-      { species: 'tamburino', minLevel: 4, maxLevel: 6, weight: 20 },
-      { species: 'anicino', minLevel: 5, maxLevel: 7, weight: 15 }
+      { species: 'ciuci', minLevel: 4, maxLevel: 6, weight: 20 },
+      { species: 'sorci', minLevel: 5, maxLevel: 7, weight: 15 }
     ],
     roads: [
       // Via Salaria: dritta ai bordi (colonne dei passaggi/spawn), leggera curva nel mezzo

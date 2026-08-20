@@ -5,7 +5,7 @@
     ...wide, name: 'Castel di Lama', baseTile: 'erba', levelRange: [9, 12],
     encounterTable: [
       { species: 'totera', minLevel: 9, maxLevel: 12, weight: 45 },
-      { species: 'anicino', minLevel: 9, maxLevel: 12, weight: 35 },
+      { species: 'zanzi', minLevel: 9, maxLevel: 12, weight: 35 },
       { species: 'caita', minLevel: 11, maxLevel: 12, weight: 10 },
       { species: 'tifotto', minLevel: 9, maxLevel: 11, weight: 10 }
     ],

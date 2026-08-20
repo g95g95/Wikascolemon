@@ -4,7 +4,8 @@
   window.PokemonAscoliMaps.porta_cartara = {
     ...wide, name: 'Porta Cartara', baseTile: 'erba', levelRange: [5, 7], encounterTable: [
       { species: 'tuffito', minLevel: 5, maxLevel: 6, weight: 50 },
-      { species: 'soldatino', minLevel: 5, maxLevel: 7, weight: 35 },
+      { species: 'soldatino', minLevel: 5, maxLevel: 7, weight: 20 },
+      { species: 'cavedi', minLevel: 5, maxLevel: 7, weight: 15 },
       { species: 'tamburino', minLevel: 6, maxLevel: 7, weight: 15 }
     ],
     roads: [rect(70, 0, 4, 120), rect(0, 33, 180, 3), rect(0, 84, 180, 3)],

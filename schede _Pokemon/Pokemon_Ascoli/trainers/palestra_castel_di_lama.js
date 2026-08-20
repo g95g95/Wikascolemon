@@ -3,7 +3,7 @@
     palestra_castel_di_lama_allievo_1: {
       map: 'palestra_castel_di_lama', x: 11, y: 13, direction: 'down', sight: 3,
       class: 'ragazzino', name: 'Cencio', sprite: null,
-      team: [{ species: 'anicino', level: 10 }, { species: 'mucillax', level: 11 }],
+      team: [{ species: 'zanzi', level: 10 }, { species: 'mucillax', level: 11 }],
       before: ['Ehi, qui non si passa senza una sfida!', 'Vediamo se meriti di arrivare da Hills.'],
       after: ['Vabbè, daje, passa pure.'],
       lost: 'Passa pure, dai, m\'hai già battuto.',
@@ -22,7 +22,7 @@
       map: 'palestra_castel_di_lama', x: 11, y: 3, direction: 'down', sight: 0,
       class: 'capopalestra', name: 'Daniel Hills', sprite: null,
       team: [
-        { species: 'mucillax', level: 11 },
+        { species: 'zanzi', level: 11 },
         { species: 'mucillax', level: 12 },
         { species: 'pozza', level: 14 }
       ],
