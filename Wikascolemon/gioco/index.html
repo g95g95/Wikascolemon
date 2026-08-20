@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pokémon Ascoli</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div>
+        <strong>Pokémon Ascoli</strong>
+        <span id="locationName">Porta Maggiore</span>
+      </div>
+      <button id="menuButton" class="pixel-button compact" type="button">Menu</button>
+    </header>
+
+    <section id="viewport" class="viewport" aria-label="Mappa di gioco">
+      <canvas id="gameCanvas" width="240" height="160"></canvas>
+      <div id="locationBanner" class="location-banner" hidden></div>
+      <div id="toast" class="toast" hidden></div>
+
+      <section id="titleScreen" class="overlay title-screen">
+        <div class="title-card">
+          <p class="eyebrow">Demo esplorativa</p>
+          <h1>Pokémon<br><span>Ascoli</span></h1>
+          <button id="newGameButton" class="pixel-button primary" type="button">Nuova partita</button>
+          <button id="continueButton" class="pixel-button" type="button">Continua</button>
+          <a class="pixel-link" href="configuratore.html">Apri configuratore</a>
+        </div>
+      </section>
+
+      <section id="dialogueScreen" class="overlay dialogue-overlay" hidden>
+        <div class="dialog-panel dialogue-panel">
+          <strong id="dialogueName"></strong>
+          <p id="dialogueText"></p>
+          <div id="dialogueChoices" class="dialogue-choices" hidden></div>
+          <button id="dialogueClose" class="pixel-button compact" type="button">Continua</button>
+        </div>
+      </section>
+
+      <section id="learnMoveScreen" class="overlay panel-overlay" hidden>
+        <div class="dialog-panel learn-move-panel">
+          <p id="learnMoveText"></p>
+          <div id="learnMoveChoices" class="learn-move-choices"></div>
+        </div>
+      </section>
+
+      <section id="shopScreen" class="overlay panel-overlay" hidden>
+        <div class="dialog-panel shop-panel">
+          <h2>Tabacchi</h2>
+          <div id="shopList" class="shop-list"></div>
+          <p>Saldo: <strong id="shopMoney"></strong></p>
+          <button id="shopClose" class="pixel-button compact" type="button">Esci</button>
+        </div>
+      </section>
+
+      <section id="battleScreen" class="overlay battle-screen" hidden>
+        <div class="battle-stage">
+          <div class="battle-card enemy-card">
+            <div><strong id="enemyName"></strong> <span id="enemyLevel"></span> <span id="enemyStatus" class="status-badge"></span></div>
+            <div class="hp-track"><i id="enemyHp"></i></div>
+          </div>
+          <img id="enemySprite" class="battle-sprite enemy-sprite" alt="">
+          <div id="enemyExclaim" class="exclaim" hidden>!</div>
+          <img id="allySprite" class="battle-sprite ally-sprite" alt="">
+          <div class="battle-card ally-card">
+            <div><strong id="allyName"></strong> <span id="allyLevel"></span> <span id="allyStatus" class="status-badge"></span></div>
+            <div class="hp-track"><i id="allyHp"></i></div>
+            <small id="allyHpText"></small>
+          </div>
+          <div id="battleMessage" class="battle-message"></div>
+          <div id="battleActions" class="battle-actions"></div>
+        </div>
+      </section>
+
+      <section id="menuScreen" class="overlay menu-screen" hidden>
+        <div class="menu-window">
+          <nav id="menuTabs" class="menu-tabs" aria-label="Menu di gioco">
+            <button data-tab="team" type="button">Squadra</button>
+            <button data-tab="bag" type="button">Borsa</button>
+            <button data-tab="dex" type="button">Pokédex</button>
+            <button data-tab="trainer" type="button">Allenatore</button>
+            <button data-tab="deposit" type="button">Deposito</button>
+            <button data-tab="save" type="button">Salva</button>
+            <button data-tab="settings" type="button">Impostazioni</button>
+          </nav>
+          <div id="menuContent" class="menu-content"></div>
+          <button id="menuClose" class="pixel-button compact menu-close" type="button">Chiudi</button>
+        </div>
+      </section>
+    </section>
+
+    <section class="touch-controls" aria-label="Controlli touch">
+      <div class="dpad">
+        <button data-direction="up" aria-label="Su" type="button">▲</button>
+        <button data-direction="left" aria-label="Sinistra" type="button">◀</button>
+        <button data-direction="down" aria-label="Giù" type="button">▼</button>
+        <button data-direction="right" aria-label="Destra" type="button">▶</button>
+      </div>
+      <div class="action-pad">
+        <button id="touchMenu" class="small-round" type="button">M</button>
+        <button id="touchB" type="button">B</button>
+        <button id="touchA" class="accent" type="button">A</button>
+      </div>
+    </section>
+
+    <p class="keyboard-help">Frecce/WASD: muovi · Invio/Spazio: interagisci · X/Esc: indietro · M: menu</p>
+  </main>
+
+  <script src="species.js"></script>
+  <script src="moves.js"></script>
+  <script src="data.js"></script>
+  <script src="trainers.js"></script>
+  <script src="battle.js"></script>
+  <script src="events.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

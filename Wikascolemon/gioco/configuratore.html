@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Configuratore · Pokémon Ascoli</title>
+  <link rel="stylesheet" href="configuratore.css">
+</head>
+<body>
+  <header class="editor-header">
+    <div>
+      <p>Pokémon Ascoli</p>
+      <h1>Configuratore della demo</h1>
+    </div>
+    <a href="index.html">Torna al gioco</a>
+  </header>
+
+  <main class="editor-layout">
+    <aside class="panel tools-panel">
+      <label>Quartiere
+        <select id="mapSelect"></select>
+      </label>
+
+      <fieldset>
+        <legend>Strumento</legend>
+        <div class="tool-grid">
+          <button class="tool active" data-tool="select" type="button">Seleziona</button>
+          <button class="tool" data-tool="tile" type="button">Tile</button>
+          <button class="tool" data-tool="collision" type="button">Collisione</button>
+          <button class="tool" data-tool="encounter" type="button">Incontri</button>
+          <button class="tool" data-tool="building" type="button">Edificio</button>
+          <button class="tool" data-tool="transition" type="button">Passaggio</button>
+          <button class="tool" data-tool="npc" type="button">NPC</button>
+          <button class="tool" data-tool="trainer" type="button">Allenatore</button>
+        </div>
+      </fieldset>
+
+      <div id="brushFields">
+        <label>Tipo di tile
+          <select id="tileType">
+            <option value="erba">Erba</option>
+            <option value="road">Strada</option>
+            <option value="travertino">Travertino</option>
+            <option value="piazza">Piazza</option>
+            <option value="water">Acqua</option>
+            <option value="bridge">Ponte</option>
+            <option value="muro">Muro</option>
+          </select>
+        </label>
+        <label>Dimensione pennello
+          <select id="brushSize"><option>1</option><option>3</option><option>5</option></select>
+        </label>
+        <label>Collisione
+          <select id="collisionValue"><option value="true">Bloccata</option><option value="false">Libera</option><option value="default">Predefinita</option></select>
+        </label>
+        <label>Probabilità incontro per passo
+          <input id="encounterRate" type="number" min="0" max="1" step="0.01" value="0.10">
+        </label>
+      </div>
+
+      <p class="hint">Clicca o trascina sulla mappa. Le modifiche vengono salvate automaticamente sul dispositivo.</p>
+      <div id="cursorInfo" class="cursor-info">Cella: —</div>
+    </aside>
+
+    <section class="map-panel">
+      <div class="canvas-wrap">
+        <canvas id="editorCanvas" width="768" height="576" aria-label="Editor visuale della mappa"></canvas>
+      </div>
+      <div class="legend"><span class="collision-dot"></span> collisione <span class="encounter-dot"></span> incontro personalizzato <span class="exit-dot"></span> passaggio <span class="trainer-dot"></span> allenatore</div>
+    </section>
+
+    <aside class="panel properties-panel">
+      <section>
+        <h2>Elemento</h2>
+        <input id="selectedIndex" type="hidden">
+        <label>Nome / etichetta<input id="objectName" type="text" value="Nuovo elemento"></label>
+        <div class="two-cols">
+          <label>Larghezza<input id="objectWidth" type="number" min="1" value="12"></label>
+          <label>Altezza<input id="objectHeight" type="number" min="1" value="8"></label>
+        </div>
+        <label>Colore edificio<input id="objectColor" type="color" value="#b77958"></label>
+        <label>Quartiere destinazione<select id="destinationMap"></select></label>
+        <div class="two-cols">
+          <label>Arrivo X<input id="spawnX" type="number" min="0" value="3"></label>
+          <label>Arrivo Y<input id="spawnY" type="number" min="0" value="3"></label>
+        </div>
+        <label>Dialogo NPC<textarea id="npcDialogue" rows="3">Bella giornata per esplorare Ascoli.</textarea></label>
+        <label>Movimento NPC
+          <select id="npcMovement"><option value="fermo">Fermo</option><option value="orizzontale">Orizzontale</option><option value="verticale">Verticale</option></select>
+        </label>
+        <div class="action-row">
+          <button id="updateObject" type="button">Aggiorna selezionato</button>
+          <button id="deleteObject" class="danger" type="button">Elimina</button>
+        </div>
+        <div id="objectList" class="object-list"></div>
+      </section>
+
+      <section>
+        <h2>Allenatore</h2>
+        <input id="trainerId" type="hidden">
+        <label>Id<input id="trainerIdView" type="text" readonly></label>
+        <label>Nome<input id="trainerName" type="text" value="Nuovo allenatore"></label>
+        <label>Classe<select id="trainerClass"></select></label>
+        <label>Direzione
+          <select id="trainerDirection">
+            <option value="down">Giù</option>
+            <option value="up">Su</option>
+            <option value="left">Sinistra</option>
+            <option value="right">Destra</option>
+          </select>
+        </label>
+        <label>Raggio di sguardo (0-8)<input id="trainerSight" type="number" min="0" max="8" value="4"></label>
+        <label>Sprite (opzionale)<input id="trainerSprite" type="text" placeholder="vuoto = sprite della classe"></label>
+        <label>Soldi (vuoto = automatico)<input id="trainerMoney" type="number" min="0" placeholder="automatico"></label>
+        <label>Dialogo prima della sfida (una pagina per riga)<textarea id="trainerBefore" rows="2"></textarea></label>
+        <label>Dialogo dopo la sconfitta (una pagina per riga)<textarea id="trainerAfter" rows="2"></textarea></label>
+        <label>Dialogo se il giocatore perde<textarea id="trainerLost" rows="2"></textarea></label>
+        <label>Condizione "when" (JSON opzionale)<textarea id="trainerWhen" rows="2" placeholder='es. { "flag": "x" }'></textarea></label>
+
+        <fieldset>
+          <legend>Squadra (1-6 Pokémon)</legend>
+          <div id="trainerTeam" class="object-list"></div>
+          <button id="addTeamMember" type="button">Aggiungi Pokémon</button>
+        </fieldset>
+
+        <label class="checkbox-row"><input id="trainerIsGymLeader" type="checkbox"> È un capopalestra</label>
+        <div id="gymFields">
+          <label>Id palestra<input id="gymId" type="text" placeholder="es. castel_di_lama"></label>
+          <label>Città<input id="gymCity" type="text" placeholder="es. Castel di Lama"></label>
+          <label>Numero medaglia (1-8)<input id="gymBadge" type="number" min="1" max="8" value="1"></label>
+          <label>Nome medaglia<input id="gymBadgeName" type="text" placeholder="es. Medaglia Spirito"></label>
+          <label>Tipo<select id="gymType"></select></label>
+          <label>MT premio<select id="gymTm"></select></label>
+        </div>
+
+        <div class="action-row">
+          <button id="updateTrainer" type="button">Aggiorna</button>
+          <button id="duplicateTrainer" type="button">Duplica</button>
+          <button id="deleteTrainer" class="danger" type="button">Elimina</button>
+        </div>
+        <p class="hint">Allenatori del quartiere corrente:</p>
+        <div id="trainerList" class="object-list"></div>
+      </section>
+
+      <section>
+        <h2>Palestre</h2>
+        <div id="gymTable" class="object-list"></div>
+      </section>
+
+      <section>
+        <h2>Problemi</h2>
+        <div id="trainerProblems" class="object-list"></div>
+      </section>
+
+      <section>
+        <h2>Tabella incontri</h2>
+        <label>Specie<select id="encounterSpecies"></select></label>
+        <div class="three-cols">
+          <label>Lv. min<input id="minLevel" type="number" min="1" max="100" value="5"></label>
+          <label>Lv. max<input id="maxLevel" type="number" min="1" max="100" value="5"></label>
+          <label>Peso<input id="encounterWeight" type="number" min="1" value="10"></label>
+        </div>
+        <button id="addEncounter" type="button">Aggiungi specie</button>
+        <div id="encounterList" class="object-list"></div>
+      </section>
+
+      <section>
+        <h2>Dati</h2>
+        <div class="action-row wrap">
+          <button id="exportConfig" type="button">Esporta JSON</button>
+          <label class="file-button">Importa JSON<input id="importConfig" type="file" accept="application/json" hidden></label>
+          <button id="resetConfig" class="danger" type="button">Ripristina</button>
+        </div>
+        <p id="saveStatus" class="save-status">Configurazione pronta.</p>
+        <div class="action-row wrap">
+          <button id="exportTrainers" type="button">Esporta allenatori JSON</button>
+          <label class="file-button">Importa allenatori JSON<input id="importTrainers" type="file" accept="application/json" hidden></label>
+          <button id="resetTrainers" class="danger" type="button">Ripristina allenatori</button>
+        </div>
+        <p id="trainerSaveStatus" class="save-status">Allenatori pronti. Il gioco legge l'override al ricaricamento.</p>
+      </section>
+    </aside>
+  </main>
+
+  <script src="species.js"></script>
+  <script src="moves.js"></script>
+  <script src="data.js"></script>
+  <script src="trainers.js"></script>
+  <script src="configuratore.js"></script>
+</body>
+</html>

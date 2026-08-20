@@ -4,6 +4,13 @@ L'enciclopedia (immaginaria) dei Pokémon della vallata picena — schede fan-ma
 
 **Sito live:** https://g95g95.github.io/Wikascolemon/
 
+## Gioca
+
+Il gioco è statico, gira interamente nel browser e salva i progressi in locale (nessun server, nessun account).
+
+- [Pokémon Ascoli](gioco/) — versione in sviluppo (prime due palestre)
+- [Demo originale](demo/) — esplorazione dei quartieri
+
 ## Pokédex del Piceno
 
 Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrispondono a specie non ancora catalogate.
