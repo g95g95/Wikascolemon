@@ -2,10 +2,10 @@
   const moves = window.PokemonAscoliMoves;
   const species = window.PokemonAscoliSpecies;
 
-  const building = (x, y, w, h, name, color = '#bd805d', kind = 'edificio') => ({ x, y, w, h, name, color, kind });
+  const building = (x, y, w, h, name, color = '#bd805d', kind = 'edificio', extra = {}) => ({ x, y, w, h, name, color, kind, ...extra });
   const rect = (x, y, w, h, type = 'road') => ({ x, y, w, h, type });
   const zone = (x, y, w, h, rate, table) => ({ x, y, w, h, rate, table });
-  const transition = (x, y, w, h, to, spawnX, spawnY, label) => ({ x, y, w, h, to, spawnX, spawnY, label });
+  const transition = (x, y, w, h, to, spawnX, spawnY, label, extra = {}) => ({ x, y, w, h, to, spawnX, spawnY, label, ...extra });
   const npc = (x, y, name, dialogue, movement = 'fermo') => ({ x, y, name, dialogue, movement });
   const city = { width: 48, height: 36 };
   const wide = { width: 60, height: 40 };
@@ -24,7 +24,8 @@
         building(13, 10, 8, 4, 'Palazzo dei Capitani', '#b89068', 'monumento'),
         building(4, 2, 9, 4, 'Teatro Ventidio Basso', '#a8755f', 'teatro'),
         building(29, 22, 10, 6, 'Cattedrale di Sant’Emidio', '#c09b70', 'chiesa'),
-        building(40, 23, 3, 3, 'Battistero', '#c7a77d', 'chiesa')
+        building(40, 23, 3, 3, 'Battistero', '#c7a77d', 'chiesa'),
+        building(7, 15, 4, 3, 'Bar Callare', '#b46c52', 'attività', { door: { x: 8, y: 18 }, interior: 'bar' })
       ],
       plazas: [rect(12, 14, 10, 7, 'piazza'), rect(27, 20, 18, 10, 'piazza')],
       labels: [{ x: 17, y: 16, text: 'Piazza del Popolo' }, { x: 33, y: 21, text: 'Piazza Arringo' }],
@@ -50,19 +51,59 @@
       waters: [rect(0, 15, 3, 7, 'water')], bridges: [rect(0, 17, 4, 3, 'bridge')],
       buildings: [
         building(4, 9, 8, 4, 'Stazione ferroviaria', '#9b6f57', 'stazione'),
-        building(19, 9, 5, 4, 'Chiesa dell’Immacolata', '#c5a677', 'chiesa')
+        building(19, 9, 5, 4, 'Chiesa dell’Immacolata', '#c5a677', 'chiesa'),
+        building(9, 13, 4, 3, 'Bar di Bobby', '#b46c52', 'attività', { door: { x: 10, y: 16 }, interior: 'bar' }),
+        building(33, 9, 3, 3, 'Tabacchi', '#ddc453', 'attività', { door: { x: 34, y: 12 }, interior: 'market' })
       ],
       plazas: [rect(16, 13, 10, 9, 'piazza')],
       labels: [{ x: 21, y: 15, text: 'Piazza Immacolata' }, { x: 4, y: 22, text: 'Ponte di Porta Maggiore' }],
       encounterZones: [zone(10, 3, 6, 7, 0.08, 'default'), zone(33, 4, 12, 9, 0.08, 'default'), zone(34, 24, 12, 9, 0.08, 'default')],
       transitions: [
-        transition(0, 17, 2, 3, 'centro_storico', 45, 18, 'Centro Storico'),
-        transition(46, 17, 2, 3, 'monticelli', 3, 19, 'Monticelli'),
-        transition(28, 0, 3, 2, 'borgo_chiaro', 29, 37, 'Borgo Chiaro')
+        transition(0, 17, 2, 3, 'centro_storico', 45, 18, 'Centro Storico', { when: { flag: 'starter_scelto' }, blockedText: 'Prima parla con Bobby al bar.' }),
+        transition(46, 17, 2, 3, 'monticelli', 3, 19, 'Monticelli', { when: { flag: 'starter_scelto' }, blockedText: 'Prima parla con Bobby al bar.' }),
+        transition(28, 0, 3, 2, 'borgo_chiaro', 29, 37, 'Borgo Chiaro', { when: { flag: 'starter_scelto' }, blockedText: 'Prima parla con Bobby al bar.' })
       ],
       npcs: [
         npc(7, 20, 'Viaggiatore', 'Benvenuto ad Ascoli Piceno!', 'fermo'),
-        npc(22, 24, 'Abitante', 'Da qui puoi raggiungere facilmente il centro.', 'verticale')
+        npc(22, 24, 'Abitante', 'Da qui puoi raggiungere facilmente il centro.', 'verticale'),
+        {
+          x: 10, y: 17, name: 'Bobby', movement: 'fermo', when: { notFlag: 'starter_scelto' },
+          script: [
+            { say: ['Ehò, uagliò! Nuovo da queste parti, eh?', 'Io so\' Bobby, tengo \'sto bar da na vita.', 'Se vuoi girà pé \'l Piceno t\'serve un compagno de viaggio.'], name: 'Bobby' },
+            {
+              choice: 'Dove vuoi iniziare?',
+              options: [
+                {
+                  text: 'Sant’Emidio alle Grotte',
+                  then: [
+                    { giveMonster: { species: 'basilino', level: 5 } },
+                    { setFlag: 'starter_scelto' },
+                    { giveItem: 'ball', qty: 5 },
+                    { say: 'Bravo, statte accorto pé le grotte!', name: 'Bobby' }
+                  ]
+                },
+                {
+                  text: 'Rio Castellano',
+                  then: [
+                    { giveMonster: { species: 'tuffito', level: 5 } },
+                    { setFlag: 'starter_scelto' },
+                    { giveItem: 'ball', qty: 5 },
+                    { say: 'Bravo, mo\' vai a mmojatte \'n compagnia!', name: 'Bobby' }
+                  ]
+                },
+                {
+                  text: 'Ripatransone',
+                  then: [
+                    { giveMonster: { species: 'puledrotto', level: 5 } },
+                    { setFlag: 'starter_scelto' },
+                    { giveItem: 'ball', qty: 5 },
+                    { say: 'Bravo, e mo\' famme vedé che sai fa\'!', name: 'Bobby' }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
       ]
     },
     monticelli: {

@@ -2,21 +2,28 @@
   'use strict';
 
   const data = window.PokemonAscoliData;
+  const Battle = window.PokemonAscoliBattle;
+  const Events = window.PokemonAscoliEvents;
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
   ctx.imageSmoothingEnabled = false;
 
+  Battle.configure({ species: data.species, moves: data.moves });
+
   const ui = Object.fromEntries([
     'locationName', 'locationBanner', 'toast', 'titleScreen', 'newGameButton', 'continueButton',
-    'starterScreen', 'starterChoices', 'dialogueScreen', 'dialogueName', 'dialogueText',
-    'dialogueClose', 'battleScreen', 'enemyName', 'enemyLevel', 'enemyHp', 'enemySprite',
-    'allyName', 'allyLevel', 'allyHp', 'allyHpText', 'allySprite', 'battleMessage',
+    'dialogueScreen', 'dialogueName', 'dialogueText', 'dialogueChoices', 'dialogueClose',
+    'learnMoveScreen', 'learnMoveText', 'learnMoveChoices',
+    'shopScreen', 'shopList', 'shopMoney', 'shopClose',
+    'battleScreen', 'enemyName', 'enemyLevel', 'enemyHp', 'enemySprite', 'enemyStatus', 'enemyExclaim',
+    'allyName', 'allyLevel', 'allyHp', 'allyHpText', 'allySprite', 'allyStatus', 'battleMessage',
     'battleActions', 'menuScreen', 'menuTabs', 'menuContent', 'menuClose', 'menuButton',
     'touchMenu', 'touchA', 'touchB'
   ].map(id => [id, document.getElementById(id)]));
 
   const STORAGE_KEY = 'pokemonAscoliSaveV1';
   const CONFIG_KEY = 'pokemonAscoliConfigV2';
+  const TRAINERS_KEY = 'pokemonAscoliTrainersV1';
   const directions = {
     up: { x: 0, y: -1, row: 1 },
     down: { x: 0, y: 1, row: 0 },
@@ -27,36 +34,23 @@
     ArrowUp: 'up', KeyW: 'up', ArrowDown: 'down', KeyS: 'down',
     ArrowLeft: 'left', KeyA: 'left', ArrowRight: 'right', KeyD: 'right'
   };
-
-  let maps = loadMaps();
-  let save = null;
-  let mode = 'title';
-  let currentMap = maps[data.start.map];
-  let player = { ...data.start, renderX: data.start.x, renderY: data.start.y, frame: 0 };
-  let movement = null;
-  let battle = null;
-  let lastMoveAt = 0;
-  let lastNpcMoveAt = 0;
-  let toastTimer = 0;
-  let bannerTimer = 0;
-  let runtimeNpcs = [];
-  let audioContext = null;
-  const heldDirections = [];
-  const playerImage = new Image();
-  playerImage.src = 'assets/player/oliver-sheet.png';
+  const trainerColors = {
+    ragazzino: '#4d80b5', ragazzina: '#c15b8f', pescatore: '#3d7847', birdwatcher: '#6a8f3d',
+    campeggiatore: '#8a6a3d', contadino: '#7a5a2a', ciclista: '#c94b43', gemelle: '#b56fc1',
+    bagnino: '#3daac9', turista: '#e9b949', dj: '#7d3dc9', bro_security: '#2c2a25',
+    congressista: '#5c5c5c', rivale: '#a9453f', capopalestra: '#8b1e1e'
+  };
+  const statusLabels = { psn: 'VEL', par: 'PAR', brn: 'BRN', slp: 'SON', frz: 'GEL' };
 
   function readStorage(key) {
     try { return localStorage.getItem(key); } catch (_) { return null; }
   }
-
   function writeStorage(key, value) {
     try { localStorage.setItem(key, value); return true; } catch (_) { return false; }
   }
-
   function removeStorage(key) {
     try { localStorage.removeItem(key); } catch (_) { }
   }
-
   function clone(value) {
     return JSON.parse(JSON.stringify(value));
   }
@@ -82,9 +76,49 @@
     return base;
   }
 
+  function loadTrainers() {
+    const source = window.PokemonAscoliTrainers;
+    const base = { classes: clone(source.classes), trainers: clone(source.trainers), gyms: clone(source.gyms) };
+    const raw = readStorage(TRAINERS_KEY);
+    if (!raw) return base;
+    try {
+      const config = JSON.parse(raw);
+      if (config.trainers) base.trainers = clone(config.trainers);
+      if (config.gyms) base.gyms = clone(config.gyms);
+      if (config.classes) base.classes = clone(config.classes);
+    } catch (_) {
+      showToast('Dati allenatori non validi: uso quelli iniziali.');
+    }
+    return base;
+  }
+
+  let maps = loadMaps();
+  const trainersData = loadTrainers();
+  let save = null;
+  let mode = 'title';
+  let currentMap = maps[data.start.map];
+  let player = { ...data.start, renderX: data.start.x, renderY: data.start.y, frame: 0 };
+  let movement = null;
+  let battle = null;
+  let lastMoveAt = 0;
+  let lastNpcMoveAt = 0;
+  let toastTimer = 0;
+  let bannerTimer = 0;
+  let runtimeNpcs = [];
+  let defeatedTrainerSightings = new Set();
+  let approachingTrainerId = null;
+  let audioContext = null;
+  const heldDirections = [];
+  const playerImage = new Image();
+  playerImage.src = 'assets/player/oliver-sheet.png';
+
+  // ---------------------------------------------------------------------
+  // Salvataggio
+  // ---------------------------------------------------------------------
+
   function freshSave() {
     return {
-      version: 1,
+      version: 2,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       player: { ...data.start },
@@ -94,18 +128,34 @@
       items: clone(data.initialItems),
       dex: { seen: {}, caught: {} },
       settings: { sound: true },
-      steps: 0
+      steps: 0,
+      flags: {},
+      badges: [],
+      money: 3000,
+      lastHeal: { map: data.respawn.map, x: data.respawn.x, y: data.respawn.y }
     };
+  }
+
+  function migrateSave(parsed) {
+    if (parsed.version === 2) return parsed;
+    // v1 -> v2
+    parsed.version = 2;
+    parsed.flags = parsed.flags || {};
+    parsed.badges = parsed.badges || [];
+    parsed.money = Number.isFinite(parsed.money) ? parsed.money : 3000;
+    parsed.lastHeal = parsed.lastHeal || { map: data.respawn.map, x: data.respawn.x, y: data.respawn.y };
+    return parsed;
   }
 
   function loadSave() {
     const raw = readStorage(STORAGE_KEY);
     if (!raw) return null;
     try {
-      const parsed = JSON.parse(raw);
-      if (parsed.version !== 1 || !parsed.player) return null;
-      parsed.team = (parsed.team || []).map(hydrateMonster);
-      parsed.storage = (parsed.storage || []).map(hydrateMonster);
+      let parsed = JSON.parse(raw);
+      if (!parsed.player || (parsed.version !== 1 && parsed.version !== 2)) return null;
+      parsed = migrateSave(parsed);
+      parsed.team = (parsed.team || []).map(Battle.hydrateMonster);
+      parsed.storage = (parsed.storage || []).map(Battle.hydrateMonster);
       parsed.items = { ...data.initialItems, ...(parsed.items || {}) };
       parsed.dex = parsed.dex || { seen: {}, caught: {} };
       parsed.settings = { sound: true, ...(parsed.settings || {}) };
@@ -130,89 +180,34 @@
     currentMap = maps[player.map];
     initNpcs();
     ui.titleScreen.hidden = true;
-    if (!save.starter) {
-      mode = 'starter';
-      showStarterSelection();
-    } else {
-      mode = 'world';
-      showLocation(currentMap.name);
-    }
-    updateLocation();
-  }
-
-  function createMonster(speciesId, level) {
-    const stats = calculateStats(speciesId, level);
-    const knownMoves = data.species[speciesId].learnset
-      .filter(([learnLevel]) => learnLevel <= level)
-      .map(([, moveId]) => moveId)
-      .slice(-4);
-    return {
-      uid: `${speciesId}-${Date.now()}-${Math.random().toString(16).slice(2)}`,
-      species: speciesId,
-      level,
-      exp: 0,
-      hp: stats.hp,
-      stats,
-      moves: knownMoves.length ? knownMoves : [data.species[speciesId].learnset[0][1]]
-    };
-  }
-
-  function hydrateMonster(monster) {
-    if (!data.species[monster.species]) return monster;
-    const stats = calculateStats(monster.species, monster.level);
-    return {
-      ...monster,
-      uid: monster.uid || `${monster.species}-${Date.now()}-${Math.random().toString(16).slice(2)}`,
-      stats,
-      hp: Math.min(Number.isFinite(monster.hp) ? monster.hp : stats.hp, stats.hp),
-      moves: Array.isArray(monster.moves) && monster.moves.length ? monster.moves : movesFor(monster.species, monster.level)
-    };
-  }
-
-  function calculateStats(speciesId, level) {
-    const [hp, attack, defense, spAttack, spDefense, speed] = data.species[speciesId].base;
-    const scale = value => Math.floor((2 * value * level) / 100) + 5;
-    return {
-      hp: Math.floor((2 * hp * level) / 100) + level + 10,
-      attack: scale(attack), defense: scale(defense), spAttack: scale(spAttack),
-      spDefense: scale(spDefense), speed: scale(speed)
-    };
-  }
-
-  function movesFor(speciesId, level) {
-    return data.species[speciesId].learnset
-      .filter(([learnLevel]) => learnLevel <= level)
-      .map(([, moveId]) => moveId)
-      .slice(-4);
-  }
-
-  function showStarterSelection() {
-    ui.starterChoices.innerHTML = '';
-    data.starters.forEach(speciesId => {
-      const species = data.species[speciesId];
-      const button = document.createElement('button');
-      button.className = 'pixel-button starter-choice';
-      button.type = 'button';
-      button.innerHTML = `<img src="assets/battle/${speciesId}-front.png" alt="${species.name}"><span>${species.name}</span><span>${species.types.join(' / ')}</span>`;
-      button.addEventListener('click', () => chooseStarter(speciesId));
-      ui.starterChoices.appendChild(button);
-    });
-    ui.starterScreen.hidden = false;
-  }
-
-  function chooseStarter(speciesId) {
-    const monster = createMonster(speciesId, 5);
-    save.starter = speciesId;
-    save.team = [monster];
-    save.dex.seen[speciesId] = true;
-    save.dex.caught[speciesId] = true;
-    ui.starterScreen.hidden = true;
     mode = 'world';
-    autoSave();
-    playSound('confirm');
     showLocation(currentMap.name);
-    showToast(`${data.species[speciesId].name} è entrato nella squadra!`);
+    updateLocation();
+    autoSave();
   }
+
+  // ---------------------------------------------------------------------
+  // Mostri
+  // ---------------------------------------------------------------------
+
+  function hasItem(itemId) {
+    return !!(save.items && save.items[itemId] > 0);
+  }
+
+  function giveMonster(spec) {
+    const monster = Battle.createMonster(spec.species, spec.level, spec.moves ? { moves: spec.moves } : {});
+    save.dex.seen[spec.species] = true;
+    save.dex.caught[spec.species] = true;
+    if (!save.starter) save.starter = spec.species;
+    if (save.team.length < 6) save.team.push(monster);
+    else save.storage.push(monster);
+    autoSave();
+    showToast(`${data.species[spec.species].name} è entrato nella squadra!`);
+  }
+
+  // ---------------------------------------------------------------------
+  // Mappa / collisioni / movimento
+  // ---------------------------------------------------------------------
 
   function pointInRect(x, y, item) {
     return x >= item.x && y >= item.y && x < item.x + item.w && y < item.y + item.h;
@@ -233,6 +228,12 @@
     return map.baseTile || 'erba';
   }
 
+  function activeTrainersOnMap() {
+    return Object.entries(trainersData.trainers)
+      .filter(([id, trainer]) => trainer.map === player.map && Events.check(trainer.when, save))
+      .map(([id, trainer]) => ({ id, ...trainer }));
+  }
+
   function isBlocked(map, x, y, ignoreNpc = false) {
     if (x < 0 || y < 0 || x >= map.width || y >= map.height) return true;
     const override = map.collisionOverrides && map.collisionOverrides[keyFor(x, y)];
@@ -242,6 +243,7 @@
     if (['water', 'muro', 'albero'].includes(terrain)) return true;
     if ((map.buildings || []).some(item => pointInRect(x, y, item))) return true;
     if (!ignoreNpc && runtimeNpcs.some(item => item.x === x && item.y === y)) return true;
+    if (!ignoreNpc && save && activeTrainersOnMap().some(t => t.x === x && t.y === y)) return true;
     return false;
   }
 
@@ -280,6 +282,7 @@
     player.renderY = player.y;
     movement = null;
     save.steps = (save.steps || 0) + 1;
+    if (checkTrainerSight()) return;
     if (checkTransition()) return;
     checkEncounter();
     autoSave();
@@ -288,6 +291,16 @@
   function checkTransition() {
     const exit = (currentMap.transitions || []).find(item => pointInRect(player.x, player.y, item));
     if (!exit || !maps[exit.to]) return false;
+    if (!Events.canUseTransition(exit, save)) {
+      if (exit.blockedText) showToast(exit.blockedText);
+      // respingi il giocatore di una cella
+      const vector = directions[player.direction];
+      player.x -= vector.x;
+      player.y -= vector.y;
+      player.renderX = player.x;
+      player.renderY = player.y;
+      return true;
+    }
     player.map = exit.to;
     player.x = exit.spawnX;
     player.y = exit.spawnY;
@@ -328,18 +341,22 @@
     const min = Number(entry.minLevel || 2);
     const max = Number(entry.maxLevel || min);
     const level = min + Math.floor(Math.random() * (max - min + 1));
-    beginBattle(createMonster(entry.species, level));
+    beginWildBattle(Battle.createMonster(entry.species, level));
   }
 
   function initNpcs() {
     runtimeNpcs = clone(currentMap.npcs || []).map((item, index) => ({ ...item, id: index, originX: item.x, originY: item.y }));
   }
 
+  function visibleRuntimeNpcs() {
+    return runtimeNpcs.filter(item => Events.check(item.when, save));
+  }
+
   function updateNpcs(now) {
     if (mode !== 'world' || movement || now - lastNpcMoveAt < 1400) return;
     lastNpcMoveAt = now;
     runtimeNpcs.forEach(npc => {
-      if (npc.movement === 'fermo') return;
+      if (npc.movement === 'fermo' || !Events.check(npc.when, save)) return;
       const choices = npc.movement === 'orizzontale' ? ['left', 'right'] : ['up', 'down'];
       const vector = directions[choices[Math.floor(Math.random() * choices.length)]];
       const x = npc.x + vector.x;
@@ -353,36 +370,381 @@
     });
   }
 
+  // ---------------------------------------------------------------------
+  // Interazione (NPC, edifici, allenatori)
+  // ---------------------------------------------------------------------
+
   function interact() {
-    if (mode === 'dialogue') { closeDialogue(); return; }
     if (mode !== 'world') return;
     const vector = directions[player.direction];
     const x = player.x + vector.x;
     const y = player.y + vector.y;
-    const found = runtimeNpcs.find(item => item.x === x && item.y === y);
-    if (!found) {
-      playSound('bump');
+
+    const trainer = activeTrainersOnMap().find(t => t.x === x && t.y === y);
+    if (trainer) {
+      startTrainerEncounter(trainer);
       return;
     }
+
+    const npc = visibleRuntimeNpcs().find(item => item.x === x && item.y === y);
+    if (npc) {
+      playSound('confirm');
+      runScript(Events.npcScript(npc));
+      return;
+    }
+
+    const building = (currentMap.buildings || []).find(item => item.door && item.door.x === x && item.door.y === y);
+    if (building) {
+      playSound('confirm');
+      runScript(buildingScript(building));
+      return;
+    }
+
+    playSound('bump');
+  }
+
+  function buildingScript(building) {
+    if (building.script) return building.script;
+    if (building.interior === 'bar') {
+      return [{ say: 'Che te faccio?', name: building.name }, { heal: true }, { say: 'Ecco fatto!', name: building.name }];
+    }
+    if (building.interior === 'market') {
+      return [{ shop: ['ball', 'potion', 'antidote', 'repel'] }];
+    }
+    if (building.interior === 'gym') {
+      return [{ say: 'La palestra è chiusa.' }];
+    }
+    return [];
+  }
+
+  function runScript(script) {
+    if (!script || !script.length) return;
     mode = 'dialogue';
-    ui.dialogueName.textContent = found.name;
-    ui.dialogueText.textContent = found.dialogue;
-    ui.dialogueScreen.hidden = false;
-    playSound('confirm');
+    runner.run(script).then(() => {
+      if (mode === 'dialogue') closeDialogue();
+      autoSave();
+    });
   }
 
   function closeDialogue() {
     ui.dialogueScreen.hidden = true;
+    ui.dialogueChoices.hidden = true;
+    ui.dialogueChoices.innerHTML = '';
+    if (mode === 'dialogue') mode = 'world';
+  }
+
+  // ---------------------------------------------------------------------
+  // Runner eventi: implementazione host
+  // ---------------------------------------------------------------------
+
+  let dialogueResolve = null;
+
+  const eventHost = {
+    get save() { return save; },
+    async say(name, text) {
+      return new Promise(resolve => {
+        ui.dialogueName.textContent = name || '';
+        ui.dialogueText.textContent = text;
+        ui.dialogueChoices.hidden = true;
+        ui.dialogueChoices.innerHTML = '';
+        ui.dialogueScreen.hidden = false;
+        dialogueResolve = resolve;
+      });
+    },
+    async choice(question, texts) {
+      return new Promise(resolve => {
+        ui.dialogueName.textContent = '';
+        ui.dialogueText.textContent = question;
+        ui.dialogueChoices.innerHTML = '';
+        texts.forEach((text, index) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.textContent = text;
+          button.addEventListener('click', () => {
+            ui.dialogueChoices.hidden = true;
+            ui.dialogueChoices.innerHTML = '';
+            resolve(index);
+          });
+          ui.dialogueChoices.appendChild(button);
+        });
+        ui.dialogueChoices.hidden = false;
+        ui.dialogueScreen.hidden = false;
+        dialogueResolve = null;
+      });
+    },
+    async heal() {
+      save.team.forEach(monster => { monster.hp = monster.stats.hp; monster.status = null; monster.sleepTurns = 0; });
+      save.lastHeal = { map: player.map, x: player.x, y: player.y };
+      autoSave();
+    },
+    async shop(itemIds) {
+      return openShop(itemIds);
+    },
+    async battleTrainer(trainerId) {
+      return beginTrainerBattle(trainerId);
+    },
+    async wildBattle(spec) {
+      return new Promise(resolve => {
+        beginWildBattle(Battle.createMonster(spec.species, spec.level), resolve);
+      });
+    },
+    async warp(dest) {
+      player.map = dest.map;
+      player.x = dest.x;
+      player.y = dest.y;
+      player.direction = dest.direction || player.direction;
+      player.renderX = player.x;
+      player.renderY = player.y;
+      currentMap = maps[dest.map];
+      initNpcs();
+      updateLocation();
+      showLocation(currentMap.name);
+      autoSave();
+    },
+    async toast(text) {
+      showToast(text);
+    },
+    async giveMonster(spec) {
+      giveMonster(spec);
+    }
+  };
+
+  const runner = Events.createRunner(eventHost);
+
+  ui.dialogueClose.addEventListener('click', () => {
+    if (dialogueResolve) {
+      const resolve = dialogueResolve;
+      dialogueResolve = null;
+      resolve();
+    }
+  });
+  ui.dialogueScreen.addEventListener('click', event => {
+    if (event.target === ui.dialogueClose) return;
+    if (dialogueResolve) {
+      const resolve = dialogueResolve;
+      dialogueResolve = null;
+      resolve();
+    }
+  });
+
+  // ---------------------------------------------------------------------
+  // Negozio
+  // ---------------------------------------------------------------------
+
+  let shopResolve = null;
+  let shopCart = {};
+
+  function openShop(itemIds) {
+    return new Promise(resolve => {
+      shopResolve = resolve;
+      shopCart = {};
+      renderShop(itemIds);
+      ui.shopScreen.hidden = false;
+    });
+  }
+
+  function renderShop(itemIds) {
+    ui.shopMoney.textContent = `${save.money} Talleri`;
+    ui.shopList.innerHTML = '';
+    itemIds.forEach(itemId => {
+      const item = data.items[itemId];
+      if (!item) return;
+      const row = document.createElement('div');
+      row.className = 'shop-row';
+      const owned = save.items[itemId] || 0;
+      const price = item.price;
+      row.innerHTML = `<span>${item.name} ${price != null ? `(${price}₸)` : ''} — hai ${owned}</span>`;
+      const buyButton = document.createElement('button');
+      buyButton.type = 'button';
+      buyButton.textContent = 'Compra';
+      buyButton.disabled = price == null || save.money < price;
+      buyButton.addEventListener('click', () => {
+        if (price == null || save.money < price) return;
+        save.money -= price;
+        save.items[itemId] = (save.items[itemId] || 0) + 1;
+        autoSave();
+        renderShop(itemIds);
+      });
+      const sellButton = document.createElement('button');
+      sellButton.type = 'button';
+      sellButton.textContent = 'Vendi';
+      sellButton.disabled = price == null || owned <= 0;
+      sellButton.addEventListener('click', () => {
+        if (price == null || owned <= 0) return;
+        save.money += Math.floor(price / 2);
+        save.items[itemId] = owned - 1;
+        autoSave();
+        renderShop(itemIds);
+      });
+      row.appendChild(buyButton);
+      row.appendChild(sellButton);
+      ui.shopList.appendChild(row);
+    });
+  }
+
+  ui.shopClose.addEventListener('click', () => {
+    ui.shopScreen.hidden = true;
+    if (shopResolve) {
+      const resolve = shopResolve;
+      shopResolve = null;
+      resolve();
+    }
+  });
+
+  // ---------------------------------------------------------------------
+  // Sguardo allenatori
+  // ---------------------------------------------------------------------
+
+  function checkTrainerSight() {
+    if (approachingTrainerId || !save.team.length) return false;
+    for (const trainer of activeTrainersOnMap()) {
+      if (save.flags[Events.flagKeys.trainerFlag(trainer.id)]) continue;
+      if (trainer.sight <= 0) continue;
+      if (!inTrainerLineOfSight(trainer)) continue;
+      approachingTrainerId = trainer.id;
+      runTrainerApproach(trainer);
+      return true;
+    }
+    return false;
+  }
+
+  function inTrainerLineOfSight(trainer) {
+    const vector = directions[trainer.direction];
+    if (!vector) return false;
+    if (vector.x !== 0 && trainer.y !== player.y) return false;
+    if (vector.y !== 0 && trainer.x !== player.x) return false;
+    const dx = player.x - trainer.x;
+    const dy = player.y - trainer.y;
+    const dist = vector.x !== 0 ? dx * Math.sign(vector.x) : dy * Math.sign(vector.y);
+    if (dist <= 0 || dist > trainer.sight) return false;
+    for (let step = 1; step < dist; step += 1) {
+      const cx = trainer.x + vector.x * step;
+      const cy = trainer.y + vector.y * step;
+      if (isBlocked(currentMap, cx, cy, false)) return false;
+    }
+    return true;
+  }
+
+  async function runTrainerApproach(trainer) {
+    showExclaim();
+    playSound('encounter');
+    await new Promise(resolve => setTimeout(resolve, 300));
+    await walkTrainerAdjacent(trainer);
+    await startTrainerEncounter(trainer);
+    approachingTrainerId = null;
+  }
+
+  function showExclaim() {
+    ui.enemyExclaim.hidden = false;
+    setTimeout(() => { ui.enemyExclaim.hidden = true; }, 300);
+  }
+
+  function walkTrainerAdjacent(trainer) {
+    return new Promise(resolve => {
+      const vector = directions[trainer.direction];
+      const targetX = player.x - vector.x;
+      const targetY = player.y - vector.y;
+      const step = () => {
+        if (trainer.x === targetX && trainer.y === targetY) { resolve(); return; }
+        if (trainer.x < targetX) trainer.x += 1;
+        else if (trainer.x > targetX) trainer.x -= 1;
+        else if (trainer.y < targetY) trainer.y += 1;
+        else if (trainer.y > targetY) trainer.y -= 1;
+        setTimeout(step, 120);
+      };
+      step();
+    });
+  }
+
+  async function startTrainerEncounter(trainer) {
+    const defeated = !!save.flags[Events.flagKeys.trainerFlag(trainer.id)];
+    if (!defeated && !save.team.length) { showToast('Non hai ancora un Pokémon: parla con Bobby al bar.'); return; }
+    mode = 'dialogue';
+    if (defeated) {
+      await runner.run([{ say: trainer.lost, name: trainer.name }]);
+      mode = 'world';
+      return;
+    }
+    await runner.run([{ say: trainer.before, name: trainer.name }]);
+    const result = await beginTrainerBattle(trainer.id);
+    if (result === 'win') {
+      save.flags[Events.flagKeys.trainerFlag(trainer.id)] = true;
+      const classDef = trainersData.classes[trainer.class] || {};
+      const maxLevel = trainer.team.reduce((max, m) => Math.max(max, m.level), 1);
+      const reward = trainer.money != null ? trainer.money : Math.floor((classDef.moneyPerLevel || 10) * maxLevel);
+      save.money = (save.money || 0) + reward;
+      showToast(`Hai vinto ${reward} Talleri!`);
+      await runner.run([{ say: trainer.after, name: trainer.name }]);
+      if (trainer.gym) {
+        if (!save.badges.includes(trainer.gym.badge)) {
+          save.badges.push(trainer.gym.badge);
+          save.badges.sort((a, b) => a - b);
+        }
+        await runner.run([{ say: `Hai ottenuto la ${trainer.gym.badgeName}!` }]);
+      }
+      autoSave();
+    }
     mode = 'world';
   }
 
-  function beginBattle(wild) {
+  // ---------------------------------------------------------------------
+  // Battaglia
+  // ---------------------------------------------------------------------
+
+  let messageQueue = [];
+  let messageResolve = null;
+  let battleResolve = null;
+
+  function activeMonster() {
+    return save.team[battle.activeIndex];
+  }
+
+  function pushMessages(events) {
+    events.forEach(event => {
+      if (event.type === 'text') messageQueue.push(event.text);
+      if (event.type === 'status' && event.text) messageQueue.push(event.text);
+    });
+  }
+
+  function flushMessages() {
+    return new Promise(resolve => {
+      messageResolve = resolve;
+      showNextMessage();
+    });
+  }
+
+  function showNextMessage() {
+    if (!messageQueue.length) {
+      const resolve = messageResolve;
+      messageResolve = null;
+      if (resolve) resolve();
+      return;
+    }
+    ui.battleMessage.textContent = messageQueue.shift();
+    renderBattle();
+    setTimeout(() => { if (messageResolve) showNextMessage(); }, 700);
+  }
+
+  function advanceMessage() {
+    if (!messageResolve) return;
+    showNextMessage();
+  }
+
+  ui.battleMessage.addEventListener('click', advanceMessage);
+
+  function beginWildBattle(wild, onEnd) {
     const activeIndex = Math.max(0, save.team.findIndex(monster => monster.hp > 0));
     battle = {
+      kind: 'wild',
       wild,
+      trainer: null,
+      enemyTeam: [wild],
+      enemyIndex: 0,
       activeIndex,
-      playerStages: freshStages(),
-      enemyStages: freshStages()
+      playerStages: Battle.freshStages(),
+      enemyStages: Battle.freshStages(),
+      runAttempts: 0,
+      onEnd
     };
     save.dex.seen[wild.species] = true;
     mode = 'battle';
@@ -394,16 +756,35 @@
     autoSave();
   }
 
-  function freshStages() {
-    return { attack: 0, defense: 0, spAttack: 0, spDefense: 0, speed: 0 };
+  function beginTrainerBattle(trainerId) {
+    return new Promise(resolve => {
+      const trainer = trainersData.trainers[trainerId];
+      const enemyTeam = trainer.team.map(entry => Battle.createMonster(entry.species, entry.level, entry.moves ? { moves: entry.moves } : {}));
+      const activeIndex = Math.max(0, save.team.findIndex(monster => monster.hp > 0));
+      battle = {
+        kind: 'trainer',
+        trainerId,
+        trainer,
+        wild: enemyTeam[0],
+        enemyTeam,
+        enemyIndex: 0,
+        activeIndex,
+        playerStages: Battle.freshStages(),
+        enemyStages: Battle.freshStages(),
+        runAttempts: 0,
+        onEnd: resolve
+      };
+      mode = 'battle';
+      ui.battleScreen.hidden = false;
+      ui.battleMessage.textContent = `${trainer.name} ti sfida a duello!`;
+      renderBattle();
+      showBattleMain();
+      playSound('encounter');
+    });
   }
 
-  function stageMultiplier(stage) {
-    return stage >= 0 ? (2 + stage) / 2 : 2 / (2 - stage);
-  }
-
-  function activeMonster() {
-    return save.team[battle.activeIndex];
+  function statusText(monster) {
+    return monster.status && statusLabels[monster.status] ? statusLabels[monster.status] : '';
   }
 
   function renderBattle() {
@@ -414,8 +795,10 @@
     const enemySpecies = data.species[enemy.species];
     ui.allyName.textContent = allySpecies.name;
     ui.allyLevel.textContent = `Lv.${ally.level}`;
+    ui.allyStatus.textContent = statusText(ally);
     ui.enemyName.textContent = enemySpecies.name;
     ui.enemyLevel.textContent = `Lv.${enemy.level}`;
+    ui.enemyStatus.textContent = statusText(enemy);
     ui.allyHp.style.width = `${Math.max(0, ally.hp / ally.stats.hp * 100)}%`;
     ui.enemyHp.style.width = `${Math.max(0, enemy.hp / enemy.stats.hp * 100)}%`;
     ui.allyHpText.textContent = `${Math.max(0, ally.hp)} / ${ally.stats.hp} PS`;
@@ -425,29 +808,38 @@
     ui.enemySprite.alt = enemySpecies.name;
   }
 
-  function actionButton(label, action) {
+  function actionButton(label, action, disabled) {
     const button = document.createElement('button');
     button.type = 'button';
     button.textContent = label;
+    if (disabled) button.disabled = true;
     button.addEventListener('click', action);
     return button;
   }
 
   function showBattleMain() {
     ui.battleActions.innerHTML = '';
+    const canRunAway = battle.kind === 'wild';
     ui.battleActions.append(
       actionButton('Lotta', showBattleMoves),
       actionButton('Borsa', showBattleBag),
       actionButton('Squadra', showBattleTeam),
-      actionButton('Fuga', tryRun)
+      actionButton('Fuga', canRunAway ? tryRun : () => { showToast('Non puoi fuggire da una sfida!'); }, !canRunAway)
     );
   }
 
   function showBattleMoves() {
     ui.battleActions.innerHTML = '';
-    activeMonster().moves.forEach(moveId => {
-      const known = data.moves[moveId];
-      ui.battleActions.appendChild(actionButton(known.name, () => playerAttack(moveId)));
+    const mon = activeMonster();
+    const usable = mon.moves.some(slot => slot.pp > 0);
+    if (!usable) {
+      ui.battleActions.appendChild(actionButton('Lotta Disperata', () => playerAttack('struggle')));
+      ui.battleActions.appendChild(actionButton('Indietro', showBattleMain));
+      return;
+    }
+    mon.moves.forEach(slot => {
+      const known = data.moves[slot.id];
+      ui.battleActions.appendChild(actionButton(`${known.name} ${slot.pp}/${slot.maxPp}`, () => playerAttack(slot.id), slot.pp <= 0));
     });
     ui.battleActions.appendChild(actionButton('Indietro', showBattleMain));
   }
@@ -455,8 +847,9 @@
   function showBattleBag() {
     ui.battleActions.innerHTML = '';
     ui.battleActions.append(
-      actionButton(`Ball ×${save.items.ball}`, throwBall),
-      actionButton(`Pozione ×${save.items.potion}`, useBattlePotion),
+      actionButton(`Ball ×${save.items.ball || 0}`, throwBall, battle.kind === 'trainer'),
+      actionButton(`Pozione ×${save.items.potion || 0}`, useBattlePotion),
+      actionButton(`Antidoto ×${save.items.antidote || 0}`, useBattleAntidote),
       actionButton('Indietro', showBattleMain)
     );
   }
@@ -472,142 +865,184 @@
     ui.battleActions.appendChild(actionButton('Indietro', showBattleMain));
   }
 
-  function typeMultiplier(moveType, targetTypes) {
-    return targetTypes.reduce((value, targetType) => value * ((data.typeChart[moveType] || {})[targetType] ?? 1), 1);
-  }
-
-  function executeMove(attacker, defender, moveId, attackerStages, defenderStages) {
-    const known = data.moves[moveId];
-    const attackerSpecies = data.species[attacker.species];
-    const defenderSpecies = data.species[defender.species];
-    if (Math.random() * 100 >= known.accuracy) return { message: `${attackerSpecies.name} usa ${known.name}, ma fallisce!`, damage: 0 };
-    if (!known.power) {
-      const effect = known.effect;
-      if (effect && effect.stat) {
-        const stages = effect.target === 'self' ? attackerStages : defenderStages;
-        stages[effect.stat] = Math.max(-6, Math.min(6, stages[effect.stat] + effect.stages));
-      }
-      return { message: `${attackerSpecies.name} usa ${known.name}!`, damage: 0 };
-    }
-    const physical = known.category === 'Fisico';
-    const attackStat = physical ? 'attack' : 'spAttack';
-    const defenseStat = physical ? 'defense' : 'spDefense';
-    const attackValue = attacker.stats[attackStat] * stageMultiplier(attackerStages[attackStat]);
-    const defenseValue = Math.max(1, defender.stats[defenseStat] * stageMultiplier(defenderStages[defenseStat]));
-    const stab = attackerSpecies.types.includes(known.type) ? 1.5 : 1;
-    const effectiveness = typeMultiplier(known.type, defenderSpecies.types);
-    const random = .85 + Math.random() * .15;
-    const damage = effectiveness === 0 ? 0 : Math.max(1, Math.floor(((((2 * attacker.level / 5) + 2) * known.power * attackValue / defenseValue) / 50 + 2) * stab * effectiveness * random));
-    defender.hp = Math.max(0, defender.hp - damage);
-    if (known.effect && known.effect.drain) attacker.hp = Math.min(attacker.stats.hp, attacker.hp + Math.max(1, Math.floor(damage * known.effect.drain)));
-    let suffix = '';
-    if (effectiveness > 1) suffix = ' È superefficace!';
-    if (effectiveness > 0 && effectiveness < 1) suffix = ' Non è molto efficace.';
-    if (effectiveness === 0) suffix = ' Non ha effetto.';
-    return { message: `${attackerSpecies.name} usa ${known.name}!${suffix}`, damage };
-  }
-
-  function playerAttack(moveId) {
-    if (!battle) return;
+  async function resolveTurn(playerAction) {
     ui.battleActions.innerHTML = '';
-    const result = executeMove(activeMonster(), battle.wild, moveId, battle.playerStages, battle.enemyStages);
-    ui.battleMessage.textContent = result.message;
-    renderBattle();
-    playSound(result.damage ? 'hit' : 'confirm');
-    if (battle.wild.hp <= 0) {
-      winBattle();
-      return;
-    }
-    enemyTurn();
-  }
+    const enemyAction = { type: 'move', moveId: Battle.chooseMove(battle.wild, activeMonster()) || 'struggle' };
+    const order = Battle.turnOrder(
+      { monster: activeMonster(), stages: battle.playerStages }, playerAction,
+      { monster: battle.wild, stages: battle.enemyStages }, enemyAction,
+      Math.random
+    );
 
-  function enemyTurn() {
-    if (!battle) return;
-    const damaging = battle.wild.moves.filter(moveId => data.moves[moveId] && data.moves[moveId].power > 0);
-    const movePool = damaging.length ? damaging : battle.wild.moves;
-    const moveId = movePool[Math.floor(Math.random() * movePool.length)];
-    const result = executeMove(battle.wild, activeMonster(), moveId, battle.enemyStages, battle.playerStages);
-    ui.battleMessage.textContent += ` ${result.message}`;
-    renderBattle();
-    if (activeMonster().hp <= 0) handleFaintedAlly();
-    else showBattleMain();
+    for (const who of order) {
+      if (who === 'player') {
+        if (playerAction.type !== 'move') continue;
+        if (activeMonster().hp <= 0 || battle.wild.hp <= 0) continue;
+        const result = Battle.executeMove(activeMonster(), battle.wild, playerAction.moveId, battle.playerStages, battle.enemyStages, { rng: Math.random });
+        pushMessages(result.events);
+        await flushMessages();
+        if (await checkFaints()) return;
+      } else {
+        if (activeMonster().hp <= 0 || battle.wild.hp <= 0) continue;
+        const result = Battle.executeMove(battle.wild, activeMonster(), enemyAction.moveId, battle.enemyStages, battle.playerStages, { rng: Math.random });
+        pushMessages(result.events);
+        await flushMessages();
+        if (await checkFaints()) return;
+      }
+    }
+
+    const endEventsAlly = Battle.endOfTurn(activeMonster());
+    pushMessages(endEventsAlly);
+    const endEventsEnemy = Battle.endOfTurn(battle.wild);
+    pushMessages(endEventsEnemy);
+    if (messageQueue.length) await flushMessages();
     autoSave();
-  }
-
-  function handleFaintedAlly() {
-    const next = save.team.findIndex(monster => monster.hp > 0);
-    if (next === -1) {
-      handleWipe();
-      return;
-    }
-    battle.activeIndex = next;
-    battle.playerStages = freshStages();
-    ui.battleMessage.textContent += ` Avanti, ${data.species[activeMonster().species].name}!`;
+    if (await checkFaints()) return;
     renderBattle();
     showBattleMain();
   }
 
-  function winBattle() {
-    const defeated = battle.wild;
-    const winner = activeMonster();
-    const gain = defeated.level * 18;
-    ui.battleMessage.textContent += ` ${data.species[defeated.species].name} è esausto. ${data.species[winner.species].name} ottiene ${gain} ESP.`;
-    gainExperience(winner, gain);
-    autoSave();
-    setTimeout(() => endBattle('Vittoria!'), 650);
+  async function checkFaints() {
+    if (battle.wild.hp <= 0) {
+      await handleEnemyFaint();
+      return true;
+    }
+    if (activeMonster().hp <= 0) {
+      await handleFaintedAlly();
+      return true;
+    }
+    return false;
   }
 
-  function gainExperience(monster, amount) {
-    monster.exp = (monster.exp || 0) + amount;
-    while (monster.exp >= monster.level * 25) {
-      monster.exp -= monster.level * 25;
-      const oldMax = monster.stats.hp;
-      monster.level += 1;
-      monster.stats = calculateStats(monster.species, monster.level);
-      monster.hp += monster.stats.hp - oldMax;
-      monster.moves = movesFor(monster.species, monster.level);
-      const evolution = data.species[monster.species].evolution;
-      const wet = player.map === 'porta_cartara';
-      if (evolution && evolution.level && monster.level >= evolution.level && (!evolution.wet || wet) && (!evolution.location || evolution.location === player.map)) {
-        monster.species = evolution.into;
-        monster.stats = calculateStats(monster.species, monster.level);
-        monster.hp = monster.stats.hp;
-        monster.moves = movesFor(monster.species, monster.level);
-        save.dex.seen[monster.species] = true;
-        save.dex.caught[monster.species] = true;
-        showToast(`Evoluzione: ora è ${data.species[monster.species].name}!`);
-      }
+  async function handleEnemyFaint() {
+    const winner = activeMonster();
+    const gain = Battle.expGain(battle.wild, { trainer: battle.kind === 'trainer', participants: 1 });
+    ui.battleMessage.textContent = `${data.species[battle.wild.species].name} è esausto! ${data.species[winner.species].name} ottiene ${gain} ESP.`;
+    renderBattle();
+    await sleep(700);
+    const gainResult = Battle.gainExperience(winner, gain, { map: player.map, hasItem });
+    if (gainResult.levelsGained > 0) {
+      ui.battleMessage.textContent = `${data.species[winner.species].name} è salito al livello ${winner.level}!`;
+      renderBattle();
+      await sleep(700);
     }
+    if (gainResult.evolvedInto) {
+      save.dex.seen[gainResult.evolvedInto] = true;
+      save.dex.caught[gainResult.evolvedInto] = true;
+      ui.battleMessage.textContent = `Evoluzione: ora è ${data.species[gainResult.evolvedInto].name}!`;
+      renderBattle();
+      await sleep(700);
+    }
+    for (const moveId of gainResult.learned) {
+      await handleLevelUpLearn(winner, moveId);
+    }
+    autoSave();
+
+    battle.enemyIndex += 1;
+    if (battle.kind === 'trainer' && battle.enemyIndex < battle.enemyTeam.length) {
+      battle.wild = battle.enemyTeam[battle.enemyIndex];
+      battle.enemyStages = Battle.freshStages();
+      ui.battleMessage.textContent = `${battle.trainer.name} manda in campo ${data.species[battle.wild.species].name}!`;
+      renderBattle();
+      showBattleMain();
+      return;
+    }
+    endBattle(battle.kind === 'trainer' ? 'win' : 'won');
+  }
+
+  function handleLevelUpLearn(monster, moveId) {
+    return new Promise(resolve => {
+      const known = data.moves[moveId];
+      ui.learnMoveText.textContent = `${data.species[monster.species].name} vuole imparare ${known.name}, ma conosce già 4 mosse. Quale mossa dimenticare?`;
+      ui.learnMoveChoices.innerHTML = '';
+      monster.moves.forEach((slot, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = `${data.moves[slot.id].name}`;
+        button.addEventListener('click', () => {
+          Battle.learnMove(monster, moveId, index);
+          ui.learnMoveScreen.hidden = true;
+          showToast(`${data.species[monster.species].name} ha imparato ${known.name}!`);
+          resolve();
+        });
+        ui.learnMoveChoices.appendChild(button);
+      });
+      const giveUp = document.createElement('button');
+      giveUp.type = 'button';
+      giveUp.textContent = 'Rinuncia';
+      giveUp.addEventListener('click', () => {
+        ui.learnMoveScreen.hidden = true;
+        resolve();
+      });
+      ui.learnMoveChoices.appendChild(giveUp);
+      ui.learnMoveScreen.hidden = false;
+    });
+  }
+
+  async function handleFaintedAlly() {
+    ui.battleMessage.textContent = `${data.species[activeMonster().species].name} non può più combattere!`;
+    renderBattle();
+    await sleep(700);
+    const next = save.team.findIndex(monster => monster.hp > 0);
+    if (next === -1) {
+      await sleep(300);
+      handleWipe();
+      return;
+    }
+    battle.activeIndex = next;
+    battle.playerStages = Battle.freshStages();
+    ui.battleMessage.textContent = `Avanti, ${data.species[activeMonster().species].name}!`;
+    renderBattle();
+    showBattleMain();
+  }
+
+  function playerAttack(moveId) {
+    if (!battle) return;
+    resolveTurn({ type: 'move', moveId });
   }
 
   function throwBall() {
-    if (save.items.ball <= 0) {
+    if (battle.kind === 'trainer') return;
+    if (!save.items.ball || save.items.ball <= 0) {
       ui.battleMessage.textContent = 'Non hai più Ball.';
       showBattleMain();
       return;
     }
+    ui.battleActions.innerHTML = '';
     save.items.ball -= 1;
     const wild = battle.wild;
     const species = data.species[wild.species];
-    const healthFactor = (3 * wild.stats.hp - 2 * wild.hp) / (3 * wild.stats.hp);
-    const chance = Math.max(.06, Math.min(.92, healthFactor * species.catchRate / 180));
     playSound('throw');
-    if (Math.random() < chance) {
-      save.dex.caught[wild.species] = true;
-      const destination = save.team.length < 6 ? save.team : save.storage;
-      destination.push(wild);
-      ui.battleMessage.textContent = `${species.name} è stato catturato! ${destination === save.storage ? 'È stato inviato al Deposito.' : ''}`;
-      autoSave();
-      setTimeout(() => endBattle(`${species.name} catturato!`), 650);
-      return;
-    }
-    ui.battleMessage.textContent = `${species.name} si è liberato dalla Ball!`;
-    enemyTurn();
+    const attempt = Battle.attemptCatch(wild, 'ball', Math.random);
+    (async () => {
+      ui.battleMessage.textContent = `Hai lanciato una Ball...`;
+      renderBattle();
+      await sleep(500);
+      for (let i = 0; i < attempt.shakes; i += 1) {
+        ui.battleMessage.textContent = '...scrosh...';
+        await sleep(450);
+      }
+      if (attempt.caught) {
+        save.dex.caught[wild.species] = true;
+        const destination = save.team.length < 6 ? save.team : save.storage;
+        destination.push(wild);
+        ui.battleMessage.textContent = `${species.name} è stato catturato!${destination === save.storage ? ' È stato inviato al Deposito.' : ''}`;
+        renderBattle();
+        autoSave();
+        await sleep(650);
+        endBattle('caught');
+        return;
+      }
+      ui.battleMessage.textContent = `${species.name} si è liberato dalla Ball!`;
+      renderBattle();
+      await sleep(500);
+      await resolveTurn({ type: 'item' });
+    })();
   }
 
   function useBattlePotion() {
     const ally = activeMonster();
-    if (save.items.potion <= 0) {
+    if (!save.items.potion || save.items.potion <= 0) {
       ui.battleMessage.textContent = 'Non hai Pozioni.';
       showBattleMain();
       return;
@@ -622,48 +1057,85 @@
     ui.battleMessage.textContent = `${data.species[ally.species].name} recupera PS.`;
     renderBattle();
     playSound('heal');
-    enemyTurn();
+    resolveTurn({ type: 'item' });
+  }
+
+  function useBattleAntidote() {
+    const ally = activeMonster();
+    if (!save.items.antidote || save.items.antidote <= 0) {
+      ui.battleMessage.textContent = 'Non hai Antidoti.';
+      showBattleMain();
+      return;
+    }
+    if (ally.status !== 'psn') {
+      ui.battleMessage.textContent = 'Non è avvelenato.';
+      showBattleMain();
+      return;
+    }
+    save.items.antidote -= 1;
+    ally.status = null;
+    ui.battleMessage.textContent = `${data.species[ally.species].name} non è più avvelenato.`;
+    renderBattle();
+    playSound('heal');
+    resolveTurn({ type: 'item' });
   }
 
   function switchMonster(index) {
     if (!battle || index === battle.activeIndex || save.team[index].hp <= 0) return;
     battle.activeIndex = index;
-    battle.playerStages = freshStages();
+    battle.playerStages = Battle.freshStages();
     ui.battleMessage.textContent = `Avanti, ${data.species[activeMonster().species].name}!`;
     renderBattle();
-    enemyTurn();
+    resolveTurn({ type: 'switch' });
   }
 
   function tryRun() {
-    if (Math.random() < .75) {
-      endBattle('Fuga riuscita.');
+    if (battle.kind === 'trainer') { showToast('Non puoi fuggire da una sfida!'); return; }
+    battle.runAttempts += 1;
+    if (Battle.canRun(activeMonster(), battle.wild, battle.runAttempts, Math.random)) {
+      endBattle('fled');
       return;
     }
     ui.battleMessage.textContent = 'Non riesci a fuggire!';
-    enemyTurn();
+    renderBattle();
+    resolveTurn({ type: 'run' });
   }
 
-  function endBattle(message) {
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  function endBattle(result) {
+    const onEnd = battle ? battle.onEnd : null;
     battle = null;
     ui.battleScreen.hidden = true;
     mode = 'world';
-    showToast(message);
+    const messages = { won: 'Vittoria!', win: 'Vittoria!', caught: null, fled: 'Sei fuggito.', lost: 'Sei stato sconfitto.' };
+    if (messages[result]) showToast(messages[result]);
     autoSave();
+    if (onEnd) onEnd(result);
   }
 
   function handleWipe() {
-    save.team.forEach(monster => { monster.hp = monster.stats.hp; });
-    player = { ...data.respawn, renderX: data.respawn.x, renderY: data.respawn.y, frame: 0 };
+    save.team.forEach(monster => { monster.hp = monster.stats.hp; monster.status = null; monster.sleepTurns = 0; });
+    if (battle && battle.kind === 'trainer') {
+      save.money = Math.floor((save.money || 0) / 2);
+      showToast('Hai perso metà dei tuoi Talleri.');
+    }
+    const destination = save.lastHeal || data.respawn;
+    player = { map: destination.map, x: destination.x, y: destination.y, direction: 'down', renderX: destination.x, renderY: destination.y, frame: 0 };
     currentMap = maps[player.map];
     initNpcs();
-    battle = null;
-    ui.battleScreen.hidden = true;
-    mode = 'world';
+    endBattle('lost');
     updateLocation();
     showLocation(currentMap.name);
-    showToast('La squadra è stata curata. Sei tornato alla stazione.');
+    showToast('La tua squadra è stata curata.');
     autoSave();
   }
+
+  // ---------------------------------------------------------------------
+  // Menu
+  // ---------------------------------------------------------------------
 
   function openMenu(tab = 'team') {
     if (mode !== 'world') return;
@@ -684,6 +1156,7 @@
     if (tab === 'team') renderTeamMenu();
     if (tab === 'bag') renderBagMenu();
     if (tab === 'dex') renderDexMenu();
+    if (tab === 'trainer') renderTrainerMenu();
     if (tab === 'deposit') renderDepositMenu();
     if (tab === 'save') renderSaveMenu();
     if (tab === 'settings') renderSettingsMenu();
@@ -692,7 +1165,8 @@
   function monsterRow(monster, action = '') {
     const species = data.species[monster.species];
     const hpPercent = Math.max(0, monster.hp / monster.stats.hp * 100);
-    return `<div class="creature-row"><img src="assets/battle/${monster.species}-front.png" alt="${species.name}"><div><strong>${species.name}</strong> Lv.${monster.level}<div class="bar"><i style="width:${hpPercent}%"></i></div><small>${monster.hp}/${monster.stats.hp} PS</small></div>${action}</div>`;
+    const status = statusText(monster);
+    return `<div class="creature-row"><img src="assets/battle/${monster.species}-front.png" alt="${species.name}" onerror="this.style.display='none'"><div><strong>${species.name}</strong> Lv.${monster.level} ${status ? `<span class="status-badge">${status}</span>` : ''}<div class="bar"><i style="width:${hpPercent}%"></i></div><small>${monster.hp}/${monster.stats.hp} PS</small></div>${action}</div>`;
   }
 
   function renderTeamMenu() {
@@ -700,15 +1174,25 @@
   }
 
   function renderBagMenu() {
-    ui.menuContent.innerHTML = `<h2>Borsa</h2><p>Ball: <strong>${save.items.ball}</strong></p><p>Pozioni: <strong>${save.items.potion}</strong></p><p>Acquasanta: <strong>${save.items.acquasanta}</strong></p><button id="healOutside">Usa Pozione sul primo ferito</button>`;
-    document.getElementById('healOutside').addEventListener('click', () => {
+    const rows = Object.entries(data.items).map(([id, item]) => `<p>${item.name}: <strong>${save.items[id] || 0}</strong></p>`).join('');
+    ui.menuContent.innerHTML = `<h2>Borsa</h2>${rows}<button id="healOutsidePotion">Usa Pozione sul primo ferito</button><button id="healOutsideAntidote">Usa Antidoto sul primo avvelenato</button>`;
+    document.getElementById('healOutsidePotion').addEventListener('click', () => {
       const target = save.team.find(monster => monster.hp > 0 && monster.hp < monster.stats.hp);
-      if (!target || save.items.potion <= 0) { showToast('Nessun utilizzo possibile.'); return; }
+      if (!target || !save.items.potion || save.items.potion <= 0) { showToast('Nessun utilizzo possibile.'); return; }
       save.items.potion -= 1;
       target.hp = Math.min(target.stats.hp, target.hp + 20);
       autoSave();
       renderBagMenu();
       showToast(`${data.species[target.species].name} recupera PS.`);
+    });
+    document.getElementById('healOutsideAntidote').addEventListener('click', () => {
+      const target = save.team.find(monster => monster.status === 'psn');
+      if (!target || !save.items.antidote || save.items.antidote <= 0) { showToast('Nessun utilizzo possibile.'); return; }
+      save.items.antidote -= 1;
+      target.status = null;
+      autoSave();
+      renderBagMenu();
+      showToast(`${data.species[target.species].name} non è più avvelenato.`);
     });
   }
 
@@ -720,9 +1204,27 @@
         const caught = Boolean(save.dex.caught[id]);
         const name = seen ? species.name : '???';
         const detail = caught ? `${species.types.join(' / ')} · <a href="${species.wiki}" target="_blank" rel="noopener">Scheda completa</a>` : seen ? 'Avvistato' : 'Non avvistato';
-        return `<div class="dex-row ${seen ? '' : 'unseen'}"><img src="assets/battle/${id}-front.png" alt=""><div><strong>#${String(species.number).padStart(3, '0')} ${name}</strong><br><span>${detail}</span></div><span>${caught ? '●' : seen ? '◐' : '○'}</span></div>`;
+        return `<div class="dex-row ${seen ? '' : 'unseen'}"><img src="assets/battle/${id}-front.png" alt="" onerror="this.style.display='none'"><div><strong>#${String(species.number).padStart(3, '0')} ${name}</strong><br><span>${detail}</span></div><span>${caught ? '●' : seen ? '◐' : '○'}</span></div>`;
       }).join('');
     ui.menuContent.innerHTML = `<h2>Pokédex del Piceno</h2>${rows}`;
+  }
+
+  function renderTrainerMenu() {
+    const seenCount = Object.values(save.dex.seen).filter(Boolean).length;
+    const caughtCount = Object.values(save.dex.caught).filter(Boolean).length;
+    const allGyms = Object.values(trainersData.gyms).sort((a, b) => a.order - b.order);
+    const badgeSlots = Array.from({ length: 8 }, (_, index) => {
+      const gym = allGyms[index];
+      const earned = gym && save.badges.includes(gym.leader ? (trainersData.trainers[gym.leader].gym || {}).badge : null);
+      return `<div class="badge-slot ${earned ? 'earned' : ''}">${earned ? (trainersData.trainers[gym.leader].gym.badgeName || '') : (gym ? gym.name : '—')}</div>`;
+    }).join('');
+    ui.menuContent.innerHTML = `<h2>Allenatore</h2>
+      <p>Nome: <strong>Oliver</strong></p>
+      <p>Talleri: <strong>${save.money}</strong></p>
+      <p>Passi: <strong>${save.steps || 0}</strong></p>
+      <p>Pokédex: <strong>${caughtCount}</strong> catturati / <strong>${seenCount}</strong> visti</p>
+      <p>Medaglie:</p>
+      <div class="badge-grid">${badgeSlots}</div>`;
   }
 
   function renderDepositMenu() {
@@ -781,7 +1283,7 @@
     reader.onload = () => {
       try {
         const parsed = JSON.parse(reader.result);
-        if (parsed.version !== 1 || !parsed.player || !Array.isArray(parsed.team)) throw new Error('Formato non valido');
+        if ((parsed.version !== 1 && parsed.version !== 2) || !parsed.player || !Array.isArray(parsed.team)) throw new Error('Formato non valido');
         writeStorage(STORAGE_KEY, JSON.stringify(parsed));
         location.reload();
       } catch (_) {
@@ -790,6 +1292,10 @@
     };
     reader.readAsText(file);
   }
+
+  // ---------------------------------------------------------------------
+  // Feedback UI
+  // ---------------------------------------------------------------------
 
   function showLocation(name) {
     clearTimeout(bannerTimer);
@@ -809,6 +1315,10 @@
   function updateLocation() {
     ui.locationName.textContent = currentMap.name;
   }
+
+  // ---------------------------------------------------------------------
+  // Rendering mappa
+  // ---------------------------------------------------------------------
 
   function drawTile(type, screenX, screenY, worldX, worldY) {
     const size = data.tileSize;
@@ -910,11 +1420,28 @@
   }
 
   function drawNpcs(camera) {
-    runtimeNpcs.forEach((npc, index) => {
+    visibleRuntimeNpcs().forEach((npc, index) => {
       const x = npc.x * 16 - camera.x;
       const y = npc.y * 16 - camera.y;
       if (x < -16 || y < -20 || x > canvas.width || y > canvas.height) return;
       ctx.fillStyle = index % 2 ? '#425d93' : '#8b4c49';
+      ctx.fillRect(Math.round(x + 4), Math.round(y + 4), 8, 10);
+      ctx.fillStyle = '#e6bb8b';
+      ctx.fillRect(Math.round(x + 5), Math.round(y), 6, 6);
+      ctx.fillStyle = '#2c2a25';
+      ctx.fillRect(Math.round(x + 5), Math.round(y), 6, 2);
+    });
+  }
+
+  function drawTrainers(camera) {
+    if (!save) return;
+    activeTrainersOnMap().forEach(trainer => {
+      const defeated = !!save.flags[Events.flagKeys.trainerFlag(trainer.id)];
+      const x = trainer.x * 16 - camera.x;
+      const y = trainer.y * 16 - camera.y;
+      if (x < -16 || y < -20 || x > canvas.width || y > canvas.height) return;
+      const color = defeated ? '#6b6b6b' : (trainerColors[trainer.class] || '#8b4c49');
+      ctx.fillStyle = color;
       ctx.fillRect(Math.round(x + 4), Math.round(y + 4), 8, 10);
       ctx.fillStyle = '#e6bb8b';
       ctx.fillRect(Math.round(x + 5), Math.round(y), 6, 6);
@@ -964,6 +1491,7 @@
     drawBuildings(camera);
     (currentMap.labels || []).forEach(label => drawWorldLabel(label.text, label.x, label.y, camera));
     drawNpcs(camera);
+    drawTrainers(camera);
     drawPlayer(camera);
   }
 
@@ -994,7 +1522,7 @@
       updateMovement(now);
       updateNpcs(now);
     }
-    renderWorld();
+    if (mode !== 'title') renderWorld();
     requestAnimationFrame(gameLoop);
   }
 
@@ -1022,12 +1550,13 @@
     }
     if (event.code === 'Enter' || event.code === 'Space') {
       event.preventDefault();
+      if (mode === 'dialogue') { if (dialogueResolve) { const r = dialogueResolve; dialogueResolve = null; r(); } return; }
+      if (mode === 'battle') { advanceMessage(); return; }
       interact();
     }
     if (event.code === 'KeyM') openMenu();
     if (event.code === 'Escape' || event.code === 'KeyX') {
-      if (mode === 'dialogue') closeDialogue();
-      else if (mode === 'menu') closeMenu();
+      if (mode === 'menu') closeMenu();
       else if (mode === 'battle') showBattleMain();
     }
   });
@@ -1049,13 +1578,15 @@
     const loaded = loadSave();
     if (loaded) startSession(loaded);
   });
-  ui.dialogueClose.addEventListener('click', closeDialogue);
   ui.menuButton.addEventListener('click', () => openMenu());
   ui.touchMenu.addEventListener('click', () => openMenu());
-  ui.touchA.addEventListener('click', interact);
+  ui.touchA.addEventListener('click', () => {
+    if (mode === 'dialogue') { if (dialogueResolve) { const r = dialogueResolve; dialogueResolve = null; r(); } return; }
+    if (mode === 'battle') { advanceMessage(); return; }
+    interact();
+  });
   ui.touchB.addEventListener('click', () => {
-    if (mode === 'dialogue') closeDialogue();
-    else if (mode === 'menu') closeMenu();
+    if (mode === 'menu') closeMenu();
     else if (mode === 'battle') showBattleMain();
   });
   ui.menuClose.addEventListener('click', closeMenu);
@@ -1070,4 +1601,8 @@
   initNpcs();
   updateLocation();
   requestAnimationFrame(gameLoop);
+
+  window.PokemonAscoliGame = {
+    _debug: { migrateSave, loadTrainers, freshSave }
+  };
 }());

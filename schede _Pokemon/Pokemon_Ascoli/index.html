@@ -31,32 +31,42 @@
         </div>
       </section>
 
-      <section id="starterScreen" class="overlay panel-overlay" hidden>
-        <div class="dialog-panel starter-panel">
-          <p class="eyebrow">Scegli il tuo compagno</p>
-          <h2>Chi partirà con te?</h2>
-          <div id="starterChoices" class="starter-choices"></div>
-        </div>
-      </section>
-
       <section id="dialogueScreen" class="overlay dialogue-overlay" hidden>
         <div class="dialog-panel dialogue-panel">
           <strong id="dialogueName"></strong>
           <p id="dialogueText"></p>
+          <div id="dialogueChoices" class="dialogue-choices" hidden></div>
           <button id="dialogueClose" class="pixel-button compact" type="button">Continua</button>
+        </div>
+      </section>
+
+      <section id="learnMoveScreen" class="overlay panel-overlay" hidden>
+        <div class="dialog-panel learn-move-panel">
+          <p id="learnMoveText"></p>
+          <div id="learnMoveChoices" class="learn-move-choices"></div>
+        </div>
+      </section>
+
+      <section id="shopScreen" class="overlay panel-overlay" hidden>
+        <div class="dialog-panel shop-panel">
+          <h2>Tabacchi</h2>
+          <div id="shopList" class="shop-list"></div>
+          <p>Saldo: <strong id="shopMoney"></strong></p>
+          <button id="shopClose" class="pixel-button compact" type="button">Esci</button>
         </div>
       </section>
 
       <section id="battleScreen" class="overlay battle-screen" hidden>
         <div class="battle-stage">
           <div class="battle-card enemy-card">
-            <div><strong id="enemyName"></strong> <span id="enemyLevel"></span></div>
+            <div><strong id="enemyName"></strong> <span id="enemyLevel"></span> <span id="enemyStatus" class="status-badge"></span></div>
             <div class="hp-track"><i id="enemyHp"></i></div>
           </div>
           <img id="enemySprite" class="battle-sprite enemy-sprite" alt="">
+          <div id="enemyExclaim" class="exclaim" hidden>!</div>
           <img id="allySprite" class="battle-sprite ally-sprite" alt="">
           <div class="battle-card ally-card">
-            <div><strong id="allyName"></strong> <span id="allyLevel"></span></div>
+            <div><strong id="allyName"></strong> <span id="allyLevel"></span> <span id="allyStatus" class="status-badge"></span></div>
             <div class="hp-track"><i id="allyHp"></i></div>
             <small id="allyHpText"></small>
           </div>
@@ -71,6 +81,7 @@
             <button data-tab="team" type="button">Squadra</button>
             <button data-tab="bag" type="button">Borsa</button>
             <button data-tab="dex" type="button">Pokédex</button>
+            <button data-tab="trainer" type="button">Allenatore</button>
             <button data-tab="deposit" type="button">Deposito</button>
             <button data-tab="save" type="button">Salva</button>
             <button data-tab="settings" type="button">Impostazioni</button>
@@ -101,6 +112,9 @@
   <script src="species.js"></script>
   <script src="moves.js"></script>
   <script src="data.js"></script>
+  <script src="trainers.js"></script>
+  <script src="battle.js"></script>
+  <script src="events.js"></script>
   <script src="game.js"></script>
 </body>
 </html>

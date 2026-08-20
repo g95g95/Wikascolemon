@@ -30,14 +30,21 @@ button.danger { background: #d77b6f; }
 .collision-dot { background: rgba(220, 60, 54, .8); }
 .encounter-dot { background: rgba(240, 176, 51, .8); }
 .exit-dot { background: rgba(84, 190, 217, .8); }
-.two-cols, .three-cols { display: grid; gap: 7px; }
+.trainer-dot { background: #f0b033; }
+.two-cols, .three-cols, .four-cols { display: grid; gap: 7px; }
 .two-cols { grid-template-columns: 1fr 1fr; }
 .three-cols { grid-template-columns: repeat(3, 1fr); }
+.four-cols { grid-template-columns: repeat(4, 1fr); margin: 6px 0; }
 .action-row { display: flex; gap: 5px; }
 .action-row.wrap { flex-wrap: wrap; }
 .object-list { margin-top: 8px; max-height: 190px; overflow: auto; }
 .object-item { display: grid; grid-template-columns: 1fr auto; gap: 5px; align-items: center; margin-bottom: 4px; padding: 5px; border: 1px solid #706750; background: #19271f; font-size: .62rem; }
 .object-item button { padding: 3px 5px; font-size: .58rem; }
+.team-row { display: block; }
+.team-row .action-row { margin-top: 5px; }
+.problem-item { grid-template-columns: 1fr; color: #f0a58a; border-color: #a15a4e; }
+.checkbox-row { display: flex; align-items: center; gap: 6px; }
+.checkbox-row input { width: auto; margin: 0; }
 .file-button { display: inline-block; font-size: .72rem; }
 @media (max-width: 1100px) {
   .editor-layout { grid-template-columns: 220px 1fr; }

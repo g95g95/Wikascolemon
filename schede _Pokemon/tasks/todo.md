@@ -55,25 +55,25 @@ Annotato il 20/08/2026. **Approvato il 20/08/2026** (assunzioni confermate; aggi
 ### B. Specie mancanti (wiki prima, gioco dopo)
 - [ ] B1. Schede delle 8-12 specie di fascia bassa con `crea-scheda` (artwork via `codex exec`),
       pubblicate con `pubblica-scheda`.
-- [ ] B2. Script `tools/build-dex.mjs`: estrae numero, tipi, statistiche, learnset, evoluzioni
+- [x] B2. Script `tools/build-dex.mjs`: estrae numero, tipi, statistiche, learnset, evoluzioni
       da `Wikascolemon/*.html` e genera `Pokemon_Ascoli/species.json` (fonte unica; la wiki resta
       autorevole). Il test verifica somma BST e tipi contro le pagine.
-- [ ] B3. Mosse: tabella completa in `moves.json` (tutte quelle dei learnset, con categoria
+- [x] B3. Mosse: tabella completa in `moves.json` (tutte quelle dei learnset, con categoria
       fisico/speciale per mossa, effetti di stato, priorità).
 → verifica: `node tests/regression.mjs` verde; ogni specie della wiki è nel motore.
 
 ### C. Motore di gioco
-- [ ] C1. **Eventi e flag**: `save.flags`, NPC/transizioni/edifici condizionati da flag, dialoghi
+- [x] C1. **Eventi e flag**: `save.flags`, NPC/transizioni/edifici condizionati da flag, dialoghi
       a più pagine e scelte (sì/no, scelta del luogo dello starter).
-- [ ] C2. **Allenatori**: entità `trainer` con sguardo (line-of-sight), squadra, dialogo
+- [x] C2. **Allenatori**: entità `trainer` con sguardo (line-of-sight), squadra, dialogo
       pre/post, soldi; lotta a squadre con switch forzato; flag "sconfitto".
-- [ ] C3. **Battaglia Gen 3**: STAB, critici, stati con effetti in lotta, priorità, precisione,
+- [x] C3. **Battaglia Gen 3**: STAB, critici, stati con effetti in lotta, priorità, precisione,
       IA che preferisce la mossa più efficace; exp di gruppo; soldi.
-- [ ] C4. **Bar-Centro** (cura + PC) e **Market** (compra/vendi: Ball, Pozione, Antidoto, Repellente).
-- [ ] C5. **Palestre e medaglie**: schermata allenatore con medaglie; medaglia 1 sblocca
+- [x] C4. **Bar-Centro** (cura + PC) e **Market** (compra/vendi: Ball, Pozione, Antidoto, Repellente).
+- [x] C5. **Palestre e medaglie**: schermata allenatore con medaglie; medaglia 1 sblocca
       Spinetoli, medaglia 2 chiude la demo con titoli.
 - [ ] C6. **Intro**: arrivo in treno, nome del giocatore, Bobby al bar di Porta Maggiore.
-- [ ] C7. **Configuratore palestre e allenatori** (richiesta del 20/08):
+- [x] C7. **Configuratore palestre e allenatori** (richiesta del 20/08):
       - `Mappa_Pokemon/configuratore.html` (mappa vera): POI "Palestra" con capopalestra, tipo,
         ordine, città; export nello stesso JSON.
       - `Pokemon_Ascoli/configuratore.html` (pixel): strumento "Palestra" (edificio + capopalestra
@@ -88,19 +88,19 @@ Annotato il 20/08/2026. **Approvato il 20/08/2026** (assunzioni confermate; aggi
 Contratti fra moduli: `Pokemon_Ascoli/ARCHITETTURA.md`.
 
 **Ondata 1 (parallela, file disgiunti)**
-- [ ] W1-A τ=difficile/Fable — `tools/build-dex.mjs` → `species.js`, `moves.js`, `moves-catalog.json`, `dex-overrides.json`; `data.js` senza specie; test dex.
-- [ ] W1-B τ=difficile/Fable — `battle.js` puro (stati, critici, STAB, priorità, PP, IA, cattura, exp) + `tests/battle.test.mjs`.
-- [ ] W1-C τ=medio/Opus — `events.js` (condizioni, script, runner) + `tests/events.test.mjs`.
-- [ ] W1-D τ=facile/Sonnet — `trainers.js` (classi, allenatori di esempio, palestre) + `tests/trainers.test.mjs`.
-- [ ] W1-E τ=facile/Sonnet — `Mappa_Pokemon/configuratore.html`: POI Palestra con campi e precompilazione delle 8.
+- [x] W1-A τ=difficile/Fable — `tools/build-dex.mjs` → `species.js`, `moves.js`, `moves-catalog.json`, `dex-overrides.json`; `data.js` senza specie; test dex.
+- [x] W1-B τ=difficile/Fable — `battle.js` puro (stati, critici, STAB, priorità, PP, IA, cattura, exp) + `tests/battle.test.mjs`.
+- [x] W1-C τ=medio/Opus — `events.js` (condizioni, script, runner) + `tests/events.test.mjs`.
+- [x] W1-D τ=facile/Sonnet — `trainers.js` (classi, allenatori di esempio, palestre) + `tests/trainers.test.mjs`.
+- [x] W1-E τ=facile/Sonnet — `Mappa_Pokemon/configuratore.html`: POI Palestra con campi e precompilazione delle 8.
 
 **Ondata 2 (dopo la 1)**
-- [ ] W2-A τ=difficile/Fable — integrazione in `game.js`/`index.html`: battle.js (lotte allenatori, switch, soldi, stati in UI, PP, apprendimento mosse), events.js (dialoghi a pagine, scelte, flag, NPC/passaggi condizionati, porte: bar cura, market, palestra), medaglie/scheda allenatore, save v2.
-- [ ] W2-B τ=medio/Opus — configuratore pixel: strumenti Palestra e Allenatore (form squadra, sguardo, dialoghi) → override `pokemonAscoliTrainersV1`.
-- [ ] W2-C τ=facile/Sonnet — sprite overworld per classi allenatore + 6 personaggi (assets/npc), rendering con sheet.
+- [x] W2-A τ=difficile/Fable — integrazione in `game.js`/`index.html`: battle.js (lotte allenatori, switch, soldi, stati in UI, PP, apprendimento mosse), events.js (dialoghi a pagine, scelte, flag, NPC/passaggi condizionati, porte: bar cura, market, palestra), medaglie/scheda allenatore, save v2.
+- [x] W2-B τ=medio/Opus — configuratore pixel: strumenti Palestra e Allenatore (form squadra, sguardo, dialoghi) → override `pokemonAscoliTrainersV1`.
+- [ ] W2-C (rimandato alla Fase E) τ=facile/Sonnet — sprite overworld per classi allenatore + 6 personaggi (assets/npc), rendering con sheet.
 
 **Ondata 3**
-- [ ] W3 verifica-scettica su tutto + test verdi + commit/push.
+- [x] W3 verifica-scettica in Chromium headless: 2 bug trovati e corretti (render loop morto in title screen, flag non salvati a fine script) + guardia squadra vuota; 7 test verdi; commit/push 20/08.
 
 ### D. Mondo
 - [ ] D1. Revisione delle 7 mappe di Ascoli per la trama (bar di Bobby a Porta Maggiore, Callare

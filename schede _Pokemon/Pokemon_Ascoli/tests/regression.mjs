@@ -6,11 +6,15 @@ import { fileURLToPath } from 'node:url';
 
 const testDir = path.dirname(fileURLToPath(import.meta.url));
 const gameDir = path.resolve(testDir, '..');
-const context = { window: {} };
+const context = { window: {}, console };
 vm.runInNewContext(fs.readFileSync(path.join(gameDir, 'species.js'), 'utf8'), context);
 vm.runInNewContext(fs.readFileSync(path.join(gameDir, 'moves.js'), 'utf8'), context);
 vm.runInNewContext(fs.readFileSync(path.join(gameDir, 'data.js'), 'utf8'), context);
+vm.runInNewContext(fs.readFileSync(path.join(gameDir, 'trainers.js'), 'utf8'), context);
+vm.runInNewContext(fs.readFileSync(path.join(gameDir, 'events.js'), 'utf8'), context);
 const data = context.window.PokemonAscoliData;
+const trainersData = context.window.PokemonAscoliTrainers;
+const Events = context.window.PokemonAscoliEvents;
 
 assert.equal(Object.keys(data.maps).length, 7, 'Devono esistere sette quartieri');
 assert.deepEqual(Array.from(data.starters), ['basilino', 'puledrotto', 'tuffito']);
@@ -129,5 +133,61 @@ assert.match(styles, /\.enemy-sprite\s*\{[^}]*left:\s*28px;/, 'Il Pokémon selva
 assert.match(styles, /\.ally-sprite\s*\{[^}]*right:\s*28px;/, 'Il Pokémon della squadra deve apparire a destra');
 assert.match(styles, /\.enemy-card\s*\{[^}]*left:\s*10px;/, 'La scheda del selvatico deve apparire accanto al selvatico');
 assert.match(styles, /\.ally-card\s*\{[^}]*right:\s*10px;/, 'La scheda della squadra deve apparire accanto al Pokémon della squadra');
+
+// --- door/interior/script/when sulle mappe ---
+const validInteriors = new Set(['bar', 'market', 'gym', 'none']);
+for (const [mapId, map] of Object.entries(data.maps)) {
+  for (const building of map.buildings || []) {
+    if (building.door) {
+      const door = building.door;
+      assert.ok(Number.isFinite(door.x) && Number.isFinite(door.y), `${mapId}: ${building.name} door con coordinate valide`);
+      assert.ok(walkable(map, door.x, door.y), `${mapId}: ${building.name} door su cella percorribile`);
+      const adjacent = door.x >= building.x - 1 && door.x <= building.x + building.w
+        && door.y >= building.y - 1 && door.y <= building.y + building.h;
+      assert.ok(adjacent, `${mapId}: ${building.name} door adiacente all'edificio`);
+    }
+    if (building.interior !== undefined) {
+      assert.ok(validInteriors.has(building.interior), `${mapId}: ${building.name} interior "${building.interior}" fra i valori ammessi`);
+    }
+    if (building.script) {
+      const errors = Events.validateScript(building.script, [], `${mapId}.${building.name}.script`);
+      assert.deepEqual(errors, [], `${mapId}: ${building.name} script valido (${errors.join('; ')})`);
+    }
+  }
+  for (const npcItem of map.npcs || []) {
+    if (npcItem.script) {
+      const errors = Events.validateScript(npcItem.script, [], `${mapId}.npc(${npcItem.name}).script`);
+      assert.deepEqual(errors, [], `${mapId}: npc ${npcItem.name} script valido (${errors.join('; ')})`);
+    }
+    if (npcItem.when !== undefined && npcItem.when !== null) {
+      assert.doesNotThrow(() => Events.check(npcItem.when, { flags: {}, badges: [], items: {}, money: 0 }), `${mapId}: npc ${npcItem.name} when valutabile`);
+    }
+  }
+  for (const exit of map.transitions || []) {
+    if (exit.when !== undefined && exit.when !== null) {
+      assert.doesNotThrow(() => Events.check(exit.when, { flags: {}, badges: [], items: {}, money: 0 }), `${mapId}: transizione verso ${exit.to} when valutabile`);
+    }
+  }
+}
+
+// --- id allenatori referenziati nelle mappe (npc.script battleTrainer / building.script) devono esistere ---
+function collectTrainerIds(script, out) {
+  for (const step of script || []) {
+    if (!step || typeof step !== 'object') continue;
+    if ('battleTrainer' in step) out.add(step.battleTrainer);
+    if ('choice' in step) for (const option of step.options || []) collectTrainerIds(option.then, out);
+    if ('if' in step) { collectTrainerIds(step.then, out); collectTrainerIds(step.else, out); }
+    if ('wildBattle' in step) { collectTrainerIds(step.onCatch, out); collectTrainerIds(step.onOther, out); }
+    if ('battleTrainer' in step) { collectTrainerIds(step.onWin, out); collectTrainerIds(step.onLose, out); }
+  }
+}
+const referencedTrainerIds = new Set();
+for (const map of Object.values(data.maps)) {
+  for (const npcItem of map.npcs || []) if (npcItem.script) collectTrainerIds(npcItem.script, referencedTrainerIds);
+  for (const building of map.buildings || []) if (building.script) collectTrainerIds(building.script, referencedTrainerIds);
+}
+for (const trainerId of referencedTrainerIds) {
+  assert.ok(trainersData.trainers[trainerId], `allenatore referenziato "${trainerId}" esistente in trainers.js`);
+}
 
 console.log(`OK: ${Object.keys(data.maps).length} mappe, ${Object.keys(data.species).length} Pokémon, ${Object.keys(data.moves).length} mosse.`);

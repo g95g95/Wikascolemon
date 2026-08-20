@@ -206,12 +206,65 @@
     };
   }
 
+  var KNOWN_STEP_KEYS = [
+    'say', 'choice', 'if', 'setFlag', 'clearFlag', 'giveItem', 'takeItem',
+    'giveMoney', 'takeMoney', 'badge', 'heal', 'shop', 'battleTrainer',
+    'wildBattle', 'giveMonster', 'warp', 'toast'
+  ];
+
+  function validateStep(step, errors, pathLabel) {
+    if (!step || typeof step !== 'object') {
+      errors.push(pathLabel + ': passo non valido (non è un oggetto)');
+      return;
+    }
+    var key = KNOWN_STEP_KEYS.find(function (k) { return k in step; });
+    if (!key) {
+      errors.push(pathLabel + ': passo con chiave sconosciuta (' + Object.keys(step).join(',') + ')');
+      return;
+    }
+    if (key === 'choice') {
+      if (!Array.isArray(step.options) || !step.options.length) {
+        errors.push(pathLabel + ': choice senza options');
+        return;
+      }
+      step.options.forEach(function (option, index) {
+        if (option && option.then) validateScript(option.then, errors, pathLabel + '.choice[' + index + ']');
+      });
+    }
+    if (key === 'if') {
+      if (step.then) validateScript(step.then, errors, pathLabel + '.then');
+      if (step.else) validateScript(step.else, errors, pathLabel + '.else');
+    }
+    if (key === 'battleTrainer') {
+      if (step.onWin) validateScript(step.onWin, errors, pathLabel + '.onWin');
+      if (step.onLose) validateScript(step.onLose, errors, pathLabel + '.onLose');
+    }
+    if (key === 'wildBattle') {
+      if (step.onCatch) validateScript(step.onCatch, errors, pathLabel + '.onCatch');
+      if (step.onOther) validateScript(step.onOther, errors, pathLabel + '.onOther');
+    }
+  }
+
+  function validateScript(script, errors, pathLabel) {
+    errors = errors || [];
+    pathLabel = pathLabel || 'script';
+    if (!Array.isArray(script)) {
+      errors.push(pathLabel + ': non è un array');
+      return errors;
+    }
+    script.forEach(function (step, index) {
+      validateStep(step, errors, pathLabel + '[' + index + ']');
+    });
+    return errors;
+  }
+
   var api = {
     check: check,
     createRunner: createRunner,
     visibleNpcs: visibleNpcs,
     canUseTransition: canUseTransition,
     npcScript: npcScript,
+    validateScript: validateScript,
     flagKeys: { trainerFlag: trainerFlag }
   };
 
