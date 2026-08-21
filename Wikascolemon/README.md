@@ -85,6 +85,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #066 | [Cavedì](cavedi.html) | Pokémon Pesciolino | Acqua | Rio Castellano, Oasi, Tronto |
 | #067 | [Cavedòne](cavedone.html) | Pokémon Buca Profonda | Acqua | Buche profonde del Tronto, Oasi |
 | #068 | [Bovfint](bovfint.html) | Pokémon Simulacro | Normale/Lotta | Offida (vie e piazze, il pomeriggio del venerdì grasso) |
+| #149 | [Gommapiuma](gommapiuma.html) | Pokémon Giaciglio | Normale | San Giacomo, Monte Piselli (luogo quasi inaccessibile) |
 | #150 | [Pretalien](pretalien.html) | Pokémon Testimone | Coleot/Psico | Pretare, Monte Vettore |
 
 La wiki è in espansione: nuove schede verranno aggiunte nel tempo.

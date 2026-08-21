@@ -37,7 +37,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #058-#059 | Retrabbiə → Sammarò ✅ |
 | #060-#067 | Ciucì → Ciuciòne · Sorcì → Sorcione · Zanzì → Zanzarax · Cavedì → Cavedòne ✅ — linee dei primi percorsi della Salaria |
 | #068 | Bovfint ✅ — il bove finto di Offida, stessa festa di Vlurde #055 |
-| #069-#149 | Libero |
+| #069-#148 | Libero |
+| **#149** | **Gommapiuma ✅ — leggendario del riposo, coppia con il Picchio (non ancora scritto).**|
 | **#150** | **Pretalien ✅ — chiude il Pokédex.** Numero finale: non superarlo e non riassegnarlo. |
 
 ⚠️ **Prima di assegnare un numero, fai `git fetch origin` e leggi i numeri da `origin/main`.** Sul dex lavorano più agenti in parallelo, e la tabella qui sopra è una copia locale che invecchia: è già successo **due volte** che una linea nuova nascesse su numeri occupati poche ore prima (Maranzino contro Traffichiex, e la linea della spiaggia contro Forox/Notaiax/Maranzino). La verità sono i file pubblicati, non questa tabella.
