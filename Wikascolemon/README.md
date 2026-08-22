@@ -70,23 +70,24 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #051 | [Cignalò](cignalo.html) | Pokémon Cinghialetto | Normale/Terra | Monti della Laga (Acquasanta, Arquata, Montegallo) |
 | #052 | [Bracignale](bracignale.html) | Pokémon Carbonaia | Fuoco/Terra | Monti della Laga |
 | #053 | [Caciara](caciara.html) | Pokémon Frastuono | Ghiaccio | Monti Sibillini (Vettore, Forca di Presta, Castelluccio) |
-| #054 | [Pətò](peto.html) | Pokémon Ruota | Normale/Volante | Contado ascolano (Castorano, Appignano del Tronto, Venarotta) |
-| #055 | [Vlurde](vlurde.html) | Pokémon Fascina | Fuoco/Erba | Offida (vicoli e corso Serpente Aureo) |
-| #056 | [Moccolo](moccolo.html) | Pokémon Lampioncino | Fuoco/Folletto | Castignano (vicoli e piazzette) |
-| #057 | [Ciammarica](ciammarica.html) | Pokémon Chiocciola | Coleottero | Piceno (orti, muretti a secco, travertino) |
-| #058 | [Retrabbiə](retrabbie.html) | Pokémon Paletta | Fuoco/Acciaio | Contado ascolano (forni a legna e panifici storici) |
-| #059 | [Sammarò](sammaro.html) | Pokémon Sambuco | Erba/Acciaio | Contado ascolano (campi, fossi e margini dei coltivi) |
-| #060 | [Ciucì](ciuci.html) | Pokémon Passerotto | Normale/Volante | Marino del Tronto, Oasi, Maltignano |
-| #061 | [Ciuciòne](ciucione.html) | Pokémon Passerone | Normale/Volante | Marino del Tronto, Oasi |
-| #062 | [Sorcì](sorci.html) | Pokémon Topocampo | Normale | Marino del Tronto, Maltignano (campi e oliveti) |
-| #063 | [Sorcione](sorcione.html) | Pokémon Ratto da Capannone | Normale | Marino del Tronto, Maltignano (capannoni) |
-| #064 | [Zanzì](zanzi.html) | Pokémon Zanzara | Coleottero/Veleno | Oasi, Maltignano, Castel di Lama |
-| #065 | [Zanzarax](zanzarax.html) | Pokémon Zanzara Corazzata | Coleottero/Veleno | Oasi, Castel di Lama |
-| #066 | [Cavedì](cavedi.html) | Pokémon Pesciolino | Acqua | Rio Castellano, Oasi, Tronto |
-| #067 | [Cavedòne](cavedone.html) | Pokémon Buca Profonda | Acqua | Buche profonde del Tronto, Oasi |
-| #068 | [Bovfint](bovfint.html) | Pokémon Simulacro | Normale/Lotta | Offida (vie e piazze, il pomeriggio del venerdì grasso) |
-| #069 | [Frizzantina](frizzantina.html) | Pokémon Etichetta | Acqua/Folletto | Folignano e i banconi dei bar della valle |
-| #070 | [Spumadiva](spumadiva.html) | Pokémon Diva | Acqua/Folletto | Marino del Tronto (fabbrica di bibite) |
+| #054 | [Trecaciare](trecaciare.html) | Pokémon Capanna | Ghiaccio/Roccia | Montagna dei Fiori (Tre Caciare, San Giacomo) |
+| #055 | [Pətò](peto.html) | Pokémon Ruota | Normale/Volante | Contado ascolano (Castorano, Appignano del Tronto, Venarotta) |
+| #056 | [Vlurde](vlurde.html) | Pokémon Fascina | Fuoco/Erba | Offida (vicoli e corso Serpente Aureo) |
+| #057 | [Moccolo](moccolo.html) | Pokémon Lampioncino | Fuoco/Folletto | Castignano (vicoli e piazzette) |
+| #058 | [Ciammarica](ciammarica.html) | Pokémon Chiocciola | Coleottero | Piceno (orti, muretti a secco, travertino) |
+| #059 | [Retrabbiə](retrabbie.html) | Pokémon Paletta | Fuoco/Acciaio | Contado ascolano (forni a legna e panifici storici) |
+| #060 | [Sammarò](sammaro.html) | Pokémon Sambuco | Erba/Acciaio | Contado ascolano (campi, fossi e margini dei coltivi) |
+| #061 | [Ciucì](ciuci.html) | Pokémon Passerotto | Normale/Volante | Marino del Tronto, Oasi, Maltignano |
+| #062 | [Ciuciòne](ciucione.html) | Pokémon Passerone | Normale/Volante | Marino del Tronto, Oasi |
+| #063 | [Sorcì](sorci.html) | Pokémon Topocampo | Normale | Marino del Tronto, Maltignano (campi e oliveti) |
+| #064 | [Sorcione](sorcione.html) | Pokémon Ratto da Capannone | Normale | Marino del Tronto, Maltignano (capannoni) |
+| #065 | [Zanzì](zanzi.html) | Pokémon Zanzara | Coleottero/Veleno | Oasi, Maltignano, Castel di Lama |
+| #066 | [Zanzarax](zanzarax.html) | Pokémon Zanzara Corazzata | Coleottero/Veleno | Oasi, Castel di Lama |
+| #067 | [Cavedì](cavedi.html) | Pokémon Pesciolino | Acqua | Rio Castellano, Oasi, Tronto |
+| #068 | [Cavedòne](cavedone.html) | Pokémon Buca Profonda | Acqua | Buche profonde del Tronto, Oasi |
+| #069 | [Bovfint](bovfint.html) | Pokémon Simulacro | Normale/Lotta | Offida (vie e piazze, il pomeriggio del venerdì grasso) |
+| #070 | [Frizzantina](frizzantina.html) | Pokémon Etichetta | Acqua/Folletto | Folignano e i banconi dei bar della valle |
+| #071 | [Spumadiva](spumadiva.html) | Pokémon Diva | Acqua/Folletto | Marino del Tronto (fabbrica di bibite) |
 | #149 | [Gommapiuma](gommapiuma.html) | Pokémon Giaciglio | Normale | San Giacomo, Monte Piselli (luogo quasi inaccessibile) |
 | #150 | [Pretalien](pretalien.html) | Pokémon Testimone | Coleot/Psico | Pretare, Monte Vettore |
 

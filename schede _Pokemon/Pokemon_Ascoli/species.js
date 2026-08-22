@@ -455,7 +455,7 @@
     "wiki": "../batterino.html"
   },
   "bovfint": {
-    "number": 68,
+    "number": 69,
     "name": "Bovfint",
     "types": [
       "Normale",
@@ -766,7 +766,9 @@
         "gelo_nevoso"
       ]
     ],
-    "evolution": null,
+    "evolution": {
+      "into": "trecaciare"
+    },
     "wiki": "../caciara.html"
   },
   "caita": {
@@ -1037,7 +1039,7 @@
     "wiki": "../cavalbrace.html"
   },
   "cavedi": {
-    "number": 66,
+    "number": 67,
     "name": "Cavedì",
     "types": [
       "Acqua"
@@ -1094,7 +1096,7 @@
     "wiki": "../cavedi.html"
   },
   "cavedone": {
-    "number": 67,
+    "number": 68,
     "name": "Cavedòne",
     "types": [
       "Acqua"
@@ -1231,7 +1233,7 @@
     "wiki": "../cerqua.html"
   },
   "ciammarica": {
-    "number": 57,
+    "number": 58,
     "name": "Ciammarica",
     "types": [
       "Coleottero"
@@ -1414,7 +1416,7 @@
     "wiki": "../cignalo.html"
   },
   "ciuci": {
-    "number": 60,
+    "number": 61,
     "name": "Ciucì",
     "types": [
       "Normale",
@@ -1468,7 +1470,7 @@
     "wiki": "../ciuci.html"
   },
   "ciucione": {
-    "number": 61,
+    "number": 62,
     "name": "Ciuciòne",
     "types": [
       "Normale",
@@ -1934,7 +1936,7 @@
     "wiki": "../forox.html"
   },
   "frizzantina": {
-    "number": 69,
+    "number": 70,
     "name": "Frizzantina",
     "types": [
       "Acqua",
@@ -2303,7 +2305,7 @@
     "wiki": "../mixaro.html"
   },
   "moccolo": {
-    "number": 56,
+    "number": 57,
     "name": "Moccolo",
     "types": [
       "Fuoco",
@@ -2680,7 +2682,7 @@
     "wiki": "../pefna.html"
   },
   "peto": {
-    "number": 54,
+    "number": 55,
     "name": "Pətò",
     "types": [
       "Normale",
@@ -3082,7 +3084,7 @@
     "wiki": "../quintanaro.html"
   },
   "retrabbie": {
-    "number": 58,
+    "number": 59,
     "name": "Retrabbiə",
     "types": [
       "Fuoco",
@@ -3206,7 +3208,7 @@
     "wiki": "../salvatorre.html"
   },
   "sammaro": {
-    "number": 59,
+    "number": 60,
     "name": "Sammarò",
     "types": [
       "Erba",
@@ -3589,7 +3591,7 @@
     "wiki": "../soldatino.html"
   },
   "sorci": {
-    "number": 62,
+    "number": 63,
     "name": "Sorcì",
     "types": [
       "Normale"
@@ -3638,7 +3640,7 @@
     "wiki": "../sorci.html"
   },
   "sorcione": {
-    "number": 63,
+    "number": 64,
     "name": "Sorcione",
     "types": [
       "Normale"
@@ -3759,7 +3761,7 @@
     "wiki": "../spesurde.html"
   },
   "spumadiva": {
-    "number": 70,
+    "number": 71,
     "name": "Spumadiva",
     "types": [
       "Acqua",
@@ -4101,6 +4103,89 @@
       "level": 32
     },
     "wiki": "../traffichiex.html"
+  },
+  "trecaciare": {
+    "number": 54,
+    "name": "Trecaciare",
+    "types": [
+      "Ghiaccio",
+      "Roccia"
+    ],
+    "base": [
+      85,
+      60,
+      115,
+      90,
+      85,
+      30
+    ],
+    "catchRate": 60,
+    "expYield": 165,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "botto"
+      ],
+      [
+        1,
+        "nevischio"
+      ],
+      [
+        1,
+        "urlo"
+      ],
+      [
+        1,
+        "cassa_toracica"
+      ],
+      [
+        1,
+        "coro_di_pietra"
+      ],
+      [
+        11,
+        "rimbalzello"
+      ],
+      [
+        16,
+        "difesaferrea"
+      ],
+      [
+        21,
+        "raggio_gelo"
+      ],
+      [
+        27,
+        "grido_lacerante"
+      ],
+      [
+        33,
+        "vento_ghiacciato"
+      ],
+      [
+        36,
+        "forzantica"
+      ],
+      [
+        39,
+        "frana"
+      ],
+      [
+        42,
+        "boato"
+      ],
+      [
+        45,
+        "gelo_nevoso"
+      ],
+      [
+        52,
+        "pietrataglio"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../trecaciare.html"
   },
   "tuffito": {
     "number": 7,
@@ -4447,7 +4532,7 @@
     "wiki": "../vescovasil.html"
   },
   "vlurde": {
-    "number": 55,
+    "number": 56,
     "name": "Vlurde",
     "types": [
       "Fuoco",
@@ -4506,7 +4591,7 @@
     "wiki": "../vlurde.html"
   },
   "zanzarax": {
-    "number": 65,
+    "number": 66,
     "name": "Zanzarax",
     "types": [
       "Coleottero",
@@ -4561,7 +4646,7 @@
     "wiki": "../zanzarax.html"
   },
   "zanzi": {
-    "number": 64,
+    "number": 65,
     "name": "Zanzì",
     "types": [
       "Coleottero",

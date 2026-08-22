@@ -58,7 +58,7 @@
     },
     {
       "id": "bovfint",
-      "number": 68,
+      "number": 69,
       "name": "Bovfint",
       "statTotal": 480,
       "statSum": 480,
@@ -130,7 +130,7 @@
     },
     {
       "id": "cavedi",
-      "number": 66,
+      "number": 67,
       "name": "Cavedì",
       "statTotal": 240,
       "statSum": 240,
@@ -138,7 +138,7 @@
     },
     {
       "id": "cavedone",
-      "number": 67,
+      "number": 68,
       "name": "Cavedòne",
       "statTotal": 410,
       "statSum": 410,
@@ -154,7 +154,7 @@
     },
     {
       "id": "ciammarica",
-      "number": 57,
+      "number": 58,
       "name": "Ciammarica",
       "statTotal": 365,
       "statSum": 365,
@@ -178,7 +178,7 @@
     },
     {
       "id": "ciuci",
-      "number": 60,
+      "number": 61,
       "name": "Ciucì",
       "statTotal": 245,
       "statSum": 245,
@@ -186,7 +186,7 @@
     },
     {
       "id": "ciucione",
-      "number": 61,
+      "number": 62,
       "name": "Ciuciòne",
       "statTotal": 400,
       "statSum": 400,
@@ -242,7 +242,7 @@
     },
     {
       "id": "frizzantina",
-      "number": 69,
+      "number": 70,
       "name": "Frizzantina",
       "statTotal": 305,
       "statSum": 305,
@@ -290,7 +290,7 @@
     },
     {
       "id": "moccolo",
-      "number": 56,
+      "number": 57,
       "name": "Moccolo",
       "statTotal": 480,
       "statSum": 480,
@@ -338,7 +338,7 @@
     },
     {
       "id": "peto",
-      "number": 54,
+      "number": 55,
       "name": "Pətò",
       "statTotal": 410,
       "statSum": 410,
@@ -386,7 +386,7 @@
     },
     {
       "id": "retrabbie",
-      "number": 58,
+      "number": 59,
       "name": "Retrabbiə",
       "statTotal": 325,
       "statSum": 325,
@@ -402,7 +402,7 @@
     },
     {
       "id": "sammaro",
-      "number": 59,
+      "number": 60,
       "name": "Sammarò",
       "statTotal": 455,
       "statSum": 455,
@@ -450,7 +450,7 @@
     },
     {
       "id": "sorci",
-      "number": 62,
+      "number": 63,
       "name": "Sorcì",
       "statTotal": 235,
       "statSum": 235,
@@ -458,7 +458,7 @@
     },
     {
       "id": "sorcione",
-      "number": 63,
+      "number": 64,
       "name": "Sorcione",
       "statTotal": 390,
       "statSum": 390,
@@ -474,7 +474,7 @@
     },
     {
       "id": "spumadiva",
-      "number": 70,
+      "number": 71,
       "name": "Spumadiva",
       "statTotal": 495,
       "statSum": 495,
@@ -510,6 +510,14 @@
       "name": "Traffichiex",
       "statTotal": 320,
       "statSum": 320,
+      "ok": true
+    },
+    {
+      "id": "trecaciare",
+      "number": 54,
+      "name": "Trecaciare",
+      "statTotal": 465,
+      "statSum": 465,
       "ok": true
     },
     {
@@ -554,7 +562,7 @@
     },
     {
       "id": "vlurde",
-      "number": 55,
+      "number": 56,
       "name": "Vlurde",
       "statTotal": 480,
       "statSum": 480,
@@ -562,7 +570,7 @@
     },
     {
       "id": "zanzarax",
-      "number": 65,
+      "number": 66,
       "name": "Zanzarax",
       "statTotal": 385,
       "statSum": 385,
@@ -570,7 +578,7 @@
     },
     {
       "id": "zanzi",
-      "number": 64,
+      "number": 65,
       "name": "Zanzì",
       "statTotal": 220,
       "statSum": 220,

@@ -3898,6 +3898,28 @@
     "effect": null,
     "description": "Attacco veloce e diretto."
   },
+  "coro_di_pietra": {
+    "name": "Coro di Pietra",
+    "type": "Roccia",
+    "category": "Speciale",
+    "power": 25,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "colpisce tre volte di fila, una per capanna, ed è una mossa basata sul suono, quindi ignora Sostituto."
+  },
+  "forzantica": {
+    "name": "Forzantica",
+    "type": "Roccia",
+    "category": "Speciale",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "solarraggio": {
     "name": "Solarraggio",
     "type": "Erba",
