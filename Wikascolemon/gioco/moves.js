@@ -2233,6 +2233,130 @@
     },
     "description": "Getti d'acqua a bassa potenza, versione depotenziata dell'Idropompa (mossa di Cozzetta)."
   },
+  "graffio": {
+    "name": "Graffio",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "fulmisguardo": {
+    "name": "Fulmisguardo",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "dolcebacio": {
+    "name": "Dolcebacio",
+    "type": "Folletto",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 75,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "dragofuria": {
+    "name": "Dragofuria",
+    "type": "Drago",
+    "category": "Speciale",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "morso": {
+    "name": "Morso",
+    "type": "Buio",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 25,
+    "priority": 0,
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Un morso che può far tentennare."
+  },
+  "dragartigli": {
+    "name": "Dragartigli",
+    "type": "Drago",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "spaccacrosta": {
+    "name": "Spaccacrosta",
+    "type": "Drago",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "80 di potenza, che raddoppia se i PS di Cremino sono sotto la metà — quando la crosta si rompe, esce tutto."
+  },
+  "dragodanza": {
+    "name": "Dragodanza",
+    "type": "Drago",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "fortuncanto": {
+    "name": "Fortuncanto",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "dragopulsar": {
+    "name": "Dragopulsar",
+    "type": "Drago",
+    "category": "Speciale",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "oltraggio": {
+    "name": "Oltraggio",
+    "type": "Drago",
+    "category": "Fisico",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "vocedincanto": {
     "name": "Vocedincanto",
     "type": "Folletto",
@@ -3029,20 +3153,6 @@
     "effect": null,
     "description": "Una palla di fango scagliata con forza."
   },
-  "morso": {
-    "name": "Morso",
-    "type": "Buio",
-    "category": "Fisico",
-    "power": 60,
-    "accuracy": 100,
-    "pp": 25,
-    "priority": 0,
-    "effect": {
-      "kind": "flinch",
-      "chance": 30
-    },
-    "description": "Un morso che può far tentennare."
-  },
   "velenodenti": {
     "name": "Velenodenti",
     "type": "Veleno",
@@ -3276,17 +3386,6 @@
     "priority": 0,
     "effect": null,
     "description": "Assalto dall'alto in picchiata."
-  },
-  "fulmisguardo": {
-    "name": "Fulmisguardo",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 30,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "ver_sacrum": {
     "name": "Ver Sacrum",

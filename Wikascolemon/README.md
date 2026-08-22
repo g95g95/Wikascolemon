@@ -93,6 +93,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #074 | [Livetta](livetta.html) | Pokémon Tenera | Normale | Oliveti collinari del Piceno (Ascoli, Castel di Lama, Castorano, Offida) |
 | #075 | [Liva](liva.html) | Pokémon Ripieno | Lotta | Cucine di casa e di trattoria del Piceno |
 | #076 | [Ascolana](ascolana.html) | Pokémon Dorato | Lotta/Fuoco | Friggitorie di Ascoli, feste di paese |
+| #077 | [Cremino](cremino.html) | Pokémon Crema Fritta | Drago | Centro storico di Ascoli (friggitorie e torri gentilizie) |
 | #148 | [Picchio](picchio.html) | Pokémon Vessillo | Volante/Lotta | Forca di Presta, e ovunque ci sia una partenza |
 | #149 | [Gommapiuma](gommapiuma.html) | Pokémon Giaciglio | Normale | San Giacomo, Monte Piselli (luogo quasi inaccessibile) |
 | #150 | [Pretalien](pretalien.html) | Pokémon Testimone | Coleot/Psico | Pretare, Monte Vettore |

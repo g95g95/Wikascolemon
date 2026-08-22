@@ -1802,6 +1802,80 @@
     },
     "wiki": "../cozzetta.html"
   },
+  "cremino": {
+    "number": 77,
+    "name": "Cremino",
+    "types": [
+      "Drago"
+    ],
+    "base": [
+      75,
+      95,
+      85,
+      95,
+      80,
+      50
+    ],
+    "catchRate": 60,
+    "expYield": 180,
+    "growth": "lento",
+    "learnset": [
+      [
+        1,
+        "graffio"
+      ],
+      [
+        1,
+        "fulmisguardo"
+      ],
+      [
+        6,
+        "dolcebacio"
+      ],
+      [
+        11,
+        "dragofuria"
+      ],
+      [
+        16,
+        "morso"
+      ],
+      [
+        21,
+        "braciere"
+      ],
+      [
+        26,
+        "dragartigli"
+      ],
+      [
+        31,
+        "spaccacrosta"
+      ],
+      [
+        36,
+        "dragodanza"
+      ],
+      [
+        42,
+        "lanciafiamme"
+      ],
+      [
+        48,
+        "fortuncanto"
+      ],
+      [
+        54,
+        "dragopulsar"
+      ],
+      [
+        60,
+        "oltraggio"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../cremino.html"
+  },
   "dehor": {
     "number": 26,
     "name": "Dehor",
