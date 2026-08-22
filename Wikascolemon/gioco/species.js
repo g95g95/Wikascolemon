@@ -3832,6 +3832,77 @@
     "evolution": null,
     "wiki": "../spesurde.html"
   },
+  "spettornado": {
+    "number": 73,
+    "name": "Spettornado",
+    "types": [
+      "Spettro",
+      "Fuoco"
+    ],
+    "base": [
+      60,
+      55,
+      60,
+      125,
+      80,
+      130
+    ],
+    "catchRate": 30,
+    "expYield": 190,
+    "growth": "nessuno",
+    "learnset": [
+      [
+        1,
+        "braciere"
+      ],
+      [
+        1,
+        "sgomento"
+      ],
+      [
+        8,
+        "fuocofatuo"
+      ],
+      [
+        14,
+        "agilita"
+      ],
+      [
+        20,
+        "fuococarica"
+      ],
+      [
+        26,
+        "ventoincoda"
+      ],
+      [
+        32,
+        "palla_ombra"
+      ],
+      [
+        38,
+        "quota_zero"
+      ],
+      [
+        44,
+        "lanciafiamme"
+      ],
+      [
+        50,
+        "eterelama"
+      ],
+      [
+        56,
+        "fuocobomba"
+      ],
+      [
+        62,
+        "tempesta"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../spettornado.html"
+  },
   "spumadiva": {
     "number": 71,
     "name": "Spumadiva",

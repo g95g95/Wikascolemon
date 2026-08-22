@@ -3848,6 +3848,61 @@
     },
     "description": "Mette KO il bersaglio in un solo colpo se va a segno."
   },
+  "ventoincoda": {
+    "name": "Ventoincoda",
+    "type": "Volante",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "quota_zero": {
+    "name": "Quota Zero",
+    "type": "Volante",
+    "category": "Speciale",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "un passaggio a bassissima quota che colpisce e spegne. Se il bersaglio è di tipo Fuoco, la sua abilità viene annullata per tre turni; se in campo c'è la luce solare intensa, viene cancellata."
+  },
+  "eterelama": {
+    "name": "Eterelama",
+    "type": "Volante",
+    "category": "Speciale",
+    "power": 75,
+    "accuracy": 95,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "fuocobomba": {
+    "name": "Fuocobomba",
+    "type": "Fuoco",
+    "category": "Speciale",
+    "power": 110,
+    "accuracy": 85,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "tempesta": {
+    "name": "Tempesta",
+    "type": "Volante",
+    "category": "Speciale",
+    "power": 110,
+    "accuracy": 70,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "seduzione": {
     "name": "Seduzione",
     "type": "Normale",

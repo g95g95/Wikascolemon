@@ -481,6 +481,14 @@
       "ok": true
     },
     {
+      "id": "spettornado",
+      "number": 73,
+      "name": "Spettornado",
+      "statTotal": 510,
+      "statSum": 510,
+      "ok": true
+    },
+    {
       "id": "spumadiva",
       "number": 71,
       "name": "Spumadiva",
