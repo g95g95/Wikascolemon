@@ -57,6 +57,14 @@
       "ok": true
     },
     {
+      "id": "bovfint",
+      "number": 68,
+      "name": "Bovfint",
+      "statTotal": 480,
+      "statSum": 480,
+      "ok": true
+    },
+    {
       "id": "bracignale",
       "number": 52,
       "name": "Bracignale",
@@ -233,11 +241,27 @@
       "ok": true
     },
     {
+      "id": "frizzantina",
+      "number": 69,
+      "name": "Frizzantina",
+      "statTotal": 305,
+      "statSum": 305,
+      "ok": true
+    },
+    {
       "id": "fuocavallo",
       "number": 6,
       "name": "Fuocavallo",
       "statTotal": 530,
       "statSum": 530,
+      "ok": true
+    },
+    {
+      "id": "gommapiuma",
+      "number": 149,
+      "name": "Gommapiuma",
+      "statTotal": 580,
+      "statSum": 580,
       "ok": true
     },
     {
@@ -446,6 +470,14 @@
       "name": "Spesurde",
       "statTotal": 460,
       "statSum": 460,
+      "ok": true
+    },
+    {
+      "id": "spumadiva",
+      "number": 70,
+      "name": "Spumadiva",
+      "statTotal": 495,
+      "statSum": 495,
       "ok": true
     },
     {

@@ -657,6 +657,83 @@
     },
     "description": "Scontro fisico che può paralizzare."
   },
+  "bruciapelo": {
+    "name": "Bruciapelo",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 1,
+    "effect": null,
+    "description": "è il suo celebre starnuto-botto: agisce sempre per primo, ma solo appena sceso in campo."
+  },
+  "cornata": {
+    "name": "Cornata",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 25,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "finta": {
+    "name": "Finta",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 30,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "riscaldamento": {
+    "name": "Riscaldamento",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "bascullata": {
+    "name": "Bascullata",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "è la sua mossa esclusiva: una carica basculante e imprevedibile che"
+  },
+  "zuffa": {
+    "name": "Zuffa",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "Una zuffa fortissima ma che lascia esausti."
+  },
+  "gigaimpatto": {
+    "name": "Gigaimpatto",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "braciscavo": {
     "name": "Braciscavo",
     "type": "Fuoco",
@@ -937,17 +1014,6 @@
       "id": "evasion_up"
     },
     "description": "Crea illusioni di sé stesso, aumentando l'elusione."
-  },
-  "bruciapelo": {
-    "name": "Bruciapelo",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 1,
-    "effect": null,
-    "description": "è il suo celebre starnuto-botto: agisce sempre per primo, ma solo appena sceso in campo."
   },
   "carineria": {
     "name": "Carineria",
@@ -1311,17 +1377,6 @@
       "id": "confuse_self_after"
     },
     "description": "Attacco potente che confonde chi lo usa nel turno successivo."
-  },
-  "zuffa": {
-    "name": "Zuffa",
-    "type": "Lotta",
-    "category": "Fisico",
-    "power": 120,
-    "accuracy": 100,
-    "pp": 5,
-    "priority": 0,
-    "effect": null,
-    "description": "Una zuffa fortissima ma che lascia esausti."
   },
   "ipervoce": {
     "name": "Ipervoce",
@@ -2342,6 +2397,83 @@
     "effect": null,
     "description": "Un attacco psichico potente e preciso."
   },
+  "occhioni_teneri": {
+    "name": "Occhioni teneri",
+    "type": "Folletto",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "stappata": {
+    "name": "Stappata",
+    "type": "Acqua",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "ha priorità +3 ma riesce solo nel primo turno in cui l'utilizzatore entra in campo, e fa tentennare il bersaglio."
+  },
+  "pioggiadanza": {
+    "name": "Pioggiadanza",
+    "type": "Acqua",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "ventofatato": {
+    "name": "Ventofatato",
+    "type": "Folletto",
+    "category": "Speciale",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "attrazione": {
+    "name": "Attrazione",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "bacioassorbente": {
+    "name": "Bacioassorbente",
+    "type": "Folletto",
+    "category": "Speciale",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "magibrillio": {
+    "name": "Magibrillio",
+    "type": "Folletto",
+    "category": "Speciale",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "incantavoce": {
     "name": "Incantavoce",
     "type": "Folletto",
@@ -2366,6 +2498,42 @@
       "id": "girandola"
     },
     "description": "gira su sé stesso sparando scintille — infligge danno, aumenta la Velocità di chi la usa e nelle lotte in doppio colpisce entrambi gli avversari."
+  },
+  "attutone": {
+    "name": "Attutone",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "è la sua mossa esclusiva: per cinque turni il terreno diventa"
+  },
+  "russare": {
+    "name": "Russare",
+    "type": "Normale",
+    "category": "Speciale",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Un attacco sonoro usabile solo dormendo, che può far tentennare."
+  },
+  "schiacciacorpo": {
+    "name": "Schiacciacorpo",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
   },
   "sabbiattacco": {
     "name": "Sabbiattacco",
@@ -3603,6 +3771,39 @@
     },
     "description": "Mette KO il bersaglio in un solo colpo se va a segno."
   },
+  "seduzione": {
+    "name": "Seduzione",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "geyser": {
+    "name": "Geyser",
+    "type": "Acqua",
+    "category": "Speciale",
+    "power": 150,
+    "accuracy": 100,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "cuorestrofinio": {
+    "name": "Cuorestrofinio",
+    "type": "Folletto",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "doppiasberla": {
     "name": "Doppiasberla",
     "type": "Normale",
@@ -3632,20 +3833,6 @@
       "max": 2
     },
     "description": "Colpisce furiosamente due volte."
-  },
-  "russare": {
-    "name": "Russare",
-    "type": "Normale",
-    "category": "Speciale",
-    "power": 50,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "flinch",
-      "chance": 30
-    },
-    "description": "Un attacco sonoro usabile solo dormendo, che può far tentennare."
   },
   "differita": {
     "name": "Differita",

@@ -454,6 +454,65 @@
     },
     "wiki": "../batterino.html"
   },
+  "bovfint": {
+    "number": 68,
+    "name": "Bovfint",
+    "types": [
+      "Normale",
+      "Lotta"
+    ],
+    "base": [
+      90,
+      110,
+      85,
+      40,
+      70,
+      85
+    ],
+    "catchRate": 45,
+    "expYield": 168,
+    "growth": "lento",
+    "learnset": [
+      [
+        1,
+        "bruciapelo"
+      ],
+      [
+        1,
+        "azione"
+      ],
+      [
+        9,
+        "cornata"
+      ],
+      [
+        14,
+        "finta"
+      ],
+      [
+        20,
+        "riscaldamento"
+      ],
+      [
+        26,
+        "bascullata"
+      ],
+      [
+        32,
+        "corposcontro"
+      ],
+      [
+        40,
+        "zuffa"
+      ],
+      [
+        48,
+        "gigaimpatto"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../bovfint.html"
+  },
   "bracignale": {
     "number": 52,
     "name": "Bracignale",
@@ -1874,6 +1933,79 @@
     "evolution": null,
     "wiki": "../forox.html"
   },
+  "frizzantina": {
+    "number": 69,
+    "name": "Frizzantina",
+    "types": [
+      "Acqua",
+      "Folletto"
+    ],
+    "base": [
+      45,
+      30,
+      40,
+      70,
+      55,
+      65
+    ],
+    "catchRate": 190,
+    "expYield": 62,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "bolla"
+      ],
+      [
+        1,
+        "fascino"
+      ],
+      [
+        4,
+        "occhioni_teneri"
+      ],
+      [
+        7,
+        "stappata"
+      ],
+      [
+        11,
+        "pioggiadanza"
+      ],
+      [
+        15,
+        "bollaraggio"
+      ],
+      [
+        19,
+        "ventofatato"
+      ],
+      [
+        23,
+        "attrazione"
+      ],
+      [
+        27,
+        "idropulsar"
+      ],
+      [
+        32,
+        "bacioassorbente"
+      ],
+      [
+        38,
+        "magibrillio"
+      ],
+      [
+        44,
+        "idropompa"
+      ]
+    ],
+    "evolution": {
+      "into": "spumadiva"
+    },
+    "wiki": "../frizzantina.html"
+  },
   "fuocavallo": {
     "number": 6,
     "name": "Fuocavallo",
@@ -1944,6 +2076,52 @@
     ],
     "evolution": null,
     "wiki": "../fuocavallo.html"
+  },
+  "gommapiuma": {
+    "number": 149,
+    "name": "Gommapiuma",
+    "types": [
+      "Normale"
+    ],
+    "base": [
+      160,
+      60,
+      140,
+      70,
+      140,
+      10
+    ],
+    "catchRate": 3,
+    "expYield": 280,
+    "growth": "nessuno",
+    "learnset": [
+      [
+        1,
+        "sbadiglio"
+      ],
+      [
+        1,
+        "riposo"
+      ],
+      [
+        1,
+        "attutone"
+      ],
+      [
+        25,
+        "russare"
+      ],
+      [
+        35,
+        "schiacciacorpo"
+      ],
+      [
+        50,
+        "desiderio"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../gommapiuma.html"
   },
   "lettino": {
     "number": 31,
@@ -3579,6 +3757,89 @@
     ],
     "evolution": null,
     "wiki": "../spesurde.html"
+  },
+  "spumadiva": {
+    "number": 70,
+    "name": "Spumadiva",
+    "types": [
+      "Acqua",
+      "Folletto"
+    ],
+    "base": [
+      70,
+      55,
+      65,
+      110,
+      95,
+      100
+    ],
+    "catchRate": 75,
+    "expYield": 175,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "bolla"
+      ],
+      [
+        1,
+        "fascino"
+      ],
+      [
+        1,
+        "seduzione"
+      ],
+      [
+        4,
+        "occhioni_teneri"
+      ],
+      [
+        7,
+        "stappata"
+      ],
+      [
+        11,
+        "pioggiadanza"
+      ],
+      [
+        15,
+        "bollaraggio"
+      ],
+      [
+        19,
+        "ventofatato"
+      ],
+      [
+        23,
+        "attrazione"
+      ],
+      [
+        27,
+        "idropulsar"
+      ],
+      [
+        32,
+        "bacioassorbente"
+      ],
+      [
+        38,
+        "magibrillio"
+      ],
+      [
+        44,
+        "idropompa"
+      ],
+      [
+        50,
+        "geyser"
+      ],
+      [
+        56,
+        "cuorestrofinio"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../spumadiva.html"
   },
   "tamburino": {
     "number": 17,
