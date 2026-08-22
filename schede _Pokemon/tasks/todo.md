@@ -93,6 +93,7 @@ allenatori, script; `node tests/*.mjs` verdi; screenshot della mappa dal configu
 ### B1. Specie nuove (parallela, 4 agenti + 1 per le mosse; nessun file in comune)
 Numeri **#057-#064** (#055 Vlurde e #056 Moccolo presi il 20/08). Nomi da confermare da bibbia §5.
 Eseguita il 20/08/2026: pubblicate come #060-067 (un'altra sessione aveva preso #057-059 nel frattempo: rinumerate al merge), tabelle incontri aggiornate (06dd129). Nota: Sorcì/Sorcione e Cavedì/Cavedòne sono mono-tipo come da bibbia; Ciuciòne ha una mossa esclusiva «Bricioleria» catalogata.
+⚠️ **I numeri di questa sezione sono quelli del piano del 20/08 e non valgono più**: dal 22/08/2026 la linea sta a #061-#068 (Trecaciare #054 ha spostato di uno tutto il blocco da Pətò in poi). I numeri veri sono nei file di `Wikascolemon/`, non qui.
 
 | Agente | Linea | τ/modello |
 |---|---|---|
@@ -135,6 +136,8 @@ F3 → D0 → D1-D2 (flottiglia, 10 agenti) → D-verifica → D4 → B1 (flotti
 ---
 
 # Piano: Cerqua (evoluzione di Totera) → #044, con slittamento di +1 di tutto il blocco successivo
+
+⚠️ *Verbale di un piano già eseguito il 20/08/2026: la tabella qui sotto fotografa quella rinumerazione. Il 22/08 ce n'è stata un'altra (Trecaciare #054), quindi da #054 in su questi numeri sono superati.*
 
 Da fare, **non ancora fatto**. Annotato il 20/08/2026 su richiesta di Jacopo.
 

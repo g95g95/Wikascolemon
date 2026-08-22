@@ -55,6 +55,7 @@
     ],
     "evolution": {
       "into": "mucillax",
+      "level": 18,
       "location": "costa"
     },
     "wiki": "../alghetta.html"
@@ -2447,10 +2448,6 @@
     "learnset": [
       [
         1,
-        "marea_rossa"
-      ],
-      [
-        1,
         "attacco_fanghiglia"
       ],
       [
@@ -2460,6 +2457,10 @@
       [
         1,
         "disgusto"
+      ],
+      [
+        18,
+        "marea_rossa"
       ],
       [
         32,

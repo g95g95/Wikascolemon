@@ -3,7 +3,7 @@
   "pozza": { "evolution": { "into": "umito", "item": "acquasanta" } },
   "turibasil": { "evolution": { "into": "vescovasil", "level": 36, "location": "campo_parignano" } },
   "sbandiera": { "evolution": { "into": "quintanaro", "location": "sestiere" } },
-  "alghetta": { "evolution": { "into": "mucillax", "location": "costa" } },
+  "alghetta": { "evolution": { "into": "mucillax", "level": 18, "location": "costa" } },
   "bagnetto": { "evolution": { "into": "coperto", "night": true, "knowsSoundMove": true } },
   "batterino": { "evolution": { "into": "dehor", "level": 15, "item": "grattaevinci" } },
   "bree": { "evolution": { "into": "felignoto", "location": "avvistamenti" } },
