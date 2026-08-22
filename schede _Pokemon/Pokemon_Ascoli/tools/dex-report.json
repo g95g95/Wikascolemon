@@ -345,6 +345,14 @@
       "ok": true
     },
     {
+      "id": "picchio",
+      "number": 148,
+      "name": "Picchio",
+      "statTotal": 580,
+      "statSum": 580,
+      "ok": true
+    },
+    {
       "id": "pito",
       "number": 45,
       "name": "Pito",

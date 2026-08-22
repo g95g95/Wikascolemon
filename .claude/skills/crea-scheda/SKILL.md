@@ -40,8 +40,9 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #069 | Bovfint ✅ — il bove finto di Offida, stessa festa di Vlurde #056 |
 | #070-#071 | Frizzantina → Spumadiva ✅ — la spuma di Folignano, evoluzione per scambio e ritorno |
 | #072 | Vecciandò ✅ — il calabrone del contado, l'ammazzasomari |
-| #073-#148 | Libero |
-| **#149** | **Gommapiuma ✅ — leggendario del riposo, coppia con il Picchio (non ancora scritto).**|
+| #073-#147 | Libero |
+| **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|
+| **#149** | **Gommapiuma ✅ — leggendario del riposo, coppia con il Picchio #148.**|
 | **#150** | **Pretalien ✅ — chiude il Pokédex.** Numero finale: non superarlo e non riassegnarlo. |
 
 ⚠️ **Prima di assegnare un numero, fai `git fetch origin` e leggi i numeri da `origin/main`.** Sul dex lavorano più agenti in parallelo, e la tabella qui sopra è una copia locale che invecchia: è già successo **due volte** che una linea nuova nascesse su numeri occupati poche ore prima (Maranzino contro Traffichiex, e la linea della spiaggia contro Forox/Notaiax/Maranzino). La verità sono i file pubblicati, non questa tabella.

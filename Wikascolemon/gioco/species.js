@@ -2741,6 +2741,77 @@
     "evolution": null,
     "wiki": "../peto.html"
   },
+  "picchio": {
+    "number": 148,
+    "name": "Picchio",
+    "types": [
+      "Volante",
+      "Lotta"
+    ],
+    "base": [
+      80,
+      130,
+      70,
+      90,
+      70,
+      140
+    ],
+    "catchRate": 3,
+    "expYield": 290,
+    "growth": "nessuno",
+    "learnset": [
+      [
+        1,
+        "beccata"
+      ],
+      [
+        1,
+        "fulmisguardo"
+      ],
+      [
+        7,
+        "attacco_rapido"
+      ],
+      [
+        14,
+        "attacco_dala"
+      ],
+      [
+        21,
+        "ver_sacrum"
+      ],
+      [
+        28,
+        "aeroattacco"
+      ],
+      [
+        35,
+        "breccia"
+      ],
+      [
+        42,
+        "agilita"
+      ],
+      [
+        49,
+        "martellata"
+      ],
+      [
+        56,
+        "volo"
+      ],
+      [
+        63,
+        "zuffa"
+      ],
+      [
+        70,
+        "cuordileone"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../picchio.html"
+  },
   "pito": {
     "number": 45,
     "name": "Pito",

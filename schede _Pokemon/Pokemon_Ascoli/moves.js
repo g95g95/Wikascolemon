@@ -3178,6 +3178,83 @@
     "effect": null,
     "description": "Assalto dall'alto in picchiata."
   },
+  "fulmisguardo": {
+    "name": "Fulmisguardo",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "ver_sacrum": {
+    "name": "Ver Sacrum",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "dopo aver colpito, Picchio lascia il campo e il Pokémon che entra al suo posto ottiene Velocità +1."
+  },
+  "aeroattacco": {
+    "name": "Aeroattacco",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "breccia": {
+    "name": "Breccia",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "martellata": {
+    "name": "Martellata",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 100,
+    "accuracy": 90,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "volo": {
+    "name": "Volo",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 90,
+    "accuracy": 95,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "cuordileone": {
+    "name": "Cuordileone",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "turbosabbia": {
     "name": "Turbosabbia",
     "type": "Terra",
@@ -3945,17 +4022,6 @@
     },
     "description": "Colpisce con le corna assorbendo metà del danno."
   },
-  "fulmisguardo": {
-    "name": "Fulmisguardo",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 30,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
   "inseguimento": {
     "name": "Inseguimento",
     "type": "Buio",
@@ -3985,17 +4051,6 @@
     "power": 80,
     "accuracy": 100,
     "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "aeroattacco": {
-    "name": "Aeroattacco",
-    "type": "Volante",
-    "category": "Fisico",
-    "power": 60,
-    "accuracy": null,
-    "pp": 20,
     "priority": 0,
     "effect": null,
     "description": ""
