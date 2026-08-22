@@ -545,6 +545,14 @@
       "ok": true
     },
     {
+      "id": "vecciando",
+      "number": 72,
+      "name": "Vecciandò",
+      "statTotal": 500,
+      "statSum": 500,
+      "ok": true
+    },
+    {
       "id": "venagrox",
       "number": 49,
       "name": "Venagrox",

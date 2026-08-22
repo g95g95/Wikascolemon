@@ -3945,6 +3945,105 @@
     },
     "description": "Colpisce con le corna assorbendo metà del danno."
   },
+  "fulmisguardo": {
+    "name": "Fulmisguardo",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "inseguimento": {
+    "name": "Inseguimento",
+    "type": "Buio",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "doppio_colpo": {
+    "name": "Doppio Colpo",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 35,
+    "accuracy": 90,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "forbice_x": {
+    "name": "Forbice X",
+    "type": "Coleot",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "aeroattacco": {
+    "name": "Aeroattacco",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "ammazzasomari": {
+    "name": "Ammazzasomari",
+    "type": "Coleot",
+    "category": "Fisico",
+    "power": 15,
+    "accuracy": 90,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "colpisce fino a sette volte di fila; ogni colpo ha la sua prova di precisione e la sequenza si interrompe al primo che manca."
+  },
+  "velenocroce": {
+    "name": "Velenocroce",
+    "type": "Veleno",
+    "category": "Fisico",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "acrobazia": {
+    "name": "Acrobazia",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 55,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "megacorno": {
+    "name": "Megacorno",
+    "type": "Coleot",
+    "category": "Fisico",
+    "power": 120,
+    "accuracy": 85,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "battiterra": {
     "name": "Battiterra",
     "type": "Terra",

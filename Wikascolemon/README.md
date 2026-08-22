@@ -88,6 +88,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #069 | [Bovfint](bovfint.html) | Pokémon Simulacro | Normale/Lotta | Offida (vie e piazze, il pomeriggio del venerdì grasso) |
 | #070 | [Frizzantina](frizzantina.html) | Pokémon Etichetta | Acqua/Folletto | Folignano e i banconi dei bar della valle |
 | #071 | [Spumadiva](spumadiva.html) | Pokémon Diva | Acqua/Folletto | Marino del Tronto (fabbrica di bibite) |
+| #072 | [Vecciandò](vecciando.html) | Pokémon Ammazzasomari | Coleottero/Volante | Contado ascolano (querce cave, fienili, frutteti) |
 | #149 | [Gommapiuma](gommapiuma.html) | Pokémon Giaciglio | Normale | San Giacomo, Monte Piselli (luogo quasi inaccessibile) |
 | #150 | [Pretalien](pretalien.html) | Pokémon Testimone | Coleot/Psico | Pretare, Monte Vettore |
 

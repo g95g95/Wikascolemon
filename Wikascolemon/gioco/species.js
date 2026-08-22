@@ -4390,6 +4390,85 @@
     "evolution": null,
     "wiki": "../umito.html"
   },
+  "vecciando": {
+    "number": 72,
+    "name": "Vecciandò",
+    "types": [
+      "Coleot",
+      "Volante"
+    ],
+    "base": [
+      70,
+      115,
+      70,
+      45,
+      80,
+      120
+    ],
+    "catchRate": 45,
+    "expYield": 100,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "attacco_rapido"
+      ],
+      [
+        1,
+        "fulmisguardo"
+      ],
+      [
+        5,
+        "velenospina"
+      ],
+      [
+        9,
+        "inseguimento"
+      ],
+      [
+        13,
+        "attacco_dala"
+      ],
+      [
+        17,
+        "agilita"
+      ],
+      [
+        21,
+        "doppio_colpo"
+      ],
+      [
+        25,
+        "forbice_x"
+      ],
+      [
+        29,
+        "danzaspada"
+      ],
+      [
+        33,
+        "aeroattacco"
+      ],
+      [
+        35,
+        "ammazzasomari"
+      ],
+      [
+        41,
+        "velenocroce"
+      ],
+      [
+        47,
+        "acrobazia"
+      ],
+      [
+        53,
+        "megacorno"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../vecciando.html"
+  },
   "venagrox": {
     "number": 49,
     "name": "Venagrox",
