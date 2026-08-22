@@ -25,6 +25,14 @@
       "ok": true
     },
     {
+      "id": "ascolana",
+      "number": 76,
+      "name": "Ascolana",
+      "statTotal": 520,
+      "statSum": 520,
+      "ok": true
+    },
+    {
       "id": "bagnetto",
       "number": 34,
       "name": "Bagnetto",
@@ -270,6 +278,22 @@
       "name": "Lettino",
       "statTotal": 270,
       "statSum": 270,
+      "ok": true
+    },
+    {
+      "id": "liva",
+      "number": 75,
+      "name": "Liva",
+      "statTotal": 400,
+      "statSum": 400,
+      "ok": true
+    },
+    {
+      "id": "livetta",
+      "number": 74,
+      "name": "Livetta",
+      "statTotal": 300,
+      "statSum": 300,
       "ok": true
     },
     {

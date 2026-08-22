@@ -196,6 +196,93 @@
     "evolution": null,
     "wiki": "../anisetta.html"
   },
+  "ascolana": {
+    "number": 76,
+    "name": "Ascolana",
+    "types": [
+      "Lotta",
+      "Fuoco"
+    ],
+    "base": [
+      80,
+      120,
+      75,
+      70,
+      75,
+      100
+    ],
+    "catchRate": 45,
+    "expYield": 225,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        1,
+        "rafforzatore"
+      ],
+      [
+        1,
+        "spaccaroccia"
+      ],
+      [
+        1,
+        "unaltra"
+      ],
+      [
+        1,
+        "braciere"
+      ],
+      [
+        18,
+        "corposcontro"
+      ],
+      [
+        22,
+        "colpo_karate"
+      ],
+      [
+        26,
+        "fuococarica"
+      ],
+      [
+        30,
+        "ritorno"
+      ],
+      [
+        34,
+        "breccia"
+      ],
+      [
+        38,
+        "contropiede"
+      ],
+      [
+        44,
+        "fuocopugno"
+      ],
+      [
+        50,
+        "zuffa"
+      ],
+      [
+        56,
+        "lanciafiamme"
+      ],
+      [
+        62,
+        "cuordileone"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../ascolana.html"
+  },
   "bagnetto": {
     "number": 34,
     "name": "Bagnetto",
@@ -2183,6 +2270,143 @@
       "level": 22
     },
     "wiki": "../lettino.html"
+  },
+  "liva": {
+    "number": 75,
+    "name": "Liva",
+    "types": [
+      "Lotta"
+    ],
+    "base": [
+      70,
+      90,
+      85,
+      40,
+      60,
+      55
+    ],
+    "catchRate": 90,
+    "expYield": 130,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        1,
+        "rafforzatore"
+      ],
+      [
+        1,
+        "rotolamento"
+      ],
+      [
+        1,
+        "spaccaroccia"
+      ],
+      [
+        13,
+        "bottintesta"
+      ],
+      [
+        18,
+        "corposcontro"
+      ],
+      [
+        22,
+        "colpo_karate"
+      ],
+      [
+        26,
+        "riposo"
+      ],
+      [
+        30,
+        "ritorno"
+      ],
+      [
+        34,
+        "breccia"
+      ],
+      [
+        38,
+        "contropiede"
+      ],
+      [
+        44,
+        "cuordileone"
+      ],
+      [
+        50,
+        "sottomissione"
+      ]
+    ],
+    "evolution": {
+      "into": "ascolana"
+    },
+    "wiki": "../liva.html"
+  },
+  "livetta": {
+    "number": 74,
+    "name": "Livetta",
+    "types": [
+      "Normale"
+    ],
+    "base": [
+      55,
+      45,
+      60,
+      35,
+      50,
+      55
+    ],
+    "catchRate": 190,
+    "expYield": 55,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        5,
+        "rafforzatore"
+      ],
+      [
+        9,
+        "rotolamento"
+      ],
+      [
+        13,
+        "bottintesta"
+      ],
+      [
+        18,
+        "corposcontro"
+      ],
+      [
+        24,
+        "riposo"
+      ],
+      [
+        30,
+        "ritorno"
+      ]
+    ],
+    "evolution": {
+      "into": "liva",
+      "friendship": true
+    },
+    "wiki": "../livetta.html"
   },
   "maranzino": {
     "number": 30,

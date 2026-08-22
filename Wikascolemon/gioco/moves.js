@@ -322,6 +322,199 @@
     },
     "description": "Uno sguardo che impedisce la fuga o la sostituzione."
   },
+  "ruggito": {
+    "name": "Ruggito",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 40,
+    "priority": 0,
+    "effect": {
+      "kind": "custom",
+      "id": "roar"
+    },
+    "description": "Costringe il bersaglio a essere sostituito."
+  },
+  "rafforzatore": {
+    "name": "Rafforzatore",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 30,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "attack",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Rafforza il corpo, aumentando l'Attacco."
+  },
+  "spaccaroccia": {
+    "name": "Spaccaroccia",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "unaltra": {
+    "name": "Un'altra",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "se manda KO il bersaglio, può essere usata una seconda volta nello stesso turno."
+  },
+  "braciere": {
+    "name": "Braciere",
+    "type": "Fuoco",
+    "category": "Speciale",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 25,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Fiamme che possono scottare il bersaglio."
+  },
+  "corposcontro": {
+    "name": "Corposcontro",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 30
+    },
+    "description": "Scontro fisico che può paralizzare."
+  },
+  "colpo_karate": {
+    "name": "Colpo Karate",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 25,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "fuococarica": {
+    "name": "Fuococarica",
+    "type": "Fuoco",
+    "category": "Fisico",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": {
+      "kind": "recoil",
+      "ratio": 0.33
+    },
+    "description": "è la corsa a rotta di collo che anticipa la festa: potentissima, ma il contraccolpo lo ferisce."
+  },
+  "ritorno": {
+    "name": "Ritorno",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ", al livello 30, è più forte quanto più alto è l'affetto: è la mossa con cui la linea annuncia la sua evoluzione."
+  },
+  "breccia": {
+    "name": "Breccia",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "contropiede": {
+    "name": "Contropiede",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "fuocopugno": {
+    "name": "Fuocopugno",
+    "type": "Fuoco",
+    "category": "Fisico",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Un pugno di fuoco che può scottare."
+  },
+  "zuffa": {
+    "name": "Zuffa",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "Una zuffa fortissima ma che lascia esausti."
+  },
+  "lanciafiamme": {
+    "name": "Lanciafiamme",
+    "type": "Fuoco",
+    "category": "Speciale",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Fiamme intense che possono scottare."
+  },
+  "cuordileone": {
+    "name": "Cuordileone",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "pistolacqua": {
     "name": "Pistolacqua",
     "type": "Acqua",
@@ -433,20 +626,6 @@
     "priority": 0,
     "effect": null,
     "description": "Una grande onda che travolge il bersaglio."
-  },
-  "ruggito": {
-    "name": "Ruggito",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 40,
-    "priority": 0,
-    "effect": {
-      "kind": "custom",
-      "id": "roar"
-    },
-    "description": "Costringe il bersaglio a essere sostituito."
   },
   "sberla": {
     "name": "Sberla",
@@ -642,21 +821,6 @@
     "effect": null,
     "description": "Un raggio di bolle pressurizzate."
   },
-  "corposcontro": {
-    "name": "Corposcontro",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 85,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "par",
-      "chance": 30
-    },
-    "description": "Scontro fisico che può paralizzare."
-  },
   "bruciapelo": {
     "name": "Bruciapelo",
     "type": "Normale",
@@ -711,17 +875,6 @@
     "priority": 0,
     "effect": null,
     "description": "è la sua mossa esclusiva: una carica basculante e imprevedibile che"
-  },
-  "zuffa": {
-    "name": "Zuffa",
-    "type": "Lotta",
-    "category": "Fisico",
-    "power": 120,
-    "accuracy": 100,
-    "pp": 5,
-    "priority": 0,
-    "effect": null,
-    "description": "Una zuffa fortissima ma che lascia esausti."
   },
   "gigaimpatto": {
     "name": "Gigaimpatto",
@@ -879,21 +1032,6 @@
     "effect": null,
     "description": "Un getto d'acqua pressurizzata."
   },
-  "braciere": {
-    "name": "Braciere",
-    "type": "Fuoco",
-    "category": "Speciale",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 25,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "brn",
-      "chance": 10
-    },
-    "description": "Fiamme che possono scottare il bersaglio."
-  },
   "colpokarate": {
     "name": "Colpokarate",
     "type": "Lotta",
@@ -918,21 +1056,6 @@
       "chance": 20
     },
     "description": "Colpisce come una cascata, può far tentennare."
-  },
-  "fuocopugno": {
-    "name": "Fuocopugno",
-    "type": "Fuoco",
-    "category": "Fisico",
-    "power": 75,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "brn",
-      "chance": 10
-    },
-    "description": "Un pugno di fuoco che può scottare."
   },
   "granchiomartello": {
     "name": "Granchiomartello",
@@ -1467,23 +1590,6 @@
     "effect": null,
     "description": "Una testata metallica pesante."
   },
-  "rafforzatore": {
-    "name": "Rafforzatore",
-    "type": "Lotta",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": null,
-    "pp": 20,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "self",
-      "stat": "attack",
-      "stages": 1,
-      "chance": 100
-    },
-    "description": "Rafforza il corpo, aumentando l'Attacco."
-  },
   "ponteggio": {
     "name": "Ponteggio",
     "type": "Acciaio",
@@ -1565,35 +1671,6 @@
       "chance": 10
     },
     "description": "Una ruota di fuoco che può scottare."
-  },
-  "lanciafiamme": {
-    "name": "Lanciafiamme",
-    "type": "Fuoco",
-    "category": "Speciale",
-    "power": 90,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "brn",
-      "chance": 10
-    },
-    "description": "Fiamme intense che possono scottare."
-  },
-  "fuococarica": {
-    "name": "Fuococarica",
-    "type": "Fuoco",
-    "category": "Fisico",
-    "power": 120,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "recoil",
-      "ratio": 0.33
-    },
-    "description": "è la corsa a rotta di collo che anticipa la festa: potentissima, ma il contraccolpo lo ferisce."
   },
   "attacco_rapido": {
     "name": "Attacco Rapido",
@@ -2594,6 +2671,28 @@
     "effect": null,
     "description": "Colpisce da un buco nel terreno."
   },
+  "rotolamento": {
+    "name": "Rotolamento",
+    "type": "Roccia",
+    "category": "Fisico",
+    "power": 30,
+    "accuracy": 90,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "sottomissione": {
+    "name": "Sottomissione",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 80,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "tuonoshock": {
     "name": "Tuonoshock",
     "type": "Elettro",
@@ -3211,17 +3310,6 @@
     "effect": null,
     "description": ""
   },
-  "breccia": {
-    "name": "Breccia",
-    "type": "Lotta",
-    "category": "Fisico",
-    "power": 75,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
   "martellata": {
     "name": "Martellata",
     "type": "Lotta",
@@ -3239,17 +3327,6 @@
     "category": "Fisico",
     "power": 90,
     "accuracy": 95,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "cuordileone": {
-    "name": "Cuordileone",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": null,
     "pp": 15,
     "priority": 0,
     "effect": null,
