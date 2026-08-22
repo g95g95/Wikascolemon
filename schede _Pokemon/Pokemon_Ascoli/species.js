@@ -2780,6 +2780,93 @@
     "evolution": null,
     "wiki": "../mucillax.html"
   },
+  "ngeno": {
+    "number": 79,
+    "name": "'Ngenò",
+    "types": [
+      "Buio",
+      "Psico"
+    ],
+    "base": [
+      70,
+      95,
+      70,
+      90,
+      70,
+      105
+    ],
+    "catchRate": 60,
+    "expYield": 175,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "graffio"
+      ],
+      [
+        1,
+        "fulmisguardo"
+      ],
+      [
+        1,
+        "attacco_rapido"
+      ],
+      [
+        1,
+        "inseguimento"
+      ],
+      [
+        1,
+        "sa_tuttisse"
+      ],
+      [
+        13,
+        "sabotaggio"
+      ],
+      [
+        17,
+        "provocazione"
+      ],
+      [
+        21,
+        "agilita"
+      ],
+      [
+        25,
+        "furto"
+      ],
+      [
+        30,
+        "sbigoattacco"
+      ],
+      [
+        35,
+        "baratto"
+      ],
+      [
+        40,
+        "attacco_notturno"
+      ],
+      [
+        46,
+        "psichico"
+      ],
+      [
+        52,
+        "calmamente"
+      ],
+      [
+        58,
+        "neropulsar"
+      ],
+      [
+        64,
+        "psicoshock"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../ngeno.html"
+  },
   "notaiax": {
     "number": 29,
     "name": "Notaiax",
@@ -4283,6 +4370,74 @@
     ],
     "evolution": null,
     "wiki": "../spumadiva.html"
+  },
+  "svedde": {
+    "number": 78,
+    "name": "Svedde",
+    "types": [
+      "Buio"
+    ],
+    "base": [
+      40,
+      55,
+      40,
+      40,
+      40,
+      95
+    ],
+    "catchRate": 190,
+    "expYield": 60,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "graffio"
+      ],
+      [
+        1,
+        "fulmisguardo"
+      ],
+      [
+        5,
+        "attacco_rapido"
+      ],
+      [
+        9,
+        "inseguimento"
+      ],
+      [
+        13,
+        "sabotaggio"
+      ],
+      [
+        17,
+        "provocazione"
+      ],
+      [
+        21,
+        "agilita"
+      ],
+      [
+        25,
+        "furto"
+      ],
+      [
+        30,
+        "sbigoattacco"
+      ],
+      [
+        35,
+        "baratto"
+      ],
+      [
+        40,
+        "attacco_notturno"
+      ]
+    ],
+    "evolution": {
+      "into": "ngeno"
+    },
+    "wiki": "../svedde.html"
   },
   "tamburino": {
     "number": 17,

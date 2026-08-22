@@ -3153,6 +3153,97 @@
     "effect": null,
     "description": "Una palla di fango scagliata con forza."
   },
+  "inseguimento": {
+    "name": "Inseguimento",
+    "type": "Buio",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "sa_tuttisse": {
+    "name": "Sa Tutt'Isse",
+    "type": "Psico",
+    "category": "Speciale",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "80 di potenza, raddoppia se il bersaglio ha usato una mossa di stato nello stesso turno."
+  },
+  "sabotaggio": {
+    "name": "Sabotaggio",
+    "type": "Buio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "provocazione": {
+    "name": "Provocazione",
+    "type": "Buio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": {
+      "kind": "custom",
+      "id": "taunt"
+    },
+    "description": "Provoca il bersaglio impedendogli di usare mosse di stato per alcuni turni."
+  },
+  "furto": {
+    "name": "Furto",
+    "type": "Buio",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 25,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "baratto": {
+    "name": "Baratto",
+    "type": "Buio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "attacco_notturno": {
+    "name": "Attacco Notturno",
+    "type": "Buio",
+    "category": "Fisico",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "psicoshock": {
+    "name": "Psicoshock",
+    "type": "Psico",
+    "category": "Speciale",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "velenodenti": {
     "name": "Velenodenti",
     "type": "Veleno",
@@ -3347,20 +3438,6 @@
       "chance": 100
     },
     "description": "Uno stridio acuto che abbassa molto la Difesa avversaria."
-  },
-  "provocazione": {
-    "name": "Provocazione",
-    "type": "Buio",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 20,
-    "priority": 0,
-    "effect": {
-      "kind": "custom",
-      "id": "taunt"
-    },
-    "description": "Provoca il bersaglio impedendogli di usare mosse di stato per alcuni turni."
   },
   "gloglottio": {
     "name": "Gloglottio",
@@ -4252,17 +4329,6 @@
       "ratio": 0.5
     },
     "description": "Colpisce con le corna assorbendo metà del danno."
-  },
-  "inseguimento": {
-    "name": "Inseguimento",
-    "type": "Buio",
-    "category": "Fisico",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "doppio_colpo": {
     "name": "Doppio Colpo",

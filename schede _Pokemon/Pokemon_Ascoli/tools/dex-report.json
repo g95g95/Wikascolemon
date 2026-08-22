@@ -345,6 +345,14 @@
       "ok": true
     },
     {
+      "id": "ngeno",
+      "number": 79,
+      "name": "'Ngenò",
+      "statTotal": 500,
+      "statSum": 500,
+      "ok": true
+    },
+    {
       "id": "notaiax",
       "number": 29,
       "name": "Notaiax",
@@ -526,6 +534,14 @@
       "name": "Spumadiva",
       "statTotal": 495,
       "statSum": 495,
+      "ok": true
+    },
+    {
+      "id": "svedde",
+      "number": 78,
+      "name": "Svedde",
+      "statTotal": 310,
+      "statSum": 310,
       "ok": true
     },
     {
