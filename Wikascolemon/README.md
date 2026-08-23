@@ -98,6 +98,8 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #079 | ['Ngenò](ngeno.html) | Pokémon Sapientone | Buio/Psico | Ascoli Piceno, centro storico (bar e piazze) |
 | #080 | [Pantafeca](pantafeca.html) | Pokémon Dormiveglia | Spettro/Buio | Camere da letto delle case vecchie e dei casali del Piceno |
 | #081 | [Bettaccə](bettacce.html) | Pokémon Fosso | Acqua | Fossi, canali e lavatoi del Piceno, Castellano e Tronto |
+| #082 | [Traguardo](traguardo.html) | Pokémon Porta Aperta | Acciaio/Psico | Isola pedonale di San Benedetto del Tronto |
+| #083 | [Gionata](gionata.html) | Pokémon Volo Alto | Acciaio/Volante | Molo sud di San Benedetto del Tronto |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |
