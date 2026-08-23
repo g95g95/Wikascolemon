@@ -9,6 +9,14 @@
       "ok": true
     },
     {
+      "id": "ancella",
+      "number": 145,
+      "name": "Ancella",
+      "statTotal": 420,
+      "statSum": 420,
+      "ok": true
+    },
+    {
       "id": "anicino",
       "number": 15,
       "name": "Anicino",
@@ -246,6 +254,14 @@
       "name": "Dehor",
       "statTotal": 510,
       "statSum": 510,
+      "ok": true
+    },
+    {
+      "id": "fatella",
+      "number": 144,
+      "name": "Fatella",
+      "statTotal": 300,
+      "statSum": 300,
       "ok": true
     },
     {
@@ -494,6 +510,14 @@
       "name": "Segaccio",
       "statTotal": 465,
       "statSum": 465,
+      "ok": true
+    },
+    {
+      "id": "sibilla",
+      "number": 146,
+      "name": "Sibilla",
+      "statTotal": 600,
+      "statSum": 600,
       "ok": true
     },
     {

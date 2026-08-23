@@ -8,6 +8,7 @@
   "batterino": { "evolution": { "into": "dehor", "level": 15, "item": "grattaevinci" } },
   "bree": { "evolution": { "into": "felignoto", "location": "avvistamenti" } },
   "cavalbrace": { "evolution": { "into": "fuocavallo", "level": 36, "night": true } },
+  "ancella": { "evolution": { "into": "sibilla", "level": 55, "night": true } },
   "coperto": { "evolution": { "into": "mixaro", "defeat": "maranzino" } },
   "ombrellone": { "evolution": { "into": "salvatorre", "level": 36, "partySpecies": "bagnino" } },
   "pefna": { "evolution": { "into": "caita", "level": 20, "fusion": true } },

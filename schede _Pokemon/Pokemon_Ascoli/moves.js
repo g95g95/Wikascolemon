@@ -122,6 +122,147 @@
     },
     "description": "infligge danno Acqua e ha probabilità aumentata di abbassare la Velocità del bersaglio di uno stadio, imitando la corrente che trascina via chi nuota controcorrente."
   },
+  "confusione": {
+    "name": "Confusione",
+    "type": "Psico",
+    "category": "Speciale",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 25,
+    "priority": 0,
+    "effect": {
+      "kind": "custom",
+      "id": "confuse_chance"
+    },
+    "description": "Un'onda psichica che può confondere il bersaglio."
+  },
+  "fascino": {
+    "name": "Fascino",
+    "type": "Folletto",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "attack",
+      "stages": -2,
+      "chance": 100
+    },
+    "description": "Ammalia il bersaglio, abbassando molto il suo Attacco."
+  },
+  "ipnosi": {
+    "name": "Ipnosi",
+    "type": "Psico",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 60,
+    "pp": 20,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "slp",
+      "chance": 100
+    },
+    "description": "Ipnotizza il bersaglio, addormentandolo."
+  },
+  "battipiedi": {
+    "name": "Battipiedi",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 30,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "Colpo pesante sferrato con i piedi."
+  },
+  "psicoraggio": {
+    "name": "Psicoraggio",
+    "type": "Psico",
+    "category": "Speciale",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "Un raggio di energia psichica."
+  },
+  "attrazione": {
+    "name": "Attrazione",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "vento_ghiacciato": {
+    "name": "Vento Ghiacciato",
+    "type": "Ghiaccio",
+    "category": "Speciale",
+    "power": 55,
+    "accuracy": 95,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "speed",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Un vento gelido che abbassa sempre la Velocità avversaria."
+  },
+  "psichico": {
+    "name": "Psichico",
+    "type": "Psico",
+    "category": "Speciale",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "spDefense",
+      "stages": -1,
+      "chance": 10
+    },
+    "description": "Un forte attacco psichico."
+  },
+  "riflesso": {
+    "name": "Riflesso",
+    "type": "Psico",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Crea un'immagine riflessa che aumenta la Difesa."
+  },
+  "divinazione": {
+    "name": "Divinazione",
+    "type": "Psico",
+    "category": "Speciale",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Un attacco psichico potente e preciso."
+  },
   "azione": {
     "name": "Azione",
     "type": "Normale",
@@ -1068,23 +1209,6 @@
     "effect": null,
     "description": "Un colpo di chela potente."
   },
-  "fascino": {
-    "name": "Fascino",
-    "type": "Folletto",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 20,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "attack",
-      "stages": -2,
-      "chance": 100
-    },
-    "description": "Ammalia il bersaglio, abbassando molto il suo Attacco."
-  },
   "agilita": {
     "name": "Agilità",
     "type": "Psico",
@@ -1268,23 +1392,6 @@
       "chance": 100
     },
     "description": "Un grido straziante che abbassa molto l'Attacco Speciale avversario."
-  },
-  "vento_ghiacciato": {
-    "name": "Vento Ghiacciato",
-    "type": "Ghiaccio",
-    "category": "Speciale",
-    "power": 55,
-    "accuracy": 95,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "speed",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Un vento gelido che abbassa sempre la Velocità avversaria."
   },
   "frana": {
     "name": "Frana",
@@ -2493,20 +2600,6 @@
     },
     "description": "infligge danno e per tre turni impedisce al bersaglio di usare la stessa mossa due volte di seguito (come Tormento) — nessuno può ripetere la stessa obiezione davanti a Forox."
   },
-  "confusione": {
-    "name": "Confusione",
-    "type": "Psico",
-    "category": "Speciale",
-    "power": 50,
-    "accuracy": 100,
-    "pp": 25,
-    "priority": 0,
-    "effect": {
-      "kind": "custom",
-      "id": "confuse_chance"
-    },
-    "description": "Un'onda psichica che può confondere il bersaglio."
-  },
   "boato": {
     "name": "Boato",
     "type": "Normale",
@@ -2521,34 +2614,6 @@
     },
     "description": "Costringe il bersaglio a essere sostituito."
   },
-  "psicoraggio": {
-    "name": "Psicoraggio",
-    "type": "Psico",
-    "category": "Speciale",
-    "power": 65,
-    "accuracy": 100,
-    "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": "Un raggio di energia psichica."
-  },
-  "riflesso": {
-    "name": "Riflesso",
-    "type": "Psico",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": null,
-    "pp": 20,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "self",
-      "stat": "defense",
-      "stages": 1,
-      "chance": 100
-    },
-    "description": "Crea un'immagine riflessa che aumenta la Difesa."
-  },
   "comete": {
     "name": "Comete",
     "type": "Normale",
@@ -2560,21 +2625,6 @@
     "effect": null,
     "description": "Una pioggia di piccole comete."
   },
-  "ipnosi": {
-    "name": "Ipnosi",
-    "type": "Psico",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 60,
-    "pp": 20,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "slp",
-      "chance": 100
-    },
-    "description": "Ipnotizza il bersaglio, addormentandolo."
-  },
   "terrforza": {
     "name": "Terrforza",
     "type": "Terra",
@@ -2585,23 +2635,6 @@
     "priority": 0,
     "effect": null,
     "description": "Un'esplosione di energia della terra."
-  },
-  "psichico": {
-    "name": "Psichico",
-    "type": "Psico",
-    "category": "Speciale",
-    "power": 90,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "spDefense",
-      "stages": -1,
-      "chance": 10
-    },
-    "description": "Un forte attacco psichico."
   },
   "sgranocchio": {
     "name": "Sgranocchio",
@@ -2619,17 +2652,6 @@
       "chance": 20
     },
     "description": "Un morso che può abbassare la Difesa avversaria."
-  },
-  "divinazione": {
-    "name": "Divinazione",
-    "type": "Psico",
-    "category": "Speciale",
-    "power": 120,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": "Un attacco psichico potente e preciso."
   },
   "occhioni_teneri": {
     "name": "Occhioni teneri",
@@ -2671,17 +2693,6 @@
     "power": 40,
     "accuracy": 100,
     "pp": 30,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "attrazione": {
-    "name": "Attrazione",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 15,
     "priority": 0,
     "effect": null,
     "description": ""
@@ -3963,17 +3974,6 @@
     },
     "description": "è la sua mossa esclusiva: aumenta di un livello Difesa e Difesa Speciale, ma da quel momento Sciarpone"
   },
-  "battipiedi": {
-    "name": "Battipiedi",
-    "type": "Terra",
-    "category": "Fisico",
-    "power": 75,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": "Colpo pesante sferrato con i piedi."
-  },
   "pugno_di_scoglio": {
     "name": "Pugno di Scoglio",
     "type": "Roccia",
@@ -4076,6 +4076,28 @@
       "id": "superpower"
     },
     "description": "Un colpo fortissimo che abbassa Attacco e Difesa di chi lo usa."
+  },
+  "vaticinio": {
+    "name": "Vaticinio",
+    "type": "Psico",
+    "category": "Speciale",
+    "power": 100,
+    "accuracy": null,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "100 di potenza, non può mancare e ignora le modifiche alle statistiche e l'abilità del bersaglio: colpisce le cose come sono, non come si mostrano."
+  },
+  "bora": {
+    "name": "Bora",
+    "type": "Ghiaccio",
+    "category": "Speciale",
+    "power": 110,
+    "accuracy": 70,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
   },
   "fissita": {
     "name": "Fissità",

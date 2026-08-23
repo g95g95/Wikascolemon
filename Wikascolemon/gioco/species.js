@@ -60,6 +60,72 @@
     },
     "wiki": "../alghetta.html"
   },
+  "ancella": {
+    "number": 145,
+    "name": "Ancella",
+    "types": [
+      "Psico"
+    ],
+    "base": [
+      65,
+      40,
+      65,
+      100,
+      90,
+      60
+    ],
+    "catchRate": 45,
+    "expYield": 145,
+    "growth": "lento",
+    "learnset": [
+      [
+        1,
+        "confusione"
+      ],
+      [
+        1,
+        "fascino"
+      ],
+      [
+        1,
+        "ipnosi"
+      ],
+      [
+        13,
+        "battipiedi"
+      ],
+      [
+        19,
+        "psicoraggio"
+      ],
+      [
+        25,
+        "attrazione"
+      ],
+      [
+        31,
+        "vento_ghiacciato"
+      ],
+      [
+        39,
+        "psichico"
+      ],
+      [
+        45,
+        "riflesso"
+      ],
+      [
+        51,
+        "divinazione"
+      ]
+    ],
+    "evolution": {
+      "into": "sibilla",
+      "level": 55,
+      "night": true
+    },
+    "wiki": "../ancella.html"
+  },
   "anicino": {
     "number": 15,
     "name": "Anicino",
@@ -2009,6 +2075,67 @@
     ],
     "evolution": null,
     "wiki": "../dehor.html"
+  },
+  "fatella": {
+    "number": 144,
+    "name": "Fatella",
+    "types": [
+      "Psico"
+    ],
+    "base": [
+      45,
+      30,
+      45,
+      75,
+      65,
+      40
+    ],
+    "catchRate": 45,
+    "expYield": 60,
+    "growth": "lento",
+    "learnset": [
+      [
+        1,
+        "confusione"
+      ],
+      [
+        1,
+        "fascino"
+      ],
+      [
+        7,
+        "ipnosi"
+      ],
+      [
+        13,
+        "battipiedi"
+      ],
+      [
+        19,
+        "psicoraggio"
+      ],
+      [
+        25,
+        "attrazione"
+      ],
+      [
+        31,
+        "vento_ghiacciato"
+      ],
+      [
+        37,
+        "psichico"
+      ],
+      [
+        43,
+        "divinazione"
+      ]
+    ],
+    "evolution": {
+      "into": "ancella",
+      "level": 35
+    },
+    "wiki": "../fatella.html"
   },
   "felignoto": {
     "number": 12,
@@ -4055,6 +4182,73 @@
     ],
     "evolution": null,
     "wiki": "../segaccio.html"
+  },
+  "sibilla": {
+    "number": 146,
+    "name": "Sibilla",
+    "types": [
+      "Ghiaccio",
+      "Psico"
+    ],
+    "base": [
+      90,
+      60,
+      85,
+      140,
+      130,
+      95
+    ],
+    "catchRate": 45,
+    "expYield": 270,
+    "growth": "lento",
+    "learnset": [
+      [
+        1,
+        "confusione"
+      ],
+      [
+        1,
+        "ipnosi"
+      ],
+      [
+        1,
+        "nevischio"
+      ],
+      [
+        31,
+        "vento_ghiacciato"
+      ],
+      [
+        39,
+        "psichico"
+      ],
+      [
+        45,
+        "riflesso"
+      ],
+      [
+        51,
+        "divinazione"
+      ],
+      [
+        55,
+        "vaticinio"
+      ],
+      [
+        58,
+        "raggio_gelo"
+      ],
+      [
+        64,
+        "calmamente"
+      ],
+      [
+        70,
+        "bora"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../sibilla.html"
   },
   "soldatino": {
     "number": 24,
