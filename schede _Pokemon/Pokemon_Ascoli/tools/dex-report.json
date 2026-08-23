@@ -393,6 +393,14 @@
       "ok": true
     },
     {
+      "id": "pantafeca",
+      "number": 80,
+      "name": "Pantafeca",
+      "statTotal": 480,
+      "statSum": 480,
+      "ok": true
+    },
+    {
       "id": "pefna",
       "number": 41,
       "name": "Pef'na",

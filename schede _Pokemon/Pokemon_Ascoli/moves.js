@@ -3402,6 +3402,72 @@
     "effect": null,
     "description": "Energia della terra scatenata in un'esplosione."
   },
+  "incubo": {
+    "name": "Incubo",
+    "type": "Spettro",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "rancore": {
+    "name": "Rancore",
+    "type": "Spettro",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "cavalcioni": {
+    "name": "Cavalcioni",
+    "type": "Spettro",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "80 di potenza, raddoppia contro un bersaglio addormentato, che in quel turno non può svegliarsi."
+  },
+  "mangiasogni": {
+    "name": "Mangiasogni",
+    "type": "Psico",
+    "category": "Speciale",
+    "power": 100,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "fandonia": {
+    "name": "Fandonia",
+    "type": "Buio",
+    "category": "Speciale",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "furtivombra": {
+    "name": "Furtivombra",
+    "type": "Spettro",
+    "category": "Fisico",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "assorbi": {
     "name": "Assorbi",
     "type": "Erba",

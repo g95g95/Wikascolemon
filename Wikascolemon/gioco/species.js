@@ -3203,6 +3203,73 @@
     },
     "wiki": "../ombrellone.html"
   },
+  "pantafeca": {
+    "number": 80,
+    "name": "Pantafeca",
+    "types": [
+      "Spettro",
+      "Buio"
+    ],
+    "base": [
+      70,
+      60,
+      70,
+      105,
+      90,
+      85
+    ],
+    "catchRate": 60,
+    "expYield": 170,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "sgomento"
+      ],
+      [
+        1,
+        "fulmisguardo"
+      ],
+      [
+        7,
+        "ipnosi"
+      ],
+      [
+        13,
+        "incubo"
+      ],
+      [
+        19,
+        "rancore"
+      ],
+      [
+        25,
+        "palla_ombra"
+      ],
+      [
+        31,
+        "cavalcioni"
+      ],
+      [
+        37,
+        "mangiasogni"
+      ],
+      [
+        43,
+        "neropulsar"
+      ],
+      [
+        49,
+        "fandonia"
+      ],
+      [
+        55,
+        "furtivombra"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../pantafeca.html"
+  },
   "pefna": {
     "number": 41,
     "name": "Pef'na",
