@@ -1825,6 +1825,39 @@
     },
     "description": "Assorbe gran parte del danno inflitto come cura."
   },
+  "diapausa": {
+    "name": "Diapausa",
+    "type": "Ghiaccio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "Chirocefalo si dissecca e sparisce dal campo per un turno, durante il quale non può essere colpito; al turno successivo riemerge con metà dei PS ripristinati e senza problemi di stato."
+  },
+  "salamurra": {
+    "name": "Salamurra",
+    "type": "Acqua",
+    "category": "Speciale",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "lastragelata": {
+    "name": "Lastragelata",
+    "type": "Ghiaccio",
+    "category": "Speciale",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "ritirata": {
     "name": "Ritirata",
     "type": "Acqua",

@@ -1320,6 +1320,73 @@
     "evolution": null,
     "wiki": "../cerqua.html"
   },
+  "chirocefalo": {
+    "number": 147,
+    "name": "Chirocefalo",
+    "types": [
+      "Acqua",
+      "Ghiaccio"
+    ],
+    "base": [
+      60,
+      60,
+      90,
+      105,
+      110,
+      70
+    ],
+    "catchRate": 45,
+    "expYield": 180,
+    "growth": "lento",
+    "learnset": [
+      [
+        1,
+        "bolla"
+      ],
+      [
+        1,
+        "rafforzatore"
+      ],
+      [
+        8,
+        "nevischio"
+      ],
+      [
+        14,
+        "idropulsar"
+      ],
+      [
+        20,
+        "riduttore"
+      ],
+      [
+        26,
+        "vento_ghiacciato"
+      ],
+      [
+        32,
+        "diapausa"
+      ],
+      [
+        38,
+        "raggio_gelo"
+      ],
+      [
+        44,
+        "salamurra"
+      ],
+      [
+        50,
+        "lastragelata"
+      ],
+      [
+        56,
+        "idropompa"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../chirocefalo.html"
+  },
   "ciammarica": {
     "number": 58,
     "name": "Ciammarica",

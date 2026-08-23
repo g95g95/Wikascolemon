@@ -44,7 +44,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #074-#076 | Livetta → Liva → Ascolana ✅ — l'oliva ascolana in tre stadi: cruda, ripiena, fritta |
 | #077 | Cremino ✅ — la crema fritta del fritto misto, primo Drago del dex |
 | #078-#079 | Svedde → 'Ngenò ✅ — lo svelto di Pedaso che in città diventa sapientone |
-| #080-#147 | Libero |
+| #080-#146 | Libero |
+| #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |
 | **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|
 | **#149** | **Gommapiuma ✅ — leggendario del riposo, coppia con il Picchio #148.**|
 | **#150** | **Pretalien ✅ — chiude il Pokédex.** Numero finale: non superarlo e non riassegnarlo. |

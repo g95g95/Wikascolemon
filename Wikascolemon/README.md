@@ -96,6 +96,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #077 | [Cremino](cremino.html) | Pokémon Crema Fritta | Drago | Centro storico di Ascoli (friggitorie e torri gentilizie) |
 | #078 | [Svedde](svedde.html) | Pokémon Svelto | Buio | Pedaso (lungomare, faro, statale Adriatica) |
 | #079 | ['Ngenò](ngeno.html) | Pokémon Sapientone | Buio/Psico | Ascoli Piceno, centro storico (bar e piazze) |
+| #147 | [Chirocefalo](chirocefalo.html) | Pokémon Relitto | Acqua/Ghiaccio | Lago di Pilato, Monte Vettore (e nient'altro) |
 | #148 | [Picchio](picchio.html) | Pokémon Vessillo | Volante/Lotta | Forca di Presta, e ovunque ci sia una partenza |
 | #149 | [Gommapiuma](gommapiuma.html) | Pokémon Giaciglio | Normale | San Giacomo, Monte Piselli (luogo quasi inaccessibile) |
 | #150 | [Pretalien](pretalien.html) | Pokémon Testimone | Coleot/Psico | Pretare, Monte Vettore |

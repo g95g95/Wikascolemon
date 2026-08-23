@@ -161,6 +161,14 @@
       "ok": true
     },
     {
+      "id": "chirocefalo",
+      "number": 147,
+      "name": "Chirocefalo",
+      "statTotal": 495,
+      "statSum": 495,
+      "ok": true
+    },
+    {
       "id": "ciammarica",
       "number": 58,
       "name": "Ciammarica",
