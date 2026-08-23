@@ -608,6 +608,68 @@
     },
     "wiki": "../batterino.html"
   },
+  "bettacce": {
+    "number": 81,
+    "name": "Bettaccə",
+    "types": [
+      "Acqua"
+    ],
+    "base": [
+      60,
+      50,
+      45,
+      70,
+      55,
+      85
+    ],
+    "catchRate": 255,
+    "expYield": 88,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "schizzo"
+      ],
+      [
+        4,
+        "bolla"
+      ],
+      [
+        9,
+        "fanghiglia"
+      ],
+      [
+        13,
+        "leccata"
+      ],
+      [
+        17,
+        "doppioteam"
+      ],
+      [
+        21,
+        "idropulsar"
+      ],
+      [
+        26,
+        "ipnosi"
+      ],
+      [
+        30,
+        "rimbalzo"
+      ],
+      [
+        34,
+        "cascata"
+      ],
+      [
+        38,
+        "idropompa"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../bettacce.html"
+  },
   "bovfint": {
     "number": 69,
     "name": "Bovfint",

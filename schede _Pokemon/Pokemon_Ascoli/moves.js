@@ -962,6 +962,106 @@
     "effect": null,
     "description": "Un raggio di bolle pressurizzate."
   },
+  "schizzo": {
+    "name": "Schizzo",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 40,
+    "priority": 0,
+    "effect": null,
+    "description": "al primo livello e non lo dimentica mai: il Pokédex sostiene che non serva a niente, la vallata sostiene che serva a salutare."
+  },
+  "bolla": {
+    "name": "Bolla",
+    "type": "Acqua",
+    "category": "Speciale",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": "Bolle scagliate con forza."
+  },
+  "fanghiglia": {
+    "name": "Fanghiglia",
+    "type": "Terra",
+    "category": "Speciale",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "accuracy",
+      "stages": -1,
+      "chance": 30
+    },
+    "description": "Fanghiglia che può abbassare la precisione avversaria."
+  },
+  "leccata": {
+    "name": "Leccata",
+    "type": "Spettro",
+    "category": "Fisico",
+    "power": 30,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "doppioteam": {
+    "name": "Doppioteam",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "custom",
+      "id": "evasion_up"
+    },
+    "description": "Crea illusioni di sé stesso, aumentando l'elusione."
+  },
+  "rimbalzo": {
+    "name": "Rimbalzo",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 85,
+    "accuracy": 85,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "Un balzo potente che colpisce con forza."
+  },
+  "cascata": {
+    "name": "Cascata",
+    "type": "Acqua",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "flinch",
+      "chance": 20
+    },
+    "description": "Colpisce come una cascata, può far tentennare."
+  },
+  "idropompa": {
+    "name": "Idropompa",
+    "type": "Acqua",
+    "category": "Speciale",
+    "power": 110,
+    "accuracy": 80,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "è la sua mossa esclusiva finale: un getto d'acqua ad altissima pressione, la stessa forza con cui la corrente ha scavato la sua buca — potente ma con precisione ridotta, perché anche Cavedòne, quando si scopre, rischia di sbagliare mira."
+  },
   "bruciapelo": {
     "name": "Bruciapelo",
     "type": "Normale",
@@ -1140,17 +1240,6 @@
     "effect": null,
     "description": "Un attacco temerario e potentissimo."
   },
-  "bolla": {
-    "name": "Bolla",
-    "type": "Acqua",
-    "category": "Speciale",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 30,
-    "priority": 0,
-    "effect": null,
-    "description": "Bolle scagliate con forza."
-  },
   "presa": {
     "name": "Presa",
     "type": "Normale",
@@ -1183,20 +1272,6 @@
     "priority": 0,
     "effect": null,
     "description": "Un colpo secco in stile karate."
-  },
-  "cascata": {
-    "name": "Cascata",
-    "type": "Acqua",
-    "category": "Fisico",
-    "power": 80,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "flinch",
-      "chance": 20
-    },
-    "description": "Colpisce come una cascata, può far tentennare."
   },
   "granchiomartello": {
     "name": "Granchiomartello",
@@ -1247,20 +1322,6 @@
     "priority": 0,
     "effect": null,
     "description": "Un raggio di luce lunare."
-  },
-  "doppioteam": {
-    "name": "Doppioteam",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": null,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "custom",
-      "id": "evasion_up"
-    },
-    "description": "Crea illusioni di sé stesso, aumentando l'elusione."
   },
   "carineria": {
     "name": "Carineria",
@@ -1498,17 +1559,6 @@
       "id": "rest"
     },
     "description": "Cura completamente PS e stato, ma fa addormentare chi la usa per due turni."
-  },
-  "rimbalzo": {
-    "name": "Rimbalzo",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 130,
-    "accuracy": 90,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": "Un balzo potente che colpisce con forza."
   },
   "urlorabbia": {
     "name": "Urlorabbia",
@@ -1838,17 +1888,6 @@
       "chance": 100
     },
     "description": "Uno sguardo fermo che abbassa la Velocità avversaria."
-  },
-  "idropompa": {
-    "name": "Idropompa",
-    "type": "Acqua",
-    "category": "Speciale",
-    "power": 110,
-    "accuracy": 80,
-    "pp": 5,
-    "priority": 0,
-    "effect": null,
-    "description": "è la sua mossa esclusiva finale: un getto d'acqua ad altissima pressione, la stessa forza con cui la corrente ha scavato la sua buca — potente ma con precisione ridotta, perché anche Cavedòne, quando si scopre, rischia di sbagliare mira."
   },
   "chicco_doro": {
     "name": "Chicco d'Oro",
@@ -3747,23 +3786,6 @@
       "chance": 30
     },
     "description": "Spine velenose che possono avvelenare."
-  },
-  "fanghiglia": {
-    "name": "Fanghiglia",
-    "type": "Acqua",
-    "category": "Speciale",
-    "power": 90,
-    "accuracy": 85,
-    "pp": 10,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "accuracy",
-      "stages": -1,
-      "chance": 30
-    },
-    "description": "Fanghiglia che può abbassare la precisione avversaria."
   },
   "velenpuntura": {
     "name": "Velenpuntura",
