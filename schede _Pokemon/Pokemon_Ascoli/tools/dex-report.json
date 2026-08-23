@@ -305,6 +305,14 @@
       "ok": true
     },
     {
+      "id": "gionata",
+      "number": 83,
+      "name": "Gionata",
+      "statTotal": 485,
+      "statSum": 485,
+      "ok": true
+    },
+    {
       "id": "gommapiuma",
       "number": 149,
       "name": "Gommapiuma",
@@ -313,11 +321,27 @@
       "ok": true
     },
     {
+      "id": "idra",
+      "number": 86,
+      "name": "Idra",
+      "statTotal": 545,
+      "statSum": 545,
+      "ok": true
+    },
+    {
       "id": "lettino",
       "number": 31,
       "name": "Lettino",
       "statTotal": 270,
       "statSum": 270,
+      "ok": true
+    },
+    {
+      "id": "lisciano",
+      "number": 85,
+      "name": "Lisciano",
+      "statTotal": 445,
+      "statSum": 445,
       "ok": true
     },
     {
@@ -398,6 +422,14 @@
       "name": "Ombrellone",
       "statTotal": 400,
       "statSum": 400,
+      "ok": true
+    },
+    {
+      "id": "palombare",
+      "number": 84,
+      "name": "Palombare",
+      "statTotal": 300,
+      "statSum": 300,
       "ok": true
     },
     {
@@ -622,6 +654,14 @@
       "name": "Traffichiex",
       "statTotal": 320,
       "statSum": 320,
+      "ok": true
+    },
+    {
+      "id": "traguardo",
+      "number": 82,
+      "name": "Traguardo",
+      "statTotal": 385,
+      "statSum": 385,
       "ok": true
     },
     {

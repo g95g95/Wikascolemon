@@ -2497,6 +2497,77 @@
     "evolution": null,
     "wiki": "../fuocavallo.html"
   },
+  "gionata": {
+    "number": 83,
+    "name": "Gionata",
+    "types": [
+      "Acciaio",
+      "Volante"
+    ],
+    "base": [
+      70,
+      95,
+      60,
+      75,
+      65,
+      120
+    ],
+    "catchRate": 60,
+    "expYield": 170,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "beccata"
+      ],
+      [
+        1,
+        "identificazione"
+      ],
+      [
+        1,
+        "volo_alto"
+      ],
+      [
+        12,
+        "alacciaio"
+      ],
+      [
+        18,
+        "agilita"
+      ],
+      [
+        24,
+        "attacco_dala"
+      ],
+      [
+        30,
+        "frana"
+      ],
+      [
+        36,
+        "aeroattacco"
+      ],
+      [
+        42,
+        "focalenergia"
+      ],
+      [
+        48,
+        "volo"
+      ],
+      [
+        54,
+        "pietrataglio"
+      ],
+      [
+        60,
+        "baldeali"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../gionata.html"
+  },
   "gommapiuma": {
     "number": 149,
     "name": "Gommapiuma",
@@ -2542,6 +2613,77 @@
     ],
     "evolution": null,
     "wiki": "../gommapiuma.html"
+  },
+  "idra": {
+    "number": 86,
+    "name": "Idra",
+    "types": [
+      "Acqua",
+      "Drago"
+    ],
+    "base": [
+      90,
+      115,
+      100,
+      70,
+      80,
+      90
+    ],
+    "catchRate": 45,
+    "expYield": 240,
+    "growth": "lento",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        1,
+        "pistolacqua"
+      ],
+      [
+        20,
+        "morso"
+      ],
+      [
+        24,
+        "cartellonata"
+      ],
+      [
+        28,
+        "dragosoffio"
+      ],
+      [
+        33,
+        "idrondata"
+      ],
+      [
+        38,
+        "sgranocchio"
+      ],
+      [
+        40,
+        "martellata"
+      ],
+      [
+        46,
+        "dragartigli"
+      ],
+      [
+        52,
+        "oltraggio"
+      ],
+      [
+        58,
+        "idropompa"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../idra.html"
   },
   "lettino": {
     "number": 31,
@@ -2600,6 +2742,84 @@
       "level": 22
     },
     "wiki": "../lettino.html"
+  },
+  "lisciano": {
+    "number": 85,
+    "name": "Lisciano",
+    "types": [
+      "Psico",
+      "Volante"
+    ],
+    "base": [
+      65,
+      55,
+      60,
+      95,
+      80,
+      90
+    ],
+    "catchRate": 120,
+    "expYield": 140,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        1,
+        "confusione"
+      ],
+      [
+        9,
+        "beccata"
+      ],
+      [
+        13,
+        "agilita"
+      ],
+      [
+        17,
+        "attacco_dala"
+      ],
+      [
+        20,
+        "psicoraggio"
+      ],
+      [
+        24,
+        "cartellonata"
+      ],
+      [
+        28,
+        "calmamente"
+      ],
+      [
+        32,
+        "eterelama"
+      ],
+      [
+        36,
+        "extrasenso"
+      ],
+      [
+        41,
+        "trespolo"
+      ],
+      [
+        46,
+        "psichico"
+      ]
+    ],
+    "evolution": {
+      "into": "idra",
+      "level": 40
+    },
+    "wiki": "../lisciano.html"
   },
   "liva": {
     "number": 75,
@@ -3264,6 +3484,72 @@
       "partySpecies": "bagnino"
     },
     "wiki": "../ombrellone.html"
+  },
+  "palombare": {
+    "number": 84,
+    "name": "Palombare",
+    "types": [
+      "Normale",
+      "Volante"
+    ],
+    "base": [
+      45,
+      50,
+      40,
+      35,
+      40,
+      90
+    ],
+    "catchRate": 255,
+    "expYield": 50,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        5,
+        "raffica"
+      ],
+      [
+        9,
+        "beccata"
+      ],
+      [
+        13,
+        "agilita"
+      ],
+      [
+        17,
+        "attacco_dala"
+      ],
+      [
+        21,
+        "cartellonata"
+      ],
+      [
+        25,
+        "aeroassalto"
+      ],
+      [
+        29,
+        "trespolo"
+      ],
+      [
+        33,
+        "baldeali"
+      ]
+    ],
+    "evolution": {
+      "into": "lisciano",
+      "level": 17
+    },
+    "wiki": "../palombare.html"
   },
   "pantafeca": {
     "number": 80,
@@ -5089,6 +5375,71 @@
       "level": 32
     },
     "wiki": "../traffichiex.html"
+  },
+  "traguardo": {
+    "number": 82,
+    "name": "Traguardo",
+    "types": [
+      "Acciaio",
+      "Psico"
+    ],
+    "base": [
+      65,
+      55,
+      95,
+      60,
+      90,
+      20
+    ],
+    "catchRate": 90,
+    "expYield": 120,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "botta"
+      ],
+      [
+        1,
+        "identificazione"
+      ],
+      [
+        7,
+        "confusione"
+      ],
+      [
+        12,
+        "difesaferrea"
+      ],
+      [
+        18,
+        "psicoraggio"
+      ],
+      [
+        24,
+        "riflesso"
+      ],
+      [
+        30,
+        "cannonflash"
+      ],
+      [
+        36,
+        "psichico"
+      ],
+      [
+        42,
+        "metaltestata"
+      ],
+      [
+        48,
+        "divinazione"
+      ]
+    ],
+    "evolution": {
+      "into": "gionata"
+    },
+    "wiki": "../traguardo.html"
   },
   "trecaciare": {
     "number": 54,

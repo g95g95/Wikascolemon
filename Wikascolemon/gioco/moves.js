@@ -2783,6 +2783,86 @@
     },
     "description": "gira su sé stesso sparando scintille — infligge danno, aumenta la Velocità di chi la usa e nelle lotte in doppio colpisce entrambi gli avversari."
   },
+  "identificazione": {
+    "name": "Identificazione",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 40,
+    "priority": 0,
+    "effect": null,
+    "description": "dal primo livello: è l'unica mossa che usa volentieri, e la usa al contrario: non per vedere il bersaglio, ma per farsi vedere."
+  },
+  "volo_alto": {
+    "name": "Volo Alto",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "85 di potenza, ignora Protezione e le barriere."
+  },
+  "alacciaio": {
+    "name": "Alacciaio",
+    "type": "Acciaio",
+    "category": "Fisico",
+    "power": 70,
+    "accuracy": 90,
+    "pp": 25,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "aeroattacco": {
+    "name": "Aeroattacco",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "focalenergia": {
+    "name": "Focalenergia",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "volo": {
+    "name": "Volo",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 90,
+    "accuracy": 95,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "pietrataglio": {
+    "name": "Pietrataglio",
+    "type": "Roccia",
+    "category": "Fisico",
+    "power": 100,
+    "accuracy": 80,
+    "pp": 5,
+    "priority": 0,
+    "effect": {
+      "kind": "flinch",
+      "chance": 10
+    },
+    "description": "Una lama di roccia che può far tentennare."
+  },
   "attutone": {
     "name": "Attutone",
     "type": "Normale",
@@ -2814,6 +2894,50 @@
     "category": "Fisico",
     "power": 80,
     "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "cartellonata": {
+    "name": "Cartellonata",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "colpisce sbattendo il cartello di frazione, e infligge il doppio dei danni se il bersaglio è entrato in campo in questo turno."
+  },
+  "dragosoffio": {
+    "name": "Dragosoffio",
+    "type": "Drago",
+    "category": "Speciale",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "idrondata": {
+    "name": "Idrondata",
+    "type": "Acqua",
+    "category": "Fisico",
+    "power": 90,
+    "accuracy": 90,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "martellata": {
+    "name": "Martellata",
+    "type": "Acqua",
+    "category": "Fisico",
+    "power": 100,
+    "accuracy": 90,
     "pp": 10,
     "priority": 0,
     "effect": null,
@@ -2877,6 +3001,39 @@
     "priority": 0,
     "effect": null,
     "description": "Colpisce da un buco nel terreno."
+  },
+  "eterelama": {
+    "name": "Eterelama",
+    "type": "Volante",
+    "category": "Speciale",
+    "power": 75,
+    "accuracy": 95,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "extrasenso": {
+    "name": "Extrasenso",
+    "type": "Psico",
+    "category": "Speciale",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "trespolo": {
+    "name": "Trespolo",
+    "type": "Volante",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
   },
   "rotolamento": {
     "name": "Rotolamento",
@@ -3441,6 +3598,28 @@
     "effect": null,
     "description": "Energia della terra scatenata in un'esplosione."
   },
+  "raffica": {
+    "name": "Raffica",
+    "type": "Volante",
+    "category": "Speciale",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "aeroassalto": {
+    "name": "Aeroassalto",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "Assalto dall'alto in picchiata."
+  },
   "incubo": {
     "name": "Incubo",
     "type": "Spettro",
@@ -3602,17 +3781,6 @@
     },
     "description": "è la sua mossa esclusiva: una raffica sonora di borbottii gorgoglianti e visibilmente offesi che può"
   },
-  "aeroassalto": {
-    "name": "Aeroassalto",
-    "type": "Volante",
-    "category": "Fisico",
-    "power": 60,
-    "accuracy": null,
-    "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": "Assalto dall'alto in picchiata."
-  },
   "ver_sacrum": {
     "name": "Ver Sacrum",
     "type": "Volante",
@@ -3623,39 +3791,6 @@
     "priority": 0,
     "effect": null,
     "description": "dopo aver colpito, Picchio lascia il campo e il Pokémon che entra al suo posto ottiene Velocità +1."
-  },
-  "aeroattacco": {
-    "name": "Aeroattacco",
-    "type": "Volante",
-    "category": "Fisico",
-    "power": 60,
-    "accuracy": null,
-    "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "martellata": {
-    "name": "Martellata",
-    "type": "Lotta",
-    "category": "Fisico",
-    "power": 100,
-    "accuracy": 90,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "volo": {
-    "name": "Volo",
-    "type": "Volante",
-    "category": "Fisico",
-    "power": 90,
-    "accuracy": 95,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "turbosabbia": {
     "name": "Turbosabbia",
@@ -3740,20 +3875,6 @@
       "chance": 100
     },
     "description": "Aumenta la resistenza fisica."
-  },
-  "pietrataglio": {
-    "name": "Pietrataglio",
-    "type": "Roccia",
-    "category": "Fisico",
-    "power": 100,
-    "accuracy": 80,
-    "pp": 5,
-    "priority": 0,
-    "effect": {
-      "kind": "flinch",
-      "chance": 10
-    },
-    "description": "Una lama di roccia che può far tentennare."
   },
   "fangosberla": {
     "name": "Fangosberla",
@@ -4266,17 +4387,6 @@
     "effect": null,
     "description": "un passaggio a bassissima quota che colpisce e spegne. Se il bersaglio è di tipo Fuoco, la sua abilità viene annullata per tre turni; se in campo c'è la luce solare intensa, viene cancellata."
   },
-  "eterelama": {
-    "name": "Eterelama",
-    "type": "Volante",
-    "category": "Speciale",
-    "power": 75,
-    "accuracy": 95,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
   "fuocobomba": {
     "name": "Fuocobomba",
     "type": "Fuoco",
@@ -4425,6 +4535,28 @@
     "priority": 0,
     "effect": null,
     "description": "Attacco veloce e diretto."
+  },
+  "botta": {
+    "name": "Botta",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "cannonflash": {
+    "name": "Cannonflash",
+    "type": "Acciaio",
+    "category": "Speciale",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
   },
   "coro_di_pietra": {
     "name": "Coro di Pietra",

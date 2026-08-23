@@ -100,6 +100,9 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #081 | [Bettaccə](bettacce.html) | Pokémon Fosso | Acqua | Fossi, canali e lavatoi del Piceno, Castellano e Tronto |
 | #082 | [Traguardo](traguardo.html) | Pokémon Porta Aperta | Acciaio/Psico | Isola pedonale di San Benedetto del Tronto |
 | #083 | [Gionata](gionata.html) | Pokémon Volo Alto | Acciaio/Volante | Molo sud di San Benedetto del Tronto |
+| #084 | [Palombare](palombare.html) | Pokémon Palomba | Normale/Volante | Palombare, colle San Giacomo |
+| #085 | [Lisciano](lisciano.html) | Pokémon Pontefice | Psico/Volante | Lisciano, colle San Giacomo |
+| #086 | [Idra](idra.html) | Pokémon Policefalo | Acqua/Drago | Idra, colle San Giacomo |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |
