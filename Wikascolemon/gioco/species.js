@@ -2202,6 +2202,73 @@
     "evolution": null,
     "wiki": "../dehor.html"
   },
+  "faro": {
+    "number": 90,
+    "name": "Farò",
+    "types": [
+      "Elettro",
+      "Acciaio"
+    ],
+    "base": [
+      75,
+      55,
+      90,
+      115,
+      90,
+      35
+    ],
+    "catchRate": 60,
+    "expYield": 165,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "scintilla"
+      ],
+      [
+        1,
+        "flash"
+      ],
+      [
+        8,
+        "tuononda"
+      ],
+      [
+        14,
+        "elettroshock"
+      ],
+      [
+        20,
+        "difesaferrea"
+      ],
+      [
+        26,
+        "elettroraggio"
+      ],
+      [
+        32,
+        "due_lampi"
+      ],
+      [
+        38,
+        "schermoluce"
+      ],
+      [
+        44,
+        "cannonflash"
+      ],
+      [
+        50,
+        "fulmine"
+      ],
+      [
+        58,
+        "tuono"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../faro.html"
+  },
   "fatella": {
     "number": 144,
     "name": "Fatella",

@@ -2642,6 +2642,120 @@
     "effect": null,
     "description": "Un raggio di luce lunare."
   },
+  "scintilla": {
+    "name": "Scintilla",
+    "type": "Elettro",
+    "category": "Fisico",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "flash": {
+    "name": "Flash",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "tuononda": {
+    "name": "Tuononda",
+    "type": "Elettro",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 90,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "elettroshock": {
+    "name": "Elettroshock",
+    "type": "Elettro",
+    "category": "Speciale",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "elettroraggio": {
+    "name": "Elettroraggio",
+    "type": "Elettro",
+    "category": "Speciale",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "due_lampi": {
+    "name": "Due Lampi",
+    "type": "Elettro",
+    "category": "Speciale",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Elettro, speciale, 50 di potenza, colpisce due volte."
+  },
+  "schermoluce": {
+    "name": "Schermoluce",
+    "type": "Psico",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "cannonflash": {
+    "name": "Cannonflash",
+    "type": "Acciaio",
+    "category": "Speciale",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "fulmine": {
+    "name": "Fulmine",
+    "type": "Elettro",
+    "category": "Speciale",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 10
+    },
+    "description": "Una scarica elettrica che può paralizzare."
+  },
+  "tuono": {
+    "name": "Tuono",
+    "type": "Elettro",
+    "category": "Speciale",
+    "power": 110,
+    "accuracy": 70,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "diceria": {
     "name": "Diceria",
     "type": "Buio",
@@ -3174,21 +3288,6 @@
       "chance": 10
     },
     "description": "Un pugno elettrico che può paralizzare."
-  },
-  "fulmine": {
-    "name": "Fulmine",
-    "type": "Elettro",
-    "category": "Speciale",
-    "power": 90,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "par",
-      "chance": 10
-    },
-    "description": "Una scarica elettrica che può paralizzare."
   },
   "dropbeat": {
     "name": "Dropbeat",
@@ -4554,17 +4653,6 @@
     "power": 40,
     "accuracy": 100,
     "pp": 35,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "cannonflash": {
-    "name": "Cannonflash",
-    "type": "Acciaio",
-    "category": "Speciale",
-    "power": 80,
-    "accuracy": 100,
-    "pp": 10,
     "priority": 0,
     "effect": null,
     "description": ""

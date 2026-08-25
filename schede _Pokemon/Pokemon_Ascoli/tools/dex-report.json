@@ -273,6 +273,14 @@
       "ok": true
     },
     {
+      "id": "faro",
+      "number": 90,
+      "name": "Farò",
+      "statTotal": 460,
+      "statSum": 460,
+      "ok": true
+    },
+    {
       "id": "fatella",
       "number": 144,
       "name": "Fatella",
