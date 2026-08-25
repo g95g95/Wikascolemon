@@ -103,6 +103,9 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #084 | [Palombare](palombare.html) | Pokémon Palomba | Normale/Volante | Palombare, colle San Giacomo |
 | #085 | [Lisciano](lisciano.html) | Pokémon Pontefice | Psico/Volante | Lisciano, colle San Giacomo |
 | #086 | [Idra](idra.html) | Pokémon Policefalo | Acqua/Drago | Idra, colle San Giacomo |
+| #087 | [Calancolo](calancolo.html) | Pokémon Calanco | Terra | Calanchi di Ripatransone e Offida |
+| #088 | [Tufone](tufone.html) | Pokémon Arenaria | Terra/Roccia | Colline picene, cave di tufo |
+| #089 | [Travertorre](travertorre.html) | Pokémon Cento Torri | Roccia | Ascoli Piceno, Acquasanta Terme |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |

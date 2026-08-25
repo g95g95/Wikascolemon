@@ -129,6 +129,14 @@
       "ok": true
     },
     {
+      "id": "calancolo",
+      "number": 87,
+      "name": "Calancolo",
+      "statTotal": 300,
+      "statSum": 300,
+      "ok": true
+    },
+    {
       "id": "capultra",
       "number": 23,
       "name": "Capultrà",
@@ -665,6 +673,14 @@
       "ok": true
     },
     {
+      "id": "travertorre",
+      "number": 89,
+      "name": "Travertorre",
+      "statTotal": 470,
+      "statSum": 470,
+      "ok": true
+    },
+    {
       "id": "trecaciare",
       "number": 54,
       "name": "Trecaciare",
@@ -678,6 +694,14 @@
       "name": "Tuffito",
       "statTotal": 310,
       "statSum": 310,
+      "ok": true
+    },
+    {
+      "id": "tufone",
+      "number": 88,
+      "name": "Tufone",
+      "statTotal": 395,
+      "statSum": 395,
       "ok": true
     },
     {

@@ -1050,6 +1050,70 @@
     "evolution": null,
     "wiki": "../caita.html"
   },
+  "calancolo": {
+    "number": 87,
+    "name": "Calancolo",
+    "types": [
+      "Terra"
+    ],
+    "base": [
+      55,
+      50,
+      70,
+      45,
+      50,
+      30
+    ],
+    "catchRate": 190,
+    "expYield": 62,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "fanghiglia"
+      ],
+      [
+        1,
+        "rafforzatore"
+      ],
+      [
+        6,
+        "turbosabbia"
+      ],
+      [
+        11,
+        "colpo_di_fango"
+      ],
+      [
+        16,
+        "riduttore"
+      ],
+      [
+        21,
+        "fangobomba"
+      ],
+      [
+        26,
+        "riposo"
+      ],
+      [
+        31,
+        "terrempesta"
+      ],
+      [
+        36,
+        "fossa"
+      ],
+      [
+        42,
+        "terremoto"
+      ]
+    ],
+    "evolution": {
+      "into": "tufone"
+    },
+    "wiki": "../calancolo.html"
+  },
   "capultra": {
     "number": 23,
     "name": "Capultrà",
@@ -5441,6 +5505,72 @@
     },
     "wiki": "../traguardo.html"
   },
+  "travertorre": {
+    "number": 89,
+    "name": "Travertorre",
+    "types": [
+      "Roccia"
+    ],
+    "base": [
+      90,
+      85,
+      140,
+      55,
+      80,
+      20
+    ],
+    "catchRate": 45,
+    "expYield": 230,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "sassata"
+      ],
+      [
+        1,
+        "rafforzatore"
+      ],
+      [
+        1,
+        "turbosabbia"
+      ],
+      [
+        1,
+        "piazza_pulita"
+      ],
+      [
+        26,
+        "difesaferrea"
+      ],
+      [
+        31,
+        "frana"
+      ],
+      [
+        36,
+        "fossa"
+      ],
+      [
+        42,
+        "terremoto"
+      ],
+      [
+        48,
+        "pietrataglio"
+      ],
+      [
+        55,
+        "levitoroccia"
+      ],
+      [
+        62,
+        "riposo"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../travertorre.html"
+  },
   "trecaciare": {
     "number": 54,
     "name": "Trecaciare",
@@ -5584,6 +5714,75 @@
       "level": 17
     },
     "wiki": "../tuffito.html"
+  },
+  "tufone": {
+    "number": 88,
+    "name": "Tufone",
+    "types": [
+      "Terra",
+      "Roccia"
+    ],
+    "base": [
+      75,
+      80,
+      110,
+      45,
+      60,
+      25
+    ],
+    "catchRate": 90,
+    "expYield": 140,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "fanghiglia"
+      ],
+      [
+        1,
+        "rafforzatore"
+      ],
+      [
+        1,
+        "turbosabbia"
+      ],
+      [
+        1,
+        "sfratto"
+      ],
+      [
+        16,
+        "sassata"
+      ],
+      [
+        21,
+        "fangobomba"
+      ],
+      [
+        26,
+        "difesaferrea"
+      ],
+      [
+        31,
+        "frana"
+      ],
+      [
+        36,
+        "fossa"
+      ],
+      [
+        42,
+        "terremoto"
+      ],
+      [
+        48,
+        "pietrataglio"
+      ]
+    ],
+    "evolution": {
+      "into": "travertorre"
+    },
+    "wiki": "../tufone.html"
   },
   "turibasil": {
     "number": 2,

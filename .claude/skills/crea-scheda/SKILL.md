@@ -46,7 +46,10 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #078-#079 | Svedde → 'Ngenò ✅ — lo svelto di Pedaso che in città diventa sapientone |
 | #080 | Pantafeca ✅ — la pantafica, il peso sul petto delle notti picene |
 | #081 | Bettaccə ✅ — la rana dei fossi, un gracidare diverso per ogni paese |
-| #082-#143 | Libero |
+| #082-#083 | Traguardo → Gionata ✅ — la linea del Gabbiano di San Benedetto |
+| #084-#086 | Palombare → Lisciano → Idra ✅ — la linea dei Tre Versanti (colle San Giacomo) |
+| #087-#089 | Calancolo → Tufone → Travertorre ✅ — la linea della terra picena: argilla, tufo, travertino |
+| #090-#143 | Libero |
 | #144-#146 | Fatella → Ancella → Sibilla ✅ — la linea del Monte Sibilla, pseudo-leggendaria (600) |
 | #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |
 | **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|
@@ -55,7 +58,7 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 
 ⚠️ **Prima di assegnare un numero, fai `git fetch origin` e leggi i numeri da `origin/main`.** Sul dex lavorano più agenti in parallelo, e la tabella qui sopra è una copia locale che invecchia: è già successo **due volte** che una linea nuova nascesse su numeri occupati poche ore prima (Maranzino contro Traffichiex, e la linea della spiaggia contro Forox/Notaiax/Maranzino). La verità sono i file pubblicati, non questa tabella.
 
-Regola: scansiona i file in `Wikascolemon/` e `schede _Pokemon/`, e assegna il **primo numero libero coerente col concept** (una linea starter va nel suo blocco riservato; una specie qualsiasi prende il primo libero da #082 in su). Non assegnare mai "il più alto + 1" senza guardare la tabella. La navigazione `.dexnav` tollera i buchi: il vicino mancante si scrive `<span class="dim">#0NN: ???</span>`.
+Regola: scansiona i file in `Wikascolemon/` e `schede _Pokemon/`, e assegna il **primo numero libero coerente col concept** (una linea starter va nel suo blocco riservato; una specie qualsiasi prende il primo libero da #090 in su). Non assegnare mai "il più alto + 1" senza guardare la tabella. La navigazione `.dexnav` tollera i buchi: il vicino mancante si scrive `<span class="dim">#0NN: ???</span>`.
 
 ## 1. Clona il template
 

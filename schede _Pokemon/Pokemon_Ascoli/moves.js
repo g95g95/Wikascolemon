@@ -1560,6 +1560,77 @@
     },
     "description": "Cura completamente PS e stato, ma fa addormentare chi la usa per due turni."
   },
+  "turbosabbia": {
+    "name": "Turbosabbia",
+    "type": "Terra",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Sabbia scagliata con forza che abbassa la Difesa avversaria."
+  },
+  "colpo_di_fango": {
+    "name": "Colpo di Fango",
+    "type": "Terra",
+    "category": "Speciale",
+    "power": 55,
+    "accuracy": 95,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "fangobomba": {
+    "name": "Fangobomba",
+    "type": "Terra",
+    "category": "Speciale",
+    "power": 65,
+    "accuracy": 85,
+    "pp": 10,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "psn",
+      "chance": 30
+    },
+    "description": "Una bomba di fango che può avvelenare."
+  },
+  "terrempesta": {
+    "name": "Terrempesta",
+    "type": "Terra",
+    "category": "Speciale",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Una tempesta di terra che abbassa la Difesa avversaria."
+  },
+  "fossa": {
+    "name": "Fossa",
+    "type": "Terra",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Colpisce da un buco nel terreno."
+  },
   "urlorabbia": {
     "name": "Urlorabbia",
     "type": "Buio",
@@ -1916,21 +1987,6 @@
       "id": "ghiannata"
     },
     "description": "è la sua mossa esclusiva, appresa all'evoluzione: una gragnuola di ghiande dure come legno che"
-  },
-  "fangobomba": {
-    "name": "Fangobomba",
-    "type": "Terra",
-    "category": "Speciale",
-    "power": 65,
-    "accuracy": 85,
-    "pp": 10,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "psn",
-      "chance": 30
-    },
-    "description": "Una bomba di fango che può avvelenare."
   },
   "radicamento": {
     "name": "Radicamento",
@@ -2991,17 +3047,6 @@
     },
     "description": "Fango che può abbassare la precisione avversaria."
   },
-  "fossa": {
-    "name": "Fossa",
-    "type": "Terra",
-    "category": "Fisico",
-    "power": 80,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": "Colpisce da un buco nel terreno."
-  },
   "eterelama": {
     "name": "Eterelama",
     "type": "Volante",
@@ -3570,23 +3615,6 @@
     },
     "description": "è la sua mossa esclusiva: apre la cupola e crea per cinque turni una zona d'ombra sul lato alleato — i danni delle mosse speciali sono ridotti di un terzo e"
   },
-  "terrempesta": {
-    "name": "Terrempesta",
-    "type": "Roccia",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": null,
-    "pp": 10,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "defense",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Una tempesta di terra che abbassa la Difesa avversaria."
-  },
   "geoforza": {
     "name": "Geoforza",
     "type": "Terra",
@@ -3791,23 +3819,6 @@
     "priority": 0,
     "effect": null,
     "description": "dopo aver colpito, Picchio lascia il campo e il Pokémon che entra al suo posto ottiene Velocità +1."
-  },
-  "turbosabbia": {
-    "name": "Turbosabbia",
-    "type": "Terra",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "defense",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Sabbia scagliata con forza che abbassa la Difesa avversaria."
   },
   "sassata": {
     "name": "Sassata",
@@ -4558,6 +4569,28 @@
     "effect": null,
     "description": ""
   },
+  "piazza_pulita": {
+    "name": "Piazza Pulita",
+    "type": "Roccia",
+    "category": "Fisico",
+    "power": 30,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "30 di potenza, +30 per ogni altro Pokémon della squadra ancora in grado di lottare."
+  },
+  "levitoroccia": {
+    "name": "Levitoroccia",
+    "type": "Roccia",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "coro_di_pietra": {
     "name": "Coro di Pietra",
     "type": "Roccia",
@@ -4579,6 +4612,17 @@
     "priority": 0,
     "effect": null,
     "description": ""
+  },
+  "sfratto": {
+    "name": "Sfratto",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Volante, 40 di potenza, priorità +1 al primo utilizzo di ogni lotta: gli inquilini escono tutti insieme in faccia all'avversario."
   },
   "solarraggio": {
     "name": "Solarraggio",
