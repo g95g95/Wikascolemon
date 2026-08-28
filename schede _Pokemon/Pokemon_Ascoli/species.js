@@ -3387,6 +3387,62 @@
     "evolution": null,
     "wiki": "../mucillax.html"
   },
+  "ndandaluse": {
+    "number": 91,
+    "name": "Ndandalusə",
+    "types": [
+      "Normale"
+    ],
+    "base": [
+      55,
+      60,
+      45,
+      50,
+      45,
+      65
+    ],
+    "catchRate": 150,
+    "expYield": 60,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "schermo"
+      ],
+      [
+        1,
+        "fulmisguardo"
+      ],
+      [
+        8,
+        "attacco_rapido"
+      ],
+      [
+        14,
+        "sbadiglio"
+      ],
+      [
+        20,
+        "doppioteam"
+      ],
+      [
+        26,
+        "sbigoattacco"
+      ],
+      [
+        32,
+        "sonnolalia"
+      ],
+      [
+        38,
+        "riposo"
+      ]
+    ],
+    "evolution": {
+      "into": "sarchiapa"
+    },
+    "wiki": "../ndandaluse.html"
+  },
   "ngeno": {
     "number": 79,
     "name": "'Ngenò",
@@ -4462,6 +4518,73 @@
     ],
     "evolution": null,
     "wiki": "../sammaro.html"
+  },
+  "sarchiapa": {
+    "number": 92,
+    "name": "Sarchiapà",
+    "types": [
+      "Normale",
+      "Spettro"
+    ],
+    "base": [
+      60,
+      70,
+      50,
+      75,
+      60,
+      110
+    ],
+    "catchRate": 30,
+    "expYield": 145,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "sgomento"
+      ],
+      [
+        1,
+        "schermo"
+      ],
+      [
+        7,
+        "attacco_rapido"
+      ],
+      [
+        12,
+        "doppioteam"
+      ],
+      [
+        18,
+        "sabotaggio"
+      ],
+      [
+        24,
+        "fischiabuchi"
+      ],
+      [
+        30,
+        "sbigoattacco"
+      ],
+      [
+        36,
+        "agilita"
+      ],
+      [
+        42,
+        "palla_ombra"
+      ],
+      [
+        48,
+        "sostituto"
+      ],
+      [
+        54,
+        "divieto"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../sarchiapa.html"
   },
   "sbandiera": {
     "number": 18,

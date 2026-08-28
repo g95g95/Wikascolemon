@@ -107,6 +107,8 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #088 | [Tufone](tufone.html) | Pokémon Arenaria | Terra/Roccia | Colline picene, cave di tufo |
 | #089 | [Travertorre](travertorre.html) | Pokémon Cento Torri | Roccia | Ascoli Piceno, Acquasanta Terme |
 | #090 | [Farò](faro.html) | Pokémon Due Lampi | Elettro/Acciaio | San Benedetto del Tronto (porto) |
+| #091 | [Ndandalusə](ndandaluse.html) | Pokémon Dondolo | Normale | Le strade dei paesi della vallata del Tronto |
+| #092 | [Sarchiapà](sarchiapa.html) | Pokémon Inafferrabile | Normale/Spettro | Paesi della vallata del Tronto (tutti e nessuno) |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |

@@ -417,6 +417,14 @@
       "ok": true
     },
     {
+      "id": "ndandaluse",
+      "number": 91,
+      "name": "Ndandalusə",
+      "statTotal": 320,
+      "statSum": 320,
+      "ok": true
+    },
+    {
       "id": "ngeno",
       "number": 79,
       "name": "'Ngenò",
@@ -542,6 +550,14 @@
       "name": "Sammarò",
       "statTotal": 455,
       "statSum": 455,
+      "ok": true
+    },
+    {
+      "id": "sarchiapa",
+      "number": 92,
+      "name": "Sarchiapà",
+      "statTotal": 425,
+      "statSum": 425,
       "ok": true
     },
     {

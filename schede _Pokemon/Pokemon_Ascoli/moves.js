@@ -1530,7 +1530,7 @@
       "kind": "custom",
       "id": "yawn"
     },
-    "description": "Un lungo sbadiglio: il bersaglio si addormenta al termine del turno successivo."
+    "description": "al 14: lo esegue dondolando, e la combinazione è considerata tra le cose più contagiose del dex."
   },
   "corpomasso": {
     "name": "Corpomasso",
@@ -3537,6 +3537,28 @@
     "effect": null,
     "description": "Una palla di fango scagliata con forza."
   },
+  "schermo": {
+    "name": "Schermo",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "sonnolalia": {
+    "name": "Sonnolalia",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "inseguimento": {
     "name": "Inseguimento",
     "type": "Buio",
@@ -4264,6 +4286,39 @@
       "chance": 20
     },
     "description": "è la sua mossa esclusiva, appresa all'evoluzione: un colpo di ramo calato"
+  },
+  "fischiabuchi": {
+    "name": "Fischiabuchi",
+    "type": "Spettro",
+    "category": "Speciale",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Spettro, speciale, 75 di potenza, basata sul suono (ignora Sostituto), 20% di probabilità di confondere."
+  },
+  "sostituto": {
+    "name": "Sostituto",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "divieto": {
+    "name": "Divieto",
+    "type": "Buio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
   },
   "vento_di_bandiera": {
     "name": "Vento di Bandiera",

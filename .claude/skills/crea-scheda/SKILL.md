@@ -50,7 +50,9 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #084-#086 | Palombare → Lisciano → Idra ✅ — la linea dei Tre Versanti (colle San Giacomo) |
 | #087-#089 | Calancolo → Tufone → Travertorre ✅ — la linea della terra picena: argilla, tufo, travertino |
 | #090 | Farò ✅ — il faro del porto di San Benedetto, due lampi ogni dieci secondi |
-| #091-#143 | Libero |
+| #091 | Ndandalusə ✅ — il dondolone dei paesi, evolve tra il 28 e il 40 quando gli pare |
+| #092 | Sarchiapà ✅ — il personaggio che non c'è, bucherellato dove i racconti non combaciano |
+| #093-#143 | Libero |
 | #144-#146 | Fatella → Ancella → Sibilla ✅ — la linea del Monte Sibilla, pseudo-leggendaria (600) |
 | #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |
 | **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|
