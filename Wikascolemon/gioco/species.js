@@ -919,6 +919,64 @@
     },
     "wiki": "../bree.html"
   },
+  "caccnitte": {
+    "number": 93,
+    "name": "Cacc'nittə",
+    "types": [
+      "Normale"
+    ],
+    "base": [
+      40,
+      45,
+      35,
+      35,
+      35,
+      60
+    ],
+    "catchRate": 235,
+    "expYield": 50,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        1,
+        "attaccalite"
+      ],
+      [
+        6,
+        "fulmisguardo"
+      ],
+      [
+        11,
+        "morso"
+      ],
+      [
+        16,
+        "provocazione"
+      ],
+      [
+        21,
+        "riporto"
+      ],
+      [
+        26,
+        "grancassa"
+      ],
+      [
+        31,
+        "attrazione"
+      ]
+    ],
+    "evolution": {
+      "into": "rancco",
+      "level": 22,
+      "night": true
+    },
+    "wiki": "../caccnitte.html"
+  },
   "caciara": {
     "number": 53,
     "name": "Caciara",
@@ -4335,6 +4393,72 @@
     ],
     "evolution": null,
     "wiki": "../quintanaro.html"
+  },
+  "rancco": {
+    "number": 94,
+    "name": "Ranc'cò",
+    "types": [
+      "Normale"
+    ],
+    "base": [
+      75,
+      85,
+      60,
+      50,
+      65,
+      85
+    ],
+    "catchRate": 120,
+    "expYield": 126,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "attaccalite"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        1,
+        "morso"
+      ],
+      [
+        16,
+        "provocazione"
+      ],
+      [
+        21,
+        "riporto"
+      ],
+      [
+        22,
+        "fedelta"
+      ],
+      [
+        26,
+        "occhioni_teneri"
+      ],
+      [
+        31,
+        "buonumore"
+      ],
+      [
+        36,
+        "demolizione"
+      ],
+      [
+        42,
+        "corposcontro"
+      ],
+      [
+        48,
+        "sotterfugio"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../rancco.html"
   },
   "retrabbie": {
     "number": 59,

@@ -16,5 +16,6 @@
   "soldatino": { "evolution": { "into": "batterino", "level": 15, "item": "grattaevinci" } },
   "tifotto": { "evolution": { "into": "sciarpone", "friendship": true } },
   "livetta": { "evolution": { "into": "liva", "friendship": true } },
-  "totera": { "evolution": { "into": "cerqua", "level": 36 } }
+  "totera": { "evolution": { "into": "cerqua", "level": 36 } },
+  "caccnitte": { "evolution": { "into": "rancco", "level": 22, "night": true } }
 }

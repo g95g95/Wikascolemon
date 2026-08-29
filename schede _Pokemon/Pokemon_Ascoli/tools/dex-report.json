@@ -113,6 +113,14 @@
       "ok": true
     },
     {
+      "id": "caccnitte",
+      "number": 93,
+      "name": "Cacc'nittə",
+      "statTotal": 250,
+      "statSum": 250,
+      "ok": true
+    },
+    {
       "id": "caciara",
       "number": 53,
       "name": "Caciara",
@@ -526,6 +534,14 @@
       "name": "Quintanaro",
       "statTotal": 490,
       "statSum": 490,
+      "ok": true
+    },
+    {
+      "id": "rancco",
+      "number": 94,
+      "name": "Ranc'cò",
+      "statTotal": 420,
+      "statSum": 420,
       "ok": true
     },
     {

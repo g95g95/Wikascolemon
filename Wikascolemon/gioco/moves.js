@@ -1354,6 +1354,84 @@
     },
     "description": "infligge danno e aumenta di molto la Velocità, ma nel turno successivo Bree non può agire — si è già accucciato da qualche parte."
   },
+  "attaccalite": {
+    "name": "Attaccalite",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 30,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Un attacco verbale che abbassa la Difesa avversaria."
+  },
+  "fulmisguardo": {
+    "name": "Fulmisguardo",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "morso": {
+    "name": "Morso",
+    "type": "Buio",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 25,
+    "priority": 0,
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Un morso che può far tentennare."
+  },
+  "provocazione": {
+    "name": "Provocazione",
+    "type": "Buio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": {
+      "kind": "custom",
+      "id": "taunt"
+    },
+    "description": "Provoca il bersaglio impedendogli di usare mosse di stato per alcuni turni."
+  },
+  "riporto": {
+    "name": "Riporto",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "grancassa": {
+    "name": "Grancassa",
+    "type": "Normale",
+    "category": "Speciale",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "al 26: novanta di potenza da tre chili scarsi: il vicinato conferma."
+  },
   "botto": {
     "name": "Botto",
     "type": "Normale",
@@ -2479,17 +2557,6 @@
     "effect": null,
     "description": ""
   },
-  "fulmisguardo": {
-    "name": "Fulmisguardo",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 30,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
   "dolcebacio": {
     "name": "Dolcebacio",
     "type": "Folletto",
@@ -2511,20 +2578,6 @@
     "priority": 0,
     "effect": null,
     "description": ""
-  },
-  "morso": {
-    "name": "Morso",
-    "type": "Buio",
-    "category": "Fisico",
-    "power": 60,
-    "accuracy": 100,
-    "pp": 25,
-    "priority": 0,
-    "effect": {
-      "kind": "flinch",
-      "chance": 30
-    },
-    "description": "Un morso che può far tentennare."
   },
   "dragartigli": {
     "name": "Dragartigli",
@@ -3592,20 +3645,6 @@
     "effect": null,
     "description": ""
   },
-  "provocazione": {
-    "name": "Provocazione",
-    "type": "Buio",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 20,
-    "priority": 0,
-    "effect": {
-      "kind": "custom",
-      "id": "taunt"
-    },
-    "description": "Provoca il bersaglio impedendogli di usare mosse di stato per alcuni turni."
-  },
   "furto": {
     "name": "Furto",
     "type": "Buio",
@@ -3664,23 +3703,6 @@
       "chance": 30
     },
     "description": "Un morso velenoso che può avvelenare."
-  },
-  "attaccalite": {
-    "name": "Attaccalite",
-    "type": "Buio",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 20,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "defense",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Un attacco verbale che abbassa la Difesa avversaria."
   },
   "garanzia": {
     "name": "Garanzia",
@@ -4196,6 +4218,50 @@
       "max": 2
     },
     "description": "Colpisce due volte in rapida successione."
+  },
+  "fedelta": {
+    "name": "Fedeltà",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Normale, fisica, 60 di potenza: raddoppia se l'utente ha subìto danni in questo turno."
+  },
+  "buonumore": {
+    "name": "Buonumore",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "demolizione": {
+    "name": "Demolizione",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "sotterfugio": {
+    "name": "Sotterfugio",
+    "type": "Buio",
+    "category": "Fisico",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
   },
   "ferrartigli": {
     "name": "Ferrartigli",
