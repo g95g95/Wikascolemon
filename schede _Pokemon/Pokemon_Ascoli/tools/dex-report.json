@@ -145,6 +145,14 @@
       "ok": true
     },
     {
+      "id": "canala",
+      "number": 97,
+      "name": "Canala",
+      "statTotal": 520,
+      "statSum": 520,
+      "ok": true
+    },
+    {
       "id": "capultra",
       "number": 23,
       "name": "Capultrà",
@@ -182,6 +190,14 @@
       "name": "Cavedòne",
       "statTotal": 410,
       "statSum": 410,
+      "ok": true
+    },
+    {
+      "id": "cello",
+      "number": 96,
+      "name": "Cəllò",
+      "statTotal": 480,
+      "statSum": 480,
       "ok": true
     },
     {
@@ -806,6 +822,14 @@
       "name": "Zanzì",
       "statTotal": 220,
       "statSum": 220,
+      "ok": true
+    },
+    {
+      "id": "zurrio",
+      "number": 95,
+      "name": "Zurriò",
+      "statTotal": 305,
+      "statSum": 305,
       "ok": true
     }
   ],

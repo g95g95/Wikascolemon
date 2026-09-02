@@ -53,7 +53,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #091 | Ndandalusə ✅ — il dondolone dei paesi, evolve tra il 28 e il 40 quando gli pare |
 | #092 | Sarchiapà ✅ — il personaggio che non c'è, bucherellato dove i racconti non combaciano |
 | #093-#094 | Cacc'nittə → Ranc'cò ✅ — la linea del cane: da salotto a randagio, evolve al 22 di notte |
-| #095-#143 | Libero |
+| #095-#097 | Zurriò → Cəllò → Canala ✅ — la linea della vita della vallata: il monello, il tuttofare, Nonno Canala (Lotta → Lotta → Lotta/Psico, evolve al 28 e al 55) |
+| #098-#143 | Libero |
 | #144-#146 | Fatella → Ancella → Sibilla ✅ — la linea del Monte Sibilla, pseudo-leggendaria (600) |
 | #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |
 | **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|

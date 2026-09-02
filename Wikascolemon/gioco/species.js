@@ -1172,6 +1172,69 @@
     },
     "wiki": "../calancolo.html"
   },
+  "canala": {
+    "number": 97,
+    "name": "Canala",
+    "types": [
+      "Lotta",
+      "Psico"
+    ],
+    "base": [
+      90,
+      120,
+      90,
+      60,
+      95,
+      65
+    ],
+    "catchRate": 45,
+    "expYield": 240,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "colpokarate"
+      ],
+      [
+        1,
+        "meditazione"
+      ],
+      [
+        33,
+        "fuocopugno"
+      ],
+      [
+        40,
+        "demolizione"
+      ],
+      [
+        47,
+        "incrocolpo"
+      ],
+      [
+        54,
+        "zuffa"
+      ],
+      [
+        55,
+        "canala"
+      ],
+      [
+        60,
+        "psichico"
+      ],
+      [
+        66,
+        "forzasfera"
+      ],
+      [
+        72,
+        "riposo"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../canala.html"
+  },
   "capultra": {
     "number": 23,
     "name": "Capultrà",
@@ -1506,6 +1569,79 @@
     ],
     "evolution": null,
     "wiki": "../cavedone.html"
+  },
+  "cello": {
+    "number": 96,
+    "name": "Cəllò",
+    "types": [
+      "Lotta"
+    ],
+    "base": [
+      80,
+      115,
+      70,
+      50,
+      60,
+      105
+    ],
+    "catchRate": 60,
+    "expYield": 160,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "graffio"
+      ],
+      [
+        1,
+        "attacco_rapido"
+      ],
+      [
+        1,
+        "colpobasso"
+      ],
+      [
+        21,
+        "agilita"
+      ],
+      [
+        27,
+        "breccia"
+      ],
+      [
+        28,
+        "colpokarate"
+      ],
+      [
+        33,
+        "fuocopugno"
+      ],
+      [
+        33,
+        "tuonopugno"
+      ],
+      [
+        33,
+        "gelopugno"
+      ],
+      [
+        40,
+        "demolizione"
+      ],
+      [
+        47,
+        "incrocolpo"
+      ],
+      [
+        54,
+        "zuffa"
+      ]
+    ],
+    "evolution": {
+      "into": "canala",
+      "level": 55
+    },
+    "wiki": "../cello.html"
   },
   "cerqua": {
     "number": 44,
@@ -6619,6 +6755,67 @@
       "level": 10
     },
     "wiki": "../zanzi.html"
+  },
+  "zurrio": {
+    "number": 95,
+    "name": "Zurriò",
+    "types": [
+      "Lotta"
+    ],
+    "base": [
+      50,
+      70,
+      40,
+      30,
+      35,
+      80
+    ],
+    "catchRate": 180,
+    "expYield": 65,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "graffio"
+      ],
+      [
+        1,
+        "fulmisguardo"
+      ],
+      [
+        6,
+        "attacco_rapido"
+      ],
+      [
+        11,
+        "colpobasso"
+      ],
+      [
+        16,
+        "sberletese"
+      ],
+      [
+        21,
+        "agilita"
+      ],
+      [
+        27,
+        "breccia"
+      ],
+      [
+        33,
+        "sassata"
+      ],
+      [
+        39,
+        "riduttore"
+      ]
+    ],
+    "evolution": {
+      "into": "cello",
+      "level": 28
+    },
+    "wiki": "../zurrio.html"
   }
 };
   if (typeof window !== 'undefined') window.PokemonAscoliSpecies = api;

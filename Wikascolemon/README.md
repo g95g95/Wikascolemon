@@ -111,6 +111,9 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #092 | [Sarchiapà](sarchiapa.html) | Pokémon Inafferrabile | Normale/Spettro | Paesi della vallata del Tronto (tutti e nessuno) |
 | #093 | [Cacc'nittə](caccnitte.html) | Pokémon Salotto | Normale | Salotti, davanzali e borse dei paesi della vallata |
 | #094 | [Ranc'cò](rancco.html) | Pokémon Randagio | Normale | Strade, piazze e retro dei forni della vallata |
+| #095 | [Zurriò](zurrio.html) | Pokémon Monello | Lotta | Tutti i paesi della vallata del Tronto, sempre di corsa |
+| #096 | [Cəllò](cello.html) | Pokémon Tuttofare | Lotta | La vallata, con quartier generale nel locale sulla Bonifica |
+| #097 | [Canala](canala.html) | Pokémon Ultima Parola | Lotta/Psico | La vallata, un punto solo alla volta, scelto da lui |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |

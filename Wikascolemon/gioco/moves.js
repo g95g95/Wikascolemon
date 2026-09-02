@@ -1709,6 +1709,61 @@
     "effect": null,
     "description": "Colpisce da un buco nel terreno."
   },
+  "meditazione": {
+    "name": "Meditazione",
+    "type": "Psico",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 40,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "canala": {
+    "name": "Canala",
+    "type": "Psico",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "Psico, stato, priorità +1: fino alla fine del turno successivo, gli altri Pokémon in campo non possono usare mosse di stato né mosse basate sul suono."
+  },
+  "demolizione": {
+    "name": "Demolizione",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "incrocolpo": {
+    "name": "Incrocolpo",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 100,
+    "accuracy": 80,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "Colpo incrociato molto potente."
+  },
+  "forzasfera": {
+    "name": "Forzasfera",
+    "type": "Lotta",
+    "category": "Speciale",
+    "power": 80,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "urlorabbia": {
     "name": "Urlorabbia",
     "type": "Buio",
@@ -1921,17 +1976,6 @@
     "effect": null,
     "description": "Un colpo pesante e potente."
   },
-  "incrocolpo": {
-    "name": "Incrocolpo",
-    "type": "Lotta",
-    "category": "Fisico",
-    "power": 100,
-    "accuracy": 80,
-    "pp": 5,
-    "priority": 0,
-    "effect": null,
-    "description": "Colpo incrociato molto potente."
-  },
   "nitrocarica": {
     "name": "Nitrocarica",
     "type": "Fuoco",
@@ -2037,6 +2081,54 @@
       "chance": 100
     },
     "description": "Uno sguardo fermo che abbassa la Velocità avversaria."
+  },
+  "graffio": {
+    "name": "Graffio",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "colpobasso": {
+    "name": "Colpobasso",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "tuonopugno": {
+    "name": "Tuonopugno",
+    "type": "Elettro",
+    "category": "Fisico",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 10
+    },
+    "description": "Un pugno elettrico che può paralizzare."
+  },
+  "gelopugno": {
+    "name": "Gelopugno",
+    "type": "Ghiaccio",
+    "category": "Fisico",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
   },
   "chicco_doro": {
     "name": "Chicco d'Oro",
@@ -2545,17 +2637,6 @@
       "id": "idropompa_a_salve"
     },
     "description": "Getti d'acqua a bassa potenza, versione depotenziata dell'Idropompa (mossa di Cozzetta)."
-  },
-  "graffio": {
-    "name": "Graffio",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 35,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "dolcebacio": {
     "name": "Dolcebacio",
@@ -3326,21 +3407,6 @@
       "chance": 100
     },
     "description": "Una battuta pungente che abbassa la Difesa Speciale avversaria."
-  },
-  "tuonopugno": {
-    "name": "Tuonopugno",
-    "type": "Elettro",
-    "category": "Fisico",
-    "power": 75,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "par",
-      "chance": 10
-    },
-    "description": "Un pugno elettrico che può paralizzare."
   },
   "dropbeat": {
     "name": "Dropbeat",
@@ -4241,17 +4307,6 @@
     "effect": null,
     "description": ""
   },
-  "demolizione": {
-    "name": "Demolizione",
-    "type": "Lotta",
-    "category": "Fisico",
-    "power": 75,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
   "sotterfugio": {
     "name": "Sotterfugio",
     "type": "Buio",
@@ -5054,6 +5109,17 @@
     "priority": 0,
     "effect": null,
     "description": "Una raffica devastante di foglie affilate."
+  },
+  "sberletese": {
+    "name": "Sberletese",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 15,
+    "accuracy": 85,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
   }
 };
   if (typeof window !== 'undefined') window.PokemonAscoliMoves = api;
