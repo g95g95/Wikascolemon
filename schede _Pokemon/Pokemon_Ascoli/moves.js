@@ -3203,6 +3203,50 @@
     "effect": null,
     "description": ""
   },
+  "botta": {
+    "name": "Botta",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "sassata": {
+    "name": "Sassata",
+    "type": "Roccia",
+    "category": "Fisico",
+    "power": 50,
+    "accuracy": 90,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Un sasso scagliato con forza."
+  },
+  "coro": {
+    "name": "Coro",
+    "type": "Lotta",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Lotta, stato, suono: Attacco e Velocità +1 a sé e all'alleato; utilizzabile solo con almeno quattro Pokémon della squadra in grado di lottare."
+  },
+  "rotolamento": {
+    "name": "Rotolamento",
+    "type": "Roccia",
+    "category": "Fisico",
+    "power": 30,
+    "accuracy": 90,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "cartellonata": {
     "name": "Cartellonata",
     "type": "Normale",
@@ -3324,17 +3368,6 @@
     "power": 0,
     "accuracy": null,
     "pp": 5,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "rotolamento": {
-    "name": "Rotolamento",
-    "type": "Roccia",
-    "category": "Fisico",
-    "power": 30,
-    "accuracy": 90,
-    "pp": 20,
     "priority": 0,
     "effect": null,
     "description": ""
@@ -4029,17 +4062,6 @@
     "effect": null,
     "description": "dopo aver colpito, Picchio lascia il campo e il Pokémon che entra al suo posto ottiene Velocità +1."
   },
-  "sassata": {
-    "name": "Sassata",
-    "type": "Roccia",
-    "category": "Fisico",
-    "power": 50,
-    "accuracy": 90,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": "Un sasso scagliato con forza."
-  },
   "attaccorapido": {
     "name": "Attaccorapido",
     "type": "Normale",
@@ -4572,6 +4594,17 @@
     },
     "description": "Un colpo fortissimo che abbassa Attacco e Difesa di chi lo usa."
   },
+  "ristrutturazione": {
+    "name": "Ristrutturazione",
+    "type": "Acciaio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "Acciaio, stato: ripristina metà dei PS massimi, ma l'utente salta il turno successivo."
+  },
   "vaticinio": {
     "name": "Vaticinio",
     "type": "Psico",
@@ -4821,17 +4854,6 @@
     "priority": 0,
     "effect": null,
     "description": "Attacco veloce e diretto."
-  },
-  "botta": {
-    "name": "Botta",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 35,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "piazza_pulita": {
     "name": "Piazza Pulita",

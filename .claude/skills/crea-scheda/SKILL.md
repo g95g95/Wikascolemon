@@ -54,7 +54,9 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #092 | Sarchiapà ✅ — il personaggio che non c'è, bucherellato dove i racconti non combaciano |
 | #093-#094 | Cacc'nittə → Ranc'cò ✅ — la linea del cane: da salotto a randagio, evolve al 22 di notte |
 | #095-#097 | Zurriò → Cəllò → Canala ✅ — la linea della vita della vallata: il monello, il tuttofare, Nonno Canala (Lotta → Lotta → Lotta/Psico, evolve al 28 e al 55) |
-| #098-#143 | Libero |
+| #098 | Miercelusox — bozza in `schede _Pokemon/`, **non ancora pubblicata**: numero riservato, non riassegnare |
+| #099-#101 | Gradino → Seggiola → Gradinata ✅ — la linea dello stadio Del Duca: il gradino, il seggiolino, la curva (Roccia → Roccia/Acciaio → Roccia/Lotta, evolve al 25 e allo stadio di domenica) |
+| #102-#143 | Libero |
 | #144-#146 | Fatella → Ancella → Sibilla ✅ — la linea del Monte Sibilla, pseudo-leggendaria (600) |
 | #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |
 | **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|

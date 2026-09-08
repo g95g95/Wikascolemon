@@ -361,6 +361,22 @@
       "ok": true
     },
     {
+      "id": "gradinata",
+      "number": 101,
+      "name": "Gradinata",
+      "statTotal": 510,
+      "statSum": 510,
+      "ok": true
+    },
+    {
+      "id": "gradino",
+      "number": 99,
+      "name": "Gradino",
+      "statTotal": 280,
+      "statSum": 280,
+      "ok": true
+    },
+    {
       "id": "idra",
       "number": 86,
       "name": "Idra",
@@ -622,6 +638,14 @@
       "name": "Segaccio",
       "statTotal": 465,
       "statSum": 465,
+      "ok": true
+    },
+    {
+      "id": "seggiola",
+      "number": 100,
+      "name": "Seggiola",
+      "statTotal": 400,
+      "statSum": 400,
       "ok": true
     },
     {

@@ -2939,6 +2939,126 @@
     "evolution": null,
     "wiki": "../gommapiuma.html"
   },
+  "gradinata": {
+    "number": 101,
+    "name": "Gradinata",
+    "types": [
+      "Roccia",
+      "Lotta"
+    ],
+    "base": [
+      95,
+      95,
+      120,
+      45,
+      85,
+      70
+    ],
+    "catchRate": 45,
+    "expYield": 230,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "botta"
+      ],
+      [
+        1,
+        "sassata"
+      ],
+      [
+        1,
+        "grancassa"
+      ],
+      [
+        1,
+        "coro"
+      ],
+      [
+        24,
+        "frana"
+      ],
+      [
+        30,
+        "breccia"
+      ],
+      [
+        36,
+        "pietrataglio"
+      ],
+      [
+        42,
+        "cuordileone"
+      ],
+      [
+        48,
+        "incrocolpo"
+      ],
+      [
+        55,
+        "zuffa"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../gradinata.html"
+  },
+  "gradino": {
+    "number": 99,
+    "name": "Gradino",
+    "types": [
+      "Roccia"
+    ],
+    "base": [
+      50,
+      40,
+      85,
+      25,
+      40,
+      40
+    ],
+    "catchRate": 190,
+    "expYield": 60,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "botta"
+      ],
+      [
+        1,
+        "rafforzatore"
+      ],
+      [
+        6,
+        "sassata"
+      ],
+      [
+        12,
+        "riduttore"
+      ],
+      [
+        18,
+        "rotolamento"
+      ],
+      [
+        24,
+        "frana"
+      ],
+      [
+        30,
+        "riposo"
+      ],
+      [
+        36,
+        "pietrataglio"
+      ]
+    ],
+    "evolution": {
+      "into": "seggiola",
+      "level": 25
+    },
+    "wiki": "../gradino.html"
+  },
   "idra": {
     "number": 86,
     "name": "Idra",
@@ -5111,6 +5231,67 @@
     ],
     "evolution": null,
     "wiki": "../segaccio.html"
+  },
+  "seggiola": {
+    "number": 100,
+    "name": "Seggiola",
+    "types": [
+      "Roccia",
+      "Acciaio"
+    ],
+    "base": [
+      65,
+      55,
+      110,
+      40,
+      70,
+      60
+    ],
+    "catchRate": 120,
+    "expYield": 130,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "botta"
+      ],
+      [
+        1,
+        "rafforzatore"
+      ],
+      [
+        1,
+        "sassata"
+      ],
+      [
+        18,
+        "difesaferrea"
+      ],
+      [
+        24,
+        "frana"
+      ],
+      [
+        25,
+        "ristrutturazione"
+      ],
+      [
+        30,
+        "metaltestata"
+      ],
+      [
+        36,
+        "pietrataglio"
+      ],
+      [
+        42,
+        "cannonflash"
+      ]
+    ],
+    "evolution": {
+      "into": "gradinata"
+    },
+    "wiki": "../seggiola.html"
   },
   "sibilla": {
     "number": 146,
