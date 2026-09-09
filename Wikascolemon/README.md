@@ -117,6 +117,9 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #099 | [Gradino](gradino.html) | Pokémon Scalino | Roccia | Curve e settori popolari degli stadi del Piceno, dal Del Duca in giù |
 | #100 | [Seggiola](seggiola.html) | Pokémon Seggiolino | Roccia/Acciaio | Gli spalti ristrutturati del Del Duca, in file che nessuno rispetta |
 | #101 | [Gradinata](gradinata.html) | Pokémon Dodicesimo | Roccia/Lotta | La curva del Del Duca, la domenica |
+| #102 | [Rotonda](rotonda.html) | Pokémon Rotatoria | Terra | Gli incroci di Ascoli, soprattutto Castagneti |
+| #103 | [Ciclabile](ciclabile.html) | Pokémon Mobilità Dolce | Terra/Erba | Monticelli e Porta Maggiore |
+| #104 | [Pontecurvo](pontecurvo.html) | Pokémon Raggio 127 | Terra/Acciaio | Il Tronto, tra Monticelli e Castagneti |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |

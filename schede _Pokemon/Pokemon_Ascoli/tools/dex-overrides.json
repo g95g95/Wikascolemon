@@ -17,5 +17,6 @@
   "tifotto": { "evolution": { "into": "sciarpone", "friendship": true } },
   "livetta": { "evolution": { "into": "liva", "friendship": true } },
   "totera": { "evolution": { "into": "cerqua", "level": 36 } },
-  "caccnitte": { "evolution": { "into": "rancco", "level": 22, "night": true } }
+  "caccnitte": { "evolution": { "into": "rancco", "level": 22, "night": true } },
+  "ciclabile": { "evolution": { "into": "pontecurvo", "location": "marino_del_tronto" } }
 }

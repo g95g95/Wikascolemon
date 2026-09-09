@@ -233,6 +233,14 @@
       "ok": true
     },
     {
+      "id": "ciclabile",
+      "number": 103,
+      "name": "Ciclabile",
+      "statTotal": 400,
+      "statSum": 400,
+      "ok": true
+    },
+    {
       "id": "cignalo",
       "number": 51,
       "name": "Cignalò",
@@ -537,6 +545,14 @@
       "ok": true
     },
     {
+      "id": "pontecurvo",
+      "number": 104,
+      "name": "Pontecurvo",
+      "statTotal": 520,
+      "statSum": 520,
+      "ok": true
+    },
+    {
       "id": "pozza",
       "number": 46,
       "name": "Pozza",
@@ -582,6 +598,14 @@
       "name": "Retrabbiə",
       "statTotal": 325,
       "statSum": 325,
+      "ok": true
+    },
+    {
+      "id": "rotonda",
+      "number": 102,
+      "name": "Rotonda",
+      "statTotal": 300,
+      "statSum": 300,
       "ok": true
     },
     {

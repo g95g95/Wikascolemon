@@ -1898,6 +1898,72 @@
     "evolution": null,
     "wiki": "../ciccharizard.html"
   },
+  "ciclabile": {
+    "number": 103,
+    "name": "Ciclabile",
+    "types": [
+      "Terra",
+      "Erba"
+    ],
+    "base": [
+      60,
+      55,
+      60,
+      60,
+      60,
+      105
+    ],
+    "catchRate": 120,
+    "expYield": 140,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "botta"
+      ],
+      [
+        1,
+        "precedenza"
+      ],
+      [
+        1,
+        "fanghiglia"
+      ],
+      [
+        19,
+        "turbosabbia"
+      ],
+      [
+        25,
+        "foglielama"
+      ],
+      [
+        30,
+        "corsia"
+      ],
+      [
+        31,
+        "fossa"
+      ],
+      [
+        37,
+        "terremoto"
+      ],
+      [
+        43,
+        "agilita"
+      ],
+      [
+        49,
+        "fogliamagica"
+      ]
+    ],
+    "evolution": {
+      "into": "pontecurvo",
+      "location": "marino_del_tronto"
+    },
+    "wiki": "../ciclabile.html"
+  },
   "cignalo": {
     "number": 51,
     "name": "Cignalò",
@@ -4382,6 +4448,69 @@
     },
     "wiki": "../pito.html"
   },
+  "pontecurvo": {
+    "number": 104,
+    "name": "Pontecurvo",
+    "types": [
+      "Terra",
+      "Acciaio"
+    ],
+    "base": [
+      95,
+      90,
+      130,
+      55,
+      80,
+      70
+    ],
+    "catchRate": 45,
+    "expYield": 235,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "botta"
+      ],
+      [
+        1,
+        "precedenza"
+      ],
+      [
+        1,
+        "difesaferrea"
+      ],
+      [
+        1,
+        "curvone"
+      ],
+      [
+        31,
+        "fossa"
+      ],
+      [
+        37,
+        "terremoto"
+      ],
+      [
+        43,
+        "metaltestata"
+      ],
+      [
+        49,
+        "frana"
+      ],
+      [
+        56,
+        "cannonflash"
+      ],
+      [
+        64,
+        "riposo"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../pontecurvo.html"
+  },
   "pozza": {
     "number": 46,
     "name": "Pozza",
@@ -4780,6 +4909,67 @@
       "into": "sammaro"
     },
     "wiki": "../retrabbie.html"
+  },
+  "rotonda": {
+    "number": 102,
+    "name": "Rotonda",
+    "types": [
+      "Terra"
+    ],
+    "base": [
+      55,
+      45,
+      85,
+      30,
+      50,
+      35
+    ],
+    "catchRate": 190,
+    "expYield": 62,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "botta"
+      ],
+      [
+        1,
+        "rafforzatore"
+      ],
+      [
+        1,
+        "precedenza"
+      ],
+      [
+        7,
+        "fanghiglia"
+      ],
+      [
+        13,
+        "rotolamento"
+      ],
+      [
+        19,
+        "turbosabbia"
+      ],
+      [
+        25,
+        "colpo_di_fango"
+      ],
+      [
+        31,
+        "fossa"
+      ],
+      [
+        37,
+        "terremoto"
+      ]
+    ],
+    "evolution": {
+      "into": "ciclabile",
+      "level": 30
+    },
+    "wiki": "../rotonda.html"
   },
   "salvatorre": {
     "number": 33,

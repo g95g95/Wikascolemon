@@ -2415,6 +2415,39 @@
     "effect": null,
     "description": "Un attacco spettrale devastante ma impreciso."
   },
+  "botta": {
+    "name": "Botta",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "precedenza": {
+    "name": "Precedenza",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Normale, stato, priorità +4: le mosse con priorità degli avversari falliscono per il turno."
+  },
+  "corsia": {
+    "name": "Corsia",
+    "type": "Erba",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Erba, stato, priorità +1: raddoppia la Velocità dell'utente e dell'alleato per tre turni, abbassando la Difesa di un livello."
+  },
   "ululato_di_guerra": {
     "name": "Ululato di guerra",
     "type": "Normale",
@@ -3199,17 +3232,6 @@
     "power": 80,
     "accuracy": 100,
     "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "botta": {
-    "name": "Botta",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 35,
     "priority": 0,
     "effect": null,
     "description": ""
@@ -4117,6 +4139,17 @@
       "chance": 100
     },
     "description": "Aumenta la resistenza fisica."
+  },
+  "curvone": {
+    "name": "Curvone",
+    "type": "Acciaio",
+    "category": "Fisico",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Acciaio, fisica, 90 di potenza: colpisce anche i bersagli in fase di Fossa, Volo o Tuffo, aggirando l'ostacolo."
   },
   "fangosberla": {
     "name": "Fangosberla",
