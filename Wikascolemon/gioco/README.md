@@ -37,6 +37,7 @@ Balneare). La demo finisce lì con i titoli di coda.
 | `configuratore.html`/`.js`/`.css` | Editor visuale di mappe, allenatori, tabelle incontri |
 | `tools/build-gioco.mjs` | Pubblica in `Wikascolemon/gioco/` (mai editare la build a mano) |
 | `tools/build-dex.mjs` | Rigenera `species.js`/`moves.js` dopo ogni scheda wiki pubblicata |
+| `tools/check-types.mjs` | Ricalcola la tabella «Resistenze e vulnerabilità» di ogni scheda wiki dalla type chart e segnala le caselle sbagliate (da lanciare prima di pubblicare) |
 | `tools/scale-maps.mjs` | Scala le mappe (usato una tantum per il passaggio a scala ×3) |
 | `tests/*.mjs` | Suite di regressione |
 
