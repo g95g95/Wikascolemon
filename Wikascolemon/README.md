@@ -124,6 +124,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #106 | [Accumoli](accumoli.html) | Pokémon Pietra su Pietra | Terra | Pascoli e paesi di pietra della Laga |
 | #107 | [Amatrice](amatrice.html) | Pokémon Focolare | Fuoco | Case e piazze dei paesi della Laga |
 | #108 | [Arquata](arquata.html) | Pokémon Rocca | Roccia | Arquata del Tronto, sotto la rocca |
+| #109 | [Punterosso](punterosso.html) | Pokémon Rompipalme | Coleot | Le palme del lungomare di San Benedetto, Grottammare e Cupra |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |

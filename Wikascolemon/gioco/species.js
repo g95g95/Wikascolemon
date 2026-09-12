@@ -4927,6 +4927,72 @@
     },
     "wiki": "../puledrotto.html"
   },
+  "punterosso": {
+    "number": 109,
+    "name": "Punterosso",
+    "types": [
+      "Coleot"
+    ],
+    "base": [
+      65,
+      125,
+      100,
+      55,
+      70,
+      85
+    ],
+    "catchRate": 45,
+    "expYield": 175,
+    "growth": "lento",
+    "learnset": [
+      [
+        1,
+        "vicelotta"
+      ],
+      [
+        1,
+        "fulmisguardo"
+      ],
+      [
+        7,
+        "colpobasso"
+      ],
+      [
+        13,
+        "riduttore"
+      ],
+      [
+        19,
+        "fossa"
+      ],
+      [
+        25,
+        "trivellata"
+      ],
+      [
+        31,
+        "sottomissione"
+      ],
+      [
+        37,
+        "forbice_x"
+      ],
+      [
+        43,
+        "cuordileone"
+      ],
+      [
+        49,
+        "megacorno"
+      ],
+      [
+        55,
+        "perforbecco"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../punterosso.html"
+  },
   "quintanaro": {
     "number": 19,
     "name": "Quintanaro",

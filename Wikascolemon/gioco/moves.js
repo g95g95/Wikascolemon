@@ -4346,6 +4346,61 @@
     },
     "description": "aumenta di molto l'elusione; ogni volta che schiva un attacco, la mossa successiva dell'avversario perde precisione."
   },
+  "vicelotta": {
+    "name": "Vicelotta",
+    "type": "Coleot",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "trivellata": {
+    "name": "Trivellata",
+    "type": "Coleot",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Coleot, fisica, 80 di potenza, alta probabilità di brutto colpo; priorità +1 se il bersaglio è di tipo Erba."
+  },
+  "forbice_x": {
+    "name": "Forbice X",
+    "type": "Coleot",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "megacorno": {
+    "name": "Megacorno",
+    "type": "Coleot",
+    "category": "Fisico",
+    "power": 120,
+    "accuracy": 85,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "perforbecco": {
+    "name": "Perforbecco",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "tornata": {
     "name": "Tornata",
     "type": "Acciaio",
@@ -5023,17 +5078,6 @@
     "effect": null,
     "description": ""
   },
-  "forbice_x": {
-    "name": "Forbice X",
-    "type": "Coleot",
-    "category": "Fisico",
-    "power": 80,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
   "ammazzasomari": {
     "name": "Ammazzasomari",
     "type": "Coleot",
@@ -5063,17 +5107,6 @@
     "power": 55,
     "accuracy": 100,
     "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "megacorno": {
-    "name": "Megacorno",
-    "type": "Coleot",
-    "category": "Fisico",
-    "power": 120,
-    "accuracy": 85,
-    "pp": 10,
     "priority": 0,
     "effect": null,
     "description": ""

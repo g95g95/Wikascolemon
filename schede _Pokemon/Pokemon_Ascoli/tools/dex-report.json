@@ -601,6 +601,14 @@
       "ok": true
     },
     {
+      "id": "punterosso",
+      "number": 109,
+      "name": "Punterosso",
+      "statTotal": 500,
+      "statSum": 500,
+      "ok": true
+    },
+    {
       "id": "quintanaro",
       "number": 19,
       "name": "Quintanaro",
