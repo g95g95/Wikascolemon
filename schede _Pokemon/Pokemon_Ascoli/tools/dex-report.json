@@ -1,11 +1,27 @@
 {
   "species": [
     {
+      "id": "accumoli",
+      "number": 106,
+      "name": "Accumoli",
+      "statTotal": 525,
+      "statSum": 525,
+      "ok": true
+    },
+    {
       "id": "alghetta",
       "number": 39,
       "name": "Alghetta",
       "statTotal": 280,
       "statSum": 280,
+      "ok": true
+    },
+    {
+      "id": "amatrice",
+      "number": 107,
+      "name": "Amatrice",
+      "statTotal": 525,
+      "statSum": 525,
       "ok": true
     },
     {
@@ -30,6 +46,14 @@
       "name": "Anisetta",
       "statTotal": 450,
       "statSum": 450,
+      "ok": true
+    },
+    {
+      "id": "arquata",
+      "number": 108,
+      "name": "Arquata",
+      "statTotal": 525,
+      "statSum": 525,
       "ok": true
     },
     {
@@ -678,6 +702,14 @@
       "name": "Sibilla",
       "statTotal": 600,
       "statSum": 600,
+      "ok": true
+    },
+    {
+      "id": "sismino",
+      "number": 105,
+      "name": "Sismino",
+      "statTotal": 325,
+      "statSum": 325,
       "ok": true
     },
     {

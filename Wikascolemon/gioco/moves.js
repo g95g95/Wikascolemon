@@ -1,6 +1,168 @@
 // GENERATO da tools/build-dex.mjs — non modificare a mano.
 (function () {
   const api = {
+  "azione": {
+    "name": "Azione",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": null,
+    "description": "Colpo semplice senza fronzoli."
+  },
+  "ruggito": {
+    "name": "Ruggito",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 40,
+    "priority": 0,
+    "effect": {
+      "kind": "custom",
+      "id": "roar"
+    },
+    "description": "Costringe il bersaglio a essere sostituito."
+  },
+  "sabbiattacco": {
+    "name": "Sabbiattacco",
+    "type": "Terra",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "accuracy",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Sabbia negli occhi che abbassa la precisione avversaria."
+  },
+  "attacco_rapido": {
+    "name": "Attacco Rapido",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 1,
+    "effect": null,
+    "description": "colpisce sempre per primo indipendentemente dalla Velocità dell'avversario, la stessa scattata fulminea con cui Sorcì svuota un ramo d'ulivo prima che l'agricoltore se ne accorga."
+  },
+  "pietra_su_pietra": {
+    "name": "Pietra su Pietra",
+    "type": "Terra",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Terra, fisica, 40 di potenza, +40 per ogni uso consecutivo riuscito (massimo 160)."
+  },
+  "morso": {
+    "name": "Morso",
+    "type": "Buio",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 25,
+    "priority": 0,
+    "effect": {
+      "kind": "flinch",
+      "chance": 30
+    },
+    "description": "Un morso che può far tentennare."
+  },
+  "fanghiglia": {
+    "name": "Fanghiglia",
+    "type": "Terra",
+    "category": "Speciale",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "accuracy",
+      "stages": -1,
+      "chance": 30
+    },
+    "description": "Fanghiglia che può abbassare la precisione avversaria."
+  },
+  "fossa": {
+    "name": "Fossa",
+    "type": "Terra",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Colpisce da un buco nel terreno."
+  },
+  "turbosabbia": {
+    "name": "Turbosabbia",
+    "type": "Terra",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Sabbia scagliata con forza che abbassa la Difesa avversaria."
+  },
+  "rafforzatore": {
+    "name": "Rafforzatore",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 30,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "attack",
+      "stages": 1,
+      "chance": 100
+    },
+    "description": "Rafforza il corpo, aumentando l'Attacco."
+  },
+  "terremoto": {
+    "name": "Terremoto",
+    "type": "Terra",
+    "category": "Fisico",
+    "power": 100,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Un violento terremoto che scuote il campo."
+  },
+  "ultimascelta": {
+    "name": "Ultimascelta",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "al 41, e la conserva in tutte le evoluzioni: è la mossa che cede il proprio posto a chi viene dopo."
+  },
   "attrito": {
     "name": "Attrito",
     "type": "Normale",
@@ -121,6 +283,92 @@
       "chance": 30
     },
     "description": "infligge danno Acqua e ha probabilità aumentata di abbassare la Velocità del bersaglio di uno stadio, imitando la corrente che trascina via chi nuota controcorrente."
+  },
+  "sagra": {
+    "name": "Sagra",
+    "type": "Fuoco",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "Fuoco, stato: cura tutta la squadra dai problemi di stato e ripristina un quarto dei PS massimi di ciascuno."
+  },
+  "braciere": {
+    "name": "Braciere",
+    "type": "Fuoco",
+    "category": "Speciale",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 25,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Fiamme che possono scottare il bersaglio."
+  },
+  "ruotafuoco": {
+    "name": "Ruotafuoco",
+    "type": "Fuoco",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 25,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Una ruota di fuoco che può scottare."
+  },
+  "fuocofatuo": {
+    "name": "Fuocofatuo",
+    "type": "Fuoco",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 85,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 100
+    },
+    "description": "Una fiamma spettrale che scotta sempre il bersaglio."
+  },
+  "lanciafiamme": {
+    "name": "Lanciafiamme",
+    "type": "Fuoco",
+    "category": "Speciale",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "brn",
+      "chance": 10
+    },
+    "description": "Fiamme intense che possono scottare."
+  },
+  "corposcontro": {
+    "name": "Corposcontro",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 30
+    },
+    "description": "Scontro fisico che può paralizzare."
   },
   "confusione": {
     "name": "Confusione",
@@ -262,17 +510,6 @@
     "priority": 0,
     "effect": null,
     "description": "Un attacco psichico potente e preciso."
-  },
-  "azione": {
-    "name": "Azione",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 35,
-    "priority": 0,
-    "effect": null,
-    "description": "Colpo semplice senza fronzoli."
   },
   "profumino": {
     "name": "Profumino",
@@ -463,36 +700,80 @@
     },
     "description": "Uno sguardo che impedisce la fuga o la sostituzione."
   },
-  "ruggito": {
-    "name": "Ruggito",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 40,
-    "priority": 0,
-    "effect": {
-      "kind": "custom",
-      "id": "roar"
-    },
-    "description": "Costringe il bersaglio a essere sostituito."
-  },
-  "rafforzatore": {
-    "name": "Rafforzatore",
-    "type": "Normale",
+  "arcata": {
+    "name": "Arcata",
+    "type": "Roccia",
     "category": "Stato",
     "power": 0,
     "accuracy": null,
-    "pp": 30,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Roccia, stato, priorità +3: protegge l'utente e l'alleato dalle mosse fisiche per un turno."
+  },
+  "sassata": {
+    "name": "Sassata",
+    "type": "Roccia",
+    "category": "Fisico",
+    "power": 50,
+    "accuracy": 90,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Un sasso scagliato con forza."
+  },
+  "difesaferrea": {
+    "name": "Difesaferrea",
+    "type": "Acciaio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 15,
     "priority": 0,
     "effect": {
       "kind": "stat",
       "target": "self",
-      "stat": "attack",
-      "stages": 1,
+      "stat": "defense",
+      "stages": 2,
       "chance": 100
     },
-    "description": "Rafforza il corpo, aumentando l'Attacco."
+    "description": "Irrigidisce il corpo, aumentando molto la Difesa."
+  },
+  "frana": {
+    "name": "Frana",
+    "type": "Roccia",
+    "category": "Fisico",
+    "power": 75,
+    "accuracy": 90,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Una frana di roccia che travolge il bersaglio."
+  },
+  "levitoroccia": {
+    "name": "Levitoroccia",
+    "type": "Roccia",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "pietrataglio": {
+    "name": "Pietrataglio",
+    "type": "Roccia",
+    "category": "Fisico",
+    "power": 100,
+    "accuracy": 80,
+    "pp": 5,
+    "priority": 0,
+    "effect": {
+      "kind": "flinch",
+      "chance": 10
+    },
+    "description": "Una lama di roccia che può far tentennare."
   },
   "spaccaroccia": {
     "name": "Spaccaroccia",
@@ -515,36 +796,6 @@
     "priority": 0,
     "effect": null,
     "description": "se manda KO il bersaglio, può essere usata una seconda volta nello stesso turno."
-  },
-  "braciere": {
-    "name": "Braciere",
-    "type": "Fuoco",
-    "category": "Speciale",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 25,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "brn",
-      "chance": 10
-    },
-    "description": "Fiamme che possono scottare il bersaglio."
-  },
-  "corposcontro": {
-    "name": "Corposcontro",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 85,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "par",
-      "chance": 30
-    },
-    "description": "Scontro fisico che può paralizzare."
   },
   "colpo_karate": {
     "name": "Colpo Karate",
@@ -629,21 +880,6 @@
     "priority": 0,
     "effect": null,
     "description": "Una zuffa fortissima ma che lascia esausti."
-  },
-  "lanciafiamme": {
-    "name": "Lanciafiamme",
-    "type": "Fuoco",
-    "category": "Speciale",
-    "power": 90,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "brn",
-      "chance": 10
-    },
-    "description": "Fiamme intense che possono scottare."
   },
   "cuordileone": {
     "name": "Cuordileone",
@@ -984,23 +1220,6 @@
     "effect": null,
     "description": "Bolle scagliate con forza."
   },
-  "fanghiglia": {
-    "name": "Fanghiglia",
-    "type": "Terra",
-    "category": "Speciale",
-    "power": 20,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "accuracy",
-      "stages": -1,
-      "chance": 30
-    },
-    "description": "Fanghiglia che può abbassare la precisione avversaria."
-  },
   "leccata": {
     "name": "Leccata",
     "type": "Spettro",
@@ -1218,17 +1437,6 @@
     "effect": null,
     "description": "Un marchio di fuoco potentissimo ma impreciso."
   },
-  "terremoto": {
-    "name": "Terremoto",
-    "type": "Terra",
-    "category": "Fisico",
-    "power": 100,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": "Un violento terremoto che scuote il campo."
-  },
   "rip_temerario": {
     "name": "Rip. temerario",
     "type": "Normale",
@@ -1382,20 +1590,6 @@
     "effect": null,
     "description": ""
   },
-  "morso": {
-    "name": "Morso",
-    "type": "Buio",
-    "category": "Fisico",
-    "power": 60,
-    "accuracy": 100,
-    "pp": 25,
-    "priority": 0,
-    "effect": {
-      "kind": "flinch",
-      "chance": 30
-    },
-    "description": "Un morso che può far tentennare."
-  },
   "provocazione": {
     "name": "Provocazione",
     "type": "Buio",
@@ -1532,17 +1726,6 @@
     },
     "description": "Un grido straziante che abbassa molto l'Attacco Speciale avversario."
   },
-  "frana": {
-    "name": "Frana",
-    "type": "Roccia",
-    "category": "Fisico",
-    "power": 75,
-    "accuracy": 90,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": "Una frana di roccia che travolge il bersaglio."
-  },
   "gelo_nevoso": {
     "name": "Gelo Nevoso",
     "type": "Ghiaccio",
@@ -1638,23 +1821,6 @@
     },
     "description": "Cura completamente PS e stato, ma fa addormentare chi la usa per due turni."
   },
-  "turbosabbia": {
-    "name": "Turbosabbia",
-    "type": "Terra",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "defense",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Sabbia scagliata con forza che abbassa la Difesa avversaria."
-  },
   "colpo_di_fango": {
     "name": "Colpo di Fango",
     "type": "Terra",
@@ -1697,17 +1863,6 @@
       "chance": 100
     },
     "description": "Una tempesta di terra che abbassa la Difesa avversaria."
-  },
-  "fossa": {
-    "name": "Fossa",
-    "type": "Terra",
-    "category": "Fisico",
-    "power": 80,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": "Colpisce da un buco nel terreno."
   },
   "meditazione": {
     "name": "Meditazione",
@@ -1898,23 +2053,6 @@
     "effect": null,
     "description": "Colpisce con priorità aumentata dopo un torto subito."
   },
-  "difesaferrea": {
-    "name": "Difesaferrea",
-    "type": "Acciaio",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": null,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "self",
-      "stat": "defense",
-      "stages": 2,
-      "chance": 100
-    },
-    "description": "Irrigidisce il corpo, aumentando molto la Difesa."
-  },
   "battuta": {
     "name": "Battuta",
     "type": "Acciaio",
@@ -2006,32 +2144,6 @@
       "chance": 30
     },
     "description": "Un pestone che può far tentennare."
-  },
-  "ruotafuoco": {
-    "name": "Ruotafuoco",
-    "type": "Fuoco",
-    "category": "Fisico",
-    "power": 60,
-    "accuracy": 100,
-    "pp": 25,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "brn",
-      "chance": 10
-    },
-    "description": "Una ruota di fuoco che può scottare."
-  },
-  "attacco_rapido": {
-    "name": "Attacco Rapido",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 30,
-    "priority": 1,
-    "effect": null,
-    "description": "colpisce sempre per primo indipendentemente dalla Velocità dell'avversario, la stessa scattata fulminea con cui Sorcì svuota un ramo d'ulivo prima che l'agricoltore se ne accorga."
   },
   "colpocoda": {
     "name": "Colpocoda",
@@ -3186,20 +3298,6 @@
     "effect": null,
     "description": ""
   },
-  "pietrataglio": {
-    "name": "Pietrataglio",
-    "type": "Roccia",
-    "category": "Fisico",
-    "power": 100,
-    "accuracy": 80,
-    "pp": 5,
-    "priority": 0,
-    "effect": {
-      "kind": "flinch",
-      "chance": 10
-    },
-    "description": "Una lama di roccia che può far tentennare."
-  },
   "attutone": {
     "name": "Attutone",
     "type": "Normale",
@@ -3235,17 +3333,6 @@
     "priority": 0,
     "effect": null,
     "description": ""
-  },
-  "sassata": {
-    "name": "Sassata",
-    "type": "Roccia",
-    "category": "Fisico",
-    "power": 50,
-    "accuracy": 90,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": "Un sasso scagliato con forza."
   },
   "coro": {
     "name": "Coro",
@@ -3312,23 +3399,6 @@
     "priority": 0,
     "effect": null,
     "description": ""
-  },
-  "sabbiattacco": {
-    "name": "Sabbiattacco",
-    "type": "Terra",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "accuracy",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Sabbia negli occhi che abbassa la precisione avversaria."
   },
   "chiusascatto": {
     "name": "Chiusascatto",
@@ -3487,21 +3557,6 @@
     "priority": 0,
     "effect": null,
     "description": "Un attacco oscuro potente."
-  },
-  "fuocofatuo": {
-    "name": "Fuocofatuo",
-    "type": "Fuoco",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 85,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "brn",
-      "chance": 100
-    },
-    "description": "Una fiamma spettrale che scotta sempre il bersaglio."
   },
   "incanto": {
     "name": "Incanto",
@@ -4898,17 +4953,6 @@
     "priority": 0,
     "effect": null,
     "description": "30 di potenza, +30 per ogni altro Pokémon della squadra ancora in grado di lottare."
-  },
-  "levitoroccia": {
-    "name": "Levitoroccia",
-    "type": "Roccia",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": null,
-    "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "coro_di_pietra": {
     "name": "Coro di Pietra",

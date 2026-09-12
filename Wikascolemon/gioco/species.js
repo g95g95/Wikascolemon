@@ -1,6 +1,76 @@
 // GENERATO da tools/build-dex.mjs — non modificare a mano.
 (function () {
   const api = {
+  "accumoli": {
+    "number": 106,
+    "name": "Accumoli",
+    "types": [
+      "Terra"
+    ],
+    "base": [
+      95,
+      65,
+      110,
+      60,
+      130,
+      65
+    ],
+    "catchRate": 45,
+    "expYield": 184,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        1,
+        "sabbiattacco"
+      ],
+      [
+        1,
+        "attacco_rapido"
+      ],
+      [
+        1,
+        "pietra_su_pietra"
+      ],
+      [
+        16,
+        "morso"
+      ],
+      [
+        21,
+        "fanghiglia"
+      ],
+      [
+        26,
+        "fossa"
+      ],
+      [
+        31,
+        "turbosabbia"
+      ],
+      [
+        36,
+        "rafforzatore"
+      ],
+      [
+        41,
+        "terremoto"
+      ],
+      [
+        47,
+        "ultimascelta"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../accumoli.html"
+  },
   "alghetta": {
     "number": 39,
     "name": "Alghetta",
@@ -59,6 +129,76 @@
       "location": "costa"
     },
     "wiki": "../alghetta.html"
+  },
+  "amatrice": {
+    "number": 107,
+    "name": "Amatrice",
+    "types": [
+      "Fuoco"
+    ],
+    "base": [
+      85,
+      110,
+      65,
+      95,
+      90,
+      80
+    ],
+    "catchRate": 45,
+    "expYield": 184,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        1,
+        "sabbiattacco"
+      ],
+      [
+        1,
+        "attacco_rapido"
+      ],
+      [
+        1,
+        "sagra"
+      ],
+      [
+        16,
+        "braciere"
+      ],
+      [
+        21,
+        "morso"
+      ],
+      [
+        26,
+        "ruotafuoco"
+      ],
+      [
+        31,
+        "fuocofatuo"
+      ],
+      [
+        36,
+        "lanciafiamme"
+      ],
+      [
+        41,
+        "corposcontro"
+      ],
+      [
+        47,
+        "ultimascelta"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../amatrice.html"
   },
   "ancella": {
     "number": 145,
@@ -261,6 +401,76 @@
     ],
     "evolution": null,
     "wiki": "../anisetta.html"
+  },
+  "arquata": {
+    "number": 108,
+    "name": "Arquata",
+    "types": [
+      "Roccia"
+    ],
+    "base": [
+      90,
+      80,
+      125,
+      60,
+      85,
+      85
+    ],
+    "catchRate": 45,
+    "expYield": 184,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        1,
+        "sabbiattacco"
+      ],
+      [
+        1,
+        "attacco_rapido"
+      ],
+      [
+        1,
+        "arcata"
+      ],
+      [
+        16,
+        "sassata"
+      ],
+      [
+        21,
+        "difesaferrea"
+      ],
+      [
+        26,
+        "morso"
+      ],
+      [
+        31,
+        "frana"
+      ],
+      [
+        36,
+        "levitoroccia"
+      ],
+      [
+        41,
+        "pietrataglio"
+      ],
+      [
+        47,
+        "ultimascelta"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../arquata.html"
   },
   "ascolana": {
     "number": 76,
@@ -5549,6 +5759,71 @@
     ],
     "evolution": null,
     "wiki": "../sibilla.html"
+  },
+  "sismino": {
+    "number": 105,
+    "name": "Sismino",
+    "types": [
+      "Normale"
+    ],
+    "base": [
+      55,
+      55,
+      50,
+      45,
+      65,
+      55
+    ],
+    "catchRate": 45,
+    "expYield": 65,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        6,
+        "sabbiattacco"
+      ],
+      [
+        11,
+        "attacco_rapido"
+      ],
+      [
+        16,
+        "morso"
+      ],
+      [
+        21,
+        "fascino"
+      ],
+      [
+        26,
+        "riduttore"
+      ],
+      [
+        31,
+        "riporto"
+      ],
+      [
+        36,
+        "corposcontro"
+      ],
+      [
+        41,
+        "ultimascelta"
+      ]
+    ],
+    "evolution": {
+      "into": "accumoli",
+      "friendship": true
+    },
+    "wiki": "../sismino.html"
   },
   "soldatino": {
     "number": 24,
