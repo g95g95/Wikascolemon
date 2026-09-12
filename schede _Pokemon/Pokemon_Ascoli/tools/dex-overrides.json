@@ -21,5 +21,6 @@
   "ciclabile": { "evolution": { "into": "pontecurvo", "location": "marino_del_tronto" } },
   "sismino": { "evolution": { "into": "accumoli", "friendship": true } },
   "accumoli": { "evolution": null },
-  "amatrice": { "evolution": null }
+  "amatrice": { "evolution": null },
+  "rossopiceno": { "evolution": { "into": "superiore", "item": "botte" } }
 }

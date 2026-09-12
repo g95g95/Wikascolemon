@@ -4033,6 +4033,28 @@
     "effect": null,
     "description": ""
   },
+  "vendemmia": {
+    "name": "Vendemmia",
+    "type": "Erba",
+    "category": "Speciale",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Erba, speciale, 70 di potenza: l'utente recupera metà dei danni inflitti."
+  },
+  "ritrovato": {
+    "name": "Ritrovato",
+    "type": "Erba",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Erba, stato: se l'utente ha meno di un terzo dei PS, ne ripristina metà e cura i problemi di stato; altrimenti fallisce."
+  },
   "assorbi": {
     "name": "Assorbi",
     "type": "Erba",
@@ -4904,6 +4926,28 @@
     "effect": null,
     "description": ""
   },
+  "affinamento": {
+    "name": "Affinamento",
+    "type": "Buio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Buio, stato: l'utente salta il turno successivo; al termine, Attacco Speciale, Difesa Speciale e Velocità aumentano di un livello."
+  },
+  "solarraggio": {
+    "name": "Solarraggio",
+    "type": "Erba",
+    "category": "Speciale",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Accumula luce solare e colpisce con un raggio potentissimo."
+  },
   "doppiasberla": {
     "name": "Doppiasberla",
     "type": "Normale",
@@ -5041,17 +5085,6 @@
     "priority": 0,
     "effect": null,
     "description": "Volante, 40 di potenza, priorità +1 al primo utilizzo di ogni lotta: gli inquilini escono tutti insieme in faccia all'avversario."
-  },
-  "solarraggio": {
-    "name": "Solarraggio",
-    "type": "Erba",
-    "category": "Speciale",
-    "power": 120,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": "Accumula luce solare e colpisce con un raggio potentissimo."
   },
   "assorbicorno": {
     "name": "Assorbicorno",
@@ -5216,6 +5249,17 @@
       "id": "terrasanta"
     },
     "description": "per cinque turni, nessun Pokémon in campo può usare mosse di tipo Terra."
+  },
+  "al_matrimonio": {
+    "name": "Al Matrimonio",
+    "type": "Fuoco",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 1,
+    "priority": 0,
+    "effect": null,
+    "description": "Fuoco, stato, 1 PP: ripristina tutti i PS e i PP e cura ogni problema di stato di tutta la squadra; l'utente non può più agire per il resto della lotta."
   },
   "scia_di_braci": {
     "name": "Scia di Braci",

@@ -125,6 +125,11 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #107 | [Amatrice](amatrice.html) | Pokémon Focolare | Fuoco | Case e piazze dei paesi della Laga |
 | #108 | [Arquata](arquata.html) | Pokémon Rocca | Roccia | Arquata del Tronto, sotto la rocca |
 | #109 | [Punterosso](punterosso.html) | Pokémon Rompipalme | Coleot | Le palme del lungomare di San Benedetto, Grottammare e Cupra |
+| #110 | [Passerina](passerina.html) | Pokémon Grappolo | Erba/Volante | Le colline del vino: Offida, Ripatransone, Castignano, Cossignano |
+| #111 | [Pecorino](pecorino.html) | Pokémon Ritrovato | Erba/Roccia | Le vigne alte di Arquata del Tronto e le colline di Offida |
+| #112 | [Rossopiceno](rossopiceno.html) | Pokémon Rosso | Erba/Buio | Le colline di tutta la provincia, dalle vallate al mare |
+| #113 | [Superiore](superiore.html) | Pokémon Affinato | Erba/Buio | La zona storica: Offida, Ripatransone, Acquaviva, Castignano, Cossignano |
+| #114 | [Vinocotto](vinocotto.html) | Pokémon Caratello | Fuoco/Erba | Le cantine di famiglia del Piceno; non è selvatico, si riceve in dono |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |

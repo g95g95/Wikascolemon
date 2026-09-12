@@ -59,7 +59,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #102-#104 | Rotonda → Ciclabile → Pontecurvo ✅ — la linea delle opere pubbliche: la rotatoria, la ciclabile sul marciapiede, il ponte curvo sul Tronto (Terra → Terra/Erba → Terra/Acciaio, evolve al 30 e sul Tronto) |
 | #105-#108 | Sismino → Accumoli / Amatrice / Arquata ✅ — la linea della Laga: il presagio che sente la terra e i tre modi di restare (Normale → Terra con affetto / Fuoco con Pietrafocaia / Roccia alla Rocca di Arquata); dedicata ai tre paesi
 | #109 | Punterosso ✅ — il punteruolo rosso della Riviera delle Palme (Coleot, specie singola, affetto 35)
-| #110-#143 | Libero |
+| #110-#114 | Passerina, Pecorino, Rossopiceno → Superiore, Vinocotto ✅ — la linea dei vini: i due bianchi (Erba/Volante, Erba/Roccia), il rosso che si evolve con la Botte (Erba/Buio → Erba/Buio), il caratello della nascita (Fuoco/Erba, 1 PP)
+| #115-#143 | Libero |
 | #144-#146 | Fatella → Ancella → Sibilla ✅ — la linea del Monte Sibilla, pseudo-leggendaria (600) |
 | #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |
 | **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|

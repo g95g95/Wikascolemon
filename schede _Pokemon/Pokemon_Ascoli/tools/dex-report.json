@@ -537,6 +537,22 @@
       "ok": true
     },
     {
+      "id": "passerina",
+      "number": 110,
+      "name": "Passerina",
+      "statTotal": 375,
+      "statSum": 375,
+      "ok": true
+    },
+    {
+      "id": "pecorino",
+      "number": 111,
+      "name": "Pecorino",
+      "statTotal": 425,
+      "statSum": 425,
+      "ok": true
+    },
+    {
       "id": "pefna",
       "number": 41,
       "name": "Pef'na",
@@ -630,6 +646,14 @@
       "name": "Retrabbiə",
       "statTotal": 325,
       "statSum": 325,
+      "ok": true
+    },
+    {
+      "id": "rossopiceno",
+      "number": 112,
+      "name": "Rossopiceno",
+      "statTotal": 390,
+      "statSum": 390,
       "ok": true
     },
     {
@@ -769,6 +793,14 @@
       "ok": true
     },
     {
+      "id": "superiore",
+      "number": 113,
+      "name": "Superiore",
+      "statTotal": 510,
+      "statSum": 510,
+      "ok": true
+    },
+    {
       "id": "svedde",
       "number": 78,
       "name": "Svedde",
@@ -886,6 +918,14 @@
       "name": "Vescovasil",
       "statTotal": 530,
       "statSum": 530,
+      "ok": true
+    },
+    {
+      "id": "vinocotto",
+      "number": 114,
+      "name": "Vinocotto",
+      "statTotal": 460,
+      "statSum": 460,
       "ok": true
     },
     {

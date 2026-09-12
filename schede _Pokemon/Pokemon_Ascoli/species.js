@@ -4395,6 +4395,124 @@
     "evolution": null,
     "wiki": "../pantafeca.html"
   },
+  "passerina": {
+    "number": 110,
+    "name": "Passerina",
+    "types": [
+      "Erba",
+      "Volante"
+    ],
+    "base": [
+      55,
+      45,
+      50,
+      75,
+      60,
+      90
+    ],
+    "catchRate": 190,
+    "expYield": 64,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "assorbimento"
+      ],
+      [
+        1,
+        "beccata"
+      ],
+      [
+        7,
+        "ruggito"
+      ],
+      [
+        12,
+        "attacco_dala"
+      ],
+      [
+        18,
+        "foglielama"
+      ],
+      [
+        24,
+        "agilita"
+      ],
+      [
+        30,
+        "vendemmia"
+      ],
+      [
+        36,
+        "aeroattacco"
+      ],
+      [
+        42,
+        "fogliamagica"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../passerina.html"
+  },
+  "pecorino": {
+    "number": 111,
+    "name": "Pecorino",
+    "types": [
+      "Erba",
+      "Roccia"
+    ],
+    "base": [
+      70,
+      55,
+      80,
+      70,
+      105,
+      45
+    ],
+    "catchRate": 60,
+    "expYield": 120,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "assorbimento"
+      ],
+      [
+        1,
+        "rafforzatore"
+      ],
+      [
+        7,
+        "sassata"
+      ],
+      [
+        12,
+        "sintesi"
+      ],
+      [
+        18,
+        "foglielama"
+      ],
+      [
+        24,
+        "frana"
+      ],
+      [
+        30,
+        "ritrovato"
+      ],
+      [
+        36,
+        "gigassorbimento"
+      ],
+      [
+        42,
+        "pietrataglio"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../pecorino.html"
+  },
   "pefna": {
     "number": 41,
     "name": "Pef'na",
@@ -5185,6 +5303,68 @@
       "into": "sammaro"
     },
     "wiki": "../retrabbie.html"
+  },
+  "rossopiceno": {
+    "number": 112,
+    "name": "Rossopiceno",
+    "types": [
+      "Erba",
+      "Buio"
+    ],
+    "base": [
+      60,
+      60,
+      55,
+      80,
+      60,
+      75
+    ],
+    "catchRate": 120,
+    "expYield": 90,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "assorbimento"
+      ],
+      [
+        1,
+        "morso"
+      ],
+      [
+        9,
+        "fulmisguardo"
+      ],
+      [
+        15,
+        "foglielama"
+      ],
+      [
+        21,
+        "sbigoattacco"
+      ],
+      [
+        27,
+        "sintesi"
+      ],
+      [
+        33,
+        "neropulsar"
+      ],
+      [
+        39,
+        "gigassorbimento"
+      ],
+      [
+        45,
+        "calmamente"
+      ]
+    ],
+    "evolution": {
+      "into": "superiore",
+      "item": "botte"
+    },
+    "wiki": "../rossopiceno.html"
   },
   "rotonda": {
     "number": 102,
@@ -6273,6 +6453,73 @@
     "evolution": null,
     "wiki": "../spumadiva.html"
   },
+  "superiore": {
+    "number": 113,
+    "name": "Superiore",
+    "types": [
+      "Erba",
+      "Buio"
+    ],
+    "base": [
+      80,
+      75,
+      80,
+      115,
+      90,
+      70
+    ],
+    "catchRate": 45,
+    "expYield": 185,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "assorbimento"
+      ],
+      [
+        1,
+        "morso"
+      ],
+      [
+        1,
+        "foglielama"
+      ],
+      [
+        1,
+        "affinamento"
+      ],
+      [
+        21,
+        "sbigoattacco"
+      ],
+      [
+        27,
+        "sintesi"
+      ],
+      [
+        33,
+        "neropulsar"
+      ],
+      [
+        39,
+        "gigassorbimento"
+      ],
+      [
+        45,
+        "calmamente"
+      ],
+      [
+        52,
+        "fandonia"
+      ],
+      [
+        60,
+        "solarraggio"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../superiore.html"
+  },
   "svedde": {
     "number": 78,
     "name": "Svedde",
@@ -7307,6 +7554,65 @@
     ],
     "evolution": null,
     "wiki": "../vescovasil.html"
+  },
+  "vinocotto": {
+    "number": 114,
+    "name": "Vinocotto",
+    "types": [
+      "Fuoco",
+      "Erba"
+    ],
+    "base": [
+      110,
+      40,
+      90,
+      80,
+      120,
+      20
+    ],
+    "catchRate": 30,
+    "expYield": 200,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "braciere"
+      ],
+      [
+        1,
+        "assorbimento"
+      ],
+      [
+        1,
+        "al_matrimonio"
+      ],
+      [
+        20,
+        "sintesi"
+      ],
+      [
+        30,
+        "fuocofatuo"
+      ],
+      [
+        40,
+        "lanciafiamme"
+      ],
+      [
+        50,
+        "gigassorbimento"
+      ],
+      [
+        60,
+        "calmamente"
+      ],
+      [
+        70,
+        "ultimascelta"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../vinocotto.html"
   },
   "vlurde": {
     "number": 56,
