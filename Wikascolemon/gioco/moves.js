@@ -4044,6 +4044,43 @@
     "effect": null,
     "description": "Erba, speciale, 70 di potenza: l'utente recupera metà dei danni inflitti."
   },
+  "guano": {
+    "name": "Guano",
+    "type": "Veleno",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "Veleno, stato: imbratta il campo avversario; i Pokémon che vi entrano subiscono un calo di Velocità e di evasione."
+  },
+  "velenospina": {
+    "name": "Velenospina",
+    "type": "Veleno",
+    "category": "Fisico",
+    "power": 15,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "psn",
+      "chance": 30
+    },
+    "description": "Spine velenose che possono avvelenare."
+  },
+  "mangiatoia": {
+    "name": "Mangiatoia",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Normale, stato: per cinque turni, a fine turno, tutti i Pokémon in campo recuperano un sedicesimo dei PS massimi."
+  },
   "ritrovato": {
     "name": "Ritrovato",
     "type": "Erba",
@@ -4244,21 +4281,6 @@
       "chance": 100
     },
     "description": "Uno schizzo di fango che abbassa sempre la precisione avversaria."
-  },
-  "velenospina": {
-    "name": "Velenospina",
-    "type": "Veleno",
-    "category": "Fisico",
-    "power": 15,
-    "accuracy": 100,
-    "pp": 35,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "psn",
-      "chance": 30
-    },
-    "description": "Spine velenose che possono avvelenare."
   },
   "velenpuntura": {
     "name": "Velenpuntura",

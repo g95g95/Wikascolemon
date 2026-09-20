@@ -27,6 +27,7 @@
     grattaevinci: { name: 'Grattaevinci', price: 500, battle: false },
     acquasanta: { name: 'Acquasanta', price: null, battle: false },
     botte: { name: 'Botte', price: null, battle: false },
+    granaglie: { name: 'Sacco di Granaglie', price: null, battle: false },
     mt_velenospina: { name: 'MT Velenospina', price: null, battle: false },
     mt_idrogetto: { name: 'MT Idrogetto', price: null, battle: false }
   };

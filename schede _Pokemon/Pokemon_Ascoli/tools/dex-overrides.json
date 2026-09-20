@@ -22,5 +22,6 @@
   "sismino": { "evolution": { "into": "accumoli", "friendship": true } },
   "accumoli": { "evolution": null },
   "amatrice": { "evolution": null },
-  "rossopiceno": { "evolution": { "into": "superiore", "item": "botte" } }
+  "rossopiceno": { "evolution": { "into": "superiore", "item": "botte" } },
+  "peccio": { "evolution": { "into": "peccionara", "item": "granaglie" } }
 }

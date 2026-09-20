@@ -130,6 +130,8 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #112 | [Rossopiceno](rossopiceno.html) | Pokémon Rosso | Erba/Buio | Le colline di tutta la provincia, dalle vallate al mare |
 | #113 | [Superiore](superiore.html) | Pokémon Affinato | Erba/Buio | La zona storica: Offida, Ripatransone, Acquaviva, Castignano, Cossignano |
 | #114 | [Vinocotto](vinocotto.html) | Pokémon Caratello | Fuoco/Erba | Le cantine di famiglia del Piceno; non è selvatico, si riceve in dono |
+| #115 | [Pəcciò](peccio.html) | Pokémon Piccione | Veleno/Volante | Centro storico di Ascoli, con capitale piazza San Tommaso |
+| #116 | [Pəccionara](peccionara.html) | Pokémon Colonia | Veleno/Volante | Piazza San Tommaso, Ascoli, e nient'altro |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |

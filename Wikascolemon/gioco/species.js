@@ -4454,6 +4454,139 @@
     "evolution": null,
     "wiki": "../passerina.html"
   },
+  "peccio": {
+    "number": 115,
+    "name": "Pəcciò",
+    "types": [
+      "Veleno",
+      "Volante"
+    ],
+    "base": [
+      45,
+      50,
+      40,
+      40,
+      40,
+      65
+    ],
+    "catchRate": 255,
+    "expYield": 50,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "beccata"
+      ],
+      [
+        1,
+        "turbine"
+      ],
+      [
+        6,
+        "sabbiattacco"
+      ],
+      [
+        11,
+        "attacco_rapido"
+      ],
+      [
+        16,
+        "guano"
+      ],
+      [
+        21,
+        "attacco_dala"
+      ],
+      [
+        26,
+        "velenospina"
+      ],
+      [
+        31,
+        "agilita"
+      ],
+      [
+        36,
+        "aeroattacco"
+      ],
+      [
+        41,
+        "fangobomba"
+      ]
+    ],
+    "evolution": {
+      "into": "peccionara",
+      "item": "granaglie"
+    },
+    "wiki": "../peccio.html"
+  },
+  "peccionara": {
+    "number": 116,
+    "name": "Pəccionara",
+    "types": [
+      "Veleno",
+      "Volante"
+    ],
+    "base": [
+      125,
+      70,
+      60,
+      60,
+      60,
+      105
+    ],
+    "catchRate": 60,
+    "expYield": 175,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "beccata"
+      ],
+      [
+        1,
+        "turbine"
+      ],
+      [
+        1,
+        "guano"
+      ],
+      [
+        1,
+        "mangiatoia"
+      ],
+      [
+        21,
+        "attacco_dala"
+      ],
+      [
+        26,
+        "velenospina"
+      ],
+      [
+        31,
+        "agilita"
+      ],
+      [
+        36,
+        "aeroattacco"
+      ],
+      [
+        41,
+        "fangobomba"
+      ],
+      [
+        47,
+        "baldeali"
+      ],
+      [
+        54,
+        "velenoshock"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../peccionara.html"
+  },
   "pecorino": {
     "number": 111,
     "name": "Pecorino",
