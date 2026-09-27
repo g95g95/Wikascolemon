@@ -26,5 +26,6 @@
   "peccio": { "evolution": { "into": "peccionara", "item": "granaglie" } },
   "pulcidoro": { "evolution": { "into": "chioccidoro", "item": "ciottolo_chiaro", "location": "ascensione" } },
   "talvecchia": { "types": ["Acqua"], "evolution": null },
-  "lupitte": { "evolution": { "into": "sibillupo", "level": 30, "night": true } }
+  "lupitte": { "evolution": { "into": "sibillupo", "level": 30, "night": true } },
+  "favette": { "evolution": { "into": "favalanciata", "level": 22 } }
 }

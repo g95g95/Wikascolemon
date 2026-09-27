@@ -2942,6 +2942,142 @@
     },
     "wiki": "../fatella.html"
   },
+  "favalanciata": {
+    "number": 126,
+    "name": "Favalanciata",
+    "types": [
+      "Erba",
+      "Lotta"
+    ],
+    "base": [
+      70,
+      115,
+      65,
+      50,
+      60,
+      80
+    ],
+    "catchRate": 90,
+    "expYield": 155,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "semitraglia"
+      ],
+      [
+        1,
+        "fava_lanciata"
+      ],
+      [
+        16,
+        "doppioteam"
+      ],
+      [
+        22,
+        "catapulta"
+      ],
+      [
+        25,
+        "foglielama"
+      ],
+      [
+        30,
+        "rimbalzo"
+      ],
+      [
+        35,
+        "breccia"
+      ],
+      [
+        40,
+        "sberletese"
+      ],
+      [
+        46,
+        "gigassorbimento"
+      ],
+      [
+        52,
+        "incrocolpo"
+      ],
+      [
+        58,
+        "ultimascelta"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../favalanciata.html"
+  },
+  "favette": {
+    "number": 125,
+    "name": "Favettə",
+    "types": [
+      "Erba"
+    ],
+    "base": [
+      30,
+      40,
+      30,
+      30,
+      30,
+      105
+    ],
+    "catchRate": 255,
+    "expYield": 40,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        4,
+        "assorbimento"
+      ],
+      [
+        8,
+        "attacco_rapido"
+      ],
+      [
+        12,
+        "semitraglia"
+      ],
+      [
+        16,
+        "doppioteam"
+      ],
+      [
+        20,
+        "fava_lanciata"
+      ],
+      [
+        25,
+        "foglielama"
+      ],
+      [
+        30,
+        "rimbalzo"
+      ],
+      [
+        35,
+        "ultimascelta"
+      ]
+    ],
+    "evolution": {
+      "into": "favalanciata",
+      "level": 22
+    },
+    "wiki": "../favette.html"
+  },
   "felignoto": {
     "number": 12,
     "name": "Felignoto",

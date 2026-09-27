@@ -361,6 +361,22 @@
       "ok": true
     },
     {
+      "id": "favalanciata",
+      "number": 126,
+      "name": "Favalanciata",
+      "statTotal": 440,
+      "statSum": 440,
+      "ok": true
+    },
+    {
+      "id": "favette",
+      "number": 125,
+      "name": "Favettə",
+      "statTotal": 265,
+      "statSum": 265,
+      "ok": true
+    },
+    {
       "id": "felignoto",
       "number": 12,
       "name": "Felignoto",

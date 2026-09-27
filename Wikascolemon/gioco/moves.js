@@ -3123,6 +3123,50 @@
     "effect": null,
     "description": ""
   },
+  "semitraglia": {
+    "name": "Semitraglia",
+    "type": "Erba",
+    "category": "Fisico",
+    "power": 25,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "fava_lanciata": {
+    "name": "Fava Lanciata",
+    "type": "Erba",
+    "category": "Fisico",
+    "power": 50,
+    "accuracy": null,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Erba, fisica, 50 di potenza, non può mancare; confonde sempre il bersaglio."
+  },
+  "catapulta": {
+    "name": "Catapulta",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 100,
+    "accuracy": 90,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "Lotta, fisica, 100 di potenza: non può mancare se il bersaglio è confuso."
+  },
+  "sberletese": {
+    "name": "Sberletese",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 15,
+    "accuracy": 85,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "diceria": {
     "name": "Diceria",
     "type": "Buio",
@@ -5516,17 +5560,6 @@
     "priority": 0,
     "effect": null,
     "description": "Una raffica devastante di foglie affilate."
-  },
-  "sberletese": {
-    "name": "Sberletese",
-    "type": "Lotta",
-    "category": "Fisico",
-    "power": 15,
-    "accuracy": 85,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   }
 };
   if (typeof window !== 'undefined') window.PokemonAscoliMoves = api;

@@ -140,6 +140,8 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #122 | [Lupittə](lupitte.html) | Pokémon Cucciolo | Buio | Monti Sibillini (tane dei nuclei familiari del Parco) |
 | #123 | [Sibillupo](sibillupo.html) | Pokémon Nucleo | Buio/Ghiaccio | Monti Sibillini, dalle faggete alle praterie d'altitudine |
 | #124 | [Cometella](cometella.html) | Pokémon Cometa | Volante/Folletto | Quintodecimo, sopra le capanne dei presepi nelle cantine e nelle stalle (a dicembre) |
+| #125 | [Favettə](favette.html) | Pokémon Proiettile | Erba | La Salaria all'altezza di Favalanciata, sempre a mezz'aria |
+| #126 | [Favalanciata](favalanciata.html) | Pokémon Catapulta | Erba/Lotta | Favalanciata, frazione di Acquasanta Terme sulla Salaria |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |
