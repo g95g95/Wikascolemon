@@ -457,6 +457,14 @@
       "ok": true
     },
     {
+      "id": "lupitte",
+      "number": 122,
+      "name": "Lupittə",
+      "statTotal": 315,
+      "statSum": 315,
+      "ok": true
+    },
+    {
       "id": "maranzino",
       "number": 30,
       "name": "Maranzino",
@@ -782,6 +790,14 @@
       "name": "Sibilla",
       "statTotal": 600,
       "statSum": 600,
+      "ok": true
+    },
+    {
+      "id": "sibillupo",
+      "number": 123,
+      "name": "Sibillupo",
+      "statTotal": 510,
+      "statSum": 510,
       "ok": true
     },
     {

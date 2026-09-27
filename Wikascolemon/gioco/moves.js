@@ -3530,6 +3530,39 @@
     "effect": null,
     "description": ""
   },
+  "ululato_indotto": {
+    "name": "Ululato Indotto",
+    "type": "Buio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Buio, stato, suono: aumenta l'Attacco di un livello a tutti i Pokémon della squadra in campo; in doppio, l'alleato ottiene un livello aggiuntivo."
+  },
+  "inseguimento": {
+    "name": "Inseguimento",
+    "type": "Buio",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "attacco_notturno": {
+    "name": "Attacco Notturno",
+    "type": "Buio",
+    "category": "Fisico",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "tuonoshock": {
     "name": "Tuonoshock",
     "type": "Elettro",
@@ -3843,17 +3876,6 @@
     "effect": null,
     "description": ""
   },
-  "inseguimento": {
-    "name": "Inseguimento",
-    "type": "Buio",
-    "category": "Fisico",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
   "sa_tuttisse": {
     "name": "Sa Tutt'Isse",
     "type": "Psico",
@@ -3894,17 +3916,6 @@
     "power": 0,
     "accuracy": 100,
     "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "attacco_notturno": {
-    "name": "Attacco Notturno",
-    "type": "Buio",
-    "category": "Fisico",
-    "power": 70,
-    "accuracy": 100,
-    "pp": 15,
     "priority": 0,
     "effect": null,
     "description": ""
@@ -4931,6 +4942,39 @@
     "power": 110,
     "accuracy": 70,
     "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "radiocollare": {
+    "name": "Radiocollare",
+    "type": "Buio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Buio, stato: il bersaglio non può fuggire né essere sostituito per il resto della lotta, e le mosse dell'utente contro di lui non possono mancare."
+  },
+  "gelodenti": {
+    "name": "Gelodenti",
+    "type": "Ghiaccio",
+    "category": "Fisico",
+    "power": 65,
+    "accuracy": 95,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "geloscheggia": {
+    "name": "Geloscheggia",
+    "type": "Ghiaccio",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 30,
     "priority": 0,
     "effect": null,
     "description": ""

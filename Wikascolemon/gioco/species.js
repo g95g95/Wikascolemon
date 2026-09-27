@@ -3754,6 +3754,72 @@
     },
     "wiki": "../livetta.html"
   },
+  "lupitte": {
+    "number": 122,
+    "name": "Lupittə",
+    "types": [
+      "Buio"
+    ],
+    "base": [
+      50,
+      65,
+      45,
+      40,
+      45,
+      70
+    ],
+    "catchRate": 90,
+    "expYield": 70,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        6,
+        "morso"
+      ],
+      [
+        11,
+        "ululato_indotto"
+      ],
+      [
+        16,
+        "attacco_rapido"
+      ],
+      [
+        21,
+        "sbigoattacco"
+      ],
+      [
+        26,
+        "inseguimento"
+      ],
+      [
+        31,
+        "provocazione"
+      ],
+      [
+        36,
+        "sgranocchio"
+      ],
+      [
+        41,
+        "attacco_notturno"
+      ]
+    ],
+    "evolution": {
+      "into": "sibillupo",
+      "level": 30,
+      "night": true
+    },
+    "wiki": "../lupitte.html"
+  },
   "maranzino": {
     "number": 30,
     "name": "Maranzino",
@@ -6421,6 +6487,81 @@
     ],
     "evolution": null,
     "wiki": "../sibilla.html"
+  },
+  "sibillupo": {
+    "number": 123,
+    "name": "Sibillupo",
+    "types": [
+      "Buio",
+      "Ghiaccio"
+    ],
+    "base": [
+      85,
+      115,
+      70,
+      55,
+      70,
+      115
+    ],
+    "catchRate": 45,
+    "expYield": 180,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "morso"
+      ],
+      [
+        1,
+        "ululato_indotto"
+      ],
+      [
+        16,
+        "attacco_rapido"
+      ],
+      [
+        21,
+        "gelodenti"
+      ],
+      [
+        26,
+        "inseguimento"
+      ],
+      [
+        30,
+        "radiocollare"
+      ],
+      [
+        31,
+        "provocazione"
+      ],
+      [
+        36,
+        "sgranocchio"
+      ],
+      [
+        41,
+        "attacco_notturno"
+      ],
+      [
+        47,
+        "nevischio"
+      ],
+      [
+        54,
+        "neropulsar"
+      ],
+      [
+        60,
+        "geloscheggia"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../sibillupo.html"
   },
   "sismino": {
     "number": 105,

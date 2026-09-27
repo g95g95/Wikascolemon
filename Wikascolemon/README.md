@@ -137,6 +137,8 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #119 | [Rəpetitò](repetito.html) | Pokémon Ripetitore | Elettro/Psico | La vetta del Monte dell'Ascensione |
 | #120 | [Paguremo](paguremo.html) | Pokémon Anacoreta | Roccia/Spettro | La parete del Colle San Marco, sopra Piagge (eremo di San Marco) |
 | #121 | [Talvecchia](talvecchia.html) | Pokémon Sommerso | Acqua (Piena) · Acqua/Spettro (Vuota) | Lago di Talvacchia, sul Castellano (la casa sommersa e la vecchia strada per Valle Castellana) |
+| #122 | [Lupittə](lupitte.html) | Pokémon Cucciolo | Buio | Monti Sibillini (tane dei nuclei familiari del Parco) |
+| #123 | [Sibillupo](sibillupo.html) | Pokémon Nucleo | Buio/Ghiaccio | Monti Sibillini, dalle faggete alle praterie d'altitudine |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |
