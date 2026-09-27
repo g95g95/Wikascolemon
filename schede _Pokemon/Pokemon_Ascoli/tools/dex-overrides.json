@@ -24,5 +24,6 @@
   "amatrice": { "evolution": null },
   "rossopiceno": { "evolution": { "into": "superiore", "item": "botte" } },
   "peccio": { "evolution": { "into": "peccionara", "item": "granaglie" } },
-  "pulcidoro": { "evolution": { "into": "chioccidoro", "item": "ciottolo_chiaro", "location": "ascensione" } }
+  "pulcidoro": { "evolution": { "into": "chioccidoro", "item": "ciottolo_chiaro", "location": "ascensione" } },
+  "talvecchia": { "types": ["Acqua"], "evolution": null }
 }

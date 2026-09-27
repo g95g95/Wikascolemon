@@ -7004,6 +7004,72 @@
     },
     "wiki": "../svedde.html"
   },
+  "talvecchia": {
+    "number": 121,
+    "name": "Talvecchia",
+    "types": [
+      "Acqua"
+    ],
+    "base": [
+      110,
+      45,
+      80,
+      85,
+      110,
+      30
+    ],
+    "catchRate": 45,
+    "expYield": 190,
+    "growth": "lento",
+    "learnset": [
+      [
+        1,
+        "schizzo"
+      ],
+      [
+        1,
+        "bolla"
+      ],
+      [
+        8,
+        "fanghiglia"
+      ],
+      [
+        14,
+        "idropulsar"
+      ],
+      [
+        20,
+        "sgomento"
+      ],
+      [
+        26,
+        "pioggiadanza"
+      ],
+      [
+        32,
+        "riaffiora"
+      ],
+      [
+        38,
+        "acquadisale"
+      ],
+      [
+        44,
+        "maledizione"
+      ],
+      [
+        50,
+        "idropompa"
+      ],
+      [
+        56,
+        "riposo"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../talvecchia.html"
+  },
   "tamburino": {
     "number": 17,
     "name": "Tamburino",

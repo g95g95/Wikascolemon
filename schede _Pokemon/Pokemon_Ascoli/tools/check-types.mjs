@@ -4,7 +4,9 @@
 //   node tools/check-types.mjs a.html b.html   → solo quelle
 // Le schede senza riga «Danno normale» sono ammesse: una casella assente vale 1×.
 // Eccezioni note (non sono errori): Anisetta, Pretalien e Vescovasil elencano la Terra
-// anche a 0× «con Levitazione»; Quintanaro mostra la tabella della forma Acciaio/Folletto.
+// anche a 0× «con Levitazione»; Quintanaro mostra la tabella della forma Acciaio/Folletto;
+// Talvecchia ha due tabelle, una per forma (Acqua e Acqua/Spettro).
+// Un tipo elencato in due righe della tabella è sempre un errore (Rəpetitò, 27/09/2026).
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -34,7 +36,7 @@ const mult=(a,d)=>C[a]?.[d]??1;
 const WIKI = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../Wikascolemon");
 const files = process.argv.length > 2 ? process.argv.slice(2)
   : fs.readdirSync(WIKI).filter(f => f.endsWith(".html") && !/^(index|brief_)/.test(f)).map(f => path.join(WIKI, f));
-const ECCEZIONI = new Set(['anisetta.html', 'pretalien.html', 'vescovasil.html', 'quintanaro.html']);
+const ECCEZIONI = new Set(['anisetta.html', 'pretalien.html', 'vescovasil.html', 'quintanaro.html', 'talvecchia.html']);
 let bad = 0;
 for (const f of files) {
   if (process.argv.length <= 2 && ECCEZIONI.has(path.basename(f))) continue;
@@ -42,11 +44,14 @@ for (const f of files) {
   const types=[...h.match(/<tr><th>Tipo<\/th><td>(.*?)<\/td>/)[1].matchAll(/t-([a-z]+)/g)].map(m=>m[1]);
   const box=h.match(/<div class="effbox">([\s\S]*?)<h3/)[1];
   const rows={};
+  const errs=[];
   for (const m of box.matchAll(/<div class="efflabel">([^<]+)<\/div><div class="effcells">([\s\S]*?)<\/div><\/div>/g)) {
     const cells=[...m[2].matchAll(/t-([a-z]+)">[^<]*<\/span>(?:<span class="effx">([^<]*)<\/span>)?/g)];
-    for (const c of cells) rows[c[1]]=(m[1]==='Danno normale')?'1':(c[2]||'?').replace('×','');
+    for (const c of cells) {
+      if (rows[c[1]]!==undefined) errs.push(`${c[1]}: elencato due volte`);
+      rows[c[1]]=(m[1]==='Danno normale')?'1':(c[2]||'?').replace('×','');
+    }
   }
-  const errs=[];
   for (const a of T) {
     let e=1; for (const d of types) e*=mult(a,d);
     const exp=e===0?'0':e===.25?'¼':e===.5?'½':e===1?'1':e===2?'2':'4';

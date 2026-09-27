@@ -5091,6 +5091,28 @@
     "effect": null,
     "description": "Accumula luce solare e colpisce con un raggio potentissimo."
   },
+  "riaffiora": {
+    "name": "Riaffiora",
+    "type": "Spettro",
+    "category": "Speciale",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Spettro, speciale, 80 di potenza: raddoppia se l'utente ha meno della metà dei PS."
+  },
+  "acquadisale": {
+    "name": "Acquadisale",
+    "type": "Acqua",
+    "category": "Speciale",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "doppiasberla": {
     "name": "Doppiasberla",
     "type": "Normale",
