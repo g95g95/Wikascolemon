@@ -65,7 +65,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #120 | Paguremo ✅ — il paguro-eremita della parete del Colle San Marco, con l'eremo sul dorso (Roccia/Spettro, specie singola) |
 | #121 | Talvecchia ✅ — la carpa del lago di Talvacchia, vecchia quanto la diga (Acqua, con Forma Vuota Acqua/Spettro sotto metà PS; specie singola; nel gioco solo la Forma Piena) |
 | #122-#123 | Lupittə → Sibillupo ✅ — il lupo appenninico dei Sibillini, col radiocollare del Parco (Buio → Buio/Ghiaccio, evolve al 30 di notte) |
-| #124-#143 | Libero |
+| #124 | Cometella ✅ — la stella dei presepi di Quintodecimo, che a dicembre si divide sopra ogni capanna della rassegna (Volante/Folletto, specie singola, non si riproduce; mossa esclusiva Ventuno al 15) |
+| #125-#143 | Libero |
 | #144-#146 | Fatella → Ancella → Sibilla ✅ — la linea del Monte Sibilla, pseudo-leggendaria (600) |
 | #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |
 | **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|

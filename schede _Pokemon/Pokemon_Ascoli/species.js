@@ -2416,6 +2416,73 @@
     "evolution": null,
     "wiki": "../ciucione.html"
   },
+  "cometella": {
+    "number": 124,
+    "name": "Cometella",
+    "types": [
+      "Volante",
+      "Folletto"
+    ],
+    "base": [
+      60,
+      45,
+      60,
+      110,
+      95,
+      130
+    ],
+    "catchRate": 30,
+    "expYield": 180,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "flash"
+      ],
+      [
+        5,
+        "fascino"
+      ],
+      [
+        10,
+        "ventaglio"
+      ],
+      [
+        15,
+        "ventuno"
+      ],
+      [
+        20,
+        "attacco_rapido"
+      ],
+      [
+        26,
+        "bacio_drenante"
+      ],
+      [
+        32,
+        "agilita"
+      ],
+      [
+        38,
+        "eterelama"
+      ],
+      [
+        44,
+        "forzaluna"
+      ],
+      [
+        50,
+        "desiderio"
+      ],
+      [
+        56,
+        "baldeali"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../cometella.html"
+  },
   "compadrone": {
     "number": 9,
     "name": "Compadrone",

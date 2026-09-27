@@ -2759,6 +2759,64 @@
     "effect": null,
     "description": "Colpisce con potenza dopo un balzo aereo."
   },
+  "flash": {
+    "name": "Flash",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "ventaglio": {
+    "name": "Ventaglio",
+    "type": "Volante",
+    "category": "Speciale",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "ventuno": {
+    "name": "Ventuno",
+    "type": "Folletto",
+    "category": "Speciale",
+    "power": 21,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "è la sua mossa esclusiva, appresa al livello"
+  },
+  "eterelama": {
+    "name": "Eterelama",
+    "type": "Volante",
+    "category": "Speciale",
+    "power": 75,
+    "accuracy": 95,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "desiderio": {
+    "name": "Desiderio",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": {
+      "kind": "custom",
+      "id": "wish"
+    },
+    "description": "Cura PS al Pokémon in campo nel turno successivo."
+  },
   "comparanza": {
     "name": "Comparanza",
     "type": "Lotta",
@@ -2984,36 +3042,11 @@
     },
     "description": "è la sua mossa esclusiva: il bersaglio viene fatto"
   },
-  "desiderio": {
-    "name": "Desiderio",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": null,
-    "pp": 10,
-    "priority": 0,
-    "effect": {
-      "kind": "custom",
-      "id": "wish"
-    },
-    "description": "Cura PS al Pokémon in campo nel turno successivo."
-  },
   "scintilla": {
     "name": "Scintilla",
     "type": "Elettro",
     "category": "Fisico",
     "power": 65,
-    "accuracy": 100,
-    "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "flash": {
-    "name": "Flash",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
     "accuracy": 100,
     "pp": 20,
     "priority": 0,
@@ -3485,17 +3518,6 @@
       "chance": 100
     },
     "description": "Fango che può abbassare la precisione avversaria."
-  },
-  "eterelama": {
-    "name": "Eterelama",
-    "type": "Volante",
-    "category": "Speciale",
-    "power": 75,
-    "accuracy": 95,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "extrasenso": {
     "name": "Extrasenso",
