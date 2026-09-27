@@ -4000,6 +4000,28 @@
     "effect": null,
     "description": "Energia della terra scatenata in un'esplosione."
   },
+  "maledizione": {
+    "name": "Maledizione",
+    "type": "Spettro",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "indulgenza": {
+    "name": "Indulgenza",
+    "type": "Spettro",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 1,
+    "priority": 0,
+    "effect": null,
+    "description": "Spettro, stato, 1 PP: il 25 aprile cura tutta la squadra dai problemi di stato e ripristina un terzo dei PS massimi di ciascuno; negli altri giorni fallisce."
+  },
   "raffica": {
     "name": "Raffica",
     "type": "Volante",

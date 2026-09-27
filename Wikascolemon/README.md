@@ -135,6 +135,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #117 | [Pulcidoro](pulcidoro.html) | Pokémon Pulcino d'Oro | Folletto | Monte dell'Ascensione (fenditure della roccia sopra Polesio) |
 | #118 | [Chioccidoro](chioccidoro.html) | Pokémon Covata d'Oro | Folletto/Acciaio | La voragine del Monte dell'Ascensione, sotto Polesio |
 | #119 | [Rəpetitò](repetito.html) | Pokémon Ripetitore | Elettro/Psico | La vetta del Monte dell'Ascensione |
+| #120 | [Paguremo](paguremo.html) | Pokémon Anacoreta | Roccia/Spettro | La parete del Colle San Marco, sopra Piagge (eremo di San Marco) |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |

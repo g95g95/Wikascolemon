@@ -4337,6 +4337,73 @@
     },
     "wiki": "../ombrellone.html"
   },
+  "paguremo": {
+    "number": 120,
+    "name": "Paguremo",
+    "types": [
+      "Roccia",
+      "Spettro"
+    ],
+    "base": [
+      80,
+      65,
+      140,
+      60,
+      95,
+      20
+    ],
+    "catchRate": 30,
+    "expYield": 210,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "sgomento"
+      ],
+      [
+        1,
+        "rafforzatore"
+      ],
+      [
+        7,
+        "sassata"
+      ],
+      [
+        13,
+        "fuocofatuo"
+      ],
+      [
+        19,
+        "maledizione"
+      ],
+      [
+        25,
+        "palla_ombra"
+      ],
+      [
+        31,
+        "levitoroccia"
+      ],
+      [
+        37,
+        "frana"
+      ],
+      [
+        43,
+        "indulgenza"
+      ],
+      [
+        49,
+        "pietrataglio"
+      ],
+      [
+        55,
+        "riposo"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../paguremo.html"
+  },
   "palombare": {
     "number": 84,
     "name": "Palombare",

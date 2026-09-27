@@ -529,6 +529,14 @@
       "ok": true
     },
     {
+      "id": "paguremo",
+      "number": 120,
+      "name": "Paguremo",
+      "statTotal": 460,
+      "statSum": 460,
+      "ok": true
+    },
+    {
       "id": "palombare",
       "number": 84,
       "name": "Palombare",
