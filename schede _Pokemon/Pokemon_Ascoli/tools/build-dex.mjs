@@ -77,10 +77,14 @@ function extractName(html, fileName, errors) {
   return m[1].trim();
 }
 
+// Le schede abbreviano il Coleottero in «Coleot» nei badge (per larghezza): la lotta vuole il nome pieno.
+const TYPE_ALIASES = { Coleot: 'Coleottero' };
+const normalizeType = t => TYPE_ALIASES[t] || t;
+
 function extractTypes(html, fileName, errors) {
   const m = html.match(/<tr><th>Tipo<\/th><td>([\s\S]*?)<\/td><\/tr>/);
   if (!m) { errors.push(`${fileName}: riga Tipo non trovata`); return []; }
-  const types = [...m[1].matchAll(/class="type t-[a-z]+">([^<]+)</g)].map(x => x[1]);
+  const types = [...m[1].matchAll(/class="type t-[a-z]+">([^<]+)</g)].map(x => normalizeType(x[1]));
   if (types.length === 0) errors.push(`${fileName}: nessun tipo estratto dalla riga Tipo`);
   return types;
 }
@@ -328,7 +332,7 @@ function main() {
     }
     if (!rowData) { errors.push(`${moveId}: impossibile ritrovare la riga sorgente in ${sourceFile}`); continue; }
 
-    const type = stripTags(rowData[2]);
+    const type = normalizeType(stripTags(rowData[2]));
     const category = stripTags(rowData[3]);
     const powerRaw = stripTags(rowData[4]);
     const power = powerRaw === '—' ? 0 : parseInt(powerRaw, 10);

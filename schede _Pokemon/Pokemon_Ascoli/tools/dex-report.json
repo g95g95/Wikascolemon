@@ -233,6 +233,14 @@
       "ok": true
     },
     {
+      "id": "chioccidoro",
+      "number": 118,
+      "name": "Chioccidoro",
+      "statTotal": 500,
+      "statSum": 500,
+      "ok": true
+    },
+    {
       "id": "chirocefalo",
       "number": 147,
       "name": "Chirocefalo",
@@ -625,6 +633,14 @@
       "ok": true
     },
     {
+      "id": "pulcidoro",
+      "number": 117,
+      "name": "Pulcidoro",
+      "statTotal": 315,
+      "statSum": 315,
+      "ok": true
+    },
+    {
       "id": "puledrotto",
       "number": 4,
       "name": "Puledrotto",
@@ -654,6 +670,14 @@
       "name": "Ranc'cò",
       "statTotal": 420,
       "statSum": 420,
+      "ok": true
+    },
+    {
+      "id": "repetito",
+      "number": 119,
+      "name": "Rəpetitò",
+      "statTotal": 490,
+      "statSum": 490,
       "ok": true
     },
     {

@@ -61,7 +61,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #109 | Punterosso ✅ — il punteruolo rosso della Riviera delle Palme (Coleot, specie singola, affetto 35)
 | #110-#114 | Passerina, Pecorino, Rossopiceno → Superiore, Vinocotto ✅ — la linea dei vini: i due bianchi (Erba/Volante, Erba/Roccia), il rosso che si evolve con la Botte (Erba/Buio → Erba/Buio), il caratello della nascita (Fuoco/Erba, 1 PP)
 | #115-#116 | Pəcciò → Pəccionara ✅ — il piccione di piazza San Tommaso e la colonia sulla fontana (Veleno/Volante, evolve con il Sacco di Granaglie; i piccioni della polemica del 2026)
-| #117-#143 | Libero |
+| #117-#119 | Pulcidoro → Chioccidoro, Rəpetitò ✅ — il Monte dell'Ascensione: la chioccia coi pulcini d'oro di Santa Polisia (Folletto → Folletto/Acciaio, evolve sul monte con il Ciottolo del Chiaro; asso della palestra 8) e il ripetitore della vetta (Elettro/Psico, specie singola) |
+| #120-#143 | Libero |
 | #144-#146 | Fatella → Ancella → Sibilla ✅ — la linea del Monte Sibilla, pseudo-leggendaria (600) |
 | #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |
 | **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|

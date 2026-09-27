@@ -23,5 +23,6 @@
   "accumoli": { "evolution": null },
   "amatrice": { "evolution": null },
   "rossopiceno": { "evolution": { "into": "superiore", "item": "botte" } },
-  "peccio": { "evolution": { "into": "peccionara", "item": "granaglie" } }
+  "peccio": { "evolution": { "into": "peccionara", "item": "granaglie" } },
+  "pulcidoro": { "evolution": { "into": "chioccidoro", "item": "ciottolo_chiaro", "location": "ascensione" } }
 }

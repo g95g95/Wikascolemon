@@ -235,7 +235,7 @@
   },
   "rete_di_fili": {
     "name": "Rete di fili",
-    "type": "Coleot",
+    "type": "Coleottero",
     "category": "Stato",
     "power": 0,
     "accuracy": 95,
@@ -2309,6 +2309,105 @@
     },
     "description": "Assorbe gran parte del danno inflitto come cura."
   },
+  "beccata": {
+    "name": "Beccata",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 35,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": null,
+    "description": "Colpisce con il becco."
+  },
+  "vocedibelva": {
+    "name": "Vocedibelva",
+    "type": "Folletto",
+    "category": "Speciale",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "covata": {
+    "name": "Covata",
+    "type": "Folletto",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Folletto, stato: ripristina un quarto dei PS massimi dell'alleato e ne cura i problemi di stato."
+  },
+  "bacio_drenante": {
+    "name": "Bacio Drenante",
+    "type": "Folletto",
+    "category": "Speciale",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "pulcinata": {
+    "name": "Pulcinata",
+    "type": "Folletto",
+    "category": "Fisico",
+    "power": 18,
+    "accuracy": 85,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Folletto, fisica, 18 di potenza, colpisce da 2 a 5 volte."
+  },
+  "forzaluna": {
+    "name": "Forzaluna",
+    "type": "Folletto",
+    "category": "Speciale",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Un raggio di luce lunare."
+  },
+  "cannonflash": {
+    "name": "Cannonflash",
+    "type": "Acciaio",
+    "category": "Speciale",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "telaio": {
+    "name": "Telaio",
+    "type": "Acciaio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Acciaio, stato: intrappola il bersaglio per tre turni e ne abbassa la Velocità."
+  },
+  "schermoluce": {
+    "name": "Schermoluce",
+    "type": "Psico",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "diapausa": {
     "name": "Diapausa",
     "type": "Ghiaccio",
@@ -2601,17 +2700,6 @@
     "priority": 0,
     "effect": null,
     "description": "Una rincorsa che precede il colpo."
-  },
-  "beccata": {
-    "name": "Beccata",
-    "type": "Volante",
-    "category": "Fisico",
-    "power": 35,
-    "accuracy": 100,
-    "pp": 35,
-    "priority": 0,
-    "effect": null,
-    "description": "Colpisce con il becco."
   },
   "bricioleria": {
     "name": "Bricioleria",
@@ -2910,17 +2998,6 @@
     },
     "description": "Cura PS al Pokémon in campo nel turno successivo."
   },
-  "forzaluna": {
-    "name": "Forzaluna",
-    "type": "Folletto",
-    "category": "Speciale",
-    "power": 95,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": "Un raggio di luce lunare."
-  },
   "scintilla": {
     "name": "Scintilla",
     "type": "Elettro",
@@ -2986,28 +3063,6 @@
     "priority": 0,
     "effect": null,
     "description": "Elettro, speciale, 50 di potenza, colpisce due volte."
-  },
-  "schermoluce": {
-    "name": "Schermoluce",
-    "type": "Psico",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": null,
-    "pp": 30,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "cannonflash": {
-    "name": "Cannonflash",
-    "type": "Acciaio",
-    "category": "Speciale",
-    "power": 80,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "fulmine": {
     "name": "Fulmine",
@@ -4330,7 +4385,7 @@
   },
   "involucro": {
     "name": "Involucro",
-    "type": "Coleot",
+    "type": "Coleottero",
     "category": "Stato",
     "power": 0,
     "accuracy": null,
@@ -4344,7 +4399,7 @@
   },
   "ronzio": {
     "name": "Ronzio",
-    "type": "Coleot",
+    "type": "Coleottero",
     "category": "Speciale",
     "power": 90,
     "accuracy": 100,
@@ -4392,7 +4447,7 @@
   },
   "vicelotta": {
     "name": "Vicelotta",
-    "type": "Coleot",
+    "type": "Coleottero",
     "category": "Fisico",
     "power": 60,
     "accuracy": 100,
@@ -4403,7 +4458,7 @@
   },
   "trivellata": {
     "name": "Trivellata",
-    "type": "Coleot",
+    "type": "Coleottero",
     "category": "Fisico",
     "power": 80,
     "accuracy": 100,
@@ -4414,7 +4469,7 @@
   },
   "forbice_x": {
     "name": "Forbice X",
-    "type": "Coleot",
+    "type": "Coleottero",
     "category": "Fisico",
     "power": 80,
     "accuracy": 100,
@@ -4425,7 +4480,7 @@
   },
   "megacorno": {
     "name": "Megacorno",
-    "type": "Coleot",
+    "type": "Coleottero",
     "category": "Fisico",
     "power": 120,
     "accuracy": 85,
@@ -4526,6 +4581,50 @@
     "priority": 0,
     "effect": null,
     "description": ""
+  },
+  "segnale": {
+    "name": "Segnale",
+    "type": "Elettro",
+    "category": "Speciale",
+    "power": 40,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "Elettro, speciale, 40 di potenza, non può mancare, colpisce anche i bersagli in Volo, Fossa o Tuffo."
+  },
+  "mimica": {
+    "name": "Mimica",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "magnetascesa": {
+    "name": "Magnetascesa",
+    "type": "Elettro",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "campane": {
+    "name": "Campane",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "Normale, stato, suono: cura i problemi di stato di tutta la squadra e sveglia i Pokémon addormentati; una sola volta per lotta."
   },
   "ferrartigli": {
     "name": "Ferrartigli",
@@ -5055,7 +5154,7 @@
   },
   "cambiagiro": {
     "name": "Cambiagiro",
-    "type": "Coleot",
+    "type": "Coleottero",
     "category": "Fisico",
     "power": 70,
     "accuracy": 100,
@@ -5135,7 +5234,7 @@
   },
   "ammazzasomari": {
     "name": "Ammazzasomari",
-    "type": "Coleot",
+    "type": "Coleottero",
     "category": "Fisico",
     "power": 15,
     "accuracy": 90,

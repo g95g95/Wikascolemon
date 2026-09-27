@@ -14,7 +14,7 @@ wiki. Le voci marcate **[proposta]** sono scelte mie da confermare; il resto vie
 | 5 | **Offida**, Teatro Serpente Aureo | Neri Marcorè → **Nero Marcoré** | Erba | L32 | Segaccio, Cerqua, Ca'ità. [proposta] |
 | 6 | **Valle Castellana / San Giacomo** | Remigio → **Remigio** | Roccia | L36 | Ci si arriva salendo; sottotrama "Twin Peaks" con l'Ombra di San Giacomo (Parolisi). [proposta tipo] |
 | 7 | **Acquasanta Terme** | Claver Gold → **Clavio Oro** | Buio | L40 | Felignoto, Notaiax, Mixaro. [proposta] |
-| 8 | **Polesio / Colle San Marco**, grotta di Santa Polisia | Santa Polisia → **Polisia** | Folletto/Psico | L44 | "In là nel gioco"; la grotta della santa è a Polesio, dove villeggia Di Silvestro: l'ottava palestra e l'antagonista condividono il luogo. [proposta] |
+| 8 | **Polesio, sul Monte dell'Ascensione**, grotta di Santa Polisia | Santa Polisia → **Polisia** | Folletto/Psico | L44 | "In là nel gioco"; la grotta della santa è a Polesio, dove villeggia Di Silvestro: l'ottava palestra e l'antagonista condividono il luogo. [proposta] |
 
 **Sibilla** esce dalla lista dei capipalestra (erano 9 per 8 posti) e diventa figura leggendaria
 dei Sibillini, in relazione con Pretalien (#150) e con "il picchio". [proposta]

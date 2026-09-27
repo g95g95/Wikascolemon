@@ -1916,6 +1916,81 @@
     "evolution": null,
     "wiki": "../cerqua.html"
   },
+  "chioccidoro": {
+    "number": 118,
+    "name": "Chioccidoro",
+    "types": [
+      "Folletto",
+      "Acciaio"
+    ],
+    "base": [
+      90,
+      60,
+      115,
+      70,
+      125,
+      40
+    ],
+    "catchRate": 30,
+    "expYield": 190,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "beccata"
+      ],
+      [
+        1,
+        "fascino"
+      ],
+      [
+        1,
+        "vocedibelva"
+      ],
+      [
+        1,
+        "covata"
+      ],
+      [
+        17,
+        "bacio_drenante"
+      ],
+      [
+        21,
+        "difesaferrea"
+      ],
+      [
+        25,
+        "pulcinata"
+      ],
+      [
+        30,
+        "riflesso"
+      ],
+      [
+        35,
+        "forzaluna"
+      ],
+      [
+        40,
+        "cannonflash"
+      ],
+      [
+        46,
+        "telaio"
+      ],
+      [
+        52,
+        "schermoluce"
+      ],
+      [
+        58,
+        "ultimascelta"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../chioccidoro.html"
+  },
   "chirocefalo": {
     "number": 147,
     "name": "Chirocefalo",
@@ -5054,7 +5129,7 @@
     "number": 150,
     "name": "Pretalien",
     "types": [
-      "Coleot",
+      "Coleottero",
       "Psico"
     ],
     "base": [
@@ -5116,6 +5191,72 @@
     ],
     "evolution": null,
     "wiki": "../pretalien.html"
+  },
+  "pulcidoro": {
+    "number": 117,
+    "name": "Pulcidoro",
+    "types": [
+      "Folletto"
+    ],
+    "base": [
+      50,
+      35,
+      50,
+      60,
+      75,
+      45
+    ],
+    "catchRate": 45,
+    "expYield": 55,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "beccata"
+      ],
+      [
+        1,
+        "fascino"
+      ],
+      [
+        5,
+        "ruggito"
+      ],
+      [
+        9,
+        "vocedibelva"
+      ],
+      [
+        13,
+        "sabbiattacco"
+      ],
+      [
+        17,
+        "bacio_drenante"
+      ],
+      [
+        21,
+        "attrazione"
+      ],
+      [
+        25,
+        "pulcinata"
+      ],
+      [
+        30,
+        "riposo"
+      ],
+      [
+        35,
+        "forzaluna"
+      ]
+    ],
+    "evolution": {
+      "into": "chioccidoro",
+      "item": "ciottolo_chiaro",
+      "location": "ascensione"
+    },
+    "wiki": "../pulcidoro.html"
   },
   "puledrotto": {
     "number": 4,
@@ -5182,7 +5323,7 @@
     "number": 109,
     "name": "Punterosso",
     "types": [
-      "Coleot"
+      "Coleottero"
     ],
     "base": [
       65,
@@ -5371,6 +5512,81 @@
     ],
     "evolution": null,
     "wiki": "../rancco.html"
+  },
+  "repetito": {
+    "number": 119,
+    "name": "Rəpetitò",
+    "types": [
+      "Elettro",
+      "Psico"
+    ],
+    "base": [
+      75,
+      45,
+      70,
+      125,
+      85,
+      90
+    ],
+    "catchRate": 45,
+    "expYield": 200,
+    "growth": "nessuno (genere sconosciuto)",
+    "learnset": [
+      [
+        1,
+        "scintilla"
+      ],
+      [
+        1,
+        "confusione"
+      ],
+      [
+        1,
+        "segnale"
+      ],
+      [
+        8,
+        "tuononda"
+      ],
+      [
+        14,
+        "mimica"
+      ],
+      [
+        20,
+        "elettroraggio"
+      ],
+      [
+        26,
+        "psicoraggio"
+      ],
+      [
+        32,
+        "schermoluce"
+      ],
+      [
+        38,
+        "fulmine"
+      ],
+      [
+        44,
+        "psichico"
+      ],
+      [
+        50,
+        "magnetascesa"
+      ],
+      [
+        56,
+        "campane"
+      ],
+      [
+        62,
+        "tuono"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../repetito.html"
   },
   "retrabbie": {
     "number": 59,
@@ -7471,7 +7687,7 @@
     "number": 72,
     "name": "Vecciandò",
     "types": [
-      "Coleot",
+      "Coleottero",
       "Volante"
     ],
     "base": [

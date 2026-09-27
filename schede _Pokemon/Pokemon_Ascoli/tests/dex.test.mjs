@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 
 const testDir = path.dirname(fileURLToPath(import.meta.url));
@@ -52,3 +53,17 @@ for (const file of ['species.js', 'moves.js']) {
 fs.rmSync(tmpRoot, { recursive: true, force: true });
 
 console.log('dex.test.mjs: species.js e moves.js combaciano con l\'output del generatore.');
+
+// Ogni tipo di specie e mosse deve essere un tipo che la lotta conosce: un nome fuori dalla
+// type chart (es. l'abbreviazione «Coleot» dei badge) vale 1× contro tutto, in silenzio.
+const require = createRequire(import.meta.url);
+const { typeChart } = require('../battle.js');
+const species = require('../species.js');
+const moves = require('../moves.js');
+const unknown = [
+  ...Object.entries(species).flatMap(([id, s]) => s.types.filter(t => !typeChart[t]).map(t => `specie ${id}: ${t}`)),
+  ...Object.entries(moves).filter(([, m]) => !typeChart[m.type]).map(([id, m]) => `mossa ${id}: ${m.type}`)
+];
+assert.deepEqual(unknown, [], `tipi sconosciuti alla type chart di battle.js:\n${unknown.join('\n')}`);
+
+console.log('dex.test.mjs: tutti i tipi di specie e mosse sono nella type chart.');
