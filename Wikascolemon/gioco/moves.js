@@ -338,7 +338,7 @@
       "status": "brn",
       "chance": 100
     },
-    "description": "Una fiamma spettrale che scotta sempre il bersaglio."
+    "description": "al 22: sono le luci della terrazza, «e non fanno male a chi cena»."
   },
   "lanciafiamme": {
     "name": "Lanciafiamme",
@@ -3017,6 +3017,39 @@
     "effect": null,
     "description": ""
   },
+  "millebave": {
+    "name": "Millebave",
+    "type": "Coleottero",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 95,
+    "pp": 40,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "cucu": {
+    "name": "Cucù!",
+    "type": "Spettro",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Spettro, fisica, 60 di potenza: priorità +1 nel primo turno in cui l'utente è in campo."
+  },
+  "vicelotta": {
+    "name": "Vicelotta",
+    "type": "Coleottero",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "vocedincanto": {
     "name": "Vocedincanto",
     "type": "Folletto",
@@ -3528,6 +3561,73 @@
     "power": 100,
     "accuracy": 90,
     "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "plenilunio": {
+    "name": "Plenilunio",
+    "type": "Folletto",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "Folletto, stato: di notte cura tutta la squadra dai problemi di stato e ripristina un terzo dei PS massimi di ciascuno; di giorno fallisce."
+  },
+  "vento_argenteo": {
+    "name": "Vento Argenteo",
+    "type": "Coleottero",
+    "category": "Speciale",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "ronzio": {
+    "name": "Ronzio",
+    "type": "Coleottero",
+    "category": "Speciale",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "spDefense",
+      "stages": -1,
+      "chance": 10
+    },
+    "description": "un frastuono acuto e prolungato prodotto dalle quattro ali, così forte da stordire i sensi del bersaglio — il verso caratteristico che ha dato il nome alla specie."
+  },
+  "danzaspada": {
+    "name": "Danzaspada",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "self",
+      "stat": "attack",
+      "stages": 2,
+      "chance": 100
+    },
+    "description": "Una danza di guerra che aumenta molto l'Attacco."
+  },
+  "fuocobomba": {
+    "name": "Fuocobomba",
+    "type": "Fuoco",
+    "category": "Speciale",
+    "power": 110,
+    "accuracy": 85,
+    "pp": 5,
     "priority": 0,
     "effect": null,
     "description": ""
@@ -4496,23 +4596,6 @@
     },
     "description": "si richiude nel bozzolo scuro: aumenta di molto Difesa e Difesa Speciale e cura i problemi di stato, ma nel turno successivo non può agire."
   },
-  "ronzio": {
-    "name": "Ronzio",
-    "type": "Coleottero",
-    "category": "Speciale",
-    "power": 90,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "spDefense",
-      "stages": -1,
-      "chance": 10
-    },
-    "description": "un frastuono acuto e prolungato prodotto dalle quattro ali, così forte da stordire i sensi del bersaglio — il verso caratteristico che ha dato il nome alla specie."
-  },
   "barriera": {
     "name": "Barriera",
     "type": "Psico",
@@ -4543,17 +4626,6 @@
       "id": "sfocatura"
     },
     "description": "aumenta di molto l'elusione; ogni volta che schiva un attacco, la mossa successiva dell'avversario perde precisione."
-  },
-  "vicelotta": {
-    "name": "Vicelotta",
-    "type": "Coleottero",
-    "category": "Fisico",
-    "power": 60,
-    "accuracy": 100,
-    "pp": 35,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "trivellata": {
     "name": "Trivellata",
@@ -4615,23 +4687,6 @@
       "chance": 30
     },
     "description": "Un colpo d'acciaio che può aumentare l'Attacco."
-  },
-  "danzaspada": {
-    "name": "Danzaspada",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": null,
-    "pp": 20,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "self",
-      "stat": "attack",
-      "stages": 2,
-      "chance": 100
-    },
-    "description": "Una danza di guerra che aumenta molto l'Attacco."
   },
   "doppiocolpo": {
     "name": "Doppiocolpo",
@@ -5123,17 +5178,6 @@
     "priority": 0,
     "effect": null,
     "description": "un passaggio a bassissima quota che colpisce e spegne. Se il bersaglio è di tipo Fuoco, la sua abilità viene annullata per tre turni; se in campo c'è la luce solare intensa, viene cancellata."
-  },
-  "fuocobomba": {
-    "name": "Fuocobomba",
-    "type": "Fuoco",
-    "category": "Speciale",
-    "power": 110,
-    "accuracy": 85,
-    "pp": 5,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "tempesta": {
     "name": "Tempesta",

@@ -2747,6 +2747,69 @@
     "evolution": null,
     "wiki": "../cremino.html"
   },
+  "cucu": {
+    "number": 128,
+    "name": "Cucù",
+    "types": [
+      "Coleottero",
+      "Spettro"
+    ],
+    "base": [
+      60,
+      50,
+      95,
+      55,
+      70,
+      30
+    ],
+    "catchRate": 120,
+    "expYield": 110,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "braciere"
+      ],
+      [
+        1,
+        "millebave"
+      ],
+      [
+        13,
+        "vicelotta"
+      ],
+      [
+        19,
+        "cucu"
+      ],
+      [
+        20,
+        "fortificazione"
+      ],
+      [
+        25,
+        "sgomento"
+      ],
+      [
+        30,
+        "palla_ombra"
+      ],
+      [
+        34,
+        "fuocofatuo"
+      ]
+    ],
+    "evolution": {
+      "into": "lalluna",
+      "level": 35,
+      "night": true
+    },
+    "wiki": "../cucu.html"
+  },
   "dehor": {
     "number": 26,
     "name": "Dehor",
@@ -3683,6 +3746,73 @@
     ],
     "evolution": null,
     "wiki": "../idra.html"
+  },
+  "lalluna": {
+    "number": 129,
+    "name": "Lalluna",
+    "types": [
+      "Coleottero",
+      "Folletto"
+    ],
+    "base": [
+      70,
+      55,
+      60,
+      115,
+      90,
+      100
+    ],
+    "catchRate": 45,
+    "expYield": 190,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "millebave"
+      ],
+      [
+        1,
+        "cucu"
+      ],
+      [
+        20,
+        "attacco_dala"
+      ],
+      [
+        25,
+        "vento_argenteo"
+      ],
+      [
+        30,
+        "bacio_drenante"
+      ],
+      [
+        35,
+        "plenilunio"
+      ],
+      [
+        36,
+        "ronzio"
+      ],
+      [
+        42,
+        "forzaluna"
+      ],
+      [
+        48,
+        "danzaspada"
+      ],
+      [
+        54,
+        "fuocobomba"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../lalluna.html"
   },
   "lettino": {
     "number": 31,
@@ -7739,6 +7869,65 @@
       "into": "gionata"
     },
     "wiki": "../traguardo.html"
+  },
+  "tramonto": {
+    "number": 127,
+    "name": "Tramonto",
+    "types": [
+      "Coleottero",
+      "Fuoco"
+    ],
+    "base": [
+      65,
+      40,
+      50,
+      55,
+      45,
+      45
+    ],
+    "catchRate": 190,
+    "expYield": 55,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        5,
+        "braciere"
+      ],
+      [
+        9,
+        "millebave"
+      ],
+      [
+        13,
+        "vicelotta"
+      ],
+      [
+        17,
+        "ruotafuoco"
+      ],
+      [
+        22,
+        "fuocofatuo"
+      ],
+      [
+        27,
+        "rafforzatore"
+      ],
+      [
+        32,
+        "fuocobomba"
+      ]
+    ],
+    "evolution": {
+      "into": "cucu",
+      "level": 19,
+      "dusk": true
+    },
+    "wiki": "../tramonto.html"
   },
   "travertorre": {
     "number": 89,

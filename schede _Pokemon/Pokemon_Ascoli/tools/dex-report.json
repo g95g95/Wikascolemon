@@ -337,6 +337,14 @@
       "ok": true
     },
     {
+      "id": "cucu",
+      "number": 128,
+      "name": "Cucù",
+      "statTotal": 360,
+      "statSum": 360,
+      "ok": true
+    },
+    {
       "id": "dehor",
       "number": 26,
       "name": "Dehor",
@@ -446,6 +454,14 @@
       "name": "Idra",
       "statTotal": 545,
       "statSum": 545,
+      "ok": true
+    },
+    {
+      "id": "lalluna",
+      "number": 129,
+      "name": "Lalluna",
+      "statTotal": 490,
+      "statSum": 490,
       "ok": true
     },
     {
@@ -942,6 +958,14 @@
       "name": "Traguardo",
       "statTotal": 385,
       "statSum": 385,
+      "ok": true
+    },
+    {
+      "id": "tramonto",
+      "number": 127,
+      "name": "Tramonto",
+      "statTotal": 300,
+      "statSum": 300,
       "ok": true
     },
     {

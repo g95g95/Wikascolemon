@@ -27,5 +27,7 @@
   "pulcidoro": { "evolution": { "into": "chioccidoro", "item": "ciottolo_chiaro", "location": "ascensione" } },
   "talvecchia": { "types": ["Acqua"], "evolution": null },
   "lupitte": { "evolution": { "into": "sibillupo", "level": 30, "night": true } },
-  "favette": { "evolution": { "into": "favalanciata", "level": 22 } }
+  "favette": { "evolution": { "into": "favalanciata", "level": 22 } },
+  "tramonto": { "evolution": { "into": "cucu", "level": 19, "dusk": true } },
+  "cucu": { "evolution": { "into": "lalluna", "level": 35, "night": true } }
 }

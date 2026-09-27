@@ -142,6 +142,9 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #124 | [Cometella](cometella.html) | Pokémon Cometa | Volante/Folletto | Quintodecimo, sopra le capanne dei presepi nelle cantine e nelle stalle (a dicembre) |
 | #125 | [Favettə](favette.html) | Pokémon Proiettile | Erba | La Salaria all'altezza di Favalanciata, sempre a mezz'aria |
 | #126 | [Favalanciata](favalanciata.html) | Pokémon Catapulta | Erba/Lotta | Favalanciata, frazione di Acquasanta Terme sulla Salaria |
+| #127 | [Tramonto](tramonto.html) | Pokémon Aperitivo | Coleottero/Fuoco | La terrazza dell'Hotel Ristorante Tramonto di Ancarano, appena a sud del Tronto |
+| #128 | [Cucù](cucu.html) | Pokémon Nascondino | Coleottero/Spettro | La pergola della Pizzeria del Cucù, a Villa Pigna |
+| #129 | [Lalluna](lalluna.html) | Pokémon Occhi di Luna | Coleottero/Folletto | Il parcheggio della Pizzeria La Luna, a Villa Pigna |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |
