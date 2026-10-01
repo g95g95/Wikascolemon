@@ -3696,6 +3696,94 @@
     "effect": null,
     "description": ""
   },
+  "supersuono": {
+    "name": "Supersuono",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 55,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "sparpaglio": {
+    "name": "Sparpaglio",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 25,
+    "accuracy": 85,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "Volante, fisica, 25 di potenza: colpisce da 2 a 5 volte in un turno."
+  },
+  "corredo": {
+    "name": "Corredo",
+    "type": "Spettro",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Spettro, stato: scambia il proprio oggetto con quello del bersaglio; se l'utente non tiene nulla, lo sottrae."
+  },
+  "rapigiro": {
+    "name": "Rapigiro",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 40,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "aeroassalto": {
+    "name": "Aeroassalto",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "Assalto dall'alto in picchiata."
+  },
+  "ombrartigli": {
+    "name": "Ombrartigli",
+    "type": "Spettro",
+    "category": "Fisico",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "acrobazia": {
+    "name": "Acrobazia",
+    "type": "Volante",
+    "category": "Fisico",
+    "power": 55,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "oscurotuffo": {
+    "name": "Oscurotuffo",
+    "type": "Spettro",
+    "category": "Fisico",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ", l'unica volta in cui vola veloce."
+  },
   "ululato_indotto": {
     "name": "Ululato Indotto",
     "type": "Buio",
@@ -4209,17 +4297,6 @@
     "priority": 0,
     "effect": null,
     "description": ""
-  },
-  "aeroassalto": {
-    "name": "Aeroassalto",
-    "type": "Volante",
-    "category": "Fisico",
-    "power": 60,
-    "accuracy": null,
-    "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": "Assalto dall'alto in picchiata."
   },
   "incubo": {
     "name": "Incubo",
@@ -5448,17 +5525,6 @@
     "power": 70,
     "accuracy": 100,
     "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "acrobazia": {
-    "name": "Acrobazia",
-    "type": "Volante",
-    "category": "Fisico",
-    "power": 55,
-    "accuracy": 100,
-    "pp": 15,
     "priority": 0,
     "effect": null,
     "description": ""

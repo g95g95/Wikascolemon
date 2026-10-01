@@ -497,6 +497,14 @@
       "ok": true
     },
     {
+      "id": "longobatto",
+      "number": 131,
+      "name": "Longobatto",
+      "statTotal": 480,
+      "statSum": 480,
+      "ok": true
+    },
+    {
       "id": "lupitte",
       "number": 122,
       "name": "Lupittə",
@@ -870,6 +878,14 @@
       "name": "Sorcione",
       "statTotal": 390,
       "statSum": 390,
+      "ok": true
+    },
+    {
+      "id": "sparpagghjo",
+      "number": 130,
+      "name": "Sparpagghjò",
+      "statTotal": 245,
+      "statSum": 245,
       "ok": true
     },
     {

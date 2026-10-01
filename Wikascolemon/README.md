@@ -145,6 +145,8 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #127 | [Tramonto](tramonto.html) | Pokémon Aperitivo | Coleottero/Fuoco | La terrazza dell'Hotel Ristorante Tramonto di Ancarano, appena a sud del Tronto |
 | #128 | [Cucù](cucu.html) | Pokémon Nascondino | Coleottero/Spettro | La pergola della Pizzeria del Cucù, a Villa Pigna |
 | #129 | [Lalluna](lalluna.html) | Pokémon Occhi di Luna | Coleottero/Folletto | Il parcheggio della Pizzeria La Luna, a Villa Pigna |
+| #130 | [Sparpagghjò](sparpagghjo.html) | Pokémon Sparpaglio | Veleno/Volante | Ogni grotta, gola e galleria dell'alta valle del Tronto |
+| #131 | [Longobatto](longobatto.html) | Pokémon Corredo | Volante/Spettro | La necropoli longobarda di Castel Trosino, di notte |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |

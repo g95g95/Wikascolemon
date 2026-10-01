@@ -68,7 +68,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #124 | Cometella ✅ — la stella dei presepi di Quintodecimo, che a dicembre si divide sopra ogni capanna della rassegna (Volante/Folletto, specie singola, non si riproduce; mossa esclusiva Ventuno al 15) |
 | #125-#126 | Favettə → Favalanciata ✅ — il nome della frazione di Acquasanta preso alla lettera: la fava sempre in volo e il baccello-catapulta che la lancia (Erba → Erba/Lotta, evolve al 22 «atterrando») |
 | #127-#129 | Tramonto → Cucù → Lalluna ✅ — la linea della sera, tre locali fra Ancarano e Villa Pigna: il bruco dell'aperitivo, la crisalide del nascondino, la falena del parcheggio (Coleottero/Fuoco → Coleottero/Spettro → Coleottero/Folletto, evolve al 19 al tramonto e al 35 di notte) |
-| #130-#143 | Libero |
+| #130-#131 | Sparpagghjò → Longobatto ✅ — il pipistrello di tutto il sottosuolo piceno e la sua evoluzione a Castel Trosino (Veleno/Volante → Volante/Spettro, evolve al 28 solo nella necropoli longobarda) |
+| #132-#143 | Libero |
 | #144-#146 | Fatella → Ancella → Sibilla ✅ — la linea del Monte Sibilla, pseudo-leggendaria (600) |
 | #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |
 | **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|

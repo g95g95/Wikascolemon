@@ -4087,6 +4087,81 @@
     },
     "wiki": "../livetta.html"
   },
+  "longobatto": {
+    "number": 131,
+    "name": "Longobatto",
+    "types": [
+      "Volante",
+      "Spettro"
+    ],
+    "base": [
+      70,
+      80,
+      65,
+      85,
+      70,
+      110
+    ],
+    "catchRate": 60,
+    "expYield": 165,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "assorbimento"
+      ],
+      [
+        1,
+        "supersuono"
+      ],
+      [
+        1,
+        "sparpaglio"
+      ],
+      [
+        13,
+        "attacco_dala"
+      ],
+      [
+        17,
+        "confusione"
+      ],
+      [
+        21,
+        "sgomento"
+      ],
+      [
+        25,
+        "rapigiro"
+      ],
+      [
+        28,
+        "corredo"
+      ],
+      [
+        30,
+        "aeroassalto"
+      ],
+      [
+        36,
+        "palla_ombra"
+      ],
+      [
+        42,
+        "ombrartigli"
+      ],
+      [
+        48,
+        "acrobazia"
+      ],
+      [
+        54,
+        "oscurotuffo"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../longobatto.html"
+  },
   "lupitte": {
     "number": 122,
     "name": "Lupittə",
@@ -7121,6 +7196,77 @@
     ],
     "evolution": null,
     "wiki": "../sorcione.html"
+  },
+  "sparpagghjo": {
+    "number": 130,
+    "name": "Sparpagghjò",
+    "types": [
+      "Veleno",
+      "Volante"
+    ],
+    "base": [
+      40,
+      45,
+      35,
+      30,
+      40,
+      55
+    ],
+    "catchRate": 255,
+    "expYield": 49,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "assorbimento"
+      ],
+      [
+        1,
+        "supersuono"
+      ],
+      [
+        5,
+        "sparpaglio"
+      ],
+      [
+        9,
+        "morso"
+      ],
+      [
+        13,
+        "attacco_dala"
+      ],
+      [
+        17,
+        "confusione"
+      ],
+      [
+        21,
+        "velenodenti"
+      ],
+      [
+        25,
+        "rapigiro"
+      ],
+      [
+        30,
+        "aeroassalto"
+      ],
+      [
+        35,
+        "velenoshock"
+      ],
+      [
+        40,
+        "acrobazia"
+      ]
+    ],
+    "evolution": {
+      "into": "longobatto",
+      "level": 28,
+      "location": "castel_trosino"
+    },
+    "wiki": "../sparpagghjo.html"
   },
   "spesurde": {
     "number": 14,
