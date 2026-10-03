@@ -147,6 +147,10 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #129 | [Lalluna](lalluna.html) | Pokémon Occhi di Luna | Coleottero/Folletto | Il parcheggio della Pizzeria La Luna, a Villa Pigna |
 | #130 | [Sparpagghjò](sparpagghjo.html) | Pokémon Sparpaglio | Veleno/Volante | Ogni grotta, gola e galleria dell'alta valle del Tronto |
 | #131 | [Longobatto](longobatto.html) | Pokémon Corredo | Volante/Spettro | La necropoli longobarda di Castel Trosino, di notte |
+| #132 | [Camuscì](camusci.html) | Pokémon Parete | Roccia | Le pareti dei Monti Sibillini (Monte Bove, Priora, Vettore) |
+| #133 | [Ornàta](ornata.html) | Pokémon Livrea | Roccia/Ghiaccio | Le creste dei Sibillini, dal Vettore sopra il Lago di Pilato alla Priora |
+| #134 | [Geotritò](geotrito.html) | Pokémon Lingua | Drago | I castagneti di Acquasanta Terme e Roccafluvione, sotto le foglie |
+| #135 | [Sandrago](sandrago.html) | Pokémon Tollerato | Drago/Roccia | La Grotta di Sant'Angelo nelle Gole del Salinello, sopra Civitella del Tronto |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |

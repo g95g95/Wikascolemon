@@ -69,7 +69,9 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #125-#126 | Favettə → Favalanciata ✅ — il nome della frazione di Acquasanta preso alla lettera: la fava sempre in volo e il baccello-catapulta che la lancia (Erba → Erba/Lotta, evolve al 22 «atterrando») |
 | #127-#129 | Tramonto → Cucù → Lalluna ✅ — la linea della sera, tre locali fra Ancarano e Villa Pigna: il bruco dell'aperitivo, la crisalide del nascondino, la falena del parcheggio (Coleottero/Fuoco → Coleottero/Spettro → Coleottero/Folletto, evolve al 19 al tramonto e al 35 di notte) |
 | #130-#131 | Sparpagghjò → Longobatto ✅ — il pipistrello di tutto il sottosuolo piceno e la sua evoluzione a Castel Trosino (Veleno/Volante → Volante/Spettro, evolve al 28 solo nella necropoli longobarda) |
-| #132-#143 | Libero |
+| #132-#133 | Camuscì → Ornàta ✅ — il camoscio appenninico reintrodotto sui Sibillini nel 2008 (Roccia → Roccia/Ghiaccio, evolve con la Pietra Gelo del Lago di Pilato; Scalaroccia della regione) |
+| #134-#135 | Geotritò → Sandrago ✅ — il geotritone senza polmoni dei castagneti di Acquasanta e il drago tollerato nella Grotta di Sant'Angelo sul Salinello (Drago → Drago/Roccia, evolve al 32) |
+| #136-#143 | Libero |
 | #144-#146 | Fatella → Ancella → Sibilla ✅ — la linea del Monte Sibilla, pseudo-leggendaria (600) |
 | #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |
 | **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|

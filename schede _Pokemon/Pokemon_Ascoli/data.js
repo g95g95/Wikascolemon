@@ -29,6 +29,7 @@
     botte: { name: 'Botte', price: null, battle: false },
     granaglie: { name: 'Sacco di Granaglie', price: null, battle: false },
     ciottolo_chiaro: { name: 'Ciottolo del Chiaro', price: null, battle: false },
+    pietra_gelo: { name: 'Pietra Gelo', price: null, battle: false },
     mt_velenospina: { name: 'MT Velenospina', price: null, battle: false },
     mt_idrogetto: { name: 'MT Idrogetto', price: null, battle: false }
   };

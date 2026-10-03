@@ -1382,6 +1382,79 @@
     },
     "wiki": "../calancolo.html"
   },
+  "camusci": {
+    "number": 132,
+    "name": "Camuscì",
+    "types": [
+      "Roccia"
+    ],
+    "base": [
+      50,
+      55,
+      80,
+      25,
+      45,
+      45
+    ],
+    "catchRate": 90,
+    "expYield": 70,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        4,
+        "lacerazione"
+      ],
+      [
+        8,
+        "parete"
+      ],
+      [
+        12,
+        "doppiocalcio"
+      ],
+      [
+        16,
+        "rotolamento"
+      ],
+      [
+        20,
+        "pietrataglio"
+      ],
+      [
+        24,
+        "testata"
+      ],
+      [
+        28,
+        "scalaroccia"
+      ],
+      [
+        32,
+        "fortificazione"
+      ],
+      [
+        36,
+        "cornoattacco"
+      ],
+      [
+        45,
+        "pietrabordo"
+      ]
+    ],
+    "evolution": {
+      "into": "ornata",
+      "item": "pietra_gelo"
+    },
+    "wiki": "../camusci.html"
+  },
   "canala": {
     "number": 97,
     "name": "Canala",
@@ -3439,6 +3512,75 @@
     "evolution": null,
     "wiki": "../fuocavallo.html"
   },
+  "geotrito": {
+    "number": 134,
+    "name": "Geotritò",
+    "types": [
+      "Drago"
+    ],
+    "base": [
+      45,
+      65,
+      40,
+      45,
+      45,
+      60
+    ],
+    "catchRate": 120,
+    "expYield": 60,
+    "growth": "lento",
+    "learnset": [
+      [
+        1,
+        "lacerazione"
+      ],
+      [
+        1,
+        "fulmisguardo"
+      ],
+      [
+        4,
+        "linguafionda"
+      ],
+      [
+        8,
+        "dragofuria"
+      ],
+      [
+        12,
+        "leccata"
+      ],
+      [
+        16,
+        "codacciaio"
+      ],
+      [
+        20,
+        "dragospiro"
+      ],
+      [
+        24,
+        "fangobomba"
+      ],
+      [
+        28,
+        "dragartigli"
+      ],
+      [
+        34,
+        "dragodanza"
+      ],
+      [
+        40,
+        "oltraggio"
+      ]
+    ],
+    "evolution": {
+      "into": "sandrago",
+      "level": 32
+    },
+    "wiki": "../geotrito.html"
+  },
   "gionata": {
     "number": 83,
     "name": "Gionata",
@@ -4810,6 +4952,89 @@
       "partySpecies": "bagnino"
     },
     "wiki": "../ombrellone.html"
+  },
+  "ornata": {
+    "number": 133,
+    "name": "Ornàta",
+    "types": [
+      "Roccia",
+      "Ghiaccio"
+    ],
+    "base": [
+      85,
+      90,
+      125,
+      45,
+      75,
+      70
+    ],
+    "catchRate": 45,
+    "expYield": 175,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        1,
+        "lacerazione"
+      ],
+      [
+        1,
+        "parete"
+      ],
+      [
+        1,
+        "livrea"
+      ],
+      [
+        12,
+        "doppiocalcio"
+      ],
+      [
+        16,
+        "rotolamento"
+      ],
+      [
+        20,
+        "pietrataglio"
+      ],
+      [
+        24,
+        "testata"
+      ],
+      [
+        28,
+        "scalaroccia"
+      ],
+      [
+        32,
+        "fortificazione"
+      ],
+      [
+        36,
+        "gelocorna"
+      ],
+      [
+        40,
+        "ghiacciolo"
+      ],
+      [
+        45,
+        "pietrabordo"
+      ],
+      [
+        50,
+        "gelodenti"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../ornata.html"
   },
   "paguremo": {
     "number": 120,
@@ -6434,6 +6659,85 @@
     ],
     "evolution": null,
     "wiki": "../sammaro.html"
+  },
+  "sandrago": {
+    "number": 135,
+    "name": "Sandrago",
+    "types": [
+      "Drago",
+      "Roccia"
+    ],
+    "base": [
+      90,
+      115,
+      105,
+      55,
+      65,
+      75
+    ],
+    "catchRate": 45,
+    "expYield": 190,
+    "growth": "lento",
+    "learnset": [
+      [
+        1,
+        "lacerazione"
+      ],
+      [
+        1,
+        "fulmisguardo"
+      ],
+      [
+        1,
+        "linguafionda"
+      ],
+      [
+        1,
+        "dragofuria"
+      ],
+      [
+        12,
+        "leccata"
+      ],
+      [
+        16,
+        "codacciaio"
+      ],
+      [
+        20,
+        "dragospiro"
+      ],
+      [
+        24,
+        "pietrataglio"
+      ],
+      [
+        28,
+        "dragartigli"
+      ],
+      [
+        32,
+        "pietra_daltare"
+      ],
+      [
+        34,
+        "dragodanza"
+      ],
+      [
+        40,
+        "pietrabordo"
+      ],
+      [
+        46,
+        "oltraggio"
+      ],
+      [
+        52,
+        "fortificazione"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../sandrago.html"
   },
   "sarchiapa": {
     "number": 92,

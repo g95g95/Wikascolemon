@@ -1864,6 +1864,94 @@
     },
     "description": "Una tempesta di terra che abbassa la Difesa avversaria."
   },
+  "lacerazione": {
+    "name": "Lacerazione",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 35,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "parete": {
+    "name": "Parete",
+    "type": "Roccia",
+    "category": "Fisico",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "resta la sua mossa di riferimento, e con questa Difesa raddoppia quasi sempre."
+  },
+  "doppiocalcio": {
+    "name": "Doppiocalcio",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 30,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "rotolamento": {
+    "name": "Rotolamento",
+    "type": "Roccia",
+    "category": "Fisico",
+    "power": 30,
+    "accuracy": 90,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "testata": {
+    "name": "Testata",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "scalaroccia": {
+    "name": "Scalaroccia",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 90,
+    "accuracy": 85,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ", che fuori dalla lotta serve a salire le pareti dei Sibillini."
+  },
+  "cornoattacco": {
+    "name": "Cornoattacco",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 25,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "pietrabordo": {
+    "name": "Pietrabordo",
+    "type": "Roccia",
+    "category": "Fisico",
+    "power": 100,
+    "accuracy": 80,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "meditazione": {
     "name": "Meditazione",
     "type": "Psico",
@@ -3397,6 +3485,45 @@
     },
     "description": "gira su sé stesso sparando scintille — infligge danno, aumenta la Velocità di chi la usa e nelle lotte in doppio colpisce entrambi gli avversari."
   },
+  "linguafionda": {
+    "name": "Linguafionda",
+    "type": "Drago",
+    "category": "Fisico",
+    "power": 50,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "Drago, fisica, 50 di potenza, priorità +1, non può fallire."
+  },
+  "codacciaio": {
+    "name": "Codacciaio",
+    "type": "Acciaio",
+    "category": "Fisico",
+    "power": 100,
+    "accuracy": 75,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 30
+    },
+    "description": ", «e nessuno sa dove l'abbia presa»."
+  },
+  "dragospiro": {
+    "name": "Dragospiro",
+    "type": "Drago",
+    "category": "Speciale",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "identificazione": {
     "name": "Identificazione",
     "type": "Normale",
@@ -3509,17 +3636,6 @@
     "priority": 0,
     "effect": null,
     "description": "Lotta, stato, suono: Attacco e Velocità +1 a sé e all'alleato; utilizzabile solo con almeno quattro Pokémon della squadra in grado di lottare."
-  },
-  "rotolamento": {
-    "name": "Rotolamento",
-    "type": "Roccia",
-    "category": "Fisico",
-    "power": 30,
-    "accuracy": 90,
-    "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "cartellonata": {
     "name": "Cartellonata",
@@ -4265,6 +4381,50 @@
     "effect": null,
     "description": "Energia della terra scatenata in un'esplosione."
   },
+  "livrea": {
+    "name": "Livrea",
+    "type": "Ghiaccio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Ghiaccio, stato: +2 Difesa, e per tre turni l'utente è immune alle mosse di tipo Ghiaccio e Roccia."
+  },
+  "gelocorna": {
+    "name": "Gelocorna",
+    "type": "Ghiaccio",
+    "category": "Fisico",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "ghiacciolo": {
+    "name": "Ghiacciolo",
+    "type": "Ghiaccio",
+    "category": "Fisico",
+    "power": 85,
+    "accuracy": 90,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "gelodenti": {
+    "name": "Gelodenti",
+    "type": "Ghiaccio",
+    "category": "Fisico",
+    "power": 65,
+    "accuracy": 95,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "maledizione": {
     "name": "Maledizione",
     "type": "Spettro",
@@ -4889,23 +5049,6 @@
     },
     "description": "è la sua mossa esclusiva: un colpo di mezzaluna che fa danno e"
   },
-  "codacciaio": {
-    "name": "Codacciaio",
-    "type": "Acciaio",
-    "category": "Fisico",
-    "power": 100,
-    "accuracy": 75,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "defense",
-      "stages": -1,
-      "chance": 30
-    },
-    "description": "Colpo di coda d'acciaio che può ridurre la Difesa."
-  },
   "fischio_lungo": {
     "name": "Fischio Lungo",
     "type": "Normale",
@@ -4946,6 +5089,17 @@
       "chance": 20
     },
     "description": "è la sua mossa esclusiva, appresa all'evoluzione: un colpo di ramo calato"
+  },
+  "pietra_daltare": {
+    "name": "Pietra d'Altare",
+    "type": "Roccia",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Roccia, fisica, 80 di potenza: l'utente recupera un quarto del danno inflitto."
   },
   "fischiabuchi": {
     "name": "Fischiabuchi",
@@ -5154,17 +5308,6 @@
     "priority": 0,
     "effect": null,
     "description": "Buio, stato: il bersaglio non può fuggire né essere sostituito per il resto della lotta, e le mosse dell'utente contro di lui non possono mancare."
-  },
-  "gelodenti": {
-    "name": "Gelodenti",
-    "type": "Ghiaccio",
-    "category": "Fisico",
-    "power": 65,
-    "accuracy": 95,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "geloscheggia": {
     "name": "Geloscheggia",

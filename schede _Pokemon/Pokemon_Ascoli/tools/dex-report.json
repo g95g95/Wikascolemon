@@ -169,6 +169,14 @@
       "ok": true
     },
     {
+      "id": "camusci",
+      "number": 132,
+      "name": "Camuscì",
+      "statTotal": 300,
+      "statSum": 300,
+      "ok": true
+    },
+    {
       "id": "canala",
       "number": 97,
       "name": "Canala",
@@ -417,6 +425,14 @@
       "ok": true
     },
     {
+      "id": "geotrito",
+      "number": 134,
+      "name": "Geotritò",
+      "statTotal": 300,
+      "statSum": 300,
+      "ok": true
+    },
+    {
       "id": "gionata",
       "number": 83,
       "name": "Gionata",
@@ -582,6 +598,14 @@
       "name": "Ombrellone",
       "statTotal": 400,
       "statSum": 400,
+      "ok": true
+    },
+    {
+      "id": "ornata",
+      "number": 133,
+      "name": "Ornàta",
+      "statTotal": 490,
+      "statSum": 490,
       "ok": true
     },
     {
@@ -782,6 +806,14 @@
       "name": "Sammarò",
       "statTotal": 455,
       "statSum": 455,
+      "ok": true
+    },
+    {
+      "id": "sandrago",
+      "number": 135,
+      "name": "Sandrago",
+      "statTotal": 505,
+      "statSum": 505,
       "ok": true
     },
     {
