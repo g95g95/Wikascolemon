@@ -126,7 +126,9 @@ function extractGrowth(html, fileName, errors, warnings) {
 function extractStats(html, fileName, errors) {
   const statSection = section(html, 'Statistiche', ['Mosse']);
   if (!statSection) { errors.push(`${fileName}: blocco statistiche non trovato`); return null; }
-  const rows = [...statSection.matchAll(/<span class="sv">(?:<b>)?(\d+)(?:<\/b>)?<\/span>/g)].map(x => parseInt(x[1], 10));
+  let rows = [...statSection.matchAll(/<span class="sv">(?:<b>)?(\d+)(?:<\/b>)?<\/span>/g)].map(x => parseInt(x[1], 10));
+  // Schede a forme (es. Saladì): un blocco per forma, il gioco usa il primo (forma base).
+  if (rows.length > 7 && rows.length % 7 === 0) rows = rows.slice(0, 7);
   if (rows.length !== 7) { errors.push(`${fileName}: attese 7 statistiche (6 + totale), trovate ${rows.length}`); return null; }
   const base = rows.slice(0, 6);
   const total = rows[6];

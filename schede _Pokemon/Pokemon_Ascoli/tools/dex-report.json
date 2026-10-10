@@ -793,6 +793,14 @@
       "ok": true
     },
     {
+      "id": "saladi",
+      "number": 138,
+      "name": "Saladì",
+      "statTotal": 510,
+      "statSum": 510,
+      "ok": true
+    },
+    {
       "id": "salvatorre",
       "number": 33,
       "name": "Salvatorre",

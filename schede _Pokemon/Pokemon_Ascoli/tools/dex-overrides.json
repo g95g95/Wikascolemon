@@ -26,6 +26,7 @@
   "peccio": { "evolution": { "into": "peccionara", "item": "granaglie" } },
   "pulcidoro": { "evolution": { "into": "chioccidoro", "item": "ciottolo_chiaro", "location": "ascensione" } },
   "talvecchia": { "types": ["Acqua"], "evolution": null },
+  "saladi": { "evolution": null },
   "lupitte": { "evolution": { "into": "sibillupo", "level": 30, "night": true } },
   "camusci": { "evolution": { "into": "ornata", "item": "pietra_gelo" } },
   "favette": { "evolution": { "into": "favalanciata", "level": 22 } },

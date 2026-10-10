@@ -5049,6 +5049,50 @@
     },
     "description": "è la sua mossa esclusiva: un colpo di mezzaluna che fa danno e"
   },
+  "taglio_del_nastro": {
+    "name": "Taglio del Nastro",
+    "type": "Folletto",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 1,
+    "priority": 0,
+    "effect": null,
+    "description": "Folletto, stato: cura completamente l'utente e azzera i cambi di statistiche di tutti i Pokémon in campo."
+  },
+  "passerella": {
+    "name": "Passerella",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Normale, stato: per un turno attira su di sé tutte le mosse avversarie e alza l'Attacco Speciale dell'alleato di un livello."
+  },
+  "rifugio": {
+    "name": "Rifugio",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "lista_invitati": {
+    "name": "Lista Invitati",
+    "type": "Psico",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Psico, stato: per tre turni i Pokémon avversari senza oggetto tenuto non possono colpire l'utente con mosse da contatto."
+  },
   "fischio_lungo": {
     "name": "Fischio Lungo",
     "type": "Normale",

@@ -6542,6 +6542,85 @@
     },
     "wiki": "../rotonda.html"
   },
+  "saladi": {
+    "number": 138,
+    "name": "Saladì",
+    "types": [
+      "Roccia",
+      "Folletto"
+    ],
+    "base": [
+      90,
+      70,
+      130,
+      80,
+      100,
+      40
+    ],
+    "catchRate": 30,
+    "expYield": 200,
+    "growth": "lento",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "fortificazione"
+      ],
+      [
+        1,
+        "taglio_del_nastro"
+      ],
+      [
+        8,
+        "rotolamento"
+      ],
+      [
+        12,
+        "bacio_drenante"
+      ],
+      [
+        16,
+        "passerella"
+      ],
+      [
+        20,
+        "abbattimento"
+      ],
+      [
+        24,
+        "rifugio"
+      ],
+      [
+        28,
+        "lista_invitati"
+      ],
+      [
+        32,
+        "forzaluna"
+      ],
+      [
+        36,
+        "levitoroccia"
+      ],
+      [
+        40,
+        "pietrabordo"
+      ],
+      [
+        45,
+        "vocedincanto"
+      ],
+      [
+        50,
+        "gigaimpatto"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../saladi.html"
+  },
   "salvatorre": {
     "number": 33,
     "name": "Salvatorre",
