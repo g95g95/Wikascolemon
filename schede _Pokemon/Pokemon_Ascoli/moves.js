@@ -3900,6 +3900,39 @@
     "effect": null,
     "description": ", l'unica volta in cui vola veloce."
   },
+  "buono_come_il_pane": {
+    "name": "Buono come il Pane",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Normale, stato: cura un alleato di metà dei PS massimi e lo rende immune alle mosse di stato per due turni; se usato in lotta singola, cura l'utente."
+  },
+  "colpo_rapido": {
+    "name": "Colpo Rapido",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 30,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "assalto_ai_forni": {
+    "name": "Assalto ai Forni",
+    "type": "Lotta",
+    "category": "Fisico",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Lotta, fisica, 90 di potenza: raddoppia contro i Pokémon di tipo Fuoco e contro quelli che tengono un oggetto."
+  },
   "ululato_indotto": {
     "name": "Ululato Indotto",
     "type": "Buio",

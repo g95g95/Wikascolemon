@@ -73,7 +73,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #134-#135 | Geotritò → Sandrago ✅ — il geotritone senza polmoni dei castagneti di Acquasanta e il drago tollerato nella Grotta di Sant'Angelo sul Salinello (Drago → Drago/Roccia, evolve al 32) |
 | #136-#137 | Libero (Tamburlà #137 annunciato dalla scheda di Saladì, non ancora arrivato) |
 | #138 | Saladì ✅ — Palazzo Saladini Pilastri di Ascoli, restaurato e «restituito alla città» (Roccia/Folletto, non si evolve: cambia forma allo scambio, Chiusa → Aperta) |
-| #139-#143 | Libero |
+| #139 | Lu Pà ✅ — la pagnotta del forno «L'assalto ai forni» di via De Gasperi ad Ascoli, con il lenzuolo (Fuoco/Lotta, non si evolve) |
+| #140-#143 | Libero |
 | #144-#146 | Fatella → Ancella → Sibilla ✅ — la linea del Monte Sibilla, pseudo-leggendaria (600) |
 | #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |
 | **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|

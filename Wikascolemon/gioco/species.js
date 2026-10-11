@@ -4304,6 +4304,81 @@
     "evolution": null,
     "wiki": "../longobatto.html"
   },
+  "lupa": {
+    "number": 139,
+    "name": "Lu Pà",
+    "types": [
+      "Fuoco",
+      "Lotta"
+    ],
+    "base": [
+      85,
+      110,
+      80,
+      70,
+      65,
+      60
+    ],
+    "catchRate": 75,
+    "expYield": 165,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "braciere"
+      ],
+      [
+        1,
+        "buono_come_il_pane"
+      ],
+      [
+        6,
+        "colpo_rapido"
+      ],
+      [
+        10,
+        "fortificazione"
+      ],
+      [
+        14,
+        "ruotafuoco"
+      ],
+      [
+        18,
+        "rafforzatore"
+      ],
+      [
+        22,
+        "assalto_ai_forni"
+      ],
+      [
+        26,
+        "fuocopugno"
+      ],
+      [
+        30,
+        "contropiede"
+      ],
+      [
+        35,
+        "lanciafiamme"
+      ],
+      [
+        40,
+        "zuffa"
+      ],
+      [
+        46,
+        "fuocobomba"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../lupa.html"
+  },
   "lupitte": {
     "number": 122,
     "name": "Lupittə",

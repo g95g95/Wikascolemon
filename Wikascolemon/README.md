@@ -152,6 +152,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #134 | [Geotritò](geotrito.html) | Pokémon Lingua | Drago | I castagneti di Acquasanta Terme e Roccafluvione, sotto le foglie |
 | #135 | [Sandrago](sandrago.html) | Pokémon Tollerato | Drago/Roccia | La Grotta di Sant'Angelo nelle Gole del Salinello, sopra Civitella del Tronto |
 | #138 | [Saladì](saladi.html) | Pokémon Dimora | Roccia/Folletto | Centro storico di Ascoli, Palazzo Saladini Pilastri (lato Sant'Egidio) |
+| #139 | [Lu Pà](lupa.html) | Pokémon Pagnotta | Fuoco/Lotta | I forni del centro di Ascoli, via De Gasperi (solo di mattina) |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |
