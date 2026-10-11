@@ -5594,6 +5594,39 @@
     },
     "description": "Colpisce furiosamente due volte."
   },
+  "te_do_de_terture": {
+    "name": "Te dò de Tertùre",
+    "type": "Lotta",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Lotta, stato, priorità +1: per un turno gli avversari non possono usare mosse da contatto; in lotta doppia, un alleato Zurriò guadagna +1 Difesa e −1 Attacco."
+  },
+  "legnata": {
+    "name": "Legnata",
+    "type": "Erba",
+    "category": "Fisico",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "mazzuolo": {
+    "name": "Mazzuolo",
+    "type": "Erba",
+    "category": "Fisico",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "differita": {
     "name": "Differita",
     "type": "Normale",

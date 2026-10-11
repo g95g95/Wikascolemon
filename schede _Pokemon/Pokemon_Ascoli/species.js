@@ -8209,6 +8209,73 @@
     },
     "wiki": "../tamburino.html"
   },
+  "terture": {
+    "number": 140,
+    "name": "Tertùre",
+    "types": [
+      "Erba",
+      "Lotta"
+    ],
+    "base": [
+      50,
+      100,
+      80,
+      30,
+      60,
+      70
+    ],
+    "catchRate": 90,
+    "expYield": 120,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "te_do_de_terture"
+      ],
+      [
+        1,
+        "fulmisguardo"
+      ],
+      [
+        5,
+        "frustata"
+      ],
+      [
+        10,
+        "colpo_rapido"
+      ],
+      [
+        15,
+        "legnata"
+      ],
+      [
+        20,
+        "fortificazione"
+      ],
+      [
+        25,
+        "pestone"
+      ],
+      [
+        30,
+        "contropiede"
+      ],
+      [
+        35,
+        "mazzuolo"
+      ],
+      [
+        40,
+        "zuffa"
+      ],
+      [
+        45,
+        "danzaspada"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../terture.html"
+  },
   "tifotto": {
     "number": 21,
     "name": "Tifotto",

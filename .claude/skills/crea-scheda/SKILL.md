@@ -74,7 +74,8 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #136-#137 | Libero (Tamburlà #137 annunciato dalla scheda di Saladì, non ancora arrivato) |
 | #138 | Saladì ✅ — Palazzo Saladini Pilastri di Ascoli, restaurato e «restituito alla città» (Roccia/Folletto, non si evolve: cambia forma allo scambio, Chiusa → Aperta) |
 | #139 | Lu Pà ✅ — la pagnotta del forno «L'assalto ai forni» di via De Gasperi ad Ascoli, con il lenzuolo (Fuoco/Lotta, non si evolve) |
-| #140-#143 | Libero |
+| #140 | Tertùre ✅ — il bastone d'ulivo di Canala, quarto elemento della linea di Zurriò (Erba/Lotta, non si evolve) |
+| #141-#143 | Libero |
 | #144-#146 | Fatella → Ancella → Sibilla ✅ — la linea del Monte Sibilla, pseudo-leggendaria (600) |
 | #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |
 | **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|

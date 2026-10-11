@@ -993,6 +993,14 @@
       "ok": true
     },
     {
+      "id": "terture",
+      "number": 140,
+      "name": "Tertùre",
+      "statTotal": 390,
+      "statSum": 390,
+      "ok": true
+    },
+    {
       "id": "tifotto",
       "number": 21,
       "name": "Tifotto",
