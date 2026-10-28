@@ -5178,6 +5178,61 @@
     "effect": null,
     "description": "Roccia, fisica, 80 di potenza: l'utente recupera un quarto del danno inflitto."
   },
+  "di_li_sciapezze": {
+    "name": "Dì li Sciapezze",
+    "type": "Normale",
+    "category": "Speciale",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "Normale, speciale, 50 di potenza: colpisce un bersaglio a caso; se il bersaglio ha l'Attacco Speciale aumentato, lo abbassa di due livelli. Sempre critico contro Saputezza."
+  },
+  "fa_li_saputezze": {
+    "name": "Fà li Saputezze",
+    "type": "Psico",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Psico, stato: +1 Attacco Speciale e +1 Difesa Speciale; per due turni gli avversari possono usare solo mosse di stato."
+  },
+  "velocita": {
+    "name": "Velocità",
+    "type": "Normale",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "lamento": {
+    "name": "Lamento",
+    "type": "Normale",
+    "category": "Speciale",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "granvoce": {
+    "name": "Granvoce",
+    "type": "Normale",
+    "category": "Speciale",
+    "power": 100,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "fischiabuchi": {
     "name": "Fischiabuchi",
     "type": "Spettro",

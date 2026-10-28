@@ -6893,6 +6893,85 @@
     "evolution": null,
     "wiki": "../sandrago.html"
   },
+  "saputezza": {
+    "number": 142,
+    "name": "Saputezza",
+    "types": [
+      "Normale",
+      "Psico"
+    ],
+    "base": [
+      75,
+      45,
+      70,
+      110,
+      90,
+      80
+    ],
+    "catchRate": 75,
+    "expYield": 160,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        1,
+        "di_li_sciapezze"
+      ],
+      [
+        1,
+        "riduttore"
+      ],
+      [
+        12,
+        "velocita"
+      ],
+      [
+        16,
+        "lamento"
+      ],
+      [
+        20,
+        "confusione"
+      ],
+      [
+        24,
+        "baraonda"
+      ],
+      [
+        28,
+        "calmamente"
+      ],
+      [
+        30,
+        "fa_li_saputezze"
+      ],
+      [
+        32,
+        "ipervoce"
+      ],
+      [
+        36,
+        "psichico"
+      ],
+      [
+        40,
+        "granvoce"
+      ],
+      [
+        45,
+        "psicoshock"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../saputezza.html"
+  },
   "sarchiapa": {
     "number": 92,
     "name": "Sarchiapà",
@@ -7025,6 +7104,76 @@
       "location": "sestiere"
     },
     "wiki": "../sbandiera.html"
+  },
+  "sciapezza": {
+    "number": 141,
+    "name": "Sciapezza",
+    "types": [
+      "Normale"
+    ],
+    "base": [
+      55,
+      35,
+      40,
+      55,
+      40,
+      75
+    ],
+    "catchRate": 190,
+    "expYield": 60,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "ruggito"
+      ],
+      [
+        4,
+        "di_li_sciapezze"
+      ],
+      [
+        8,
+        "riduttore"
+      ],
+      [
+        12,
+        "velocita"
+      ],
+      [
+        16,
+        "lamento"
+      ],
+      [
+        20,
+        "confusione"
+      ],
+      [
+        24,
+        "baraonda"
+      ],
+      [
+        28,
+        "attrazione"
+      ],
+      [
+        32,
+        "ipervoce"
+      ],
+      [
+        40,
+        "granvoce"
+      ]
+    ],
+    "evolution": {
+      "into": "saputezza",
+      "level": 30,
+      "item": "occhiali_finti"
+    },
+    "wiki": "../sciapezza.html"
   },
   "sciarpone": {
     "number": 22,

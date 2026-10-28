@@ -154,6 +154,8 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #138 | [Saladì](saladi.html) | Pokémon Dimora | Roccia/Folletto | Centro storico di Ascoli, Palazzo Saladini Pilastri (lato Sant'Egidio) |
 | #139 | [Lu Pà](lupa.html) | Pokémon Pagnotta | Fuoco/Lotta | I forni del centro di Ascoli, via De Gasperi (solo di mattina) |
 | #140 | [Tertùre](terture.html) | Pokémon Bastone | Erba/Lotta | Le case della vallata, accanto alla sedia di Canala |
+| #141 | [Sciapezza](sciapezza.html) | Pokémon Fesseria | Normale | I bar e le piazze del Piceno, ovunque ci sia gente seduta |
+| #142 | [Saputezza](saputezza.html) | Pokémon Saccente | Normale/Psico | Gli stessi bar di Sciapezza (in piedi), convegni e presentazioni di libri |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |

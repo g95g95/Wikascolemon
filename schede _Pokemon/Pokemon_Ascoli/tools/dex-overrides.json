@@ -30,6 +30,7 @@
   "lupitte": { "evolution": { "into": "sibillupo", "level": 30, "night": true } },
   "camusci": { "evolution": { "into": "ornata", "item": "pietra_gelo" } },
   "favette": { "evolution": { "into": "favalanciata", "level": 22 } },
+  "sciapezza": { "evolution": { "into": "saputezza", "level": 30, "item": "occhiali_finti" } },
   "tramonto": { "evolution": { "into": "cucu", "level": 19, "dusk": true } },
   "cucu": { "evolution": { "into": "lalluna", "level": 35, "night": true } },
   "sparpagghjo": { "evolution": { "into": "longobatto", "level": 28, "location": "castel_trosino" } }

@@ -833,6 +833,14 @@
       "ok": true
     },
     {
+      "id": "saputezza",
+      "number": 142,
+      "name": "Saputezza",
+      "statTotal": 470,
+      "statSum": 470,
+      "ok": true
+    },
+    {
       "id": "sarchiapa",
       "number": 92,
       "name": "Sarchiapà",
@@ -846,6 +854,14 @@
       "name": "Sbandiera",
       "statTotal": 400,
       "statSum": 400,
+      "ok": true
+    },
+    {
+      "id": "sciapezza",
+      "number": 141,
+      "name": "Sciapezza",
+      "statTotal": 300,
+      "statSum": 300,
       "ok": true
     },
     {
