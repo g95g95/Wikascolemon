@@ -76,6 +76,7 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #139 | Lu Pà ✅ — la pagnotta del forno «L'assalto ai forni» di via De Gasperi ad Ascoli, con il lenzuolo (Fuoco/Lotta, non si evolve) |
 | #140 | Tertùre ✅ — il bastone d'ulivo di Canala, quarto elemento della linea di Zurriò (Erba/Lotta, non si evolve) |
 | #141-#142 | Sciapezza → Saputezza ✅ — li sciapezze e li saputezze: la fesseria e la sua messinscena (Normale → Normale/Psico, lv 30 con Occhiali Finti) |
+| #143 | Sfrigne ✅ — lu Sfrigne, maschera del Carnevale di Ascoli: stracci, ombrello e aringhe marce (Buio/Acqua, non si evolve) |
 | #143 | Libero |
 | #144-#146 | Fatella → Ancella → Sibilla ✅ — la linea del Monte Sibilla, pseudo-leggendaria (600) |
 | #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |

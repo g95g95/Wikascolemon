@@ -897,6 +897,14 @@
       "ok": true
     },
     {
+      "id": "sfrigne",
+      "number": 143,
+      "name": "Sfrigne",
+      "statTotal": 480,
+      "statSum": 480,
+      "ok": true
+    },
+    {
       "id": "sibilla",
       "number": 146,
       "name": "Sibilla",

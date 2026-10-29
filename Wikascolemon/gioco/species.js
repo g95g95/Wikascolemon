@@ -7436,6 +7436,85 @@
     },
     "wiki": "../seggiola.html"
   },
+  "sfrigne": {
+    "number": 143,
+    "name": "Sfrigne",
+    "types": [
+      "Buio",
+      "Acqua"
+    ],
+    "base": [
+      100,
+      80,
+      65,
+      75,
+      70,
+      90
+    ],
+    "catchRate": 60,
+    "expYield": 170,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "storiella"
+      ],
+      [
+        1,
+        "pistolacqua"
+      ],
+      [
+        4,
+        "offerta_daringa"
+      ],
+      [
+        8,
+        "sberleffo"
+      ],
+      [
+        12,
+        "morso"
+      ],
+      [
+        16,
+        "furto"
+      ],
+      [
+        20,
+        "provocazione"
+      ],
+      [
+        24,
+        "ombrellata"
+      ],
+      [
+        28,
+        "pioggiadanza"
+      ],
+      [
+        32,
+        "sbigoattacco"
+      ],
+      [
+        36,
+        "fangata"
+      ],
+      [
+        40,
+        "idropompa"
+      ],
+      [
+        45,
+        "baratto"
+      ],
+      [
+        50,
+        "nottesferza"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../sfrigne.html"
+  },
   "sibilla": {
     "number": 146,
     "name": "Sibilla",

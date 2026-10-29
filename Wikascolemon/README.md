@@ -156,6 +156,7 @@ Registro unico dei Pokémon della regione. I numeri non ancora assegnati corrisp
 | #140 | [Tertùre](terture.html) | Pokémon Bastone | Erba/Lotta | Le case della vallata, accanto alla sedia di Canala |
 | #141 | [Sciapezza](sciapezza.html) | Pokémon Fesseria | Normale | I bar e le piazze del Piceno, ovunque ci sia gente seduta |
 | #142 | [Saputezza](saputezza.html) | Pokémon Saccente | Normale/Psico | Gli stessi bar di Sciapezza (in piedi), convegni e presentazioni di libri |
+| #143 | [Sfrigne](sfrigne.html) | Pokémon Pezzente | Buio/Acqua | Piazza del Popolo, Ascoli, solo nella settimana di Carnevale |
 | #144 | [Fatella](fatella.html) | Pokémon Danzante | Psico | Pendici del Monte Sibilla (Pretare, Foce, Montemonaco) |
 | #145 | [Ancella](ancella.html) | Pokémon Ancella | Psico | Dalle fonti di Foce in su, valle del Lago di Pilato |
 | #146 | [Sibilla](sibilla.html) | Pokémon Oracolo | Ghiaccio/Psico | Grotta della Sibilla, sotto la vetta del monte |

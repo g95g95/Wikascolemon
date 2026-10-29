@@ -5408,6 +5408,72 @@
     "effect": null,
     "description": "Acciaio, stato: ripristina metà dei PS massimi, ma l'utente salta il turno successivo."
   },
+  "storiella": {
+    "name": "Storiella",
+    "type": "Normale",
+    "category": "Speciale",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Normale, speciale, 60, mossa sonora: 30% di confondere il bersaglio."
+  },
+  "offerta_daringa": {
+    "name": "Offerta d'Aringa",
+    "type": "Buio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Buio, stato: se il bersaglio non tiene un oggetto, riceve un'Aringa Marcia, che gli toglie 1/8 dei PS a ogni turno finché la tiene."
+  },
+  "sberleffo": {
+    "name": "Sberleffo",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 40,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "ombrellata": {
+    "name": "Ombrellata",
+    "type": "Acqua",
+    "category": "Fisico",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": null,
+    "description": "Acqua, fisica, 80: l'ombrello usato come mazza."
+  },
+  "fangata": {
+    "name": "Fangata",
+    "type": "Terra",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
+  "nottesferza": {
+    "name": "Nottesferza",
+    "type": "Buio",
+    "category": "Fisico",
+    "power": 110,
+    "accuracy": 90,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "vaticinio": {
     "name": "Vaticinio",
     "type": "Psico",
