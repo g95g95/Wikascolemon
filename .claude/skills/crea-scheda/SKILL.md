@@ -54,7 +54,7 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #092 | Sarchiapà ✅ — il personaggio che non c'è, bucherellato dove i racconti non combaciano |
 | #093-#094 | Cacc'nittə → Ranc'cò ✅ — la linea del cane: da salotto a randagio, evolve al 22 di notte |
 | #095-#097 | Zurriò → Cəllò → Canala ✅ — la linea della vita della vallata: il monello, il tuttofare, Nonno Canala (Lotta → Lotta → Lotta/Psico, evolve al 28 e al 55) |
-| #098 | Miercelusox — bozza in `schede _Pokemon/`, **non ancora pubblicata**: numero riservato, non riassegnare |
+| #098 | Libero (era Miercelusox, bozza scartata il 30/10/2026) |
 | #099-#101 | Gradino → Seggiola → Gradinata ✅ — la linea dello stadio Del Duca: il gradino, il seggiolino, la curva (Roccia → Roccia/Acciaio → Roccia/Lotta, evolve al 25 e allo stadio di domenica) |
 | #102-#104 | Rotonda → Ciclabile → Pontecurvo ✅ — la linea delle opere pubbliche: la rotatoria, la ciclabile sul marciapiede, il ponte curvo sul Tronto (Terra → Terra/Erba → Terra/Acciaio, evolve al 30 e sul Tronto) |
 | #105-#108 | Sismino → Accumoli / Amatrice / Arquata ✅ — la linea della Laga: il presagio che sente la terra e i tre modi di restare (Normale → Terra con affetto / Fuoco con Pietrafocaia / Roccia alla Rocca di Arquata); dedicata ai tre paesi
@@ -71,13 +71,13 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #130-#131 | Sparpagghjò → Longobatto ✅ — il pipistrello di tutto il sottosuolo piceno e la sua evoluzione a Castel Trosino (Veleno/Volante → Volante/Spettro, evolve al 28 solo nella necropoli longobarda) |
 | #132-#133 | Camuscì → Ornàta ✅ — il camoscio appenninico reintrodotto sui Sibillini nel 2008 (Roccia → Roccia/Ghiaccio, evolve con la Pietra Gelo del Lago di Pilato; Scalaroccia della regione) |
 | #134-#135 | Geotritò → Sandrago ✅ — il geotritone senza polmoni dei castagneti di Acquasanta e il drago tollerato nella Grotta di Sant'Angelo sul Salinello (Drago → Drago/Roccia, evolve al 32) |
-| #136-#137 | Libero (Tamburlà #137 annunciato dalla scheda di Saladì, non ancora arrivato) |
-| #138 | Saladì ✅ — Palazzo Saladini Pilastri di Ascoli, restaurato e «restituito alla città» (Roccia/Folletto, non si evolve: cambia forma allo scambio, Chiusa → Aperta) |
-| #139 | Lu Pà ✅ — la pagnotta del forno «L'assalto ai forni» di via De Gasperi ad Ascoli, con il lenzuolo (Fuoco/Lotta, non si evolve) |
+| #136 | Saladì ✅ — Palazzo Saladini Pilastri di Ascoli, restaurato e «restituito alla città» (Roccia/Folletto, non si evolve: cambia forma allo scambio, Chiusa → Aperta; era #138 fino al 30/10/2026) |
+| #137 | Libero (Tamburlà, annunciato, non ancora arrivato) |
+| #138 | Cocchia ✅ — la cocchia, la crosta del pane tenuta da parte (Fuoco, evolve in Lu Pà al livello 20 con affetto alto) |
+| #139 | Lu Pà ✅ — la pagnotta del forno «L'assalto ai forni» di via De Gasperi ad Ascoli, con il lenzuolo (Fuoco/Lotta, evoluzione di Cocchia) |
 | #140 | Tertùre ✅ — il bastone d'ulivo di Canala, quarto elemento della linea di Zurriò (Erba/Lotta, non si evolve) |
 | #141-#142 | Sciapezza → Saputezza ✅ — li sciapezze e li saputezze: la fesseria e la sua messinscena (Normale → Normale/Psico, lv 30 con Occhiali Finti) |
 | #143 | Sfrigne ✅ — lu Sfrigne, maschera del Carnevale di Ascoli: stracci, ombrello e aringhe marce (Buio/Acqua, non si evolve) |
-| #143 | Libero |
 | #144-#146 | Fatella → Ancella → Sibilla ✅ — la linea del Monte Sibilla, pseudo-leggendaria (600) |
 | #147 | Chirocefalo ✅ — il crostaceo glaciale del Lago di Pilato, accanto ai leggendari senza esserlo |
 | **#148** | **Picchio ✅ — leggendario della partenza, coppia con Gommapiuma #149.**|

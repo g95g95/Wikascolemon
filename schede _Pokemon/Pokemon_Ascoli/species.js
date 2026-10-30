@@ -2489,6 +2489,76 @@
     "evolution": null,
     "wiki": "../ciucione.html"
   },
+  "cocchia": {
+    "number": 138,
+    "name": "Cocchia",
+    "types": [
+      "Fuoco"
+    ],
+    "base": [
+      40,
+      45,
+      75,
+      35,
+      45,
+      30
+    ],
+    "catchRate": 190,
+    "expYield": 55,
+    "growth": "medio-veloce",
+    "learnset": [
+      [
+        1,
+        "azione"
+      ],
+      [
+        1,
+        "fortificazione"
+      ],
+      [
+        3,
+        "crosta"
+      ],
+      [
+        6,
+        "braciere"
+      ],
+      [
+        9,
+        "rotolamento"
+      ],
+      [
+        12,
+        "rafforzatore"
+      ],
+      [
+        15,
+        "ruotafuoco"
+      ],
+      [
+        18,
+        "fuocofatuo"
+      ],
+      [
+        21,
+        "testata"
+      ],
+      [
+        25,
+        "lanciafiamme"
+      ],
+      [
+        30,
+        "contropiede"
+      ]
+    ],
+    "evolution": {
+      "into": "lupa",
+      "level": 20,
+      "friendship": true
+    },
+    "wiki": "../cocchia.html"
+  },
   "cometella": {
     "number": 124,
     "name": "Cometella",
@@ -6618,7 +6688,7 @@
     "wiki": "../rotonda.html"
   },
   "saladi": {
-    "number": 138,
+    "number": 136,
     "name": "Saladì",
     "types": [
       "Roccia",

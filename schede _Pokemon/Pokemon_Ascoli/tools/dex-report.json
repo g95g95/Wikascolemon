@@ -305,6 +305,14 @@
       "ok": true
     },
     {
+      "id": "cocchia",
+      "number": 138,
+      "name": "Cocchia",
+      "statTotal": 270,
+      "statSum": 270,
+      "ok": true
+    },
+    {
       "id": "cometella",
       "number": 124,
       "name": "Cometella",
@@ -802,7 +810,7 @@
     },
     {
       "id": "saladi",
-      "number": 138,
+      "number": 136,
       "name": "Saladì",
       "statTotal": 510,
       "statSum": 510,

@@ -2847,6 +2847,17 @@
     "effect": null,
     "description": "Colpisce con potenza dopo un balzo aereo."
   },
+  "crosta": {
+    "name": "Crosta",
+    "type": "Fuoco",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "Fuoco, stato: +2 Difesa, −1 Velocità."
+  },
   "flash": {
     "name": "Flash",
     "type": "Normale",
