@@ -54,7 +54,7 @@ Determina il **numero di Pokédex**. Il dex è **uno solo — il Pokédex del Pi
 | #092 | Sarchiapà ✅ — il personaggio che non c'è, bucherellato dove i racconti non combaciano |
 | #093-#094 | Cacc'nittə → Ranc'cò ✅ — la linea del cane: da salotto a randagio, evolve al 22 di notte |
 | #095-#097 | Zurriò → Cəllò → Canala ✅ — la linea della vita della vallata: il monello, il tuttofare, Nonno Canala (Lotta → Lotta → Lotta/Psico, evolve al 28 e al 55) |
-| #098 | Libero (era Miercelusox, bozza scartata il 30/10/2026) |
+| #098 | Shpare ✅ — il razzo dei fuochi di Sant'Emidio sul Castellano, la sera del 5 agosto (Fuoco/Volante, non si evolve; mossa esclusiva Botto Finale) |
 | #099-#101 | Gradino → Seggiola → Gradinata ✅ — la linea dello stadio Del Duca: il gradino, il seggiolino, la curva (Roccia → Roccia/Acciaio → Roccia/Lotta, evolve al 25 e allo stadio di domenica) |
 | #102-#104 | Rotonda → Ciclabile → Pontecurvo ✅ — la linea delle opere pubbliche: la rotatoria, la ciclabile sul marciapiede, il ponte curvo sul Tronto (Terra → Terra/Erba → Terra/Acciaio, evolve al 30 e sul Tronto) |
 | #105-#108 | Sismino → Accumoli / Amatrice / Arquata ✅ — la linea della Laga: il presagio che sente la terra e i tre modi di restare (Normale → Terra con affetto / Fuoco con Pietrafocaia / Roccia alla Rocca di Arquata); dedicata ai tre paesi

@@ -7585,6 +7585,77 @@
     "evolution": null,
     "wiki": "../sfrigne.html"
   },
+  "shpare": {
+    "number": 98,
+    "name": "Shpare",
+    "types": [
+      "Fuoco",
+      "Volante"
+    ],
+    "base": [
+      55,
+      50,
+      45,
+      135,
+      60,
+      125
+    ],
+    "catchRate": 15,
+    "expYield": 220,
+    "growth": "medio-lento",
+    "learnset": [
+      [
+        1,
+        "braciere"
+      ],
+      [
+        1,
+        "fuococarica"
+      ],
+      [
+        1,
+        "botto_finale"
+      ],
+      [
+        8,
+        "raffica"
+      ],
+      [
+        14,
+        "fuocofatuo"
+      ],
+      [
+        20,
+        "salice_piangente"
+      ],
+      [
+        26,
+        "aerasoio"
+      ],
+      [
+        32,
+        "lanciafiamme"
+      ],
+      [
+        38,
+        "agilita"
+      ],
+      [
+        44,
+        "eterelama"
+      ],
+      [
+        50,
+        "fuocobomba"
+      ],
+      [
+        56,
+        "vampata"
+      ]
+    ],
+    "evolution": null,
+    "wiki": "../shpare.html"
+  },
   "sibilla": {
     "number": 146,
     "name": "Sibilla",

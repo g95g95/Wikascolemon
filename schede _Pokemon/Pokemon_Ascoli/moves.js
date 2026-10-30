@@ -5485,6 +5485,39 @@
     "effect": null,
     "description": ""
   },
+  "botto_finale": {
+    "name": "Botto Finale",
+    "type": "Fuoco",
+    "category": "Speciale",
+    "power": 200,
+    "accuracy": 100,
+    "pp": 5,
+    "priority": 0,
+    "effect": null,
+    "description": "Fuoco, speciale, 200 di potenza: l'utente va KO; i Pokémon della sua squadra in panchina recuperano un quarto dei PS massimi."
+  },
+  "salice_piangente": {
+    "name": "Salice Piangente",
+    "type": "Fuoco",
+    "category": "Speciale",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Fuoco, speciale, 70, colpisce tutti gli avversari e abbassa la loro Velocità di un livello."
+  },
+  "aerasoio": {
+    "name": "Aerasoio",
+    "type": "Volante",
+    "category": "Speciale",
+    "power": 60,
+    "accuracy": 95,
+    "pp": 25,
+    "priority": 0,
+    "effect": null,
+    "description": ""
+  },
   "vaticinio": {
     "name": "Vaticinio",
     "type": "Psico",

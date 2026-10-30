@@ -913,6 +913,14 @@
       "ok": true
     },
     {
+      "id": "shpare",
+      "number": 98,
+      "name": "Shpare",
+      "statTotal": 470,
+      "statSum": 470,
+      "ok": true
+    },
+    {
       "id": "sibilla",
       "number": 146,
       "name": "Sibilla",
