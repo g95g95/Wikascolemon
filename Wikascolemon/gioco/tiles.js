@@ -32,7 +32,14 @@
     staccionata: { name: 'Staccionata', blocks: true, span: 2 }, muretto: { name: 'Muretto', blocks: true, span: 2 },
     siepe: { name: 'Siepe', blocks: true, span: 2 }, tavolino: { name: 'Tavolino con ombrellone', blocks: true, span: 2 },
     ulivo: { name: 'Ulivo', blocks: true, span: 2 }, cipresso: { name: 'Cipresso', blocks: true },
-    ombrellone: { name: 'Ombrellone da spiaggia', blocks: true, span: 2 }, barca: { name: 'Barca', blocks: true, span: 2 }
+    ombrellone: { name: 'Ombrellone da spiaggia', blocks: true, span: 2 }, barca: { name: 'Barca', blocks: true, span: 2 },
+    // interni. `counter`: ci si parla attraverso (il barista sta dietro il bancone)
+    bancone: { name: 'Bancone', blocks: true, span: 2, counter: true }, cassa: { name: 'Cassa', blocks: true, span: 2, counter: true },
+    macchina_caffe: { name: 'Macchina del caffè', blocks: true, span: 2 }, scaffale_bottiglie: { name: 'Scaffale di bottiglie', blocks: true, span: 2 },
+    scaffale_riviste: { name: 'Scaffale di riviste', blocks: true, span: 2 }, sgabello: { name: 'Sgabello', blocks: true },
+    tavolo_sedie: { name: 'Tavolo con sedie', blocks: true, span: 2 }, frigo: { name: 'Frigo', blocks: true, span: 2 },
+    pianta: { name: 'Pianta', blocks: true }, quadro: { name: 'Quadro', blocks: false, span: 2 },
+    jukebox: { name: 'Jukebox', blocks: true, span: 2 }, zerbino: { name: 'Zerbino', blocks: false }
   };
 
   function decorBlocks(map, x, y) {
@@ -107,7 +114,23 @@
       ulivo: [194, 64, 32, 30],
       cipresso: [226, 64, 14, 32],
       ombrellone: [0, 96, 25, 32],
-      barca: [25, 96, 30, 24]
+      barca: [25, 96, 30, 24],
+      pavimento_legno: [55, 96, 32, 32],
+      pavimento_scacchi: [87, 96, 32, 32],
+      parete: [119, 96, 32, 32],
+      zerbino: [151, 96, 15, 12],
+      bancone: [166, 96, 32, 19],
+      macchina_caffe: [198, 96, 30, 32],
+      scaffale_bottiglie: [0, 128, 32, 30],
+      sgabello: [32, 128, 13, 22],
+      tavolo_sedie: [45, 128, 32, 19],
+      scaffale_riviste: [77, 128, 32, 31],
+      cassa: [109, 128, 31, 28],
+      frigo: [140, 128, 20, 32],
+      pianta: [160, 128, 16, 22],
+      quadro: [176, 128, 24, 20],
+      jukebox: [200, 128, 23, 32],
+      porta_interna: [223, 128, 16, 21]
     // </OBJECTS>
     };
 
@@ -164,7 +187,7 @@
           if (inZone && !(map.buildings || []).some(item => pointInRect(x, y, item))) tall[y * map.width + x] = 1;
         }
       }
-      grid = { types, tall, width: map.width, height: map.height };
+      grid = { types, tall, width: map.width, height: map.height, floor: map.floor };
       terrainGrids.set(map, grid);
       return grid;
     }
@@ -196,6 +219,12 @@
 
     function drawGround(grid, x, y, screenX, screenY, frame) {
       const type = gridType(grid, x, y);
+      // interni arredati (`map.floor`): pavimento e parete vengono dalle texture, un quarto per cella
+      if (grid.floor && objectsReady() && (type === 'pavimento' || type === 'muro')) {
+        const texture = OBJECTS[type === 'muro' ? 'parete' : grid.floor];
+        ctx.drawImage(objectsImage, texture[0] + (x % 2) * 16, texture[1] + (y % 2) * 16, 16, 16, screenX, screenY, 16, 16);
+        return;
+      }
       const hash = ((x * 73856093) ^ (y * 19349663)) >>> 0;
       let tile = TILES[type];
       if (type === 'erba') tile = grid.tall[y * grid.width + x] ? TILES.erba_alta : [TILES.erba, TILES.erba, TILES.erba_b, TILES.erba, TILES.erba, TILES.erba_c, TILES.erba, TILES.erba_b][hash % 8];

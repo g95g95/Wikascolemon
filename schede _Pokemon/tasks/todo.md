@@ -95,8 +95,11 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
       battaglia vanno ricontrollati uno per uno contro la wiki.
 - [x] F6. Fruscio dell'erba alta, animazione della Ball, barra exp che si riempie, mappa della regione
       nel menu (provvisoria: posizioni disegnate a mano in `regionSpots`).
-- [ ] F7. Interni degli edifici: partire da bar e tabacchi (oggi cura e negozio scattano sulla porta).
-      Serve un foglio di arredi interni.
+- [x] F7. (14/11) Interni di bar e tabacchi: `maps/interni.js` (due stanze 15×10 condivise), collegamento
+      in `data.js`, ritorno alla porta d'ingresso (`save.returnSpot`, passaggio `back`), si parla
+      attraverso i banconi (`counter` in `DECOR_KINDS`), si entra camminando contro la porta.
+      Da fare: stanze diverse per i bar della trama (Bobby, Steven, Elena), case visitabili.
+- [x] F9. (14/11) Effetti sonori provvisori sintetizzati (`SOUNDS` in `game.js`). Musica: no.
 - [ ] F8. Sprite veri per Tifotto (fronte e retro).
 
 ## D. Suono (dopo)

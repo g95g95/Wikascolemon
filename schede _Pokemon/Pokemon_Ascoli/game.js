@@ -316,6 +316,9 @@
     const targetX = player.x + vector.x;
     const targetY = player.y + vector.y;
     if (isBlocked(currentMap, targetX, targetY)) {
+      // camminare contro l'edificio dalla cella davanti alla porta = entrare
+      const doorway = direction === 'up' && (currentMap.buildings || []).find(item => item.door && item.door.x === player.x && item.door.y === player.y && pointInRect(targetX, targetY, item));
+      if (doorway && buildingScript(doorway).length) { nextMoveAt = now + 400; enterBuilding(doorway); return; }
       player.frame = 0;
       playSound('bump');
       nextMoveAt = now + 220;
@@ -347,7 +350,7 @@
     player.renderX = player.x;
     player.renderY = player.y;
     movement = null;
-    if (isTallGrass(currentMap, player.x, player.y)) rustle = { x: player.x, y: player.y, start: now };
+    if (isTallGrass(currentMap, player.x, player.y)) { rustle = { x: player.x, y: player.y, start: now }; playSound('rustle'); }
     save.steps = (save.steps || 0) + 1;
     if (checkTrainerSight()) return;
     if (checkTransition()) return;
@@ -380,12 +383,15 @@
       player.renderY = player.y;
       return true;
     }
-    player.map = exit.to;
-    player.x = exit.spawnX;
-    player.y = exit.spawnY;
+    // `back`: si torna alla porta da cui si è entrati, se la si conosce
+    const back = exit.back && save.returnSpot && maps[save.returnSpot.map] ? save.returnSpot : null;
+    player.map = back ? back.map : exit.to;
+    player.x = back ? back.x : exit.spawnX;
+    player.y = back ? back.y : exit.spawnY;
+    if (exit.direction) player.direction = exit.direction;
     player.renderX = player.x;
     player.renderY = player.y;
-    currentMap = maps[exit.to];
+    currentMap = maps[player.map];
     initNpcs();
     updateLocation();
     showLocation(currentMap.name);
@@ -468,6 +474,13 @@
       return;
     }
 
+    // banconi e casse: si parla con chi sta dietro
+    const counter = (currentMap.decor || []).find(item => (Tiles.DECOR_KINDS[item.kind] || {}).counter && item.y === y && x >= item.x && x < item.x + (Tiles.DECOR_KINDS[item.kind].span || 1));
+    if (counter) {
+      const behind = visibleRuntimeNpcs().find(item => item.x === x + vector.x && item.y === y + vector.y);
+      if (behind) { playSound('confirm'); runScript(Events.npcScript(behind)); return; }
+    }
+
     // cartelli (arredo con un testo): si leggono
     const sign = (currentMap.decor || []).find(item => item.text && item.x === x && item.y === y);
     if (sign) {
@@ -486,12 +499,18 @@
     // la cella-porta vale sia davanti al giocatore sia sotto i suoi piedi (ci si arriva camminandoci sopra)
     const building = (currentMap.buildings || []).find(item => item.door && ((item.door.x === x && item.door.y === y) || (item.door.x === player.x && item.door.y === player.y)));
     if (building) {
-      playSound('confirm');
-      runScript(buildingScript(building));
+      enterBuilding(building);
       return;
     }
 
     playSound('bump');
+  }
+
+  function enterBuilding(building) {
+    playSound('confirm');
+    // da dove si entra: ci si torna uscendo dagli interni condivisi (bar, tabacchi)
+    save.returnSpot = { map: player.map, x: building.door.x, y: building.door.y };
+    runScript(buildingScript(building));
   }
 
   function buildingScript(building) {
@@ -1055,12 +1074,14 @@
         if (playerAction.type !== 'move') continue;
         if (activeMonster().hp <= 0 || battle.wild.hp <= 0) continue;
         const result = Battle.executeMove(activeMonster(), battle.wild, playerAction.moveId, battle.playerStages, battle.enemyStages, { rng: Math.random });
+        if (result.events.some(event => event.type === 'damage')) playSound('hit');
         pushMessages(result.events);
         await flushMessages();
         if (await checkFaints()) return;
       } else {
         if (activeMonster().hp <= 0 || battle.wild.hp <= 0) continue;
         const result = Battle.executeMove(battle.wild, activeMonster(), enemyAction.moveId, battle.enemyStages, battle.playerStages, { rng: Math.random });
+        if (result.events.some(event => event.type === 'damage')) playSound('hit');
         pushMessages(result.events);
         await flushMessages();
         if (await checkFaints()) return;
@@ -1093,12 +1114,14 @@
   async function handleEnemyFaint() {
     const winner = activeMonster();
     const gain = Battle.expGain(battle.wild, { trainer: battle.kind === 'trainer', participants: 1 });
+    playSound('faint');
     ui.battleMessage.textContent = `${data.species[battle.wild.species].name} è esausto! ${data.species[winner.species].name} ottiene ${gain} ESP.`;
     renderBattle();
     await sleep(700);
     const gainResult = Battle.gainExperience(winner, gain, { map: player.map, hasItem, mapHasWater: mapHasWater() });
     // la barra dell'esperienza si riempie sotto gli occhi: fino in fondo se si sale di livello,
     // poi riparte dal nuovo livello
+    playSound('exp');
     if (gainResult.levelsGained > 0) {
       ui.allyExp.style.width = '100%';
       await sleep(550);
@@ -1110,6 +1133,7 @@
     renderBattle();
     await sleep(550);
     if (gainResult.levelsGained > 0) {
+      playSound('levelup');
       ui.battleMessage.textContent = `${data.species[winner.species].name} è salito al livello ${winner.level}!`;
       renderBattle();
       await sleep(700);
@@ -1168,6 +1192,7 @@
   }
 
   async function handleFaintedAlly() {
+    playSound('faint');
     ui.battleMessage.textContent = `${data.species[activeMonster().species].name} non può più combattere!`;
     renderBattle();
     await sleep(700);
@@ -1227,7 +1252,7 @@
       }
       if (attempt.caught) {
         ball.className = 'battle-ball locked';
-        playSound('confirm');
+        playSound('caught');
         save.dex.caught[wild.species] = true;
         const destination = save.team.length < 6 ? save.team : save.storage;
         destination.push(wild);
@@ -1321,6 +1346,8 @@
     mode = 'world';
     const messages = { won: 'Vittoria!', win: 'Vittoria!', caught: null, fled: 'Sei fuggito.', lost: 'Sei stato sconfitto.' };
     if (messages[result]) showToast(messages[result]);
+    if (result === 'won' || result === 'win') playSound('win');
+    if (result === 'lost') playSound('lose');
     autoSave();
     if (onEnd) onEnd(result);
   }
@@ -1937,20 +1964,58 @@
     flushWorldLabels();
   }
 
+  // Effetti sonori PROVVISORI, sintetizzati al volo (niente file audio).
+  // Ogni effetto è una lista di note [frequenza Hz, inizio s, durata s, forma d'onda, frequenza d'arrivo]
+  // più, se serve, uno sbuffo di rumore (`noise`: durata in secondi).
+  const SOUNDS = {
+    confirm: { notes: [[880, 0, .05, 'square'], [1175, .05, .08, 'square']] },
+    bump: { notes: [[130, 0, .09, 'square', 90]] },
+    hit: { noise: .12, notes: [[240, 0, .12, 'square', 70]] },
+    faint: { notes: [[520, 0, .45, 'square', 70]] },
+    heal: { notes: [[523, 0, .09, 'triangle'], [659, .09, .09, 'triangle'], [784, .18, .09, 'triangle'], [1047, .27, .22, 'triangle']] },
+    throw: { notes: [[380, 0, .22, 'triangle', 980]] },
+    encounter: { notes: [[660, 0, .07, 'square'], [440, .08, .07, 'square'], [660, .16, .07, 'square'], [440, .24, .07, 'square'], [880, .32, .16, 'square']] },
+    transition: { notes: [[392, 0, .08, 'triangle'], [294, .08, .12, 'triangle']] },
+    rustle: { noise: .07, volume: .35 },
+    levelup: { notes: [[523, 0, .08, 'square'], [659, .08, .08, 'square'], [784, .16, .08, 'square'], [1047, .24, .12, 'square'], [784, .37, .07, 'square'], [1047, .45, .28, 'square']] },
+    caught: { notes: [[659, 0, .1, 'square'], [659, .12, .1, 'square'], [784, .24, .1, 'square'], [988, .36, .1, 'square'], [1319, .48, .35, 'square']] },
+    win: { notes: [[523, 0, .1, 'square'], [523, .11, .1, 'square'], [523, .22, .1, 'square'], [659, .33, .16, 'square'], [587, .5, .1, 'square'], [659, .61, .1, 'square'], [784, .72, .4, 'square']] },
+    lose: { notes: [[392, 0, .18, 'triangle'], [330, .2, .18, 'triangle'], [262, .4, .18, 'triangle'], [196, .6, .5, 'triangle']] },
+    exp: { notes: [[440, 0, .4, 'triangle', 1100]] }
+  };
+
   function playSound(kind) {
     if (!save || !save.settings.sound) return;
+    const sound = SOUNDS[kind];
+    if (!sound) return;
     try {
       audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gain = audioContext.createGain();
-      const frequencies = { confirm: 520, bump: 130, hit: 180, heal: 720, throw: 430, encounter: 250, transition: 380 };
-      oscillator.frequency.value = frequencies[kind] || 330;
-      oscillator.type = kind === 'hit' ? 'square' : 'triangle';
-      gain.gain.setValueAtTime(.05, audioContext.currentTime);
-      gain.gain.exponentialRampToValueAtTime(.001, audioContext.currentTime + .09);
-      oscillator.connect(gain).connect(audioContext.destination);
-      oscillator.start();
-      oscillator.stop(audioContext.currentTime + .1);
+      if (audioContext.state === 'suspended') audioContext.resume();
+      const now = audioContext.currentTime;
+      const volume = .05 * (sound.volume || 1);
+      for (const [frequency, at, duration, wave, slideTo] of sound.notes || []) {
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        oscillator.type = wave;
+        oscillator.frequency.setValueAtTime(frequency, now + at);
+        if (slideTo) oscillator.frequency.exponentialRampToValueAtTime(slideTo, now + at + duration);
+        gain.gain.setValueAtTime(volume, now + at);
+        gain.gain.exponentialRampToValueAtTime(.0008, now + at + duration);
+        oscillator.connect(gain).connect(audioContext.destination);
+        oscillator.start(now + at);
+        oscillator.stop(now + at + duration + .02);
+      }
+      if (sound.noise) {
+        const buffer = audioContext.createBuffer(1, Math.ceil(audioContext.sampleRate * sound.noise), audioContext.sampleRate);
+        const samples = buffer.getChannelData(0);
+        for (let i = 0; i < samples.length; i += 1) samples[i] = (Math.random() * 2 - 1) * (1 - i / samples.length);
+        const source = audioContext.createBufferSource();
+        const gain = audioContext.createGain();
+        gain.gain.value = volume * 1.6;
+        source.buffer = buffer;
+        source.connect(gain).connect(audioContext.destination);
+        source.start(now);
+      }
     } catch (_) { }
   }
 

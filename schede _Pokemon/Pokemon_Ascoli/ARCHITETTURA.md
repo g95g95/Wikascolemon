@@ -178,6 +178,12 @@ sotto stanno lì, non più in `game.js`.
   script non mette mai oggetti su strade, porte, passaggi, arrivi, NPC, allenatori o linee di sguardo
   e ricontrolla la raggiungibilità dopo ogni oggetto. È anche il posto dove riversare un export del
   configuratore.
+- **Interni condivisi** (`maps/interni.js`): `interno_bar` e `interno_tabacchi`, stanze 15×10 con
+  `floor` (texture del pavimento) e parete di fondo. `data.js` dà a ogni edificio `interior: 'bar'` o
+  `'market'` senza script suo un `script` che fa `warp` nella stanza; `enterBuilding` in `game.js`
+  ricorda la porta in `save.returnSpot` e il passaggio d'uscita (`back: true`) riporta lì. Gli arredi
+  con `counter: true` (bancone, cassa) lasciano parlare con l'NPC che sta dietro.
+- **Suoni**: `SOUNDS` in `game.js`, note sintetizzate con WebAudio; nessun file audio.
 - **Cartelli**: un arredo `cartello` con `text` si legge con A (`interact`). `arreda-mappe.mjs` ne
   mette uno accanto alla porta di ogni edificio con un nome proprio (non le «Casa …»); i nomi degli
   edifici non vengono più disegnati come etichette.

@@ -38,6 +38,16 @@ SHEETS = [
         (3, 0, 'ulivo', 32, 32, False), (3, 1, 'cipresso', 16, 32, False),
         (3, 2, 'ombrellone', 32, 32, False), (3, 3, 'barca', 32, 24, False),
     ]),
+    ('interni-1.png', 4, 4, [
+        (0, 0, 'pavimento_legno', 32, 32, True), (0, 1, 'pavimento_scacchi', 32, 32, True),
+        (0, 2, 'parete', 32, 32, True), (0, 3, 'zerbino', 16, 12, False),
+        (1, 0, 'bancone', 32, 24, False), (1, 1, 'macchina_caffe', 32, 32, False),
+        (1, 2, 'scaffale_bottiglie', 32, 32, False), (1, 3, 'sgabello', 14, 22, False),
+        (2, 0, 'tavolo_sedie', 32, 24, False), (2, 1, 'scaffale_riviste', 32, 32, False),
+        (2, 2, 'cassa', 32, 28, False), (2, 3, 'frigo', 24, 32, False),
+        (3, 0, 'pianta', 16, 24, False), (3, 1, 'quadro', 24, 20, False),
+        (3, 2, 'jukebox', 24, 32, False), (3, 3, 'porta_interna', 16, 24, False),
+    ]),
 ]
 
 

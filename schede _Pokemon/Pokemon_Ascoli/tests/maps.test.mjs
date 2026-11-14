@@ -107,9 +107,10 @@ for (const [mapId, map] of Object.entries(data.maps)) {
   for (const item of map.decor || []) {
     assert.ok(DECOR_KINDS[item.kind], `${mapId}: arredo di tipo sconosciuto «${item.kind}»`);
     for (const [x, y] of cellsOf(item)) {
-      assert.ok(walkable(map, x, y), `${mapId}: arredo ${item.kind} su cella non percorribile (${x},${y})`);
+      // ciò che non fa da ostacolo (un quadro) può stare anche su una parete
+      if (DECOR_KINDS[item.kind].blocks) assert.ok(walkable(map, x, y), `${mapId}: arredo ${item.kind} su cella non percorribile (${x},${y})`);
       assert.ok(!forbidden.has(`${x},${y}`), `${mapId}: arredo ${item.kind} sopra porta, NPC, allenatore o punto d'arrivo (${x},${y})`);
-      assert.ok(!(map.transitions || []).some(t => inRect(x, y, t)), `${mapId}: arredo ${item.kind} dentro un passaggio (${x},${y})`);
+      if (DECOR_KINDS[item.kind].blocks) assert.ok(!(map.transitions || []).some(t => inRect(x, y, t)), `${mapId}: arredo ${item.kind} dentro un passaggio (${x},${y})`);
     }
     checkedDecor += 1;
   }

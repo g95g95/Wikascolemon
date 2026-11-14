@@ -50,5 +50,17 @@
     respawn: { map: 'porta_maggiore', x: 8, y: 23, direction: 'down' },
     initialItems: { ball: 5, potion: 2, antidote: 0, repel: 0, acquasanta: 0 }
   };
+  // Interni generici (maps/interni.js): ogni bar e ogni tabacchi senza uno script suo porta, dalla
+  // porta, nella stanza condivisa del suo tipo. L'uscita di riserva della stanza è il primo edificio
+  // di quel tipo; in partita si torna alla porta da cui si è entrati (save.returnSpot).
+  const rooms = { bar: 'interno_bar', market: 'interno_tabacchi' };
+  Object.entries(maps).forEach(([mapId, map]) => (map.buildings || []).forEach(building => {
+    const roomId = rooms[building.interior];
+    if (!roomId || !maps[roomId] || !building.door || building.script) return;
+    building.script = [{ warp: { map: roomId, x: 7, y: 8, direction: 'up' } }];
+    const exit = maps[roomId].transitions[0];
+    if (!exit.spawnX) Object.assign(exit, { to: mapId, spawnX: building.door.x, spawnY: building.door.y });
+  }));
+
   if (typeof module !== 'undefined') module.exports = window.PokemonAscoliData;
 }());

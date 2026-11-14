@@ -2,6 +2,17 @@
 
 Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco/configuratore.html`
 
+## 14/11/2026 (notte) — Interni e suoni
+
+- **Si entra nei bar e nei tabacchi.** Camminando contro la porta (o premendo A) si entra in una
+  stanza arredata: al bar il barista dietro il bancone cura la squadra, al tabacchi il tabaccaio alla
+  cassa apre il negozio. Si parla attraverso il bancone, come nei giochi Pokémon. Uscendo dallo zerbino
+  si torna davanti alla porta da cui si è entrati. Per ora tutti i bar condividono la stessa stanza, e
+  così i tabacchi.
+- **Effetti sonori provvisori**, sintetizzati (nessun file audio): conferma, urto, colpo, KO, cura,
+  lancio e cattura della Ball, incontro, cambio mappa, fruscio dell'erba, esperienza, salita di
+  livello, vittoria e sconfitta. Si disattivano da Menu → Impostazioni.
+
 ## 14/11/2026 (sera) — Dopo il primo test di Jacopo
 
 - **Oliver non va più a scatti.** La causa era il foglio dello sprite: i fotogrammi della camminata
