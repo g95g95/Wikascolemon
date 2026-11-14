@@ -38,7 +38,10 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
       Codex CLI su questo account non genera immagini: i fogli si generano dal browser.
 - [x] B3b. (14/11) Arredo urbano: campo `map.decor`, strumento «Arredo» nel configuratore (clic piazza,
       clic sull'oggetto toglie), il gioco lo disegna e lo tratta come ostacolo. Nessuna mappa ne ha ancora.
-- [ ] B3. Edifici: insegna per `kind` (bar, tabacchi, palestra, chiesa,
+- [x] B3c. (14/11) Secondo foglio: insegne sopra la porta (bar, tabacchi, palestra, croce) scelte da
+      `interior`/nome, rosone sulle chiese, tetto piatto e in lamiera, spalti dello stadio; nuovo arredo
+      (staccionata, muretto, siepe, tavolino, ulivo, cipresso, ombrellone, barca).
+- [ ] B3. Edifici: campanile, varianti di facciata (bar, tabacchi, palestra, chiesa,
       ospedale, stadio…); il giocatore passa dietro tetti e chiome (ordinamento per Y).
 - [ ] B4. Animazioni: acqua, mare, fiori; ombra sotto gli sprite; camminata NPC a 4 frame.
 - [ ] B5. I 6 fogli NPC mancanti (bro_security, dj, turista, congressista, rivale, capopalestra) —

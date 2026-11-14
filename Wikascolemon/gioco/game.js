@@ -1620,7 +1620,7 @@
 
   // Disegno a tileset: sta in tiles.js, condiviso col configuratore.
   const Tiles = window.PokemonAscoliTiles;
-  const { TILES, tilesetReady, terrainGrid, isTallGrass, blit, drawGround, drawHouse, drawStanding } = Tiles.create(ctx, { fallbackTile: drawTile });
+  const { TILES, tilesetReady, terrainGrid, isTallGrass, blit, drawGround, drawHouse, drawStanding, drawStadiumStands } = Tiles.create(ctx, { fallbackTile: drawTile });
 
   function cameraPosition() {
     const worldWidth = currentMap.width * data.tileSize;
@@ -1647,17 +1647,26 @@
       ctx.fillRect(x - 2, y - 4, width + 4, height + 4);
       ctx.fillStyle = item.color || '#b77958';
       ctx.fillRect(x, y, width, height);
-      ctx.fillStyle = '#e7d2a6';
-      for (let windowX = x + 8; windowX < x + width - 7; windowX += 24) {
-        ctx.fillRect(windowX, y + height - 10, 7, 6);
+      const stands = tilesetReady();
+      if (stands) drawStadiumStands(x, y, width, height);
+      else {
+        ctx.fillStyle = '#e7d2a6';
+        for (let windowX = x + 8; windowX < x + width - 7; windowX += 24) {
+          ctx.fillRect(windowX, y + height - 10, 7, 6);
+        }
+        ctx.fillStyle = '#3d2f27';
+        ctx.fillRect(x + width / 2 - 4, y + height - 11, 8, 11);
       }
-      ctx.fillStyle = '#3d2f27';
-      ctx.fillRect(x + width / 2 - 4, y + height - 11, 8, 11);
       if (item.kind === 'stadio') {
-        ctx.fillStyle = '#447a45';
-        ctx.fillRect(x + 16, y + 16, Math.max(0, width - 32), Math.max(0, height - 32));
+        const inset = stands ? 40 : 16; // con le gradinate a texture il campo sta più dentro
+        ctx.fillStyle = '#4c9c3c';
+        ctx.fillRect(x + inset, y + inset, Math.max(0, width - inset * 2), Math.max(0, height - inset * 2));
         ctx.strokeStyle = '#e6e0c3';
-        ctx.strokeRect(x + 24, y + 22, Math.max(0, width - 48), Math.max(0, height - 44));
+        ctx.strokeRect(x + inset + 8.5, y + inset + 6.5, Math.max(0, width - inset * 2 - 17), Math.max(0, height - inset * 2 - 13));
+        ctx.beginPath();
+        ctx.moveTo(x + width / 2 + .5, y + inset + 6.5);
+        ctx.lineTo(x + width / 2 + .5, y + height - inset - 6.5);
+        ctx.stroke();
       }
       drawWorldLabel(item.name, item.x + item.w / 2, item.y + item.h + .7, camera);
     });

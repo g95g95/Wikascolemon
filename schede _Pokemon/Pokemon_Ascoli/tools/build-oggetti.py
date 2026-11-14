@@ -3,8 +3,8 @@
 
 Ogni foglio è una griglia di celle su fondo magenta, un oggetto per cella. Per ogni oggetto:
 scontorno dal magenta, ritaglio, riduzione alla misura di gioco (celle da 16 px), alfa netto e
-palette ridotta. Le posizioni nel foglio finale sono stampate a fine esecuzione e vanno tenute
-allineate con la costante OBJECTS di game.js.
+palette ridotta. Le posizioni nel foglio finale vengono riscritte da sole in tiles.js, fra i
+segnaposto `// <OBJECTS>` e `// </OBJECTS>`.
 
 Uso: python -I tools/build-oggetti.py   (richiede Pillow)
 """
@@ -27,6 +27,16 @@ SHEETS = [
         (2, 2, 'muro_pietra', 32, 32, True), (2, 3, 'muro_mattoni', 32, 32, True),
         (3, 0, 'lampione', 16, 32, False), (3, 1, 'panchina', 32, 24, False),
         (3, 2, 'cartello', 24, 24, False), (3, 3, 'fontana', 32, 32, False),
+    ]),
+    ('oggetti-2.png', 4, 4, [
+        (0, 0, 'insegna_bar', 24, 24, False), (0, 1, 'insegna_tabacchi', 24, 24, False),
+        (0, 2, 'insegna_palestra', 24, 24, False), (0, 3, 'insegna_croce', 24, 24, False),
+        (1, 0, 'tetto_piatto', 32, 32, True), (1, 1, 'tetto_lamiera', 32, 32, True),
+        (1, 2, 'spalti', 32, 32, True), (1, 3, 'rosone', 20, 20, False),
+        (2, 0, 'staccionata', 32, 18, False), (2, 1, 'muretto', 32, 16, False),
+        (2, 2, 'siepe', 32, 16, False), (2, 3, 'tavolino', 28, 32, False),
+        (3, 0, 'ulivo', 32, 32, False), (3, 1, 'cipresso', 16, 32, False),
+        (3, 2, 'ombrellone', 32, 32, False), (3, 3, 'barca', 32, 24, False),
     ]),
 ]
 
@@ -63,8 +73,9 @@ for name, rows, cols, cells in SHEETS:
     for row, col, key, max_w, max_h, texture in cells:
         cell = sheet.crop((round(col * cw), round(row * ch), round((col + 1) * cw), round((row + 1) * ch)))
         if texture:
+            box = cutout(cell).getbbox()  # alcune texture arrivano con un bordo di magenta attorno
             inset = round(cw * .03)
-            piece = cell.crop((inset, inset, cell.width - inset, cell.height - inset)).resize((max_w, max_h), Image.BOX)
+            piece = cell.crop((box[0] + inset, box[1] + inset, box[2] - inset, box[3] - inset)).resize((max_w, max_h), Image.BOX)
             piece = piece.quantize(colors=16, method=Image.MEDIANCUT, dither=Image.NONE).convert('RGBA')
         else:
             cut = cutout(cell)
@@ -87,8 +98,17 @@ atlas = Image.new('RGBA', (WIDTH, y + shelf), (0, 0, 0, 0))
 for key, piece in placed:
     atlas.paste(piece, positions[key][:2])
 atlas.save(OUT)
-print('OK', os.path.normpath(OUT), atlas.size)
-print('const OBJECTS = {')
-for key, rect in positions.items():
-    print(f"    {key}: [{', '.join(str(v) for v in rect)}],")
-print('};')
+print('OK', os.path.normpath(OUT), atlas.size, len(positions), 'oggetti')
+
+# riscrive la tabella OBJECTS di tiles.js
+tiles_path = os.path.join(HERE, '..', 'tiles.js')
+with open(tiles_path, encoding='utf-8', newline='') as handle:
+    source = handle.read()
+newline = chr(13) + chr(10) if chr(13) in source else chr(10)
+start, end = source.index('// <OBJECTS>'), source.index('// </OBJECTS>')
+indent = ' ' * 6
+rows = [f"{indent}{key}: [{', '.join(str(v) for v in rect)}]" for key, rect in positions.items()]
+table = '// <OBJECTS>' + newline + (',' + newline).join(rows) + newline + ' ' * 4
+with open(tiles_path, 'w', encoding='utf-8', newline='') as handle:
+    handle.write(source[:start] + table + source[end:])
+print('OK tiles.js: OBJECTS aggiornata')

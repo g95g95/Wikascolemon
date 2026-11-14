@@ -190,7 +190,8 @@ senza toccare codice né mappe. `tools/build-tileset.py` (Python + Pillow) gener
 - **Oggetti generati** (`assets/tiles/oggetti.png`, costante `OBJECTS` in `game.js`): i fogli generati
   dal browser (griglia di celle su fondo magenta) stanno in `tools/sorgenti/` — fuori da `assets/`, così
   non vengono pubblicati — e `python -I tools/build-oggetti.py` li scontorna, li riduce alla scala di
-  gioco e stampa le posizioni da riportare in `OBJECTS`. Oggi: albero, porte, finestra, vetrina,
+  gioco e riscrive da solo la tabella `OBJECTS` in `tiles.js` (fra `// <OBJECTS>` e `// </OBJECTS>`).
+  Per aggiungere un foglio: copiarlo in `tools/sorgenti/` e aggiungere una voce a `SHEETS` nello script. Oggi: albero, porte, finestra, vetrina,
   texture di tetto e muro; cespuglio, masso, fiori, lampione, panchina, cartello, fontana sono nel
   foglio ma le mappe non hanno ancora dati di arredo dove piazzarli.
 - Gli edifici (`drawHouse`) si compongono da quei pezzi: tetto e muro a texture (il muro tinto col

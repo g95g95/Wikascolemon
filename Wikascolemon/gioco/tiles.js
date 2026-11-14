@@ -28,7 +28,11 @@
   const DECOR_KINDS = {
     cespuglio: { name: 'Cespuglio', blocks: true }, masso: { name: 'Masso', blocks: true }, fiori: { name: 'Fiori', blocks: false },
     lampione: { name: 'Lampione', blocks: true }, panchina: { name: 'Panchina', blocks: true, span: 2 },
-    cartello: { name: 'Cartello', blocks: true }, fontana: { name: 'Fontana', blocks: true, span: 2 }
+    cartello: { name: 'Cartello', blocks: true }, fontana: { name: 'Fontana', blocks: true, span: 2 },
+    staccionata: { name: 'Staccionata', blocks: true, span: 2 }, muretto: { name: 'Muretto', blocks: true, span: 2 },
+    siepe: { name: 'Siepe', blocks: true, span: 2 }, tavolino: { name: 'Tavolino con ombrellone', blocks: true, span: 2 },
+    ulivo: { name: 'Ulivo', blocks: true, span: 2 }, cipresso: { name: 'Cipresso', blocks: true },
+    ombrellone: { name: 'Ombrellone da spiaggia', blocks: true, span: 2 }, barca: { name: 'Barca', blocks: true, span: 2 }
   };
 
   function decorBlocks(map, x, y) {
@@ -65,15 +69,45 @@
     const DIAGONALS = [[1, -1], [1, 1], [-1, 1], [-1, -1]];
 
     // Oggetti ritagliati dai fogli generati (tools/build-oggetti.py → assets/tiles/oggetti.png):
-    // [x, y, larghezza, altezza] nel foglio. Tenere allineato con l'output dello script.
+    // [x, y, larghezza, altezza] nel foglio. La tabella fra i segnaposto è riscritta dallo script.
     const objectsImage = new Image();
     objectsImage.onload = () => { if (options.onReady) options.onReady(); };
     objectsImage.src = 'assets/tiles/oggetti.png';
     const OBJECTS = {
-      albero: [0, 0, 27, 32], cespuglio: [27, 0, 16, 14], masso: [43, 0, 16, 12], fiori: [59, 0, 16, 14],
-      porta: [75, 0, 16, 20], porta_negozio: [91, 0, 22, 24], porta_chiesa: [113, 0, 24, 28], finestra: [137, 0, 20, 16],
-      vetrina: [157, 0, 28, 24], tetto: [185, 0, 32, 32], muro_pietra: [217, 0, 32, 32], muro_mattoni: [0, 32, 32, 32],
-      lampione: [32, 32, 12, 32], panchina: [44, 32, 32, 22], cartello: [76, 32, 18, 24], fontana: [94, 32, 32, 30]
+      // <OBJECTS>
+      albero: [0, 0, 27, 32],
+      cespuglio: [27, 0, 16, 14],
+      masso: [43, 0, 16, 12],
+      fiori: [59, 0, 16, 14],
+      porta: [75, 0, 16, 20],
+      porta_negozio: [91, 0, 22, 24],
+      porta_chiesa: [113, 0, 24, 28],
+      finestra: [137, 0, 20, 16],
+      vetrina: [157, 0, 28, 24],
+      tetto: [185, 0, 32, 32],
+      muro_pietra: [217, 0, 32, 32],
+      muro_mattoni: [0, 32, 32, 32],
+      lampione: [32, 32, 12, 32],
+      panchina: [44, 32, 32, 22],
+      cartello: [76, 32, 18, 24],
+      fontana: [94, 32, 32, 30],
+      insegna_bar: [126, 32, 24, 24],
+      insegna_tabacchi: [150, 32, 24, 24],
+      insegna_palestra: [174, 32, 24, 24],
+      insegna_croce: [198, 32, 24, 24],
+      tetto_piatto: [222, 32, 32, 32],
+      tetto_lamiera: [0, 64, 32, 32],
+      spalti: [32, 64, 32, 32],
+      rosone: [64, 64, 19, 20],
+      staccionata: [83, 64, 32, 18],
+      muretto: [115, 64, 21, 16],
+      siepe: [136, 64, 30, 16],
+      tavolino: [166, 64, 28, 32],
+      ulivo: [194, 64, 32, 30],
+      cipresso: [226, 64, 14, 32],
+      ombrellone: [0, 96, 25, 32],
+      barca: [25, 96, 30, 24]
+    // </OBJECTS>
     };
 
     function objectsReady() {
@@ -196,11 +230,8 @@
       const roofHeight = height - wallHeight;
       const wallTop = y + roofHeight;
       if (objectsReady()) {
-        const flat = FLAT_ROOF_KINDS.has(item.kind);
-        fillTexture(flat ? 'muro_pietra' : 'tetto', x, y, width, roofHeight);
-        ctx.globalCompositeOperation = 'multiply';
-        if (flat) { ctx.fillStyle = '#9aa2ac'; ctx.fillRect(x, y, width, roofHeight); }
-        ctx.globalCompositeOperation = 'source-over';
+        const metal = item.kind === 'capannone' || item.kind === 'stabilimento';
+        fillTexture(metal ? 'tetto_lamiera' : FLAT_ROOF_KINDS.has(item.kind) ? 'tetto_piatto' : 'tetto', x, y, width, roofHeight);
         fillTexture('muro_pietra', x, wallTop, width, wallHeight);
         ctx.globalCompositeOperation = 'multiply';
         ctx.globalAlpha = .7;
@@ -220,7 +251,7 @@
           const row = (baseY, ground) => {
             const piece = ground && shop ? 'vetrina' : 'finestra';
             for (let cx = x + 20; cx <= x + width - 20; cx += piece === 'vetrina' ? 40 : 32) {
-              if (ground && Math.abs(cx - doorCenter) < clear) continue;
+              if (Math.abs(cx - doorCenter) < (ground ? clear : 18)) continue; // sopra la porta sta l'insegna
               drawObject(piece, cx, baseY);
             }
           };
@@ -228,6 +259,14 @@
           row(base - 3, true);
         }
         drawObject(doorName, doorCenter, base);
+        // insegna sopra la porta (o rosone per le chiese), scelta dal tipo e dal nome dell'edificio
+        const label = (item.name || '').toLowerCase();
+        const sign = item.kind === 'chiesa' ? 'rosone'
+          : item.interior === 'gym' || label.includes('palestra') ? 'insegna_palestra'
+          : item.interior === 'market' || label.includes('tabacc') ? 'insegna_tabacchi'
+          : item.kind === 'ospedale' || label.includes('farmacia') ? 'insegna_croce'
+          : item.interior === 'bar' || /(bar|caff|coffee|ristoro|pizzeria)/.test(label) ? 'insegna_bar' : null;
+        if (sign && wallHeight >= 48) drawObject(sign, doorCenter, base - OBJECTS[doorName][3] - 1);
         ctx.fillStyle = '#3a2e26';
         ctx.fillRect(x - 1, y - 1, width + 2, 1);
         ctx.fillRect(x - 1, y, 1, height);
@@ -301,8 +340,13 @@
       }
     }
 
+    // Gradinate dello stadio: la texture degli spalti sull'intero rettangolo (il campo lo disegna chi chiama).
+    function drawStadiumStands(x, y, width, height) {
+      if (objectsReady()) fillTexture('spalti', x, y, width, height);
+    }
+
     return {
-      TILES, OBJECTS, tilesetReady, objectsReady, terrainGrid, gridType, isTallGrass, blit, drawGround, drawObject, drawHouse, drawStanding
+      TILES, OBJECTS, tilesetReady, objectsReady, terrainGrid, gridType, isTallGrass, blit, drawGround, drawObject, drawHouse, drawStanding, drawStadiumStands
     };
   }
 
