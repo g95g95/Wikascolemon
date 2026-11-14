@@ -25,6 +25,7 @@ export const GAME_FILES = [
   'trainers.js',
   'battle.js',
   'events.js',
+  'tiles.js',
   'styles.css',
   'configuratore.html',
   'configuratore.js',

@@ -29,12 +29,15 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
 - [x] B2. (14/11) Erba alta visibile sulle zone d'incontro, copre i piedi del giocatore. Manca il fruscio.
 - [ ] B2b. Le zone d'incontro sono rettangoli enormi (es. 45×42): ora che si vedono sono prati interi
       d'erba alta. Da ridisegnare a chiazze nel configuratore.
-- [ ] B1b. Il configuratore disegna ancora i tile a colori piatti: portarlo sull'atlante.
+- [x] B1b. (14/11) Disegno spostato in `tiles.js`, condiviso: il configuratore mostra la mappa com'è nel
+      gioco. Pennelli fino a 15; «Incontri» con probabilità 0 toglie l'erba alta.
+- [ ] B1c. Il configuratore salva solo nel browser: per pubblicare ciò che Jacopo disegna, esporta il
+      JSON (Dati → Esporta) e va riversato in `maps/<id>.js` (a mano o con uno script da scrivere).
 - [x] B3a. (14/11) Primo foglio generato da Jacopo (ChatGPT immagini) → `tools/build-oggetti.py` →
       alberi ed edifici composti da pezzi veri (tetto, muro tinto, porte per `kind`, finestre, vetrine).
       Codex CLI su questo account non genera immagini: i fogli si generano dal browser.
-- [ ] B3b. Arredo urbano: cespuglio, masso, fiori, lampione, panchina, cartello, fontana sono già
-      ritagliati ma le mappe non hanno un campo dove piazzarli (serve `decor` + strumento nel configuratore).
+- [x] B3b. (14/11) Arredo urbano: campo `map.decor`, strumento «Arredo» nel configuratore (clic piazza,
+      clic sull'oggetto toglie), il gioco lo disegna e lo tratta come ostacolo. Nessuna mappa ne ha ancora.
 - [ ] B3. Edifici: insegna per `kind` (bar, tabacchi, palestra, chiesa,
       ospedale, stadio…); il giocatore passa dietro tetti e chiome (ordinamento per Y).
 - [ ] B4. Animazioni: acqua, mare, fiori; ombra sotto gli sprite; camminata NPC a 4 frame.

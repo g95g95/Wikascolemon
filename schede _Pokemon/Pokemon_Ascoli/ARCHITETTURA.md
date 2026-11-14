@@ -8,8 +8,8 @@ DOM, niente `Math.random()` diretto (RNG iniettabile, default `Math.random`).
 
 Ordine degli script in `index.html`:
 `species.js` → `moves.js` → `maps/_helpers.js` → `maps/<id>.js` (uno per mappa) → `data.js` →
-`trainers.js` → `trainers/<mapId>.js` (uno per mappa con allenatori non-capopalestra) → `battle.js`
-→ `events.js` → `game.js`. `configuratore.html` usa lo stesso ordine fino a `trainers/<mapId>.js`,
+`trainers.js` → `trainers/<mapId>.js` (uno per mappa con allenatori non-capopalestra) → `tiles.js`
+→ `battle.js` → `events.js` → `game.js`. `configuratore.html` usa lo stesso ordine fino a `trainers/<mapId>.js`,
 poi `configuratore.js` al posto di `battle.js`/`events.js`/`game.js`.
 
 ## Identificatori
@@ -164,8 +164,18 @@ Resta il guscio: input, rendering, UI overlay, salvataggio. Usa i moduli sopra. 
 Salvataggio `version: 2` (migrazione dalla 1: aggiunge `flags: {}`, `badges: []`, `money: 3000`,
 mosse con pp, `status: null`).
 
-## Tileset (`assets/tiles/tileset.png`)
-Atlante a celle 16×16, 16 colonne. Le posizioni dei tile sono la costante `TILES` in `game.js` ed è
+## Tileset (`tiles.js` + `assets/tiles/tileset.png`)
+`tiles.js` espone `window.PokemonAscoliTiles = { create(ctx, { fallbackTile, onReady }), terrainAt,
+decorBlocks, DECOR_KINDS }`: è il disegno della mappa, **condiviso da gioco e configuratore** (quello
+che si vede nel configuratore è quello che si vedrà giocando). Le costanti `TILES`/`OBJECTS` citate
+sotto stanno lì, non più in `game.js`.
+- **Arredo**: `map.decor = [{ x, y, kind }]` con `kind` fra le chiavi di `DECOR_KINDS` (cespuglio,
+  masso, fiori, lampione, panchina, cartello, fontana). Blocca il passaggio tranne i fiori; panchina e
+  fontana occupano due celle. Si piazza col lo strumento «Arredo» del configuratore.
+- Il configuratore salva in `localStorage` (`pokemonAscoliConfigV2`) e vale solo su quel browser: per
+  portare nel gioco pubblicato ciò che si disegna lì, esportare il JSON e riversarlo in `maps/<id>.js`.
+
+Atlante a celle 16×16, 16 colonne. Le posizioni dei tile sono la costante `TILES` in `tiles.js` ed è
 il **contratto** con chi disegna l'atlante: sostituire il PNG rispettando la griglia cambia la grafica
 senza toccare codice né mappe. `tools/build-tileset.py` (Python + Pillow) genera quello provvisorio.
 - `terrainGrid(map)` calcola una volta per mappa il terreno di ogni cella (da `terrainAt`) e le celle

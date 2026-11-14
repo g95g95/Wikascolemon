@@ -126,6 +126,7 @@ for (const file of mapModuleFiles()) load(file);
 load('data.js');
 load('trainers.js');
 for (const file of trainerModuleFiles()) load(file);
+load('tiles.js');
 load('battle.js');
 load('events.js');
 

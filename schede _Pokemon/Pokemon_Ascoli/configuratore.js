@@ -14,7 +14,7 @@
     'Acciaio', 'Folletto'
   ];
   const ui = Object.fromEntries([
-    'mapSelect', 'tileType', 'brushSize', 'collisionValue', 'encounterRate', 'cursorInfo',
+    'mapSelect', 'tileType', 'brushSize', 'collisionValue', 'encounterRate', 'decorKind', 'cursorInfo',
     'objectName', 'objectWidth', 'objectHeight', 'objectColor', 'destinationMap', 'spawnX',
     'spawnY', 'npcDialogue', 'npcMovement', 'selectedIndex', 'updateObject', 'deleteObject',
     'objectList', 'encounterSpecies', 'minLevel', 'maxLevel', 'encounterWeight',
@@ -53,7 +53,8 @@
         transitions: clone(map.transitions || []),
         npcs: clone(map.npcs || []),
         encounterZones: clone(map.encounterZones || []),
-        encounterTable: clone(map.encounterTable || [])
+        encounterTable: clone(map.encounterTable || []),
+        decor: clone(map.decor || [])
       };
     });
     return { version: 1, updatedAt: new Date().toISOString(), maps };
@@ -203,12 +204,89 @@
     ctx.fillRect(item.x * scale, item.y * scale, item.w * scale, item.h * scale);
   }
 
+  // Stesso disegno del gioco (tiles.js): quello che si vede qui è quello che si vedrà giocando.
+  const Tiles = window.PokemonAscoliTiles;
+  const tiles = Tiles.create(ctx, { onReady: () => draw() });
+
+  // La mappa come la vedrà il gioco: dati di base + modifiche del configuratore.
+  function effectiveMap() {
+    const custom = currentConfig();
+    return {
+      ...currentBaseMap(),
+      tileOverrides: custom.tileOverrides, collisionOverrides: custom.collisionOverrides, encounterCells: custom.encounterCells,
+      buildings: custom.buildings, encounterZones: custom.encounterZones, decor: custom.decor
+    };
+  }
+
+  function drawOverlays(custom) {
+    // segnalini piccoli, così sotto si continua a vedere il terreno
+    Object.entries(custom.encounterCells).forEach(([key, rate]) => {
+      const [x, y] = key.split(',').map(Number);
+      ctx.fillStyle = Number(rate) > 0 ? 'rgba(240,176,51,.9)' : 'rgba(40,40,40,.75)';
+      ctx.fillRect(x * scale + 5, y * scale + 5, 6, 6);
+    });
+    Object.entries(custom.collisionOverrides).forEach(([key, blocked]) => {
+      const [x, y] = key.split(',').map(Number);
+      ctx.fillStyle = blocked ? 'rgba(220,60,54,.6)' : 'rgba(62,180,202,.55)';
+      ctx.fillRect(x * scale, y * scale, scale, scale);
+    });
+  }
+
+  function drawObjects(custom, withAtlas) {
+    custom.buildings.forEach((item, index) => {
+      const selected = selection && selection.type === 'buildings' && selection.index === index;
+      if (withAtlas && item.kind !== 'stadio') tiles.drawHouse(item, item.x * scale, item.y * scale, item.w * scale, item.h * scale, { x: 0 });
+      else fillScaled(item, item.color || '#b77958');
+      ctx.strokeStyle = selected ? '#fff36b' : '#382b23';
+      ctx.lineWidth = selected ? 3 : 1;
+      ctx.strokeRect(item.x * scale, item.y * scale, item.w * scale, item.h * scale);
+      drawLabel(item.name, item.x * scale + item.w * scale / 2, item.y * scale + item.h * scale / 2);
+    });
+    custom.transitions.forEach((item, index) => {
+      fillScaled(item, 'rgba(74,193,221,.7)');
+      ctx.strokeStyle = selection && selection.type === 'transitions' && selection.index === index ? '#fff36b' : '#174d58';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(item.x * scale, item.y * scale, item.w * scale, item.h * scale);
+      drawLabel(item.label, item.x * scale + item.w * scale / 2, item.y * scale + item.h * scale / 2);
+    });
+    custom.npcs.forEach((item, index) => {
+      ctx.fillStyle = selection && selection.type === 'npcs' && selection.index === index ? '#fff36b' : '#824d91';
+      ctx.fillRect(item.x * scale - 2, item.y * scale - 2, scale + 4, scale + 4);
+    });
+  }
+
+  function drawGrid() {
+    ctx.strokeStyle = 'rgba(18,29,22,.13)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x <= canvas.width; x += scale) {
+      ctx.beginPath(); ctx.moveTo(x + .5, 0); ctx.lineTo(x + .5, canvas.height); ctx.stroke();
+    }
+    for (let y = 0; y <= canvas.height; y += scale) {
+      ctx.beginPath(); ctx.moveTo(0, y + .5); ctx.lineTo(canvas.width, y + .5); ctx.stroke();
+    }
+  }
+
   function draw() {
     const base = currentBaseMap();
     const custom = currentConfig();
     canvas.width = base.width * scale;
     canvas.height = base.height * scale;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (tiles.tilesetReady()) {
+      const map = effectiveMap();
+      const grid = tiles.terrainGrid(map);
+      for (let y = 0; y < map.height; y += 1) {
+        for (let x = 0; x < map.width; x += 1) tiles.drawGround(grid, x, y, x * scale, y * scale, 0);
+      }
+      // le zone d'incontro fuori dall'erba (sabbia, riva) non si vedono come erba alta: velatura leggera
+      (custom.encounterZones || []).forEach(item => fillScaled(item, 'rgba(240,176,51,.10)'));
+      drawObjects(custom, true);
+      tiles.drawStanding(map, grid, 0, 0, map.width, map.height, 0, 0);
+      drawOverlays(custom);
+      drawTrainers();
+      drawGrid();
+      return;
+    }
     ctx.fillStyle = colorForTile(base.baseTile);
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     (base.roads || []).forEach(item => fillScaled(item, colorForTile(item.type || 'road')));
@@ -352,6 +430,16 @@
         if (tool === 'encounter') custom.encounterCells[key] = Math.max(0, Math.min(1, Number(ui.encounterRate.value)));
       }
     }
+    draw();
+  }
+
+  // Arredo: un clic piazza l'oggetto scelto; un clic su un oggetto già presente lo toglie.
+  function toggleDecor(x, y) {
+    const custom = currentConfig();
+    const existing = custom.decor.findIndex(item => item.y === y && x >= item.x && x < item.x + ((Tiles.DECOR_KINDS[item.kind] || {}).span || 1));
+    if (existing !== -1) custom.decor.splice(existing, 1);
+    else custom.decor.push({ x, y, kind: ui.decorKind.value });
+    saveConfig(existing !== -1 ? 'Arredo rimosso.' : 'Arredo piazzato.');
     draw();
   }
 
@@ -856,6 +944,7 @@
     Object.entries(data.species)
       .sort(([, a], [, b]) => a.number - b.number)
       .forEach(([id, species]) => ui.encounterSpecies.add(new Option(species.name, id)));
+    Object.entries(Tiles.DECOR_KINDS).forEach(([id, kind]) => ui.decorKind.add(new Option(kind.name, id)));
     ui.mapSelect.value = mapId;
   }
 
@@ -866,6 +955,7 @@
     painting = ['tile', 'collision', 'encounter'].includes(tool);
     if (painting) applyBrush(point.x, point.y);
     else if (['building', 'transition', 'npc'].includes(tool)) addObject(tool, point.x, point.y);
+    else if (tool === 'decor') toggleDecor(point.x, point.y);
     else if (tool === 'trainer') {
       const hitId = trainerHitTest(point.x, point.y);
       if (hitId) {

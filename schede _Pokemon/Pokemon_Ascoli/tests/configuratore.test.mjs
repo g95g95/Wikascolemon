@@ -77,6 +77,7 @@ const context = {
   URL: { createObjectURL: () => '', revokeObjectURL: () => {} },
   FileReader: class { readAsText() {} },
   Option: FakeOption,
+  Image: class { set src(_) {} },
   Math
 };
 context.document = makeDocument();
@@ -85,7 +86,7 @@ vm.createContext(context);
 
 const configuratoreFiles = [
   'species.js', 'moves.js', 'maps/_helpers.js', ...mapModuleFiles(),
-  'data.js', 'trainers.js', ...trainerModuleFiles()
+  'data.js', 'trainers.js', ...trainerModuleFiles(), 'tiles.js'
 ];
 for (const file of configuratoreFiles) {
   vm.runInContext(fs.readFileSync(path.join(gameDir, file), 'utf8'), context);
