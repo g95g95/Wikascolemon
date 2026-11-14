@@ -14,64 +14,64 @@
     ],
     roads: [
       // lungomare a nord (righe 6-9), largo 4
-      rect(2, 6, 176, 4, 'asfalto'),
+      rect(1, 4, 118, 3, 'asfalto'),
       // strada principale (passaggi fissi, righe 54-57), largo 4
-      rect(0, 54, 180, 4, 'asfalto'),
+      rect(0, 36, 120, 3, 'asfalto'),
       // via di collegamento fra lungomare e porto/strada principale
-      rect(96, 10, 4, 44, 'asfalto'),
+      rect(64, 7, 3, 29, 'asfalto'),
       // piazzale del porto
-      rect(70, 58, 40, 6, 'asfalto'),
+      rect(47, 39, 26, 4, 'asfalto'),
       // scogli lungo la riva (devono precedere la sabbia sotto: terrainAt prende il primo match)
-      rect(10, 93, 2, 2, 'muro'), rect(50, 94, 3, 2, 'muro'), rect(130, 93, 2, 2, 'muro'), rect(170, 94, 3, 2, 'muro'),
+      rect(7, 62, 1, 1, 'muro'), rect(33, 63, 2, 1, 'muro'), rect(87, 62, 1, 1, 'muro'), rect(113, 63, 2, 1, 'muro'),
       // spiaggia (sabbia), dal fondo del porto fino alla riva del mare
-      rect(2, 78, 176, 18, 'sabbia')
+      rect(1, 52, 118, 12, 'sabbia')
     ],
     waters: [
       // mare a sud, dalla riga 96 fino al bordo inferiore
-      rect(0, 96, 180, 24, 'mare'),
+      rect(0, 64, 120, 16, 'mare'),
       // insenatura del porto, davanti al Ristoro
-      rect(76, 64, 28, 20, 'mare')
+      rect(51, 43, 18, 13, 'mare')
     ],
     bridges: [
       // molo che si protende dal porto verso il mare aperto
-      rect(88, 64, 4, 20, 'bridge')
+      rect(59, 43, 2, 13, 'bridge')
     ],
-    plazas: [rect(70, 58, 40, 6, 'piazza')],
+    plazas: [rect(47, 39, 26, 4, 'piazza')],
     buildings: [
-      building(30, 12, 8, 5, 'Bagni Sirena', '#d9a94f', 'stabilimento'),
-      building(50, 12, 8, 5, 'Bagni Nettuno', '#d9a94f', 'stabilimento'),
-      building(110, 12, 8, 5, 'Bagni Conero', '#d9a94f', 'stabilimento'),
-      building(130, 12, 8, 5, 'Bagni Adriatico', '#d9a94f', 'stabilimento'),
-      building(80, 42, 12, 9, 'Ristoro al Porto', '#b46c52', 'attività', { door: { x: 86, y: 51 }, interior: 'bar' }),
-      building(20, 66, 8, 6, 'Chiosco Sirenetta', '#c98f57', 'attività'),
-      building(150, 66, 8, 6, 'Noleggio Pedalò', '#c98f57', 'attività')
+      building(20, 8, 5, 3, 'Bagni Sirena', '#d9a94f', 'stabilimento'),
+      building(33, 8, 6, 3, 'Bagni Nettuno', '#d9a94f', 'stabilimento'),
+      building(73, 8, 6, 3, 'Bagni Conero', '#d9a94f', 'stabilimento'),
+      building(87, 8, 5, 3, 'Bagni Adriatico', '#d9a94f', 'stabilimento'),
+      building(53, 28, 8, 6, 'Ristoro al Porto', '#b46c52', 'attività', { door: { x: 57, y: 34 }, interior: 'bar' }),
+      building(13, 44, 6, 4, 'Chiosco Sirenetta', '#c98f57', 'attività'),
+      building(100, 44, 5, 4, 'Noleggio Pedalò', '#c98f57', 'attività')
     ],
     labels: [
-      { x: 3, y: 4, text: 'Lungomare' },
-      { x: 71, y: 55, text: 'Porto' },
-      { x: 4, y: 82, text: 'Spiaggia libera' },
-      { x: 160, y: 51, text: '→ Jonathan' }
+      { x: 2, y: 3, text: 'Lungomare' },
+      { x: 47, y: 37, text: 'Porto' },
+      { x: 3, y: 55, text: 'Spiaggia libera' },
+      { x: 107, y: 34, text: '→ Jonathan' }
     ],
     encounterZones: [
       // sabbia
-      zone(2, 78, 176, 18, 0.08, 'default'),
+      zone(1, 52, 118, 12, 0.08, 'default'),
       // scogli e riva (fascia più vicina al mare)
-      zone(2, 92, 176, 4, 0.12, 'default')
+      zone(1, 61, 118, 3, 0.12, 'default')
     ],
     transitions: [
-      transition(0, 54, 2, 4, 'spinetoli_centobuchi', 173, 55, 'Spinetoli'),
-      transition(178, 54, 2, 4, 'jonathan', 6, 55, 'Jonathan')
+      transition(0, 36, 1, 3, 'spinetoli_centobuchi', 115, 37, 'Spinetoli'),
+      transition(119, 36, 1, 3, 'jonathan', 4, 37, 'Jonathan')
     ],
     npcs: [
-      npc(9, 8, 'Cartello', 'LUNGOMARE DI SAN BENEDETTO — passeggiata fra le palme.', 'fermo'),
-      npc(6, 80, 'Cartello', 'SPIAGGIA LIBERA — accesso gratuito, portate l\'ombrellone.', 'fermo'),
-      npc(168, 56, 'Cartello', '→ JONATHAN — la discoteca sulla spiaggia, poco più a est.', 'fermo'),
-      npc(40, 14, 'Bagnino di salvataggio', 'D\'estate quaggiù è tutto un via vai, ma l\'acqua è \'na bellezza.', 'orizzontale'),
-      npc(120, 14, 'Ragazza col gelato', 'Se\' vinuto pé la spiaggia o pé lo Jonathan la sera?', 'fermo'),
-      npc(30, 68, 'Pescatore del porto', 'Stammatina ho ripreso le reti, ma li pesci moderni so\' furbi.', 'fermo'),
+      npc(6, 5, 'Cartello', 'LUNGOMARE DI SAN BENEDETTO — passeggiata fra le palme.', 'fermo'),
+      npc(4, 53, 'Cartello', 'SPIAGGIA LIBERA — accesso gratuito, portate l\'ombrellone.', 'fermo'),
+      npc(112, 37, 'Cartello', '→ JONATHAN — la discoteca sulla spiaggia, poco più a est.', 'fermo'),
+      npc(27, 9, 'Bagnino di salvataggio', 'D\'estate quaggiù è tutto un via vai, ma l\'acqua è \'na bellezza.', 'orizzontale'),
+      npc(80, 9, 'Ragazza col gelato', 'Se\' vinuto pé la spiaggia o pé lo Jonathan la sera?', 'fermo'),
+      npc(20, 45, 'Pescatore del porto', 'Stammatina ho ripreso le reti, ma li pesci moderni so\' furbi.', 'fermo'),
       // Ivo e Teo, "i congressisti": prima del flag, script lungo con dialogo alternato
       {
-        x: 60, y: 86, name: 'Ivo', sprite: 'ivo', movement: 'fermo', when: { notFlag: 'ivo_teo_visti' },
+        x: 40, y: 57, name: 'Ivo', sprite: 'ivo', movement: 'fermo', when: { notFlag: 'ivo_teo_visti' },
         script: [
           { say: 'Ehm... salve. Siamo solo due villeggianti, eh, niente di che.', name: 'Ivo' },
           { say: 'Sì sì, congressisti. Qui pé lu congresso. Mica pé antro.', name: 'Teo' },
@@ -86,16 +86,16 @@
         ]
       },
       {
-        x: 61, y: 86, name: 'Teo', sprite: 'teo', movement: 'fermo', when: { notFlag: 'ivo_teo_visti' },
+        x: 41, y: 57, name: 'Teo', sprite: 'teo', movement: 'fermo', when: { notFlag: 'ivo_teo_visti' },
         dialogue: 'Aspetta che parla prima Ivo, dai.'
       },
       // dopo il flag: coppia gemella, battuta di commiato
       {
-        x: 60, y: 86, name: 'Ivo', sprite: 'ivo', movement: 'fermo', when: { flag: 'ivo_teo_visti' },
+        x: 40, y: 57, name: 'Ivo', sprite: 'ivo', movement: 'fermo', when: { flag: 'ivo_teo_visti' },
         dialogue: 'Noi se retiramo davero, stavolta. Bona fortuna co\' Riccio.'
       },
       {
-        x: 61, y: 86, name: 'Teo', sprite: 'teo', movement: 'fermo', when: { flag: 'ivo_teo_visti' },
+        x: 41, y: 57, name: 'Teo', sprite: 'teo', movement: 'fermo', when: { flag: 'ivo_teo_visti' },
         dialogue: 'E salutace er congresso, se ce passi.'
       }
     ]
@@ -103,20 +103,20 @@
   const map = window.PokemonAscoliMaps.costa;
   map.roads.push(
     // palme lungo il lungomare, a intervalli regolari sopra e sotto la strada
-    rect(6, 4, 2, 2, 'albero'), rect(18, 4, 2, 2, 'albero'), rect(60, 4, 2, 2, 'albero'), rect(72, 4, 2, 2, 'albero'),
-    rect(105, 4, 2, 2, 'albero'), rect(122, 4, 2, 2, 'albero'), rect(150, 4, 2, 2, 'albero'), rect(162, 4, 2, 2, 'albero'),
-    rect(6, 11, 2, 2, 'albero'), rect(18, 11, 2, 2, 'albero'), rect(60, 11, 2, 2, 'albero'), rect(72, 11, 2, 2, 'albero'),
-    rect(105, 11, 2, 2, 'albero'), rect(122, 11, 2, 2, 'albero'), rect(150, 11, 2, 2, 'albero'), rect(162, 11, 2, 2, 'albero'),
+    rect(4, 3, 1, 1, 'albero'), rect(12, 3, 1, 1, 'albero'), rect(40, 3, 1, 1, 'albero'), rect(48, 3, 1, 1, 'albero'),
+    rect(70, 3, 1, 1, 'albero'), rect(81, 3, 2, 1, 'albero'), rect(100, 3, 1, 1, 'albero'), rect(108, 3, 1, 1, 'albero'),
+    rect(4, 7, 1, 2, 'albero'), rect(12, 7, 1, 2, 'albero'), rect(40, 7, 1, 2, 'albero'), rect(48, 7, 1, 2, 'albero'),
+    rect(70, 7, 1, 2, 'albero'), rect(81, 7, 2, 2, 'albero'), rect(100, 7, 1, 2, 'albero'), rect(108, 7, 1, 2, 'albero'),
     // scogli (muro) sparsi fra il lungomare e la strada principale, e lungo la riva
-    rect(14, 24, 3, 2, 'muro'), rect(45, 30, 2, 3, 'muro'), rect(100, 26, 3, 2, 'muro'), rect(140, 32, 2, 3, 'muro'),
-    rect(160, 24, 3, 2, 'muro'),
+    rect(9, 16, 2, 1, 'muro'), rect(30, 20, 1, 2, 'muro'), rect(67, 17, 2, 2, 'muro'), rect(93, 21, 2, 2, 'muro'),
+    rect(107, 16, 2, 1, 'muro'),
     // boschetti/vegetazione fra le due strade, lontano da edifici e passaggi
-    rect(20, 34, 3, 2, 'albero'), rect(25, 37, 2, 3, 'albero'),
-    rect(150, 34, 3, 2, 'albero'), rect(155, 37, 2, 3, 'albero'),
-    rect(40, 40, 3, 2, 'albero'), rect(160, 44, 3, 2, 'albero'),
+    rect(13, 23, 2, 1, 'albero'), rect(17, 25, 1, 2, 'albero'),
+    rect(100, 23, 2, 1, 'albero'), rect(103, 25, 2, 2, 'albero'),
+    rect(27, 27, 2, 1, 'albero'), rect(107, 29, 2, 2, 'albero'),
     // cornice di alberi sui bordi, interrotta ai passaggi (righe 54-57) e dal mare/spiaggia a sud
-    rect(0, 0, 180, 2, 'albero'),
-    rect(0, 2, 2, 52, 'albero'), rect(0, 58, 2, 38, 'albero'),
-    rect(178, 2, 2, 52, 'albero'), rect(178, 58, 2, 38, 'albero')
+    rect(0, 0, 120, 1, 'albero'),
+    rect(0, 1, 1, 35, 'albero'), rect(0, 39, 1, 25, 'albero'),
+    rect(119, 1, 1, 35, 'albero'), rect(119, 39, 1, 25, 'albero')
   );
 }());

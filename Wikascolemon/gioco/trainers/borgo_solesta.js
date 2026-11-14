@@ -1,7 +1,7 @@
 (function () {
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     borgo_solesta_gemelle_1: {
-      map: 'borgo_solesta', x: 52, y: 58, direction: 'right', sight: 3,
+      map: 'borgo_solesta', x: 35, y: 39, direction: 'right', sight: 3,
       class: 'gemelle', name: 'Lia e Mia', sprite: null,
       team: [{ species: 'pito', level: 6 }, { species: 'basilino', level: 6 }],
       before: ['Siamo in due, lo sai!', 'Sfida doppia, che dici?'],

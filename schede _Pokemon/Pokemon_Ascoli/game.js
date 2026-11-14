@@ -22,8 +22,8 @@
   ].map(id => [id, document.getElementById(id)]));
 
   const STORAGE_KEY = 'pokemonAscoliSaveV1';
-  const CONFIG_KEY = 'pokemonAscoliConfigV2';
-  const TRAINERS_KEY = 'pokemonAscoliTrainersV1';
+  const CONFIG_KEY = 'pokemonAscoliConfigV3'; // V3: mappe ai due terzi (14/11/2026), le override V2 puntano alle vecchie coordinate
+  const TRAINERS_KEY = 'pokemonAscoliTrainersV2';
   const directions = {
     up: { x: 0, y: -1, row: 1 },
     down: { x: 0, y: 1, row: 0 },
@@ -152,12 +152,25 @@
       flags: {},
       badges: [],
       money: 3000,
-      lastHeal: { map: data.respawn.map, x: data.respawn.x, y: data.respawn.y }
+      lastHeal: { map: data.respawn.map, x: data.respawn.x, y: data.respawn.y },
+      mapScale: 2
     };
   }
 
   function migrateSave(parsed) {
     parsed.name = parsed.name || 'Oliver';
+    // 14/11/2026: mappe esterne ridotte ai due terzi. Le posizioni salvate prima vanno riportate
+    // con la stessa regola dello script (tools/scala-mappe-due-terzi.mjs), una volta sola.
+    if (!parsed.mapScale) {
+      const shrink = spot => {
+        if (!spot || !data.maps[spot.map] || data.maps[spot.map].indoor) return;
+        spot.x = Math.floor((2 * spot.x + 1) / 3);
+        spot.y = Math.floor((2 * spot.y + 1) / 3);
+      };
+      shrink(parsed.player);
+      shrink(parsed.lastHeal);
+      parsed.mapScale = 2;
+    }
     if (parsed.version === 2) return parsed;
     // v1 -> v2
     parsed.version = 2;
@@ -1263,7 +1276,8 @@
       save.money = Math.floor((save.money || 0) / 2);
       showToast('Hai perso metà dei tuoi Talleri.');
     }
-    const destination = save.lastHeal || data.respawn;
+    let destination = save.lastHeal || data.respawn;
+    if (!maps[destination.map] || isBlocked(maps[destination.map], destination.x, destination.y, true)) destination = data.respawn;
     player = { map: destination.map, x: destination.x, y: destination.y, direction: 'down', renderX: destination.x, renderY: destination.y, frame: 0 };
     currentMap = maps[player.map];
     initNpcs();

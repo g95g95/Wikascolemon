@@ -1,7 +1,7 @@
 (function () {
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     porta_maggiore_ragazzino_1: {
-      map: 'porta_maggiore', x: 64, y: 52, direction: 'down', sight: 4,
+      map: 'porta_maggiore', x: 43, y: 35, direction: 'down', sight: 4,
       class: 'ragazzino', name: 'Tobia', sprite: null,
       team: [{ species: 'tifotto', level: 4 }, { species: 'tamburino', level: 5 }],
       before: ['Ehi tu, fermo lì!', 'A Porta Maggiore ci si allena sul serio, sa!'],
@@ -10,7 +10,7 @@
       money: null, gym: null, when: null
     },
     porta_maggiore_nando_puledrotto: {
-      map: 'porta_maggiore', x: 31, y: 55, direction: 'up', sight: 4,
+      map: 'porta_maggiore', x: 21, y: 36, direction: 'up', sight: 4,
       class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'puledrotto', level: 5 }],
       before: [
@@ -23,7 +23,7 @@
       money: 200, gym: null, when: { flag: 'starter_basilino' }
     },
     porta_maggiore_nando_tuffito: {
-      map: 'porta_maggiore', x: 31, y: 56, direction: 'up', sight: 4,
+      map: 'porta_maggiore', x: 21, y: 37, direction: 'up', sight: 4,
       class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'tuffito', level: 5 }],
       before: [
@@ -36,7 +36,7 @@
       money: 200, gym: null, when: { flag: 'starter_puledrotto' }
     },
     porta_maggiore_nando_basilino: {
-      map: 'porta_maggiore', x: 31, y: 57, direction: 'up', sight: 4,
+      map: 'porta_maggiore', x: 21, y: 38, direction: 'up', sight: 4,
       class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'basilino', level: 5 }],
       before: [

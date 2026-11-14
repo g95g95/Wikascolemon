@@ -7,35 +7,35 @@
       { species: 'segaccio', minLevel: 7, maxLevel: 7, weight: 30 },
       { species: 'basilino', minLevel: 6, maxLevel: 6, weight: 20 }
     ],
-    roads: [rect(0, 54, 144, 3), rect(54, 21, 3, 84), rect(120, 48, 3, 72), rect(90, 26, 54, 2)],
-    waters: [rect(129, 0, 9, 120, 'water')], bridges: [rect(123, 26, 21, 2, 'bridge'), rect(123, 54, 21, 3, 'bridge')],
+    roads: [rect(0, 36, 96, 2), rect(36, 14, 2, 56), rect(80, 32, 2, 48), rect(60, 17, 36, 2)],
+    waters: [rect(86, 0, 6, 80, 'water')], bridges: [rect(82, 17, 14, 2, 'bridge'), rect(82, 36, 14, 2, 'bridge')],
     buildings: [
-      building(9, 27, 22, 10, 'Borgo residenziale', '#b67859', 'quartiere'),
-      building(15, 69, 18, 12, 'Area sportiva', '#7eaa68', 'sport'),
-      building(81, 9, 20, 10, 'Margine collinare', '#77985c', 'collina')
+      building(6, 18, 15, 7, 'Borgo residenziale', '#b67859', 'quartiere'),
+      building(10, 46, 12, 8, 'Area sportiva', '#7eaa68', 'sport'),
+      building(54, 6, 13, 7, 'Margine collinare', '#77985c', 'collina')
     ],
-    plazas: [], labels: [{ x: 124, y: 22, text: 'Ponte Romano' }, { x: 115, y: 37, text: 'Porta Solestà' }],
-    encounterZones: [zone(9, 63, 45, 36, 0.1, 'default'), zone(72, 6, 45, 30, 0.08, 'default')],
+    plazas: [], labels: [{ x: 83, y: 15, text: 'Ponte Romano' }, { x: 77, y: 25, text: 'Porta Solestà' }],
+    encounterZones: [zone(6, 42, 30, 24, 0.1, 'default'), zone(48, 4, 30, 20, 0.08, 'default')],
     transitions: [
-      transition(142, 26, 2, 2, 'centro_storico', 10, 25, 'Ponte Romano'),
-      transition(142, 54, 2, 3, 'campo_parignano', 10, 55, 'Campo Parignano'),
-      transition(120, 118, 3, 2, 'borgo_chiaro', 34, 10, 'Borgo Chiaro')
+      transition(95, 17, 1, 2, 'centro_storico', 7, 17, 'Ponte Romano'),
+      transition(95, 36, 1, 2, 'campo_parignano', 7, 37, 'Campo Parignano'),
+      transition(80, 79, 2, 1, 'borgo_chiaro', 23, 7, 'Borgo Chiaro')
     ],
     npcs: [
-      npc(37, 61, 'Residente', 'Il ponte romano conduce dritto al centro.', 'verticale'),
-      npc(20, 90, 'Anziano', 'Quant\'anni fa qui c\'era un antro bar, mo\' è tutto chiuso.', 'fermo'),
-      npc(105, 22, 'Passante', 'Certe bande girano pé la collina, statte accorto de sera.', 'orizzontale')
+      npc(25, 41, 'Residente', 'Il ponte romano conduce dritto al centro.', 'verticale'),
+      npc(13, 60, 'Anziano', 'Quant\'anni fa qui c\'era un antro bar, mo\' è tutto chiuso.', 'fermo'),
+      npc(70, 15, 'Passante', 'Certe bande girano pé la collina, statte accorto de sera.', 'orizzontale')
     ]
   };
   const map = window.PokemonAscoliMaps.borgo_solesta;
   map.roads.push(
     // cornice di alberi (spessore 2), interrotta dai passaggi (est x2, sud) e dall'acqua a est
-    rect(0, 0, 144, 2, 'albero'), rect(0, 118, 120, 2, 'albero'), rect(123, 118, 21, 2, 'albero'),
-    rect(0, 2, 2, 116, 'albero'),
-    rect(120, 2, 2, 22, 'albero'), rect(120, 30, 2, 18, 'albero'),
+    rect(0, 0, 96, 1, 'albero'), rect(0, 79, 80, 1, 'albero'), rect(82, 79, 14, 1, 'albero'),
+    rect(0, 1, 1, 78, 'albero'),
+    rect(80, 1, 1, 15, 'albero'), rect(80, 20, 1, 12, 'albero'),
     // boschetti nelle zone verdi lontane da strade/edifici/npc/passaggi
-    rect(60, 65, 3, 2, 'albero'), rect(64, 68, 2, 3, 'albero'),
-    rect(15, 45, 3, 2, 'albero'), rect(19, 48, 2, 3, 'albero'),
-    rect(95, 90, 3, 2, 'albero'), rect(99, 93, 2, 3, 'albero')
+    rect(40, 43, 2, 2, 'albero'), rect(43, 45, 1, 2, 'albero'),
+    rect(10, 30, 2, 1, 'albero'), rect(13, 32, 1, 2, 'albero'),
+    rect(63, 60, 2, 1, 'albero'), rect(66, 62, 1, 2, 'albero')
   );
 }());

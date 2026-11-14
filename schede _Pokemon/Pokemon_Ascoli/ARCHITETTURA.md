@@ -101,8 +101,8 @@ window.PokemonAscoliTrainers = {
   gyms: { castel_di_lama: { name: 'Palestra di Castel di Lama', city: 'Castel di Lama', leader: 'castel_di_lama_hills', map: 'castel_di_lama', order: 1, type: 'Veleno' } }
 };
 ```
-Chiave localStorage dell'override: `pokemonAscoliTrainersV1` = `{ version: 1, updatedAt, trainers: {...}, gyms: {...} }`
-(sostituisce interamente le due mappe, come fa `pokemonAscoliConfigV2` per le mappe).
+Chiave localStorage dell'override: `pokemonAscoliTrainersV2` = `{ version: 1, updatedAt, trainers: {...}, gyms: {...} }`
+(sostituisce interamente le due mappe, come fa `pokemonAscoliConfigV3` per le mappe).
 Stato in salvataggio: `save.flags['trainer:<id>'] = true` quando sconfitto; `save.badges = [1, 2]`;
 `save.money`.
 
@@ -172,7 +172,7 @@ sotto stanno lì, non più in `game.js`.
 - **Arredo**: `map.decor = [{ x, y, kind }]` con `kind` fra le chiavi di `DECOR_KINDS` (cespuglio,
   masso, fiori, lampione, panchina, cartello, fontana). Blocca il passaggio tranne i fiori; panchina e
   fontana occupano due celle. Si piazza col lo strumento «Arredo» del configuratore.
-- Il configuratore salva in `localStorage` (`pokemonAscoliConfigV2`) e vale solo su quel browser: per
+- Il configuratore salva in `localStorage` (`pokemonAscoliConfigV3`) e vale solo su quel browser: per
   portare nel gioco pubblicato ciò che si disegna lì, esportare il JSON e riversarlo in `maps/<id>.js`.
 
 Atlante a celle 16×16, 16 colonne. Le posizioni dei tile sono la costante `TILES` in `tiles.js` ed è

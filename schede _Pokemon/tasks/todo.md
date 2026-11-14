@@ -68,9 +68,15 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
       corsa con Maiusc o B tenuto (≈5 celle/s a piedi, ≈9 di corsa).
       ⚠️ `tests/e2e/` muove Oliver con pressioni singole: col giro sul posto un cambio di direzione
       ora richiede due pressioni (o tasto tenuto). Da adeguare prima di rilanciare il playthrough.
-- [ ] E2. Mappe più raccolte. Storia: 256×160 → 48×36 («vuote») → ×3 = 144×108/180×120 il 20/08
-      («troppo piccole») → ora «enormi». Proposta: dimezzare (72×54 / 90×60) con uno script, edifici
-      a misura di casa (6×5 circa), poi addensare con l'arredo.
+- [x] E2. (14/11, deciso da Jacopo: «i due terzi») Mappe esterne ridotte con
+      `tools/scala-mappe-due-terzi.mjs` (NON rilanciare: non è idempotente): 144×108 → 96×72,
+      180×120 → 120×80, 144×120 → 96×80; interni invariati. 781 coordinate, 4 ritocchi a mano (arrivo
+      del Ponte Nuovo, tre terne di Nando). Chiavi del configuratore portate a `ConfigV3`/`TrainersV2`;
+      i salvataggi vengono riposizionati (`mapScale`). Storia: 256×160 → 48×36 → ×3 (20/08) → ×2/3.
+      ⚠️ `tests/e2e/` ha coordinate fisse della scala vecchia: da rifare.
+- [ ] E3. Sprite degli NPC (nota di Jacopo del 14/11: «la maggior parte sono rettangolini»): 59 NPC su
+      75 non hanno `sprite`. Serve un foglio di passanti generici (4 direzioni) e l'assegnazione.
+- [ ] E4. Mappe più dense: arredo e chiazze d'erba alta nelle mappe ridotte.
 
 ## D. Suono (dopo)
 - [ ] D1. Effetti chiptune e 3-4 temi (città, percorso, lotta, vittoria) generati in WebAudio.

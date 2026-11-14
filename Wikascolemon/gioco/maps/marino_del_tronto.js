@@ -11,62 +11,62 @@
     ],
     roads: [
       // Via Salaria: dritta ai bordi (colonne dei passaggi/spawn), leggera curva nel mezzo
-      rect(0, 54, 40, 4, 'asfalto'),
-      rect(40, 52, 20, 4, 'asfalto'),
-      rect(60, 51, 30, 4, 'asfalto'),
-      rect(90, 52, 20, 4, 'asfalto'),
-      rect(110, 54, 70, 4, 'asfalto'),
+      rect(0, 36, 27, 3, 'asfalto'),
+      rect(27, 35, 13, 2, 'asfalto'),
+      rect(40, 34, 20, 3, 'asfalto'),
+      rect(60, 35, 13, 2, 'asfalto'),
+      rect(73, 36, 47, 3, 'asfalto'),
       // sentierino ghiaia dalla strada verso il ponte e lungo la riva sud
-      rect(85, 58, 3, 35, 'ghiaia'),
-      rect(60, 100, 60, 2, 'ghiaia'),
+      rect(57, 39, 2, 23, 'ghiaia'),
+      rect(40, 67, 40, 1, 'ghiaia'),
       // stradina sterrata verso i capannoni a nord
-      rect(30, 20, 2, 32, 'ghiaia')
+      rect(20, 13, 1, 22, 'ghiaia')
     ],
-    waters: [rect(0, 93, 180, 9, 'water')],
-    bridges: [rect(85, 93, 3, 9, 'bridge')],
+    waters: [rect(0, 62, 120, 6, 'water')],
+    bridges: [rect(57, 62, 2, 6, 'bridge')],
     plazas: [],
     buildings: [
-      building(14, 26, 12, 8, 'Capannone agricolo', '#9c8a6f', 'edificio'),
-      building(120, 22, 10, 8, 'Casolare', '#b6825f', 'edificio')
+      building(9, 17, 8, 6, 'Capannone agricolo', '#9c8a6f', 'edificio'),
+      building(80, 15, 7, 5, 'Casolare', '#b6825f', 'edificio')
     ],
     labels: [
-      { x: 4, y: 48, text: 'Percorso 1 — Via Salaria' },
-      { x: 82, y: 40, text: 'Marino del Tronto' },
-      { x: 78, y: 88, text: 'Fiume Tronto' }
+      { x: 3, y: 32, text: 'Percorso 1 — Via Salaria' },
+      { x: 55, y: 27, text: 'Marino del Tronto' },
+      { x: 52, y: 59, text: 'Fiume Tronto' }
     ],
     encounterZones: [
-      zone(4, 4, 172, 44, 0.08, 'default'),
-      zone(4, 62, 30, 28, 0.1, 'default'),
-      zone(150, 62, 26, 28, 0.1, 'default'),
-      zone(4, 104, 172, 14, 0.12, 'default')
+      zone(3, 3, 114, 29, 0.08, 'default'),
+      zone(3, 41, 20, 19, 0.1, 'default'),
+      zone(100, 41, 17, 19, 0.1, 'default'),
+      zone(3, 69, 114, 10, 0.12, 'default')
     ],
     transitions: [
-      transition(0, 54, 2, 4, 'monticelli', 173, 59, 'Monticelli'),
-      transition(178, 54, 2, 4, 'oasi', 6, 55, 'Oasi')
+      transition(0, 36, 1, 3, 'monticelli', 115, 39, 'Monticelli'),
+      transition(119, 36, 1, 3, 'oasi', 4, 37, 'Oasi')
     ],
     npcs: [
-      npc(3, 51, 'Cartello', 'Percorso 1 — Via Salaria: da Monticelli all\'Oasi lungo il Tronto.', 'fermo'),
-      npc(82, 44, 'Cartello', 'Marino del Tronto: campi, filari e il fiume più a sud.', 'fermo'),
-      npc(20, 40, 'Contadino', 'Qui la terra è bona: se semina de tutto, granturco pure.', 'fermo'),
-      npc(95, 102, 'Abitante', 'Attento a quer ponte quanno piove, che l\'acqua sale forte.', 'fermo')
+      npc(2, 34, 'Cartello', 'Percorso 1 — Via Salaria: da Monticelli all\'Oasi lungo il Tronto.', 'fermo'),
+      npc(55, 29, 'Cartello', 'Marino del Tronto: campi, filari e il fiume più a sud.', 'fermo'),
+      npc(13, 27, 'Contadino', 'Qui la terra è bona: se semina de tutto, granturco pure.', 'fermo'),
+      npc(63, 68, 'Abitante', 'Attento a quer ponte quanno piove, che l\'acqua sale forte.', 'fermo')
     ]
   };
   const map = window.PokemonAscoliMaps.marino_del_tronto;
   map.roads.push(
     // cornice di alberi (spessore 2), interrotta dai passaggi ovest/est e dal fiume a sud
-    rect(0, 0, 180, 2, 'albero'),
-    rect(0, 2, 2, 52, 'albero'), rect(0, 58, 2, 35, 'albero'),
-    rect(178, 2, 2, 52, 'albero'), rect(178, 58, 2, 35, 'albero'),
-    rect(2, 2, 176, 2, 'albero'),
+    rect(0, 0, 120, 1, 'albero'),
+    rect(0, 1, 1, 35, 'albero'), rect(0, 39, 1, 23, 'albero'),
+    rect(119, 1, 1, 35, 'albero'), rect(119, 39, 1, 23, 'albero'),
+    rect(1, 1, 118, 2, 'albero'),
     // filari a nord-ovest e nord-est (campi coltivati)
-    rect(6, 8, 20, 1, 'albero'), rect(6, 11, 20, 1, 'albero'), rect(6, 14, 20, 1, 'albero'),
-    rect(140, 8, 32, 1, 'albero'), rect(140, 11, 32, 1, 'albero'), rect(140, 14, 32, 1, 'albero'),
-    rect(50, 6, 24, 1, 'albero'), rect(50, 9, 24, 1, 'albero'),
+    rect(4, 5, 13, 1, 'albero'), rect(4, 7, 13, 1, 'albero'), rect(4, 9, 13, 1, 'albero'),
+    rect(93, 5, 22, 1, 'albero'), rect(93, 7, 22, 1, 'albero'), rect(93, 9, 22, 1, 'albero'),
+    rect(33, 4, 16, 1, 'albero'), rect(33, 6, 16, 1, 'albero'),
     // boschetti sparsi lontano da strade/edifici/npc/passaggi
-    rect(160, 30, 3, 2, 'albero'), rect(164, 33, 2, 3, 'albero'),
-    rect(8, 66, 3, 2, 'albero'), rect(12, 69, 2, 3, 'albero'),
-    rect(150, 68, 3, 2, 'albero'), rect(154, 71, 2, 3, 'albero'),
+    rect(107, 20, 2, 1, 'albero'), rect(109, 22, 2, 2, 'albero'),
+    rect(5, 44, 2, 1, 'albero'), rect(8, 46, 1, 2, 'albero'),
+    rect(100, 45, 2, 2, 'albero'), rect(103, 47, 1, 2, 'albero'),
     // filare lungo la riva nord del fiume (esclusa la zona del ponte e del sentiero)
-    rect(6, 89, 74, 1, 'albero'), rect(95, 89, 78, 1, 'albero')
+    rect(4, 59, 49, 1, 'albero'), rect(63, 59, 52, 1, 'albero')
   );
 }());

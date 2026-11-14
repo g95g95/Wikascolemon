@@ -5,68 +5,68 @@
     ...city, name: 'Ripatransone', baseTile: 'erba', levelRange: [5, 7],
     encounterTable: [{ species: 'pefna', minLevel: 5, maxLevel: 7, weight: 55 }, { species: 'tamburino', minLevel: 5, maxLevel: 7, weight: 30 }, { species: 'peto', minLevel: 6, maxLevel: 7, weight: 15 }],
     roads: [
-      rect(0, 54, 144, 4, 'asfalto'),
+      rect(0, 36, 96, 3, 'asfalto'),
       // strada che sale dalla fermata verso il borgo in collina
-      rect(20, 24, 4, 30, 'asfalto'),
-      rect(20, 24, 40, 4, 'asfalto'),
+      rect(13, 16, 3, 20, 'asfalto'),
+      rect(13, 16, 27, 3, 'asfalto'),
       // strada che scende verso il belvedere a est
-      rect(56, 24, 4, 20, 'asfalto'),
-      rect(56, 40, 60, 4, 'asfalto'),
-      rect(112, 40, 4, 16, 'asfalto')
+      rect(37, 16, 3, 13, 'asfalto'),
+      rect(37, 27, 40, 2, 'asfalto'),
+      rect(75, 27, 2, 10, 'asfalto')
     ],
-    waters: [], bridges: [], plazas: [rect(24, 10, 32, 14, 'piazza')],
+    waters: [], bridges: [], plazas: [rect(16, 7, 21, 9, 'piazza')],
     buildings: [
-      building(28, 12, 8, 6, 'Bar del Belvedere', '#b46c52', 'attività', { door: { x: 31, y: 18 }, interior: 'bar' }),
-      building(42, 12, 10, 8, 'Chiesa di San Gregorio', '#c5a677', 'chiesa'),
-      building(38, 44, 8, 6, 'Casa dei Peviani', '#9b7a57'),
-      building(70, 44, 8, 6, 'Casa dei Sagratti', '#a08360'),
-      building(96, 44, 8, 6, 'Casa dei Cameli', '#9b7a57')
+      building(19, 8, 5, 4, 'Bar del Belvedere', '#b46c52', 'attività', { door: { x: 21, y: 12 }, interior: 'bar' }),
+      building(28, 8, 7, 5, 'Chiesa di San Gregorio', '#c5a677', 'chiesa'),
+      building(25, 29, 6, 4, 'Casa dei Peviani', '#9b7a57'),
+      building(47, 29, 5, 4, 'Casa dei Sagratti', '#a08360'),
+      building(64, 29, 5, 4, 'Casa dei Cameli', '#9b7a57')
     ],
     labels: [
-      { x: 5, y: 51, text: 'Fermata corriera' },
-      { x: 27, y: 9, text: 'Piazza di Ripatransone' },
-      { x: 118, y: 39, text: 'Belvedere sul mare' }
+      { x: 3, y: 34, text: 'Fermata corriera' },
+      { x: 18, y: 6, text: 'Piazza di Ripatransone' },
+      { x: 79, y: 26, text: 'Belvedere sul mare' }
     ],
     encounterZones: [
-      zone(2, 2, 16, 50, 0.08, 'default'),
-      zone(66, 2, 76, 20, 0.08, 'default'),
-      zone(2, 60, 140, 46, 0.1, 'default'),
-      zone(90, 58, 50, 46, 0.06, 'default')
+      zone(1, 1, 11, 34, 0.08, 'default'),
+      zone(44, 1, 51, 14, 0.08, 'default'),
+      zone(1, 40, 94, 31, 0.1, 'default'),
+      zone(60, 39, 33, 30, 0.06, 'default')
     ],
     transitions: [
-      transition(0, 54, 2, 4, 'porta_maggiore', 9, 31, 'Corriera per Ascoli')
+      transition(0, 36, 1, 3, 'porta_maggiore', 6, 21, 'Corriera per Ascoli')
     ],
     npcs: [
-      npc(7, 52, 'Cartello', 'Fermata corriera — per Ascoli Piceno.', 'fermo'),
+      npc(5, 35, 'Cartello', 'Fermata corriera — per Ascoli Piceno.', 'fermo'),
       {
-        x: 34, y: 20, name: 'Anziano del borgo', movement: 'fermo',
+        x: 23, y: 13, name: 'Anziano del borgo', movement: 'fermo',
         script: [{ say: ['Chi arriva a Ripatransone giusto pé l\'ottava di Pasqua vede lu Cartellone, la scena più granne dipinta a mano.', 'E se guardi bbene quaggiù, sotto lu paese, li Puledrotto currono ancora com\'a la mejo squadra: qui s\'allenano da sempre.'], name: 'Anziano del borgo' }]
       },
-      npc(50, 21, 'Massaia', 'Su a la piazza c\'è sempre n\'ariata bbona, mo\' che sò salita da le vigne.', 'fermo'),
-      npc(100, 50, 'Pescatore', 'Da lu belvedere se vede fino a lu mare, quanno è chiaro.', 'fermo')
+      npc(33, 14, 'Massaia', 'Su a la piazza c\'è sempre n\'ariata bbona, mo\' che sò salita da le vigne.', 'fermo'),
+      npc(67, 33, 'Pescatore', 'Da lu belvedere se vede fino a lu mare, quanno è chiaro.', 'fermo')
     ]
   };
   const map = window.PokemonAscoliMaps.ripatransone;
   map.roads.push(
     // cornice di alberi (spessore 2), interrotta solo dal passaggio ovest
-    rect(2, 0, 142, 2, 'albero'), rect(0, 2, 2, 52, 'albero'), rect(0, 58, 2, 50, 'albero'),
-    rect(0, 106, 144, 2, 'albero'), rect(142, 2, 2, 104, 'albero'),
+    rect(1, 0, 95, 1, 'albero'), rect(0, 1, 1, 35, 'albero'), rect(0, 39, 1, 33, 'albero'),
+    rect(0, 71, 96, 1, 'albero'), rect(95, 1, 1, 70, 'albero'),
     // filari sulle colline a sinistra della strada principale (righe orizzontali alternate)
-    rect(4, 4, 14, 1, 'albero'), rect(4, 7, 14, 1, 'albero'), rect(4, 10, 14, 1, 'albero'),
-    rect(4, 13, 14, 1, 'albero'), rect(4, 16, 14, 1, 'albero'), rect(4, 19, 14, 1, 'albero'),
-    rect(4, 30, 14, 1, 'albero'), rect(4, 33, 14, 1, 'albero'), rect(4, 36, 14, 1, 'albero'),
-    rect(4, 39, 14, 1, 'albero'), rect(4, 42, 14, 1, 'albero'), rect(4, 45, 14, 1, 'albero'),
+    rect(3, 3, 9, 1, 'albero'), rect(3, 5, 9, 1, 'albero'), rect(3, 7, 9, 1, 'albero'),
+    rect(3, 9, 9, 1, 'albero'), rect(3, 11, 9, 1, 'albero'), rect(3, 13, 9, 1, 'albero'),
+    rect(3, 20, 9, 1, 'albero'), rect(3, 22, 9, 1, 'albero'), rect(3, 24, 9, 1, 'albero'),
+    rect(3, 26, 9, 1, 'albero'), rect(3, 28, 9, 1, 'albero'), rect(3, 30, 9, 1, 'albero'),
     // vigneti a destra della piazza (rettangoli sottili di albero alternati a erba)
-    rect(60, 6, 1, 16, 'albero'), rect(63, 6, 1, 16, 'albero'), rect(66, 6, 1, 16, 'albero'),
-    rect(69, 6, 1, 16, 'albero'), rect(72, 6, 1, 16, 'albero'), rect(75, 6, 1, 16, 'albero'),
-    rect(78, 6, 1, 16, 'albero'), rect(81, 6, 1, 16, 'albero'),
+    rect(40, 4, 1, 11, 'albero'), rect(42, 4, 1, 11, 'albero'), rect(44, 4, 1, 11, 'albero'),
+    rect(46, 4, 1, 11, 'albero'), rect(48, 4, 1, 11, 'albero'), rect(50, 4, 1, 11, 'albero'),
+    rect(52, 4, 1, 11, 'albero'), rect(54, 4, 1, 11, 'albero'),
     // boschetto verso il belvedere e a sud della strada del borgo
-    rect(92, 8, 3, 2, 'albero'), rect(98, 12, 2, 3, 'albero'), rect(105, 6, 3, 2, 'albero'),
-    rect(34, 30, 3, 2, 'albero'), rect(46, 34, 2, 3, 'albero'),
+    rect(61, 5, 2, 2, 'albero'), rect(65, 8, 2, 2, 'albero'), rect(70, 4, 2, 1, 'albero'),
+    rect(23, 20, 2, 1, 'albero'), rect(31, 23, 1, 2, 'albero'),
     // filari sulle colline sotto la strada principale (sud, verso i campi)
-    rect(20, 62, 20, 1, 'albero'), rect(20, 66, 20, 1, 'albero'), rect(20, 70, 20, 1, 'albero'),
-    rect(20, 74, 20, 1, 'albero'), rect(20, 78, 20, 1, 'albero'),
-    rect(100, 62, 20, 1, 'albero'), rect(100, 66, 20, 1, 'albero'), rect(100, 70, 20, 1, 'albero'),
-    rect(100, 74, 20, 1, 'albero'), rect(100, 78, 20, 1, 'albero')
+    rect(13, 41, 14, 1, 'albero'), rect(13, 44, 14, 1, 'albero'), rect(13, 47, 14, 1, 'albero'),
+    rect(13, 49, 14, 1, 'albero'), rect(13, 52, 14, 1, 'albero'),
+    rect(67, 41, 13, 1, 'albero'), rect(67, 44, 13, 1, 'albero'), rect(67, 47, 13, 1, 'albero'),
+    rect(67, 49, 13, 1, 'albero'), rect(67, 52, 13, 1, 'albero')
   );
 }());

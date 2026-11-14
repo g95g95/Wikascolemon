@@ -46,8 +46,8 @@
     typeChart,
     items,
     starters: ['basilino', 'puledrotto', 'tuffito'],
-    start: { map: 'porta_maggiore', x: 16, y: 46, direction: 'down' },
-    respawn: { map: 'porta_maggiore', x: 16, y: 46, direction: 'down' },
+    start: { map: 'porta_maggiore', x: 11, y: 31, direction: 'down' },
+    respawn: { map: 'porta_maggiore', x: 11, y: 31, direction: 'down' },
     initialItems: { ball: 5, potion: 2, antidote: 0, repel: 0, acquasanta: 0 }
   };
   if (typeof module !== 'undefined') module.exports = window.PokemonAscoliData;

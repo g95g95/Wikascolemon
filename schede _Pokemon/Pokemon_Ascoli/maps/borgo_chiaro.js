@@ -7,31 +7,31 @@
       { species: 'puledrotto', minLevel: 8, maxLevel: 8, weight: 30 },
       { species: 'segaccio', minLevel: 9, maxLevel: 9, weight: 20 }
     ],
-    roads: [rect(0, 54, 144, 3), rect(87, 0, 3, 120), rect(33, 0, 3, 60)], waters: [], bridges: [], plazas: [],
-    buildings: [building(45, 18, 24, 16, 'Stadio Cino e Lillo Del Duca', '#a7a9a4', 'stadio')],
-    labels: [{ x: 64, y: 49, text: 'STADIO' }],
-    encounterZones: [zone(39, 9, 60, 36, 0.1, 'default')],
+    roads: [rect(0, 36, 96, 2), rect(58, 0, 2, 80), rect(22, 0, 2, 40)], waters: [], bridges: [], plazas: [],
+    buildings: [building(30, 12, 16, 11, 'Stadio Cino e Lillo Del Duca', '#a7a9a4', 'stadio')],
+    labels: [{ x: 43, y: 33, text: 'STADIO' }],
+    encounterZones: [zone(26, 6, 40, 24, 0.1, 'default')],
     transitions: [
-      transition(0, 54, 2, 3, 'campo_parignano', 136, 55, 'Campo Parignano'),
-      transition(33, 0, 3, 2, 'borgo_solesta', 121, 112, 'Borgo Solestà'),
-      transition(87, 118, 3, 2, 'porta_maggiore', 88, 10, 'Porta Maggiore')
+      transition(0, 36, 1, 2, 'campo_parignano', 91, 37, 'Campo Parignano'),
+      transition(22, 0, 2, 1, 'borgo_solesta', 81, 75, 'Borgo Solestà'),
+      transition(58, 79, 2, 1, 'porta_maggiore', 59, 7, 'Porta Maggiore')
     ],
     npcs: [
-      npc(73, 64, 'Tifoso', 'Lo stadio è il cuore di Borgo Chiaro.', 'orizzontale'),
-      npc(55, 45, 'Steward', 'La domenica se riempie ancora, ma fori\' dallo stadio è tutto chiuso.', 'fermo'),
-      npc(100, 90, 'Residente', 'Certe bande se fanno vedè de sera, mejo passà de giorno.', 'verticale')
+      npc(49, 43, 'Tifoso', 'Lo stadio è il cuore di Borgo Chiaro.', 'orizzontale'),
+      npc(37, 30, 'Steward', 'La domenica se riempie ancora, ma fori\' dallo stadio è tutto chiuso.', 'fermo'),
+      npc(67, 60, 'Residente', 'Certe bande se fanno vedè de sera, mejo passà de giorno.', 'verticale')
     ]
   };
   const map = window.PokemonAscoliMaps.borgo_chiaro;
   map.roads.push(
     // cornice di alberi (spessore 2), interrotta dai tre passaggi (ovest, nord, sud)
-    rect(0, 0, 33, 2, 'albero'), rect(36, 0, 108, 2, 'albero'),
-    rect(0, 118, 87, 2, 'albero'), rect(90, 118, 54, 2, 'albero'),
-    rect(0, 2, 2, 52, 'albero'), rect(0, 57, 2, 61, 'albero'),
-    rect(142, 2, 2, 116, 'albero'),
+    rect(0, 0, 22, 1, 'albero'), rect(24, 0, 72, 1, 'albero'),
+    rect(0, 79, 58, 1, 'albero'), rect(60, 79, 36, 1, 'albero'),
+    rect(0, 1, 1, 35, 'albero'), rect(0, 38, 1, 41, 'albero'),
+    rect(95, 1, 1, 78, 'albero'),
     // boschetti nelle zone verdi lontane da strade/edifici/npc/passaggi
-    rect(10, 20, 3, 2, 'albero'), rect(14, 23, 2, 3, 'albero'),
-    rect(100, 80, 3, 2, 'albero'), rect(104, 83, 2, 3, 'albero'),
-    rect(110, 30, 3, 2, 'albero'), rect(114, 33, 2, 3, 'albero')
+    rect(7, 13, 2, 2, 'albero'), rect(9, 15, 2, 2, 'albero'),
+    rect(67, 53, 2, 2, 'albero'), rect(69, 55, 2, 2, 'albero'),
+    rect(73, 20, 2, 1, 'albero'), rect(76, 22, 1, 2, 'albero')
   );
 }());

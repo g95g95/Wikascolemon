@@ -8,29 +8,29 @@
       { species: 'cavedi', minLevel: 5, maxLevel: 7, weight: 15 },
       { species: 'tamburino', minLevel: 6, maxLevel: 7, weight: 15 }
     ],
-    roads: [rect(70, 0, 4, 120), rect(0, 33, 180, 3), rect(0, 84, 180, 3)],
-    waters: [rect(0, 48, 180, 24, 'water')], bridges: [rect(70, 45, 4, 30, 'bridge')],
-    buildings: [building(84, 12, 20, 10, 'Porta Cartara', '#a97a5d', 'porta')], plazas: [],
-    labels: [{ x: 91, y: 64, text: 'RIO CASTELLANO' }],
-    encounterZones: [zone(0, 39, 180, 9, 0.12, 'default'), zone(0, 72, 180, 9, 0.12, 'default')],
-    transitions: [transition(70, 0, 4, 2, 'centro_storico', 73, 100, 'Centro Storico')],
+    roads: [rect(47, 0, 2, 80), rect(0, 22, 120, 2), rect(0, 56, 120, 2)],
+    waters: [rect(0, 32, 120, 16, 'water')], bridges: [rect(47, 30, 2, 20, 'bridge')],
+    buildings: [building(56, 8, 13, 7, 'Porta Cartara', '#a97a5d', 'porta')], plazas: [],
+    labels: [{ x: 61, y: 43, text: 'RIO CASTELLANO' }],
+    encounterZones: [zone(0, 26, 120, 6, 0.12, 'default'), zone(0, 48, 120, 6, 0.12, 'default')],
+    transitions: [transition(47, 0, 2, 1, 'centro_storico', 49, 67, 'Centro Storico')],
     npcs: [
-      npc(91, 91, 'Pescatore', 'I Tuffito si muovono in gruppo lungo il Rio Castellano.', 'fermo'),
-      npc(60, 45, 'Cartello', 'Rio Castellano: qui Bobby diede il primo Tuffito a chi sceglieva l’acqua.', 'fermo'),
-      npc(45, 86, 'Lavandaia', 'Da ragazza si veniva qui a lavà li panni, mo\' nemmanco più.', 'fermo'),
-      npc(120, 35, 'Passante', 'Con l’acqua alta certe volte il fiume s\'ariprenne tutto.', 'verticale')
+      npc(61, 61, 'Pescatore', 'I Tuffito si muovono in gruppo lungo il Rio Castellano.', 'fermo'),
+      npc(40, 30, 'Cartello', 'Rio Castellano: qui Bobby diede il primo Tuffito a chi sceglieva l’acqua.', 'fermo'),
+      npc(30, 57, 'Lavandaia', 'Da ragazza si veniva qui a lavà li panni, mo\' nemmanco più.', 'fermo'),
+      npc(80, 23, 'Passante', 'Con l’acqua alta certe volte il fiume s\'ariprenne tutto.', 'verticale')
     ]
   };
   const map = window.PokemonAscoliMaps.porta_cartara;
   map.roads.push(
     // cornice di alberi (spessore 2), interrotta dal passaggio a nord
-    rect(0, 0, 70, 2, 'albero'), rect(74, 0, 106, 2, 'albero'),
-    rect(0, 118, 180, 2, 'albero'),
-    rect(0, 2, 2, 116, 'albero'), rect(178, 2, 2, 116, 'albero'),
+    rect(0, 0, 47, 1, 'albero'), rect(49, 0, 71, 1, 'albero'),
+    rect(0, 79, 120, 1, 'albero'),
+    rect(0, 1, 1, 78, 'albero'), rect(119, 1, 1, 78, 'albero'),
     // boschetti nelle zone verdi lontane da strade/edifici/npc/passaggi
-    rect(10, 15, 3, 2, 'albero'), rect(14, 18, 2, 3, 'albero'),
-    rect(140, 15, 3, 2, 'albero'), rect(144, 18, 2, 3, 'albero'),
-    rect(10, 95, 3, 2, 'albero'), rect(14, 98, 2, 3, 'albero'),
-    rect(140, 95, 3, 2, 'albero'), rect(144, 98, 2, 3, 'albero')
+    rect(7, 10, 2, 1, 'albero'), rect(9, 12, 2, 2, 'albero'),
+    rect(93, 10, 2, 1, 'albero'), rect(96, 12, 1, 2, 'albero'),
+    rect(7, 63, 2, 2, 'albero'), rect(9, 65, 2, 2, 'albero'),
+    rect(93, 63, 2, 2, 'albero'), rect(96, 65, 1, 2, 'albero')
   );
 }());
