@@ -36,8 +36,9 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
       `assets/fonts/`. Dialoghi e lotta sono misurati in `--u` (1/240 dello schermo): scalano col gioco.
 - [x] C2. (14/11) Lotta: sfondo con pedane, riquadri PS con barra verde/gialla/rossa animata e barra
       exp, riquadro messaggi, menu LOTTA/BORSA/SQUADRA/FUGA, mosse con tipo e PP, lampo d'ingresso.
-- [ ] C2b. Da decidere — i lati: oggi selvatico a sinistra e proprio Pokémon a destra (scelta fatta a suo
-      tempo, protetta da `regression.mjs`); nei giochi Pokémon è il contrario. Invertire = 4 righe di CSS.
+- [x] C2b. (14/11, deciso da Jacopo) Lati come nei giochi Pokémon: avversario in alto a destra con scheda
+      in alto a sinistra, proprio Pokémon in basso a sinistra con scheda in basso a destra. Sostituisce la
+      scelta precedente (selvatico a sinistra); `regression.mjs` aggiornato.
 - [ ] C3. Transizioni: dissolvenza fra mappe, animazione della Ball, colpo/KO (il lampo d'ingresso c'è).
 - [ ] C4. Menu di pausa a lista sulla destra; schermata Squadra a riquadri; Borsa a tasche.
 - [ ] C5. Schermata titolo, icone delle 2 medaglie (era E3).

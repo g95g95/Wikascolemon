@@ -199,10 +199,10 @@ for (const htmlName of ['index.html', 'configuratore.html']) {
 }
 
 const styles = fs.readFileSync(path.join(gameDir, 'styles.css'), 'utf8');
-assert.match(styles, /\.enemy-sprite\s*\{[^}]*left:/, 'Il Pokémon selvatico deve apparire a sinistra');
-assert.match(styles, /\.ally-sprite\s*\{[^}]*right:/, 'Il Pokémon della squadra deve apparire a destra');
-assert.match(styles, /\.enemy-card\s*\{[^}]*left:/, 'La scheda del selvatico deve apparire accanto al selvatico');
-assert.match(styles, /\.ally-card\s*\{[^}]*right:/, 'La scheda della squadra deve apparire accanto al Pokémon della squadra');
+assert.match(styles, /\.enemy-sprite\s*\{[^}]*right:/, 'Il Pokémon avversario deve apparire in alto a destra (convenzione Pokémon, scelta del 14/11/2026)');
+assert.match(styles, /\.ally-sprite\s*\{[^}]*left:/, 'Il Pokémon della squadra deve apparire in basso a sinistra');
+assert.match(styles, /\.enemy-card\s*\{[^}]*left:/, 'La scheda avversaria sta in alto a sinistra, di fronte al suo Pokémon');
+assert.match(styles, /\.ally-card\s*\{[^}]*right:/, 'La scheda della squadra sta in basso a destra, di fronte al suo Pokémon');
 
 // --- door/interior/script/when sulle mappe ---
 const validInteriors = new Set(['bar', 'market', 'gym', 'none']);
