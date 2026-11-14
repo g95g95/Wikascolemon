@@ -100,7 +100,10 @@
   let player = { ...data.start, renderX: data.start.x, renderY: data.start.y, frame: 0 };
   let movement = null;
   let battle = null;
-  let lastMoveAt = 0;
+  let nextMoveAt = 0;   // prima di questo istante non parte un nuovo passo (giro sul posto, urto)
+  let running = false;  // Maiusc o B tenuto premuto
+  const WALK_MS = 210;  // durata di un passo da una cella: ~5 celle al secondo
+  const RUN_MS = 115;   // di corsa: ~9 celle al secondo
   let lastNpcMoveAt = 0;
   let toastTimer = 0;
   let bannerTimer = 0;
@@ -278,8 +281,15 @@
     return false;
   }
 
-  function movePlayer(direction, now = performance.now()) {
+  // chained = il passo segue subito il precedente (tasto tenuto premuto): niente giro sul posto.
+  function movePlayer(direction, now = performance.now(), chained = false) {
     if (mode !== 'world' || movement) return;
+    if (!chained && player.direction !== direction) {
+      // da fermi, un colpetto in un'altra direzione gira soltanto; se il tasto resta giù si parte
+      player.direction = direction;
+      nextMoveAt = now + 90;
+      return;
+    }
     player.direction = direction;
     const vector = directions[direction];
     const targetX = player.x + vector.x;
@@ -287,26 +297,30 @@
     if (isBlocked(currentMap, targetX, targetY)) {
       player.frame = 0;
       playSound('bump');
+      nextMoveAt = now + 220;
       return;
     }
     movement = {
       start: now,
-      duration: 170,
+      duration: running ? RUN_MS : WALK_MS,
       fromX: player.x,
       fromY: player.y,
       toX: targetX,
       toY: targetY
     };
-    player.frame = (player.frame + 1) % 4;
+    player.stride = !player.stride;
   }
 
   function updateMovement(now) {
     if (!movement) return;
+    // velocità costante: niente accelerazione e frenata a ogni cella
     const progress = Math.min(1, (now - movement.start) / movement.duration);
-    const eased = progress < .5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-    player.renderX = movement.fromX + (movement.toX - movement.fromX) * eased;
-    player.renderY = movement.fromY + (movement.toY - movement.fromY) * eased;
+    player.renderX = movement.fromX + (movement.toX - movement.fromX) * progress;
+    player.renderY = movement.fromY + (movement.toY - movement.fromY) * progress;
+    // due fotogrammi per cella: falcata (piede alternato a ogni passo), poi posa
+    player.frame = progress < .5 ? (player.stride ? 1 : 3) : (player.stride ? 2 : 0);
     if (progress < 1) return;
+    const endedAt = movement.start + movement.duration;
     player.x = movement.toX;
     player.y = movement.toY;
     player.renderX = player.x;
@@ -317,6 +331,18 @@
     if (checkTransition()) return;
     checkEncounter();
     autoSave();
+    // tasto ancora giù: il passo successivo parte dall'istante in cui è finito questo, senza pause
+    const held = heldDirections[heldDirections.length - 1];
+    if (held && mode === 'world' && !movement) {
+      movePlayer(held, Math.max(endedAt, now - 34), true);
+      if (movement) updateMovementPosition(now);
+    }
+  }
+
+  function updateMovementPosition(now) {
+    const progress = Math.max(0, Math.min(1, (now - movement.start) / movement.duration));
+    player.renderX = movement.fromX + (movement.toX - movement.fromX) * progress;
+    player.renderY = movement.fromY + (movement.toY - movement.fromY) * progress;
   }
 
   function checkTransition() {
@@ -1825,10 +1851,7 @@
   function gameLoop(now) {
     if (mode === 'world') {
       const held = heldDirections[heldDirections.length - 1];
-      if (held && !movement && now - lastMoveAt > 190) {
-        movePlayer(held, now);
-        lastMoveAt = now;
-      }
+      if (held && !movement && now >= nextMoveAt) movePlayer(held, now);
       updateMovement(now);
       updateNpcs(now);
     }
@@ -1840,10 +1863,7 @@
     const index = heldDirections.indexOf(direction);
     if (index !== -1) heldDirections.splice(index, 1);
     heldDirections.push(direction);
-    if (mode === 'world' && !movement) {
-      movePlayer(direction);
-      lastMoveAt = performance.now();
-    }
+    if (mode === 'world' && !movement) movePlayer(direction);
   }
 
   function removeHeld(direction) {
@@ -1872,11 +1892,13 @@
       else if (mode === 'credits') closeCredits();
     }
   });
+  document.addEventListener('keydown', event => { if (event.key === 'Shift') running = true; });
+  document.addEventListener('keyup', event => { if (event.key === 'Shift') running = false; });
   document.addEventListener('keyup', event => {
     const direction = keyDirections[event.code];
     if (direction) removeHeld(direction);
   });
-  window.addEventListener('blur', () => { heldDirections.length = 0; });
+  window.addEventListener('blur', () => { heldDirections.length = 0; running = false; });
 
   document.querySelectorAll('[data-direction]').forEach(button => {
     const direction = button.dataset.direction;
@@ -1898,6 +1920,9 @@
     if (mode === 'credits') { closeCredits(); return; }
     interact();
   });
+  // B tenuto premuto = corsa
+  ui.touchB.addEventListener('pointerdown', () => { running = true; });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(type => ui.touchB.addEventListener(type, () => { running = false; }));
   ui.touchB.addEventListener('click', () => {
     if (mode === 'menu') closeMenu();
     else if (mode === 'battle') showBattleMain();

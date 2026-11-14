@@ -62,6 +62,16 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
 - [ ] C4b. Menu di pausa a lista sulla destra; Borsa a tasche.
 - [ ] C5. Schermata titolo, icone delle 2 medaglie (era E3).
 
+## E. Movimento e scala (richiesta del 14/11: «mappe enormi», «fluidità di Oliver»)
+- [x] E1. (14/11) Movimento fluido: velocità costante (via l'accelera-e-frena a ogni cella), passi
+      concatenati senza pausa col tasto giù, due fotogrammi per cella, giro sul posto con un colpetto,
+      corsa con Maiusc o B tenuto (≈5 celle/s a piedi, ≈9 di corsa).
+      ⚠️ `tests/e2e/` muove Oliver con pressioni singole: col giro sul posto un cambio di direzione
+      ora richiede due pressioni (o tasto tenuto). Da adeguare prima di rilanciare il playthrough.
+- [ ] E2. Mappe più raccolte. Storia: 256×160 → 48×36 («vuote») → ×3 = 144×108/180×120 il 20/08
+      («troppo piccole») → ora «enormi». Proposta: dimezzare (72×54 / 90×60) con uno script, edifici
+      a misura di casa (6×5 circa), poi addensare con l'arredo.
+
 ## D. Suono (dopo)
 - [ ] D1. Effetti chiptune e 3-4 temi (città, percorso, lotta, vittoria) generati in WebAudio.
 
