@@ -459,7 +459,8 @@
   // ---------------------------------------------------------------------
 
   function interact() {
-    if (mode !== 'world') return;
+    // a metà passo A non fa nulla: altrimenti un cambio di mappa partiva con il passo ancora in corso
+    if (mode !== 'world' || movement) return;
     const vector = directions[player.direction];
     const x = player.x + vector.x;
     const y = player.y + vector.y;
@@ -637,6 +638,7 @@
       });
     },
     async warp(dest) {
+      movement = null; // un passo rimasto a metà riporterebbe il giocatore alle coordinate della mappa di prima
       player.map = dest.map;
       player.x = dest.x;
       player.y = dest.y;
@@ -1374,6 +1376,7 @@
       save.money = Math.floor((save.money || 0) / 2);
       showToast('Hai perso metà dei tuoi Talleri.');
     }
+    movement = null;
     let destination = save.lastHeal || data.respawn;
     if (!maps[destination.map] || isBlocked(maps[destination.map], destination.x, destination.y, true)) destination = data.respawn;
     player = { map: destination.map, x: destination.x, y: destination.y, direction: 'down', renderX: destination.x, renderY: destination.y, frame: 0 };

@@ -20,6 +20,9 @@ Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco
   lui compare.
 - **Colonna sonora** provvisoria: un giro lento e rilassato, sintetizzato. Si spegne da Impostazioni.
 - In lotta il messaggio non finisce più sotto il menu.
+- **Corretto il blocco negli interni**: premendo A mentre Oliver stava ancora facendo il passo verso
+  la porta si entrava nella stanza con le coordinate della mappa esterna, cioè fuori dallo schermo e
+  senza poter uscire. Chi è rimasto bloccato così torna alla stazione ricaricando la pagina.
 
 ## 14/11/2026 (notte) — Interni e suoni
 
