@@ -164,6 +164,21 @@ Resta il guscio: input, rendering, UI overlay, salvataggio. Usa i moduli sopra. 
 Salvataggio `version: 2` (migrazione dalla 1: aggiunge `flags: {}`, `badges: []`, `money: 3000`,
 mosse con pp, `status: null`).
 
+## Tileset (`assets/tiles/tileset.png`)
+Atlante a celle 16×16, 16 colonne. Le posizioni dei tile sono la costante `TILES` in `game.js` ed è
+il **contratto** con chi disegna l'atlante: sostituire il PNG rispettando la griglia cambia la grafica
+senza toccare codice né mappe. `tools/build-tileset.py` (Python + Pillow) genera quello provvisorio.
+- `terrainGrid(map)` calcola una volta per mappa il terreno di ogni cella (da `terrainAt`) e le celle
+  d'erba alta: erba dentro una `encounterZone` (o `encounterCells` > 0).
+- `drawGround` disegna il tile base (varianti per hash della cella, acqua a 2 fotogrammi) e poi i
+  **bordi automatici**: l'erba invade `road`/`ghiaia`/`sabbia`; l'acqua riceve la riva (erbosa, o
+  battigia se il vicino è `sabbia`). Ogni serie di bordi = 4 lati (N, E, S, O) + 4 angoli interni.
+- Gli alberi occupano una cella ma la chioma (`albero_top`) sborda su quella sopra; l'erba alta copre
+  i piedi del giocatore (`erba_alta_front`).
+- Se il PNG non si carica si ricade su `drawTile` (i vecchi tile dipinti in codice), che resta anche
+  per i tipi non presenti in `TILES`.
+- Gli edifici sono ancora dipinti in codice (`drawHouse`: tetto, facciata, finestre, porta su `door`).
+
 ## Test
 `node tests/regression.mjs` (dati e mappe) + `node tests/battle.test.mjs` + `node tests/events.test.mjs`
 + `node tests/trainers.test.mjs` + `node tests/flags.test.mjs` (copertura flag/badge/item nelle

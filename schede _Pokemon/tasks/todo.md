@@ -23,10 +23,15 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
 - [ ] B0. **Fonte dei tile**: atlante originale in stile terza generazione, generato (deciso il 14/11).
       Non si usano tile estratti dai giochi ufficiali. Su questo PC manca un generatore di immagini
       (`codex` non è installato): o lo si installa, o l'atlante lo genera Jacopo e qui lo si affetta (PIL c'è).
-- [ ] B1. Atlante `assets/tiles/tileset.png` 16×16 + `drawTile` che pesca dall'atlante, con bordi
-      automatici (autotile) fra erba/strada/acqua/sabbia. I dati delle mappe non cambiano.
-- [ ] B2. Erba alta visibile sulle `encounterZones` (oggi non si vedono), con fruscio al passaggio.
-- [ ] B3. Edifici veri: tetto, facciata, porta, insegna per `kind` (bar, tabacchi, palestra, chiesa,
+- [x] B1. (14/11) Motore a tileset: `assets/tiles/tileset.png` 16×16, contratto `TILES` in `game.js`,
+      bordi automatici erba/strada/acqua/sabbia, acqua animata, alberi con chioma. L'atlante attuale è
+      **provvisorio** (`tools/build-tileset.py`): va sostituito con quello generato.
+- [x] B2. (14/11) Erba alta visibile sulle zone d'incontro, copre i piedi del giocatore. Manca il fruscio.
+- [ ] B2b. Le zone d'incontro sono rettangoli enormi (es. 45×42): ora che si vedono sono prati interi
+      d'erba alta. Da ridisegnare a chiazze nel configuratore.
+- [ ] B1b. Il configuratore disegna ancora i tile a colori piatti: portarlo sull'atlante.
+- [ ] B3. (provvisorio fatto il 14/11: `drawHouse` dipinge tetto, facciata, finestre e porta in codice)
+      Edifici veri: tetto, facciata, porta, insegna per `kind` (bar, tabacchi, palestra, chiesa,
       ospedale, stadio…); il giocatore passa dietro tetti e chiome (ordinamento per Y).
 - [ ] B4. Animazioni: acqua, mare, fiori; ombra sotto gli sprite; camminata NPC a 4 frame.
 - [ ] B5. I 6 fogli NPC mancanti (bro_security, dj, turista, congressista, rivale, capopalestra) —

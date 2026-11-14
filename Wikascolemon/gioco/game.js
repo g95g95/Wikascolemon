@@ -1625,6 +1625,99 @@
     }
   }
 
+  // ---------------------------------------------------------------------
+  // Tileset: atlante 16×16 (assets/tiles/tileset.png, 16 colonne). Le posizioni qui sotto sono il
+  // contratto con chi disegna l'atlante: tools/build-tileset.py genera quello provvisorio.
+  // Se l'immagine non si carica, si ricade sui tile dipinti a mano di drawTile.
+  // ---------------------------------------------------------------------
+
+  const tilesetImage = new Image();
+  tilesetImage.src = 'assets/tiles/tileset.png';
+  const TILES = {
+    erba: [0, 0], erba_b: [1, 0], erba_c: [2, 0], erba_alta: [3, 0], road: [4, 0], piazza: [5, 0], travertino: [6, 0],
+    asfalto: [7, 0], ghiaia: [8, 0], pavimento: [9, 0], sabbia: [10, 0], pendio: [11, 0], muro: [12, 0], binari: [13, 0],
+    bridge: [14, 0], erba_alta_front: [15, 0],
+    water_0: [0, 1], water_1: [1, 1], mare_0: [2, 1], mare_1: [3, 1], albero: [4, 1], albero_top: [5, 1], road_b: [6, 1], asfalto_b: [7, 1],
+    // serie di bordi: 4 lati (N, E, S, O) poi 4 angoli interni (NE, SE, SO, NO)
+    bordo_erba: [0, 2], riva_erba: [8, 2], riva_sabbia: [0, 3]
+  };
+  const GRASSY = new Set(['erba', 'pendio', 'albero']);
+  const SOFT = new Set(['road', 'ghiaia', 'sabbia']);
+  const WATERY = new Set(['water', 'mare']);
+  const SIDES = [[0, -1], [1, 0], [0, 1], [-1, 0]];
+  const DIAGONALS = [[1, -1], [1, 1], [-1, 1], [-1, -1]];
+
+  function tilesetReady() {
+    return tilesetImage.complete && tilesetImage.naturalWidth > 0;
+  }
+
+  // Griglia dei terreni di una mappa, calcolata una volta sola (le mappe non cambiano in partita).
+  const terrainGrids = new WeakMap();
+  function terrainGrid(map) {
+    let grid = terrainGrids.get(map);
+    if (grid) return grid;
+    const types = new Array(map.width * map.height);
+    const tall = new Uint8Array(map.width * map.height);
+    for (let y = 0; y < map.height; y += 1) {
+      for (let x = 0; x < map.width; x += 1) {
+        const type = terrainAt(map, x, y);
+        types[y * map.width + x] = type;
+        if (type !== 'erba') continue;
+        const custom = map.encounterCells && map.encounterCells[keyFor(x, y)];
+        const inZone = custom !== undefined ? custom > 0 : (map.encounterZones || []).some(item => pointInRect(x, y, item));
+        if (inZone && !(map.buildings || []).some(item => pointInRect(x, y, item))) tall[y * map.width + x] = 1;
+      }
+    }
+    grid = { types, tall, width: map.width, height: map.height };
+    terrainGrids.set(map, grid);
+    return grid;
+  }
+
+  function gridType(grid, x, y) {
+    if (x < 0 || y < 0 || x >= grid.width || y >= grid.height) return null;
+    return grid.types[y * grid.width + x];
+  }
+
+  function isTallGrass(map, x, y) {
+    const grid = terrainGrid(map);
+    return x >= 0 && y >= 0 && x < grid.width && y < grid.height && grid.tall[y * grid.width + x] === 1;
+  }
+
+  function blit(tile, offset, screenX, screenY) {
+    ctx.drawImage(tilesetImage, (tile[0] + offset) * 16, tile[1] * 16, 16, 16, screenX, screenY, 16, 16);
+  }
+
+  // Quale serie di bordi disegnare su una cella di tipo `type` verso un vicino di tipo `other`.
+  function fringeFor(type, other) {
+    if (!other || other === type) return null;
+    if (WATERY.has(type)) {
+      if (WATERY.has(other) || other === 'bridge') return null;
+      return other === 'sabbia' ? TILES.riva_sabbia : TILES.riva_erba;
+    }
+    if (SOFT.has(type) && GRASSY.has(other)) return TILES.bordo_erba;
+    return null;
+  }
+
+  function drawGround(grid, x, y, screenX, screenY, frame) {
+    const type = gridType(grid, x, y);
+    const hash = ((x * 73856093) ^ (y * 19349663)) >>> 0;
+    let tile = TILES[type];
+    if (type === 'erba') tile = grid.tall[y * grid.width + x] ? TILES.erba_alta : [TILES.erba, TILES.erba, TILES.erba_b, TILES.erba, TILES.erba, TILES.erba_c, TILES.erba, TILES.erba_b][hash % 8];
+    else if (type === 'water') tile = frame ? TILES.water_1 : TILES.water_0;
+    else if (type === 'mare') tile = frame ? TILES.mare_1 : TILES.mare_0;
+    else if (type === 'road' && hash % 3 === 0) tile = TILES.road_b;
+    else if (type === 'asfalto' && hash % 5 === 0) tile = TILES.asfalto_b;
+    if (!tile) { drawTile(type, screenX, screenY, x, y); return; }
+    blit(tile, 0, screenX, screenY);
+    const sides = SIDES.map(([dx, dy]) => fringeFor(type, gridType(grid, x + dx, y + dy)));
+    sides.forEach((set, index) => { if (set) blit(set, index, screenX, screenY); });
+    DIAGONALS.forEach(([dx, dy], index) => {
+      if (sides[index] || sides[(index + 1) % 4]) return;
+      const set = fringeFor(type, gridType(grid, x + dx, y + dy));
+      if (set) blit(set, 4 + index, screenX, screenY);
+    });
+  }
+
   function cameraPosition() {
     const worldWidth = currentMap.width * data.tileSize;
     const worldHeight = currentMap.height * data.tileSize;
@@ -1634,6 +1727,68 @@
     };
   }
 
+  function shade(hex, factor) {
+    const value = parseInt(hex.slice(1), 16);
+    const channel = shift => Math.max(0, Math.min(255, Math.round(((value >> shift) & 255) * factor)));
+    return `rgb(${channel(16)},${channel(8)},${channel(0)})`;
+  }
+
+  // Edificio visto dall'alto a tre quarti: tetto a file di coppi sopra, facciata con finestre e
+  // porta sotto. Provvisorio, dipinto in codice: gli edifici veri arriveranno con l'atlante.
+  const FLAT_ROOF_KINDS = new Set(['ospedale', 'capannone', 'stazione', 'stabilimento', 'sport']);
+  function drawHouse(item, x, y, width, height, camera) {
+    const wall = /^#[0-9a-f]{6}$/i.test(item.color || '') ? item.color : '#b77958';
+    const roof = FLAT_ROOF_KINDS.has(item.kind) ? '#8a9098' : '#c4623c';
+    const wallHeight = (item.h >= 6 ? 3 : item.h >= 3 ? 2 : 1) * 16;
+    const roofHeight = height - wallHeight;
+    const wallTop = y + roofHeight;
+    // tetto
+    for (let row = 0; row * 4 < roofHeight; row += 1) {
+      ctx.fillStyle = shade(roof, row % 2 ? .92 : 1);
+      ctx.fillRect(x, y + row * 4, width, Math.min(4, roofHeight - row * 4));
+      ctx.fillStyle = shade(roof, .78);
+      ctx.fillRect(x, y + row * 4 + 3, width, 1);
+    }
+    ctx.fillStyle = shade(roof, 1.25);
+    ctx.fillRect(x, y, width, 2);
+    ctx.fillStyle = shade(roof, .6);
+    ctx.fillRect(x, wallTop - 2, width, 2);
+    // facciata
+    ctx.fillStyle = wall;
+    ctx.fillRect(x, wallTop, width, wallHeight);
+    ctx.fillStyle = shade(wall, .78);
+    ctx.fillRect(x, wallTop, width, 2);
+    ctx.fillRect(x, y + height - 2, width, 2);
+    const doorX = Math.round(item.door ? item.door.x * 16 - camera.x + 2 : x + width / 2 - 6);
+    if (wallHeight >= 32) {
+      for (let windowX = x + 8; windowX < x + width - 14; windowX += 24) {
+        if (Math.abs(windowX - doorX) < 16) continue;
+        ctx.fillStyle = shade(wall, .5);
+        ctx.fillRect(windowX, wallTop + 7, 10, 11);
+        ctx.fillStyle = '#8fc4e8';
+        ctx.fillRect(windowX + 1, wallTop + 8, 8, 9);
+        ctx.fillStyle = '#d8ecf8';
+        ctx.fillRect(windowX + 1, wallTop + 8, 3, 3);
+        ctx.fillStyle = shade(wall, .5);
+        ctx.fillRect(windowX + 4, wallTop + 8, 1, 9);
+      }
+    }
+    // porta
+    const doorHeight = Math.min(18, wallHeight - 4);
+    ctx.fillStyle = '#3a2a20';
+    ctx.fillRect(doorX, y + height - doorHeight, 12, doorHeight);
+    ctx.fillStyle = '#8a5630';
+    ctx.fillRect(doorX + 1, y + height - doorHeight + 1, 10, doorHeight - 1);
+    ctx.fillStyle = '#e8c860';
+    ctx.fillRect(doorX + 8, y + height - Math.round(doorHeight / 2), 2, 2);
+    // contorno
+    ctx.fillStyle = '#3a2e26';
+    ctx.fillRect(x - 1, y - 1, width + 2, 1);
+    ctx.fillRect(x - 1, y, 1, height);
+    ctx.fillRect(x + width, y, 1, height);
+    ctx.fillRect(x - 1, y + height, width + 2, 1);
+  }
+
   function drawBuildings(camera) {
     (currentMap.buildings || []).forEach(item => {
       const x = item.x * 16 - camera.x;
@@ -1641,6 +1796,11 @@
       const width = item.w * 16;
       const height = item.h * 16;
       if (x > canvas.width || y > canvas.height || x + width < 0 || y + height < 0) return;
+      if (item.kind !== 'stadio') {
+        drawHouse(item, x, y, width, height, camera);
+        drawWorldLabel(item.name, item.x + item.w / 2, item.y + item.h + .7, camera);
+        return;
+      }
       ctx.fillStyle = '#5b4738';
       ctx.fillRect(x - 2, y - 4, width + 4, height + 4);
       ctx.fillStyle = item.color || '#b77958';
@@ -1768,9 +1928,21 @@
     const endY = Math.min(currentMap.height, startY + Math.ceil(canvas.height / 16) + 2);
     ctx.fillStyle = '#15241a';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    const atlas = tilesetReady();
+    const grid = atlas ? terrainGrid(currentMap) : null;
+    const frame = Math.floor(performance.now() / 450) % 2;
     for (let y = startY; y < endY; y += 1) {
       for (let x = startX; x < endX; x += 1) {
-        drawTile(terrainAt(currentMap, x, y), x * 16 - camera.x, y * 16 - camera.y, x, y);
+        if (atlas) drawGround(grid, x, y, x * 16 - camera.x, y * 16 - camera.y, frame);
+        else drawTile(terrainAt(currentMap, x, y), x * 16 - camera.x, y * 16 - camera.y, x, y);
+      }
+    }
+    if (atlas) {
+      // chiome: ogni albero sborda sulla cella sopra, quindi si disegnano dopo tutto il terreno
+      for (let y = startY; y <= Math.min(currentMap.height - 1, endY); y += 1) {
+        for (let x = startX; x < endX; x += 1) {
+          if (gridType(grid, x, y) === 'albero') blit(TILES.albero_top, 0, x * 16 - camera.x, (y - 1) * 16 - camera.y);
+        }
       }
     }
     drawTransitions(camera);
@@ -1779,6 +1951,12 @@
     drawNpcs(camera);
     drawTrainers(camera);
     drawPlayer(camera);
+    if (atlas) {
+      // l'erba alta copre i piedi del giocatore
+      const cellX = Math.round(player.renderX);
+      const cellY = Math.round(player.renderY);
+      if (isTallGrass(currentMap, cellX, cellY)) blit(TILES.erba_alta_front, 0, Math.round(player.renderX * 16 - camera.x), Math.round(player.renderY * 16 - camera.y));
+    }
     flushWorldLabels();
   }
 
