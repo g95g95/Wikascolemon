@@ -7,14 +7,15 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
 ## A. Scheda Pokémon nel gioco
 - [x] A1. Clic su un Pokémon in Squadra/Deposito → scheda con tipi, stato, 6 statistiche, esperienza
       (barra + mancante al prossimo livello), mosse con tipo/categoria/potenza/precisione/PP/descrizione,
-      link alla wiki. Verificato in Chrome headless il 14/11, test verdi. **Non ancora committato.**
+      link alla wiki. Verificato in Chrome headless il 14/11, test verdi. Pubblicato (3e57edb).
 - [ ] A2. Stessa scheda dal Pokédex (specie catturate: statistiche base, mosse per livello, evoluzione) e
       dalla lotta (menu Squadra → «Info»; descrizione della mossa nel menu mosse).
 - [ ] A3. `build-dex.mjs` porta in `species.js` anche categoria («Pokémon Quercia»), voce Pokédex,
       altezza/peso e abilità (solo testo) → la scheda li mostra.
-- [ ] A4. Da decidere — `createMonster` crea ogni Pokémon con `exp: 0` qualunque sia il livello: un
-      selvatico preso a Lv.12 deve fare 2197 exp da zero per salire, non 469. Correggere (exp iniziale
-      = livello³) accelera i livelli: va rifatto il bilanciamento con `simulate-balance.mjs`.
+- [x] A4. (14/11) `createMonster` partiva da `exp: 0` a qualunque livello: ora parte da livello³ e
+      `hydrateMonster` riallinea i vecchi salvataggi. In `simulate-balance.mjs` il livello d'arrivo alle
+      palestre sale di 0,3-1: nessun ritocco al moltiplicatore. ⚠️ La simulazione (già prima) dà
+      Puledrotto 0% contro entrambi i capipalestra: da guardare a parte.
 - [ ] A5. `growth` è sbagliato per 23 specie (`nessuno (genere sconosciuto)`: il generatore legge la
       riga del genere). Oggi il motore lo ignora, ma va sistemato prima del porting.
 
@@ -30,12 +31,14 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
       verificare: in `assets/npc/` i file ora ci sono tutti.
 
 ## C. Interfaccia
-- [ ] C1. Finestra di dialogo in basso con cornice, testo a macchina da scrivere e freccia ▼; font pixel
-      incorporato (niente `Courier New`).
-- [ ] C2. Lotta: sfondo con pedane, riquadri PS con barra verde/gialla/rossa animata e barra exp, menu
-      LOTTA/BORSA/POKéMON/FUGA a 4 riquadri, mosse con PP e tipo; nemico in alto a destra, alleato in
-      basso a sinistra (oggi sono invertiti rispetto alla convenzione).
-- [ ] C3. Transizioni: lampo d'ingresso in lotta, dissolvenza fra mappe, animazione della Ball, colpo/KO.
+- [x] C1. (14/11) Finestra di dialogo in basso con cornice, targhetta del nome, testo a macchina da
+      scrivere (A/clic completa la frase, poi avanza) e freccia ▼; font pixel VT323 (licenza OFL) in
+      `assets/fonts/`. Dialoghi e lotta sono misurati in `--u` (1/240 dello schermo): scalano col gioco.
+- [x] C2. (14/11) Lotta: sfondo con pedane, riquadri PS con barra verde/gialla/rossa animata e barra
+      exp, riquadro messaggi, menu LOTTA/BORSA/SQUADRA/FUGA, mosse con tipo e PP, lampo d'ingresso.
+- [ ] C2b. Da decidere — i lati: oggi selvatico a sinistra e proprio Pokémon a destra (scelta fatta a suo
+      tempo, protetta da `regression.mjs`); nei giochi Pokémon è il contrario. Invertire = 4 righe di CSS.
+- [ ] C3. Transizioni: dissolvenza fra mappe, animazione della Ball, colpo/KO (il lampo d'ingresso c'è).
 - [ ] C4. Menu di pausa a lista sulla destra; schermata Squadra a riquadri; Borsa a tasche.
 - [ ] C5. Schermata titolo, icone delle 2 medaglie (era E3).
 

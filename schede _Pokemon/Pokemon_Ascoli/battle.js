@@ -86,7 +86,7 @@
       uid: `${speciesId}-${Date.now()}-${(rand(opts.rng)).toString(16).slice(2)}`,
       species: speciesId,
       level,
-      exp: 0,
+      exp: Math.pow(level, 3), // soglia del livello attuale: al prossimo manca solo la differenza
       hp: stats.hp,
       stats,
       moves: finalIds.map(makeMoveSlot),
@@ -114,6 +114,8 @@
     }
     return {
       ...monster,
+      // i salvataggi precedenti partivano da exp 0 a qualunque livello: riallinea alla soglia
+      exp: Math.max(monster.exp || 0, Math.pow(monster.level, 3)),
       uid: monster.uid || `${monster.species}-${Date.now()}-${Math.random().toString(16).slice(2)}`,
       stats,
       hp: Math.min(Number.isFinite(monster.hp) ? monster.hp : stats.hp, stats.hp),

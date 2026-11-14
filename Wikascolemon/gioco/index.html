@@ -38,7 +38,7 @@
           <strong id="dialogueName"></strong>
           <p id="dialogueText"></p>
           <div id="dialogueChoices" class="dialogue-choices" hidden></div>
-          <button id="dialogueClose" class="pixel-button compact" type="button">Continua</button>
+          <button id="dialogueClose" class="dialogue-next" type="button" aria-label="Continua">▼</button>
         </div>
       </section>
 
@@ -72,16 +72,17 @@
       <section id="battleScreen" class="overlay battle-screen" hidden>
         <div class="battle-stage">
           <div class="battle-card enemy-card">
-            <div><strong id="enemyName"></strong> <span id="enemyLevel"></span> <span id="enemyStatus" class="status-badge"></span></div>
-            <div class="hp-track"><i id="enemyHp"></i></div>
+            <div class="card-head"><strong id="enemyName"></strong><span id="enemyStatus" class="status-badge"></span><span id="enemyLevel"></span></div>
+            <div class="hp-row"><b>PS</b><div class="hp-track"><i id="enemyHp"></i></div></div>
           </div>
           <img id="enemySprite" class="battle-sprite enemy-sprite" alt="">
           <div id="enemyExclaim" class="exclaim" hidden>!</div>
           <img id="allySprite" class="battle-sprite ally-sprite" alt="">
           <div class="battle-card ally-card">
-            <div><strong id="allyName"></strong> <span id="allyLevel"></span> <span id="allyStatus" class="status-badge"></span></div>
-            <div class="hp-track"><i id="allyHp"></i></div>
+            <div class="card-head"><strong id="allyName"></strong><span id="allyStatus" class="status-badge"></span><span id="allyLevel"></span></div>
+            <div class="hp-row"><b>PS</b><div class="hp-track"><i id="allyHp"></i></div></div>
             <small id="allyHpText"></small>
+            <div class="exp-track"><i id="allyExp"></i></div>
           </div>
           <div id="battleMessage" class="battle-message"></div>
           <div id="battleActions" class="battle-actions"></div>

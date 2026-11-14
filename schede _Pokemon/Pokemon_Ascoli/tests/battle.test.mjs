@@ -379,6 +379,20 @@ function seq(values) {
   assert.strictEqual(wetResult.evolvedInto, 'pozza');
 }
 
+// --- Exp iniziale = soglia del livello: al livello successivo manca solo la differenza ---
+{
+  const mon = battle.createMonster('basilino', 12);
+  assert.strictEqual(mon.exp, 1728, 'exp iniziale = livello^3');
+  battle.gainExperience(mon, 468, {});
+  assert.strictEqual(mon.level, 12, 'a 1 punto dalla soglia non sale');
+  battle.gainExperience(mon, 1, {});
+  assert.strictEqual(mon.level, 13, 'con 469 punti un Lv.12 sale a 13');
+  const old = battle.hydrateMonster({ species: 'basilino', level: 12, exp: 300, moves: ['azione'] });
+  assert.strictEqual(old.exp, 1728, 'i vecchi salvataggi vengono riallineati alla soglia');
+  const ahead = battle.hydrateMonster({ species: 'basilino', level: 12, exp: 2000, moves: ['azione'] });
+  assert.strictEqual(ahead.exp, 2000, 'exp già oltre la soglia resta intatta');
+}
+
 // --- Evoluzione "friendship": cresce di 1 per livello, scatta a >= 20 ---
 {
   const tifotto = battle.createMonster('tifotto', 5);

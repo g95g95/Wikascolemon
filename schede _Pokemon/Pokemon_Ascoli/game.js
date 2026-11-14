@@ -16,7 +16,7 @@
     'learnMoveScreen', 'learnMoveText', 'learnMoveChoices',
     'shopScreen', 'shopList', 'shopMoney', 'shopClose', 'creditsScreen', 'creditsClose',
     'battleScreen', 'enemyName', 'enemyLevel', 'enemyHp', 'enemySprite', 'enemyStatus', 'enemyExclaim',
-    'allyName', 'allyLevel', 'allyHp', 'allyHpText', 'allySprite', 'allyStatus', 'battleMessage',
+    'allyName', 'allyLevel', 'allyHp', 'allyHpText', 'allyExp', 'allySprite', 'allyStatus', 'battleMessage',
     'battleActions', 'menuScreen', 'menuTabs', 'menuContent', 'menuClose', 'menuButton',
     'touchMenu', 'touchA', 'touchB'
   ].map(id => [id, document.getElementById(id)]));
@@ -466,6 +466,7 @@
   }
 
   function closeDialogue() {
+    stopTyping();
     ui.dialogueScreen.hidden = true;
     ui.dialogueChoices.hidden = true;
     ui.dialogueChoices.innerHTML = '';
@@ -477,22 +478,63 @@
   // ---------------------------------------------------------------------
 
   let dialogueResolve = null;
+  let typing = null;
+
+  function escapeHtml(text) {
+    return String(text).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+  }
+
+  // Testo a macchina da scrivere: la parte non ancora "battuta" resta nel DOM ma invisibile,
+  // così il riquadro non si reimpagina e textContent contiene sempre la frase intera.
+  function typeDialogue(text) {
+    stopTyping();
+    typing = { text, shown: 0, timer: 0 };
+    const step = () => {
+      if (!typing) return;
+      typing.shown = Math.min(text.length, typing.shown + 2);
+      ui.dialogueText.innerHTML = `${escapeHtml(text.slice(0, typing.shown))}<span class="untyped">${escapeHtml(text.slice(typing.shown))}</span>`;
+      if (typing.shown >= text.length) { stopTyping(); return; }
+      typing.timer = setTimeout(step, 28);
+    };
+    step();
+  }
+
+  function stopTyping() {
+    if (!typing) return;
+    clearTimeout(typing.timer);
+    ui.dialogueText.textContent = typing.text;
+    typing = null;
+  }
+
+  // A / clic: prima completa la frase, poi passa alla successiva.
+  function advanceDialogue() {
+    if (typing) { stopTyping(); return; }
+    if (!dialogueResolve) return;
+    const resolve = dialogueResolve;
+    dialogueResolve = null;
+    resolve();
+  }
 
   const eventHost = {
     get save() { return save; },
     async say(name, text) {
       return new Promise(resolve => {
         ui.dialogueName.textContent = name || '';
-        ui.dialogueText.textContent = text.replace(/\{player\}/g, save.name || 'Oliver');
+        ui.dialogueName.hidden = !name;
         ui.dialogueChoices.hidden = true;
         ui.dialogueChoices.innerHTML = '';
+        ui.dialogueClose.hidden = false;
         ui.dialogueScreen.hidden = false;
+        typeDialogue(text.replace(/\{player\}/g, save.name || 'Oliver'));
         dialogueResolve = resolve;
       });
     },
     async choice(question, texts) {
       return new Promise(resolve => {
+        stopTyping();
         ui.dialogueName.textContent = '';
+        ui.dialogueName.hidden = true;
+        ui.dialogueClose.hidden = true;
         ui.dialogueText.textContent = question;
         ui.dialogueChoices.innerHTML = '';
         texts.forEach((text, index) => {
@@ -550,20 +592,9 @@
 
   const runner = Events.createRunner(eventHost);
 
-  ui.dialogueClose.addEventListener('click', () => {
-    if (dialogueResolve) {
-      const resolve = dialogueResolve;
-      dialogueResolve = null;
-      resolve();
-    }
-  });
   ui.dialogueScreen.addEventListener('click', event => {
-    if (event.target === ui.dialogueClose) return;
-    if (dialogueResolve) {
-      const resolve = dialogueResolve;
-      dialogueResolve = null;
-      resolve();
-    }
+    if (event.target.closest('#dialogueChoices')) return;
+    advanceDialogue();
   });
 
   // ---------------------------------------------------------------------
@@ -862,6 +893,12 @@
     return monster.status && statusLabels[monster.status] ? statusLabels[monster.status] : '';
   }
 
+  function setHpBar(element, monster) {
+    const ratio = Math.max(0, monster.hp / monster.stats.hp);
+    element.style.width = `${ratio * 100}%`;
+    element.className = ratio > .5 ? 'hp-high' : ratio > .2 ? 'hp-mid' : 'hp-low';
+  }
+
   function renderBattle() {
     if (!battle) return;
     const ally = activeMonster();
@@ -874,8 +911,10 @@
     ui.enemyName.textContent = enemySpecies.name;
     ui.enemyLevel.textContent = `Lv.${enemy.level}`;
     ui.enemyStatus.textContent = statusText(enemy);
-    ui.allyHp.style.width = `${Math.max(0, ally.hp / ally.stats.hp * 100)}%`;
-    ui.enemyHp.style.width = `${Math.max(0, enemy.hp / enemy.stats.hp * 100)}%`;
+    setHpBar(ui.allyHp, ally);
+    setHpBar(ui.enemyHp, enemy);
+    const floor = Math.pow(ally.level, 3);
+    ui.allyExp.style.width = `${Math.max(0, Math.min(100, ((ally.exp || 0) - floor) / (Battle.expToNext(ally) - floor) * 100))}%`;
     ui.allyHpText.textContent = `${Math.max(0, ally.hp)} / ${ally.stats.hp} PS`;
     ui.allySprite.src = `assets/battle/${ally.species}-back.png`;
     ui.allySprite.alt = allySpecies.name;
@@ -894,6 +933,7 @@
 
   function showBattleMain() {
     ui.battleActions.innerHTML = '';
+    ui.battleActions.className = 'battle-actions main';
     const canRunAway = battle.kind === 'wild';
     ui.battleActions.append(
       actionButton('Lotta', showBattleMoves),
@@ -905,6 +945,7 @@
 
   function showBattleMoves() {
     ui.battleActions.innerHTML = '';
+    ui.battleActions.className = 'battle-actions wide';
     const mon = activeMonster();
     const usable = mon.moves.some(slot => slot.pp > 0);
     if (!usable) {
@@ -914,13 +955,17 @@
     }
     mon.moves.forEach(slot => {
       const known = data.moves[slot.id];
-      ui.battleActions.appendChild(actionButton(`${known.name} ${slot.pp}/${slot.maxPp}`, () => playerAttack(slot.id), slot.pp <= 0));
+      const button = actionButton('', () => playerAttack(slot.id), slot.pp <= 0);
+      button.innerHTML = `<b>${known.name}</b><small>${typeChip(known.type)} PP ${slot.pp}/${slot.maxPp}</small>`;
+      button.title = known.description || '';
+      ui.battleActions.appendChild(button);
     });
     ui.battleActions.appendChild(actionButton('Indietro', showBattleMain));
   }
 
   function showBattleBag() {
     ui.battleActions.innerHTML = '';
+    ui.battleActions.className = 'battle-actions wide';
     ui.battleActions.append(
       actionButton(`Ball ×${save.items.ball || 0}`, throwBall, battle.kind === 'trainer'),
       actionButton(`Pozione ×${save.items.potion || 0}`, useBattlePotion),
@@ -931,9 +976,11 @@
 
   function showBattleTeam() {
     ui.battleActions.innerHTML = '';
+    ui.battleActions.className = 'battle-actions wide';
     save.team.forEach((monster, index) => {
       const name = data.species[monster.species].name;
-      const button = actionButton(`${name} ${monster.hp}/${monster.stats.hp}`, () => switchMonster(index));
+      const button = actionButton('', () => switchMonster(index));
+      button.innerHTML = `<b>${name}</b><small>Lv.${monster.level} · PS ${Math.max(0, monster.hp)}/${monster.stats.hp}</small>`;
       button.disabled = index === battle.activeIndex || monster.hp <= 0;
       ui.battleActions.appendChild(button);
     });
@@ -1266,11 +1313,8 @@
     const species = data.species[monster.species];
     const floor = Math.pow(monster.level, 3);
     const next = Battle.expToNext(monster);
-    // createMonster parte da exp 0 a qualunque livello: finché l'exp non supera la soglia del
-    // livello attuale la barra misura da 0, così coincide con ciò che il motore richiede davvero.
     const exp = monster.exp || 0;
-    const base = exp >= floor ? floor : 0;
-    const expPercent = Math.max(0, Math.min(100, (exp - base) / (next - base) * 100));
+    const expPercent = Math.max(0, Math.min(100, (exp - floor) / (next - floor) * 100));
     const status = statusText(monster);
     const stats = statRows.map(([key, label]) => `<div><span>${label}</span><strong>${key === 'hp' ? `${Math.max(0, monster.hp)}/${monster.stats.hp}` : monster.stats[key]}</strong></div>`).join('');
     const moves = monster.moves.map(slot => {
@@ -1777,7 +1821,7 @@
     }
     if (event.code === 'Enter' || event.code === 'Space') {
       event.preventDefault();
-      if (mode === 'dialogue') { if (dialogueResolve) { const r = dialogueResolve; dialogueResolve = null; r(); } return; }
+      if (mode === 'dialogue') { advanceDialogue(); return; }
       if (mode === 'battle') { advanceMessage(); return; }
       if (mode === 'credits') { closeCredits(); return; }
       interact();
@@ -1810,7 +1854,7 @@
   ui.menuButton.addEventListener('click', () => openMenu());
   ui.touchMenu.addEventListener('click', () => openMenu());
   ui.touchA.addEventListener('click', () => {
-    if (mode === 'dialogue') { if (dialogueResolve) { const r = dialogueResolve; dialogueResolve = null; r(); } return; }
+    if (mode === 'dialogue') { advanceDialogue(); return; }
     if (mode === 'battle') { advanceMessage(); return; }
     if (mode === 'credits') { closeCredits(); return; }
     interact();
