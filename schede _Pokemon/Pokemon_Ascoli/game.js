@@ -418,12 +418,13 @@
   // Per fissarlo a mano basta `sprite: '<foglio in assets/npc>'` sull'NPC.
   const npcSpriteRules = [
     [/cartello/, 'cartello'], [/^elena/, 'elena'], [/^steven/, 'steven'], [/infermier/, 'infermiera'],
-    [/pescator/, 'pescatore'], [/bagnin/, 'bagnino'], [/birdwatcher/, 'birdwatcher'], [/buttafuori|steward/, 'bro_security'],
-    [/contadin|bracciante/, 'contadino'], [/gitante|visitatrice|viaggiator|pellegrin/, 'turista'],
+    [/pescator/, 'pescatore'], [/bagnin/, 'bagnino'], [/birdwatcher/, 'birdwatcher'], [/buttafuori/, 'bro_security'],
+    [/barista|ragazza del bar/, 'barista'], [/steward|guida|assistente/, 'vigile'],
+    [/contadin|bracciante/, 'contadino'], [/gitante|visitatrice|viaggiator|pellegrin/, 'gitante'],
     [/ragazza|cliente in coda/, 'ragazzina'], [/ragazzo|tifoso|spettator/, 'ragazzo'],
-    [/anzian|pensionat|vicino|ambulante/, 'anziano'], [/lavandaia|massaia|barista|residente|abitante/, 'signora']
+    [/anzian|pensionat|vicino|ambulante/, 'anziano'], [/lavandaia|massaia|residente|abitante/, 'signora']
   ];
-  const npcPassersby = ['signora', 'ragazzo', 'anziano'];
+  const npcPassersby = ['signora', 'ragazzo', 'anziano', 'bambina'];
   function guessNpcSprite(npc, index) {
     const name = (npc.name || '').toLowerCase();
     const rule = npcSpriteRules.find(([pattern]) => pattern.test(name));

@@ -63,12 +63,12 @@ Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco
   Finora due fogli, 32 oggetti.
 
 ### Personaggi
-- **Niente più rettangolini.** Tutti gli NPC hanno uno sprite: quattro passanti nuovi (anziano,
-  signora, ragazzo, infermiera), i cartelli sono cartelli veri, e chi ha un mestiere usa lo sprite
-  giusto (pescatore, bagnino, contadino…).
+- **Niente più rettangolini.** Tutti gli NPC hanno uno sprite: otto personaggi nuovi (anziano,
+  signora, ragazzo, infermiera, barista, gitante, bambina, vigile), i cartelli sono cartelli veri, e
+  chi ha un mestiere usa lo sprite giusto (pescatore, bagnino, contadino…).
 
 ### Da fare
-- Altri passanti (barista, turista, bambina, vigile…) per variare le facce nei quartieri.
+- Altri passanti per variare ancora le facce nei quartieri.
 - Ritoccare a mano arredo ed erba alta, quartiere per quartiere.
 - Menu di pausa e Borsa in stile, schermata titolo, transizioni fra mappe, suono.
 - Il playthrough automatico (`tests/e2e`) va aggiornato a nuove coordinate e nuovo movimento.

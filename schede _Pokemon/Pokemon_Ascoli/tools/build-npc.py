@@ -20,7 +20,10 @@ HEIGHT = 25        # altezza del personaggio in px di gioco
 FEET_Y = 27        # riga dei piedi dentro la cella 32×32
 
 # foglio → nomi dei personaggi, una riga ciascuno
-SHEETS = [('npc-1.png', ['anziano', 'signora', 'ragazzo', 'infermiera'])]
+SHEETS = [
+    ('npc-1.png', ['anziano', 'signora', 'ragazzo', 'infermiera']),
+    ('npc-2.png', ['barista', 'gitante', 'bambina', 'vigile']),
+]
 
 
 def is_background(r, g, b):
