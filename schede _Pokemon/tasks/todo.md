@@ -1,3 +1,58 @@
+# Piano: il gioco prende l'aspetto di un gioco Pokémon (demo due palestre)
+
+Scritto il 14/11/2026. Il motore (logica, mappe, lotte, script) resta: cambia lo strato grafico.
+Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `fillRect` su un canvas
+240×160; gli edifici sono scatole colorate e le zone d'incontro sono invisibili.
+
+## A. Scheda Pokémon nel gioco
+- [x] A1. Clic su un Pokémon in Squadra/Deposito → scheda con tipi, stato, 6 statistiche, esperienza
+      (barra + mancante al prossimo livello), mosse con tipo/categoria/potenza/precisione/PP/descrizione,
+      link alla wiki. Verificato in Chrome headless il 14/11, test verdi. **Non ancora committato.**
+- [ ] A2. Stessa scheda dal Pokédex (specie catturate: statistiche base, mosse per livello, evoluzione) e
+      dalla lotta (menu Squadra → «Info»; descrizione della mossa nel menu mosse).
+- [ ] A3. `build-dex.mjs` porta in `species.js` anche categoria («Pokémon Quercia»), voce Pokédex,
+      altezza/peso e abilità (solo testo) → la scheda li mostra.
+- [ ] A4. Da decidere — `createMonster` crea ogni Pokémon con `exp: 0` qualunque sia il livello: un
+      selvatico preso a Lv.12 deve fare 2197 exp da zero per salire, non 469. Correggere (exp iniziale
+      = livello³) accelera i livelli: va rifatto il bilanciamento con `simulate-balance.mjs`.
+- [ ] A5. `growth` è sbagliato per 23 specie (`nessuno (genere sconosciuto)`: il generatore legge la
+      riga del genere). Oggi il motore lo ignora, ma va sistemato prima del porting.
+
+## B. Mondo: da rettangoli a tileset
+- [ ] B0. **Scelta della fonte dei tile** (vedi sotto) — blocca B1-B4.
+- [ ] B1. Atlante `assets/tiles/tileset.png` 16×16 + `drawTile` che pesca dall'atlante, con bordi
+      automatici (autotile) fra erba/strada/acqua/sabbia. I dati delle mappe non cambiano.
+- [ ] B2. Erba alta visibile sulle `encounterZones` (oggi non si vedono), con fruscio al passaggio.
+- [ ] B3. Edifici veri: tetto, facciata, porta, insegna per `kind` (bar, tabacchi, palestra, chiesa,
+      ospedale, stadio…); il giocatore passa dietro tetti e chiome (ordinamento per Y).
+- [ ] B4. Animazioni: acqua, mare, fiori; ombra sotto gli sprite; camminata NPC a 4 frame.
+- [ ] B5. I 6 fogli NPC mancanti (bro_security, dj, turista, congressista, rivale, capopalestra) —
+      verificare: in `assets/npc/` i file ora ci sono tutti.
+
+## C. Interfaccia
+- [ ] C1. Finestra di dialogo in basso con cornice, testo a macchina da scrivere e freccia ▼; font pixel
+      incorporato (niente `Courier New`).
+- [ ] C2. Lotta: sfondo con pedane, riquadri PS con barra verde/gialla/rossa animata e barra exp, menu
+      LOTTA/BORSA/POKéMON/FUGA a 4 riquadri, mosse con PP e tipo; nemico in alto a destra, alleato in
+      basso a sinistra (oggi sono invertiti rispetto alla convenzione).
+- [ ] C3. Transizioni: lampo d'ingresso in lotta, dissolvenza fra mappe, animazione della Ball, colpo/KO.
+- [ ] C4. Menu di pausa a lista sulla destra; schermata Squadra a riquadri; Borsa a tasche.
+- [ ] C5. Schermata titolo, icone delle 2 medaglie (era E3).
+
+## D. Suono (dopo)
+- [ ] D1. Effetti chiptune e 3-4 temi (città, percorso, lotta, vittoria) generati in WebAudio.
+
+## Ordine
+A1 → B0 (decisione) → C1-C2 (non dipendono dai tile) → B1-B3 → C3-C4 → B4 → A2-A3 → D.
+Ogni blocco: test verdi, `build-gioco.mjs`, verifica in Chrome, commit; il push è la pubblicazione.
+
+## Vincoli
+- Resta statico, zero dipendenze, giocabile da `file://`: niente Phaser o simili — il motore c'è già,
+  manca l'arte. Un framework costringerebbe a riscrivere 70 KB di `game.js` per lo stesso risultato.
+- Niente tile estratti dai giochi ufficiali: il sito è pubblico. Arte originale o con licenza libera.
+
+---
+
 # Piano: dalla trama "prime due palestre" a una demo giocabile
 
 Approvato il 20/08/2026; riscritto il 20/08/2026 dopo il completamento dei punti 1-3.

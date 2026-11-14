@@ -1237,15 +1237,60 @@
     if (tab === 'settings') renderSettingsMenu();
   }
 
-  function monsterRow(monster, action = '') {
+  function monsterRow(monster, action = '', ref = '') {
     const species = data.species[monster.species];
     const hpPercent = Math.max(0, monster.hp / monster.stats.hp * 100);
     const status = statusText(monster);
-    return `<div class="creature-row"><img src="assets/battle/${monster.species}-front.png" alt="${species.name}" onerror="this.style.display='none'"><div><strong>${species.name}</strong> Lv.${monster.level} ${status ? `<span class="status-badge">${status}</span>` : ''}<div class="bar"><i style="width:${hpPercent}%"></i></div><small>${monster.hp}/${monster.stats.hp} PS</small></div>${action}</div>`;
+    return `<div class="creature-row"${ref ? ` data-summary="${ref}"` : ''}><img src="assets/battle/${monster.species}-front.png" alt="${species.name}" onerror="this.style.display='none'"><div><strong>${species.name}</strong> Lv.${monster.level} ${status ? `<span class="status-badge">${status}</span>` : ''}<div class="bar"><i style="width:${hpPercent}%"></i></div><small>${monster.hp}/${monster.stats.hp} PS</small></div>${action}</div>`;
   }
 
   function renderTeamMenu() {
-    ui.menuContent.innerHTML = `<h2>Squadra</h2>${save.team.map(monster => monsterRow(monster)).join('')}`;
+    ui.menuContent.innerHTML = `<h2>Squadra</h2>${save.team.map((monster, index) => monsterRow(monster, '', `team:${index}:team`)).join('')}`;
+  }
+
+  // Scheda del singolo Pokémon: si apre cliccando una riga di Squadra o Deposito.
+  const typeColors = {
+    Normale: '#9a9a79', Fuoco: '#e0702c', Acqua: '#4f84d9', Erba: '#5fa84a', Elettro: '#d9b020', Ghiaccio: '#6fbfc0',
+    Lotta: '#b03a32', Veleno: '#93408f', Terra: '#c9a850', Volante: '#8f7fd9', Psico: '#e0507c', Coleottero: '#96a520',
+    Roccia: '#a8903a', Spettro: '#65528a', Drago: '#6338e0', Buio: '#65503f', Acciaio: '#9a9ab8', Folletto: '#d98fa8'
+  };
+  const statRows = [['hp', 'PS'], ['attack', 'Attacco'], ['defense', 'Difesa'], ['spAttack', 'Att. Sp.'], ['spDefense', 'Dif. Sp.'], ['speed', 'Velocità']];
+
+  function typeChip(type) {
+    return `<span class="type-chip" style="background:${typeColors[type] || '#777'}">${type}</span>`;
+  }
+
+  function renderSummary(listName, index, backTab) {
+    const monster = (save[listName] || [])[index];
+    if (!monster) { renderMenu(backTab); return; }
+    const species = data.species[monster.species];
+    const floor = Math.pow(monster.level, 3);
+    const next = Battle.expToNext(monster);
+    // createMonster parte da exp 0 a qualunque livello: finché l'exp non supera la soglia del
+    // livello attuale la barra misura da 0, così coincide con ciò che il motore richiede davvero.
+    const exp = monster.exp || 0;
+    const base = exp >= floor ? floor : 0;
+    const expPercent = Math.max(0, Math.min(100, (exp - base) / (next - base) * 100));
+    const status = statusText(monster);
+    const stats = statRows.map(([key, label]) => `<div><span>${label}</span><strong>${key === 'hp' ? `${Math.max(0, monster.hp)}/${monster.stats.hp}` : monster.stats[key]}</strong></div>`).join('');
+    const moves = monster.moves.map(slot => {
+      const move = data.moves[slot.id];
+      if (!move) return '';
+      return `<div class="summary-move"><div><strong>${move.name}</strong> ${typeChip(move.type)} <span>${move.category}</span></div>
+        <div class="summary-move-data">Pot. ${move.power || '—'} · Prec. ${move.accuracy || '—'} · PP ${slot.pp}/${slot.maxPp}</div>
+        <p>${move.description || ''}</p></div>`;
+    }).join('');
+    ui.menuContent.innerHTML = `<button id="summaryBack">◀ Indietro</button>
+      <div class="summary-head"><img src="assets/battle/${monster.species}-front.png" alt="${species.name}" onerror="this.style.display='none'">
+        <div><h2>${species.name} <small>Lv.${monster.level}</small></h2>
+          <p>#${String(species.number).padStart(3, '0')} ${species.types.map(typeChip).join(' ')} ${status ? `<span class="status-badge">${status}</span>` : ''}</p>
+          <p><a href="${species.wiki}" target="_blank" rel="noopener">Scheda wiki</a></p></div></div>
+      <div class="summary-stats">${stats}</div>
+      <p>Esperienza: <strong>${exp}</strong> · al prossimo livello: <strong>${Math.max(0, next - exp)}</strong></p>
+      <div class="bar exp-bar"><i style="width:${expPercent}%"></i></div>
+      <h3>Mosse</h3>${moves}`;
+    ui.menuContent.scrollTop = 0;
+    document.getElementById('summaryBack').addEventListener('click', () => renderMenu(backTab));
   }
 
   function renderBagMenu() {
@@ -1303,8 +1348,8 @@
   }
 
   function renderDepositMenu() {
-    const team = save.team.map((monster, index) => monsterRow(monster, `<button data-deposit="${index}">Deposita</button>`)).join('');
-    const stored = save.storage.map((monster, index) => monsterRow(monster, `<button data-withdraw="${index}">Ritira</button>`)).join('');
+    const team = save.team.map((monster, index) => monsterRow(monster, `<button data-deposit="${index}">Deposita</button>`, `team:${index}:deposit`)).join('');
+    const stored = save.storage.map((monster, index) => monsterRow(monster, `<button data-withdraw="${index}">Ritira</button>`, `storage:${index}:deposit`)).join('');
     ui.menuContent.innerHTML = `<h2>Deposito</h2><strong>Squadra</strong>${team}<strong>Depositati</strong>${stored || '<p>Nessun Pokémon depositato.</p>'}`;
     ui.menuContent.querySelectorAll('[data-deposit]').forEach(button => button.addEventListener('click', () => {
       if (save.team.length <= 1) { showToast('Deve restare almeno un Pokémon in squadra.'); return; }
@@ -1775,6 +1820,13 @@
     else if (mode === 'battle') showBattleMain();
   });
   ui.menuClose.addEventListener('click', closeMenu);
+  ui.menuContent.addEventListener('click', event => {
+    if (event.target.closest('button, a')) return;
+    const row = event.target.closest('[data-summary]');
+    if (!row) return;
+    const [listName, index, backTab] = row.dataset.summary.split(':');
+    renderSummary(listName, Number(index), backTab);
+  });
   ui.menuTabs.addEventListener('click', event => {
     const button = event.target.closest('[data-tab]');
     if (button) renderMenu(button.dataset.tab);
