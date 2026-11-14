@@ -117,13 +117,13 @@ for (const [id, map] of Object.entries(data.maps)) {
   // --- 2. arredo ---
   const reserved = new Set();
   const reserve = (x, y, radius = 0) => { for (let dy = -radius; dy <= radius; dy += 1) for (let dx = -radius; dx <= radius; dx += 1) reserved.add(key(x + dx, y + dy)); };
-  (map.npcs || []).forEach(n => reserve(n.x, n.y, 3)); // gli NPC che passeggiano si muovono fino a 3 celle
+  (map.npcs || []).forEach(n => reserve(n.x, n.y, 1)); // gli NPC stanno fermi: basta lasciare libero il giro attorno
   Object.values(trainers).filter(t => t.map === id).forEach(t => {
     reserve(t.x, t.y, 1);
     const [dx, dy] = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] }[t.direction] || [0, 1];
     for (let step = 1; step <= (t.sight || 0) + 1; step += 1) reserve(t.x + dx * step, t.y + dy * step);
   });
-  (map.buildings || []).forEach(b => { if (b.door) reserve(b.door.x, b.door.y, 1); });
+  (map.buildings || []).forEach(b => { if (b.door) reserve(b.door.x, b.door.y); });
   (map.transitions || []).forEach(t => { for (let y = t.y - 1; y <= t.y + t.h; y += 1) for (let x = t.x - 1; x <= t.x + t.w; x += 1) reserve(x, y); });
   (arrivals[id] || []).forEach(([x, y]) => reserve(x, y, 1));
 
@@ -147,22 +147,35 @@ for (const [id, map] of Object.entries(data.maps)) {
   };
   let open = reachable();
 
-  function place(kind, x, y, allowed) {
+  function place(kind, x, y, allowed, text) {
     const info = Tiles.DECOR_KINDS[kind];
     const cells = Array.from({ length: info.span || 1 }, (_, i) => [x + i, y]);
     for (const [cx, cy] of cells) {
       if (!allowed.includes(terrain(cx, cy)) || inBuilding(cx, cy) || reserved.has(key(cx, cy)) || taken.has(key(cx, cy)) || tall(cx, cy)) return false;
     }
-    if (decor.some(item => item.y === y && Math.abs(item.x - x) < 3)) return false; // niente oggetti incollati
+    if (!text && decor.some(item => item.y === y && Math.abs(item.x - x) < 3)) return false; // niente oggetti incollati (i cartelli fanno eccezione)
     if (info.blocks) {
       cells.forEach(([cx, cy]) => taken.add(key(cx, cy)));
       const after = reachable();
       if (after !== open - cells.length) { cells.forEach(([cx, cy]) => taken.delete(key(cx, cy))); return false; }
       open = after;
     }
-    decor.push({ x, y, kind });
+    decor.push(text ? { x, y, kind, text } : { x, y, kind });
     return true;
   }
+
+  // cartelli: uno accanto alla porta di ogni edificio che ha un nome proprio (le «Casa …» no).
+  // Vanno piazzati per primi, prima di riservare il giro attorno alle porte.
+  const anyGround = ['erba', 'road', 'piazza', 'ghiaia', 'travertino', 'asfalto', 'sabbia', 'pendio'];
+  let unsigned = 0;
+  for (const b of map.buildings || []) {
+    if (!b.name || /^casa/i.test(b.name)) continue;
+    const front = b.y + b.h;
+    const doorX = b.door ? b.door.x : Math.floor(b.x + b.w / 2);
+    const spots = [doorX - 1, doorX + 1, doorX - 2, doorX + 2, b.x, b.x + b.w - 1];
+    if (!spots.some(x => place('cartello', x, front, anyGround, b.name))) unsigned += 1;
+  }
+  (map.buildings || []).forEach(b => { if (b.door) reserve(b.door.x, b.door.y, 1); });
 
   // piazze: fontana al centro, panchine in alto
   for (const p of map.plazas || []) {
@@ -211,7 +224,7 @@ for (const [id, map] of Object.entries(data.maps)) {
   result[id] = { zones, decor };
   const byKind = {};
   decor.forEach(item => { byKind[item.kind] = (byKind[item.kind] || 0) + 1; });
-  report.push(`${id.padEnd(22)} zone ${(map.encounterZones || []).length} → ${zones.length} (${patched} a chiazze) · arredo ${decor.length}: ${Object.entries(byKind).map(([k, n]) => `${k} ${n}`).join(', ')}`);
+  report.push(`${id.padEnd(22)} zone ${(map.encounterZones || []).length} → ${zones.length} (${patched} a chiazze) · ${unsigned ? `⚠️ ${unsigned} edifici senza cartello · ` : ''}arredo ${decor.length}: ${Object.entries(byKind).map(([k, n]) => `${k} ${n}`).join(', ')}`);
 }
 
 // --- scrive il file generato ---
@@ -223,12 +236,12 @@ const lines = [
   '  const { zone } = window.PokemonAscoliMapHelpers;',
   '  const maps = window.PokemonAscoliMaps;',
   '  const apply = (id, extra) => { if (maps[id]) Object.assign(maps[id], extra); };',
-  '  const d = (x, y, kind) => ({ x, y, kind });',
+  '  const d = (x, y, kind, text) => (text ? { x, y, kind, text } : { x, y, kind });',
 ];
 for (const [id, { zones, decor }] of Object.entries(result)) {
   lines.push(`  apply('${id}', {`);
   lines.push(`    encounterZones: [${zones.map(z => `zone(${z.x}, ${z.y}, ${z.w}, ${z.h}, ${z.rate}, '${z.table}')`).join(', ')}],`);
-  lines.push(`    decor: [${decor.map(item => `d(${item.x}, ${item.y}, '${item.kind}')`).join(', ')}]`);
+  lines.push(`    decor: [${decor.map(item => `d(${item.x}, ${item.y}, '${item.kind}'${item.text ? `, ${JSON.stringify(item.text)}` : ''})`).join(', ')}]`);
   lines.push('  });');
 }
 lines.push('}());', '');

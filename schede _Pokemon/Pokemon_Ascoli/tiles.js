@@ -59,6 +59,7 @@
       asfalto: [7, 0], ghiaia: [8, 0], pavimento: [9, 0], sabbia: [10, 0], pendio: [11, 0], muro: [12, 0], binari: [13, 0],
       bridge: [14, 0], erba_alta_front: [15, 0],
       water_0: [0, 1], water_1: [1, 1], mare_0: [2, 1], mare_1: [3, 1], albero: [4, 1], albero_top: [5, 1], road_b: [6, 1], asfalto_b: [7, 1],
+      fruscio_0: [8, 1], fruscio_1: [9, 1],
       // serie di bordi: 4 lati (N, E, S, O) poi 4 angoli interni (NE, SE, SO, NO)
       bordo_erba: [0, 2], riva_erba: [8, 2], riva_sabbia: [0, 3]
     };

@@ -12,58 +12,58 @@
     ],
     roads: [
       // strada principale ovest-est, righe 54-57 (deve restare collegata ai due passaggi)
-      rect(0, 36, 27, 3, 'asfalto'), rect(69, 36, 27, 3, 'asfalto'),
+      rect(0, 27, 20, 2, 'asfalto'), rect(52, 27, 20, 2, 'asfalto'),
       // deviazione intorno al lago: sentiero di ghiaia che scende a sud del laghetto e risale
-      rect(27, 36, 2, 3, 'ghiaia'), rect(27, 39, 2, 13, 'ghiaia'), rect(27, 52, 42, 3, 'ghiaia'),
-      rect(67, 39, 2, 13, 'ghiaia'), rect(67, 36, 2, 3, 'ghiaia'),
+      rect(20, 27, 2, 2, 'ghiaia'), rect(20, 29, 2, 10, 'ghiaia'), rect(20, 39, 32, 2, 'ghiaia'),
+      rect(50, 29, 2, 10, 'ghiaia'), rect(50, 27, 2, 2, 'ghiaia'),
       // anello di ghiaia intorno alla riva nord del lago (per raggiungere capanno e area picnic)
-      rect(37, 20, 22, 3, 'ghiaia'), rect(37, 20, 3, 16, 'ghiaia'), rect(64, 20, 3, 16, 'ghiaia')
+      rect(28, 15, 16, 2, 'ghiaia'), rect(28, 15, 2, 12, 'ghiaia'), rect(48, 15, 2, 12, 'ghiaia')
     ],
-    waters: [rect(40, 23, 27, 26, 'water')],
-    bridges: [rect(52, 36, 3, 3, 'bridge')],
-    plazas: [rect(72, 55, 9, 8, 'piazza')],
+    waters: [rect(30, 17, 20, 20, 'water')],
+    bridges: [rect(39, 27, 2, 2, 'bridge')],
+    plazas: [rect(54, 41, 7, 6, 'piazza')],
     buildings: [
-      building(40, 12, 7, 5, 'Capanno di osservazione', '#8a7256', 'edificio')
+      building(30, 9, 5, 4, 'Capanno di osservazione', '#8a7256', 'edificio')
     ],
     labels: [
-      { x: 43, y: 13, text: 'Capanno di osservazione' },
-      { x: 73, y: 56, text: 'Area picnic' }
+      { x: 32, y: 10, text: 'Capanno di osservazione' },
+      { x: 55, y: 42, text: 'Area picnic' }
     ],
     encounterZones: [
       // verde generico ai lati del lago
-      zone(1, 1, 36, 64, 0.08, 'default'), zone(73, 1, 22, 51, 0.08, 'default'),
-      zone(1, 57, 64, 22, 0.08, 'default'),
+      zone(1, 1, 27, 48, 0.08, 'default'), zone(55, 1, 16, 38, 0.08, 'default'),
+      zone(1, 43, 48, 16, 0.08, 'default'),
       // riva del lago (rate alto, simula la "pesca")
-      zone(37, 20, 3, 29, 0.12, 'default'), zone(64, 20, 3, 29, 0.12, 'default'),
-      zone(37, 20, 27, 3, 0.12, 'default'), zone(37, 49, 30, 3, 0.12, 'default')
+      zone(28, 15, 2, 22, 0.12, 'default'), zone(48, 15, 2, 22, 0.12, 'default'),
+      zone(28, 15, 20, 2, 0.12, 'default'), zone(28, 37, 22, 2, 0.12, 'default')
     ],
     transitions: [
-      transition(0, 36, 1, 3, 'marino_del_tronto', 115, 37, 'Marino del Tronto'),
-      transition(95, 36, 1, 3, 'maltignano', 4, 37, 'Maltignano')
+      transition(0, 27, 1, 2, 'marino_del_tronto', 86, 28, 'Marino del Tronto'),
+      transition(71, 27, 1, 2, 'maltignano', 3, 28, 'Maltignano')
     ],
     npcs: [
-      npc(47, 15, 'Cartello', 'Oasi naturalistica — silenzio.', 'fermo'),
-      npc(39, 40, 'Birdwatcher del posto', 'Sst, se stai zitto magari vedi un Tamburino sull\'acqua.', 'fermo'),
-      npc(75, 60, 'Gitante', 'Semo venuti pé fa\' n\' pò de picnic, tra n\' pò se magna!', 'fermo')
+      npc(35, 11, 'Cartello', 'Oasi naturalistica — silenzio.', 'fermo'),
+      npc(29, 30, 'Birdwatcher del posto', 'Sst, se stai zitto magari vedi un Tamburino sull\'acqua.', 'fermo'),
+      npc(56, 45, 'Gitante', 'Semo venuti pé fa\' n\' pò de picnic, tra n\' pò se magna!', 'fermo')
     ]
   };
   const map = window.PokemonAscoliMaps.oasi;
   map.roads.push(
     // cornice di alberi sui bordi, interrotta ai due passaggi (righe 54-57 a ovest ed est)
-    rect(0, 0, 96, 1, 'albero'), rect(0, 79, 96, 1, 'albero'),
-    rect(0, 1, 1, 35, 'albero'), rect(0, 39, 1, 40, 'albero'),
-    rect(95, 1, 1, 35, 'albero'), rect(95, 39, 1, 40, 'albero'),
+    rect(0, 0, 72, 1, 'albero'), rect(0, 59, 72, 1, 'albero'),
+    rect(0, 1, 1, 26, 'albero'), rect(0, 29, 1, 30, 'albero'),
+    rect(71, 1, 1, 26, 'albero'), rect(71, 29, 1, 30, 'albero'),
     // canneto sparso attorno alla riva del lago
-    rect(36, 19, 1, 1, 'albero'), rect(39, 18, 1, 1, 'albero'), rect(44, 18, 1, 1, 'albero'),
-    rect(49, 18, 1, 1, 'albero'), rect(55, 18, 1, 1, 'albero'), rect(60, 19, 1, 1, 'albero'),
-    rect(65, 20, 2, 1, 'albero'), rect(67, 27, 1, 1, 'albero'), rect(67, 33, 1, 2, 'albero'),
-    rect(67, 41, 1, 2, 'albero'), rect(65, 51, 2, 1, 'albero'), rect(60, 52, 1, 1, 'albero'),
-    rect(55, 53, 1, 1, 'albero'), rect(47, 53, 1, 1, 'albero'), rect(40, 52, 1, 1, 'albero'),
-    rect(36, 51, 1, 1, 'albero'), rect(36, 41, 1, 2, 'albero'), rect(36, 33, 1, 2, 'albero'),
-    rect(36, 27, 1, 1, 'albero'),
+    rect(27, 14, 1, 1, 'albero'), rect(29, 14, 1, 1, 'albero'), rect(33, 14, 1, 1, 'albero'),
+    rect(37, 14, 1, 1, 'albero'), rect(41, 14, 1, 1, 'albero'), rect(45, 14, 1, 1, 'albero'),
+    rect(49, 15, 1, 1, 'albero'), rect(50, 20, 1, 1, 'albero'), rect(50, 25, 1, 1, 'albero'),
+    rect(50, 31, 1, 1, 'albero'), rect(49, 38, 1, 1, 'albero'), rect(45, 39, 1, 1, 'albero'),
+    rect(41, 40, 1, 1, 'albero'), rect(35, 40, 1, 1, 'albero'), rect(30, 39, 1, 1, 'albero'),
+    rect(27, 38, 1, 1, 'albero'), rect(27, 31, 1, 1, 'albero'), rect(27, 25, 1, 1, 'albero'),
+    rect(27, 20, 1, 1, 'albero'),
     // boschetti nel verde, lontani da strade/edifici/npc/passaggi
-    rect(8, 11, 2, 1, 'albero'), rect(12, 13, 1, 2, 'albero'), rect(7, 60, 2, 1, 'albero'),
-    rect(80, 13, 2, 2, 'albero'), rect(84, 16, 1, 2, 'albero'), rect(84, 67, 2, 1, 'albero'),
-    rect(13, 67, 2, 2, 'albero'), rect(20, 70, 2, 1, 'albero')
+    rect(6, 8, 2, 1, 'albero'), rect(9, 10, 1, 1, 'albero'), rect(5, 45, 2, 1, 'albero'),
+    rect(60, 10, 2, 1, 'albero'), rect(63, 12, 1, 2, 'albero'), rect(63, 50, 2, 1, 'albero'),
+    rect(10, 50, 1, 2, 'albero'), rect(15, 53, 2, 1, 'albero')
   );
 }());

@@ -81,6 +81,24 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
       (erba alta a chiazze + ~1600 oggetti). Da ritoccare a mano. ⚠️ La probabilità d'incontro nelle
       zone a chiazze è ×1,5: il bilanciamento dei livelli va riguardato giocando.
 
+## F. Dal test di Jacopo del 14/11 sera
+- [x] F1. Oliver a scatti: foglio riallineato (i fotogrammi erano a passo ~27,5 px invece di 32),
+      telecamera a pixel interi.
+- [x] F2. NPC fermi; allenatori che camminano davvero verso il giocatore (`trainerSpots`), giocatore
+      bloccato durante l'avvicinamento.
+- [x] F3. Mappe ai 3/4 (72×54 / 90×60) con `tools/scala-mappe.mjs 3/4`; chiavi ConfigV4/TrainersV3,
+      `mapScale: 3`.
+- [x] F4. Cartelli leggibili accanto alle porte (arredo `cartello` con `text`), via le scritte sugli
+      edifici. Restano le etichette dei passaggi e dei luoghi (`map.labels`). 7 edifici senza cartello.
+- [x] F5. Tifotto/Anicino: sprite scambiati sistemati; Tifotto provvisorio dall'artwork wiki.
+      ⚠️ Il vecchio `anicino-*.png` (un essere dorato tondo) non era né l'uno né l'altro: gli sprite di
+      battaglia vanno ricontrollati uno per uno contro la wiki.
+- [x] F6. Fruscio dell'erba alta, animazione della Ball, barra exp che si riempie, mappa della regione
+      nel menu (provvisoria: posizioni disegnate a mano in `regionSpots`).
+- [ ] F7. Interni degli edifici: partire da bar e tabacchi (oggi cura e negozio scattano sulla porta).
+      Serve un foglio di arredi interni.
+- [ ] F8. Sprite veri per Tifotto (fronte e retro).
+
 ## D. Suono (dopo)
 - [ ] D1. Effetti chiptune e 3-4 temi (città, percorso, lotta, vittoria) generati in WebAudio.
 

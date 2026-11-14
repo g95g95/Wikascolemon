@@ -19,7 +19,7 @@
     ],
     waters: [], bridges: [], plazas: [], buildings: [], labels: [{ x: 15, y: 4, text: 'Pista da ballo' }],
     encounterZones: [],
-    transitions: [transition(14, 21, 2, 1, 'jonathan', 48, 33, 'Uscita', { direction: 'down' })],
+    transitions: [transition(14, 21, 2, 1, 'jonathan', 36, 25, 'Uscita', { direction: 'down' })],
     npcs: [
       npc(5, 4, 'Barista', 'Il bancone è chiuso, stiamo per la sfida.', 'fermo'),
       {

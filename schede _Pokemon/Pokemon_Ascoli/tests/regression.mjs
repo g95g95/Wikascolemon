@@ -46,7 +46,7 @@ for (const [mapId, map] of Object.entries(data.maps)) {
   if (map.indoor) {
     assert.ok(map.width >= 12 && map.width <= 60 && map.height >= 10 && map.height <= 40, `${mapId}: dimensioni interne fra 12×10 e 60×40`);
   } else {
-    assert.ok(map.width >= 80 && map.width <= 120 && map.height >= 60 && map.height <= 80, `${mapId}: dimensioni fra 80×60 e 120×80 (due terzi della scala ×3, dal 14/11/2026)`);
+    assert.ok(map.width >= 60 && map.width <= 90 && map.height >= 45 && map.height <= 60, `${mapId}: dimensioni fra 60×45 e 90×60 (metà della scala ×3, dal 14/11/2026)`);
   }
   for (const key of ['roads', 'waters', 'bridges', 'plazas', 'buildings', 'encounterZones', 'transitions', 'npcs']) {
     for (const item of map[key] || []) assert.ok(insideMap(map, item), `${mapId}: ${key} dentro la mappa`);

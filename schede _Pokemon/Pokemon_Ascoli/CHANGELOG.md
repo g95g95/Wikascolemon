@@ -2,6 +2,30 @@
 
 Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco/configuratore.html`
 
+## 14/11/2026 (sera) — Dopo il primo test di Jacopo
+
+- **Oliver non va più a scatti.** La causa era il foglio dello sprite: i fotogrammi della camminata
+  erano sfalsati di 4-5 pixel l'uno dall'altro, quindi a ogni passo il personaggio saltava di lato.
+  Riallineati. In più la telecamera ora si muove a pixel interi (niente sfarfallio del terreno).
+- **Mappe ancora più raccolte**: un altro quarto in meno. I quartieri sono 72×54 celle, i più grandi
+  90×60 (all'inizio della giornata erano 144×108 e 180×120). Salvataggi riposizionati da soli.
+- **Cartelli al posto delle scritte.** I nomi degli edifici non galleggiano più sullo schermo: accanto
+  alla porta c'è un cartello che si legge con A. Le case comuni non hanno nome. (7 edifici su una
+  sessantina non hanno ancora il cartello: davanti non c'era una cella libera.)
+- **NPC fermi, allenatori che si muovono.** I passanti non vagano più a scatti. Gli allenatori, quando
+  ti vedono, ti vengono incontro camminando davvero (prima restavano fermi per un difetto) e nel
+  frattempo Oliver non può muoversi. Tutti hanno un campo visivo, tranne i due capipalestra che si
+  sfidano parlandoci.
+- **Tifotto ha il suo sprite.** I file di Tifotto contenevano l'arte di Anicino: Anicino ha riavuto
+  il suo, e Tifotto ne ha uno provvisorio ricavato dall'artwork della wiki (il retro è il fronte
+  specchiato, in attesa di uno sprite vero).
+- **Lancio della Ball animato**: arco verso l'avversario, il Pokémon rientra, la Ball cade, uno
+  scossone per ogni tentativo, poi si chiude o si riapre.
+- **Fruscio dell'erba alta** quando ci si entra.
+- **Barra dell'esperienza** che si riempie a fine lotta; se si sale di livello arriva in fondo e riparte.
+- **Mappa della regione** nel menu (provvisoria): schema dei luoghi e dei collegamenti, con la
+  posizione attuale, le palestre e la corriera per Ripatransone.
+
 ## 14/11/2026 — Nuova grafica, nuova interfaccia, mappe più raccolte
 
 ### Mondo di gioco

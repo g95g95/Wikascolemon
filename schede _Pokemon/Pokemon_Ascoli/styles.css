@@ -247,6 +247,28 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .ally-sprite { left: calc(30 * var(--u)); top: calc(46 * var(--u)); animation: battle-enter-left .5s ease-out; }
 @keyframes battle-enter-left { from { transform: translateX(-120%); } }
 @keyframes battle-enter-right { from { transform: translateX(120%); } }
+/* Ball: lancio ad arco, il Pokémon rientra, scossoni, scatto di chiusura */
+.battle-ball {
+  position: absolute; z-index: 4; left: calc(170 * var(--u)); top: calc(54 * var(--u)); width: calc(12 * var(--u)); height: calc(12 * var(--u));
+  border: calc(1 * var(--u)) solid #1d2b3a; border-radius: 50%;
+  background:
+    radial-gradient(circle, #fbfaf2 0 calc(1.6 * var(--u)), #1d2b3a calc(1.6 * var(--u)) calc(2.6 * var(--u)), #0000 calc(2.6 * var(--u))),
+    linear-gradient(#e84838 0 44%, #1d2b3a 44% 56%, #fbfaf2 56%);
+}
+.battle-ball.throwing { animation: ball-throw .55s cubic-bezier(.3, .6, .5, 1) both; }
+.battle-ball.dropping { animation: ball-drop .28s ease-in both; }
+.battle-ball.shaking { animation: ball-shake .45s ease-in-out both; }
+.battle-ball.locked { filter: brightness(.65); transition: filter .2s; }
+.battle-ball.opening { animation: ball-open .25s ease-out both; }
+@keyframes ball-throw {
+  0% { left: calc(60 * var(--u)); top: calc(92 * var(--u)); transform: rotate(0); }
+  55% { top: calc(6 * var(--u)); }
+  100% { left: calc(170 * var(--u)); top: calc(26 * var(--u)); transform: rotate(720deg); }
+}
+@keyframes ball-drop { from { top: calc(26 * var(--u)); } 70% { top: calc(56 * var(--u)); } 85% { top: calc(50 * var(--u)); } to { top: calc(54 * var(--u)); } }
+@keyframes ball-shake { 0%, 100% { transform: rotate(0); } 25% { transform: translateX(calc(-2 * var(--u))) rotate(-28deg); } 75% { transform: translateX(calc(2 * var(--u))) rotate(28deg); } }
+@keyframes ball-open { to { transform: scale(1.8); opacity: 0; } }
+.enemy-sprite.absorbed { transform: scale(.05); filter: brightness(4); transition: transform .28s ease-in, filter .28s; }
 .battle-card {
   position: absolute; z-index: 3; width: calc(104 * var(--u)); padding: calc(2 * var(--u)) calc(5 * var(--u)) calc(3 * var(--u));
   border: calc(1.5 * var(--u)) solid #2c3640; border-radius: calc(6 * var(--u)) calc(2 * var(--u));
@@ -307,6 +329,22 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .dex-row a { color: #285a37; font-weight: 700; }
 .bar { height: 5px; border: 1px solid #3a4339; background: #685f51; }
 .bar i { display: block; height: 100%; background: #55a955; }
+/* Mappa della regione (provvisoria) */
+.menu-content:has(.region-map) { padding: 0; overflow: hidden; }
+.region-map { display: grid; grid-template-rows: 1fr auto; gap: calc(3 * var(--u)); height: 100%; padding: calc(4 * var(--u)); background: #24405a; font-size: calc(9 * var(--u)); }
+.region-map svg { width: 100%; height: 100%; min-height: 0; border: calc(1.5 * var(--u)) solid #1d2b3a; border-radius: calc(3 * var(--u)); }
+.region-map .land { fill: #8fd070; }
+.region-map .sea { fill: #5c9ce8; }
+.region-map .river { fill: none; stroke: #5c9ce8; stroke-width: 3; opacity: .8; }
+.region-map line { stroke: #f0deb0; stroke-width: 3; stroke-linecap: round; }
+.region-map line.bus { stroke-dasharray: 2 4; stroke-width: 2; }
+.region-map .spot rect { fill: #e84838; stroke: #1d2b3a; stroke-width: 1; }
+.region-map .spot rect.gym { fill: #f0c030; }
+.region-map .spot text { font: 5.4px "PixelUI", monospace; text-anchor: middle; fill: #1d2b3a; paint-order: stroke; stroke: #fbfaf2; stroke-width: 1.6px; }
+.region-map .spot.here text { font-size: 6.4px; }
+.region-map .pulse { fill: none; stroke: #fbfaf2; stroke-width: 1.6; animation: region-pulse 1s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes region-pulse { 50% { transform: scale(1.5); opacity: .3; } }
+
 /* Schermata Squadra (misure in --u come dialoghi e lotta) */
 .menu-content:has(.party-screen) { padding: 0; overflow: hidden; }
 .party-screen {

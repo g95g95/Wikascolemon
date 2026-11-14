@@ -1,14 +1,16 @@
-// Tool usa-e-getta (ma versionato): porta le mappe ESTERNE ai due terzi (richiesta del 14/11/2026:
-// «le mappe sono enormi»). 144×108 → 96×72, 180×120 → 120×80, 144×120 → 96×80.
-// Gli interni (palestra_*) non si toccano. Riscrive i sorgenti sul posto conservando commenti e
-// struttura: cambia solo i numeri.
+// Riduce le mappe ESTERNE di un fattore n/d. Gli interni (palestra_*) non si toccano. Riscrive i
+// sorgenti sul posto conservando commenti e struttura: cambia solo i numeri.
 //
-//   node tools/scala-mappe-due-terzi.mjs          # anteprima: conta le sostituzioni
-//   node tools/scala-mappe-due-terzi.mjs --scrivi # riscrive i file
+//   node tools/scala-mappe.mjs 3/4          # anteprima: conta le sostituzioni
+//   node tools/scala-mappe.mjs 3/4 --scrivi # riscrive i file
 //
-// ⚠️ NON rilanciare su mappe già ridotte: non è idempotente.
+// ⚠️ Ogni lancio con --scrivi riduce ancora: non è idempotente. Dopo, vanno fatti a mano:
+// limiti di misura in tests/regression.mjs, chiavi ConfigVn/TrainersVn e passo `mapScale` in game.js,
+// `node tools/arreda-mappe.mjs`, e il controllo dei pochi punti che finiscono sovrapposti.
 //
-// Regola unica per bordi e celle: S(v) = floor((2v + 1) / 3).
+// Storia (14/11/2026, «le mappe sono enormi»): 2/3 → 96×72 e 120×80; poi 3/4 → 72×54 e 90×60.
+//
+// Regola unica per bordi e celle: S(v) = floor((n·v + floor(d/2)) / d).
 // - rettangoli (rect, zone, building, transition): si trasformano i due bordi, così ciò che si
 //   toccava continua a toccarsi; larghezza e altezza minime 1.
 // - celle puntuali (npc, allenatori, door, label, spawn, warp, start): S(x), S(y). La cella davanti
@@ -19,7 +21,10 @@ import { fileURLToPath } from 'node:url';
 
 const gameDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const write = process.argv.includes('--scrivi');
-const S = v => Math.floor((2 * Number(v) + 1) / 3);
+const factor = (process.argv.find(arg => /^\d+\/\d+$/.test(arg)) || '').split('/').map(Number);
+if (factor.length !== 2 || factor[0] >= factor[1]) { console.error('Uso: node tools/scala-mappe.mjs <n/d> [--scrivi]   (es. 3/4)'); process.exit(1); }
+const [NUM, DEN] = factor;
+const S = v => Math.floor((NUM * Number(v) + Math.floor(DEN / 2)) / DEN);
 const span = (start, size) => [S(start), Math.max(1, S(Number(start) + Number(size)) - S(start))];
 const isInterior = id => id.startsWith('palestra_');
 const N = '(\\d+)';

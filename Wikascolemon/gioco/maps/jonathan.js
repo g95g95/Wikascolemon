@@ -5,52 +5,52 @@
     ...city, name: 'Jonathan', baseTile: 'erba', levelRange: [17, 20],
     encounterTable: [],
     roads: [
-      rect(0, 36, 96, 3, 'asfalto'),
+      rect(0, 27, 72, 2, 'asfalto'),
       // vialetto d'ingresso, largo una cella: passaggio obbligato dove attende Nando.
       // Un allenatore gia' sconfitto non blocca piu' il movimento (isBlocked in game.js),
       // quindi il vialetto resta percorribile dopo la sfida.
-      rect(48, 33, 1, 3, 'travertino'),
+      rect(36, 25, 1, 2, 'travertino'),
       // parcheggio asfaltato davanti allo Jonathan
-      rect(27, 39, 42, 13, 'asfalto'),
+      rect(20, 29, 32, 10, 'asfalto'),
       // fila di auto parcheggiate (piccoli blocchi grigi "muro", senza etichetta)
-      rect(29, 41, 2, 3, 'muro'), rect(32, 41, 1, 3, 'muro'), rect(35, 41, 1, 3, 'muro'),
-      rect(37, 41, 2, 3, 'muro'), rect(40, 41, 1, 3, 'muro'), rect(43, 41, 1, 3, 'muro'),
-      rect(63, 41, 1, 3, 'muro'), rect(65, 41, 2, 3, 'muro'), rect(68, 41, 1, 3, 'muro'),
+      rect(22, 31, 1, 2, 'muro'), rect(24, 31, 1, 2, 'muro'), rect(26, 31, 1, 2, 'muro'),
+      rect(28, 31, 1, 2, 'muro'), rect(30, 31, 1, 2, 'muro'), rect(32, 31, 1, 2, 'muro'),
+      rect(47, 31, 1, 2, 'muro'), rect(49, 31, 1, 2, 'muro'), rect(51, 31, 1, 2, 'muro'),
       // vialetto verso la spiaggia a sud
-      rect(13, 52, 4, 11, 'asfalto')
+      rect(10, 39, 3, 8, 'asfalto')
     ],
-    waters: [rect(0, 63, 96, 9, 'mare')],
+    waters: [rect(0, 47, 72, 7, 'mare')],
     bridges: [],
     plazas: [],
     buildings: [
-      building(44, 27, 9, 6, 'Jonathan', '#5a4e9c', 'discoteca', { door: { x: 48, y: 33 }, interior: 'gym', script: [{ warp: { map: 'palestra_costa', x: 14, y: 20, direction: 'up' } }] }),
-      building(33, 27, 6, 4, 'Biglietteria', '#8a6a3d', 'attività')
+      building(33, 20, 7, 5, 'Jonathan', '#5a4e9c', 'discoteca', { door: { x: 36, y: 25 }, interior: 'gym', script: [{ warp: { map: 'palestra_costa', x: 14, y: 20, direction: 'up' } }] }),
+      building(25, 20, 4, 3, 'Biglietteria', '#8a6a3d', 'attività')
     ],
-    labels: [{ x: 48, y: 27, text: 'Discoteca Jonathan' }, { x: 8, y: 53, text: 'Parcheggio' }],
+    labels: [{ x: 36, y: 20, text: 'Discoteca Jonathan' }, { x: 6, y: 40, text: 'Parcheggio' }],
     encounterZones: [],
     transitions: [
-      transition(0, 36, 1, 3, 'costa', 115, 37, 'Spiaggia')
+      transition(0, 27, 1, 2, 'costa', 86, 28, 'Spiaggia')
     ],
     npcs: [
-      npc(32, 45, 'Cartello', 'PARCHEGGIO JONATHAN — ingresso discoteca a nord.', 'fermo'),
-      npc(39, 35, 'Buttafuori', 'Solo il vialetto centrale porta all\'ingresso.', 'fermo'),
-      npc(60, 45, 'Cliente in coda', 'Aspetto da mezzora, ma dentro se sta bene.', 'fermo')
+      npc(24, 34, 'Cartello', 'PARCHEGGIO JONATHAN — ingresso discoteca a nord.', 'fermo'),
+      npc(29, 26, 'Buttafuori', 'Solo il vialetto centrale porta all\'ingresso.', 'fermo'),
+      npc(45, 34, 'Cliente in coda', 'Aspetto da mezzora, ma dentro se sta bene.', 'fermo')
     ]
   };
   const map = window.PokemonAscoliMaps.jonathan;
   map.roads.push(
     // cornice di alberi (spessore 2), interrotta dal passaggio a ovest e dal mare a sud
-    rect(0, 0, 96, 1, 'albero'),
-    rect(0, 1, 1, 35, 'albero'),
-    rect(95, 1, 1, 62, 'albero'),
-    rect(1, 61, 94, 2, 'albero'),
+    rect(0, 0, 72, 1, 'albero'),
+    rect(0, 1, 1, 26, 'albero'),
+    rect(71, 1, 1, 46, 'albero'),
+    rect(1, 46, 70, 1, 'albero'),
     // palme sparse fra parcheggio e strada
-    rect(24, 40, 1, 1, 'albero'), rect(71, 40, 1, 1, 'albero'),
-    rect(20, 56, 1, 1, 'albero'), rect(75, 56, 1, 1, 'albero'),
-    rect(7, 40, 1, 1, 'albero'), rect(87, 40, 1, 1, 'albero'),
-    rect(7, 56, 1, 1, 'albero'), rect(87, 56, 1, 1, 'albero'),
+    rect(18, 30, 1, 1, 'albero'), rect(53, 30, 1, 1, 'albero'),
+    rect(15, 42, 1, 1, 'albero'), rect(56, 42, 1, 1, 'albero'),
+    rect(5, 30, 1, 1, 'albero'), rect(65, 30, 1, 1, 'albero'),
+    rect(5, 42, 1, 1, 'albero'), rect(65, 42, 1, 1, 'albero'),
     // siepi ai lati del vialetto d'ingresso (fra edificio e strada): costringono a passare
     // per x=72 dove attende Nando, sguardo rivolto a sud verso chi arriva dal parcheggio
-    rect(40, 33, 8, 3, 'albero'), rect(49, 33, 8, 3, 'albero')
+    rect(30, 25, 6, 2, 'albero'), rect(37, 25, 6, 2, 'albero')
   );
 }());

@@ -16,14 +16,14 @@
     'learnMoveScreen', 'learnMoveText', 'learnMoveChoices',
     'shopScreen', 'shopList', 'shopMoney', 'shopClose', 'creditsScreen', 'creditsClose',
     'battleScreen', 'enemyName', 'enemyLevel', 'enemyHp', 'enemySprite', 'enemyStatus', 'enemyExclaim',
-    'allyName', 'allyLevel', 'allyHp', 'allyHpText', 'allyExp', 'allySprite', 'allyStatus', 'battleMessage',
+    'allyName', 'allyLevel', 'allyHp', 'allyHpText', 'allyExp', 'battleBall', 'allySprite', 'allyStatus', 'battleMessage',
     'battleActions', 'menuScreen', 'menuTabs', 'menuContent', 'menuClose', 'menuButton',
     'touchMenu', 'touchA', 'touchB'
   ].map(id => [id, document.getElementById(id)]));
 
   const STORAGE_KEY = 'pokemonAscoliSaveV1';
-  const CONFIG_KEY = 'pokemonAscoliConfigV3'; // V3: mappe ai due terzi (14/11/2026), le override V2 puntano alle vecchie coordinate
-  const TRAINERS_KEY = 'pokemonAscoliTrainersV2';
+  const CONFIG_KEY = 'pokemonAscoliConfigV4'; // a ogni riduzione delle mappe la chiave cambia: le override vecchie puntano a coordinate che non esistono più
+  const TRAINERS_KEY = 'pokemonAscoliTrainersV3';
   const directions = {
     up: { x: 0, y: -1, row: 1 },
     down: { x: 0, y: 1, row: 0 },
@@ -102,9 +102,9 @@
   let battle = null;
   let nextMoveAt = 0;   // prima di questo istante non parte un nuovo passo (giro sul posto, urto)
   let running = false;  // Maiusc o B tenuto premuto
+  let rustle = null;    // fruscio dell'erba alta nella cella appena calpestata
   const WALK_MS = 210;  // durata di un passo da una cella: ~5 celle al secondo
   const RUN_MS = 115;   // di corsa: ~9 celle al secondo
-  let lastNpcMoveAt = 0;
   let toastTimer = 0;
   let bannerTimer = 0;
   let runtimeNpcs = [];
@@ -153,23 +153,28 @@
       badges: [],
       money: 3000,
       lastHeal: { map: data.respawn.map, x: data.respawn.x, y: data.respawn.y },
-      mapScale: 2
+      mapScale: 3
     };
   }
 
   function migrateSave(parsed) {
     parsed.name = parsed.name || 'Oliver';
-    // 14/11/2026: mappe esterne ridotte ai due terzi. Le posizioni salvate prima vanno riportate
-    // con la stessa regola dello script (tools/scala-mappe-due-terzi.mjs), una volta sola.
+    // 14/11/2026: mappe esterne ridotte due volte (2/3, poi 3/4). Le posizioni salvate prima vanno
+    // riportate con la stessa regola dello script (tools/scala-mappe.mjs), un passo alla volta.
+    const shrink = (spot, num, den) => {
+      if (!spot || !data.maps[spot.map] || data.maps[spot.map].indoor) return;
+      spot.x = Math.floor((num * spot.x + Math.floor(den / 2)) / den);
+      spot.y = Math.floor((num * spot.y + Math.floor(den / 2)) / den);
+    };
     if (!parsed.mapScale) {
-      const shrink = spot => {
-        if (!spot || !data.maps[spot.map] || data.maps[spot.map].indoor) return;
-        spot.x = Math.floor((2 * spot.x + 1) / 3);
-        spot.y = Math.floor((2 * spot.y + 1) / 3);
-      };
-      shrink(parsed.player);
-      shrink(parsed.lastHeal);
+      shrink(parsed.player, 2, 3);
+      shrink(parsed.lastHeal, 2, 3);
       parsed.mapScale = 2;
+    }
+    if (parsed.mapScale === 2) {
+      shrink(parsed.player, 3, 4);
+      shrink(parsed.lastHeal, 3, 4);
+      parsed.mapScale = 3;
     }
     if (parsed.version === 2) return parsed;
     // v1 -> v2
@@ -274,10 +279,13 @@
     return window.PokemonAscoliTiles.terrainAt(map, x, y);
   }
 
+  // Dove si trova un allenatore dopo essersi avvicinato al giocatore (per mappa, finché non la si lascia).
+  let trainerSpots = {};
+
   function activeTrainersOnMap() {
     return Object.entries(trainersData.trainers)
       .filter(([id, trainer]) => trainer.map === player.map && Events.check(trainer.when, save))
-      .map(([id, trainer]) => ({ id, ...trainer }));
+      .map(([id, trainer]) => ({ id, ...trainer, ...(trainerSpots[id] || {}) }));
   }
 
   function isBlocked(map, x, y, ignoreNpc = false) {
@@ -296,7 +304,7 @@
 
   // chained = il passo segue subito il precedente (tasto tenuto premuto): niente giro sul posto.
   function movePlayer(direction, now = performance.now(), chained = false) {
-    if (mode !== 'world' || movement) return;
+    if (mode !== 'world' || movement || approachingTrainerId) return;
     if (!chained && player.direction !== direction) {
       // da fermi, un colpetto in un'altra direzione gira soltanto; se il tasto resta giù si parte
       player.direction = direction;
@@ -339,6 +347,7 @@
     player.renderX = player.x;
     player.renderY = player.y;
     movement = null;
+    if (isTallGrass(currentMap, player.x, player.y)) rustle = { x: player.x, y: player.y, start: now };
     save.steps = (save.steps || 0) + 1;
     if (checkTrainerSight()) return;
     if (checkTransition()) return;
@@ -432,6 +441,7 @@
   }
 
   function initNpcs() {
+    trainerSpots = {};
     runtimeNpcs = clone(currentMap.npcs || []).map((item, index) => ({ ...item, sprite: item.sprite || guessNpcSprite(item, index), id: index, originX: item.x, originY: item.y }));
   }
 
@@ -439,23 +449,8 @@
     return runtimeNpcs.filter(item => Events.check(item.when, save));
   }
 
-  function updateNpcs(now) {
-    if (mode !== 'world' || movement || now - lastNpcMoveAt < 1400) return;
-    lastNpcMoveAt = now;
-    runtimeNpcs.forEach(npc => {
-      if (npc.movement === 'fermo' || !Events.check(npc.when, save)) return;
-      const choices = npc.movement === 'orizzontale' ? ['left', 'right'] : ['up', 'down'];
-      const vector = directions[choices[Math.floor(Math.random() * choices.length)]];
-      const x = npc.x + vector.x;
-      const y = npc.y + vector.y;
-      const closeToOrigin = Math.abs(x - npc.originX) <= 3 && Math.abs(y - npc.originY) <= 3;
-      const occupied = x === player.x && y === player.y;
-      if (closeToOrigin && !occupied && !isBlocked(currentMap, x, y, true) && !runtimeNpcs.some(other => other !== npc && other.x === x && other.y === y)) {
-        npc.x = x;
-        npc.y = y;
-      }
-    });
-  }
+  // Gli NPC stanno fermi (scelta del 14/11/2026: il vagare a scatti di cella in cella stonava).
+  // Il campo `movement` nei dati resta, ma non viene più usato.
 
   // ---------------------------------------------------------------------
   // Interazione (NPC, edifici, allenatori)
@@ -470,6 +465,14 @@
     const trainer = activeTrainersOnMap().find(t => t.x === x && t.y === y);
     if (trainer) {
       startTrainerEncounter(trainer);
+      return;
+    }
+
+    // cartelli (arredo con un testo): si leggono
+    const sign = (currentMap.decor || []).find(item => item.text && item.x === x && item.y === y);
+    if (sign) {
+      playSound('confirm');
+      runScript([{ say: sign.text }]);
       return;
     }
 
@@ -784,20 +787,22 @@
     setTimeout(() => { ui.enemyExclaim.hidden = true; }, 300);
   }
 
+  // L'allenatore cammina fino alla cella davanti al giocatore, a velocità costante.
   function walkTrainerAdjacent(trainer) {
     return new Promise(resolve => {
       const vector = directions[trainer.direction];
-      const targetX = player.x - vector.x;
-      const targetY = player.y - vector.y;
-      const step = () => {
-        if (trainer.x === targetX && trainer.y === targetY) { resolve(); return; }
-        if (trainer.x < targetX) trainer.x += 1;
-        else if (trainer.x > targetX) trainer.x -= 1;
-        else if (trainer.y < targetY) trainer.y += 1;
-        else if (trainer.y > targetY) trainer.y -= 1;
-        setTimeout(step, 120);
+      const cells = Math.abs(player.x - vector.x - trainer.x) + Math.abs(player.y - vector.y - trainer.y);
+      if (!cells) { resolve(); return; }
+      const fromX = trainer.x, fromY = trainer.y;
+      const startedAt = performance.now();
+      const tick = now => {
+        const walked = Math.min(cells, (now - startedAt) / WALK_MS);
+        const renderX = fromX + vector.x * walked, renderY = fromY + vector.y * walked;
+        trainerSpots[trainer.id] = { x: Math.round(renderX), y: Math.round(renderY), renderX, renderY };
+        if (walked < cells) { requestAnimationFrame(tick); return; }
+        resolve();
       };
-      step();
+      requestAnimationFrame(tick);
     });
   }
 
@@ -1092,6 +1097,18 @@
     renderBattle();
     await sleep(700);
     const gainResult = Battle.gainExperience(winner, gain, { map: player.map, hasItem, mapHasWater: mapHasWater() });
+    // la barra dell'esperienza si riempie sotto gli occhi: fino in fondo se si sale di livello,
+    // poi riparte dal nuovo livello
+    if (gainResult.levelsGained > 0) {
+      ui.allyExp.style.width = '100%';
+      await sleep(550);
+      ui.allyExp.style.transition = 'none';
+      ui.allyExp.style.width = '0%';
+      void ui.allyExp.offsetWidth;
+      ui.allyExp.style.transition = '';
+    }
+    renderBattle();
+    await sleep(550);
     if (gainResult.levelsGained > 0) {
       ui.battleMessage.textContent = `${data.species[winner.species].name} è salito al livello ${winner.level}!`;
       renderBattle();
@@ -1172,6 +1189,12 @@
     resolveTurn({ type: 'move', moveId });
   }
 
+  function resetBall() {
+    ui.battleBall.hidden = true;
+    ui.battleBall.className = 'battle-ball';
+    ui.enemySprite.classList.remove('absorbed');
+  }
+
   function throwBall() {
     if (battle.kind === 'trainer') return;
     if (!save.items.ball || save.items.ball <= 0) {
@@ -1188,12 +1211,23 @@
     (async () => {
       ui.battleMessage.textContent = `Hai lanciato una Ball...`;
       renderBattle();
-      await sleep(500);
+      const ball = ui.battleBall;
+      const stage = async (name, ms) => { ball.className = `battle-ball ${name}`; await sleep(ms); };
+      ball.hidden = false;
+      await stage('throwing', 560);              // arco verso l'avversario
+      ui.enemySprite.classList.add('absorbed');   // il Pokémon rientra nella Ball
+      playSound('hit');
+      await sleep(300);
+      await stage('dropping', 300);               // la Ball cade sulla pedana
       for (let i = 0; i < attempt.shakes; i += 1) {
         ui.battleMessage.textContent = '...scrosh...';
-        await sleep(450);
+        playSound('bump');
+        await stage('shaking', 460);
+        await stage('', 240);
       }
       if (attempt.caught) {
+        ball.className = 'battle-ball locked';
+        playSound('confirm');
         save.dex.caught[wild.species] = true;
         const destination = save.team.length < 6 ? save.team : save.storage;
         destination.push(wild);
@@ -1205,8 +1239,11 @@
         return;
       }
       ui.battleMessage.textContent = `${species.name} si è liberato dalla Ball!`;
+      ui.enemySprite.classList.remove('absorbed');
+      await stage('opening', 260);
+      resetBall();
       renderBattle();
-      await sleep(500);
+      await sleep(400);
       await resolveTurn({ type: 'item' });
     })();
   }
@@ -1280,6 +1317,7 @@
     const onEnd = battle ? battle.onEnd : null;
     battle = null;
     ui.battleScreen.hidden = true;
+    resetBall();
     mode = 'world';
     const messages = { won: 'Vittoria!', win: 'Vittoria!', caught: null, fled: 'Sei fuggito.', lost: 'Sei stato sconfitto.' };
     if (messages[result]) showToast(messages[result]);
@@ -1329,6 +1367,7 @@
     if (tab === 'bag') renderBagMenu();
     if (tab === 'dex') renderDexMenu();
     if (tab === 'trainer') renderTrainerMenu();
+    if (tab === 'map') renderMapMenu();
     if (tab === 'deposit') renderDepositMenu();
     if (tab === 'save') renderSaveMenu();
     if (tab === 'settings') renderSettingsMenu();
@@ -1437,6 +1476,39 @@
         return `<div class="dex-row ${seen ? '' : 'unseen'}"><img src="assets/battle/${id}-front.png" alt="" onerror="this.style.display='none'"><div><strong>#${String(species.number).padStart(3, '0')} ${name}</strong><br><span>${detail}</span></div><span>${caught ? '●' : seen ? '◐' : '○'}</span></div>`;
       }).join('');
     ui.menuContent.innerHTML = `<h2>Pokédex del Piceno</h2>${rows}`;
+  }
+
+  // Mappa della regione (provvisoria): uno schema dei luoghi e dei collegamenti, senza il dettaglio
+  // delle singole aree. Le posizioni sono disegnate a mano qui; i collegamenti vengono dai passaggi.
+  const regionSpots = {
+    borgo_solesta: [34, 40], campo_parignano: [66, 26], borgo_chiaro: [98, 40], centro_storico: [56, 66],
+    porta_cartara: [30, 92], porta_maggiore: [92, 74], monticelli: [120, 84], ripatransone: [150, 24],
+    marino_del_tronto: [142, 100], oasi: [160, 118], maltignano: [150, 138], castel_di_lama: [180, 124],
+    spinetoli_centobuchi: [198, 98], costa: [218, 78], jonathan: [220, 112]
+  };
+
+  function renderMapMenu() {
+    const outdoorOf = id => (maps[id] && maps[id].indoor ? ((maps[id].transitions || [])[0] || {}).to : id);
+    const here = outdoorOf(player.map);
+    const links = new Set();
+    Object.entries(maps).forEach(([id, map]) => (map.transitions || []).forEach(t => {
+      if (regionSpots[id] && regionSpots[t.to]) links.add([id, t.to].sort().join('|'));
+    }));
+    const gymMaps = new Set(Object.values(trainersData.gyms).map(gym => outdoorOf(gym.map)));
+    const lines = [...links].map(link => {
+      const [a, b] = link.split('|');
+      const bus = a === 'ripatransone' || b === 'ripatransone';
+      return `<line x1="${regionSpots[a][0]}" y1="${regionSpots[a][1]}" x2="${regionSpots[b][0]}" y2="${regionSpots[b][1]}" class="${bus ? 'bus' : ''}"/>`;
+    }).join('');
+    const spots = Object.entries(regionSpots).map(([id, [x, y]]) => `<g class="spot${id === here ? ' here' : ''}">
+      ${id === here ? `<circle class="pulse" cx="${x}" cy="${y}" r="7"/>` : ''}
+      <rect x="${x - 4}" y="${y - 4}" width="8" height="8" rx="1.5" class="${gymMaps.has(id) ? 'gym' : ''}"/>
+      <text x="${x}" y="${y + 11}">${maps[id] ? maps[id].name : id}</text></g>`).join('');
+    ui.menuContent.innerHTML = `<div class="region-map"><svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">
+      <rect width="240" height="150" class="land"/><rect x="229" width="11" height="150" class="sea"/>
+      <path d="M0 104 C40 96 90 104 130 112 S200 128 229 122" class="river"/>
+      ${lines}${spots}</svg>
+      <p class="party-hint">Sei a: <strong>${maps[here] ? maps[here].name : ''}</strong> · riquadri dorati: palestre · tratteggio: corriera</p></div>`;
   }
 
   function renderTrainerMenu() {
@@ -1683,8 +1755,8 @@
     const worldWidth = currentMap.width * data.tileSize;
     const worldHeight = currentMap.height * data.tileSize;
     return {
-      x: Math.max(0, Math.min(worldWidth - canvas.width, player.renderX * data.tileSize + 8 - canvas.width / 2)),
-      y: Math.max(0, Math.min(worldHeight - canvas.height, player.renderY * data.tileSize + 8 - canvas.height / 2))
+      x: Math.round(Math.max(0, Math.min(worldWidth - canvas.width, player.renderX * data.tileSize + 8 - canvas.width / 2))),
+      y: Math.round(Math.max(0, Math.min(worldHeight - canvas.height, player.renderY * data.tileSize + 8 - canvas.height / 2)))
     };
   }
 
@@ -1697,8 +1769,7 @@
       if (x > canvas.width || y > canvas.height || x + width < 0 || y + height < 0) return;
       if (item.kind !== 'stadio') {
         drawHouse(item, x, y, width, height, camera);
-        drawWorldLabel(item.name, item.x + item.w / 2, item.y + item.h + .7, camera);
-        return;
+        return; // il nome non galleggia più sull'edificio: lo dice il cartello accanto alla porta
       }
       ctx.fillStyle = '#5b4738';
       ctx.fillRect(x - 2, y - 4, width + 4, height + 4);
@@ -1725,7 +1796,6 @@
         ctx.lineTo(x + width / 2 + .5, y + height - inset - 6.5);
         ctx.stroke();
       }
-      drawWorldLabel(item.name, item.x + item.w / 2, item.y + item.h + .7, camera);
     });
   }
 
@@ -1786,8 +1856,10 @@
     if (!save) return;
     activeTrainersOnMap().forEach(trainer => {
       const defeated = !!save.flags[Events.flagKeys.trainerFlag(trainer.id)];
-      const x = trainer.x * 16 - camera.x;
-      const y = trainer.y * 16 - camera.y;
+      const renderX = trainer.renderX ?? trainer.x, renderY = trainer.renderY ?? trainer.y;
+      const stepping = (renderX + renderY) % 1 > .5 ? 1 : 0; // un pixel di molleggio a ogni mezzo passo
+      const x = Math.round(renderX * 16 - camera.x);
+      const y = Math.round(renderY * 16 - camera.y) - stepping;
       if (x < -16 || y < -20 || x > canvas.width || y > canvas.height) return;
       const sheet = npcSheet(trainer.sprite || (trainersData.classes[trainer.class] || {}).sprite);
       if (sheet) {
@@ -1858,6 +1930,9 @@
       const cellX = Math.round(player.renderX);
       const cellY = Math.round(player.renderY);
       if (isTallGrass(currentMap, cellX, cellY)) blit(TILES.erba_alta_front, 0, Math.round(player.renderX * 16 - camera.x), Math.round(player.renderY * 16 - camera.y));
+      // fruscio: i ciuffi si aprono per un attimo nella cella in cui si è appena entrati
+      const rustleAge = rustle ? performance.now() - rustle.start : Infinity;
+      if (rustleAge < 260) blit(rustleAge < 130 ? TILES.fruscio_0 : TILES.fruscio_1, 0, rustle.x * 16 - camera.x, rustle.y * 16 - camera.y);
     }
     flushWorldLabels();
   }
@@ -1884,7 +1959,6 @@
       const held = heldDirections[heldDirections.length - 1];
       if (held && !movement && now >= nextMoveAt) movePlayer(held, now);
       updateMovement(now);
-      updateNpcs(now);
     }
     if (mode !== 'title') renderWorld();
     requestAnimationFrame(gameLoop);

@@ -244,6 +244,24 @@ place_fringe(0, 2, G_MID, G_DEEP)                       # erba che invade sterra
 place_fringe(8, 2, G_MID, rgb('#2c5c2c'), W_FOAM)       # riva erbosa sull'acqua
 place_fringe(0, 3, SAND, rgb('#b89c5c'), W_FOAM)        # battigia: sabbia sull'acqua
 
+# --- fruscio dell'erba alta: due fotogrammi, da disegnare sopra i piedi quando si entra nella cella ---
+def rustle(frame):
+    img = tile()
+    spread = 1 + frame * 2
+    for side in (-1, 1):                       # ciuffi che si aprono ai lati
+        base = 7 + side * (2 + spread)
+        for k in range(6 - frame):
+            put(img, base + side * (k // 2), 15 - k, TALL if k % 2 else TALL_DARK)
+            put(img, base + side * (k // 2) + side, 15 - k, TALL_LIGHT if k > 2 else TALL)
+    for dx, dy in ((-5, -2), (4, -4), (-2, -6), (6, -1)):   # foglioline che saltano
+        put(img, 8 + dx + (frame and dx // 2), 9 + dy - frame * 2, TALL_LIGHT)
+        put(img, 8 + dx + (frame and dx // 2), 10 + dy - frame * 2, TALL_DARK)
+    return img
+
+
+place(rustle(0), 8, 1)
+place(rustle(1), 9, 1)
+
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'assets', 'tiles')
 os.makedirs(out, exist_ok=True)
 atlas.save(os.path.join(out, 'tileset.png'))
