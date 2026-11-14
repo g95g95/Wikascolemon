@@ -1,7 +1,7 @@
 (function () {
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     costa_bagnino_1: {
-      map: 'costa', x: 10, y: 41, direction: 'left', sight: 5,
+      map: 'costa', x: 16, y: 58, direction: 'left', sight: 5,
       class: 'bagnino', name: 'Renzo', sprite: null,
       team: [{ species: 'lettino', level: 18 }, { species: 'cozzetta', level: 18 }],
       before: ['Fermo là! Sulla spiaggia libera se se sfida tutti, lo sai.', 'Metti giù l\'asciugamano e famme vedé li tua Pokémon.'],
@@ -10,7 +10,7 @@
       money: null, gym: null, when: null
     },
     costa_bagnino_2: {
-      map: 'costa', x: 50, y: 44, direction: 'up', sight: 4,
+      map: 'costa', x: 75, y: 64, direction: 'up', sight: 4,
       class: 'bagnino', name: 'Franco', sprite: null,
       team: [{ species: 'bagnetto', level: 19 }],
       before: ['Ehi tu, du\' passi sulla sabbia e mo\' te sfido!'],
@@ -19,7 +19,7 @@
       money: null, gym: null, when: null
     },
     costa_turista_1: {
-      map: 'costa', x: 20, y: 4, direction: 'right', sight: 4,
+      map: 'costa', x: 36, y: 4, direction: 'right', sight: 4,
       class: 'turista', name: 'Marisa', sprite: null,
       team: [{ species: 'maranzino', level: 18 }],
       before: ['Ohh finalmente n\'antro allenatore! Songo qui pé le vacanze ma nun me manca mai la sfida.'],
@@ -28,7 +28,7 @@
       money: null, gym: null, when: null
     },
     costa_turista_2: {
-      map: 'costa', x: 60, y: 4, direction: 'left', sight: 4,
+      map: 'costa', x: 89, y: 4, direction: 'left', sight: 4,
       class: 'turista', name: 'Osvaldo', sprite: null,
       team: [{ species: 'alghetta', level: 17 }, { species: 'cozzetta', level: 18 }],
       before: ['Songo vinuto da fori regione apposta pé lu mare, ma \'na sfida nun se rifiuta mai.'],
@@ -37,7 +37,7 @@
       money: null, gym: null, when: null
     },
     costa_dj_1: {
-      map: 'costa', x: 83, y: 28, direction: 'left', sight: 3,
+      map: 'costa', x: 118, y: 37, direction: 'left', sight: 3,
       class: 'dj', name: 'Mauri', sprite: null,
       team: [{ species: 'mucillax', level: 19 }, { species: 'bagnetto', level: 18 }],
       before: ['Ué, prima de entrà a lo Jonathan te tocca passà da me!', 'Stasera faccio er set, ma mo\' famo \'na lotta pé scaldacce.'],

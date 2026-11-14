@@ -87,6 +87,8 @@ for (const [id, map] of Object.entries(data.maps)) {
   const W = map.width, H = map.height;
   const terrain = (x, y) => (x < 0 || y < 0 || x >= W || y >= H ? null : Tiles.terrainAt(map, x, y));
   const inBuilding = (x, y) => (map.buildings || []).some(b => inRect(x, y, b));
+  // un albero dei dati tolto dal disegno perché a ridosso di un edificio resta comunque fuori gioco
+  const rawTree = (x, y) => (map.roads || []).some(r => r.type === 'albero' && inRect(x, y, r));
 
   // --- 1. erba alta a chiazze ---
   const zones = [];
@@ -127,6 +129,14 @@ for (const [id, map] of Object.entries(data.maps)) {
   (map.transitions || []).forEach(t => { for (let y = t.y - 1; y <= t.y + t.h; y += 1) for (let x = t.x - 1; x <= t.x + t.w; x += 1) reserve(x, y); });
   (arrivals[id] || []).forEach(([x, y]) => reserve(x, y, 1));
 
+  // celle dove sta qualcuno o dove si arriva: lì non va mai niente, nemmeno i cartelli
+  const occupied = new Set();
+  (map.npcs || []).forEach(n => occupied.add(key(n.x, n.y)));
+  Object.values(trainers).filter(t => t.map === id).forEach(t => occupied.add(key(t.x, t.y)));
+  (map.buildings || []).forEach(b => { if (b.door) occupied.add(key(b.door.x, b.door.y)); });
+  (map.transitions || []).forEach(t => { for (let y = t.y; y < t.y + t.h; y += 1) for (let x = t.x; x < t.x + t.w; x += 1) occupied.add(key(x, y)); });
+  (arrivals[id] || []).forEach(([x, y]) => occupied.add(key(x, y)));
+
   const decor = [];
   const taken = new Set();
   const blockedCell = (x, y) => terrain(x, y) === null || BLOCKING_TERRAIN.has(terrain(x, y)) || inBuilding(x, y) || taken.has(key(x, y));
@@ -147,11 +157,11 @@ for (const [id, map] of Object.entries(data.maps)) {
   };
   let open = reachable();
 
-  function place(kind, x, y, allowed, text) {
+  function place(kind, x, y, allowed, text, anywhere = false) {
     const info = Tiles.DECOR_KINDS[kind];
     const cells = Array.from({ length: info.span || 1 }, (_, i) => [x + i, y]);
     for (const [cx, cy] of cells) {
-      if (!allowed.includes(terrain(cx, cy)) || inBuilding(cx, cy) || reserved.has(key(cx, cy)) || taken.has(key(cx, cy)) || tall(cx, cy)) return false;
+      if (!allowed.includes(terrain(cx, cy)) || inBuilding(cx, cy) || rawTree(cx, cy) || (!anywhere && reserved.has(key(cx, cy))) || occupied.has(key(cx, cy)) || taken.has(key(cx, cy)) || tall(cx, cy)) return false;
     }
     if (!text && decor.some(item => item.y === y && Math.abs(item.x - x) < 3)) return false; // niente oggetti incollati (i cartelli fanno eccezione)
     if (info.blocks) {
@@ -171,9 +181,26 @@ for (const [id, map] of Object.entries(data.maps)) {
   for (const b of map.buildings || []) {
     if (!b.name || /^casa/i.test(b.name)) continue;
     const front = b.y + b.h;
+    // a due celle dalla porta, non attaccato: altrimenti il cartello copre l'ingresso
     const doorX = b.door ? b.door.x : Math.floor(b.x + b.w / 2);
-    const spots = [doorX - 1, doorX + 1, doorX - 2, doorX + 2, b.x, b.x + b.w - 1];
-    if (!spots.some(x => place('cartello', x, front, anyGround, b.name))) unsigned += 1;
+    const spots = [doorX - 2, doorX + 2, doorX - 3, doorX + 3, b.x, b.x + b.w - 1];
+    if (!spots.some(x => place('cartello', x, front, anyGround, b.name, true))) unsigned += 1;
+  }
+  // cartelli al posto delle scritte: uno accanto a ogni passaggio (dice dove porta) e uno per ogni
+  // nome di luogo della mappa. Mai sulla strada: accanto.
+  const beside = ['erba', 'sabbia', 'ghiaia', 'piazza', 'travertino', 'pendio'];
+  for (const t of map.transitions || []) {
+    if (!t.label) continue;
+    const spots = [];
+    for (let x = t.x - 1; x <= t.x + t.w; x += 1) { spots.push([x, t.y - 1], [x, t.y + t.h]); }
+    for (let y = t.y; y < t.y + t.h; y += 1) { spots.push([t.x - 1, y], [t.x + t.w, y]); }
+    for (let ring = 2; ring <= 3; ring += 1) for (let x = t.x - ring; x <= t.x + t.w + ring - 1; x += 1) spots.push([x, t.y - ring], [x, t.y + t.h + ring - 1]);
+    if (!spots.some(([x, y]) => place('cartello', x, y, beside, `→ ${t.label}`, true))) unsigned += 1;
+  }
+  for (const label of map.labels || []) {
+    const spots = [];
+    for (let ring = 0; ring <= 3; ring += 1) for (let dy = -ring; dy <= ring; dy += 1) for (let dx = -ring; dx <= ring; dx += 1) spots.push([label.x + dx, label.y + dy]);
+    if (!spots.some(([x, y]) => place('cartello', x, y, beside, label.text, true))) unsigned += 1;
   }
   (map.buildings || []).forEach(b => { if (b.door) reserve(b.door.x, b.door.y, 1); });
 
@@ -224,7 +251,7 @@ for (const [id, map] of Object.entries(data.maps)) {
   result[id] = { zones, decor };
   const byKind = {};
   decor.forEach(item => { byKind[item.kind] = (byKind[item.kind] || 0) + 1; });
-  report.push(`${id.padEnd(22)} zone ${(map.encounterZones || []).length} → ${zones.length} (${patched} a chiazze) · ${unsigned ? `⚠️ ${unsigned} edifici senza cartello · ` : ''}arredo ${decor.length}: ${Object.entries(byKind).map(([k, n]) => `${k} ${n}`).join(', ')}`);
+  report.push(`${id.padEnd(22)} zone ${(map.encounterZones || []).length} → ${zones.length} (${patched} a chiazze) · ${unsigned ? `⚠️ ${unsigned} cartelli non piazzati · ` : ''}arredo ${decor.length}: ${Object.entries(byKind).map(([k, n]) => `${k} ${n}`).join(', ')}`);
 }
 
 // --- scrive il file generato ---

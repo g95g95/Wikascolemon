@@ -101,8 +101,8 @@ window.PokemonAscoliTrainers = {
   gyms: { castel_di_lama: { name: 'Palestra di Castel di Lama', city: 'Castel di Lama', leader: 'castel_di_lama_hills', map: 'castel_di_lama', order: 1, type: 'Veleno' } }
 };
 ```
-Chiave localStorage dell'override: `pokemonAscoliTrainersV3` = `{ version: 1, updatedAt, trainers: {...}, gyms: {...} }`
-(sostituisce interamente le due mappe, come fa `pokemonAscoliConfigV4` per le mappe).
+Chiave localStorage dell'override: `pokemonAscoliTrainersV4` = `{ version: 1, updatedAt, trainers: {...}, gyms: {...} }`
+(sostituisce interamente le due mappe, come fa `pokemonAscoliConfigV5` per le mappe).
 Stato in salvataggio: `save.flags['trainer:<id>'] = true` quando sconfitto; `save.badges = [1, 2]`;
 `save.money`.
 
@@ -184,13 +184,17 @@ sotto stanno lì, non più in `game.js`.
   ricorda la porta in `save.returnSpot` e il passaggio d'uscita (`back: true`) riporta lì. Gli arredi
   con `counter: true` (bancone, cassa) lasciano parlare con l'NPC che sta dietro.
 - **Suoni**: `SOUNDS` in `game.js`, note sintetizzate con WebAudio; nessun file audio.
+- **Misura delle mappe**: ogni mappa esterna ha `width`/`height` suoi (niente più `...city/wide/tall`),
+  ottenuti con `tools/compatta-mappe.mjs` togliendo righe e colonne vuote dalle mappe a misura piena.
+  Gli elementi non si scalano mai: per accorciare una mappa si toglie spazio, non si rimpicciolisce.
+- **Musica**: `MUSIC_BARS` in `game.js`, quattro accordi in ciclo schedulati con WebAudio.
 - **Cartelli**: un arredo `cartello` con `text` si legge con A (`interact`). `arreda-mappe.mjs` ne
   mette uno accanto alla porta di ogni edificio con un nome proprio (non le «Casa …»); i nomi degli
   edifici non vengono più disegnati come etichette.
 - **Sprite degli NPC**: `tools/build-npc.py` ritaglia `tools/sorgenti/npc-*.png` (una riga per
   personaggio: fronte, retro, sinistra, destra) in `assets/npc/<nome>.png`. Un NPC senza `sprite` lo
   riceve da `guessNpcSprite` in `game.js` (dal nome, altrimenti un passante a rotazione).
-- Il configuratore salva in `localStorage` (`pokemonAscoliConfigV4`) e vale solo su quel browser: per
+- Il configuratore salva in `localStorage` (`pokemonAscoliConfigV5`) e vale solo su quel browser: per
   portare nel gioco pubblicato ciò che si disegna lì, esportare il JSON e riversarlo in `maps/<id>.js`.
 
 Atlante a celle 16×16, 16 colonne. Le posizioni dei tile sono la costante `TILES` in `tiles.js` ed è

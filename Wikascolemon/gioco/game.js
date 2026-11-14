@@ -11,7 +11,7 @@
   Battle.configure({ species: data.species, moves: data.moves });
 
   const ui = Object.fromEntries([
-    'viewport', 'locationName', 'locationBanner', 'toast', 'labelLayer', 'titleScreen', 'newGameButton', 'continueButton', 'playerNameInput',
+    'viewport', 'locationName', 'locationBanner', 'toast', 'titleScreen', 'newGameButton', 'continueButton', 'playerNameInput',
     'dialogueScreen', 'dialogueName', 'dialogueText', 'dialogueChoices', 'dialogueClose',
     'learnMoveScreen', 'learnMoveText', 'learnMoveChoices',
     'shopScreen', 'shopList', 'shopMoney', 'shopClose', 'creditsScreen', 'creditsClose',
@@ -22,8 +22,8 @@
   ].map(id => [id, document.getElementById(id)]));
 
   const STORAGE_KEY = 'pokemonAscoliSaveV1';
-  const CONFIG_KEY = 'pokemonAscoliConfigV4'; // a ogni riduzione delle mappe la chiave cambia: le override vecchie puntano a coordinate che non esistono più
-  const TRAINERS_KEY = 'pokemonAscoliTrainersV3';
+  const CONFIG_KEY = 'pokemonAscoliConfigV5'; // a ogni riduzione delle mappe la chiave cambia: le override vecchie puntano a coordinate che non esistono più
+  const TRAINERS_KEY = 'pokemonAscoliTrainersV4';
   const directions = {
     up: { x: 0, y: -1, row: 1 },
     down: { x: 0, y: 1, row: 0 },
@@ -103,8 +103,8 @@
   let nextMoveAt = 0;   // prima di questo istante non parte un nuovo passo (giro sul posto, urto)
   let running = false;  // Maiusc o B tenuto premuto
   let rustle = null;    // fruscio dell'erba alta nella cella appena calpestata
-  const WALK_MS = 210;  // durata di un passo da una cella: ~5 celle al secondo
-  const RUN_MS = 115;   // di corsa: ~9 celle al secondo
+  const WALK_MS = 250;  // durata di un passo da una cella: 4 celle al secondo
+  const RUN_MS = 130;   // di corsa: quasi 8 celle al secondo
   let toastTimer = 0;
   let bannerTimer = 0;
   let runtimeNpcs = [];
@@ -153,28 +153,21 @@
       badges: [],
       money: 3000,
       lastHeal: { map: data.respawn.map, x: data.respawn.x, y: data.respawn.y },
-      mapScale: 3
+      mapScale: 4
     };
   }
 
   function migrateSave(parsed) {
     parsed.name = parsed.name || 'Oliver';
-    // 14/11/2026: mappe esterne ridotte due volte (2/3, poi 3/4). Le posizioni salvate prima vanno
-    // riportate con la stessa regola dello script (tools/scala-mappe.mjs), un passo alla volta.
-    const shrink = (spot, num, den) => {
-      if (!spot || !data.maps[spot.map] || data.maps[spot.map].indoor) return;
-      spot.x = Math.floor((num * spot.x + Math.floor(den / 2)) / den);
-      spot.y = Math.floor((num * spot.y + Math.floor(den / 2)) / den);
-    };
-    if (!parsed.mapScale) {
-      shrink(parsed.player, 2, 3);
-      shrink(parsed.lastHeal, 2, 3);
-      parsed.mapScale = 2;
-    }
-    if (parsed.mapScale === 2) {
-      shrink(parsed.player, 3, 4);
-      shrink(parsed.lastHeal, 3, 4);
-      parsed.mapScale = 3;
+    // Le mappe esterne hanno cambiato misura più volte il 14/11/2026; dall'ultima (compattazione
+    // senza rimpicciolire gli elementi, `mapScale: 4`) le vecchie coordinate non si possono più
+    // convertire: chi ha un salvataggio precedente riparte dalla stazione, con squadra e progressi intatti.
+    if (parsed.mapScale !== 4) {
+      const outdoors = spot => spot && data.maps[spot.map] && !data.maps[spot.map].indoor;
+      if (!parsed.player || outdoors(parsed.player) || !data.maps[parsed.player.map]) parsed.player = { ...data.start };
+      if (!parsed.lastHeal || outdoors(parsed.lastHeal) || !data.maps[parsed.lastHeal.map]) parsed.lastHeal = { map: data.respawn.map, x: data.respawn.x, y: data.respawn.y };
+      delete parsed.returnSpot;
+      parsed.mapScale = 4;
     }
     if (parsed.version === 2) return parsed;
     // v1 -> v2
@@ -224,6 +217,7 @@
     showLocation(currentMap.name);
     updateLocation();
     autoSave();
+    startMusic();
     if (isNewGame) playIntroFade();
   }
 
@@ -403,6 +397,8 @@
   function getEncounter(playerX, playerY) {
     const custom = currentMap.encounterCells && currentMap.encounterCells[keyFor(playerX, playerY)];
     if (custom !== undefined) return custom > 0 ? { rate: Number(custom), table: 'default' } : null;
+    // sull'erba gli incontri capitano solo dove l'erba alta si vede; su sabbia e simili vale la zona
+    if (terrainAt(currentMap, playerX, playerY) === 'erba' && !isTallGrass(currentMap, playerX, playerY)) return null;
     return (currentMap.encounterZones || []).find(item => pointInRect(playerX, playerY, item)) || null;
   }
 
@@ -931,6 +927,7 @@
     ui.battleMessage.textContent = `È apparso ${data.species[wild.species].name} selvatico!`;
     renderBattle();
     showBattleMain();
+    sendOutAlly();
     playSound('encounter');
     autoSave();
   }
@@ -958,6 +955,7 @@
       ui.battleMessage.textContent = `${trainer.name} ti sfida a duello!`;
       renderBattle();
       showBattleMain();
+      sendOutAlly();
       playSound('encounter');
     });
   }
@@ -1207,6 +1205,7 @@
     ui.battleMessage.textContent = `Avanti, ${data.species[activeMonster().species].name}!`;
     renderBattle();
     showBattleMain();
+    sendOutAlly();
   }
 
   function playerAttack(moveId) {
@@ -1218,6 +1217,22 @@
     ui.battleBall.hidden = true;
     ui.battleBall.className = 'battle-ball';
     ui.enemySprite.classList.remove('absorbed');
+    ui.allySprite.classList.remove('unsent');
+  }
+
+  // Il proprio Pokémon entra in campo: la Ball vola da sinistra, si apre e lui compare.
+  async function sendOutAlly() {
+    const ball = ui.battleBall;
+    ui.allySprite.classList.add('unsent');
+    ball.hidden = false;
+    ball.className = 'battle-ball sending';
+    playSound('throw');
+    await sleep(480);
+    if (!battle || ball.className !== 'battle-ball sending') return;
+    ball.className = 'battle-ball opening-ally';
+    ui.allySprite.classList.remove('unsent');
+    await sleep(260);
+    if (ball.className === 'battle-ball opening-ally') { ball.hidden = true; ball.className = 'battle-ball'; }
   }
 
   function throwBall() {
@@ -1319,6 +1334,7 @@
     battle.playerStages = Battle.freshStages();
     ui.battleMessage.textContent = `Avanti, ${data.species[activeMonster().species].name}!`;
     renderBattle();
+    sendOutAlly();
     resolveTurn({ type: 'switch' });
   }
 
@@ -1587,7 +1603,13 @@
   }
 
   function renderSettingsMenu() {
-    ui.menuContent.innerHTML = `<h2>Impostazioni</h2><button id="toggleSound">Effetti sonori: ${save.settings.sound ? 'attivi' : 'disattivati'}</button><p>Ambientazione: giorno fisso</p><p>Lingua: italiano</p>`;
+    ui.menuContent.innerHTML = `<h2>Impostazioni</h2><button id="toggleSound">Effetti sonori: ${save.settings.sound ? 'attivi' : 'disattivati'}</button><button id="toggleMusic">Musica: ${save.settings.music === false ? 'disattivata' : 'attiva'}</button><p>Ambientazione: giorno fisso</p><p>Lingua: italiano</p>`;
+    document.getElementById('toggleMusic').addEventListener('click', () => {
+      save.settings.music = save.settings.music === false;
+      if (save.settings.music) startMusic(); else stopMusic();
+      autoSave();
+      renderSettingsMenu();
+    });
     document.getElementById('toggleSound').addEventListener('click', () => {
       save.settings.sound = !save.settings.sound;
       autoSave();
@@ -1826,35 +1848,6 @@
     });
   }
 
-  const worldLabelPool = new Map();
-  const worldLabelUsed = new Set();
-
-  function drawWorldLabel(text, worldX, worldY, camera) {
-    const x = worldX * 16 - camera.x;
-    const y = worldY * 16 - camera.y;
-    if (x < -120 || x > canvas.width + 120 || y < -12 || y > canvas.height + 12) return;
-    const key = text + '@' + worldX + ',' + worldY;
-    let el = worldLabelPool.get(key);
-    if (!el) {
-      el = document.createElement('span');
-      el.className = 'world-label';
-      el.textContent = text;
-      ui.labelLayer.appendChild(el);
-      worldLabelPool.set(key, el);
-    }
-    el.style.left = (x / canvas.width * 100) + '%';
-    el.style.top = (y / canvas.height * 100) + '%';
-    el.hidden = false;
-    worldLabelUsed.add(key);
-  }
-
-  function flushWorldLabels() {
-    worldLabelPool.forEach((el, key) => {
-      if (!worldLabelUsed.has(key)) el.hidden = true;
-    });
-    worldLabelUsed.clear();
-  }
-
   function drawSpriteFrame(sheet, direction, x, y) {
     const row = directions[direction].row;
     ctx.drawImage(sheet, 0, row * 32, 32, 32, Math.round(x - 8), Math.round(y - 20), 32, 32);
@@ -1921,9 +1914,11 @@
       const x = item.x * 16 - camera.x;
       const y = item.y * 16 - camera.y;
       if (x > canvas.width || y > canvas.height || x + item.w * 16 < 0 || y + item.h * 16 < 0) return;
-      ctx.fillStyle = 'rgba(242,210,82,.55)';
+      // i passaggi sul bordo della mappa sono la strada che esce: nessun segno. Quelli in mezzo
+      // (corriera, zerbini) restano appena evidenziati; il nome lo dice il cartello accanto.
+      if (item.x <= 0 || item.y <= 0 || item.x + item.w >= currentMap.width || item.y + item.h >= currentMap.height) return;
+      ctx.fillStyle = 'rgba(242,210,82,.3)';
       ctx.fillRect(x, y, item.w * 16, item.h * 16);
-      drawWorldLabel(item.label, item.x + item.w / 2, item.y + item.h / 2, camera);
     });
   }
 
@@ -1948,7 +1943,6 @@
     drawBuildings(camera);
     // alberi e arredo sbordano sulle celle vicine: si disegnano dopo terreno ed edifici
     if (atlas) drawStanding(currentMap, grid, startX, startY, endX, endY + 1, camera.x, camera.y);
-    (currentMap.labels || []).forEach(label => drawWorldLabel(label.text, label.x, label.y, camera));
     drawNpcs(camera);
     drawTrainers(camera);
     drawPlayer(camera);
@@ -1961,7 +1955,66 @@
       const rustleAge = rustle ? performance.now() - rustle.start : Infinity;
       if (rustleAge < 260) blit(rustleAge < 130 ? TILES.fruscio_0 : TILES.fruscio_1, 0, rustle.x * 16 - camera.x, rustle.y * 16 - camera.y);
     }
-    flushWorldLabels();
+  }
+
+  // Colonna sonora PROVVISORIA: un giro lento di quattro accordi, sintetizzato (niente file audio).
+  // Tappeto di note lunghe, basso sul primo e terzo tempo, qualche nota di melodia a caso fra
+  // quelle dell'accordo. Si spegne da Menu → Impostazioni.
+  const MUSIC_BARS = [ // frequenze in Hz: [basso, [tappeto], [note possibili della melodia]]
+    [87.31, [174.61, 220, 261.63, 329.63], [523.25, 659.25, 698.46, 880]],        // Fa maggiore 7
+    [82.41, [164.81, 196, 246.94, 293.66], [493.88, 587.33, 659.25, 783.99]],     // Mi minore 7
+    [73.42, [146.83, 174.61, 220, 261.63], [440, 523.25, 587.33, 698.46]],        // Re minore 7
+    [65.41, [130.81, 164.81, 196, 246.94], [392, 493.88, 523.25, 659.25]]         // Do maggiore 7
+  ];
+  const MUSIC_BEAT = 60 / 72;
+  let music = null;
+
+  function startMusic() {
+    if (music || !save || save.settings.music === false) return;
+    try {
+      audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
+      if (audioContext.state === 'suspended') audioContext.resume();
+      const master = audioContext.createGain();
+      master.gain.value = .5;
+      master.connect(audioContext.destination);
+      const tone = (frequency, at, duration, wave, peak, attack) => {
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        oscillator.type = wave;
+        oscillator.frequency.value = frequency;
+        gain.gain.setValueAtTime(.0001, at);
+        gain.gain.linearRampToValueAtTime(peak, at + attack);
+        gain.gain.exponentialRampToValueAtTime(.0001, at + duration);
+        oscillator.connect(gain).connect(master);
+        oscillator.start(at);
+        oscillator.stop(at + duration + .05);
+      };
+      const state = { master, bar: 0, nextBarAt: audioContext.currentTime + .1, timer: 0 };
+      const schedule = () => {
+        while (state.nextBarAt < audioContext.currentTime + 1.2) {
+          const [bass, pad, melody] = MUSIC_BARS[state.bar % MUSIC_BARS.length];
+          const at = state.nextBarAt;
+          pad.forEach(frequency => tone(frequency, at, MUSIC_BEAT * 4.2, 'sine', .022, .5));
+          tone(bass, at, MUSIC_BEAT * 1.8, 'triangle', .05, .03);
+          tone(bass, at + MUSIC_BEAT * 2, MUSIC_BEAT * 1.6, 'triangle', .04, .03);
+          for (let eighth = 0; eighth < 8; eighth += 1) {
+            if (Math.random() < .4) tone(melody[Math.floor(Math.random() * melody.length)], at + eighth * MUSIC_BEAT / 2, MUSIC_BEAT * 1.1, 'triangle', .022, .02);
+          }
+          state.bar += 1;
+          state.nextBarAt += MUSIC_BEAT * 4;
+        }
+      };
+      schedule();
+      state.timer = setInterval(schedule, 300);
+      music = state;
+    } catch (_) { music = null; }
+  }
+
+  function stopMusic() {
+    if (!music) return;
+    clearInterval(music.timer);
+    try { music.master.gain.setTargetAtTime(0, audioContext.currentTime, .15); } catch (_) { }
+    music = null;
   }
 
   // Effetti sonori PROVVISORI, sintetizzati al volo (niente file audio).

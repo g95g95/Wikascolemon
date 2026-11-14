@@ -178,25 +178,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .shop-row button { padding: 3px 6px; border: 1px solid #3d473c; background: #efe5cd; cursor: pointer; font: inherit; }
 .shop-row .qty { min-width: 1.4em; text-align: center; }
 
-.label-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 6;
-  overflow: hidden;
-  pointer-events: none;
-}
-.world-label {
-  position: absolute;
-  transform: translate(-50%, -100%);
-  padding: 2px 5px;
-  border: 1px solid #211f19;
-  border-radius: 2px;
-  background: rgba(25, 31, 25, .82);
-  color: #fff4cf;
-  font: 700 clamp(9px, 1.3vw + 6px, 13px)/1.2 "Segoe UI", Verdana, sans-serif;
-  white-space: nowrap;
-}
-
 .intro-fade::after {
   content: "";
   position: absolute;
@@ -244,8 +225,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .battle-stage::after { left: calc(4 * var(--u)); top: calc(96 * var(--u)); width: calc(116 * var(--u)); height: calc(30 * var(--u)); }
 .battle-sprite { position: absolute; width: calc(64 * var(--u)); height: calc(64 * var(--u)); object-fit: contain; image-rendering: pixelated; z-index: 2; }
 .enemy-sprite { right: calc(28 * var(--u)); top: calc(8 * var(--u)); animation: battle-enter-right .5s ease-out; }
-.ally-sprite { left: calc(30 * var(--u)); top: calc(46 * var(--u)); animation: battle-enter-left .5s ease-out; }
-@keyframes battle-enter-left { from { transform: translateX(-120%); } }
+.ally-sprite { left: calc(30 * var(--u)); top: calc(46 * var(--u)); transition: transform .25s ease-out, opacity .1s; transform-origin: 50% 85%; }
+.ally-sprite.unsent { transform: scale(.05); opacity: 0; transition: none; }
 @keyframes battle-enter-right { from { transform: translateX(120%); } }
 /* Ball: lancio ad arco, il Pokémon rientra, scossoni, scatto di chiusura */
 .battle-ball {
@@ -260,6 +241,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .battle-ball.shaking { animation: ball-shake .45s ease-in-out both; }
 .battle-ball.locked { filter: brightness(.65); transition: filter .2s; }
 .battle-ball.opening { animation: ball-open .25s ease-out both; }
+.battle-ball.sending { animation: ball-send .48s cubic-bezier(.3, .6, .5, 1) both; }
+.battle-ball.opening-ally { left: calc(56 * var(--u)); top: calc(92 * var(--u)); animation: ball-open .25s ease-out both; }
+@keyframes ball-send {
+  0% { left: calc(-14 * var(--u)); top: calc(74 * var(--u)); transform: rotate(0); }
+  50% { top: calc(48 * var(--u)); }
+  100% { left: calc(56 * var(--u)); top: calc(92 * var(--u)); transform: rotate(540deg); }
+}
 @keyframes ball-throw {
   0% { left: calc(60 * var(--u)); top: calc(92 * var(--u)); transform: rotate(0); }
   55% { top: calc(6 * var(--u)); }
@@ -303,6 +291,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   background: #fbfaf2;
 }
 .battle-actions:empty { display: none; }
+.battle-stage:has(.battle-actions.main:not(:empty)) .battle-message { padding-right: 52%; }
 .battle-actions.main { width: 50%; }
 .battle-actions.main button { text-transform: uppercase; }
 .battle-actions.wide { left: 0; grid-template-columns: 1fr 1fr auto; }

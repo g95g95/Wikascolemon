@@ -46,8 +46,8 @@
     typeChart,
     items,
     starters: ['basilino', 'puledrotto', 'tuffito'],
-    start: { map: 'porta_maggiore', x: 8, y: 23, direction: 'down' },
-    respawn: { map: 'porta_maggiore', x: 8, y: 23, direction: 'down' },
+    start: { map: 'porta_maggiore', x: 14, y: 23, direction: 'down' },
+    respawn: { map: 'porta_maggiore', x: 14, y: 23, direction: 'down' },
     initialItems: { ball: 5, potion: 2, antidote: 0, repel: 0, acquasanta: 0 }
   };
   // Interni generici (maps/interni.js): ogni bar e ogni tabacchi senza uno script suo porta, dalla

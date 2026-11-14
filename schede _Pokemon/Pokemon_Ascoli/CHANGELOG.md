@@ -2,6 +2,25 @@
 
 Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco/configuratore.html`
 
+## 14/11/2026 (tarda notte) — Dopo il secondo test di Jacopo
+
+- **Mappe raccolte, elementi a misura piena.** La riduzione precedente rimpiccioliva anche case e
+  strade: sbagliato. Ora si riparte dalle mappe originali e si toglie solo lo spazio vuoto (righe e
+  colonne di prato): case, strade, piazze e ponti hanno di nuovo la misura giusta, le distanze fra
+  loro si accorciano. I quartieri vanno da circa 76×56 a 131×71 celle, ognuno con la sua misura.
+  ⚠️ Chi aveva una partita salvata riparte dalla stazione (squadra e progressi restano).
+- **Niente più scritte sullo schermo.** Uscite e nomi dei luoghi sono cartelli da leggere; i bordi
+  della mappa non sono più evidenziati in giallo.
+- **Cartelli lontani dalla porta** (due celle), così non coprono l'ingresso.
+- **Case e alberi a posto**: l'erba alta si ferma a una cella dagli edifici, e gli alberi che i
+  vecchi dati mettevano sopra i tetti non ci sono più. Gli incontri capitano solo dove l'erba alta si vede.
+- **Oliver cammina davvero**: i fotogrammi del passo erano quasi identici, quindi sembrava scivolare.
+  Ora alza un piede alla volta, e il passo ha il ritmo dei giochi di terza generazione.
+- **La Ball anche per il tuo Pokémon**: quando entra in campo la Ball arriva da sinistra, si apre e
+  lui compare.
+- **Colonna sonora** provvisoria: un giro lento e rilassato, sintetizzato. Si spegne da Impostazioni.
+- In lotta il messaggio non finisce più sotto il menu.
+
 ## 14/11/2026 (notte) — Interni e suoni
 
 - **Si entra nei bar e nei tabacchi.** Camminando contro la porta (o premendo A) si entra in una

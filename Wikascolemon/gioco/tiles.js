@@ -12,6 +12,11 @@
     return x >= item.x && y >= item.y && x < item.x + item.w && y < item.y + item.h;
   }
 
+  // La cella sta dentro un edificio, nel suo bordo di `margin` celle o nella fila davanti alla facciata?
+  function nearBuilding(map, x, y, margin) {
+    return (map.buildings || []).some(b => x >= b.x - margin && x < b.x + b.w + margin && y >= b.y - margin && y <= b.y + b.h + margin);
+  }
+
   function terrainAt(map, x, y) {
     const override = map.tileOverrides && map.tileOverrides[keyFor(x, y)];
     if (override) return override;
@@ -20,6 +25,7 @@
     if (water) return water.type || 'water';
     if ((map.plazas || []).some(item => pointInRect(x, y, item))) return 'piazza';
     const road = (map.roads || []).find(item => pointInRect(x, y, item));
+    if (road && road.type === 'albero' && nearBuilding(map, x, y, 0)) return map.baseTile || 'erba';
     if (road) return road.type || 'road';
     return map.baseTile || 'erba';
   }
@@ -184,7 +190,8 @@
           if (type !== 'erba') continue;
           const custom = map.encounterCells && map.encounterCells[keyFor(x, y)];
           const inZone = custom !== undefined ? custom > 0 : (map.encounterZones || []).some(item => pointInRect(x, y, item));
-          if (inZone && !(map.buildings || []).some(item => pointInRect(x, y, item))) tall[y * map.width + x] = 1;
+          // l'erba alta si ferma a una cella dagli edifici: le case non stanno in mezzo all'erba
+          if (inZone && !nearBuilding(map, x, y, 1)) tall[y * map.width + x] = 1;
         }
       }
       grid = { types, tall, width: map.width, height: map.height, floor: map.floor };

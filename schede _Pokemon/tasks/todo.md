@@ -108,6 +108,21 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
       Per (b) serve un foglio di arredi di casa (letto, tavolo, cucina, divano, libreria, tappeto).
 - [ ] F8. Sprite veri per Tifotto (fronte e retro).
 
+## G. Dal secondo test di Jacopo (14/11, tarda notte)
+- [x] G1. ⚠️ ERRORE MIO corretto: «rimpicciolire la mappa» voleva dire togliere spazio vuoto, non
+      scalare gli elementi. Ripristinate le mappe a misura piena (commit 06cbcc8) e compattate con
+      `tools/compatta-mappe.mjs` (toglie righe/colonne non protette; ogni mappa ha `width`/`height`
+      suoi; non si rilancia). `tools/scala-mappe.mjs` resta ma NON va più usato sulle mappe.
+      `mapScale: 4`, chiavi ConfigV5/TrainersV4, salvataggi vecchi ripartono dalla stazione.
+- [x] G2. Via tutte le scritte nel mondo (`drawWorldLabel` eliminata): cartelli per uscite e luoghi.
+- [x] G3. Cartelli a 2 celle dalla porta; erba alta a 1 cella dagli edifici; alberi dentro/davanti agli
+      edifici ignorati da `terrainAt`; incontri solo sull'erba alta visibile.
+- [x] G4. Oliver: fotogrammi del passo rifatti in codice dal fotogramma fermo (piede alzato a turno);
+      passo 250 ms, corsa 130 ms. Se servisse di più: farsi generare un vero foglio di camminata.
+- [x] G5. Ball all'ingresso del proprio Pokémon (`sendOutAlly`); colonna sonora (`MUSIC_BARS`).
+- [ ] G6. Nando davanti al bar di Bobby: con le mappe a misura piena sta di nuovo a 6 celle dalla porta
+      (il blocco veniva dalla mappa rimpicciolita). Da ricontrollare giocando.
+
 ## D. Suono (dopo)
 - [ ] D1. Effetti chiptune e 3-4 temi (città, percorso, lotta, vittoria) generati in WebAudio.
 

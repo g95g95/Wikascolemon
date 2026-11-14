@@ -1,7 +1,7 @@
 (function () {
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     campo_parignano_contadino_1: {
-      map: 'campo_parignano', x: 34, y: 29, direction: 'up', sight: 3,
+      map: 'campo_parignano', x: 33, y: 40, direction: 'up', sight: 3,
       class: 'contadino', name: 'Marino', sprite: null,
       team: [{ species: 'basilino', level: 7 }, { species: 'pito', level: 7 }, { species: 'banconio', level: 8 }],
       before: ['Questi campi li lavoro da una vita.', 'Vediamo se i tuoi Pokémon reggono la fatica!'],

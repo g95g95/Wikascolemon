@@ -1,7 +1,7 @@
 (function () {
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     borgo_chiaro_ciclista_1: {
-      map: 'borgo_chiaro', x: 43, y: 29, direction: 'left', sight: 4,
+      map: 'borgo_chiaro', x: 55, y: 40, direction: 'left', sight: 4,
       class: 'ciclista', name: 'Renzo', sprite: null,
       team: [{ species: 'puledrotto', level: 8, moves: ['azione', 'braciere'] }, { species: 'segaccio', level: 9 }],
       before: ['Sto facendo il giro dello stadio in bici.', 'Fermati un attimo, famo \'na sfida!'],

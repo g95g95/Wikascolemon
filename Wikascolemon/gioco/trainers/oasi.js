@@ -1,7 +1,7 @@
 (function () {
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     oasi_birdwatcher_1: {
-      map: 'oasi', x: 30, y: 13, direction: 'down', sight: 4,
+      map: 'oasi', x: 26, y: 15, direction: 'down', sight: 4,
       class: 'birdwatcher', name: 'Renzo', sprite: null,
       team: [{ species: 'tamburino', level: 8 }, { species: 'anicino', level: 8 }],
       before: ['Ehi, zitto! Stavo a osservà l\'ucelli...', 'Mo\' che m\'hai visto, famme vedé quanto vale la tua squadra.'],
@@ -10,7 +10,7 @@
       money: null, gym: null, when: null
     },
     oasi_campeggiatore_1: {
-      map: 'oasi', x: 56, y: 44, direction: 'left', sight: 3,
+      map: 'oasi', x: 61, y: 49, direction: 'left', sight: 3,
       class: 'campeggiatore', name: 'Marco', sprite: null,
       team: [{ species: 'totera', level: 8 }, { species: 'soldatino', level: 9 }],
       before: ['Uè! Fermate n\' attimo, prima de magnà famo n\' controllo!', 'Chi vince se magna er dolce pé primo.'],
