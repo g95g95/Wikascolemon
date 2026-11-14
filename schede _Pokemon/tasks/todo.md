@@ -100,6 +100,12 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
       attraverso i banconi (`counter` in `DECOR_KINDS`), si entra camminando contro la porta.
       Da fare: stanze diverse per i bar della trama (Bobby, Steven, Elena), case visitabili.
 - [x] F9. (14/11) Effetti sonori provvisori sintetizzati (`SOUNDS` in `game.js`). Musica: no.
+- [ ] F10. **Interni, passo successivo** (Jacopo, 14/11: «molto interessante», da riprendere). Due strade,
+      da scegliere:
+      (a) bar personalizzati per Bobby, Steven ed Elena: una stanza ciascuno, il personaggio dietro il
+      bancone al posto del barista generico, con i suoi dialoghi di trama spostati dentro;
+      (b) case visitabili: una o due stanze-tipo (cucina, salotto) con un abitante che dice una battuta.
+      Per (b) serve un foglio di arredi di casa (letto, tavolo, cucina, divano, libreria, tappeto).
 - [ ] F8. Sprite veri per Tifotto (fronte e retro).
 
 ## D. Suono (dopo)
