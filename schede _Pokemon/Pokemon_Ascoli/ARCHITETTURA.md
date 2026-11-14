@@ -177,7 +177,15 @@ senza toccare codice né mappe. `tools/build-tileset.py` (Python + Pillow) gener
   i piedi del giocatore (`erba_alta_front`).
 - Se il PNG non si carica si ricade su `drawTile` (i vecchi tile dipinti in codice), che resta anche
   per i tipi non presenti in `TILES`.
-- Gli edifici sono ancora dipinti in codice (`drawHouse`: tetto, facciata, finestre, porta su `door`).
+- **Oggetti generati** (`assets/tiles/oggetti.png`, costante `OBJECTS` in `game.js`): i fogli generati
+  dal browser (griglia di celle su fondo magenta) stanno in `tools/sorgenti/` — fuori da `assets/`, così
+  non vengono pubblicati — e `python -I tools/build-oggetti.py` li scontorna, li riduce alla scala di
+  gioco e stampa le posizioni da riportare in `OBJECTS`. Oggi: albero, porte, finestra, vetrina,
+  texture di tetto e muro; cespuglio, masso, fiori, lampione, panchina, cartello, fontana sono nel
+  foglio ma le mappe non hanno ancora dati di arredo dove piazzarli.
+- Gli edifici (`drawHouse`) si compongono da quei pezzi: tetto e muro a texture (il muro tinto col
+  `color` dell'edificio), porta per `kind` (chiesa, attività, altro) su `door`, finestre e vetrine.
+  Senza `oggetti.png` restano i vecchi edifici dipinti in codice.
 
 ## Test
 `node tests/regression.mjs` (dati e mappe) + `node tests/battle.test.mjs` + `node tests/events.test.mjs`

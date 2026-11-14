@@ -30,8 +30,12 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
 - [ ] B2b. Le zone d'incontro sono rettangoli enormi (es. 45×42): ora che si vedono sono prati interi
       d'erba alta. Da ridisegnare a chiazze nel configuratore.
 - [ ] B1b. Il configuratore disegna ancora i tile a colori piatti: portarlo sull'atlante.
-- [ ] B3. (provvisorio fatto il 14/11: `drawHouse` dipinge tetto, facciata, finestre e porta in codice)
-      Edifici veri: tetto, facciata, porta, insegna per `kind` (bar, tabacchi, palestra, chiesa,
+- [x] B3a. (14/11) Primo foglio generato da Jacopo (ChatGPT immagini) → `tools/build-oggetti.py` →
+      alberi ed edifici composti da pezzi veri (tetto, muro tinto, porte per `kind`, finestre, vetrine).
+      Codex CLI su questo account non genera immagini: i fogli si generano dal browser.
+- [ ] B3b. Arredo urbano: cespuglio, masso, fiori, lampione, panchina, cartello, fontana sono già
+      ritagliati ma le mappe non hanno un campo dove piazzarli (serve `decor` + strumento nel configuratore).
+- [ ] B3. Edifici: insegna per `kind` (bar, tabacchi, palestra, chiesa,
       ospedale, stadio…); il giocatore passa dietro tetti e chiome (ordinamento per Y).
 - [ ] B4. Animazioni: acqua, mare, fiori; ombra sotto gli sprite; camminata NPC a 4 frame.
 - [ ] B5. I 6 fogli NPC mancanti (bro_security, dj, turista, congressista, rivale, capopalestra) —

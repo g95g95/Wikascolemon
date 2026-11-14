@@ -1647,6 +1647,49 @@
   const SIDES = [[0, -1], [1, 0], [0, 1], [-1, 0]];
   const DIAGONALS = [[1, -1], [1, 1], [-1, 1], [-1, -1]];
 
+  // Oggetti ritagliati dai fogli generati (tools/build-oggetti.py → assets/tiles/oggetti.png):
+  // [x, y, larghezza, altezza] nel foglio. Tenere allineato con l'output dello script.
+  const objectsImage = new Image();
+  objectsImage.src = 'assets/tiles/oggetti.png';
+  const OBJECTS = {
+    albero: [0, 0, 27, 32], cespuglio: [27, 0, 16, 14], masso: [43, 0, 16, 12], fiori: [59, 0, 16, 14],
+    porta: [75, 0, 16, 20], porta_negozio: [91, 0, 22, 24], porta_chiesa: [113, 0, 24, 28], finestra: [137, 0, 20, 16],
+    vetrina: [157, 0, 28, 24], tetto: [185, 0, 32, 32], muro_pietra: [217, 0, 32, 32], muro_mattoni: [0, 32, 32, 32],
+    lampione: [32, 32, 12, 32], panchina: [44, 32, 32, 22], cartello: [76, 32, 18, 24], fontana: [94, 32, 32, 30]
+  };
+
+  function objectsReady() {
+    return objectsImage.complete && objectsImage.naturalWidth > 0;
+  }
+
+  // Disegna un oggetto con il centro della base in (baseX, baseY).
+  function drawObject(name, baseX, baseY) {
+    const [sx, sy, w, h] = OBJECTS[name];
+    ctx.drawImage(objectsImage, sx, sy, w, h, Math.round(baseX - w / 2), Math.round(baseY - h), w, h);
+  }
+
+  // Le texture (tetto, muri) diventano pattern ripetibili, creati alla prima richiesta.
+  const texturePatterns = {};
+  function texturePattern(name) {
+    if (!texturePatterns[name]) {
+      const [sx, sy, w, h] = OBJECTS[name];
+      const tile = document.createElement('canvas');
+      tile.width = w;
+      tile.height = h;
+      tile.getContext('2d').drawImage(objectsImage, sx, sy, w, h, 0, 0, w, h);
+      texturePatterns[name] = ctx.createPattern(tile, 'repeat');
+    }
+    return texturePatterns[name];
+  }
+
+  function fillTexture(name, x, y, width, height) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.fillStyle = texturePattern(name);
+    ctx.fillRect(0, 0, width, height);
+    ctx.restore();
+  }
+
   function tilesetReady() {
     return tilesetImage.complete && tilesetImage.naturalWidth > 0;
   }
@@ -1707,6 +1750,7 @@
     else if (type === 'mare') tile = frame ? TILES.mare_1 : TILES.mare_0;
     else if (type === 'road' && hash % 3 === 0) tile = TILES.road_b;
     else if (type === 'asfalto' && hash % 5 === 0) tile = TILES.asfalto_b;
+    else if (type === 'albero' && objectsReady()) tile = TILES.erba;
     if (!tile) { drawTile(type, screenX, screenY, x, y); return; }
     blit(tile, 0, screenX, screenY);
     const sides = SIDES.map(([dx, dy]) => fringeFor(type, gridType(grid, x + dx, y + dy)));
@@ -1742,6 +1786,46 @@
     const wallHeight = (item.h >= 6 ? 3 : item.h >= 3 ? 2 : 1) * 16;
     const roofHeight = height - wallHeight;
     const wallTop = y + roofHeight;
+    if (objectsReady()) {
+      const flat = FLAT_ROOF_KINDS.has(item.kind);
+      fillTexture(flat ? 'muro_pietra' : 'tetto', x, y, width, roofHeight);
+      ctx.globalCompositeOperation = 'multiply';
+      if (flat) { ctx.fillStyle = '#9aa2ac'; ctx.fillRect(x, y, width, roofHeight); }
+      ctx.globalCompositeOperation = 'source-over';
+      fillTexture('muro_pietra', x, wallTop, width, wallHeight);
+      ctx.globalCompositeOperation = 'multiply';
+      ctx.globalAlpha = .7;
+      ctx.fillStyle = wall;
+      ctx.fillRect(x, wallTop, width, wallHeight);
+      ctx.globalAlpha = 1;
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = 'rgba(40, 25, 15, .45)';
+      ctx.fillRect(x, wallTop, width, 3); // ombra della gronda
+      const shop = item.kind === 'attività';
+      const doorName = item.kind === 'chiesa' ? 'porta_chiesa' : shop ? 'porta_negozio' : 'porta';
+      const doorCenter = Math.round(item.door ? item.door.x * 16 - camera.x + 8 : x + width / 2);
+      const base = y + height;
+      const clear = OBJECTS[doorName][2] / 2 + 14;
+      if (wallHeight >= 32 && item.kind !== 'chiesa') {
+        // piano terra: vetrine per le attività, finestre per il resto; sopra sempre finestre
+        const row = (baseY, ground) => {
+          const piece = ground && shop ? 'vetrina' : 'finestra';
+          for (let cx = x + 20; cx <= x + width - 20; cx += piece === 'vetrina' ? 40 : 32) {
+            if (ground && Math.abs(cx - doorCenter) < clear) continue;
+            drawObject(piece, cx, baseY);
+          }
+        };
+        if (wallHeight >= 48) row(wallTop + 21, false);
+        row(base - 3, true);
+      }
+      drawObject(doorName, doorCenter, base);
+      ctx.fillStyle = '#3a2e26';
+      ctx.fillRect(x - 1, y - 1, width + 2, 1);
+      ctx.fillRect(x - 1, y, 1, height);
+      ctx.fillRect(x + width, y, 1, height);
+      ctx.fillRect(x - 1, y + height, width + 2, 1);
+      return;
+    }
     // tetto
     for (let row = 0; row * 4 < roofHeight; row += 1) {
       ctx.fillStyle = shade(roof, row % 2 ? .92 : 1);
@@ -1940,8 +2024,10 @@
     if (atlas) {
       // chiome: ogni albero sborda sulla cella sopra, quindi si disegnano dopo tutto il terreno
       for (let y = startY; y <= Math.min(currentMap.height - 1, endY); y += 1) {
-        for (let x = startX; x < endX; x += 1) {
-          if (gridType(grid, x, y) === 'albero') blit(TILES.albero_top, 0, x * 16 - camera.x, (y - 1) * 16 - camera.y);
+        for (let x = startX - 1; x <= endX; x += 1) {
+          if (gridType(grid, x, y) !== 'albero') continue;
+          if (objectsReady()) drawObject('albero', x * 16 - camera.x + 8, (y + 1) * 16 - camera.y);
+          else blit(TILES.albero_top, 0, x * 16 - camera.x, (y - 1) * 16 - camera.y);
         }
       }
     }
