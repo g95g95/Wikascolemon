@@ -20,7 +20,9 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
       riga del genere). Oggi il motore lo ignora, ma va sistemato prima del porting.
 
 ## B. Mondo: da rettangoli a tileset
-- [ ] B0. **Scelta della fonte dei tile** (vedi sotto) — blocca B1-B4.
+- [ ] B0. **Fonte dei tile**: atlante originale in stile terza generazione, generato (deciso il 14/11).
+      Non si usano tile estratti dai giochi ufficiali. Su questo PC manca un generatore di immagini
+      (`codex` non è installato): o lo si installa, o l'atlante lo genera Jacopo e qui lo si affetta (PIL c'è).
 - [ ] B1. Atlante `assets/tiles/tileset.png` 16×16 + `drawTile` che pesca dall'atlante, con bordi
       automatici (autotile) fra erba/strada/acqua/sabbia. I dati delle mappe non cambiano.
 - [ ] B2. Erba alta visibile sulle `encounterZones` (oggi non si vedono), con fruscio al passaggio.
@@ -40,7 +42,9 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
       in alto a sinistra, proprio Pokémon in basso a sinistra con scheda in basso a destra. Sostituisce la
       scelta precedente (selvatico a sinistra); `regression.mjs` aggiornato.
 - [ ] C3. Transizioni: dissolvenza fra mappe, animazione della Ball, colpo/KO (il lampo d'ingresso c'è).
-- [ ] C4. Menu di pausa a lista sulla destra; schermata Squadra a riquadri; Borsa a tasche.
+- [x] C4a. (14/11) Schermata Squadra a riquadri: capofila grande a sinistra, altri cinque in colonna,
+      barre PS colorate, KO in rosso, posti vuoti tratteggiati; clic → scheda. Grafica originale.
+- [ ] C4b. Menu di pausa a lista sulla destra; Borsa a tasche.
 - [ ] C5. Schermata titolo, icone delle 2 medaglie (era E3).
 
 ## D. Suono (dopo)

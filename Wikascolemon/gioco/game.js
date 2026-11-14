@@ -1291,8 +1291,24 @@
     return `<div class="creature-row"${ref ? ` data-summary="${ref}"` : ''}><img src="assets/battle/${monster.species}-front.png" alt="${species.name}" onerror="this.style.display='none'"><div><strong>${species.name}</strong> Lv.${monster.level} ${status ? `<span class="status-badge">${status}</span>` : ''}<div class="bar"><i style="width:${hpPercent}%"></i></div><small>${monster.hp}/${monster.stats.hp} PS</small></div>${action}</div>`;
   }
 
+  // Schermata Squadra: il primo Pokémon nel riquadro grande a sinistra, gli altri in colonna a destra.
+  function partySlot(monster, index) {
+    if (!monster) return '<div class="party-slot empty"></div>';
+    const species = data.species[monster.species];
+    const ratio = Math.max(0, monster.hp / monster.stats.hp);
+    const hpClass = ratio > .5 ? 'hp-high' : ratio > .2 ? 'hp-mid' : 'hp-low';
+    const status = monster.hp <= 0 ? 'KO' : statusText(monster);
+    return `<div class="party-slot${index === 0 ? ' lead' : ''}${monster.hp <= 0 ? ' fainted' : ''}" data-summary="team:${index}:team">
+      <img src="assets/battle/${monster.species}-front.png" alt="" onerror="this.style.visibility='hidden'">
+      <div class="party-name"><strong>${species.name}</strong><span>Lv.${monster.level}</span>${status ? `<span class="status-badge">${status}</span>` : ''}</div>
+      <div class="hp-row"><b>PS</b><div class="hp-track"><i class="${hpClass}" style="width:${ratio * 100}%"></i></div></div>
+      <small>${Math.max(0, monster.hp)}/${monster.stats.hp}</small></div>`;
+  }
+
   function renderTeamMenu() {
-    ui.menuContent.innerHTML = `<h2>Squadra</h2>${save.team.map((monster, index) => monsterRow(monster, '', `team:${index}:team`)).join('')}`;
+    const others = Array.from({ length: 5 }, (_, i) => partySlot(save.team[i + 1], i + 1)).join('');
+    ui.menuContent.innerHTML = `<div class="party-screen">${partySlot(save.team[0], 0)}<div class="party-list">${others}</div>
+      <p class="party-hint">Scegli un Pokémon per vederne la scheda.</p></div>`;
   }
 
   // Scheda del singolo Pokémon: si apre cliccando una riga di Squadra o Deposito.

@@ -307,6 +307,38 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .dex-row a { color: #285a37; font-weight: 700; }
 .bar { height: 5px; border: 1px solid #3a4339; background: #685f51; }
 .bar i { display: block; height: 100%; background: #55a955; }
+/* Schermata Squadra (misure in --u come dialoghi e lotta) */
+.menu-content:has(.party-screen) { padding: 0; overflow: hidden; }
+.party-screen {
+  display: grid; grid-template-columns: 38% 1fr; grid-template-rows: 1fr auto; gap: calc(3 * var(--u)); height: 100%; padding: calc(4 * var(--u));
+  background: repeating-linear-gradient(135deg, #3f7f8c 0 calc(6 * var(--u)), #3a7683 calc(6 * var(--u)) calc(12 * var(--u)));
+  font-size: calc(9 * var(--u)); line-height: 1.05; color: #fff;
+}
+.party-list { display: grid; grid-template-rows: repeat(5, 1fr); gap: calc(2 * var(--u)); min-height: 0; }
+.party-slot {
+  position: relative; display: grid; grid-template-columns: calc(20 * var(--u)) 1fr auto; align-items: center; column-gap: calc(3 * var(--u));
+  min-height: 0; padding: 0 calc(4 * var(--u)); border: calc(1.5 * var(--u)) solid #1d2b3a; border-radius: calc(4 * var(--u));
+  background: linear-gradient(#5aa9e6 0 50%, #3f8fd0 50%); box-shadow: inset 0 0 0 calc(1 * var(--u)) #9fd0f5; cursor: pointer;
+  text-shadow: calc(.7 * var(--u)) calc(.7 * var(--u)) 0 #1d2b3a;
+}
+.party-slot:hover { background: linear-gradient(#ffb870 0 50%, #f09040 50%); box-shadow: inset 0 0 0 calc(1 * var(--u)) #ffe0b0; }
+.party-slot.fainted { background: linear-gradient(#d07a70 0 50%, #b85a50 50%); box-shadow: inset 0 0 0 calc(1 * var(--u)) #eab0a8; }
+.party-slot.empty { border-style: dashed; background: rgba(20, 50, 60, .35); box-shadow: none; cursor: default; }
+.party-slot img { grid-row: 1 / span 2; width: calc(20 * var(--u)); height: calc(20 * var(--u)); object-fit: contain; image-rendering: pixelated; }
+.party-name { grid-column: 2 / span 2; display: flex; align-items: center; gap: calc(3 * var(--u)); min-width: 0; }
+.party-name strong { flex: 1; font-weight: 400; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.party-slot .hp-row { margin: 0; }
+.party-slot small { font-size: calc(8 * var(--u)); }
+.party-slot.lead { align-self: center; grid-template-columns: 1fr; justify-items: center; row-gap: calc(2 * var(--u)); padding: calc(6 * var(--u)) calc(5 * var(--u)); }
+.party-slot.lead img { grid-row: auto; width: calc(48 * var(--u)); height: calc(48 * var(--u)); }
+.party-slot.lead .party-name, .party-slot.lead .hp-row { grid-column: 1; width: 100%; }
+.party-slot.lead small { justify-self: end; }
+.party-slot.lead .party-name { flex-wrap: wrap; }
+.party-slot.lead .party-name strong { flex-basis: 100%; }
+.party-hint {
+  grid-column: 1 / -1; margin: 0 !important; padding: calc(2 * var(--u)) calc(6 * var(--u)); border: calc(1.5 * var(--u)) solid #1d2b3a; border-radius: calc(3 * var(--u));
+  background: #fbfaf2; color: #26303a;
+}
 .creature-row[data-summary] { cursor: pointer; }
 .creature-row[data-summary]:hover { background: #fff1c9; border-color: #3d7847; }
 .type-chip { display: inline-block; padding: 0 4px; border-radius: 2px; color: #fff; font-size: .52rem; font-weight: 700; text-shadow: 0 1px 0 rgba(0,0,0,.4); }
