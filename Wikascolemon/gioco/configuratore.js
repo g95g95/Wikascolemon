@@ -14,7 +14,7 @@
     'Acciaio', 'Folletto'
   ];
   const ui = Object.fromEntries([
-    'mapSelect', 'tileType', 'brushSize', 'collisionValue', 'encounterRate', 'decorKind', 'cursorInfo',
+    'mapSelect', 'tileType', 'brushSize', 'collisionValue', 'encounterRate', 'decorKind', 'zoomLevel', 'cursorInfo',
     'objectName', 'objectWidth', 'objectHeight', 'objectColor', 'destinationMap', 'spawnX',
     'spawnY', 'npcDialogue', 'npcMovement', 'selectedIndex', 'updateObject', 'deleteObject',
     'objectList', 'encounterSpecies', 'minLevel', 'maxLevel', 'encounterWeight',
@@ -255,6 +255,12 @@
     });
   }
 
+  // Zoom: «Tutta la mappa» la adatta al riquadro; 100% e 200% la ingrandiscono e si scorre.
+  function applyZoom() {
+    const zoom = ui.zoomLevel.value;
+    canvas.style.width = zoom === 'fit' ? '' : `${canvas.width * Number(zoom)}px`;
+  }
+
   function drawGrid() {
     ctx.strokeStyle = 'rgba(18,29,22,.13)';
     ctx.lineWidth = 1;
@@ -271,6 +277,7 @@
     const custom = currentConfig();
     canvas.width = base.width * scale;
     canvas.height = base.height * scale;
+    applyZoom();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (tiles.tilesetReady()) {
       const map = effectiveMap();
@@ -1017,6 +1024,7 @@
     renderTrainerList();
     draw();
   });
+  ui.zoomLevel.addEventListener('change', applyZoom);
   ui.updateObject.addEventListener('click', updateSelected);
   ui.deleteObject.addEventListener('click', deleteSelected);
   ui.addEncounter.addEventListener('click', () => {

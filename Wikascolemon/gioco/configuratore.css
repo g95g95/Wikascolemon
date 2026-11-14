@@ -23,8 +23,8 @@ button.danger { background: #d77b6f; }
 .hint { color: #c8bfa8; font-size: .65rem; line-height: 1.4; }
 .cursor-info, .save-status { padding: 6px; background: #19271f; color: #d9c67e; font-size: .65rem; }
 .map-panel { padding: 8px; overflow: auto; }
-.canvas-wrap { min-width: 640px; border: 3px solid #111a14; background: #0f1712; }
-#editorCanvas { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; image-rendering: pixelated; cursor: crosshair; touch-action: none; }
+.canvas-wrap { min-width: 640px; max-height: 82vh; overflow: auto; border: 3px solid #111a14; background: #0f1712; }
+#editorCanvas { display: block; width: 100%; height: auto; image-rendering: pixelated; cursor: crosshair; touch-action: none; }
 .legend { display: flex; align-items: center; gap: 5px; padding-top: 7px; color: #c8bfa8; font-size: .62rem; }
 .legend span { width: 11px; height: 11px; margin-left: 8px; }
 .collision-dot { background: rgba(220, 60, 54, .8); }
