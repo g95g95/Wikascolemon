@@ -74,9 +74,12 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
       del Ponte Nuovo, tre terne di Nando). Chiavi del configuratore portate a `ConfigV3`/`TrainersV2`;
       i salvataggi vengono riposizionati (`mapScale`). Storia: 256×160 → 48×36 → ×3 (20/08) → ×2/3.
       ⚠️ `tests/e2e/` ha coordinate fisse della scala vecchia: da rifare.
-- [ ] E3. Sprite degli NPC (nota di Jacopo del 14/11: «la maggior parte sono rettangolini»): 59 NPC su
-      75 non hanno `sprite`. Serve un foglio di passanti generici (4 direzioni) e l'assegnazione.
-- [ ] E4. Mappe più dense: arredo e chiazze d'erba alta nelle mappe ridotte.
+- [x] E3. (14/11) Sprite degli NPC: terzo foglio (anziano, signora, ragazzo, infermiera) ritagliato con
+      `tools/build-npc.py`; i cartelli usano l'oggetto cartello; `guessNpcSprite` assegna uno sprite a
+      chi non ne dichiara. Servono altri passanti per variare.
+- [x] E4. (14/11) Prima sistemazione automatica: `tools/arreda-mappe.mjs` → `maps/zz_arredo.js`
+      (erba alta a chiazze + ~1600 oggetti). Da ritoccare a mano. ⚠️ La probabilità d'incontro nelle
+      zone a chiazze è ×1,5: il bilanciamento dei livelli va riguardato giocando.
 
 ## D. Suono (dopo)
 - [ ] D1. Effetti chiptune e 3-4 temi (città, percorso, lotta, vittoria) generati in WebAudio.

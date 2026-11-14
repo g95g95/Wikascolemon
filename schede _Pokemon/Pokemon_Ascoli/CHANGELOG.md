@@ -13,9 +13,13 @@ Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco
   diverse per chiese, negozi e case, finestre con persiane, vetrine. Insegne sopra la porta (bar,
   tabacchi, palestra, croce verde), rosone sulle chiese, tetti piatti o in lamiera per ospedale,
   stazione e capannoni, gradinate allo stadio.
-- **Arredo.** Si possono piazzare cespugli, massi, fiori, lampioni, panchine, cartelli, fontane,
-  staccionate, muretti, siepi, tavolini, ulivi, cipressi, ombrelloni e barche. Fanno da ostacolo
-  (tranne i fiori). Per ora nessuna mappa pubblicata ne ha: vanno disegnati nel configuratore.
+- **Arredo.** Tutti i quartieri esterni sono arredati (circa 1600 oggetti): lampioni lungo le
+  strade, fontane e panchine nelle piazze, tavolini davanti ai bar, fiori agli angoli delle case,
+  cespugli, siepi e cipressi nel verde, ulivi e massi in campagna, ombrelloni e barche sulla
+  spiaggia della Costa. Gli oggetti fanno da ostacolo (tranne i fiori). È una prima sistemazione
+  automatica, da ritoccare a mano nel configuratore.
+- **Erba alta a chiazze.** Le zone d'incontro non sono più prati interi: l'erba alta copre circa il
+  40% della zona e si può aggirare. Per compensare, la probabilità d'incontro per passo è salita di metà.
 - **Mappe ridotte ai due terzi.** I quartieri erano troppo grandi da attraversare: da 144×108 /
   180×120 celle a 96×72 / 120×80. Le palestre interne non sono cambiate. I salvataggi esistenti
   vengono riposizionati da soli.
@@ -58,8 +62,13 @@ Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco
   originale, nessun asset di giochi esistenti) e ritagliati con `tools/build-oggetti.py`.
   Finora due fogli, 32 oggetti.
 
+### Personaggi
+- **Niente più rettangolini.** Tutti gli NPC hanno uno sprite: quattro passanti nuovi (anziano,
+  signora, ragazzo, infermiera), i cartelli sono cartelli veri, e chi ha un mestiere usa lo sprite
+  giusto (pescatore, bagnino, contadino…).
+
 ### Da fare
-- Sprite per gli NPC: molti sono ancora rettangolini colorati.
-- Erba alta a chiazze invece che a prati interi; arredo nelle mappe.
+- Altri passanti (barista, turista, bambina, vigile…) per variare le facce nei quartieri.
+- Ritoccare a mano arredo ed erba alta, quartiere per quartiere.
 - Menu di pausa e Borsa in stile, schermata titolo, transizioni fra mappe, suono.
 - Il playthrough automatico (`tests/e2e`) va aggiornato a nuove coordinate e nuovo movimento.

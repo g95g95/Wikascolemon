@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
 import { loadGame, inRect, walkable } from './_load.mjs';
+
+globalThis.window = globalThis.window || {}; // tiles.js si aggancia a window
 
 const { data, trainersData, Events } = loadGame();
 
@@ -88,4 +91,28 @@ for (const [mapId, map] of Object.entries(data.maps)) {
   }
 }
 
-console.log(`OK: ${Object.keys(data.maps).length} mappe, ${checkedTrainers} allenatori controllati`);
+// Arredo (map.decor): tipi noti, dentro la mappa, su cella percorribile, mai sopra porte, NPC,
+// allenatori, passaggi o punti d'arrivo — altrimenti un oggetto potrebbe murare qualcuno.
+const { DECOR_KINDS } = createRequire(import.meta.url)('../tiles.js');
+let checkedDecor = 0;
+for (const [mapId, map] of Object.entries(data.maps)) {
+  const cellsOf = item => Array.from({ length: DECOR_KINDS[item.kind].span || 1 }, (_, i) => [item.x + i, item.y]);
+  const forbidden = new Set();
+  (map.npcs || []).forEach(n => forbidden.add(`${n.x},${n.y}`));
+  (map.buildings || []).forEach(b => { if (b.door) forbidden.add(`${b.door.x},${b.door.y}`); });
+  Object.values(trainersData.trainers).filter(t => t.map === mapId).forEach(t => forbidden.add(`${t.x},${t.y}`));
+  for (const other of Object.values(data.maps)) {
+    (other.transitions || []).filter(t => t.to === mapId).forEach(t => forbidden.add(`${t.spawnX},${t.spawnY}`));
+  }
+  for (const item of map.decor || []) {
+    assert.ok(DECOR_KINDS[item.kind], `${mapId}: arredo di tipo sconosciuto «${item.kind}»`);
+    for (const [x, y] of cellsOf(item)) {
+      assert.ok(walkable(map, x, y), `${mapId}: arredo ${item.kind} su cella non percorribile (${x},${y})`);
+      assert.ok(!forbidden.has(`${x},${y}`), `${mapId}: arredo ${item.kind} sopra porta, NPC, allenatore o punto d'arrivo (${x},${y})`);
+      assert.ok(!(map.transitions || []).some(t => inRect(x, y, t)), `${mapId}: arredo ${item.kind} dentro un passaggio (${x},${y})`);
+    }
+    checkedDecor += 1;
+  }
+}
+
+console.log(`OK: ${Object.keys(data.maps).length} mappe, ${checkedTrainers} allenatori, ${checkedDecor} oggetti d'arredo controllati`);

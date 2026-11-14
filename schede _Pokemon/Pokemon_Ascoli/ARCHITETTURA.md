@@ -172,6 +172,15 @@ sotto stanno lì, non più in `game.js`.
 - **Arredo**: `map.decor = [{ x, y, kind }]` con `kind` fra le chiavi di `DECOR_KINDS` (cespuglio,
   masso, fiori, lampione, panchina, cartello, fontana). Blocca il passaggio tranne i fiori; panchina e
   fontana occupano due celle. Si piazza col lo strumento «Arredo» del configuratore.
+- **`maps/zz_arredo.js` è GENERATO** da `node tools/arreda-mappe.mjs` (deterministico, rilanciabile):
+  si carica dopo tutte le mappe e sostituisce `encounterZones` (erba alta a chiazze, ~40% della zona,
+  probabilità ×1,5) e `decor` delle mappe esterne. Le mappe scritte a mano non contengono arredo. Lo
+  script non mette mai oggetti su strade, porte, passaggi, arrivi, NPC, allenatori o linee di sguardo
+  e ricontrolla la raggiungibilità dopo ogni oggetto. È anche il posto dove riversare un export del
+  configuratore.
+- **Sprite degli NPC**: `tools/build-npc.py` ritaglia `tools/sorgenti/npc-*.png` (una riga per
+  personaggio: fronte, retro, sinistra, destra) in `assets/npc/<nome>.png`. Un NPC senza `sprite` lo
+  riceve da `guessNpcSprite` in `game.js` (dal nome, altrimenti un passante a rotazione).
 - Il configuratore salva in `localStorage` (`pokemonAscoliConfigV3`) e vale solo su quel browser: per
   portare nel gioco pubblicato ciò che si disegna lì, esportare il JSON e riversarlo in `maps/<id>.js`.
 

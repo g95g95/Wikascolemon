@@ -414,8 +414,24 @@
     beginWildBattle(Battle.createMonster(entry.species, level));
   }
 
+  // Sprite per gli NPC che non ne dichiarano uno: scelto dal nome, altrimenti un passante a rotazione.
+  // Per fissarlo a mano basta `sprite: '<foglio in assets/npc>'` sull'NPC.
+  const npcSpriteRules = [
+    [/cartello/, 'cartello'], [/^elena/, 'elena'], [/^steven/, 'steven'], [/infermier/, 'infermiera'],
+    [/pescator/, 'pescatore'], [/bagnin/, 'bagnino'], [/birdwatcher/, 'birdwatcher'], [/buttafuori|steward/, 'bro_security'],
+    [/contadin|bracciante/, 'contadino'], [/gitante|visitatrice|viaggiator|pellegrin/, 'turista'],
+    [/ragazza|cliente in coda/, 'ragazzina'], [/ragazzo|tifoso|spettator/, 'ragazzo'],
+    [/anzian|pensionat|vicino|ambulante/, 'anziano'], [/lavandaia|massaia|barista|residente|abitante/, 'signora']
+  ];
+  const npcPassersby = ['signora', 'ragazzo', 'anziano'];
+  function guessNpcSprite(npc, index) {
+    const name = (npc.name || '').toLowerCase();
+    const rule = npcSpriteRules.find(([pattern]) => pattern.test(name));
+    return rule ? rule[1] : npcPassersby[(npc.x + npc.y + index) % npcPassersby.length];
+  }
+
   function initNpcs() {
-    runtimeNpcs = clone(currentMap.npcs || []).map((item, index) => ({ ...item, id: index, originX: item.x, originY: item.y }));
+    runtimeNpcs = clone(currentMap.npcs || []).map((item, index) => ({ ...item, sprite: item.sprite || guessNpcSprite(item, index), id: index, originX: item.x, originY: item.y }));
   }
 
   function visibleRuntimeNpcs() {
