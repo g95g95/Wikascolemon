@@ -2369,10 +2369,22 @@
     // </WALKERS>
   ]);
 
+  // Ombra a terra sotto un personaggio: resta ferma mentre il corpo molleggia, ed è quella che fa
+  // leggere il passo. `x`, `y`: angolo in alto a sinistra della cella in cui sta il personaggio.
+  function drawShadow(x, y) {
+    const left = Math.round(x), top = Math.round(y);
+    ctx.fillStyle = 'rgba(16, 24, 20, .26)';
+    ctx.fillRect(left + 3, top + 7, 10, 3);
+    ctx.fillRect(left + 4, top + 6, 8, 1);
+    ctx.fillRect(left + 4, top + 10, 8, 1);
+  }
+
   function drawSpriteFrame(sheet, direction, x, y, stride = 0, name = '') {
     const row = directions[direction].row;
     const left = Math.round(x - 8), top = Math.round(y - 20);
-    if (walkingSheets.has(name)) { ctx.drawImage(sheet, [0, 1, 3][stride] * 32, row * 32, 32, 32, left, top, 32, 32); return; }
+    if (name !== 'cartello') drawShadow(x, y);
+    // chi ha i fotogrammi del passo molleggia: nel passo il corpo sale di un pixel
+    if (walkingSheets.has(name)) { ctx.drawImage(sheet, [0, 1, 3][stride] * 32, row * 32, 32, 32, left, top - (stride ? 1 : 0), 32, 32); return; }
     if (!stride) { ctx.drawImage(sheet, 0, row * 32, 32, 32, left, top, 32, 32); return; }
     const FEET = 6; // righe in fondo allo sprite che fanno da gambe
     ctx.drawImage(sheet, 0, row * 32, 32, 32 - FEET, left, top, 32, 32 - FEET);
@@ -2391,7 +2403,7 @@
       if (x < -16 || y < -20 || x > canvas.width || y > canvas.height) return;
       const sheet = npcSheet(npc.sprite);
       if (sheet) {
-        drawSpriteFrame(sheet, npc.direction || 'down', x, y);
+        drawSpriteFrame(sheet, npc.direction || 'down', x, y, 0, npc.sprite);
         return;
       }
       ctx.fillStyle = index % 2 ? '#425d93' : '#8b4c49';
@@ -2436,8 +2448,10 @@
     const y = player.renderY * 16 - camera.y - 20;
     const row = directions[player.direction].row;
     const frame = movement ? player.frame : 0;
+    drawShadow(x + 8, y + 20);
     if (playerImage.complete && playerImage.naturalWidth) {
-      ctx.drawImage(playerImage, frame * 32, row * 32, 32, 32, Math.round(x), Math.round(y), 32, 32);
+      // molleggio: nei due fotogrammi di passo (1 e 3) il corpo sale di un pixel sopra l'ombra
+      ctx.drawImage(playerImage, frame * 32, row * 32, 32, 32, Math.round(x), Math.round(y) - (frame % 2), 32, 32);
     } else {
       ctx.fillStyle = '#a9a527';
       ctx.fillRect(Math.round(x + 8), Math.round(y + 8), 16, 20);

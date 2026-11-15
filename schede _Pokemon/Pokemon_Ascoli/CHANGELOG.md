@@ -2,6 +2,13 @@
 
 Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco/configuratore.html`
 
+## 15/11/2026 — Personaggi
+
+- **Via la macchia viola sotto il DJ**: il suo foglio aveva le viste fuori dalle celle. Riallineati tutti i
+  fogli dei personaggi (lo stesso difetto, più piccolo, l'avevano Ivo, Steven e altri quattro).
+- **Camminata più leggibile**: Oliver è un po' più grande, molleggia a ogni passo e ha l'ombra a terra.
+  L'ombra ce l'hanno tutti i personaggi.
+
 ## 15/11/2026 — Rifiniture
 
 - **Borsa in lotta**: vedi solo quello che hai e scegli su chi usare Pozione e Antidoto, anche su un Pokémon in panchina.

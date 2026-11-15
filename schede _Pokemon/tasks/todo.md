@@ -359,18 +359,16 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
 - [ ] L19. Git avvisa a ogni commit sui fine riga (LF/CRLF): un `.gitattributes` lo zittisce.
 
 ## M. Segnalate da Jacopo il 15/11 notte
-- [ ] M1. Il DJ prima della costa (`costa_dj_1`, foglio `assets/npc/dj.png`) ha una macchia viola sotto:
-      sembra un errore grafico. Da guardare ingrandito: nel foglio il viola sta in alto (cappello), quindi
-      la macchia potrebbe venire da come viene disegnato in gioco (il passo ricavato in codice alza metà
-      della fascia dei piedi) più che dal foglio. Si risolve comunque col foglio di camminata turista/DJ.
-- [ ] M2. Con la camminata nuova Oliver «sembra strisciare»: serve un miglioramento netto delle animazioni.
-      Misurato: i quattro fotogrammi sono diversi fra loro ma l'ingombro è identico (il corpo non si alza
-      mai) e a 22 pixel d'altezza i piedi si spostano di 1-2 pixel. Strade, dalla più economica:
-      (a) molleggio: il corpo sale di un pixel nei fotogrammi di passo; (b) ombra a terra che resta ferma
-      mentre il corpo molleggia (= K11); (c) Oliver più grande, 26 pixel come gli altri personaggi, così le
-      gambe hanno pixel per muoversi; (d) sbuffo di polvere quando corre; (e) rifare il foglio chiedendo
-      un passo esagerato (ginocchio alto, gambe ben aperte, braccia larghe), che è quello che a 22 pixel
-      si legge. Lo stesso vale per gli allenatori.
+- [x] M1. (15/11) Macchia viola sotto il DJ: era il foglio, non il gioco. Le righe di `dj.png` avevano un
+      passo di ~28 pixel invece di 32, quindi nella cella della vista di lato entrava il cappello della
+      vista sotto. Stesso difetto, più piccolo, su Ivo, Steven, congressista, buttafuori, ciclista,
+      turista. `tools/allinea-npc.py` rimette ogni vista nella sua cella con i piedi sulla riga 28 (si
+      può rilanciare: i fogli a posto restano identici). Riallineati 23 fogli su 32.
+- [x] M2. (15/11) Camminata, primo giro in codice: Oliver passa da 22 a 26 pixel d'altezza (come gli altri),
+      il corpo sale di un pixel nei fotogrammi di passo, e tutti i personaggi hanno un'ombra a terra che
+      resta ferma. Piedi di tutti sulla stessa riga (prima Oliver stava 3 pixel più in basso degli NPC).
+      Da giudicare giocando. Se non basta: rifare il foglio con un passo esagerato (ginocchio alto, gambe
+      ben aperte, braccia larghe) e polvere quando corre.
 
 ## D. Suono (dopo)
 - [ ] D1. Effetti chiptune e 3-4 temi (città, percorso, lotta, vittoria) generati in WebAudio.

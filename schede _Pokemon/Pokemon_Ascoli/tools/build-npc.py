@@ -17,7 +17,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, 'sorgenti')
 OUT = os.path.join(HERE, '..', 'assets', 'npc')
 HEIGHT = 25        # altezza del personaggio in px di gioco
-FEET_Y = 27        # riga dei piedi dentro la cella 32×32
+FEET_Y = 29        # riga dei piedi dentro la cella 32×32 (la stessa di tools/allinea-npc.py e di Oliver)
 
 # foglio → nomi dei personaggi, una riga ciascuno
 SHEETS = [
@@ -97,7 +97,7 @@ player_source = os.path.join(SRC, 'oliver-cammino.png')
 if os.path.exists(player_source):
     source = Image.open(player_source).convert('RGB')
     frames = [[cell(source, row, col) for col in range(4)] for row in range(4)]
-    walking_sheet(frames, 22, 30).save(os.path.join(HERE, '..', 'assets', 'player', 'oliver-sheet.png'))
+    walking_sheet(frames, 26, FEET_Y).save(os.path.join(HERE, '..', 'assets', 'player', 'oliver-sheet.png'))
     print('OK oliver (camminata)')
 
 # Allenatori: due personaggi per foglio, due righe ciascuno (fermo, poi a metà passo), quattro viste
