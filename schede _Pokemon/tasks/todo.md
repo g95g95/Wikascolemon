@@ -1,3 +1,43 @@
+# ▶ A CHE PUNTO SIAMO (16/11/2026)
+
+**Decisione di Jacopo del 16/11/2026: si comincia a lavorare direttamente sulla ROM hack.**
+La demo nel browser (`Pokemon_Ascoli`, online su `/gioco`) ha fatto il suo lavoro: specie, mosse,
+squadre e trama sono abbastanza definite da scriverle nel motore vero. Da qui in poi alla demo non si
+aggiungono funzioni: resta come banco di prova per trama e bilanciamento.
+
+**Prossimo passo, in attesa di Jacopo:** aprire PowerShell come amministratore, lanciare
+`wsl --install` e riavviare il PC. Poi lo dice a Claude, che prosegue con l'installazione.
+Stato di questo PC al 16/11: niente WSL, niente compilatore ARM, niente sorgente di
+`pokeemerald-expansion`, niente emulatore.
+
+**Tappe concordate**
+- [ ] R1. Installare gli attrezzi (WSL con Ubuntu, compilatore ARM, `pokeemerald-expansion`, mGBA) e
+      compilare il gioco base così com'è. ⚠️ Mai fatto su questa macchina: è il passo meno prevedibile.
+- [ ] R2. Portare una specie a mano (es. Tifotto: statistiche, tipi, mosse, voce Pokédex, sprite 64×64 a
+      16 colori) per capire formato e intoppi.
+- [ ] R3. Scrivere il generatore gemello di `tools/build-dex.mjs` che dalla wiki scrive le specie nel
+      formato della ROM hack, e portarle tutte.
+- [ ] R4. Sostituire starter e selvatici dei primi percorsi: ROM giocabile con i nostri Pokémon nella
+      Hoenn originale, su emulatore o telefono.
+- [ ] R5. Solo dopo: le mappe del Piceno, disegnate da Jacopo in Porymap con la demo come bozza.
+
+**Cosa si porta dietro dalla demo:** specie (statistiche, tipi, mosse per livello, evoluzioni, voci
+Pokédex), sprite di battaglia, squadre degli allenatori, tabelle degli incontri, testi dei dialoghi,
+i numeri del bilanciamento.
+**Cosa va rifatto a mano:** mappe, mosse inventate e abilità nuove (una per una nel motore), eventi
+della trama, evoluzioni legate a luoghi, ora e squadra (da verificare una per una nell'expansion).
+**Cosa non serve più:** menu, Borsa, motore di lotta, animazioni, interni della demo.
+
+**Stato della demo al 16/11** (ultimo commit pubblicato: «nome dell'edificio negli interni, dissolvenza
+in uscita, tre case…»): si gioca dalla stazione alla seconda medaglia; 11 suite di test verdi;
+`node tools/gioca.mjs` (6 minuti) senza problemi. L'elenco delle cose ancora aperte sulla demo è nelle
+sezioni K, L, M più sotto: restano valide, ma dopo la decisione di oggi non sono la priorità.
+Da riprendere comunque perché valgono anche per la ROM hack: K13 (campo `growth` sbagliato per 23
+specie), K21 (Zanzì con Velenpuntura 80), i tre refusi «Evo» sulla wiki (L6), le 37 mosse inventate
+senza effetto (K1), le evoluzioni legate a luoghi che non esistono come mappe (L4).
+
+---
+
 # Piano: il gioco prende l'aspetto di un gioco Pokémon (demo due palestre)
 
 Scritto il 14/11/2026. Il motore (logica, mappe, lotte, script) resta: cambia lo strato grafico.
