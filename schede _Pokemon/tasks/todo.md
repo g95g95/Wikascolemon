@@ -296,7 +296,7 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
 **Serve una decisione di Jacopo**
 - [ ] K20. Interni dei bar della trama: Bobby, Steven, Elena (= I9).
 - [ ] K21. Zanzì parte con Velenpuntura (80) sulla wiki: voluto o svista?
-- [ ] K22. Difficoltà della seconda metà (DJ e turista sulla costa, terzo Bro, Nando allo Jonathan: 60-70%).
+- [x] K22. Difficoltà: Jacopo, 15/11 sera: «per adesso va bene così» (esperienza ×2,2, squadre invariate). Da riaprire solo se lo chiede.
 
 **Da provare Jacopo**
 - [ ] K23. Musica: i quattro temi sono scritti senza ascoltarli.
