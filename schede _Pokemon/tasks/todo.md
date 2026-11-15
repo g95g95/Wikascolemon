@@ -325,8 +325,8 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
 - [x] L6. (15/11) Mosse «Evo» sulla forma base di una linea: scartate dal generatore (Zanzì non parte più
       con Velenoshock, Cavedì senza Correntina, Cignalò senza Fangobomba). ⚠️ Sono refusi delle tre schede
       wiki: la riga «Evo» andrebbe spostata sulla scheda dell'evoluzione.
-- [ ] L7. Borsa in lotta: è ancora la lista vecchia (Ball, Pozione, Antidoto) e la Pozione va solo a chi è in campo.
-
+- [x] L7. (15/11) Borsa in lotta: mostra gli strumenti posseduti che servono in lotta, con la descrizione;
+      per Pozione e Antidoto si sceglie il Pokémon, anche uno in panchina. Usarli costa il turno.
 **Bilanciamento**
 - [x] L8. (15/11, deciso da Jacopo: «Venagrox e Segaccio sono troppo, Banconio molto raro e a livelli
       bassi») Monticelli: Pito, Tamburino, Anicino, Banconio al 3% al livello 7. Tolto Segaccio anche dai
@@ -340,21 +340,22 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
 - [ ] L9. Allenatori con Pokémon evoluti sotto il livello d'evoluzione (Mucillax al 9 in palestra).
 
 **Schermate**
-- [ ] L10. Pokédex: mostra tutte le 149 specie, comprese quelle fuori dalla demo, e la sagoma di quelle mai
-      viste (si indovina la forma). Limitarlo alla demo? Nascondere le sagome?
-- [ ] L11. L'etichetta dello stato (VEL, PAR…) compare un messaggio prima dell'annuncio.
-- [ ] L12. In lotta la descrizione della mossa resta nel riquadro dei messaggi anche quando si esce dal menu mosse.
-- [ ] L13. Schermata titolo: le frecce non spostano il cursore fra le voci (solo Tab o il tocco).
-- [ ] L14. Tasto A del telefono: nei menu non seleziona la voce col cursore (si deve toccare la voce).
+- [x] L10. (15/11) Pokédex: l'elenco arriva fino all'ultimo numero incontrato; chi non si è mai visto è una
+      riga vuota, senza sagoma.
+- [x] L11. (15/11) L'etichetta dello stato compare con l'annuncio (`battle.shown.allyStatus/enemyStatus`).
+- [x] L12. (15/11) La descrizione della mossa sparisce quando si esce dal bottone o dal menu mosse.
+- [x] L13. (15/11) Schermata titolo: su e giù spostano il cursore fra le voci, Invio/A sceglie.
+- [x] L14. (15/11) Telefono: nel titolo e nella lista del menu la croce sposta il cursore e A sceglie la voce.
+      Dentro le pagine (Borsa, Squadra…) si tocca ancora la voce.
 - [ ] L15. Interni condivisi: tutte le chiese sono la stessa stanza e in alto c'è scritto «Chiesa», non il
       nome della chiesa in cui si è entrati. Vale per ogni tipo di interno.
 - [ ] L16. Cambio di mappa: c'è solo la dissolvenza in entrata, non quella in uscita.
 
 **Attrezzi**
-- [ ] L17. `gioca.mjs` ora impiega circa 25 minuti (le lotte sono raccontate passo per passo): serve una
-      modalità veloce per le prove automatiche.
-- [ ] L18. `gioca.mjs` clicca i bottoni anche se coperti: per questo non aveva visto il riquadro dietro la
-      lotta (K0). Dovrebbe controllare che il bottone sia davvero in cima allo schermo.
+- [x] L17. (15/11) `gioca.mjs` apre il gioco con `?debug=1&veloce=8`: passi, attese di lotta e dialoghi
+      durano un ottavo (`pace()` in game.js). `--lento` per la velocità vera.
+- [x] L18. (15/11) `gioca.mjs` preme i bottoni con `press()`: se al loro posto sullo schermo c'è altro lo
+      segnala come problema («non si può toccare: coperto da …»).
 - [ ] L19. Git avvisa a ogni commit sui fine riga (LF/CRLF): un `.gitattributes` lo zittisce.
 
 ## D. Suono (dopo)

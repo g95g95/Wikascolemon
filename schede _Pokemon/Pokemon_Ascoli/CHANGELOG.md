@@ -2,6 +2,15 @@
 
 Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco/configuratore.html`
 
+## 15/11/2026 — Rifiniture
+
+- **Borsa in lotta**: vedi solo quello che hai e scegli su chi usare Pozione e Antidoto, anche su un Pokémon in panchina.
+- **Pokédex**: arriva fino all'ultimo numero che hai incontrato, senza le sagome di chi non hai mai visto.
+- **Telefono**: nella schermata titolo e nel menu la croce sposta il cursore e A sceglie.
+- **Schermata titolo**: su e giù spostano il cursore.
+- L'etichetta dello stato (VEL, PAR…) compare insieme all'annuncio; la descrizione di una mossa non resta
+  più nel riquadro dei messaggi.
+
 ## 15/11/2026 — Camminata vera, MT, evoluzioni
 
 - **Oliver cammina davvero**: quattro fotogrammi per direzione dal foglio nuovo. Anche il ragazzino e la

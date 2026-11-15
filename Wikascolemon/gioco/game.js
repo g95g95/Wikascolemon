@@ -105,8 +105,12 @@
   let running = false;  // Maiusc o B tenuto premuto
   let rustle = null;    // fruscio dell'erba alta nella cella appena calpestata
   let justArrived = false; // appena cambiata mappa: finché il tasto resta giù non si entra in un altro passaggio
-  const WALK_MS = 250;  // durata di un passo da una cella: 4 celle al secondo
-  const RUN_MS = 130;   // di corsa: quasi 8 celle al secondo
+  // Tempi di gioco. `?debug=1&veloce=N` (solo per tools/gioca.mjs) accorcia di N volte passi, attese di
+  // lotta e dialoghi: il gioco è lo stesso, le prove automatiche durano molto meno.
+  const speedUp = typeof location !== 'undefined' && /[?&]debug=1/.test(location.search || '') ? Number((/[?&]veloce=(\d+)/.exec(location.search) || [])[1]) || 1 : 1;
+  const pace = ms => ms / speedUp;
+  const WALK_MS = pace(250);  // durata di un passo da una cella: 4 celle al secondo
+  const RUN_MS = pace(130);   // di corsa: quasi 8 celle al secondo
   let toastTimer = 0;
   let bannerTimer = 0;
   let runtimeNpcs = [];
@@ -315,7 +319,7 @@
     if (!chained && player.direction !== direction) {
       // da fermi, un colpetto in un'altra direzione gira soltanto; se il tasto resta giù si parte
       player.direction = direction;
-      nextMoveAt = now + 90;
+      nextMoveAt = now + pace(90);
       return;
     }
     player.direction = direction;
@@ -328,10 +332,10 @@
     if (isBlocked(currentMap, targetX, targetY)) {
       // camminare contro l'edificio dalla cella davanti alla porta = entrare
       const doorway = direction === 'up' && (currentMap.buildings || []).find(item => item.door && item.door.x === player.x && item.door.y === player.y && pointInRect(targetX, targetY, item));
-      if (doorway && buildingScript(doorway).length) { nextMoveAt = now + 400; enterBuilding(doorway); return; }
+      if (doorway && buildingScript(doorway).length) { nextMoveAt = now + pace(400); enterBuilding(doorway); return; }
       player.frame = 0;
       playSound('bump');
-      nextMoveAt = now + 220;
+      nextMoveAt = now + pace(220);
       return;
     }
     movement = {
@@ -405,7 +409,7 @@
     player.renderY = player.y;
     currentMap = maps[player.map];
     justArrived = heldDirections.length > 0;
-    nextMoveAt = performance.now() + 350; // un attimo di pausa all'arrivo, il tempo della dissolvenza
+    nextMoveAt = performance.now() + pace(350); // un attimo di pausa all'arrivo, il tempo della dissolvenza
     fadeInMap();
     initNpcs();
     updateLocation();
@@ -592,7 +596,7 @@
       typing.shown = Math.min(text.length, typing.shown + 2);
       ui.dialogueText.innerHTML = `${escapeHtml(text.slice(0, typing.shown))}<span class="untyped">${escapeHtml(text.slice(typing.shown))}</span>`;
       if (typing.shown >= text.length) { stopTyping(); return; }
-      typing.timer = setTimeout(step, 28);
+      typing.timer = setTimeout(step, pace(28));
     };
     step();
   }
@@ -824,7 +828,7 @@
   async function runTrainerApproach(trainer) {
     showExclaim();
     playSound('encounter');
-    await new Promise(resolve => setTimeout(resolve, 300));
+    await sleep(300);
     await walkTrainerAdjacent(trainer);
     await startTrainerEncounter(trainer);
     approachingTrainerId = null;
@@ -923,7 +927,7 @@
     }
     ui.battleMessage.textContent = messageQueue.shift();
     renderBattle();
-    setTimeout(() => { if (messageResolve) showNextMessage(); }, 700);
+    setTimeout(() => { if (messageResolve) showNextMessage(); }, pace(700));
   }
 
   function advanceMessage() {
@@ -1008,10 +1012,11 @@
     const enemySpecies = data.species[enemy.species];
     ui.allyName.textContent = allySpecies.name;
     ui.allyLevel.textContent = `Lv.${ally.level}`;
-    ui.allyStatus.textContent = statusText(ally);
+    const told = battle.shown || {};
+    ui.allyStatus.textContent = 'allyStatus' in told ? statusLabels[told.allyStatus] || '' : statusText(ally);
     ui.enemyName.textContent = enemySpecies.name;
     ui.enemyLevel.textContent = `Lv.${enemy.level}`;
-    ui.enemyStatus.textContent = statusText(enemy);
+    ui.enemyStatus.textContent = 'enemyStatus' in told ? statusLabels[told.enemyStatus] || '' : statusText(enemy);
     // durante un turno `battle.shown` tiene i PS mostrati: scendono quando il colpo si vede, non prima
     const shown = battle.shown || { ally: ally.hp, enemy: enemy.hp };
     setHpBar(ui.allyHp, ally, shown.ally);
@@ -1058,6 +1063,8 @@
     ui.battleActions.innerHTML = '';
     ui.battleActions.className = 'battle-actions wide';
     const mon = activeMonster();
+    const before = ui.battleMessage.textContent; // la descrizione di una mossa lo sostituisce solo finché ci si sta sopra
+    const restore = () => { ui.battleMessage.textContent = before; };
     const usable = mon.moves.some(slot => slot.pp > 0);
     if (!usable) {
       ui.battleActions.appendChild(actionButton('Lotta Disperata', () => playerAttack('struggle')));
@@ -1073,20 +1080,47 @@
       const describe = () => { ui.battleMessage.textContent = `${known.category} · Pot. ${known.power || '—'} · Prec. ${known.accuracy || '—'}${known.description ? ` — ${known.description}` : ''}`; };
       button.addEventListener('mouseenter', describe);
       button.addEventListener('focus', describe);
+      button.addEventListener('mouseleave', restore);
+      button.addEventListener('blur', restore);
       ui.battleActions.appendChild(button);
     });
-    ui.battleActions.appendChild(actionButton('Indietro', showBattleMain));
+    ui.battleActions.appendChild(actionButton('Indietro', () => { restore(); showBattleMain(); }));
   }
 
+  // Borsa in lotta: solo gli strumenti posseduti che in lotta servono. La Ball si lancia; per Pozione e
+  // Antidoto si sceglie il Pokémon (anche uno in panchina). Usare uno strumento costa il turno.
   function showBattleBag() {
     ui.battleActions.innerHTML = '';
     ui.battleActions.className = 'battle-actions wide';
-    ui.battleActions.append(
-      actionButton(`Ball ×${save.items.ball || 0}`, throwBall, battle.kind === 'trainer'),
-      actionButton(`Pozione ×${save.items.potion || 0}`, useBattlePotion),
-      actionButton(`Antidoto ×${save.items.antidote || 0}`, useBattleAntidote),
-      actionButton('Indietro', showBattleMain)
-    );
+    const owned = Object.keys(data.items).filter(id => data.items[id].battle && (save.items[id] || 0) > 0);
+    owned.forEach(id => {
+      const button = actionButton('', () => (id === 'ball' ? throwBall() : showBattleTargets(id)), id === 'ball' && battle.kind === 'trainer');
+      button.innerHTML = `<b>${data.items[id].name} ×${save.items[id]}</b><small>${bagTexts[id] || ''}</small>`;
+      ui.battleActions.appendChild(button);
+    });
+    if (!owned.length) ui.battleMessage.textContent = 'In Borsa non c\'è niente che serva in lotta.';
+    ui.battleActions.appendChild(actionButton('Indietro', showBattleMain));
+  }
+
+  function showBattleTargets(itemId) {
+    const use = bagUses[itemId];
+    ui.battleActions.innerHTML = '';
+    ui.battleActions.className = 'battle-actions wide';
+    ui.battleMessage.textContent = `Su chi usi ${data.items[itemId].name}?`;
+    save.team.forEach((monster, index) => {
+      const name = data.species[monster.species].name;
+      const button = actionButton('', () => {
+        save.items[itemId] -= 1;
+        use.apply(monster);
+        ui.battleMessage.textContent = `${name} ${use.done}`;
+        renderBattle();
+        playSound('heal');
+        resolveTurn({ type: 'item' });
+      }, !use.can(monster));
+      button.innerHTML = `<b>${name}</b><small>PS ${Math.max(0, monster.hp)}/${monster.stats.hp}${statusText(monster) ? ` · ${statusText(monster)}` : ''}</small>`;
+      ui.battleActions.appendChild(button);
+    });
+    ui.battleActions.appendChild(actionButton('Indietro', showBattleBag));
   }
 
   // `replacing`: il Pokémon in campo è esausto, va scelto il sostituto (niente «Indietro»).
@@ -1128,7 +1162,7 @@
     );
 
     const fight = battle;
-    battle.shown = { ally: activeMonster().hp, enemy: battle.wild.hp };
+    battle.shown = { ally: activeMonster().hp, enemy: battle.wild.hp, allyStatus: activeMonster().status, enemyStatus: battle.wild.status };
     for (const who of order) {
       if (who === 'player' && playerAction.type !== 'move') continue;
       if (activeMonster().hp <= 0 || battle.wild.hp <= 0) continue;
@@ -1198,12 +1232,16 @@
       } else if (event.type === 'text' || event.type === 'status') {
         const fx = event.type === 'status' ? event.status : event.anim;
         if (fx) statusFx(sprites[slotOf(event.who || 'defender')], fx);
+        // l'etichetta (VEL, PAR…) compare con l'annuncio, non prima
+        if (event.type === 'status' && battle.shown) battle.shown[`${slotOf(event.who || 'defender')}Status`] = event.status;
         messageQueue.push(event.text);
         await flushMessages();
       } else if (event.type === 'flee' || event.type === 'forceSwitch') {
         if (await escapeEvent(event, side) === 'cut') return 'cut';
       }
     }
+    // a racconto finito le etichette tornano allo stato vero (risvegli, guarigioni, scongelamenti)
+    if (battle === fight && battle.shown) Object.assign(battle.shown, { allyStatus: activeMonster().status, enemyStatus: battle.wild.status });
     return null;
   }
 
@@ -1514,46 +1552,6 @@
     })();
   }
 
-  function useBattlePotion() {
-    const ally = activeMonster();
-    if (!save.items.potion || save.items.potion <= 0) {
-      ui.battleMessage.textContent = 'Non hai Pozioni.';
-      showBattleMain();
-      return;
-    }
-    if (ally.hp >= ally.stats.hp) {
-      ui.battleMessage.textContent = 'I PS sono già al massimo.';
-      showBattleMain();
-      return;
-    }
-    save.items.potion -= 1;
-    ally.hp = Math.min(ally.stats.hp, ally.hp + 20);
-    ui.battleMessage.textContent = `${data.species[ally.species].name} recupera PS.`;
-    renderBattle();
-    playSound('heal');
-    resolveTurn({ type: 'item' });
-  }
-
-  function useBattleAntidote() {
-    const ally = activeMonster();
-    if (!save.items.antidote || save.items.antidote <= 0) {
-      ui.battleMessage.textContent = 'Non hai Antidoti.';
-      showBattleMain();
-      return;
-    }
-    if (ally.status !== 'psn') {
-      ui.battleMessage.textContent = 'Non è avvelenato.';
-      showBattleMain();
-      return;
-    }
-    save.items.antidote -= 1;
-    ally.status = null;
-    ui.battleMessage.textContent = `${data.species[ally.species].name} non è più avvelenato.`;
-    renderBattle();
-    playSound('heal');
-    resolveTurn({ type: 'item' });
-  }
-
   // Cambio scelto dal giocatore: rientra uno, entra l'altro e solo a quel punto l'avversario fa la sua mossa.
   async function switchMonster(index) {
     if (!battle || index === battle.activeIndex || save.team[index].hp <= 0) return;
@@ -1588,7 +1586,7 @@
   }
 
   function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(resolve => setTimeout(resolve, pace(ms)));
   }
 
   function endBattle(result) {
@@ -1971,18 +1969,20 @@
   function renderDexMenu() {
     const all = Object.entries(data.species).sort(([, a], [, b]) => a.number - b.number);
     const count = list => all.filter(([id]) => list[id]).length;
-    const rows = all.map(([id, species]) => {
+    // come nei giochi: l'elenco arriva fino all'ultimo numero incontrato; chi non si è mai visto è una riga vuota
+    const last = Math.max(0, ...all.filter(([id]) => save.dex.seen[id] || save.dex.caught[id]).map(([, species]) => species.number));
+    const rows = all.filter(([, species]) => species.number <= last).map(([id, species]) => {
       const seen = Boolean(save.dex.seen[id]);
       const caught = Boolean(save.dex.caught[id]);
       return `<div class="dex-row${caught ? ' caught' : seen ? ' seen' : ''}"${caught ? ` data-species="${id}"` : ''}>
-        <img src="assets/battle/${id}-front.png" alt="" onerror="this.style.visibility='hidden'">
+        ${seen ? `<img src="assets/battle/${id}-front.png" alt="" onerror="this.style.visibility='hidden'">` : '<i></i>'}
         <span class="dex-num">#${String(species.number).padStart(3, '0')}</span>
-        <strong>${seen ? species.name : '?????'}</strong>
+        <strong>${seen ? species.name : '—————'}</strong>
         <span>${caught ? species.types.map(typeChip).join(' ') : seen ? 'avvistato' : ''}</span>
         <i class="dex-ball"></i></div>`;
     }).join('');
     ui.menuContent.innerHTML = `<div class="page"><h2>Pokédex del Piceno <small>visti ${count(save.dex.seen)} · catturati ${count(save.dex.caught)}</small></h2>
-      <p class="page-hint">Scegli un Pokémon catturato per leggerne la scheda.</p>${rows}</div>`;
+      <p class="page-hint">${rows ? 'Scegli un Pokémon catturato per leggerne la scheda.' : 'Ancora nessun Pokémon incontrato.'}</p>${rows}</div>`;
     ui.menuContent.querySelectorAll('[data-species]').forEach(row => row.addEventListener('click', () => renderSpeciesSheet(row.dataset.species)));
   }
 
@@ -2680,7 +2680,22 @@
     if (!heldDirections.length) justArrived = false;
   }
 
+  // Schermata titolo: su e giù spostano il cursore fra le voci (bottoni attivi, campo del nome, configuratore).
+  function titleArrow(direction) {
+    const step = direction === 'up' ? -1 : direction === 'down' ? 1 : 0;
+    if (!step) return;
+    const entries = [...ui.titleScreen.querySelectorAll('.title-menu button:not(:disabled), .title-menu input, .title-menu a')];
+    entries[(Math.max(0, entries.indexOf(document.activeElement)) + step + entries.length) % entries.length].focus();
+  }
+
+  // A (o Invio) su una voce col cursore la sceglie.
+  function pressFocused() {
+    const element = document.activeElement;
+    if (element && (element.tagName === 'BUTTON' || element.tagName === 'A')) element.click();
+  }
+
   document.addEventListener('keydown', event => {
+    if (mode === 'title' && (event.code === 'ArrowUp' || event.code === 'ArrowDown')) { event.preventDefault(); titleArrow(keyDirections[event.code]); return; }
     if (event.target.tagName === 'INPUT') return; // nel campo del nome i tasti scrivono e basta
     const direction = keyDirections[event.code];
     if (direction) {
@@ -2694,7 +2709,7 @@
       if (mode === 'dialogue') { advanceDialogue(); return; }
       if (mode === 'battle') { advanceMessage(); return; }
       if (mode === 'credits') { closeCredits(); return; }
-      if (mode === 'menu' || mode === 'title') { if (document.activeElement && document.activeElement.tagName === 'BUTTON') document.activeElement.click(); return; }
+      if (mode === 'menu' || mode === 'title') { pressFocused(); return; }
       interact();
     }
     if (event.code === 'KeyM') openMenu();
@@ -2714,7 +2729,13 @@
 
   document.querySelectorAll('[data-direction]').forEach(button => {
     const direction = button.dataset.direction;
-    button.addEventListener('pointerdown', event => { event.preventDefault(); button.setPointerCapture(event.pointerId); addHeld(direction); });
+    button.addEventListener('pointerdown', event => {
+      event.preventDefault(); // non toglie il cursore alla voce di menu
+      if (mode === 'menu') { menuArrow(direction); return; }
+      if (mode === 'title') { titleArrow(direction); return; }
+      button.setPointerCapture(event.pointerId);
+      addHeld(direction);
+    });
     button.addEventListener('pointerup', () => removeHeld(direction));
     button.addEventListener('pointercancel', () => removeHeld(direction));
   });
@@ -2726,7 +2747,9 @@
   });
   ui.menuButton.addEventListener('click', () => openMenu());
   ui.touchMenu.addEventListener('click', () => openMenu());
+  ui.touchA.addEventListener('pointerdown', event => event.preventDefault()); // il cursore resta sulla voce scelta
   ui.touchA.addEventListener('click', () => {
+    if (mode === 'menu' || mode === 'title') { pressFocused(); return; }
     if (mode === 'dialogue') { advanceDialogue(); return; }
     if (mode === 'battle') { advanceMessage(); return; }
     if (mode === 'credits') { closeCredits(); return; }

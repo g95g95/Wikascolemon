@@ -2,6 +2,7 @@
 // per trovare difetti che i test sui dati non vedono. Non ha dipendenze: parla con Chrome via CDP.
 //
 //   node tools/gioca.mjs                 # tutte le prove
+//   node tools/gioca.mjs --lento         # alla velocità vera (di norma lotte e dialoghi vanno 8 volte più svelti)
 //   node tools/gioca.mjs passaggi porte  # solo alcune: passaggi, porte, npc, allenatori, selvatici, menu
 //
 // Chrome: variabile CHROME_PATH, altrimenti i percorsi standard di Windows.
@@ -13,7 +14,8 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const gameDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const wanted = process.argv.slice(2);
+const wanted = process.argv.slice(2).filter(arg => !arg.startsWith('--'));
+const slow = process.argv.includes('--lento');
 const run = name => !wanted.length || wanted.includes(name);
 const chromePath = [process.env.CHROME_PATH, 'C:/Program Files/Google/Chrome/Application/chrome.exe', 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(p => p && fs.existsSync(p));
 if (!chromePath) { console.error('Chrome non trovato: imposta CHROME_PATH.'); process.exit(1); }
@@ -49,6 +51,19 @@ const BOT = `window.__bot = (() => {
   const key = (type, code) => document.dispatchEvent(new KeyboardEvent(type, { code, key: code, bubbles: true }));
   const KEYS = { up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' };
   const shown = id => !document.getElementById(id).hidden;
+  // Preme un bottone come farebbe un dito: se al suo posto sullo schermo c'è altro (un riquadro che lo
+  // copre, o è finito fuori dallo schermo di gioco) lo segnala. Un click() nudo funziona anche sui
+  // bottoni coperti: è così che il riquadro «quale mossa dimenticare» dietro la lotta era passato inosservato.
+  const problems = new Set();
+  function press(element) {
+    const box = element.getBoundingClientRect();
+    const top = box.width && box.height ? document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2) : null;
+    if (!top || !(top === element || element.contains(top))) {
+      const what = element.textContent.trim().slice(0, 28) || element.id;
+      problems.add('«' + what + '» non si può toccare: ' + (top ? 'coperto da ' + (top.id || top.className || top.tagName) : 'non è sullo schermo'));
+    }
+    element.click();
+  }
   // un passo in una direzione (Oliver deve già guardare da quella parte, altrimenti il primo colpo lo gira)
   async function step(direction) {
     const before = D().state();
@@ -66,23 +81,23 @@ const BOT = `window.__bot = (() => {
     const said = [];
     for (let i = 0; i < limit; i += 1) {
       const s = D().state();
-      if (shown('learnMoveScreen')) { const b = [...document.querySelectorAll('#learnMoveChoices button')]; b[b.length - 1].click(); await sleep(80); continue; }
-      if (shown('shopScreen')) { document.getElementById('shopClose').click(); await sleep(80); continue; }
-      if (shown('creditsScreen')) { document.getElementById('creditsClose').click(); await sleep(80); continue; }
+      if (shown('learnMoveScreen')) { const b = [...document.querySelectorAll('#learnMoveChoices button')]; press(b[b.length - 1]); await sleep(80); continue; }
+      if (shown('shopScreen')) { press(document.getElementById('shopClose')); await sleep(80); continue; }
+      if (shown('creditsScreen')) { press(document.getElementById('creditsClose')); await sleep(80); continue; }
       if (s.mode === 'battle') {
         const buttons = [...document.querySelectorAll('#battleActions button')];
         if (buttons.length === 4 && /borsa/i.test(buttons[1].textContent)) {
-          buttons[0].click(); await sleep(50);
+          press(buttons[0]); await sleep(50);
           const moves = [...document.querySelectorAll('#battleActions button')].filter(b => !b.disabled && !/indietro/i.test(b.textContent));
-          if (moves.length) moves[0].click();
+          if (moves.length) press(moves[0]);
           await sleep(70); continue;
         }
-        if (buttons.length) { const usable = buttons.filter(b => !b.disabled); (usable[0] || buttons[0]).click(); await sleep(70); continue; }
+        if (buttons.length) { const usable = buttons.filter(b => !b.disabled); press(usable[0] || buttons[0]); await sleep(70); continue; }
         document.getElementById('battleMessage').click(); await sleep(70); continue;
       }
       if (s.mode === 'dialogue') {
         const choices = [...document.querySelectorAll('#dialogueChoices button')];
-        if (shown('dialogueChoices') && choices.length) { choices[0].click(); await sleep(90); continue; }
+        if (shown('dialogueChoices') && choices.length) { press(choices[0]); await sleep(90); continue; }
         if (shown('dialogueScreen')) { const text = document.getElementById('dialogueText').textContent; if (said[said.length - 1] !== text) said.push(text); }
         key('keydown', 'Enter'); key('keyup', 'Enter'); await sleep(70); continue;
       }
@@ -99,10 +114,10 @@ const BOT = `window.__bot = (() => {
   const free = (x, y) => !D().blocked(x, y);
   const canMove = () => { const s = D().state(); return [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => free(s.x + dx, s.y + dy)); };
   const interact = async () => { key('keydown', 'Enter'); key('keyup', 'Enter'); await sleep(120); };
-  return { D, sleep, key, step, settle, free, canMove, interact, shown };
+  return { D, sleep, key, step, settle, free, canMove, interact, shown, press, problems };
 })();`;
 
-const url = `${pathToFileURL(path.join(gameDir, 'index.html')).href}?debug=1`;
+const url = `${pathToFileURL(path.join(gameDir, 'index.html')).href}?debug=1${slow ? '' : '&veloce=8'}`;
 await send('Runtime.enable');
 await send('Page.enable');
 async function freshGame() {
@@ -276,7 +291,9 @@ if (run('selvatici')) {
         if (['road', 'asfalto', 'piazza', 'travertino'].includes(ground) && window.PokemonAscoliTiles.terrainAt(m, x + 1, y) === ground && b.free(x, y) && b.free(x + 1, y) && (m.encounterZones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h)) paved = [x, y];
       }
       let onRoad = false;
-      if (paved) { D.teleport(id, paved[0], paved[1], 'right'); for (let i = 0; i < 120 && D.state().mode === 'world'; i += 1) await b.step(i % 2 ? 'left' : 'right'); onRoad = D.state().mode === 'battle'; if (onRoad) await b.settle(600); }
+      if (paved) { D.teleport(id, paved[0], paved[1], 'right'); for (let i = 0; i < 120 && D.state().mode === 'world'; i += 1) await b.step(i % 2 ? 'left' : 'right'); const at = D.state(); const fought = at.mode === 'battle';
+        // conta solo se la lotta è partita DA una cella di strada: a passo svelto Oliver può sconfinare sull'erba accanto
+        onRoad = fought && ['road', 'asfalto', 'piazza', 'travertino'].includes(window.PokemonAscoliTiles.terrainAt(m, at.x, at.y)); if (fought) await b.settle(600); }
       return { steps, enemy, ok: end.ok, state: end.state, paved, onRoad }; }`, id);
     if (result.noGrass && result.sand) { console.log(`  ${id}: niente erba alta, zone su sabbia (incontri in spiaggia)`); continue; }
     if (result.noGrass) { note('selvatici', `${id}: ha zone d'incontro ma nessuna cella d'erba alta percorribile`); continue; }
@@ -347,6 +364,7 @@ if (run('menu')) {
   console.log(`  schede: ${Object.keys(result).filter(k => typeof result[k] === 'number').join(', ')}`);
 }
 
+(await call(`() => [...window.__bot.problems]`)).forEach(text => note('schermo', text));
 pageErrors.forEach(error => note('errori', `errore JavaScript: ${String(error).split('\n')[0]}`));
 console.log(problems.length ? `\n${problems.length} PROBLEMI:\n${problems.join('\n')}` : '\nNessun problema trovato.');
 socket.close();
