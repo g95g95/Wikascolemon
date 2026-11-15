@@ -12,6 +12,8 @@ Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco
 - **Evoluzioni di notte e al tramonto**: seguono l'orologio del tuo dispositivo (notte dalle 20 alle 6,
   tramonto dalle 17 alle 20). Funzionano anche quelle che chiedono una mossa sonora o di battere una certa specie.
 - **All'evoluzione si imparano le mosse della nuova specie.**
+- **Sprite di battaglia nuovi**, con il retro vero: Tifotto, Sciarpone, Ciccharizard, Coperto, Cavedòne,
+  Sbandiera, Capultrà e Quintanaro.
 - **Selvatici di Monticelli**: via Venagrox e Segaccio, Banconio molto raro. Per compensare l'esperienza
   che davano, le lotte ora ne danno un po' di più.
 

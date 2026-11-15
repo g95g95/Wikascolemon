@@ -283,8 +283,10 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
       (`cammino-1.png`). Mancano i fogli 2-7: pescatore/birdwatcher, campeggiatore/contadino,
       ciclista/bagnino, turista/DJ, buttafuori/gemelle, rivale. `tools/build-npc.py` li ritaglia: basta
       aggiungere il foglio a `WALK_SHEETS`.
-- [ ] K17. Tifotto fronte e retro (= I5); da rifare Sciarpone (provvisorio), Ciccharizard e Coperto
-      (sbiaditi), Cavedòne e Sbandiera (poco somiglianti).
+- [x] K17. (15/11) Foglio `battaglia-1.png` ritagliato con `tools/build-battaglia.py`: fronte e retro veri per
+      Tifotto, Sciarpone, Ciccharizard, Coperto, Cavedòne, Sbandiera, più Capultrà e Quintanaro che non
+      avevano sprite. ⚠️ Il generatore ha messo le creature in un ordine diverso da quello chiesto:
+      l'ordine va scritto in `SHEETS` guardando il foglio.
 - [ ] K18. Arredi per gli interni nuovi: banchi di chiesa, altare, lettino d'ospedale, schermo, forno.
 - [ ] K19. Atlante dei tile definitivo (= B0).
 
