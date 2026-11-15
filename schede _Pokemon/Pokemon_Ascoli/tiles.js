@@ -54,7 +54,16 @@
     libreria: { name: 'Libreria', blocks: true, span: 2 }, armadio: { name: 'Armadio', blocks: true, span: 2 },
     tv: { name: 'Televisore', blocks: true, span: 2 }, comodino: { name: 'Comodino', blocks: true },
     camino: { name: 'Camino', blocks: true, span: 2 }, pendola: { name: 'Pendola', blocks: true },
-    finestra_tende: { name: 'Finestra con tende', blocks: false, span: 2 }
+    finestra_tende: { name: 'Finestra con tende', blocks: false, span: 2 },
+    // luoghi della città
+    banco_chiesa: { name: 'Banco di chiesa', blocks: true, span: 2 }, altare: { name: 'Altare', blocks: true, span: 2 },
+    candelabro: { name: 'Candelabro', blocks: true }, confessionale: { name: 'Confessionale', blocks: true, span: 2 },
+    lettino: { name: 'Lettino d\'ospedale', blocks: true, span: 2 }, flebo: { name: 'Flebo', blocks: true },
+    paravento: { name: 'Paravento', blocks: true, span: 2 }, armadietto_medico: { name: 'Armadietto dei medicinali', blocks: true, span: 2 },
+    schermo: { name: 'Schermo del cinema', blocks: false, span: 3 }, poltroncina: { name: 'Poltroncina', blocks: true },
+    proiettore: { name: 'Proiettore', blocks: true }, popcorn: { name: 'Macchina dei popcorn', blocks: true },
+    forno: { name: 'Forno a legna', blocks: true, span: 2 }, bancone_pizze: { name: 'Bancone delle pizze', blocks: true, span: 2, counter: true },
+    tabellone: { name: 'Tabellone degli orari', blocks: true, span: 2 }, biglietteria: { name: 'Biglietteria', blocks: true, span: 2, counter: true }
   };
 
   function decorBlocks(map, x, y) {
@@ -163,7 +172,23 @@
       camino: [34, 192, 31, 32],
       pendola: [65, 192, 14, 28],
       finestra_tende: [79, 192, 27, 24],
-      pavimento_cotto: [106, 192, 32, 32]
+      pavimento_cotto: [106, 192, 32, 32],
+      banco_chiesa: [138, 192, 32, 20],
+      altare: [170, 192, 32, 30],
+      candelabro: [202, 192, 18, 29],
+      confessionale: [220, 192, 30, 30],
+      lettino: [0, 224, 24, 26],
+      flebo: [24, 224, 14, 30],
+      paravento: [38, 224, 32, 28],
+      armadietto_medico: [70, 224, 25, 32],
+      schermo: [95, 224, 48, 36],
+      poltroncina: [143, 224, 16, 16],
+      proiettore: [159, 224, 18, 28],
+      popcorn: [177, 224, 21, 30],
+      forno: [198, 224, 31, 32],
+      bancone_pizze: [0, 260, 31, 26],
+      tabellone: [31, 260, 32, 29],
+      biglietteria: [63, 260, 28, 32]
     // </OBJECTS>
     };
 

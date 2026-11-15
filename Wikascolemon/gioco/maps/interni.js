@@ -70,14 +70,15 @@
   // --- Luoghi della città: una stanza per tipo, come sopra. Arredate con i mobili che ci sono. ---
   const row = (xs, y, kind) => xs.map(x => d(x, y, kind));
 
-  // Chiesa: altare in fondo, corsia centrale, banchi ai lati.
+  // Chiesa: altare in fondo fra due candelabri, corsia centrale, banchi ai lati, confessionale.
   window.PokemonAscoliMaps.interno_chiesa = room({
     name: 'Chiesa', floor: 'pavimento_scacchi',
     decor: [
-      d(2, 1, 'finestra_tende'), d(6, 1, 'quadro'), d(11, 1, 'finestra_tende'),
-      d(1, 2, 'pianta'), d(6, 2, 'tavola'), d(13, 2, 'pianta'),
+      d(2, 1, 'finestra_tende'), d(11, 1, 'finestra_tende'),
+      d(4, 2, 'candelabro'), d(6, 2, 'altare'), d(9, 2, 'candelabro'), d(12, 2, 'confessionale'),
       d(6, 4, 'tappeto'), d(6, 6, 'tappeto'),
-      ...[4, 5, 6, 7].flatMap(y => [d(2, y, 'panchina'), d(10, y, 'panchina')]),
+      ...[4, 5, 6, 7].flatMap(y => [d(2, y, 'banco_chiesa'), d(10, y, 'banco_chiesa')]),
+      d(1, 2, 'pianta'),
       d(7, 9, 'zerbino')
     ],
     npcs: [{
@@ -86,15 +87,16 @@
     }]
   });
 
-  // Ospedale: l'accettazione cura la squadra, come al bar.
+  // Ospedale: l'accettazione cura la squadra, come al bar. Due corsie di lettini con le flebo.
   window.PokemonAscoliMaps.interno_ospedale = room({
     name: 'Ospedale', floor: 'pavimento_scacchi',
     decor: [
-      d(3, 1, 'quadro'), d(10, 1, 'finestra_tende'),
-      d(1, 2, 'pianta'), d(10, 2, 'armadio'), d(13, 2, 'pianta'),
+      d(3, 1, 'quadro'),
+      d(1, 2, 'pianta'), d(10, 2, 'armadietto_medico'), d(13, 2, 'pianta'),
       d(6, 4, 'cassa'),
-      d(1, 6, 'letto'), d(3, 6, 'comodino'), d(1, 8, 'letto'), d(3, 8, 'comodino'),
-      d(12, 6, 'letto'), d(11, 6, 'comodino'), d(12, 8, 'letto'), d(11, 8, 'comodino'),
+      d(1, 5, 'paravento'), d(12, 5, 'paravento'),
+      d(1, 6, 'lettino'), d(3, 6, 'flebo'), d(1, 8, 'lettino'), d(3, 8, 'flebo'),
+      d(12, 6, 'lettino'), d(11, 6, 'flebo'), d(12, 8, 'lettino'), d(11, 8, 'flebo'),
       d(7, 9, 'zerbino')
     ],
     npcs: [{
@@ -103,13 +105,14 @@
     }]
   });
 
-  // Cinema: lo schermo sulla parete di fondo, tre file di poltroncine con la corsia in mezzo.
+  // Cinema: lo schermo sulla parete di fondo, tre file di poltroncine, proiettore e popcorn in fondo alla sala.
   window.PokemonAscoliMaps.interno_cinema = room({
     name: 'Cinema', floor: 'pavimento_legno',
     decor: [
-      d(4, 1, 'quadro'), d(6, 1, 'quadro'), d(8, 1, 'quadro'),
+      d(6, 1, 'schermo'),
       d(1, 2, 'pianta'), d(13, 2, 'pianta'),
-      ...[4, 5, 6].flatMap(y => row([2, 3, 4, 5, 9, 10, 11, 12], y, 'sedia')),
+      ...[4, 5, 6].flatMap(y => row([2, 3, 4, 5, 9, 10, 11, 12], y, 'poltroncina')),
+      d(12, 8, 'proiettore'), d(2, 8, 'popcorn'),
       d(7, 9, 'zerbino')
     ],
     npcs: [{
@@ -118,29 +121,28 @@
     }]
   });
 
-  // Pizzeria: forno e cucina in fondo, banco a destra, tavoli in sala.
+  // Pizzeria: forno e cucina in fondo, banco delle pizze a destra, tavoli in sala.
   window.PokemonAscoliMaps.interno_pizzeria = room({
     name: 'Pizzeria', floor: 'pavimento_cotto',
     decor: [
       d(8, 1, 'quadro'),
-      d(1, 2, 'camino'), d(4, 2, 'fornello'), d(5, 2, 'lavello'), d(13, 2, 'pianta'),
-      d(9, 4, 'bancone'), d(11, 4, 'bancone'),
+      d(1, 2, 'forno'), d(4, 2, 'fornello'), d(5, 2, 'lavello'), d(13, 2, 'pianta'),
+      d(9, 4, 'bancone_pizze'), d(11, 4, 'bancone_pizze'),
       d(1, 5, 'tavolo_sedie'), d(4, 6, 'tavolo_sedie'), d(1, 8, 'tavolo_sedie'), d(10, 7, 'tavolo_sedie'), d(12, 8, 'tavolo_sedie'),
       d(7, 9, 'zerbino')
     ],
     npcs: [{
       x: 10, y: 3, name: 'Pizzaiolo', sprite: 'barista', movement: 'fermo',
-      dialogue: ['Il forno è ancora freddo: si inforna stasera.', 'Ripassa più tardi, che ti tengo un tavolo.']
+      dialogue: ['Il forno è appena acceso: si inforna stasera.', 'Ripassa più tardi, che ti tengo un tavolo.']
     }]
   });
 
-  // Stazione: biglietteria a destra, edicola e distributore in fondo, panchine dell'attesa.
+  // Stazione: biglietteria a destra, tabellone degli orari, edicola e distributore in fondo, panchine dell'attesa.
   window.PokemonAscoliMaps.interno_stazione = room({
     name: 'Stazione', floor: 'pavimento_scacchi',
     decor: [
-      d(11, 1, 'quadro'),
-      d(1, 2, 'scaffale_riviste'), d(4, 2, 'frigo'), d(7, 2, 'pendola'), d(13, 2, 'pianta'),
-      d(10, 4, 'cassa'),
+      d(1, 2, 'scaffale_riviste'), d(4, 2, 'frigo'), d(6, 2, 'tabellone'), d(13, 2, 'pianta'),
+      d(10, 4, 'biglietteria'),
       d(1, 5, 'panchina'), d(4, 5, 'panchina'), d(1, 7, 'panchina'), d(4, 7, 'panchina'),
       d(7, 9, 'zerbino')
     ],

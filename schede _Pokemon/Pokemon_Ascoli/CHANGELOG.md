@@ -14,6 +14,8 @@ Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco
 - **All'evoluzione si imparano le mosse della nuova specie.**
 - **Sprite di battaglia nuovi**, con il retro vero: Tifotto, Sciarpone, Ciccharizard, Coperto, Cavedòne,
   Sbandiera, Capultrà e Quintanaro.
+- **Interni arredati sul serio**: banchi, altare e confessionale in chiesa; lettini e flebo in ospedale;
+  schermo, poltroncine e popcorn al cinema; forno a legna in pizzeria; tabellone e biglietteria in stazione.
 - **Selvatici di Monticelli**: via Venagrox e Segaccio, Banconio molto raro. Per compensare l'esperienza
   che davano, le lotte ora ne danno un po' di più.
 

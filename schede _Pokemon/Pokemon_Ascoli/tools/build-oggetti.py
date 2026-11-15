@@ -58,6 +58,16 @@ SHEETS = [
         (3, 0, 'camino', 32, 32, False), (3, 1, 'pendola', 14, 32, False),
         (3, 2, 'finestra_tende', 28, 24, False), (3, 3, 'pavimento_cotto', 32, 32, True),
     ]),
+    ('interni-3.png', 4, 4, [
+        (0, 0, 'banco_chiesa', 32, 22, False), (0, 1, 'altare', 32, 30, False),
+        (0, 2, 'candelabro', 18, 30, False), (0, 3, 'confessionale', 30, 32, False),
+        (1, 0, 'lettino', 30, 26, False), (1, 1, 'flebo', 14, 30, False),
+        (1, 2, 'paravento', 32, 28, False), (1, 3, 'armadietto_medico', 26, 32, False),
+        (2, 0, 'schermo', 48, 36, False), (2, 1, 'poltroncina', 16, 18, False),
+        (2, 2, 'proiettore', 18, 30, False), (2, 3, 'popcorn', 22, 30, False),
+        (3, 0, 'forno', 32, 32, False), (3, 1, 'bancone_pizze', 32, 26, False),
+        (3, 2, 'tabellone', 32, 30, False), (3, 3, 'biglietteria', 30, 32, False),
+    ]),
 ]
 
 

@@ -287,7 +287,10 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
       Tifotto, Sciarpone, Ciccharizard, Coperto, Cavedòne, Sbandiera, più Capultrà e Quintanaro che non
       avevano sprite. ⚠️ Il generatore ha messo le creature in un ordine diverso da quello chiesto:
       l'ordine va scritto in `SHEETS` guardando il foglio.
-- [ ] K18. Arredi per gli interni nuovi: banchi di chiesa, altare, lettino d'ospedale, schermo, forno.
+- [x] K18. (15/11) Foglio `interni-3.png` (16 arredi: banco di chiesa, altare, candelabro, confessionale,
+      lettino, flebo, paravento, armadietto, schermo, poltroncina, proiettore, popcorn, forno, bancone
+      pizze, tabellone, biglietteria) ritagliato e messo in chiesa, ospedale, cinema, pizzeria, stazione.
+      Palazzo ed emporio usano ancora i mobili vecchi.
 - [ ] K19. Atlante dei tile definitivo (= B0).
 
 **Serve una decisione di Jacopo**
