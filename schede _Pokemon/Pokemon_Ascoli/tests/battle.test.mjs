@@ -536,4 +536,34 @@ function seq(values) {
   assert.ok(result.events.some(e => e.type === 'forceSwitch'), 'Boato produce un evento di cambio forzato');
 }
 
+// --- Evoluzioni: notte, strumento usato, sconfitta, mosse dell'evoluzione (15/11/2026) ---
+{
+  const line = (id, evolution, extra = {}) => { species[id] = { number: 900, name: id, types: ['Normale'], base: [50, 50, 50, 50, 50, 50], catchRate: 100, expYield: 60, growth: 'medio', learnset: [[1, 'azione']], evolution, wiki: '', ...extra }; };
+  line('t_adulto', null, { evoMoves: ['crescita'], learnset: [[1, 'azione'], [10, 'braciere']] });
+  line('t_notturno', { into: 't_adulto', level: 10, night: true });
+  line('t_pietra', { into: 't_adulto', item: 't_sasso' });
+  line('t_rivale', { into: 't_adulto', defeat: 'tuffito' });
+  const almost = id => Object.assign(battle.createMonster(id, 9), { exp: 999 });
+
+  // di giorno non succede nulla, di notte sì; all'evoluzione impara la mossa «Evo» e quella del livello
+  let mon = almost('t_notturno');
+  let result = battle.gainExperience(mon, 5, { time: 'day' });
+  assert.ok(mon.level === 10 && result.evolvedInto === null, 'evoluzione notturna: di giorno resta com\'è');
+  mon = almost('t_notturno');
+  result = battle.gainExperience(mon, 5, { time: 'night' });
+  assert.strictEqual(result.evolvedInto, 't_adulto', 'evoluzione notturna: di notte evolve');
+  assert.deepStrictEqual(result.autoLearned, ['crescita', 'braciere'], 'all\'evoluzione impara la mossa Evo e quella del livello');
+
+  // lo strumento si usa sul Pokémon: quello giusto evolve, uno qualunque no; salendo di livello da solo non basta
+  mon = battle.createMonster('t_pietra', 9);
+  assert.strictEqual(battle.useEvolutionItem(mon, 'altro', {}), null, 'strumento sbagliato: niente');
+  assert.strictEqual(battle.gainExperience(almost('t_pietra'), 5, { hasItem: () => true }).evolvedInto, null, 'solo strumento: non evolve salendo di livello');
+  assert.strictEqual(battle.useEvolutionItem(mon, 't_sasso', {}).evolvedInto, 't_adulto', 'strumento giusto: evolve');
+
+  // battendo la specie indicata evolve anche senza salire di livello
+  mon = battle.createMonster('t_rivale', 9);
+  assert.strictEqual(battle.gainExperience(mon, 1, { defeated: 'basilino' }).evolvedInto, null, 'sconfitta di un\'altra specie: niente');
+  assert.strictEqual(battle.gainExperience(mon, 1, { defeated: 'tuffito' }).evolvedInto, 't_adulto', 'sconfitta della specie giusta: evolve');
+}
+
 console.log('battle.test.mjs: tutti i test superati.');

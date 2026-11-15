@@ -66,6 +66,64 @@ for name, characters in SHEETS:
         sheet_from(views).save(os.path.join(OUT, character + '.png'))
         print('OK', character)
 
+# --- Fogli con la camminata -------------------------------------------------------------------
+# Foglio di gioco con il passo: colonne fermo / passo / fermo / passo con l'altra gamba (righe come
+# sopra). Tutti i fotogrammi di un personaggio sono ridotti con la STESSA scala e la stessa palette,
+# altrimenti camminando cambierebbe misura e colore.
+
+def cell(source, row, col):
+    cw, ch = source.width / 4, source.height / 4
+    return cutout(source.crop((round(col * cw), round(row * ch), round((col + 1) * cw), round((row + 1) * ch))))
+
+
+def walking_sheet(frames, height, feet_y):
+    """frames[direzione][fotogramma] ritagliati dal sorgente → foglio 128×128."""
+    scale = height / max(frames[d][0].height for d in range(4))
+    sheet = Image.new('RGBA', (128, 128), (0, 0, 0, 0))
+    for row in range(4):
+        for col in range(4):
+            frame = frames[row][col]
+            size = (max(1, round(frame.width * scale)), max(1, round(frame.height * scale)))
+            small = frame.convert('RGBa').resize(size, Image.BOX).convert('RGBA')
+            sheet.alpha_composite(small, (col * 32 + 16 - size[0] // 2, row * 32 + feet_y - size[1]))
+    alpha = sheet.getchannel('A').point(lambda a: 255 if a >= 128 else 0)
+    # 48 colori: con meno, i dettagli piccoli e saturi (le scarpe rosse di Oliver) finiscono nel marrone
+    rgb = sheet.convert('RGB').quantize(colors=48, method=Image.MAXCOVERAGE, dither=Image.NONE).convert('RGB')
+    return Image.merge('RGBA', (*rgb.split(), alpha))
+
+
+# Oliver: una riga per direzione (fronte, retro, sinistra, destra), una colonna per fotogramma.
+player_source = os.path.join(SRC, 'oliver-cammino.png')
+if os.path.exists(player_source):
+    source = Image.open(player_source).convert('RGB')
+    frames = [[cell(source, row, col) for col in range(4)] for row in range(4)]
+    walking_sheet(frames, 22, 30).save(os.path.join(HERE, '..', 'assets', 'player', 'oliver-sheet.png'))
+    print('OK oliver (camminata)')
+
+# Allenatori: due personaggi per foglio, due righe ciascuno (fermo, poi a metà passo), quattro viste
+# per riga (fronte, retro, sinistra, destra). Di fronte e di spalle il secondo passo è il primo
+# specchiato; di lato si alternano passo e posa.
+WALK_SHEETS = [
+    ('cammino-1.png', ['ragazzino', 'ragazzina']),
+]
+walkers = []
+for name, characters in WALK_SHEETS:
+    source = Image.open(os.path.join(SRC, name)).convert('RGB')
+    for index, character in enumerate(characters):
+        frames = []
+        for view in range(4):
+            stand, step = cell(source, index * 2, view), cell(source, index * 2 + 1, view)
+            frames.append([stand, step, stand, step.transpose(Image.FLIP_LEFT_RIGHT) if view < 2 else step])
+        walking_sheet(frames, HEIGHT, FEET_Y).save(os.path.join(OUT, character + '.png'))
+        walkers.append(character)
+        print('OK', character, '(camminata)')
+
+# il gioco deve sapere quali fogli hanno il passo vero: l'elenco in game.js si riscrive da qui
+game_path = os.path.join(HERE, '..', 'game.js')
+game = open(game_path, encoding='utf-8', newline='').read()
+game = re.sub(r'(// <WALKERS>\r?\n)[^\r\n]*', lambda m: m.group(1) + '    ' + ', '.join(f"'{w}'" for w in sorted(walkers)), game)
+open(game_path, 'w', encoding='utf-8', newline='').write(game)
+
 # cartello: stesso oggetto in tutte le direzioni
 tiles = open(os.path.join(HERE, '..', 'tiles.js'), encoding='utf-8').read()
 x, y, w, h = map(int, re.search(r'cartello: \[(\d+), (\d+), (\d+), (\d+)\]', tiles).groups())

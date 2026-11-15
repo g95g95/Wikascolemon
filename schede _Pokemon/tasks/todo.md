@@ -279,7 +279,10 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
 - [ ] K15. Test di playthrough `tests/e2e/` fermo da quando sono cambiati movimento e mappe.
 
 **Servono i fogli di Jacopo (ChatGPT immagini)**
-- [ ] K16. Camminata vera per Oliver (= I4) e per gli allenatori (oggi un accenno in codice).
+- [ ] K16. Camminata vera: Oliver fatto (15/11, foglio `oliver-cammino.png`), ragazzino e ragazzina fatti
+      (`cammino-1.png`). Mancano i fogli 2-7: pescatore/birdwatcher, campeggiatore/contadino,
+      ciclista/bagnino, turista/DJ, buttafuori/gemelle, rivale. `tools/build-npc.py` li ritaglia: basta
+      aggiungere il foglio a `WALK_SHEETS`.
 - [ ] K17. Tifotto fronte e retro (= I5); da rifare Sciarpone (provvisorio), Ciccharizard e Coperto
       (sbiaditi), Cavedòne e Sbandiera (poco somiglianti).
 - [ ] K18. Arredi per gli interni nuovi: banchi di chiesa, altare, lettino d'ospedale, schermo, forno.
@@ -298,23 +301,37 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
 
 ## L. Notate da me provando il gioco (15/11/2026 sera) — da decidere con Jacopo
 **Regole di gioco che non fanno quello che promettono**
-- [ ] L1. Le MT non si possono usare: le palestre danno MT Velenospina e MT Idrogetto, ma nessun codice le
-      insegna a un Pokémon. Restano in Borsa.
-- [ ] L2. Evoluzioni con strumento: scattano solo salendo di livello con lo strumento in Borsa, non «usando»
-      lo strumento sul Pokémon. Dalla Borsa non si capisce.
-- [ ] L3. Evoluzioni per amicizia: l'amicizia sale di 1 solo a ogni livello e ne servono 20. Tifotto →
-      Sciarpone richiede quindi 20 livelli: di fatto nella demo non succede.
-- [ ] L4. Evoluzioni con condizioni speciali (18 specie): luogo e acqua funzionano; di notte, con una certa
-      specie in squadra, conoscendo una mossa sonora o sconfiggendo una specie sono bloccate; «al
-      tramonto» viene ignorato. Deciso il 27/09 che ora e calendario vanno nel motore: manca ancora.
-- [ ] L5. Dopo un'evoluzione non si controllano le mosse che la nuova specie impara a quel livello.
-- [ ] L6. Mosse «Evo» sulla forma base: `build-dex.mjs` le mette al livello 1 quando non trova l'evoluzione
-      d'ingresso (28 mosse: Zanzì parte con Velenoshock; l'elenco è negli avvisi del generatore).
+- [x] L1. (15/11) MT: si usano dalla Borsa (tasca MT → Usa → scegli il Pokémon). La impara chi è dello
+      stesso tipo della mossa o ce l'ha già fra le mosse per livello; si consuma, a meno che si rinunci
+      nel riquadro «quale dimenticare». ⚠️ Regola mia: sulla wiki nessuna specie elenca Velenospina o
+      Idrogetto fra le MT, quindi non c'era una lista da seguire. Da decidere se allargarla.
+- [x] L2. (15/11) Strumenti evolutivi: si usano dalla Borsa sul Pokémon giusto (Acquasanta su Pozza…), che
+      evolve subito e consuma lo strumento. Resta la vecchia via per chi ha anche un livello minimo.
+- [x] L3. (15/11) Amicizia: oltre al punto per ogni livello, un punto ogni 50 passi a tutta la squadra.
+      Ne servono 20: circa 1000 passi insieme, poi l'evoluzione scatta al livello successivo.
+- [x] L4. (15/11) Evoluzioni speciali in `evolutionReady` (battle.js): notte (20-6) e tramonto (17-20)
+      dall'orologio del dispositivo, compagno in squadra, mossa sonora conosciuta (`sound` in moves.js,
+      messo da `build-dex.mjs`), specie appena battuta (scatta anche senza salire di livello).
+      ⚠️ Restano impossibili nella demo: quelle con un luogo che non è una mappa del gioco (sestiere,
+      avvistamenti, ascensione, castel_trosino) e Ombrellone (vuole un «bagnino» in squadra, che non è
+      una specie). L'ora è quella vera del dispositivo: per la ROM hack andrà rifatta sull'RTC.
+- [x] L5. (15/11) All'evoluzione si imparano le mosse «Evo» della nuova specie (`evoMoves`) e quelle del
+      suo livello; a quattro mosse piene si sceglie quale dimenticare.
+- [x] L6. (15/11) Mosse «Evo» sulla forma base di una linea: scartate dal generatore (Zanzì non parte più
+      con Velenoshock, Cavedì senza Correntina, Cignalò senza Fangobomba). ⚠️ Sono refusi delle tre schede
+      wiki: la riga «Evo» andrebbe spostata sulla scheda dell'evoluzione.
 - [ ] L7. Borsa in lotta: è ancora la lista vecchia (Ball, Pozione, Antidoto) e la Pozione va solo a chi è in campo.
 
 **Bilanciamento**
-- [ ] L8. Selvatici di Monticelli: Venagrox (livello 10), Segaccio e Banconio a due passi dalla partenza,
-      con statistiche da fine gioco. Si possono anche catturare subito.
+- [x] L8. (15/11, deciso da Jacopo: «Venagrox e Segaccio sono troppo, Banconio molto raro e a livelli
+      bassi») Monticelli: Pito, Tamburino, Anicino, Banconio al 3% al livello 7. Tolto Segaccio anche dai
+      selvatici di Borgo Chiaro (→ Ciucì) e Borgo Solestà (→ Tamburino). Restano con Segaccio due
+      allenatori: Gino a Monticelli (livello 5) e il ciclista di Borgo Chiaro (livello 9).
+      ⚠️ Il bilanciamento di prima si appoggiava a quei selvatici (tanta esperienza e un compagno
+      fortissimo da catturare): per tenere gli stessi livelli alle palestre l'esperienza passa da ×1,8 a
+      ×2,2. Con 200 partite: Hills 95% / 54% / 95% (Basilino / Puledrotto / Tuffito), Riccio 98% / 53% /
+      77%; livello più alto 16-17 e 22-25. Puledrotto è la «modalità difficile»: Hills ha un Roccia e
+      Riccio è tutto Acqua. Da decidere insieme a K22.
 - [ ] L9. Allenatori con Pokémon evoluti sotto il livello d'evoluzione (Mucillax al 9 in palestra).
 
 **Schermate**

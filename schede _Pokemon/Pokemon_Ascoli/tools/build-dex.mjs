@@ -324,17 +324,22 @@ function main() {
       incomingLevel[sp.evolution.into] = sp.evolution.level;
     }
   }
+  // Chi ha una preevoluzione: solo per queste specie una mossa «Evo» ha senso.
+  const evolvesFrom = new Set(Object.values(species).filter(sp => sp.evolution && sp.evolution.into).map(sp => sp.evolution.into));
   for (const [id, sp] of Object.entries(species)) {
     const resolvedLevel = incomingLevel[id];
-    for (const entry of sp.learnset) {
-      if (entry[0] === 'Evo') {
-        if (typeof resolvedLevel === 'number') {
-          entry[0] = resolvedLevel;
-        } else {
-          warnings.push(`${id}: livello "Evo" per la mossa "${entry[1]}" non risolvibile (nessuna evoluzione entrante con livello numerico), impostato a 1`);
-          entry[0] = 1;
-        }
-      }
+    // Mosse «Evo»: `evoMoves` le fa imparare al momento dell'evoluzione (battle.js). Restano anche nel
+    // learnset, al livello dell'evoluzione entrante (o 1 se non è un livello), così le conosce anche chi
+    // nasce già evoluto. Su una forma base, che non si evolve da nessuno, la riga viene scartata.
+    const evoMoves = sp.learnset.filter(entry => entry[0] === 'Evo').map(entry => entry[1]);
+    if (evoMoves.length && !evolvesFrom.has(id) && sp.evolution) {
+      // forma base di una linea: la riga «Evo» è un refuso della scheda (la mossa è della forma evoluta)
+      warnings.push(`${id}: mosse "Evo" sulla forma base di una linea, scartate (${evoMoves.join(', ')})`);
+      sp.learnset = sp.learnset.filter(entry => entry[0] !== 'Evo');
+    } else if (evoMoves.length) {
+      // chi nasce da una fusione o non ha preevoluzioni note tiene la mossa dal livello 1
+      if (evolvesFrom.has(id)) sp.evoMoves = evoMoves;
+      sp.learnset.forEach(entry => { if (entry[0] === 'Evo') entry[0] = typeof resolvedLevel === 'number' ? resolvedLevel : 1; });
     }
     sp.learnset.sort((a, b) => a[0] - b[0]);
   }
@@ -400,6 +405,14 @@ function main() {
     for (const [, moveId] of sp.learnset) {
       if (!moves[moveId]) errors.push(`${id}: mossa "${moveId}" nel learnset assente da moves.js`);
     }
+  }
+
+  // Mosse sonore: servono alle evoluzioni «conosce una mossa sonora» (Bagnetto, Sciarpone).
+  const SOUND_MOVES = new Set(['ruggito', 'boato', 'stordiscappo', 'fischio', 'rimbombo', 'urlo', 'grido_lacerante', 'urlorabbia',
+    'ipervoce', 'ondaboato', 'vocedibelva', 'granvoce', 'russare', 'incantavoce', 'vocedincanto', 'fortuncanto', 'rintocco',
+    'baraonda', 'gloglottio', 'ululato_di_guerra']);
+  for (const [moveId, move] of Object.entries(moves)) {
+    if (SOUND_MOVES.has(moveId) || /\bsonor/i.test(move.description || '')) move.sound = true;
   }
 
   // ---------- scrittura file ----------

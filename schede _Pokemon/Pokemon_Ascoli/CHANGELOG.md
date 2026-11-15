@@ -2,6 +2,19 @@
 
 Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco/configuratore.html`
 
+## 15/11/2026 — Camminata vera, MT, evoluzioni
+
+- **Oliver cammina davvero**: quattro fotogrammi per direzione dal foglio nuovo. Anche il ragazzino e la
+  ragazzina hanno il loro passo; gli altri allenatori arriveranno con i prossimi fogli.
+- **Le MT si usano**: dalla Borsa, tasca MT. La impara un Pokémon dello stesso tipo della mossa.
+- **Strumenti evolutivi**: si usano dalla Borsa sul Pokémon giusto (l'Acquasanta su Pozza), che evolve subito.
+- **Amicizia**: cresce anche camminando insieme, non solo salendo di livello.
+- **Evoluzioni di notte e al tramonto**: seguono l'orologio del tuo dispositivo (notte dalle 20 alle 6,
+  tramonto dalle 17 alle 20). Funzionano anche quelle che chiedono una mossa sonora o di battere una certa specie.
+- **All'evoluzione si imparano le mosse della nuova specie.**
+- **Selvatici di Monticelli**: via Venagrox e Segaccio, Banconio molto raro. Per compensare l'esperienza
+  che davano, le lotte ora ne danno un po' di più.
+
 ## 15/11/2026 — Lotta più leggibile, scheda Pokémon, menu completo
 
 - **Blocco in lotta risolto**: quando un Pokémon con quattro mosse ne imparava una nuova, il riquadro

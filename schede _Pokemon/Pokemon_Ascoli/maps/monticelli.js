@@ -3,10 +3,10 @@
   window.PokemonAscoliMaps = window.PokemonAscoliMaps || {};
   window.PokemonAscoliMaps.monticelli = {
     width: 86, height: 50, name: 'Monticelli', baseTile: 'erba', levelRange: [7, 10], encounterTable: [
-      { species: 'pito', minLevel: 7, maxLevel: 7, weight: 45 },
-      { species: 'segaccio', minLevel: 8, maxLevel: 8, weight: 30 },
-      { species: 'banconio', minLevel: 7, maxLevel: 7, weight: 20 },
-      { species: 'venagrox', minLevel: 10, maxLevel: 10, weight: 5 }
+      { species: 'pito', minLevel: 7, maxLevel: 8, weight: 45 },
+      { species: 'tamburino', minLevel: 7, maxLevel: 8, weight: 30 },
+      { species: 'anicino', minLevel: 7, maxLevel: 8, weight: 22 },
+      { species: 'banconio', minLevel: 7, maxLevel: 7, weight: 3 } // raro e al livello più basso della zona
     ],
     roads: [rect(0, 29, 86, 4), rect(18, 6, 3, 41), rect(47, 3, 3, 45), rect(65, 9, 3, 37)],
     waters: [], bridges: [], plazas: [],

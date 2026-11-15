@@ -248,6 +248,16 @@
     return (currentMap.waters || []).length > 0;
   }
 
+  // Ora del giorno, dall'orologio del dispositivo: di notte e al tramonto certe specie si evolvono.
+  function timeOfDay() {
+    const hour = new Date().getHours();
+    return hour >= 20 || hour < 6 ? 'night' : hour >= 17 ? 'dusk' : 'day';
+  }
+
+  function evolutionContext(extra = {}) {
+    return { map: player.map, hasItem, mapHasWater: mapHasWater(), time: timeOfDay(), party: save.team.map(monster => monster.species), ...extra };
+  }
+
   function giveMonster(spec) {
     const monster = Battle.createMonster(spec.species, spec.level, spec.moves ? { moves: spec.moves } : {});
     save.dex.seen[spec.species] = true;
@@ -352,6 +362,8 @@
     movement = null;
     if (isTallGrass(currentMap, player.x, player.y)) { rustle = { x: player.x, y: player.y, start: now }; playSound('rustle'); }
     save.steps = (save.steps || 0) + 1;
+    // l'amicizia cresce camminando insieme: un punto ogni 50 passi a tutta la squadra (ne servono 20 per evolvere)
+    if (save.steps % 50 === 0) save.team.forEach(monster => { monster.friendship = Math.min(255, (monster.friendship || 0) + 1); });
     if (checkTrainerSight()) return;
     if (checkTransition()) return;
     checkEncounter();
@@ -1303,7 +1315,7 @@
       if (!sharers.includes(monster)) continue;
       const name = () => data.species[monster.species].name;
       ui.battleMessage.textContent = `${name()} ottiene ${gain} ESP.`;
-      const gainResult = Battle.gainExperience(monster, gain, { map: player.map, hasItem, mapHasWater: mapHasWater() });
+      const gainResult = Battle.gainExperience(monster, gain, evolutionContext({ defeated: battle.wild.species }));
       playSound('exp');
       if (monster === active) {
         // la barra si riempie sotto gli occhi: fino in fondo se si sale di livello, poi riparte
@@ -1840,6 +1852,50 @@
   let bagItem = null;
   let bagChoosing = false;
 
+  // MT: `mt_<mossa>`. La impara chi è dello stesso tipo della mossa o ce l'ha già fra le mosse per livello.
+  function tmMove(itemId) {
+    return itemId && itemId.startsWith('mt_') ? itemId.slice(3) : null;
+  }
+
+  function canLearnTm(monster, moveId) {
+    const species = data.species[monster.species];
+    const move = data.moves[moveId];
+    return Boolean(move) && !monster.moves.some(slot => slot.id === moveId)
+      && (species.types.includes(move.type) || species.learnset.some(([, id]) => id === moveId));
+  }
+
+  // Che cosa fa lo strumento scelto su un Pokémon della squadra: { can, apply } come per Pozione e Antidoto,
+  // ma `apply` può essere asincrona (imparare una mossa apre il riquadro «quale dimenticare»).
+  function bagUseFor(itemId) {
+    if (bagUses[itemId]) return bagUses[itemId];
+    const moveId = tmMove(itemId);
+    if (moveId) {
+      return {
+        can: monster => canLearnTm(monster, moveId),
+        apply: async monster => {
+          if (Battle.learnMove(monster, moveId, null)) return `${data.species[monster.species].name} ha imparato ${data.moves[moveId].name}!`;
+          return handleLevelUpLearn(monster, moveId);
+        },
+        keepIfUnused: message => / non ha imparato /.test(message)
+      };
+    }
+    if (Object.values(data.species).some(species => species.evolution && species.evolution.item === itemId)) {
+      return {
+        can: monster => Battle.evolutionReady(monster, evolutionContext({ item: itemId }), 'item'),
+        apply: async monster => {
+          const before = data.species[monster.species].name;
+          const result = Battle.useEvolutionItem(monster, itemId, evolutionContext());
+          save.dex.seen[result.evolvedInto] = true;
+          save.dex.caught[result.evolvedInto] = true;
+          playSound('levelup');
+          for (const moveId of result.learned) await handleLevelUpLearn(monster, moveId);
+          return `${before} si è evoluto in ${data.species[result.evolvedInto].name}!`;
+        }
+      };
+    }
+    return null;
+  }
+
   function bagPocketOf(id) {
     if (id.startsWith('mt_')) return 'tm';
     if (id === 'ball') return 'balls';
@@ -1848,8 +1904,13 @@
 
   function bagDescription(id) {
     if (bagTexts[id]) return bagTexts[id];
+    const moveId = tmMove(id);
+    if (moveId && data.moves[moveId]) {
+      const move = data.moves[moveId];
+      return `Insegna ${move.name} (${move.type}, pot. ${move.power || '—'}) a un Pokémon di tipo ${move.type}. Si usa una volta sola.`;
+    }
     const evolves = Object.values(data.species).filter(species => species.evolution && species.evolution.item === id).map(species => species.name);
-    return evolves.length ? `Serve all'evoluzione di ${evolves.join(', ')}.` : '';
+    return evolves.length ? `Usalo su ${evolves.join(' o ')} per farlo evolvere.` : '';
   }
 
   function changeBagPocket(step) {
@@ -1864,7 +1925,7 @@
     const owned = Object.keys(data.items).filter(id => (save.items[id] || 0) > 0 && bagPocketOf(id) === pocketId);
     if (!owned.includes(bagItem)) { bagItem = owned[0] || null; bagChoosing = false; }
     const list = owned.map(id => `<button class="bag-item${id === bagItem ? ' selected' : ''}" data-item="${id}"><span>${data.items[id].name}</span><b>×${save.items[id]}</b></button>`).join('');
-    const use = bagUses[bagItem];
+    const use = bagUseFor(bagItem);
     let detail = '<p>Questa tasca è vuota.</p>';
     if (bagItem && bagChoosing) {
       detail = `<p>Su chi usi ${data.items[bagItem].name}?</p><div class="bag-targets">${save.team.map((monster, index) =>
@@ -1893,14 +1954,15 @@
       bagChoosing = true;
       renderBagMenu();
     });
-    ui.menuContent.querySelectorAll('[data-target]').forEach(button => button.addEventListener('click', () => {
+    ui.menuContent.querySelectorAll('[data-target]').forEach(button => button.addEventListener('click', async () => {
       const target = save.team[button.dataset.target];
+      const item = bagItem;
       bagChoosing = false;
       if (target) {
-        save.items[bagItem] -= 1;
-        use.apply(target);
+        const message = await use.apply(target) || `${data.species[target.species].name} ${use.done}`;
+        if (!(use.keepIfUnused && use.keepIfUnused(message))) save.items[item] -= 1;
         autoSave();
-        showToast(`${data.species[target.species].name} ${use.done}`);
+        showToast(message);
       }
       renderBagMenu();
     }));
@@ -2299,9 +2361,18 @@
 
   // `stride`: 0 fermo; 1 o 2 = un piede alzato (sinistro o destro). I fogli degli NPC hanno un solo
   // fotogramma per direzione: il passo si ricava alzando di un pixel metà della fascia dei piedi.
-  function drawSpriteFrame(sheet, direction, x, y, stride = 0) {
+  // Fogli che hanno i fotogrammi del passo (colonne: fermo, passo, fermo, altro passo).
+  // L'elenco lo riscrive tools/build-npc.py quando ritaglia un foglio «cammino-*».
+  const walkingSheets = new Set([
+    // <WALKERS>
+    'ragazzina', 'ragazzino'
+    // </WALKERS>
+  ]);
+
+  function drawSpriteFrame(sheet, direction, x, y, stride = 0, name = '') {
     const row = directions[direction].row;
     const left = Math.round(x - 8), top = Math.round(y - 20);
+    if (walkingSheets.has(name)) { ctx.drawImage(sheet, [0, 1, 3][stride] * 32, row * 32, 32, 32, left, top, 32, 32); return; }
     if (!stride) { ctx.drawImage(sheet, 0, row * 32, 32, 32, left, top, 32, 32); return; }
     const FEET = 6; // righe in fondo allo sprite che fanno da gambe
     ctx.drawImage(sheet, 0, row * 32, 32, 32 - FEET, left, top, 32, 32 - FEET);
@@ -2344,9 +2415,10 @@
       const x = Math.round(renderX * 16 - camera.x);
       const y = Math.round(renderY * 16 - camera.y);
       if (x < -16 || y < -20 || x > canvas.width || y > canvas.height) return;
-      const sheet = npcSheet(trainer.sprite || (trainersData.classes[trainer.class] || {}).sprite);
+      const sheetName = trainer.sprite || (trainersData.classes[trainer.class] || {}).sprite;
+      const sheet = npcSheet(sheetName);
       if (sheet) {
-        drawSpriteFrame(sheet, trainer.direction || 'down', x, y, stride);
+        drawSpriteFrame(sheet, trainer.direction || 'down', x, y, stride, sheetName);
         return;
       }
       const color = defeated ? '#6b6b6b' : (trainerColors[trainer.class] || '#8b4c49');

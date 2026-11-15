@@ -78,7 +78,10 @@
     "height": "1,0 m",
     "weight": "42,0 kg",
     "dex": "Cammina a testa bassa e ogni pietra che trova la valuta, la prova, e se va bene se la carica sulla schiena, dove trova da sola il suo posto. I muretti dei pascoli, dicono i vecchi, sono in buona parte roba sua.",
-    "wiki": "../accumoli.html"
+    "wiki": "../accumoli.html",
+    "evoMoves": [
+      "pietra_su_pietra"
+    ]
   },
   "alghetta": {
     "number": 39,
@@ -452,7 +455,10 @@
     "height": "0,8 m",
     "weight": "9,5 kg",
     "dex": "Compare dove la gente si ferma a parlare e sparisce quando il locale si svuota. Nessuno lo ha mai visto arrivare: a un certo punto è sul tavolo.",
-    "wiki": "../anisetta.html"
+    "wiki": "../anisetta.html",
+    "evoMoves": [
+      "corretto"
+    ]
   },
   "arquata": {
     "number": 108,
@@ -627,7 +633,11 @@
     "height": "0,6 m",
     "weight": "2,2 kg",
     "dex": "Si dice che non se ne possa mangiare una sola. Il Pokédex conferma: non se ne può affrontare una sola.",
-    "wiki": "../ascolana.html"
+    "wiki": "../ascolana.html",
+    "evoMoves": [
+      "unaltra",
+      "braciere"
+    ]
   },
   "bagnetto": {
     "number": 34,
@@ -918,7 +928,10 @@
     "height": "0,4 m",
     "weight": "3,1 kg",
     "dex": "Sei bottigliette, sei caratteri, un solo cartoncino. Decidono tutto all'unanimità, dopo consultazioni che durano ore e che dall'esterno suonano come un lungo tintinnio.",
-    "wiki": "../batterino.html"
+    "wiki": "../batterino.html",
+    "evoMoves": [
+      "cincin"
+    ]
   },
   "bettacce": {
     "number": 81,
@@ -1124,7 +1137,10 @@
     "height": "1,3 m",
     "weight": "98,0 kg",
     "dex": "Ammucchia tronchi caduti e li fa ardere lentamente sotto la terra, proprio come i carbonai della Laga facevano un tempo.",
-    "wiki": "../bracignale.html"
+    "wiki": "../bracignale.html",
+    "evoMoves": [
+      "braciscavo"
+    ]
   },
   "brasero": {
     "number": 8,
@@ -1487,7 +1503,10 @@
     "height": "1,1 m",
     "weight": "88,4 kg",
     "dex": "Nasce dall'unione di più Pef'na. Nessuno sa se ricordi di essere stato tre creature diverse: il suo sguardo lascia pensare di sì.",
-    "wiki": "../caita.html"
+    "wiki": "../caita.html",
+    "evoMoves": [
+      "adunanza"
+    ]
   },
   "calancolo": {
     "number": 87,
@@ -1714,7 +1733,10 @@
     "height": "1,9 m",
     "weight": "130,0 kg",
     "dex": "Parla una volta all'anno, senza preavviso, e dice una parola sola. Chi c'era la racconta per i dodici mesi successivi.",
-    "wiki": "../canala.html"
+    "wiki": "../canala.html",
+    "evoMoves": [
+      "canala"
+    ]
   },
   "capultra": {
     "number": 23,
@@ -1793,7 +1815,10 @@
     "height": "1,9 m",
     "weight": "98,0 kg",
     "dex": "Dirige la curva dando le spalle al campo. In tutta la sua vita non ha mai visto un gol dal vivo: li ha sentiti tutti, negli occhi di chi aveva davanti.",
-    "wiki": "../capultra.html"
+    "wiki": "../capultra.html",
+    "evoMoves": [
+      "bolgia"
+    ]
   },
   "carpentrap": {
     "number": 13,
@@ -1971,10 +1996,6 @@
         "ringhio"
       ],
       [
-        1,
-        "correntina"
-      ],
-      [
         6,
         "attacco_rapido"
       ],
@@ -2091,7 +2112,10 @@
     "height": "0,9 m",
     "weight": "9,5 kg",
     "dex": "Vive immobile sul fondo delle buche più profonde. Chi lo vede una volta giura che lo stava già osservando da prima.",
-    "wiki": "../cavedone.html"
+    "wiki": "../cavedone.html",
+    "evoMoves": [
+      "correntina"
+    ]
   },
   "cello": {
     "number": 96,
@@ -2173,7 +2197,10 @@
     "height": "1,7 m",
     "weight": "82,0 kg",
     "dex": "Ripara motori e cuori, innesta, imbianca, pesca, cucina, media le liti e vince a briscola, possibilmente nello stesso pomeriggio. Non si vanta: constata.",
-    "wiki": "../cello.html"
+    "wiki": "../cello.html",
+    "evoMoves": [
+      "colpokarate"
+    ]
   },
   "cerqua": {
     "number": 44,
@@ -2244,7 +2271,10 @@
     "height": "2,6 m",
     "weight": "340,0 kg",
     "dex": "Chi le dava della totera ora si ripara sotto i suoi rami quando piove. Lei non lo fa notare a nessuno, ma le file ordinate della sua corteccia se lo ricordano tutte.",
-    "wiki": "../cerqua.html"
+    "wiki": "../cerqua.html",
+    "evoMoves": [
+      "ghiannata"
+    ]
   },
   "chioccidoro": {
     "number": 118,
@@ -2328,7 +2358,10 @@
     "height": "1,1 m",
     "weight": "95,0 kg",
     "dex": "Sta accovacciata nella voragine con le ali aperte a tetto, e sotto le ali una covata di pulcini d'oro che si spostano di continuo. Chi la trova trova un tesoro, ma il tesoro non si porta via: si può solo restare.",
-    "wiki": "../chioccidoro.html"
+    "wiki": "../chioccidoro.html",
+    "evoMoves": [
+      "covata"
+    ]
   },
   "chirocefalo": {
     "number": 147,
@@ -2621,7 +2654,10 @@
     "height": "1,2 m",
     "weight": "48,0 kg",
     "dex": "Vuole collegare un punto della città a un altro con una striscia verde. Dove non trova spazio, si stende sul marciapiede: chi camminava lì cammina altrove, e non ne è contento.",
-    "wiki": "../ciclabile.html"
+    "wiki": "../ciclabile.html",
+    "evoMoves": [
+      "corsia"
+    ]
   },
   "cignalo": {
     "number": 51,
@@ -2653,10 +2689,6 @@
       [
         1,
         "grugnito"
-      ],
-      [
-        1,
-        "fangobomba"
       ],
       [
         7,
@@ -3049,7 +3081,10 @@
     "height": "1,6 m",
     "weight": "102,0 kg",
     "dex": "I più anziani ricordano un fiume molto più caldo, dall'altra parte dell'oceano. Nessuno di loro c'è mai stato.",
-    "wiki": "../compadrone.html"
+    "wiki": "../compadrone.html",
+    "evoMoves": [
+      "vigorcolpo"
+    ]
   },
   "coperto": {
     "number": 35,
@@ -3119,7 +3154,10 @@
     "height": "1,8 m",
     "weight": "68,0 kg",
     "dex": "Regge sei piatti senza guardarli e ricorda ordini che nessuno ha scritto. Non si siede da maggio.",
-    "wiki": "../coperto.html"
+    "wiki": "../coperto.html",
+    "evoMoves": [
+      "sei_piatti"
+    ]
   },
   "cozzetta": {
     "number": 37,
@@ -3340,7 +3378,10 @@
     "height": "0,5 m",
     "weight": "4,0 kg",
     "dex": "Una crisalide appesa alla pergola della pizzeria. Quando qualcuno passa si apre di scatto, sporge la testa, dice cucù e si richiude. È l'unico gioco che conosce.",
-    "wiki": "../cucu.html"
+    "wiki": "../cucu.html",
+    "evoMoves": [
+      "cucu"
+    ]
   },
   "dehor": {
     "number": 26,
@@ -3415,7 +3456,10 @@
     "height": "1,6 m",
     "weight": "210,0 kg",
     "dex": "Nessuno è mai riuscito a passargli davanti senza sedersi. Non usa la forza: usa l'ombra giusta, la plastica calda di sole e il fatto che tanto ormai.",
-    "wiki": "../dehor.html"
+    "wiki": "../dehor.html",
+    "evoMoves": [
+      "favorino"
+    ]
   },
   "faro": {
     "number": 90,
@@ -3641,7 +3685,10 @@
     "height": "1,3 m",
     "weight": "30,0 kg",
     "dex": "Un baccello su due gambe a molla, con cinque o sei fave allineate dentro. A chiunque passi lungo la Salaria ne lancia una, calcolata per arrivare un secondo dopo che ha letto il cartello.",
-    "wiki": "../favalanciata.html"
+    "wiki": "../favalanciata.html",
+    "evoMoves": [
+      "catapulta"
+    ]
   },
   "favette": {
     "number": 125,
@@ -3794,7 +3841,10 @@
     "height": "2,1 m",
     "weight": "68,0 kg",
     "dex": "Non esiste una sola fotografia nitida. Ne esistono moltissime sfocate.",
-    "wiki": "../felignoto.html"
+    "wiki": "../felignoto.html",
+    "evoMoves": [
+      "diceria"
+    ]
   },
   "forox": {
     "number": 28,
@@ -3886,7 +3936,10 @@
     "height": "1,7 m",
     "weight": "62,0 kg",
     "dex": "Conosce a memoria tutte le costituzioni, comprese quelle abrogate. Se lo si contraddice, cita il comma esatto e continua a fare le fusa.",
-    "wiki": "../forox.html"
+    "wiki": "../forox.html",
+    "evoMoves": [
+      "arringa"
+    ]
   },
   "frizzantina": {
     "number": 70,
@@ -4047,7 +4100,10 @@
     "height": "1,9 m",
     "weight": "88,0 kg",
     "dex": "Le sue scintille scaldano ma non bruciano chi è in festa. Attraversa la folla al galoppo e la gente ride.",
-    "wiki": "../fuocavallo.html"
+    "wiki": "../fuocavallo.html",
+    "evoMoves": [
+      "incantavoce"
+    ]
   },
   "geotrito": {
     "number": 134,
@@ -4205,7 +4261,10 @@
     "height": "0,9 m",
     "weight": "12,0 kg",
     "dex": "È l'unico gabbiano al mondo che non strilla. Vola più alto del necessario, per il gusto di farlo, e supera ogni ostacolo in silenzio.",
-    "wiki": "../gionata.html"
+    "wiki": "../gionata.html",
+    "evoMoves": [
+      "volo_alto"
+    ]
   },
   "gommapiuma": {
     "number": 149,
@@ -4330,7 +4389,10 @@
     "height": "3,5 m",
     "weight": "999,9 kg",
     "dex": "Vive per novanta minuti alla settimana e passa il resto ad aspettarli, con le seggiole ribaltate e lo striscione al vento. La domenica è la creatura più forte dello stadio.",
-    "wiki": "../gradinata.html"
+    "wiki": "../gradinata.html",
+    "evoMoves": [
+      "coro"
+    ]
   },
   "gradino": {
     "number": 99,
@@ -4552,7 +4614,10 @@
     "height": "1,4 m",
     "weight": "9,0 kg",
     "dex": "Una falena enorme con due lune piene sulle ali, che gira intorno alle lampade del parcheggio finché il locale non chiude. Gli ocelli non servono a spaventare: servono a farsi seguire.",
-    "wiki": "../lalluna.html"
+    "wiki": "../lalluna.html",
+    "evoMoves": [
+      "plenilunio"
+    ]
   },
   "lettino": {
     "number": 31,
@@ -4794,7 +4859,10 @@
     "height": "0,4 m",
     "weight": "3,0 kg",
     "dex": "Le hanno tolto il nocciolo con un taglio a spirale e l'hanno riempita di carne. Da allora non ha paura di niente e colpisce di testa.",
-    "wiki": "../liva.html"
+    "wiki": "../liva.html",
+    "evoMoves": [
+      "spaccaroccia"
+    ]
   },
   "livetta": {
     "number": 74,
@@ -4944,7 +5012,10 @@
     "height": "1,5 m",
     "weight": "18,0 kg",
     "dex": "Uno Sparpagghjò che ha dormito in una tomba longobarda e ne è uscito con una fibbia d'oro in testa, convinto di essere il guerriero sepolto. Non lo è, ma vola dritto.",
-    "wiki": "../longobatto.html"
+    "wiki": "../longobatto.html",
+    "evoMoves": [
+      "corredo"
+    ]
   },
   "lupa": {
     "number": 139,
@@ -5240,7 +5311,10 @@
     "height": "1,8 m",
     "weight": "72,0 kg",
     "dex": "Quando alza le braccia, centinaia di persone alzano le braccia. Tre estati fa le stesse persone gli ordinavano da bere senza guardarlo in faccia.",
-    "wiki": "../mixaro.html"
+    "wiki": "../mixaro.html",
+    "evoMoves": [
+      "dropbeat"
+    ]
   },
   "moccolo": {
     "number": 57,
@@ -5442,7 +5516,10 @@
     "height": "1,4 m",
     "weight": "38,5 kg",
     "dex": "Compare dove l'acqua non è più limpida. Non è cattivo: è solo troppo intasato per muoversi in fretta.",
-    "wiki": "../mucillax.html"
+    "wiki": "../mucillax.html",
+    "evoMoves": [
+      "marea_rossa"
+    ]
   },
   "ndandaluse": {
     "number": 91,
@@ -5603,7 +5680,10 @@
     "height": "1,4 m",
     "weight": "58,0 kg",
     "dex": "Sa tutto, l'ha già fatto, ce l'ha più grande. Non mente: crede a ogni parola che dice. A chi lo contraddice smette di dare retta.",
-    "wiki": "../ngeno.html"
+    "wiki": "../ngeno.html",
+    "evoMoves": [
+      "sa_tuttisse"
+    ]
   },
   "notaiax": {
     "number": 29,
@@ -5761,7 +5841,10 @@
     "height": "2,2 m",
     "weight": "9,5 kg",
     "dex": "Ruota la cupola durante il giorno per tenere l'ombra su chi protegge, impercettibile come un girasole al contrario. Chi dorme sotto di lui non si scotta mai.",
-    "wiki": "../ombrellone.html"
+    "wiki": "../ombrellone.html",
+    "evoMoves": [
+      "ombra_fresca"
+    ]
   },
   "ornata": {
     "number": 133,
@@ -5853,7 +5936,10 @@
     "height": "1,4 m",
     "weight": "48,0 kg",
     "dex": "Il camoscio dei Sibillini con la livrea d'inverno diventata ghiaccio: collare di brina, corna come stalattiti nere. Dove appoggia gli zoccoli posteriori la roccia gela, e per lei tiene meglio.",
-    "wiki": "../ornata.html"
+    "wiki": "../ornata.html",
+    "evoMoves": [
+      "livrea"
+    ]
   },
   "paguremo": {
     "number": 120,
@@ -6299,7 +6385,10 @@
     "height": "2,8 m",
     "weight": "480,0 kg",
     "dex": "Non è un piccione: sono tutti. Centinaia stretti insieme nella forma di uno solo, seduti su una fontana antica che è diventata il loro ventre.",
-    "wiki": "../peccionara.html"
+    "wiki": "../peccionara.html",
+    "evoMoves": [
+      "mangiatoia"
+    ]
   },
   "pecorino": {
     "number": 111,
@@ -6735,7 +6824,10 @@
     "height": "4,0 m",
     "weight": "999,9 kg",
     "dex": "Ha aspettato quasi vent'anni tra progetti e varianti. La curva tiene insieme la ferrovia, i negozi, le case e le due rotatorie: quando gli chiedono perché non dritto, abbassa i fari e continua a collegare.",
-    "wiki": "../pontecurvo.html"
+    "wiki": "../pontecurvo.html",
+    "evoMoves": [
+      "curvone"
+    ]
   },
   "pozza": {
     "number": 46,
@@ -6822,7 +6914,10 @@
     "height": "1,0 m",
     "weight": "42,3 kg (circa un terzo è fango)",
     "dex": "Si rotola in una fanghiglia liquida che gli abitanti della zona chiamano «pozza di fracchia». Il fango che si porta addosso non si asciuga mai.",
-    "wiki": "../pozza.html"
+    "wiki": "../pozza.html",
+    "evoMoves": [
+      "fangosberla"
+    ]
   },
   "pretalien": {
     "number": 150,
@@ -7186,7 +7281,10 @@
     "height": "1,9 m",
     "weight": "112,0 kg",
     "dex": "Nell'elmo ha una fessura da cui non si vede quasi nulla. Non gli serve guardare: gli serve sapere dov'è il centro.",
-    "wiki": "../quintanaro.html"
+    "wiki": "../quintanaro.html",
+    "evoMoves": [
+      "tornata"
+    ]
   },
   "rancco": {
     "number": 94,
@@ -7261,7 +7359,10 @@
     "height": "0,7 m",
     "weight": "16,0 kg",
     "dex": "Il boccone gli cade nel tombino e la pioggia comincia da lui. Riparte scodinzolando: conosce gli orari di tutti i forni, e prima o poi ha ragione.",
-    "wiki": "../rancco.html"
+    "wiki": "../rancco.html",
+    "evoMoves": [
+      "fedelta"
+    ]
   },
   "repetito": {
     "number": 119,
@@ -7714,7 +7815,10 @@
     "height": "4,5 m",
     "weight": "140,0 kg",
     "dex": "Guarda il mare per dodici ore senza una sola oscillazione. Vede la corrente cambiare prima che cambi, e il temporale quando è ancora una riga scura sull'orizzonte.",
-    "wiki": "../salvatorre.html"
+    "wiki": "../salvatorre.html",
+    "evoMoves": [
+      "fischio_lungo"
+    ]
   },
   "sammaro": {
     "number": 60,
@@ -7781,7 +7885,10 @@
     "height": "3,1 m",
     "weight": "38,0 kg",
     "dex": "Sta da solo in mezzo al campo, dove i contadini l'hanno lasciato. È convinto che sia un incarico di fiducia, e nessuno ha mai avuto cuore di correggerlo.",
-    "wiki": "../sammaro.html"
+    "wiki": "../sammaro.html",
+    "evoMoves": [
+      "sambucata"
+    ]
   },
   "sandrago": {
     "number": 135,
@@ -7869,7 +7976,10 @@
     "height": "1,6 m",
     "weight": "95,0 kg",
     "dex": "Il drago cresciuto, con la pelle diventata la roccia della grotta. Vive nella cella accanto all'altare dell'arcangelo Michele, il santo che in ogni affresco sta sopra un drago con la lancia. Qui no.",
-    "wiki": "../sandrago.html"
+    "wiki": "../sandrago.html",
+    "evoMoves": [
+      "pietra_daltare"
+    ]
   },
   "saputezza": {
     "number": 142,
@@ -7957,7 +8067,10 @@
     "height": "1,3 m",
     "weight": "18,0 kg",
     "dex": "Una Sciapezza irrigidita nella posa: braccia conserte fuse al corpo, testa inclinata, giacca sulle spalle, occhiali in fronte mai scesi sugli occhi, un aperitivo mai bevuto. La bolla di fumetto è sparita: non le serve più dire niente, basta la posa.",
-    "wiki": "../saputezza.html"
+    "wiki": "../saputezza.html",
+    "evoMoves": [
+      "fa_li_saputezze"
+    ]
   },
   "sarchiapa": {
     "number": 92,
@@ -8107,7 +8220,10 @@
     "height": "1,3 m",
     "weight": "34,0 kg",
     "dex": "Lancia la bandiera più in alto del campanile e la riprende senza guardare. Nessuno ha mai capito se sia lui a riprenderla o lei a tornare.",
-    "wiki": "../sbandiera.html"
+    "wiki": "../sbandiera.html",
+    "evoMoves": [
+      "attacco_dala"
+    ]
   },
   "sciapezza": {
     "number": 141,
@@ -8332,7 +8448,10 @@
     "height": "2,1 m",
     "weight": "148,0 kg",
     "dex": "Resta immobile tra gli scogli per giorni, indistinguibile da un frangiflutti qualunque. Poi qualcosa lo disturba, e un pugno spacca il molo in due.",
-    "wiki": "../scoglierax.html"
+    "wiki": "../scoglierax.html",
+    "evoMoves": [
+      "pugno_di_scoglio"
+    ]
   },
   "segaccio": {
     "number": 48,
@@ -8482,7 +8601,10 @@
     "height": "0,8 m",
     "weight": "75,0 kg",
     "dex": "Installata perché la gente si sedesse, la gente ci sale in piedi sopra. Non se la prende: si ribalta al momento giusto, cigola per protesta e regge.",
-    "wiki": "../seggiola.html"
+    "wiki": "../seggiola.html",
+    "evoMoves": [
+      "ristrutturazione"
+    ]
   },
   "sfrigne": {
     "number": 143,
@@ -8726,7 +8848,10 @@
     "height": "1,9 m",
     "weight": "48,0 kg",
     "dex": "Sta nella grotta sotto la corona del monte e conosce le risposte prima delle domande. Ascolta solo per vedere se le conosci anche tu.",
-    "wiki": "../sibilla.html"
+    "wiki": "../sibilla.html",
+    "evoMoves": [
+      "vaticinio"
+    ]
   },
   "sibillupo": {
     "number": 123,
@@ -8810,7 +8935,10 @@
     "height": "1,2 m",
     "weight": "38,0 kg",
     "dex": "Grigio-fulvo con la sella nera, la mascherina bianca e la banda nera sulle zampe. Al collo un radiocollare che lampeggia: nel buio dei Sibillini è spesso l'unica cosa che si vede di lui.",
-    "wiki": "../sibillupo.html"
+    "wiki": "../sibillupo.html",
+    "evoMoves": [
+      "radiocollare"
+    ]
   },
   "sismino": {
     "number": 105,
@@ -9071,7 +9199,10 @@
     "height": "0,9 m",
     "weight": "28,0 kg",
     "dex": "Passa le giornate sonnecchiando in un angolo del capannone. Guai a chi lo sveglia senza offrirgli qualcosa da mangiare.",
-    "wiki": "../sorcione.html"
+    "wiki": "../sorcione.html",
+    "evoMoves": [
+      "rip_temerario"
+    ]
   },
   "sparpagghjo": {
     "number": 130,
@@ -9397,7 +9528,10 @@
     "height": "1,5 m",
     "weight": "30,0 kg",
     "dex": "Per anni nessuno la vide più. Quando tornò era un'altra, ma tutti la riconobbero al primo sguardo. Ha portato il Piceno nel mondo dentro una bottiglia da un quarto.",
-    "wiki": "../spumadiva.html"
+    "wiki": "../spumadiva.html",
+    "evoMoves": [
+      "seduzione"
+    ]
   },
   "superiore": {
     "number": 113,
@@ -9473,7 +9607,10 @@
     "height": "1,2 m",
     "weight": "48,0 kg",
     "dex": "Sta fermo dove prima gesticolava. Sul dorso porta tre doghe di rovere con un cerchio di ferro: il ricordo della botte, che non ha voluto lasciare.",
-    "wiki": "../superiore.html"
+    "wiki": "../superiore.html",
+    "evoMoves": [
+      "affinamento"
+    ]
   },
   "svedde": {
     "number": 78,
@@ -10213,7 +10350,10 @@
     "height": "2,4 m",
     "weight": "480,0 kg",
     "dex": "Sceglie una piazza e la presidia per stagioni. Sotto di lui la gente si dà appuntamento, e chi cerca un muro alle spalle lo trova sempre al posto giusto.",
-    "wiki": "../travertorre.html"
+    "wiki": "../travertorre.html",
+    "evoMoves": [
+      "piazza_pulita"
+    ]
   },
   "trecaciare": {
     "number": 54,
@@ -10305,7 +10445,10 @@
     "height": "1,8 m",
     "weight": "310,0 kg",
     "dex": "Tre capanne di pietra dei pastori, e dentro tre facce di neve che litigano tutta la notte. Chi entra in una delle tre ottiene un silenzio perfetto, ma solo lì.",
-    "wiki": "../trecaciare.html"
+    "wiki": "../trecaciare.html",
+    "evoMoves": [
+      "coro_di_pietra"
+    ]
   },
   "tuffito": {
     "number": 7,
@@ -10452,7 +10595,10 @@
     "height": "1,3 m",
     "weight": "130,0 kg",
     "dex": "Nei suoi buchi nidificano uccelli, svernano api, si nascondono lucertole. La sera fa l'appello bussandosi sulla spalla: un colpo, una risposta da dentro.",
-    "wiki": "../tufone.html"
+    "wiki": "../tufone.html",
+    "evoMoves": [
+      "sfratto"
+    ]
   },
   "turibasil": {
     "number": 2,
@@ -10610,7 +10756,10 @@
     "height": "1,9 m",
     "weight": "118,6 kg",
     "dex": "Si dice che dove posa gli zoccoli sgorghino sorgenti d'acqua purissima. Veglia sui castagneti della Laga come un guardiano silenzioso.",
-    "wiki": "../umito.html"
+    "wiki": "../umito.html",
+    "evoMoves": [
+      "assorbicorno"
+    ]
   },
   "vecciando": {
     "number": 72,
@@ -10857,7 +11006,10 @@
     "height": "1,7 m",
     "weight": "61,0 kg",
     "dex": "Porta tra le mani la propria testa fiorita: ogni cimatura lo ha reso più forte, e quella che regge è solo l'ultima di molte. Dove passa, il suolo non trema.",
-    "wiki": "../vescovasil.html"
+    "wiki": "../vescovasil.html",
+    "evoMoves": [
+      "geoforza"
+    ]
   },
   "vinocotto": {
     "number": 114,
@@ -11088,10 +11240,6 @@
       [
         1,
         "disgusto"
-      ],
-      [
-        1,
-        "velenoshock"
       ],
       [
         5,

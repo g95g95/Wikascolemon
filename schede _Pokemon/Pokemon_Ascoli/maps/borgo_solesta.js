@@ -4,7 +4,7 @@
   window.PokemonAscoliMaps.borgo_solesta = {
     width: 66, height: 48, name: 'Borgo Solestà', baseTile: 'erba', levelRange: [6, 7], encounterTable: [
       { species: 'pito', minLevel: 6, maxLevel: 6, weight: 50 },
-      { species: 'segaccio', minLevel: 7, maxLevel: 7, weight: 30 },
+      { species: 'tamburino', minLevel: 6, maxLevel: 7, weight: 30 },
       { species: 'basilino', minLevel: 6, maxLevel: 6, weight: 20 }
     ],
     roads: [rect(0, 26, 66, 3), rect(30, 13, 3, 32), rect(55, 26, 3, 22), rect(43, 14, 23, 2)],

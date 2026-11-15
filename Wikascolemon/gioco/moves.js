@@ -27,7 +27,8 @@
       "stages": -1,
       "chance": 100
     },
-    "description": "Un ruggito che abbassa l'Attacco del bersaglio."
+    "description": "Un ruggito che abbassa l'Attacco del bersaglio.",
+    "sound": true
   },
   "sabbiattacco": {
     "name": "Sabbiattacco",
@@ -918,7 +919,8 @@
       "status": "slp",
       "chance": 100
     },
-    "description": "Un fischio ipnotico che fa addormentare."
+    "description": "Un fischio ipnotico che fa addormentare.",
+    "sound": true
   },
   "ripescaggio": {
     "name": "Ripescaggio",
@@ -968,7 +970,8 @@
     "pp": 15,
     "priority": 0,
     "effect": null,
-    "description": "Un boato sonoro fortissimo."
+    "description": "Un boato sonoro fortissimo.",
+    "sound": true
   },
   "idropulsar": {
     "name": "Idropulsar",
@@ -1674,7 +1677,8 @@
       "stages": -1,
       "chance": 100
     },
-    "description": "Un urlo che abbassa l'Attacco avversario."
+    "description": "Un urlo che abbassa l'Attacco avversario.",
+    "sound": true
   },
   "cassa_toracica": {
     "name": "Cassa Toracica",
@@ -1731,7 +1735,8 @@
       "stages": -2,
       "chance": 100
     },
-    "description": "Un grido straziante che abbassa molto l'Attacco Speciale avversario."
+    "description": "Un grido straziante che abbassa molto l'Attacco Speciale avversario.",
+    "sound": true
   },
   "gelo_nevoso": {
     "name": "Gelo Nevoso",
@@ -2024,7 +2029,8 @@
     "pp": 15,
     "priority": 0,
     "effect": null,
-    "description": "Un urlo carico di rabbia."
+    "description": "Un urlo carico di rabbia.",
+    "sound": true
   },
   "assillo": {
     "name": "Assillo",
@@ -2066,7 +2072,8 @@
       "kind": "custom",
       "id": "bolgia"
     },
-    "description": "è la sua mossa esclusiva: una mossa sonora la cui potenza"
+    "description": "è la sua mossa esclusiva: una mossa sonora la cui potenza",
+    "sound": true
   },
   "granfisico": {
     "name": "Granfisico",
@@ -2112,7 +2119,8 @@
       "target": "self",
       "chance": 100
     },
-    "description": "Attacco potente che confonde chi lo usa nel turno successivo."
+    "description": "Attacco potente che confonde chi lo usa nel turno successivo.",
+    "sound": true
   },
   "ipervoce": {
     "name": "Ipervoce",
@@ -2123,7 +2131,8 @@
     "pp": 10,
     "priority": 0,
     "effect": null,
-    "description": "Un'onda sonora fortissima."
+    "description": "Un'onda sonora fortissima.",
+    "sound": true
   },
   "ondaboato": {
     "name": "Ondaboato",
@@ -2136,7 +2145,8 @@
     "effect": {
       "kind": "recharge"
     },
-    "description": "Un'onda d'urto fortissima: il turno successivo occorre ricaricare."
+    "description": "Un'onda d'urto fortissima: il turno successivo occorre ricaricare.",
+    "sound": true
   },
   "ripicca": {
     "name": "Ripicca",
@@ -2425,7 +2435,8 @@
     "pp": 15,
     "priority": 0,
     "effect": null,
-    "description": ""
+    "description": "",
+    "sound": true
   },
   "covata": {
     "name": "Covata",
@@ -2770,7 +2781,8 @@
       "stages": 1,
       "chance": 100
     },
-    "description": "Un grido di battaglia che aumenta l'Attacco."
+    "description": "Un grido di battaglia che aumenta l'Attacco.",
+    "sound": true
   },
   "grugnito": {
     "name": "Grugnito",
@@ -2998,7 +3010,8 @@
     "pp": 40,
     "priority": 0,
     "effect": null,
-    "description": "Un rintocco sonoro e diretto."
+    "description": "Un rintocco sonoro e diretto.",
+    "sound": true
   },
   "guscio_chiuso": {
     "name": "Guscio Chiuso",
@@ -3116,7 +3129,8 @@
     "pp": 5,
     "priority": 0,
     "effect": null,
-    "description": ""
+    "description": "",
+    "sound": true
   },
   "dragopulsar": {
     "name": "Dragopulsar",
@@ -3182,7 +3196,8 @@
     "pp": 15,
     "priority": 0,
     "effect": null,
-    "description": "Un canto incantato."
+    "description": "Un canto incantato.",
+    "sound": true
   },
   "favorino": {
     "name": "Favorino",
@@ -3387,7 +3402,8 @@
     "effect": {
       "kind": "forceSwitch"
     },
-    "description": "Costringe il bersaglio a essere sostituito."
+    "description": "Costringe il bersaglio a essere sostituito.",
+    "sound": true
   },
   "comete": {
     "name": "Comete",
@@ -3503,7 +3519,8 @@
     "pp": 15,
     "priority": 0,
     "effect": null,
-    "description": "Un canto incantato che colpisce con energia magica."
+    "description": "Un canto incantato che colpisce con energia magica.",
+    "sound": true
   },
   "girandola": {
     "name": "Girandola",
@@ -3650,7 +3667,8 @@
       "kind": "flinch",
       "chance": 30
     },
-    "description": "Un attacco sonoro usabile solo dormendo, che può far tentennare."
+    "description": "Un attacco sonoro usabile solo dormendo, che può far tentennare.",
+    "sound": true
   },
   "schiacciacorpo": {
     "name": "Schiacciacorpo",
@@ -4073,7 +4091,8 @@
       "kind": "custom",
       "id": "dropbeat"
     },
-    "description": "è la sua mossa esclusiva: una mossa sonora che"
+    "description": "è la sua mossa esclusiva: una mossa sonora che",
+    "sound": true
   },
   "notteprofonda": {
     "name": "Notteprofonda",
@@ -4708,7 +4727,8 @@
     "effect": {
       "kind": "forceSwitch"
     },
-    "description": "Costringe il bersaglio a essere sostituito."
+    "description": "Costringe il bersaglio a essere sostituito.",
+    "sound": true
   },
   "rafficlorofilla": {
     "name": "Rafficlorofilla",
@@ -4750,7 +4770,8 @@
       "kind": "confuse",
       "chance": 20
     },
-    "description": "è la sua mossa esclusiva: una raffica sonora di borbottii gorgoglianti e visibilmente offesi che può"
+    "description": "è la sua mossa esclusiva: una raffica sonora di borbottii gorgoglianti e visibilmente offesi che può",
+    "sound": true
   },
   "ver_sacrum": {
     "name": "Ver Sacrum",
@@ -5184,7 +5205,8 @@
       "kind": "custom",
       "id": "fischio_lungo"
     },
-    "description": "è la sua mossa esclusiva: una mossa sonora ad alta priorità che protegge la squadra per un turno —"
+    "description": "è la sua mossa esclusiva: una mossa sonora ad alta priorità che protegge la squadra per un turno —",
+    "sound": true
   },
   "guardia_ampia": {
     "name": "Guardia Ampia",
@@ -5277,7 +5299,8 @@
     "pp": 10,
     "priority": 0,
     "effect": null,
-    "description": ""
+    "description": "",
+    "sound": true
   },
   "fischiabuchi": {
     "name": "Fischiabuchi",
@@ -5475,7 +5498,8 @@
     "pp": 15,
     "priority": 0,
     "effect": null,
-    "description": "Normale, speciale, 60, mossa sonora: 30% di confondere il bersaglio."
+    "description": "Normale, speciale, 60, mossa sonora: 30% di confondere il bersaglio.",
+    "sound": true
   },
   "offerta_daringa": {
     "name": "Offerta d'Aringa",

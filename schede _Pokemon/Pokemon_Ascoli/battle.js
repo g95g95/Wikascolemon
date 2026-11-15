@@ -131,7 +131,7 @@
   // n^3 per tutti (più ripida della "medio-lento" standard), quindi l'exp grezza va scalata
   // per centrare i livelli attesi (bibbia.md §3: L14-15 alla 1ª palestra, L21-22 alla 2ª) senza
   // grinding, con la sequenza demo (starter + 1 cattura per mappa, 3 selvatici + allenatori).
-  const EXP_BALANCE_MULTIPLIER = 1.8;
+  const EXP_BALANCE_MULTIPLIER = 2.2;
   function expGain(defeated, options) {
     const opts = options || {};
     const species = speciesCatalog()[defeated.species];
@@ -190,22 +190,70 @@
           learned.push(moveId);
         }
       });
-      const evolution = species.evolution;
-      const levelOk = !evolution || !evolution.level || monster.level >= evolution.level;
-      const friendshipOk = !evolution || !evolution.friendship || (monster.friendship || 0) >= 20;
-      if (evolution && levelOk && friendshipOk && !evolution.night && !evolution.partySpecies && !evolution.knowsSoundMove && !evolution.defeat && (evolution.level || evolution.friendship)) {
-        const locationOk = !evolution.location || (context.map === evolution.location);
-        const itemOk = !evolution.item || (context.hasItem && context.hasItem(evolution.item));
-        const wetOk = !evolution.wet || context.mapHasWater;
-        if (locationOk && itemOk && wetOk) {
-          monster.species = evolution.into;
-          monster.stats = calculateStats(monster.species, monster.level);
-          monster.hp = monster.stats.hp;
-          evolvedInto = monster.species;
-        }
-      }
+      if (evolutionReady(monster, context, 'level')) evolvedInto = evolve(monster, autoLearned, learned);
     }
+    // evoluzioni che scattano battendo una certa specie: non serve salire di livello
+    if (!evolvedInto && context.defeated && evolutionReady(monster, context, 'defeat')) evolvedInto = evolve(monster, autoLearned, learned);
     return { levelsGained, learned, autoLearned, evolvedInto };
+  }
+
+  // --- Evoluzioni ---
+  // Il contesto dice dove e quando siamo: { map, mapHasWater, hasItem(id), time ('day'|'dusk'|'night'),
+  // party (specie in squadra), defeated (specie appena battuta), item (strumento che si sta usando) }.
+  // `trigger`: 'level' salendo di livello, 'item' usando uno strumento, 'defeat' dopo una vittoria.
+  const FRIENDSHIP_TO_EVOLVE = 20;
+
+  function evolutionReady(monster, ctx, trigger) {
+    const context = ctx || {};
+    const evolution = speciesCatalog()[monster.species].evolution;
+    if (!evolution || !speciesCatalog()[evolution.into]) return false; // `fusion` nella demo vale come evoluzione normale
+    if (evolution.level && monster.level < evolution.level) return false;
+    if (evolution.friendship && (monster.friendship || 0) < FRIENDSHIP_TO_EVOLVE) return false;
+    if (evolution.night && context.time !== 'night') return false;
+    if (evolution.dusk && context.time !== 'dusk') return false;
+    if (evolution.location && context.map !== evolution.location) return false;
+    if (evolution.wet && !context.mapHasWater) return false;
+    if (evolution.partySpecies && !(context.party || []).includes(evolution.partySpecies)) return false;
+    if (evolution.knowsSoundMove && !monster.moves.some(slot => (moveDef(slot.id) || {}).sound)) return false;
+    if (evolution.defeat && context.defeated !== evolution.defeat) return false;
+    if (evolution.item) {
+      // lo strumento si usa sul Pokémon; chi ha anche un livello minimo evolve pure salendo di livello con lo strumento in Borsa
+      if (trigger === 'item' ? context.item !== evolution.item : !(context.hasItem && context.hasItem(evolution.item))) return false;
+    }
+    if (trigger === 'item') return Boolean(evolution.item);
+    if (trigger === 'defeat') return Boolean(evolution.defeat);
+    if (evolution.defeat) return false;
+    // salendo di livello serve almeno una condizione che non sia il solo strumento
+    return Boolean(evolution.level || evolution.friendship || evolution.night || evolution.dusk || evolution.location
+      || evolution.wet || evolution.partySpecies || evolution.knowsSoundMove);
+  }
+
+  // Trasforma il Pokémon e gli insegna le mosse dell'evoluzione (`evoMoves`) e quelle che la nuova
+  // specie impara a quel livello: in `autoLearned` se c'è posto, in `learned` se va scelta la mossa da dimenticare.
+  function evolve(monster, autoLearned, learned) {
+    monster.species = speciesCatalog()[monster.species].evolution.into;
+    monster.stats = calculateStats(monster.species, monster.level);
+    monster.hp = monster.stats.hp;
+    const species = speciesCatalog()[monster.species];
+    const moveIds = [...(species.evoMoves || []), ...species.learnset.filter(([level]) => level === monster.level).map(([, moveId]) => moveId)];
+    moveIds.forEach(moveId => {
+      if (monster.moves.some(slot => slot.id === moveId) || autoLearned.includes(moveId) || learned.includes(moveId)) return;
+      if (monster.moves.length < 4) {
+        monster.moves.push(makeMoveSlot(moveId));
+        autoLearned.push(moveId);
+      } else {
+        learned.push(moveId);
+      }
+    });
+    return monster.species;
+  }
+
+  // Strumento evolutivo usato dalla Borsa: null se su quel Pokémon non fa nulla.
+  function useEvolutionItem(monster, itemId, ctx) {
+    if (!evolutionReady(monster, { ...(ctx || {}), item: itemId }, 'item')) return null;
+    const autoLearned = [];
+    const learned = [];
+    return { evolvedInto: evolve(monster, autoLearned, learned), autoLearned, learned };
   }
 
   // --- Ordine di turno ---
@@ -743,7 +791,7 @@
     configure,
     createMonster, calculateStats, movesFor, hydrateMonster,
     expToNext, expGain, gainExperience, learnMove,
-    typeMultiplier, typeChart, clearVolatile,
+    typeMultiplier, typeChart, clearVolatile, evolutionReady, useEvolutionItem,
     chooseMove, turnOrder, executeMove, endOfTurn,
     catchChance, attemptCatch, canRun,
     freshStages
