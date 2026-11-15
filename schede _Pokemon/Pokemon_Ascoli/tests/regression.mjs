@@ -205,7 +205,7 @@ assert.match(styles, /\.enemy-card\s*\{[^}]*left:/, 'La scheda avversaria sta in
 assert.match(styles, /\.ally-card\s*\{[^}]*right:/, 'La scheda della squadra sta in basso a destra, di fronte al suo Pokémon');
 
 // --- door/interior/script/when sulle mappe ---
-const validInteriors = new Set(['bar', 'market', 'gym', 'house', 'none']);
+const validInteriors = new Set(['bar', 'market', 'gym', 'house', 'church', 'hospital', 'cinema', 'pizzeria', 'station', 'palace', 'emporium', 'none']);
 for (const [mapId, map] of Object.entries(data.maps)) {
   for (const building of map.buildings || []) {
     if (building.door) {

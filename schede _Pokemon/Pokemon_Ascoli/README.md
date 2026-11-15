@@ -8,7 +8,7 @@ da `file://`); pubblicato online in `Wikascolemon/gioco/` (build corrente, in sv
 
 - Frecce o WASD: movimento cella per cella.
 - Invio, Spazio o A: interazione.
-- M: menu (Squadra, Borsa, Pokédex, Deposito, Salva, Impostazioni).
+- M: menu a lista (Pokédex, Squadra, Borsa, Mappa, Allenatore, Deposito, Salva, Opzioni); frecce e A per scegliere, B/Esc per tornare indietro.
 - X, Esc o B: indietro.
 
 Salvataggio automatico in `localStorage`; dal menu **Salva** si esporta/importa la partita in JSON.
@@ -55,7 +55,13 @@ node tools/build-dex.mjs                 # rigenera species.js/moves.js dalla wi
 Test end-to-end: `node tests/e2e/run.mjs` (playthrough Chromium, opzionale — vedi `tests/e2e/README.md`).
 
 Simulazione di bilanciamento (livelli/allenatori lungo il percorso della demo, 3 starter, 20 seed
-ciascuno di default): `node tools/simulate-balance.mjs [seedBase] [seedCount]`.
+ciascuno di default): `node tools/simulate-balance.mjs [seedBase] [seedCount]`. Il giocatore simulato
+cattura un Pokémon per mappa e manda in campo l'abbinamento migliore; `--solo` gioca il solo starter,
+`--selvatici=N` e `--squadra=N` cambiano lotte selvatiche per mappa e grandezza della squadra.
+
+Controllo degli sprite di battaglia contro la wiki: `python tools/tavola-sprite.py <cartella>` scrive i
+fogli con artwork, fronte e retro affiancati. `python tools/sprite-da-artwork.py <id>` ricava uno sprite
+provvisorio dall'artwork (per una specie senza sprite o con quello sbagliato).
 
 ## Aggiungere una mappa
 

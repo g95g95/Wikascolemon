@@ -249,7 +249,7 @@ function seq(values) {
   const stagesA = battle.freshStages();
   stagesA.attack = 6;
   const result = battle.executeMove(attacker, defender, 'crescita', stagesA, battle.freshStages(), { rng: () => 0.5 });
-  assert.ok(result.events.some(e => e.text.includes('non può aumentare ulteriormente')), 'messaggio stat al massimo');
+  assert.ok(result.events.some(e => e.text.includes('non può aumentare di più')), 'messaggio stat al massimo');
 }
 
 // --- Status non sovrascrive stato esistente + immunità status per tipo ---

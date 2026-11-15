@@ -21,10 +21,13 @@
     "pp": 40,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "roar"
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "attack",
+      "stages": -1,
+      "chance": 100
     },
-    "description": "Costringe il bersaglio a essere sostituito."
+    "description": "Un ruggito che abbassa l'Attacco del bersaglio."
   },
   "sabbiattacco": {
     "name": "Sabbiattacco",
@@ -927,8 +930,8 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "ripescaggio"
+      "kind": "heal",
+      "ratio": 0.5
     },
     "description": "è la sua mossa esclusiva: si tuffa e riporta a riva l'alleato che ne ha più bisogno, curandolo di una parte dei PS — riflette il legame di questa specie con chi pesca lungo l'argine, sempre pronta a \"ripescare\" un compagno in difficoltà."
   },
@@ -1041,8 +1044,11 @@
     "pp": 15,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "risata_sana"
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "accuracy",
+      "stages": -1,
+      "chance": 100
     },
     "description": "ride di gusto di una cosa che ha detto lui. L'avversario resta interdetto e perde precisione; nelle lotte in doppio l'alleato guadagna Attacco, perché — non si sa come — ride anche lui."
   },
@@ -1240,8 +1246,11 @@
     "pp": 15,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "evasion_up"
+      "kind": "stat",
+      "target": "self",
+      "stat": "evasion",
+      "stages": 1,
+      "chance": 100
     },
     "description": "Crea illusioni di sé stesso, aumentando l'elusione."
   },
@@ -1746,8 +1755,11 @@
     "pp": 15,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "adunanza"
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 1,
+      "chance": 100
     },
     "description": "per tre turni aumenta la Difesa di Ca'ità in proporzione al numero di turioni residui visibili sul suo corpo, come se il ricordo dell'unione lo rendesse ancora più solido."
   },
@@ -2150,8 +2162,9 @@
     "pp": 15,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "double_hit_boost"
+      "kind": "multi",
+      "min": 2,
+      "max": 2
     },
     "description": "colpisce due volte, la seconda in levare. Se il primo colpo va a segno, il secondo ha potenza raddoppiata."
   },
@@ -2614,8 +2627,8 @@
     "pp": 20,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "heal_cure_ally"
+      "kind": "heal",
+      "ratio": 0.5
     },
     "description": "cura confusione e metà dei PS di un alleato."
   },
@@ -2773,8 +2786,11 @@
     "pp": 20,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "grugnito"
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "speed",
+      "stages": -1,
+      "chance": 100
     },
     "description": "abbassa di uno stadio la Velocità di tutti gli avversari, senza infliggere danno — è il richiamo che ferma il branco prima della carica."
   },
@@ -2925,8 +2941,14 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "comparanza"
+      "kind": "stat",
+      "target": "self",
+      "stat": [
+        "attack",
+        "defense"
+      ],
+      "stages": 1,
+      "chance": 100
     },
     "description": "aumenta Attacco e Difesa di chi la usa e, nelle lotte in doppio, anche dell'alleato."
   },
@@ -2992,8 +3014,14 @@
     "pp": 15,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "guscio_chiuso"
+      "kind": "stat",
+      "target": "self",
+      "stat": [
+        "defense",
+        "spDefense"
+      ],
+      "stages": 2,
+      "chance": 100
     },
     "description": "per un turno la conchiglia si serra completamente, aumentando di due stadi la Difesa e la Difesa Speciale, ma impedendo qualunque altra azione nello stesso turno."
   },
@@ -3491,8 +3519,11 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "girandola"
+      "kind": "stat",
+      "target": "self",
+      "stat": "speed",
+      "stages": 1,
+      "chance": 100
     },
     "description": "gira su sé stesso sparando scintille — infligge danno, aumenta la Velocità di chi la usa e nelle lotte in doppio colpisce entrambi gli avversari."
   },
@@ -4211,8 +4242,9 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "marea_rossa"
+      "kind": "status",
+      "status": "psn",
+      "chance": 40
     },
     "description": "infligge danno Veleno e ha probabilità aumentata di avvelenare il bersaglio, con più chance di successo quanto più PS mancano a Mucillax — colpisce peggio quando è \"più concentrato\"."
   },
@@ -4395,8 +4427,9 @@
     "pp": 5,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "black_mamba"
+      "kind": "status",
+      "status": "psn",
+      "chance": 100
     },
     "description": "spara ettolitri di banconote cosparse di veleno neurotossico. Avvelena sempre gravemente il bersaglio e ha il 30% di probabilità di paralizzarlo; dopo l'uso, l'Attacco Speciale di Notaiax scende di uno stadio — le banconote, in fondo, sono finite addosso a qualcun altro."
   },
@@ -4661,8 +4694,11 @@
     "pp": 20,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "colonia"
+      "kind": "stat",
+      "target": "self",
+      "stat": "spDefense",
+      "stages": 1,
+      "chance": 100
     },
     "description": "per due turni aumenta la Difesa Speciale di tutti gli altri Pef'na presenti in squadra, come se il gruppo si stringesse per proteggersi a vicenda."
   },
@@ -4872,8 +4908,14 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "involucro"
+      "kind": "stat",
+      "target": "self",
+      "stat": [
+        "defense",
+        "spDefense"
+      ],
+      "stages": 2,
+      "chance": 100
     },
     "description": "si richiude nel bozzolo scuro: aumenta di molto Difesa e Difesa Speciale e cura i problemi di stato, ma nel turno successivo non può agire."
   },
@@ -5286,8 +5328,8 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "vento_di_bandiera"
+      "kind": "flinch",
+      "chance": 30
     },
     "description": "è la mossa caratteristica della specie: il drappo aperto colpisce di taglio e può far indietreggiare l'avversario."
   },
@@ -5300,8 +5342,14 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "posto_fisso"
+      "kind": "stat",
+      "target": "self",
+      "stat": [
+        "defense",
+        "spDefense"
+      ],
+      "stages": 1,
+      "chance": 100
     },
     "description": "è la sua mossa esclusiva: aumenta di un livello Difesa e Difesa Speciale, ma da quel momento Sciarpone"
   },
@@ -5403,8 +5451,14 @@
     "pp": 5,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "superpower"
+      "kind": "stat",
+      "target": "self",
+      "stat": [
+        "attack",
+        "defense"
+      ],
+      "stages": -1,
+      "chance": 100
     },
     "description": "Un colpo fortissimo che abbassa Attacco e Difesa di chi lo usa."
   },

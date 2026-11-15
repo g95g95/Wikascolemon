@@ -53,7 +53,23 @@
   // Interni generici (maps/interni.js): ogni bar e ogni tabacchi senza uno script suo porta, dalla
   // porta, nella stanza condivisa del suo tipo. L'uscita di riserva della stanza è il primo edificio
   // di quel tipo; in partita si torna alla porta da cui si è entrati (save.returnSpot).
-  const rooms = { bar: 'interno_bar', market: 'interno_tabacchi', house: 'interno_casa' };
+  const rooms = {
+    bar: 'interno_bar', market: 'interno_tabacchi', house: 'interno_casa', church: 'interno_chiesa', hospital: 'interno_ospedale',
+    cinema: 'interno_cinema', pizzeria: 'interno_pizzeria', station: 'interno_stazione', palace: 'interno_palazzo', emporium: 'interno_emporio'
+  };
+  // Che stanza tocca a un edificio che non ne dichiara una: la prima regola che corrisponde.
+  // Lo stadio resta chiuso (sarà la sede della Lega); il teatro ha già il suo copione.
+  const interiorRules = [
+    [b => /^casa\b/i.test(b.name), 'house'],
+    [b => /\bbar\b/i.test(b.name), 'bar'],
+    [b => b.kind === 'chiesa' || /grotte/i.test(b.name), 'church'],
+    [b => b.kind === 'ospedale', 'hospital'],
+    [b => b.kind === 'cinema', 'cinema'],
+    [b => /pizzeria/i.test(b.name), 'pizzeria'],
+    [b => b.kind === 'stazione', 'station'],
+    [b => /^palazzo\b/i.test(b.name), 'palace'],
+    [b => /benzinaio/i.test(b.name), 'emporium']
+  ];
   // Le case («Casa», «Casa popolare», «Casa dei …») sono visitabili: se non hanno una porta nei dati
   // la ricevono al centro della facciata, dove la disegna il gioco, purché la cella davanti sia libera.
   const inside = (x, y, r) => x >= r.x && y >= r.y && x < r.x + r.w && y < r.y + r.h;
@@ -64,11 +80,13 @@
     && !(map.npcs || []).some(n => n.x === x && n.y === y)
     && !(map.transitions || []).some(t => inside(x, y, t));
   Object.values(maps).forEach(map => (map.buildings || []).forEach(building => {
-    if (map.indoor || building.interior || building.script || !/^casa\b/i.test(building.name || '')) return;
+    if (map.indoor || building.interior || building.script) return;
+    const rule = interiorRules.find(([matches]) => matches({ ...building, name: building.name || '' }));
+    if (!rule) return;
     const door = building.door || { x: Math.floor(building.x + building.w / 2), y: building.y + building.h };
     if (!freeCell(map, door.x, door.y)) return;
     building.door = door;
-    building.interior = 'house';
+    building.interior = rule[1];
   }));
   Object.entries(maps).forEach(([mapId, map]) => (map.buildings || []).forEach(building => {
     const roomId = rooms[building.interior];

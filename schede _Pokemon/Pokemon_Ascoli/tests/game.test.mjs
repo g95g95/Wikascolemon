@@ -35,6 +35,7 @@ function makeFakeElement(id) {
     },
     removeEventListener() {},
     setPointerCapture() {},
+    focus() {},
     appendChild(child) { this.children.push(child); return child; },
     append(...items) { items.forEach(item => this.children.push(item)); },
     querySelector() { return null; },

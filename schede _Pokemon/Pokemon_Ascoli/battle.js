@@ -170,6 +170,7 @@
     monster.exp = (monster.exp || 0) + amount;
     let levelsGained = 0;
     const learned = [];
+    const autoLearned = [];
     let evolvedInto = null;
     while (monster.exp >= currentExpFloor({ level: monster.level + 1 })) {
       const oldMax = monster.stats.hp;
@@ -184,6 +185,7 @@
         if (monster.moves.some(m => m.id === moveId)) return;
         if (monster.moves.length < 4) {
           monster.moves.push(makeMoveSlot(moveId));
+          autoLearned.push(moveId);
         } else {
           learned.push(moveId);
         }
@@ -203,7 +205,7 @@
         }
       }
     }
-    return { levelsGained, learned, evolvedInto };
+    return { levelsGained, learned, autoLearned, evolvedInto };
   }
 
   // --- Ordine di turno ---
@@ -288,17 +290,17 @@
     return false;
   }
 
-  const statMessages = {
-    up: (name, statName) => `${name} ${statName} è aumentato!`,
-    upMax: (name) => `${name} non può aumentare ulteriormente!`,
-    down: (name, statName) => `${name} ${statName} è diminuito!`,
-    downMax: (name) => `${name} non può diminuire ulteriormente!`
+  const statNamesIt = {
+    attack: "L'Attacco", defense: 'La Difesa', spAttack: "L'Attacco Speciale",
+    spDefense: 'La Difesa Speciale', speed: 'La Velocità', accuracy: 'La Precisione', evasion: "L'Elusione"
   };
 
-  const statNamesIt = {
-    attack: 'Attacco', defense: 'Difesa', spAttack: 'Attacco Speciale',
-    spDefense: 'Difesa Speciale', speed: 'Velocità', accuracy: 'Precisione'
-  };
+  // Messaggi delle statistiche come nei giochi: «L'Attacco di Pito diminuisce!», «…aumenta di molto!».
+  function statMessage(name, stat, change, blocked) {
+    const subject = `${statNamesIt[stat] || stat} di ${name}`;
+    if (blocked) return `${subject} non può ${change > 0 ? 'aumentare' : 'diminuire'} di più!`;
+    return `${subject} ${change > 0 ? 'aumenta' : 'diminuisce'}${Math.abs(change) > 1 ? ' di molto' : ''}!`;
+  }
 
   const statusNamesIt = { psn: 'avvelenato', par: 'paralizzato', brn: 'scottato', slp: 'addormentato', frz: 'congelato' };
 
@@ -406,8 +408,9 @@
           defender.flinched = true;
         }
       }
-      if (effect.kind === 'custom') {
-        events.push({ type: 'text', text: `${known.name} ha un effetto speciale!` });
+      // effetto secondario sulle statistiche (es. Acido): sul bersaglio solo se è ancora in piedi
+      if (effect.kind === 'stat' && (effect.target === 'self' || defender.hp > 0)) {
+        applyNonDamagingEffect(known, effect, attacker, defender, attackerName, defenderName, stagesA, stagesB, events, rng);
       }
     }
     if (effect && effect.kind === 'recoil' && totalDamage > 0) {
@@ -440,15 +443,13 @@
         const targetName = effect.target === 'self' ? attackerName : defenderName;
         const stages = effect.target === 'self' ? stagesA : stagesB;
         if (rand(rng) * 100 >= (effect.chance ?? 100)) return;
-        const current = stages[effect.stat] || 0;
-        const next = Math.max(-6, Math.min(6, current + effect.stages));
-        if (next === current) {
-          events.push({ type: 'text', text: effect.stages > 0 ? statMessages.upMax(targetName) : statMessages.downMax(targetName) });
-        } else {
-          stages[effect.stat] = next;
-          const statName = statNamesIt[effect.stat] || effect.stat;
-          events.push({ type: 'text', text: effect.stages > 0 ? statMessages.up(targetName, statName) : statMessages.down(targetName, statName) });
-        }
+        // `stat` può essere una lista: la mossa tocca più statistiche insieme (es. Difesa e Difesa Speciale)
+        [].concat(effect.stat).forEach(stat => {
+          const current = stages[stat] || 0;
+          const next = Math.max(-6, Math.min(6, current + effect.stages));
+          stages[stat] = next;
+          events.push({ type: 'text', text: statMessage(targetName, stat, effect.stages, next === current) });
+        });
         break;
       }
       case 'status': {
@@ -467,7 +468,7 @@
         break;
       }
       case 'custom': {
-        events.push({ type: 'text', text: `${known.name} ha un effetto speciale!` });
+        events.push({ type: 'text', text: 'Ma non ha effetto!' }); // effetto non ancora previsto dal motore: lo si dice
         break;
       }
       default:

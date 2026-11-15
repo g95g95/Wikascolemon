@@ -17,7 +17,7 @@
     'shopScreen', 'shopList', 'shopMoney', 'shopClose', 'creditsScreen', 'creditsClose',
     'battleScreen', 'enemyName', 'enemyLevel', 'enemyHp', 'enemySprite', 'enemyStatus', 'enemyExclaim',
     'allyName', 'allyLevel', 'allyHp', 'allyHpText', 'allyExp', 'battleBall', 'allySprite', 'allyStatus', 'battleMessage',
-    'battleActions', 'menuScreen', 'menuTabs', 'menuContent', 'menuClose', 'menuButton',
+    'battleActions', 'menuScreen', 'menuTabs', 'menuContent', 'menuClose', 'menuExit', 'menuButton', 'continueInfo',
     'touchMenu', 'touchA', 'touchB'
   ].map(id => [id, document.getElementById(id)]));
 
@@ -1059,17 +1059,18 @@
     );
   }
 
-  function showBattleTeam() {
+  // `replacing`: il Pokémon in campo è esausto, va scelto il sostituto (niente «Indietro»).
+  function showBattleTeam(replacing) {
     ui.battleActions.innerHTML = '';
     ui.battleActions.className = 'battle-actions wide';
     save.team.forEach((monster, index) => {
       const name = data.species[monster.species].name;
-      const button = actionButton('', () => switchMonster(index));
+      const button = actionButton('', () => (replacing === true ? sendReplacement(index) : switchMonster(index)));
       button.innerHTML = `<b>${name}</b><small>Lv.${monster.level} · PS ${Math.max(0, monster.hp)}/${monster.stats.hp}</small>`;
       button.disabled = index === battle.activeIndex || monster.hp <= 0;
       ui.battleActions.appendChild(button);
     });
-    ui.battleActions.appendChild(actionButton('Indietro', showBattleMain));
+    if (replacing !== true) ui.battleActions.appendChild(actionButton('Indietro', showBattleMain));
   }
 
   async function resolveTurn(playerAction) {
@@ -1166,8 +1167,14 @@
         renderBattle();
         await sleep(700);
       }
+      for (const moveId of gainResult.autoLearned) {
+        playSound('levelup');
+        ui.battleMessage.textContent = `${name()} ha imparato ${data.moves[moveId].name}!`;
+        await sleep(1100);
+      }
       for (const moveId of gainResult.learned) {
-        await handleLevelUpLearn(monster, moveId);
+        ui.battleMessage.textContent = await handleLevelUpLearn(monster, moveId);
+        await sleep(1300);
       }
     }
     battle.participants = new Set([battle.activeIndex]); // contro il prossimo avversario si riparte da chi è in campo
@@ -1188,17 +1195,19 @@
   function handleLevelUpLearn(monster, moveId) {
     return new Promise(resolve => {
       const known = data.moves[moveId];
-      ui.learnMoveText.textContent = `${data.species[monster.species].name} vuole imparare ${known.name}, ma conosce già 4 mosse. Quale mossa dimenticare?`;
+      // per scegliere servono i dati: tipo, categoria, potenza e PP della mossa nuova e delle quattro attuali
+      const facts = move => `${move.type} · ${move.category} · Pot. ${move.power || '—'} · PP ${move.pp}`;
+      ui.learnMoveText.textContent = `${data.species[monster.species].name} vuole imparare ${known.name} (${facts(known)}), ma conosce già 4 mosse. Quale mossa dimenticare?`;
       ui.learnMoveChoices.innerHTML = '';
       monster.moves.forEach((slot, index) => {
         const button = document.createElement('button');
         button.type = 'button';
-        button.textContent = `${data.moves[slot.id].name}`;
+        button.textContent = `${data.moves[slot.id].name} — ${facts(data.moves[slot.id])}`;
         button.addEventListener('click', () => {
           Battle.learnMove(monster, moveId, index);
           ui.learnMoveScreen.hidden = true;
-          showToast(`${data.species[monster.species].name} ha imparato ${known.name}!`);
-          resolve();
+          playSound('levelup');
+          resolve(`${data.species[monster.species].name} ha dimenticato ${data.moves[slot.id].name} e ha imparato ${known.name}!`);
         });
         ui.learnMoveChoices.appendChild(button);
       });
@@ -1207,7 +1216,7 @@
       giveUp.textContent = 'Rinuncia';
       giveUp.addEventListener('click', () => {
         ui.learnMoveScreen.hidden = true;
-        resolve();
+        resolve(`${data.species[monster.species].name} non ha imparato ${known.name}.`);
       });
       ui.learnMoveChoices.appendChild(giveUp);
       ui.learnMoveScreen.hidden = false;
@@ -1225,10 +1234,17 @@
       handleWipe();
       return;
     }
-    battle.activeIndex = next;
-    battle.participants.add(next);
+    ui.allySprite.classList.add('unsent');
+    ui.battleMessage.textContent = 'Chi mandi in campo?';
+    showBattleTeam(true);
+  }
+
+  // Entra il sostituto scelto dopo un KO: non costa il turno.
+  function sendReplacement(index) {
+    battle.activeIndex = index;
+    battle.participants.add(index);
     battle.playerStages = Battle.freshStages();
-    ui.battleMessage.textContent = `Avanti, ${data.species[activeMonster().species].name}!`;
+    ui.battleMessage.textContent = `Vai, ${data.species[activeMonster().species].name}!`;
     renderBattle();
     showBattleMain();
     sendOutAlly();
@@ -1358,14 +1374,23 @@
     resolveTurn({ type: 'item' });
   }
 
-  function switchMonster(index) {
+  // Cambio scelto dal giocatore: rientra uno, entra l'altro e solo a quel punto l'avversario fa la sua mossa.
+  async function switchMonster(index) {
     if (!battle || index === battle.activeIndex || save.team[index].hp <= 0) return;
+    const fight = battle;
+    ui.battleActions.innerHTML = '';
+    ui.battleMessage.textContent = `${data.species[activeMonster().species].name}, rientra!`;
+    ui.allySprite.classList.add('unsent');
+    await sleep(800);
+    if (battle !== fight) return;
     battle.activeIndex = index;
     battle.participants.add(index);
     battle.playerStages = Battle.freshStages();
-    ui.battleMessage.textContent = `Avanti, ${data.species[activeMonster().species].name}!`;
+    ui.battleMessage.textContent = `Vai, ${data.species[activeMonster().species].name}!`;
     renderBattle();
-    sendOutAlly();
+    await sendOutAlly();
+    await sleep(500);
+    if (battle !== fight) return;
     resolveTurn({ type: 'switch' });
   }
 
@@ -1422,12 +1447,20 @@
   // Menu
   // ---------------------------------------------------------------------
 
-  function openMenu(tab = 'team') {
+  // Il menu di pausa è una lista sulla destra, col mondo che resta visibile dietro; la voce scelta
+  // apre la sua pagina a tutto schermo e «Indietro» (o B/Esc) riporta alla lista.
+  function openMenu() {
     if (mode !== 'world') return;
     mode = 'menu';
     ui.menuScreen.hidden = false;
-    renderMenu(tab);
+    ui.menuTabs.querySelector('[data-tab="trainer"]').textContent = save.name || 'Oliver';
+    showMenuList();
     playSound('confirm');
+  }
+
+  function showMenuList(tab) {
+    ui.menuScreen.dataset.view = 'list';
+    (ui.menuTabs.querySelector(`[data-tab="${tab}"]`) || ui.menuTabs.querySelector('button')).focus();
   }
 
   function closeMenu() {
@@ -1436,8 +1469,26 @@
     mode = 'world';
   }
 
+  function menuBack() {
+    if (mode !== 'menu') return;
+    if (ui.menuScreen.dataset.view === 'page') showMenuList(ui.menuScreen.dataset.tab);
+    else closeMenu();
+  }
+
+  // Frecce nel menu: su/giù scorrono la lista, sinistra/destra cambiano tasca nella Borsa.
+  function menuArrow(direction) {
+    if (ui.menuScreen.dataset.view === 'list') {
+      const entries = [...ui.menuTabs.querySelectorAll('button')];
+      const step = direction === 'up' ? -1 : direction === 'down' ? 1 : 0;
+      if (step) entries[(Math.max(0, entries.indexOf(document.activeElement)) + step + entries.length) % entries.length].focus();
+    } else if (ui.menuScreen.dataset.tab === 'bag' && (direction === 'left' || direction === 'right')) {
+      changeBagPocket(direction === 'left' ? -1 : 1);
+    }
+  }
+
   function renderMenu(tab) {
-    [...ui.menuTabs.querySelectorAll('button')].forEach(button => button.classList.toggle('active', button.dataset.tab === tab));
+    ui.menuScreen.dataset.view = 'page';
+    ui.menuScreen.dataset.tab = tab;
     if (tab === 'team') renderTeamMenu();
     if (tab === 'bag') renderBagMenu();
     if (tab === 'dex') renderDexMenu();
@@ -1517,27 +1568,78 @@
     document.getElementById('summaryBack').addEventListener('click', () => renderMenu(backTab));
   }
 
+  // Borsa a tasche. Si vedono solo gli strumenti posseduti; fuori dalla lotta si usano Pozione e Antidoto.
+  const bagPockets = [['items', 'Strumenti'], ['balls', 'Ball'], ['key', 'Strumenti base'], ['tm', 'MT']];
+  const bagUses = {
+    potion: { can: monster => monster.hp > 0 && monster.hp < monster.stats.hp, apply: monster => { monster.hp = Math.min(monster.stats.hp, monster.hp + 20); }, done: 'recupera PS.' },
+    antidote: { can: monster => monster.status === 'psn', apply: monster => { monster.status = null; }, done: 'non è più avvelenato.' }
+  };
+  const bagTexts = {
+    ball: 'Si lancia in lotta per catturare un Pokémon selvatico.',
+    potion: 'Restituisce 20 PS a un Pokémon.',
+    antidote: 'Cura un Pokémon avvelenato.'
+  };
+  let bagPocket = 0;
+  let bagItem = null;
+  let bagChoosing = false;
+
+  function bagPocketOf(id) {
+    if (id.startsWith('mt_')) return 'tm';
+    if (id === 'ball') return 'balls';
+    return data.items[id].price === null ? 'key' : 'items';
+  }
+
+  function bagDescription(id) {
+    if (bagTexts[id]) return bagTexts[id];
+    const evolves = Object.values(data.species).filter(species => species.evolution && species.evolution.item === id).map(species => species.name);
+    return evolves.length ? `Serve all'evoluzione di ${evolves.join(', ')}.` : '';
+  }
+
+  function changeBagPocket(step) {
+    bagPocket = (bagPocket + step + bagPockets.length) % bagPockets.length;
+    bagItem = null;
+    bagChoosing = false;
+    renderBagMenu();
+  }
+
   function renderBagMenu() {
-    const rows = Object.entries(data.items).map(([id, item]) => `<p>${item.name}: <strong>${save.items[id] || 0}</strong></p>`).join('');
-    ui.menuContent.innerHTML = `<h2>Borsa</h2>${rows}<button id="healOutsidePotion">Usa Pozione sul primo ferito</button><button id="healOutsideAntidote">Usa Antidoto sul primo avvelenato</button>`;
-    document.getElementById('healOutsidePotion').addEventListener('click', () => {
-      const target = save.team.find(monster => monster.hp > 0 && monster.hp < monster.stats.hp);
-      if (!target || !save.items.potion || save.items.potion <= 0) { showToast('Nessun utilizzo possibile.'); return; }
-      save.items.potion -= 1;
-      target.hp = Math.min(target.stats.hp, target.hp + 20);
-      autoSave();
+    const [pocketId, pocketName] = bagPockets[bagPocket];
+    const owned = Object.keys(data.items).filter(id => (save.items[id] || 0) > 0 && bagPocketOf(id) === pocketId);
+    if (!owned.includes(bagItem)) { bagItem = owned[0] || null; bagChoosing = false; }
+    const list = owned.map(id => `<button class="bag-item${id === bagItem ? ' selected' : ''}" data-item="${id}"><span>${data.items[id].name}</span><b>×${save.items[id]}</b></button>`).join('');
+    const use = bagUses[bagItem];
+    let detail = '<p>Questa tasca è vuota.</p>';
+    if (bagItem && bagChoosing) {
+      detail = `<p>Su chi usi ${data.items[bagItem].name}?</p><div class="bag-targets">${save.team.map((monster, index) =>
+        `<button data-target="${index}"${use.can(monster) ? '' : ' disabled'}>${data.species[monster.species].name} ${Math.max(0, monster.hp)}/${monster.stats.hp}</button>`).join('')}<button data-target="">Annulla</button></div>`;
+    } else if (bagItem) {
+      detail = `<p>${bagDescription(bagItem) || data.items[bagItem].name}</p>${use ? '<button id="bagUse">Usa</button>' : ''}`;
+    }
+    ui.menuContent.innerHTML = `<div class="bag-screen">
+      <div class="bag-pocket"><div class="bag-art pocket-${pocketId}"></div>
+        <div class="bag-switch"><button data-pocket="-1" aria-label="Tasca precedente">◀</button><strong>${pocketName}</strong><button data-pocket="1" aria-label="Tasca successiva">▶</button></div>
+        <div class="bag-dots">${bagPockets.map((_, index) => `<i${index === bagPocket ? ' class="on"' : ''}></i>`).join('')}</div></div>
+      <div class="bag-list">${list}</div>
+      <div class="bag-detail">${detail}</div></div>`;
+    ui.menuContent.querySelectorAll('[data-pocket]').forEach(button => button.addEventListener('click', () => changeBagPocket(Number(button.dataset.pocket))));
+    ui.menuContent.querySelectorAll('[data-item]').forEach(button => button.addEventListener('click', () => { bagItem = button.dataset.item; bagChoosing = false; renderBagMenu(); }));
+    const useButton = document.getElementById('bagUse');
+    if (useButton) useButton.addEventListener('click', () => {
+      if (!save.team.some(use.can)) { showToast('Non avrebbe alcun effetto.'); return; }
+      bagChoosing = true;
       renderBagMenu();
-      showToast(`${data.species[target.species].name} recupera PS.`);
     });
-    document.getElementById('healOutsideAntidote').addEventListener('click', () => {
-      const target = save.team.find(monster => monster.status === 'psn');
-      if (!target || !save.items.antidote || save.items.antidote <= 0) { showToast('Nessun utilizzo possibile.'); return; }
-      save.items.antidote -= 1;
-      target.status = null;
-      autoSave();
+    ui.menuContent.querySelectorAll('[data-target]').forEach(button => button.addEventListener('click', () => {
+      const target = save.team[button.dataset.target];
+      bagChoosing = false;
+      if (target) {
+        save.items[bagItem] -= 1;
+        use.apply(target);
+        autoSave();
+        showToast(`${data.species[target.species].name} ${use.done}`);
+      }
       renderBagMenu();
-      showToast(`${data.species[target.species].name} non è più avvelenato.`);
-    });
+    }));
   }
 
   function renderDexMenu() {
@@ -1979,9 +2081,11 @@
     drawTrainers(camera);
     drawPlayer(camera);
     if (atlas) {
-      // l'erba alta copre i piedi del giocatore
+      // alberi e arredo che stanno più in basso del giocatore lo coprono: dietro le chiome, non sopra
       const cellX = Math.round(player.renderX);
       const cellY = Math.round(player.renderY);
+      drawStanding(currentMap, grid, cellX - 1, Math.floor(player.renderY) + 1, cellX + 1, Math.floor(player.renderY) + 2, camera.x, camera.y);
+      // l'erba alta copre i piedi del giocatore
       if (isTallGrass(currentMap, cellX, cellY)) blit(TILES.erba_alta_front, 0, Math.round(player.renderX * 16 - camera.x), Math.round(player.renderY * 16 - camera.y));
       // fruscio: i ciuffi si aprono per un attimo nella cella in cui si è appena entrati
       const rustleAge = rustle ? performance.now() - rustle.start : Infinity;
@@ -2128,9 +2232,11 @@
   }
 
   document.addEventListener('keydown', event => {
+    if (event.target.tagName === 'INPUT') return; // nel campo del nome i tasti scrivono e basta
     const direction = keyDirections[event.code];
     if (direction) {
       event.preventDefault();
+      if (mode === 'menu') { menuArrow(direction); return; }
       if (!event.repeat) addHeld(direction);
       return;
     }
@@ -2139,11 +2245,12 @@
       if (mode === 'dialogue') { advanceDialogue(); return; }
       if (mode === 'battle') { advanceMessage(); return; }
       if (mode === 'credits') { closeCredits(); return; }
+      if (mode === 'menu' || mode === 'title') { if (document.activeElement && document.activeElement.tagName === 'BUTTON') document.activeElement.click(); return; }
       interact();
     }
     if (event.code === 'KeyM') openMenu();
     if (event.code === 'Escape' || event.code === 'KeyX') {
-      if (mode === 'menu') closeMenu();
+      if (mode === 'menu') menuBack();
       else if (mode === 'battle') showBattleMain();
       else if (mode === 'credits') closeCredits();
     }
@@ -2180,10 +2287,11 @@
   ui.touchB.addEventListener('pointerdown', () => { running = true; });
   ['pointerup', 'pointercancel', 'pointerleave'].forEach(type => ui.touchB.addEventListener(type, () => { running = false; }));
   ui.touchB.addEventListener('click', () => {
-    if (mode === 'menu') closeMenu();
+    if (mode === 'menu') menuBack();
     else if (mode === 'battle') showBattleMain();
   });
-  ui.menuClose.addEventListener('click', closeMenu);
+  ui.menuClose.addEventListener('click', menuBack);
+  ui.menuExit.addEventListener('click', closeMenu);
   ui.menuContent.addEventListener('click', event => {
     if (event.target.closest('button, a')) return;
     const row = event.target.closest('[data-summary]');
@@ -2228,6 +2336,12 @@
 
   const existingSave = loadSave();
   ui.continueButton.disabled = !existingSave;
+  if (existingSave) {
+    const badges = (existingSave.badges || []).length;
+    const caught = Object.values(existingSave.dex.caught).filter(Boolean).length;
+    ui.continueInfo.textContent = `${existingSave.name || 'Oliver'} · ${badges === 1 ? '1 medaglia' : `${badges} medaglie`} · Pokédex ${caught}`;
+  }
+  (existingSave ? ui.continueButton : ui.newGameButton).focus();
   currentMap = maps[data.start.map];
   initNpcs();
   updateLocation();

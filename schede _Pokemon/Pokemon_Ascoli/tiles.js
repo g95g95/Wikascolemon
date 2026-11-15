@@ -88,6 +88,8 @@
     const GRASSY = new Set(['erba', 'pendio', 'albero']);
     const SOFT = new Set(['road', 'ghiaia', 'sabbia']);
     const WATERY = new Set(['water', 'mare']);
+    const ROUNDED = new Set(['road', 'ghiaia', 'sabbia', 'piazza', 'asfalto', 'travertino']);
+    const CORNER_ROWS = [5, 3, 2, 1, 1]; // pixel d'erba per riga, partendo dall'angolo: un quarto di cerchio
     const SIDES = [[0, -1], [1, 0], [0, 1], [-1, 0]];
     const DIAGONALS = [[1, -1], [1, 1], [-1, 1], [-1, -1]];
 
@@ -273,6 +275,18 @@
         if (sides[index] || sides[(index + 1) % 4]) return;
         const set = fringeFor(type, gridType(grid, x + dx, y + dy));
         if (set) blit(set, 4 + index, screenX, screenY);
+      });
+      // angoli smussati: se i due lati che formano l'angolo danno sull'erba, l'erba ne mangia la punta
+      if (!ROUNDED.has(type)) return;
+      DIAGONALS.forEach(([dx, dy], index) => {
+        const [ax, ay] = SIDES[index];
+        const [bx, by] = SIDES[(index + 1) % 4];
+        if (!GRASSY.has(gridType(grid, x + ax, y + ay)) || !GRASSY.has(gridType(grid, x + bx, y + by))) return;
+        CORNER_ROWS.forEach((width, row) => {
+          const px = dx > 0 ? 16 - width : 0;
+          const py = dy > 0 ? 15 - row : row;
+          ctx.drawImage(tilesetImage, TILES.erba[0] * 16 + px, TILES.erba[1] * 16 + py, width, 1, screenX + px, screenY + py, width, 1);
+        });
       });
     }
 

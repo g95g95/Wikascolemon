@@ -2,6 +2,35 @@
 
 Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco/configuratore.html`
 
+## 15/11/2026 — Quarto giro di test
+
+- **Il Little Bar è aperto**: a Monticelli ora si entra e il barista cura la squadra.
+- **Si entra nei luoghi della città**: chiese, ospedale (l'infermiera cura la squadra), cinema, pizzeria,
+  stazione, Palazzo dei Capitani, emporio del benzinaio. Lo stadio resta chiuso: sarà la sede della Lega.
+- **Angoli smussati** per strade, piazze e asfalto dove fanno angolo verso l'erba.
+- **Dietro gli alberi, non sopra**: le chiome coprono Oliver quando ci passa dietro.
+- **Cambio Pokémon in lotta**: prima rientra il tuo («Tifotto, rientra!»), poi entra l'altro, e solo dopo
+  l'avversario fa la sua mossa.
+- **Dopo un KO scegli tu** chi mandare in campo: non entra più da solo il primo disponibile.
+- **Gli effetti delle mosse si leggono**: «L'Attacco di Pito diminuisce!», «La Difesa di Cozzetta aumenta
+  di molto!». Ruggito ora abbassa davvero l'Attacco (era catalogato come un'altra mossa); sistemate altre
+  17 mosse. Dove un effetto non è ancora previsto, il gioco lo dice («Ma non ha effetto!»).
+- **Mossa nuova annunciata**: «Puledrotto ha imparato Braciere!»; se ne dimentica una, dice quale.
+
+## 15/11/2026 — Menu nuovo, Borsa a tasche, bilanciamento
+
+- **Menu di pausa a lista**: si apre sulla destra e il mondo resta visibile dietro. Frecce per scorrere,
+  A/Invio per scegliere, B/Esc per tornare indietro; «Esci» lo chiude. La voce dell'allenatore porta il tuo nome.
+- **Borsa a tasche**: Strumenti, Ball, Strumenti base e MT (frecce sinistra/destra per cambiare tasca).
+  Si vedono solo gli strumenti che hai, con la descrizione; per Pozione e Antidoto scegli tu su chi usarli
+  (prima andavano al primo ferito).
+- **Schermata titolo nuova**: cielo, colline e i tre starter; «Continua» mostra nome, medaglie e Pokédex
+  della partita salvata. Nel campo del nome ora si possono scrivere anche W, A, S, D e lo spazio.
+- **Sciarpone ha il suo sprite**: aveva quello di Anisetta. È provvisorio, ricavato dal disegno della wiki.
+- **Bilanciamento**: Gino a Monticelli ora ha Pito e Segaccio al livello 5 (prima Segaccio 6 e Venagrox 5:
+  era il terzo allenatore del gioco e lo si perdeva due volte su tre); il Pozza di Hills scende al livello 11.
+- I messaggi brevi in basso ora si vedono anche con una pagina del menu aperta.
+
 ## 15/11/2026 — Terzo giro di test
 
 - **Mappe ancora più raccolte**, sempre senza toccare la misura di case e strade: un secondo giro ha

@@ -338,7 +338,9 @@ if (run('menu')) {
     for (const tab of [...document.querySelectorAll('#menuTabs [data-tab]')]) { tab.click(); await b.sleep(120); out[tab.dataset.tab] = document.getElementById('menuContent').innerText.trim().length; }
     document.querySelector('#menuTabs [data-tab=team]').click(); await b.sleep(100); document.querySelector('.party-slot.lead').click(); await b.sleep(100);
     out.scheda = document.getElementById('menuContent').innerText.includes('Mosse'); document.getElementById('summaryBack').click(); await b.sleep(80);
-    document.getElementById('menuClose').click(); await b.sleep(100); out.mode = D.state().mode; return out; }`);
+    document.getElementById('menuClose').click(); await b.sleep(100); out.lista = document.getElementById('menuScreen').dataset.view === 'list';
+    document.getElementById('menuExit').click(); await b.sleep(100); out.mode = D.state().mode; return out; }`);
+  if (!result.lista) note('menu', '«Indietro» non riporta alla lista del menu');
   for (const [tab, length] of Object.entries(result)) if (typeof length === 'number' && length < 5) note('menu', `la scheda «${tab}» del menu è vuota`);
   if (!result.scheda) note('menu', 'la scheda del Pokémon non si apre dalla Squadra');
   if (result.mode !== 'world') note('menu', `chiuso il menu il gioco resta in modalità ${result.mode}`);

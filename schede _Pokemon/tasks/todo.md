@@ -59,8 +59,8 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
 - [ ] C3. Transizioni: dissolvenza fra mappe, animazione della Ball, colpo/KO (il lampo d'ingresso c'è).
 - [x] C4a. (14/11) Schermata Squadra a riquadri: capofila grande a sinistra, altri cinque in colonna,
       barre PS colorate, KO in rosso, posti vuoti tratteggiati; clic → scheda. Grafica originale.
-- [ ] C4b. Menu di pausa a lista sulla destra; Borsa a tasche.
-- [ ] C5. Schermata titolo, icone delle 2 medaglie (era E3).
+- [x] C4b. (15/11) Menu di pausa a lista sulla destra; Borsa a tasche (= I3).
+- [ ] C5. Icone delle 2 medaglie (era E3). La schermata titolo è fatta (15/11, = I3).
 
 ## E. Movimento e scala (richiesta del 14/11: «mappe enormi», «fluidità di Oliver»)
 - [x] E1. (14/11) Movimento fluido: velocità costante (via l'accelera-e-frena a ogni cella), passi
@@ -143,11 +143,56 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
 Ordinati per quanto si notano giocando. Jacopo sceglie da quale partire.
 
 **Le tre consigliate**
-- [ ] I1. Controllo degli sprite di battaglia contro la wiki: tavola con sprite e artwork affiancati
-      per tutte le specie (Tifotto aveva l'arte di Anicino; il vecchio file di Anicino non era nessuno dei due).
-- [ ] I2. Bilanciamento: `simulate-balance.mjs` dà Puledrotto 0% contro entrambi i capipalestra; da allora
-      sono cambiati exp iniziale, frequenza degli incontri (×1,5 a chiazze) ed exp divisa.
-- [ ] I3. Menu di pausa, Borsa e schermata titolo nello stile nuovo (sono le uniche schermate rimaste vecchie).
+- [x] I1. (15/11) Tavola sprite/artwork con `tools/tavola-sprite.py <cartella>` (49 specie, 12 per foglio).
+      Trovato e corretto: **Sciarpone aveva lo sprite di Anisetta** → provvisorio dall'artwork con
+      `tools/sprite-da-artwork.py` (retro = fronte, come Tifotto). Da rifare quando ci sono i fogli:
+      Ciccharizard e Coperto (sbiaditi, pieni di pixel semitrasparenti; Ciccharizard è anche chiaro mentre
+      l'artwork è scuro), Cavedòne (bipede, l'artwork è un pesce), Sbandiera (figura umana, l'artwork no).
+      Nessuna di queste quattro compare nella demo se non per evoluzione.
+- [x] I2. (15/11) Lo 0% di Puledrotto veniva soprattutto dal simulatore: giocava col solo starter, non
+      cambiava Pokémon, buttava le mosse nuove a quattro mosse piene e sfidava il Nando sbagliato (la
+      chiave `nando_<x>` è lo starter di Nando, non il tuo). Riscritto il giocatore simulato: cattura un
+      Pokémon per mappa (squadra fino a 4), manda in campo l'abbinamento migliore, esperienza divisa come
+      in `game.js`; `--solo`, `--selvatici=N`, `--squadra=N` per provare altri profili.
+      Ritocchi alle squadre: Gino (Monticelli) Segaccio 6 + Venagrox 5 → Pito 5 + Segaccio 5 (lo vincevano
+      1 volta su 3 Basilino e Tuffito); Pozza di Hills 12 → 11. Con 200 partite per starter: Hills
+      95% / 67% / 94% (Basilino / Puledrotto / Tuffito), Riccio 100% / 67% / 72%; livello più alto
+      15-16 alla 1ª palestra, 22-24 alla 2ª.
+      ⚠️ Restano sul 60-70% alla prima prova, per chi gioca senza strumenti: `costa_dj_1` (Mucillax 19),
+      `costa_turista_1` (Maranzino 18), il terzo Bro della Security, Nando allo Jonathan. Da giudicare
+      giocando, non li ho toccati.
+      ⚠️ Dalla wiki: Zanzì ha Velenpuntura (80) fra le mosse iniziali, quindi quello di Hills al livello 9
+      picchia forte; il Repellente si compra ma nel motore non fa nulla.
+- [x] I3. (15/11) Menu di pausa a lista sulla destra col mondo dietro (frecce + A, B/Esc torna indietro),
+      Borsa a tasche (Strumenti, Ball, Strumenti base, MT; si sceglie su chi usare Pozione e Antidoto),
+      schermata titolo nuova con riepilogo della partita salvata. Le pagine Pokédex, Allenatore, Deposito,
+      Salva e Opzioni hanno la cornice nuova ma dentro sono ancora quelle vecchie (testo piccolo su PC).
+
+**Quarto giro di test (Jacopo, 15/11 pomeriggio) — fatto il 15/11**
+- [x] J1. Little Bar (Monticelli): non aveva né porta né interno. Ora è un bar come gli altri (si entra, cura).
+- [x] J2. Interni per i luoghi della città, stadio escluso (sarà la sede della Lega): chiesa, ospedale
+      (l'infermiera cura), cinema, pizzeria, stazione, palazzo, emporio del benzinaio. Una stanza per tipo
+      in `maps/interni.js`, assegnata da `interiorRules` in `data.js` (per `kind` o per nome); la porta va
+      al centro della facciata. 13 edifici in tutto, anche fuori Ascoli (le chiese di Maltignano e
+      Ripatransone). Arredate con i mobili che ci sono: banchi = panchine, altare = tavola, schermo = quadri.
+      Per farle belle serve un foglio dedicato (banchi di chiesa, altare, lettino d'ospedale, schermo, forno).
+      Il Teatro Ventidio resta col suo copione («chiuso per riprese»).
+- [x] J3. Angoli smussati: dove strade, piazze, asfalto, ghiaia, sabbia e travertino fanno angolo verso
+      l'erba, l'erba ne arrotonda la punta (`CORNER_ROWS` in `tiles.js`). Non tocca rive ed edifici.
+- [x] J4. Cambio Pokémon scelto dal giocatore: «X, rientra!», poi «Vai, Y!» con la Ball, e solo dopo la
+      mossa dell'avversario (prima partiva tutto insieme).
+- [x] J5. Pokémon esausto: non entra più da solo il primo disponibile, si sceglie dalla lista («Chi mandi in campo?»).
+- [x] J6. Alberi e arredo più in basso del giocatore lo coprono: si passa dietro le chiome, non sopra
+      (era il primo pezzo di B3, ordinamento per Y; per NPC e tetti resta da fare).
+- [x] J7. Via «ha un effetto speciale!». ⚠️ **Ruggito era catalogato come Boato** (sostituzione forzata)
+      invece che «abbassa l'Attacco»: corretto in `tools/moves-catalog.json` insieme ad altre 17 mosse il
+      cui effetto il motore sa già fare (calo/aumento di statistiche anche doppie, veleno, tentennamento,
+      colpi doppi, cura). Messaggi come nei giochi: «L'Attacco di Pito diminuisce!», «…aumenta di molto!».
+      Gli effetti sulle statistiche ora scattano anche sulle mosse che fanno danno (Acido non lo faceva).
+      Restano 55 mosse con effetto non previsto dal motore (confusione, Boato, Riposo, campi…): quelle di
+      stato dicono «Ma non ha effetto!», quelle d'attacco fanno solo danno. Da fare a parte.
+- [x] J8. Mossa nuova imparata salendo di livello: annunciata nel riquadro («X ha imparato Y!»); con
+      quattro mosse piene, dopo la scelta: «X ha dimenticato A e ha imparato B!» o «X non ha imparato B.».
 
 **Grafica e atmosfera**
 - [ ] I4. Foglio di camminata vero per Oliver (oggi i passi sono ricavati in codice dal fotogramma fermo).

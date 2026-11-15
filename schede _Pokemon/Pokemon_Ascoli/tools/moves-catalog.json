@@ -17,8 +17,11 @@
   },
   "adunanza": {
     "effect": {
-      "kind": "custom",
-      "id": "adunanza"
+      "kind": "stat",
+      "target": "self",
+      "stat": "defense",
+      "stages": 1,
+      "chance": 100
     },
     "description": "Aumenta la Difesa in proporzione ai turioni residui (mossa di Ca'ità)."
   },
@@ -66,8 +69,8 @@
   },
   "ascolto": {
     "effect": {
-      "kind": "custom",
-      "id": "heal_cure_ally"
+      "kind": "heal",
+      "ratio": 0.5
     },
     "description": "Cura la confusione e metà PS di un alleato (mossa di Ciccharizard)."
   },
@@ -179,8 +182,9 @@
   },
   "battuta": {
     "effect": {
-      "kind": "custom",
-      "id": "double_hit_boost"
+      "kind": "multi",
+      "min": 2,
+      "max": 2
     },
     "description": "Colpisce due volte, il secondo colpo raddoppiato se il primo va a segno (mossa di Carpentrap)."
   },
@@ -199,8 +203,9 @@
   },
   "black_mamba": {
     "effect": {
-      "kind": "custom",
-      "id": "black_mamba"
+      "kind": "status",
+      "status": "psn",
+      "chance": 100
     },
     "description": "Avvelena sempre gravemente, 30% di paralisi, poi abbassa l'Attacco Speciale di chi la usa (mossa di Notaiax)."
   },
@@ -356,8 +361,11 @@
   },
   "colonia": {
     "effect": {
-      "kind": "custom",
-      "id": "colonia"
+      "kind": "stat",
+      "target": "self",
+      "stat": "spDefense",
+      "stages": 1,
+      "chance": 100
     },
     "description": "Aumenta la Difesa Speciale di tutti gli altri Pef'na in squadra per due turni (mossa di Pef'na)."
   },
@@ -400,8 +408,14 @@
   },
   "comparanza": {
     "effect": {
-      "kind": "custom",
-      "id": "comparanza"
+      "kind": "stat",
+      "target": "self",
+      "stat": [
+        "attack",
+        "defense"
+      ],
+      "stages": 1,
+      "chance": 100
     },
     "description": "Aumenta Attacco e Difesa di chi la usa, e in doppio anche dell'alleato (mossa di Compadrone)."
   },
@@ -580,8 +594,11 @@
   },
   "doppioteam": {
     "effect": {
-      "kind": "custom",
-      "id": "evasion_up"
+      "kind": "stat",
+      "target": "self",
+      "stat": "evasion",
+      "stages": 1,
+      "chance": 100
     },
     "description": "Crea illusioni di sé stesso, aumentando l'elusione."
   },
@@ -866,8 +883,11 @@
   },
   "girandola": {
     "effect": {
-      "kind": "custom",
-      "id": "girandola"
+      "kind": "stat",
+      "target": "self",
+      "stat": "speed",
+      "stages": 1,
+      "chance": 100
     },
     "description": "Infligge danno, aumenta la Velocità di chi la usa e in doppio colpisce entrambi gli avversari (mossa di Fuocavallo)."
   },
@@ -903,8 +923,11 @@
   },
   "grugnito": {
     "effect": {
-      "kind": "custom",
-      "id": "grugnito"
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "speed",
+      "stages": -1,
+      "chance": 100
     },
     "description": "Abbassa la Velocità di tutti gli avversari senza infliggere danno (mossa di Cignalò)."
   },
@@ -916,8 +939,14 @@
   },
   "guscio_chiuso": {
     "effect": {
-      "kind": "custom",
-      "id": "guscio_chiuso"
+      "kind": "stat",
+      "target": "self",
+      "stat": [
+        "defense",
+        "spDefense"
+      ],
+      "stages": 2,
+      "chance": 100
     },
     "description": "Aumenta di due stadi Difesa e Difesa Speciale, ma impedisce ogni altra azione nel turno (mossa di Cozzetta)."
   },
@@ -959,8 +988,14 @@
   },
   "involucro": {
     "effect": {
-      "kind": "custom",
-      "id": "involucro"
+      "kind": "stat",
+      "target": "self",
+      "stat": [
+        "defense",
+        "spDefense"
+      ],
+      "stages": 2,
+      "chance": 100
     },
     "description": "Aumenta molto Difesa e Difesa Speciale e cura i problemi di stato, ma non si può agire nel turno successivo (mossa di Pretalien)."
   },
@@ -1035,8 +1070,9 @@
   },
   "marea_rossa": {
     "effect": {
-      "kind": "custom",
-      "id": "marea_rossa"
+      "kind": "status",
+      "status": "psn",
+      "chance": 40
     },
     "description": "Veleno il cui successo aumenta quanto meno PS restano a chi la usa (mossa della linea di Mucillax)."
   },
@@ -1196,8 +1232,14 @@
   },
   "posto_fisso": {
     "effect": {
-      "kind": "custom",
-      "id": "posto_fisso"
+      "kind": "stat",
+      "target": "self",
+      "stat": [
+        "defense",
+        "spDefense"
+      ],
+      "stages": 1,
+      "chance": 100
     },
     "description": "Aumenta Difesa e Difesa Speciale, ma impedisce la sostituzione forzata (mossa di Sciarpone)."
   },
@@ -1343,8 +1385,8 @@
   },
   "ripescaggio": {
     "effect": {
-      "kind": "custom",
-      "id": "ripescaggio"
+      "kind": "heal",
+      "ratio": 0.5
     },
     "description": "Cura metà PS di un alleato e i suoi problemi di stato, ma Bagnetto salta il turno successivo (mossa di Bagnetto)."
   },
@@ -1368,8 +1410,11 @@
   },
   "risata_sana": {
     "effect": {
-      "kind": "custom",
-      "id": "risata_sana"
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "accuracy",
+      "stages": -1,
+      "chance": 100
     },
     "description": "Abbassa la precisione avversaria; in doppio aumenta l'Attacco dell'alleato (mossa di Banconio)."
   },
@@ -1395,10 +1440,13 @@
   },
   "ruggito": {
     "effect": {
-      "kind": "custom",
-      "id": "roar"
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "attack",
+      "stages": -1,
+      "chance": 100
     },
-    "description": "Costringe il bersaglio a essere sostituito."
+    "description": "Un ruggito che abbassa l'Attacco del bersaglio."
   },
   "ruotafuoco": {
     "effect": {
@@ -1604,8 +1652,14 @@
   },
   "superpotere": {
     "effect": {
-      "kind": "custom",
-      "id": "superpower"
+      "kind": "stat",
+      "target": "self",
+      "stat": [
+        "attack",
+        "defense"
+      ],
+      "stages": -1,
+      "chance": 100
     },
     "description": "Un colpo fortissimo che abbassa Attacco e Difesa di chi lo usa."
   },
@@ -1766,8 +1820,8 @@
   },
   "vento_di_bandiera": {
     "effect": {
-      "kind": "custom",
-      "id": "vento_di_bandiera"
+      "kind": "flinch",
+      "chance": 30
     },
     "description": "Un colpo di taglio che può far indietreggiare l'avversario (mossa di Sbandiera)."
   },

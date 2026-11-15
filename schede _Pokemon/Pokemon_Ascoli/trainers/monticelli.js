@@ -3,7 +3,7 @@
     monticelli_campeggiatore_1: {
       map: 'monticelli', x: 16, y: 32, direction: 'right', sight: 4,
       class: 'campeggiatore', name: 'Gino', sprite: null,
-      team: [{ species: 'segaccio', level: 6 }, { species: 'venagrox', level: 5 }],
+      team: [{ species: 'pito', level: 5 }, { species: 'segaccio', level: 5 }],
       before: ['Sto campeggiando qui vicino all\'ospedale.', 'Ma un po\' di battaglia non guasta, dai!'],
       after: ['Che sacco de botte, madò.'],
       lost: 'Passa quando hai qualche livello in più, oh.',

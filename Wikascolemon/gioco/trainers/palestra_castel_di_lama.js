@@ -24,7 +24,7 @@
       team: [
         { species: 'zanzi', level: 9 },
         { species: 'mucillax', level: 10 },
-        { species: 'pozza', level: 12 }
+        { species: 'pozza', level: 11 }
       ],
       before: [
         'Il Free Spirit ha chiuso, mo\' qui comando io.',
