@@ -104,6 +104,7 @@
   let nextMoveAt = 0;   // prima di questo istante non parte un nuovo passo (giro sul posto, urto)
   let running = false;  // Maiusc o B tenuto premuto
   let rustle = null;    // fruscio dell'erba alta nella cella appena calpestata
+  let justArrived = false; // appena cambiata mappa: finché il tasto resta giù non si entra in un altro passaggio
   const WALK_MS = 250;  // durata di un passo da una cella: 4 celle al secondo
   const RUN_MS = 130;   // di corsa: quasi 8 celle al secondo
   let toastTimer = 0;
@@ -311,6 +312,9 @@
     const vector = directions[direction];
     const targetX = player.x + vector.x;
     const targetY = player.y + vector.y;
+    // Chi arriva tenendo premuto il tasto e ha subito davanti il passaggio di ritorno (la corriera,
+    // uno zerbino) non deve rimbalzare indietro: per rientrarci deve rilasciare e ripremere.
+    if (justArrived && (currentMap.transitions || []).some(item => pointInRect(targetX, targetY, item))) return;
     if (isBlocked(currentMap, targetX, targetY)) {
       // camminare contro l'edificio dalla cella davanti alla porta = entrare
       const doorway = direction === 'up' && (currentMap.buildings || []).find(item => item.door && item.door.x === player.x && item.door.y === player.y && pointInRect(targetX, targetY, item));
@@ -388,6 +392,8 @@
     player.renderX = player.x;
     player.renderY = player.y;
     currentMap = maps[player.map];
+    justArrived = heldDirections.length > 0;
+    nextMoveAt = performance.now() + 250; // un attimo di pausa all'arrivo
     initNpcs();
     updateLocation();
     showLocation(currentMap.name);
@@ -922,6 +928,7 @@
       enemyTeam: [wild],
       enemyIndex: 0,
       activeIndex,
+      participants: new Set([activeIndex]),
       playerStages: Battle.freshStages(),
       enemyStages: Battle.freshStages(),
       runAttempts: 0,
@@ -951,6 +958,7 @@
         enemyTeam,
         enemyIndex: 0,
         activeIndex,
+        participants: new Set([activeIndex]),
         playerStages: Battle.freshStages(),
         enemyStages: Battle.freshStages(),
         runAttempts: 0,
@@ -1116,42 +1124,53 @@
   }
 
   async function handleEnemyFaint() {
-    const winner = activeMonster();
-    const gain = Battle.expGain(battle.wild, { trainer: battle.kind === 'trainer', participants: 1 });
+    // L'esperienza va a tutti i Pokémon ancora in piedi che sono scesi in campo contro questo
+    // avversario, divisa in parti uguali (come nei giochi di terza generazione).
+    const active = activeMonster();
+    const sharers = [...battle.participants].map(index => save.team[index]).filter(monster => monster && monster.hp > 0);
+    if (!sharers.includes(active) && active.hp > 0) sharers.push(active);
+    const gain = Battle.expGain(battle.wild, { trainer: battle.kind === 'trainer', participants: Math.max(1, sharers.length) });
     playSound('faint');
-    ui.battleMessage.textContent = `${data.species[battle.wild.species].name} è esausto! ${data.species[winner.species].name} ottiene ${gain} ESP.`;
+    ui.battleMessage.textContent = `${data.species[battle.wild.species].name} è esausto!`;
     renderBattle();
-    await sleep(700);
-    const gainResult = Battle.gainExperience(winner, gain, { map: player.map, hasItem, mapHasWater: mapHasWater() });
-    // la barra dell'esperienza si riempie sotto gli occhi: fino in fondo se si sale di livello,
-    // poi riparte dal nuovo livello
-    playSound('exp');
-    if (gainResult.levelsGained > 0) {
-      ui.allyExp.style.width = '100%';
+    await sleep(600);
+    for (const monster of [active, ...sharers.filter(other => other !== active)]) {
+      if (!sharers.includes(monster)) continue;
+      const name = () => data.species[monster.species].name;
+      ui.battleMessage.textContent = `${name()} ottiene ${gain} ESP.`;
+      const gainResult = Battle.gainExperience(monster, gain, { map: player.map, hasItem, mapHasWater: mapHasWater() });
+      playSound('exp');
+      if (monster === active) {
+        // la barra si riempie sotto gli occhi: fino in fondo se si sale di livello, poi riparte
+        if (gainResult.levelsGained > 0) {
+          ui.allyExp.style.width = '100%';
+          await sleep(550);
+          ui.allyExp.style.transition = 'none';
+          ui.allyExp.style.width = '0%';
+          void ui.allyExp.offsetWidth;
+          ui.allyExp.style.transition = '';
+        }
+        renderBattle();
+      }
       await sleep(550);
-      ui.allyExp.style.transition = 'none';
-      ui.allyExp.style.width = '0%';
-      void ui.allyExp.offsetWidth;
-      ui.allyExp.style.transition = '';
+      if (gainResult.levelsGained > 0) {
+        playSound('levelup');
+        ui.battleMessage.textContent = `${name()} è salito al livello ${monster.level}!`;
+        renderBattle();
+        await sleep(700);
+      }
+      if (gainResult.evolvedInto) {
+        save.dex.seen[gainResult.evolvedInto] = true;
+        save.dex.caught[gainResult.evolvedInto] = true;
+        ui.battleMessage.textContent = `Evoluzione: ora è ${data.species[gainResult.evolvedInto].name}!`;
+        renderBattle();
+        await sleep(700);
+      }
+      for (const moveId of gainResult.learned) {
+        await handleLevelUpLearn(monster, moveId);
+      }
     }
-    renderBattle();
-    await sleep(550);
-    if (gainResult.levelsGained > 0) {
-      playSound('levelup');
-      ui.battleMessage.textContent = `${data.species[winner.species].name} è salito al livello ${winner.level}!`;
-      renderBattle();
-      await sleep(700);
-    }
-    if (gainResult.evolvedInto) {
-      save.dex.seen[gainResult.evolvedInto] = true;
-      save.dex.caught[gainResult.evolvedInto] = true;
-      ui.battleMessage.textContent = `Evoluzione: ora è ${data.species[gainResult.evolvedInto].name}!`;
-      renderBattle();
-      await sleep(700);
-    }
-    for (const moveId of gainResult.learned) {
-      await handleLevelUpLearn(winner, moveId);
-    }
+    battle.participants = new Set([battle.activeIndex]); // contro il prossimo avversario si riparte da chi è in campo
     autoSave();
 
     battle.enemyIndex += 1;
@@ -1207,6 +1226,7 @@
       return;
     }
     battle.activeIndex = next;
+    battle.participants.add(next);
     battle.playerStages = Battle.freshStages();
     ui.battleMessage.textContent = `Avanti, ${data.species[activeMonster().species].name}!`;
     renderBattle();
@@ -1341,6 +1361,7 @@
   function switchMonster(index) {
     if (!battle || index === battle.activeIndex || save.team[index].hp <= 0) return;
     battle.activeIndex = index;
+    battle.participants.add(index);
     battle.playerStages = Battle.freshStages();
     ui.battleMessage.textContent = `Avanti, ${data.species[activeMonster().species].name}!`;
     renderBattle();
@@ -2103,6 +2124,7 @@
   function removeHeld(direction) {
     const index = heldDirections.indexOf(direction);
     if (index !== -1) heldDirections.splice(index, 1);
+    if (!heldDirections.length) justArrived = false;
   }
 
   document.addEventListener('keydown', event => {
@@ -2132,7 +2154,7 @@
     const direction = keyDirections[event.code];
     if (direction) removeHeld(direction);
   });
-  window.addEventListener('blur', () => { heldDirections.length = 0; running = false; });
+  window.addEventListener('blur', () => { heldDirections.length = 0; running = false; justArrived = false; });
 
   document.querySelectorAll('[data-direction]').forEach(button => {
     const direction = button.dataset.direction;
@@ -2173,6 +2195,36 @@
     const button = event.target.closest('[data-tab]');
     if (button) renderMenu(button.dataset.tab);
   });
+
+  // Aggancio per i test automatici (tools/gioca.mjs): esiste solo aprendo il gioco con `?debug=1`.
+  if (typeof location !== 'undefined' && /[?&]debug=1/.test(location.search || '')) {
+    window.PokemonAscoliDebug = {
+      state: () => ({
+        mode, map: player.map, x: player.x, y: player.y, direction: player.direction, moving: !!movement, approaching: approachingTrainerId,
+        battle: battle ? { kind: battle.kind, enemy: battle.wild.species, enemyHp: battle.wild.hp, ally: activeMonster().species, allyHp: activeMonster().hp } : null,
+        flags: save ? Object.keys(save.flags).filter(key => save.flags[key]) : [], badges: save ? save.badges : [], money: save ? save.money : 0,
+        team: save ? save.team.map(m => ({ species: m.species, level: m.level, hp: m.hp, exp: m.exp })) : [], storage: save ? save.storage.length : 0,
+        items: save ? { ...save.items } : {}
+      }),
+      teleport(map, x, y, direction) {
+        movement = null;
+        approachingTrainerId = null;
+        player = { map, x, y, direction: direction || 'down', renderX: x, renderY: y, frame: 0 };
+        currentMap = maps[map];
+        initNpcs();
+        updateLocation();
+      },
+      blocked: (x, y) => isBlocked(currentMap, x, y),
+      tallGrass: (x, y) => isTallGrass(currentMap, x, y),
+      npcs: () => visibleRuntimeNpcs().map(npc => ({ name: npc.name, x: npc.x, y: npc.y })),
+      trainers: () => activeTrainersOnMap().map(t => ({ id: t.id, x: t.x, y: t.y, direction: t.direction, sight: t.sight, defeated: !!save.flags[Events.flagKeys.trainerFlag(t.id)] })),
+      setFlags(flags, badges) { flags.forEach(flag => { save.flags[flag] = true; }); if (badges) save.badges = badges; },
+      clearFlag(flag) { delete save.flags[flag]; },
+      setTeam(list) { save.team = list.map(entry => Battle.createMonster(entry.species, entry.level)); if (list.some(entry => entry.hp)) save.team.forEach((monster, index) => { if (list[index].hp) monster.hp = list[index].hp; }); },
+      setItems(items) { Object.assign(save.items, items); },
+      heal() { save.team.forEach(restoreMonster); }
+    };
+  }
 
   const existingSave = loadSave();
   ui.continueButton.disabled = !existingSave;

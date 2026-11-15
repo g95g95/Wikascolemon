@@ -33,14 +33,17 @@
     }]
   });
 
-  // Casa: per ora con i mobili che ci sono (tavolo, credenza, frigo, piante); letto, divano e cucina
-  // arriveranno con un foglio di arredi di casa.
+  // Casa: cucina a destra, camino al centro, letto a sinistra, salotto in basso a destra.
   window.PokemonAscoliMaps.interno_casa = room({
-    name: 'Casa', floor: 'pavimento_legno',
+    name: 'Casa', floor: 'pavimento_cotto',
     decor: [
-      d(3, 1, 'quadro'), d(10, 1, 'quadro'),
-      d(1, 2, 'scaffale_bottiglie'), d(12, 2, 'frigo'), d(6, 2, 'pianta'),
-      d(6, 5, 'tavolo_sedie'), d(1, 7, 'pianta'), d(13, 8, 'pianta'),
+      d(3, 1, 'finestra_tende'), d(8, 1, 'quadro'),
+      d(1, 2, 'libreria'), d(3, 2, 'armadio'), d(6, 2, 'camino'), d(10, 2, 'fornello'), d(11, 2, 'lavello'), d(13, 2, 'pendola'),
+      d(1, 5, 'letto'), d(3, 5, 'comodino'),
+      d(5, 5, 'sedia'), d(6, 5, 'tavola'), d(8, 5, 'sedia'),
+      d(13, 5, 'tv'),
+      d(10, 7, 'tappeto'), d(10, 8, 'divano'), d(13, 8, 'poltrona'),
+      d(1, 8, 'pianta'),
       d(7, 9, 'zerbino')
     ],
     npcs: [{

@@ -220,6 +220,15 @@ senza toccare codice né mappe. `tools/build-tileset.py` (Python + Pillow) gener
   `color` dell'edificio), porta per `kind` (chiesa, attività, altro) su `door`, finestre e vetrine.
   Senza `oggetti.png` restano i vecchi edifici dipinti in codice.
 
+## Giocatore automatico (`tools/gioca.mjs`)
+`node tools/gioca.mjs [passaggi porte npc allenatori selvatici menu]` apre `index.html?debug=1` in
+Chrome senza finestra e gioca davvero, con i tasti: attraversa ogni passaggio, entra ed esce da ogni
+porta, parla con ogni NPC, sfida ogni allenatore (entrando nel suo campo visivo), cerca incontri
+nell'erba alta e controlla che sulla strada non capitino, cattura, perde, cambia Pokémon in lotta.
+Con `?debug=1` `game.js` espone `window.PokemonAscoliDebug` (stato, teletrasporto, squadra, flag):
+serve solo a questo e non esiste nel gioco normale. Trova i blocchi e i giri a vuoto che i test sui
+dati non vedono; non giudica grafica e suono.
+
 ## Test
 `node tests/regression.mjs` (dati e mappe) + `node tests/battle.test.mjs` + `node tests/events.test.mjs`
 + `node tests/trainers.test.mjs` + `node tests/flags.test.mjs` (copertura flag/badge/item nelle

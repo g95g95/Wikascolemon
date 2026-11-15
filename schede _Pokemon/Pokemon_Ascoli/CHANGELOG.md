@@ -16,6 +16,17 @@ Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco
 - **Case visitabili.** Si entra in tutte le «Casa…»: una stanza con la padrona di casa. Per ora è
   arredata con i mobili che ci sono; letto, divano e cucina arriveranno con un foglio dedicato.
 - Le case comuni non hanno più il cartello col nome; i bar riconosciuti dal nome hanno l'insegna.
+- **Case arredate** con il nuovo foglio: letto, camino, cucina, tavola, libreria, armadio, divano,
+  poltrona, televisore, pendola, pavimento in cotto.
+- **Esperienza divisa.** Se durante una lotta cambi Pokémon, l'esperienza va in parti uguali a tutti
+  quelli ancora in piedi che sono scesi in campo contro quell'avversario (prima la prendeva solo
+  l'ultimo).
+- **Corriera per Ripatransone**: arrivando con il tasto ancora premuto si rimbalzava subito indietro,
+  in entrambi i sensi. Ora dopo un cambio di mappa c'è un attimo di pausa e, finché non rilasci il
+  tasto, non rientri in un passaggio.
+- **Giocatore automatico** (`tools/gioca.mjs`): percorre il gioco da solo e segnala i difetti. A
+  questo giro ha provato 39 passaggi, 28 porte, 70 personaggi, 40 allenatori, incontri in ogni
+  quartiere, cattura, sconfitta ed esperienza divisa. Ha trovato il difetto della corriera; il resto passa.
 
 ## 14/11/2026 (tarda notte) — Dopo il secondo test di Jacopo
 

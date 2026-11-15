@@ -132,6 +132,10 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
       ConfigV6/TrainersV5. Oltre non si può con tagli dritti: servirebbe ridisegnare i quartieri.
 - [x] H5. Case visitabili (`interno_casa`, `interior: 'house'` assegnato in `data.js` alle «Casa…»).
       Manca il foglio di arredi di casa per arredarle davvero.
+- [x] H6. Case arredate (foglio `interni-2.png`); esperienza divisa fra i partecipanti (`battle.participants`);
+      niente rimbalzo sui passaggi (`justArrived`).
+- [x] H7. `tools/gioca.mjs`: giocatore automatico via CDP, aggancio `PokemonAscoliDebug` con `?debug=1`.
+      Da lanciare dopo ogni giro di modifiche a mappe o motore. Non controlla la resa visiva né l'audio.
 - ⚠️ Nota tecnica: negli script lanciati da shell un `\b` dentro una stringa Python arriva come
   backspace (0x08) e rompe le regex in silenzio. Per scrivere regex nei sorgenti usare Edit.
 

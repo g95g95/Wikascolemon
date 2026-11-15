@@ -45,7 +45,16 @@
     scaffale_riviste: { name: 'Scaffale di riviste', blocks: true, span: 2 }, sgabello: { name: 'Sgabello', blocks: true },
     tavolo_sedie: { name: 'Tavolo con sedie', blocks: true, span: 2 }, frigo: { name: 'Frigo', blocks: true, span: 2 },
     pianta: { name: 'Pianta', blocks: true }, quadro: { name: 'Quadro', blocks: false, span: 2 },
-    jukebox: { name: 'Jukebox', blocks: true, span: 2 }, zerbino: { name: 'Zerbino', blocks: false }
+    jukebox: { name: 'Jukebox', blocks: true, span: 2 }, zerbino: { name: 'Zerbino', blocks: false },
+    // case
+    letto: { name: 'Letto', blocks: true, span: 2 }, divano: { name: 'Divano', blocks: true, span: 2 },
+    poltrona: { name: 'Poltrona', blocks: true, span: 2 }, tappeto: { name: 'Tappeto', blocks: false, span: 2 },
+    fornello: { name: 'Fornello', blocks: true }, lavello: { name: 'Lavello', blocks: true, span: 2 },
+    tavola: { name: 'Tavola apparecchiata', blocks: true, span: 2 }, sedia: { name: 'Sedia', blocks: true },
+    libreria: { name: 'Libreria', blocks: true, span: 2 }, armadio: { name: 'Armadio', blocks: true, span: 2 },
+    tv: { name: 'Televisore', blocks: true, span: 2 }, comodino: { name: 'Comodino', blocks: true },
+    camino: { name: 'Camino', blocks: true, span: 2 }, pendola: { name: 'Pendola', blocks: true },
+    finestra_tende: { name: 'Finestra con tende', blocks: false, span: 2 }
   };
 
   function decorBlocks(map, x, y) {
@@ -136,7 +145,23 @@
       pianta: [160, 128, 16, 22],
       quadro: [176, 128, 24, 20],
       jukebox: [200, 128, 23, 32],
-      porta_interna: [223, 128, 16, 21]
+      porta_interna: [223, 128, 16, 21],
+      letto: [0, 160, 22, 32],
+      divano: [22, 160, 32, 23],
+      poltrona: [54, 160, 23, 24],
+      tappeto: [77, 160, 29, 24],
+      fornello: [106, 160, 16, 22],
+      lavello: [122, 160, 26, 24],
+      tavola: [148, 160, 32, 24],
+      sedia: [180, 160, 13, 22],
+      libreria: [193, 160, 25, 32],
+      armadio: [218, 160, 24, 32],
+      tv: [0, 192, 20, 28],
+      comodino: [20, 192, 14, 22],
+      camino: [34, 192, 31, 32],
+      pendola: [65, 192, 14, 28],
+      finestra_tende: [79, 192, 27, 24],
+      pavimento_cotto: [106, 192, 32, 32]
     // </OBJECTS>
     };
 

@@ -48,6 +48,16 @@ SHEETS = [
         (3, 0, 'pianta', 16, 24, False), (3, 1, 'quadro', 24, 20, False),
         (3, 2, 'jukebox', 24, 32, False), (3, 3, 'porta_interna', 16, 24, False),
     ]),
+    ('interni-2.png', 4, 4, [
+        (0, 0, 'letto', 24, 32, False), (0, 1, 'divano', 32, 24, False),
+        (0, 2, 'poltrona', 24, 24, False), (0, 3, 'tappeto', 32, 24, False),
+        (1, 0, 'fornello', 16, 24, False), (1, 1, 'lavello', 32, 24, False),
+        (1, 2, 'tavola', 32, 24, False), (1, 3, 'sedia', 14, 22, False),
+        (2, 0, 'libreria', 30, 32, False), (2, 1, 'armadio', 26, 32, False),
+        (2, 2, 'tv', 28, 28, False), (2, 3, 'comodino', 16, 22, False),
+        (3, 0, 'camino', 32, 32, False), (3, 1, 'pendola', 14, 32, False),
+        (3, 2, 'finestra_tende', 28, 24, False), (3, 3, 'pavimento_cotto', 32, 32, True),
+    ]),
 ]
 
 
