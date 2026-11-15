@@ -296,6 +296,45 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
 - [ ] K25. Mappe ancora più raccolte? Servirebbe ridisegnare a mano i quartieri fitti (= I16).
 - [ ] K26. Nando davanti al bar di Bobby: non deve bloccare la porta (= G6).
 
+## L. Notate da me provando il gioco (15/11/2026 sera) — da decidere con Jacopo
+**Regole di gioco che non fanno quello che promettono**
+- [ ] L1. Le MT non si possono usare: le palestre danno MT Velenospina e MT Idrogetto, ma nessun codice le
+      insegna a un Pokémon. Restano in Borsa.
+- [ ] L2. Evoluzioni con strumento: scattano solo salendo di livello con lo strumento in Borsa, non «usando»
+      lo strumento sul Pokémon. Dalla Borsa non si capisce.
+- [ ] L3. Evoluzioni per amicizia: l'amicizia sale di 1 solo a ogni livello e ne servono 20. Tifotto →
+      Sciarpone richiede quindi 20 livelli: di fatto nella demo non succede.
+- [ ] L4. Evoluzioni con condizioni speciali (18 specie): luogo e acqua funzionano; di notte, con una certa
+      specie in squadra, conoscendo una mossa sonora o sconfiggendo una specie sono bloccate; «al
+      tramonto» viene ignorato. Deciso il 27/09 che ora e calendario vanno nel motore: manca ancora.
+- [ ] L5. Dopo un'evoluzione non si controllano le mosse che la nuova specie impara a quel livello.
+- [ ] L6. Mosse «Evo» sulla forma base: `build-dex.mjs` le mette al livello 1 quando non trova l'evoluzione
+      d'ingresso (28 mosse: Zanzì parte con Velenoshock; l'elenco è negli avvisi del generatore).
+- [ ] L7. Borsa in lotta: è ancora la lista vecchia (Ball, Pozione, Antidoto) e la Pozione va solo a chi è in campo.
+
+**Bilanciamento**
+- [ ] L8. Selvatici di Monticelli: Venagrox (livello 10), Segaccio e Banconio a due passi dalla partenza,
+      con statistiche da fine gioco. Si possono anche catturare subito.
+- [ ] L9. Allenatori con Pokémon evoluti sotto il livello d'evoluzione (Mucillax al 9 in palestra).
+
+**Schermate**
+- [ ] L10. Pokédex: mostra tutte le 149 specie, comprese quelle fuori dalla demo, e la sagoma di quelle mai
+      viste (si indovina la forma). Limitarlo alla demo? Nascondere le sagome?
+- [ ] L11. L'etichetta dello stato (VEL, PAR…) compare un messaggio prima dell'annuncio.
+- [ ] L12. In lotta la descrizione della mossa resta nel riquadro dei messaggi anche quando si esce dal menu mosse.
+- [ ] L13. Schermata titolo: le frecce non spostano il cursore fra le voci (solo Tab o il tocco).
+- [ ] L14. Tasto A del telefono: nei menu non seleziona la voce col cursore (si deve toccare la voce).
+- [ ] L15. Interni condivisi: tutte le chiese sono la stessa stanza e in alto c'è scritto «Chiesa», non il
+      nome della chiesa in cui si è entrati. Vale per ogni tipo di interno.
+- [ ] L16. Cambio di mappa: c'è solo la dissolvenza in entrata, non quella in uscita.
+
+**Attrezzi**
+- [ ] L17. `gioca.mjs` ora impiega circa 25 minuti (le lotte sono raccontate passo per passo): serve una
+      modalità veloce per le prove automatiche.
+- [ ] L18. `gioca.mjs` clicca i bottoni anche se coperti: per questo non aveva visto il riquadro dietro la
+      lotta (K0). Dovrebbe controllare che il bottone sia davvero in cima allo schermo.
+- [ ] L19. Git avvisa a ogni commit sui fine riga (LF/CRLF): un `.gitattributes` lo zittisce.
+
 ## D. Suono (dopo)
 - [ ] D1. Effetti chiptune e 3-4 temi (città, percorso, lotta, vittoria) generati in WebAudio.
 
