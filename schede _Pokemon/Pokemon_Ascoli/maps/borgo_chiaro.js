@@ -7,7 +7,8 @@
       { species: 'puledrotto', minLevel: 8, maxLevel: 8, weight: 30 },
       { species: 'ciuci', minLevel: 8, maxLevel: 9, weight: 20 }
     ],
-    roads: [rect(0, 29, 57, 3), rect(46, 0, 3, 50), rect(7, 0, 3, 35)], waters: [], bridges: [], plazas: [],
+    // gli ultimi due rettangoli chiudono una radura a nord-est: ci si entra solo dal varco in (54, 8)
+    roads: [rect(0, 29, 57, 3), rect(46, 0, 3, 50), rect(7, 0, 3, 35), rect(49, 2, 1, 6, 'albero'), rect(49, 8, 5, 1, 'albero')], waters: [], bridges: [], plazas: [],
     buildings: [building(12, 7, 24, 16, 'Stadio Cino e Lillo Del Duca', '#a7a9a4', 'stadio')],
     labels: [{ x: 31, y: 28, text: 'STADIO' }],
     encounterZones: [zone(11, 4, 40, 22, 0.1, 'default')],

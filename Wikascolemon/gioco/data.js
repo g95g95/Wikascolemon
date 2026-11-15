@@ -89,7 +89,9 @@
     building.interior = rule[1];
   }));
   Object.entries(maps).forEach(([mapId, map]) => (map.buildings || []).forEach(building => {
-    const roomId = rooms[building.interior];
+    // le case non sono tutte uguali: tre stanze, scelte dalla posizione dell'edificio (sempre la stessa per la stessa casa)
+    const houses = ['interno_casa', 'interno_casa_2', 'interno_casa_3'];
+    const roomId = building.interior === 'house' ? houses[(building.x * 7 + building.y * 3) % houses.length] : rooms[building.interior];
     if (!roomId || !maps[roomId] || !building.door || building.script) return;
     building.script = [{ warp: { map: roomId, x: 7, y: 8, direction: 'up' } }];
     const exit = maps[roomId].transitions[0];

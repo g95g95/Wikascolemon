@@ -269,7 +269,8 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
       Jacopo si è sbloccato): ora vale solo da un sottomenu con il suo «Indietro».
 
 **Posso farle da solo, dopo**
-- [ ] K8. Stanze diverse per le case (= I10).
+- [x] K8. (16/11) Tre case diverse (`interno_casa`, `_2` dei nonni, `_3` del ragazzo), scelte dalla posizione
+      dell'edificio in `data.js`: la stessa casa apre sempre la stessa stanza.
 - [ ] K9. Mappa della regione disegnata (= I12).
 - [ ] K10. Passare dietro i tetti degli edifici (= B3). Alberi e personaggi: fatto, vedi K0c.
 - [ ] K11. Ombra sotto gli sprite, fiori animati (= B4).
@@ -337,8 +338,13 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
       ×2,2. Con 200 partite: Hills 95% / 54% / 95% (Basilino / Puledrotto / Tuffito), Riccio 98% / 53% /
       77%; livello più alto 16-17 e 22-25. Puledrotto è la «modalità difficile»: Hills ha un Roccia e
       Riccio è tutto Acqua. Da decidere insieme a K22.
-- [ ] L9. Allenatori con Pokémon evoluti sotto il livello d'evoluzione (Mucillax al 9 in palestra).
-
+- [x] L9. (16/11, Jacopo: «Mucillax correggilo») In palestra a Castel di Lama Mucillax (evolve dal 18) era al
+      livello 9-10: ora c'è Alghetta, la sua forma base, agli stessi livelli. ⚠️ Restano sotto il livello
+      d'evoluzione, non toccati: il Pozza di Hills (11, evolve al 21), l'Ombrellone di Riccio (20, evolve
+      al 22) e, fra i selvatici, Caìta a Castel di Lama (11-12, evolve al 20) e Scoglierax sulla costa
+      (18-19, evolve al 30).
+      Bilanciamento dopo il cambio (200 partite): Hills 98% / 70% / 98% (Basilino / Puledrotto / Tuffito),
+      Riccio 98% / 44% / 58%. Riccio è sceso perché Alghetta dà meno esperienza di Mucillax.
 **Schermate**
 - [x] L10. (15/11) Pokédex: l'elenco arriva fino all'ultimo numero incontrato; chi non si è mai visto è una
       riga vuota, senza sagoma.
@@ -347,10 +353,10 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
 - [x] L13. (15/11) Schermata titolo: su e giù spostano il cursore fra le voci, Invio/A sceglie.
 - [x] L14. (15/11) Telefono: nel titolo e nella lista del menu la croce sposta il cursore e A sceglie la voce.
       Dentro le pagine (Borsa, Squadra…) si tocca ancora la voce.
-- [ ] L15. Interni condivisi: tutte le chiese sono la stessa stanza e in alto c'è scritto «Chiesa», non il
-      nome della chiesa in cui si è entrati. Vale per ogni tipo di interno.
-- [ ] L16. Cambio di mappa: c'è solo la dissolvenza in entrata, non quella in uscita.
-
+- [x] L15. (16/11) Nelle stanze condivise in alto c'è il nome dell'edificio da cui si è entrati
+      (`save.roomName`, `locationName()`): «Chiesa dell'Immacolata», «Little Bar», «Casa popolare».
+- [x] L16. (16/11) Dissolvenza anche in uscita: lo schermo va a nero in 170 ms, a nero pieno si cambia mappa
+      (`changeMap`), poi la nuova affiora.
 **Attrezzi**
 - [x] L17. (15/11) `gioca.mjs` apre il gioco con `?debug=1&veloce=8`: passi, attese di lotta e dialoghi
       durano un ottavo (`pace()` in game.js). `--lento` per la velocità vera.
@@ -369,6 +375,14 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
       resta ferma. Piedi di tutti sulla stessa riga (prima Oliver stava 3 pixel più in basso degli NPC).
       Da giudicare giocando. Se non basta: rifare il foglio con un passo esagerato (ginocchio alto, gambe
       ben aperte, braccia larghe) e polvere quando corre.
+
+## N. Decisioni di Jacopo del 16/11
+- [x] N1. «Segaccio lascialo solo a un allenatore, difficile da raggiungere»: resta al ciclista Renzo di
+      Borgo Chiaro (Puledrotto 8, Segaccio 9), spostato in una radura a nord-est chiusa da due file di
+      alberi, con un solo varco in (54, 8). Gino a Monticelli ora ha Pito 5 e Tamburino 6.
+- [x] N2. `gioca.mjs`: il passo del giocatore automatico rilascia il tasto appena il passo parte. Tenendolo
+      fino in fondo ne concatenava un secondo, e a velocità di prova Oliver usciva dalla chiazza d'erba
+      («400 passi e nessun incontro», ogni volta su una mappa diversa: falso allarme).
 
 ## D. Suono (dopo)
 - [ ] D1. Effetti chiptune e 3-4 temi (città, percorso, lotta, vittoria) generati in WebAudio.

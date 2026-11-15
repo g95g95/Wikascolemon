@@ -2,6 +2,16 @@
 
 Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco/configuratore.html`
 
+## 16/11/2026 — Interni, case, allenatori
+
+- **Il nome giusto negli interni**: in alto leggi «Chiesa dell'Immacolata» o «Little Bar», non più «Chiesa» o «Bar».
+- **Dissolvenza anche in uscita**: lo schermo va a nero prima di cambiare mappa, poi la nuova affiora.
+- **Tre case diverse**: oltre a quella di prima, la casa dei nonni e la stanza di un ragazzo.
+- **Segaccio** lo ha un solo allenatore: il ciclista di Borgo Chiaro, che ora si allena in una radura
+  nascosta dietro gli alberi, a nord-est. Gino a Monticelli ha Pito e Tamburino.
+- **Palestra di Castel di Lama**: al posto di Mucillax, che a quel livello non potrebbe esistere, c'è Alghetta.
+- Candelabri nel Palazzo dei Capitani.
+
 ## 15/11/2026 — Personaggi
 
 - **Via la macchia viola sotto il DJ**: il suo foglio aveva le viste fuori dalle celle. Riallineati tutti i

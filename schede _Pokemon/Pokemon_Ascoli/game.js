@@ -101,6 +101,7 @@
   let player = { ...data.start, renderX: data.start.x, renderY: data.start.y, frame: 0 };
   let movement = null;
   let battle = null;
+  let changingMap = false; // dissolvenza di uscita in corso: per un attimo non ci si muove
   let nextMoveAt = 0;   // prima di questo istante non parte un nuovo passo (giro sul posto, urto)
   let running = false;  // Maiusc o B tenuto premuto
   let rustle = null;    // fruscio dell'erba alta nella cella appena calpestata
@@ -220,7 +221,7 @@
     initNpcs();
     ui.titleScreen.hidden = true;
     mode = 'world';
-    showLocation(currentMap.name);
+    showLocation(locationName());
     updateLocation();
     autoSave();
     startMusic();
@@ -315,7 +316,7 @@
 
   // chained = il passo segue subito il precedente (tasto tenuto premuto): niente giro sul posto.
   function movePlayer(direction, now = performance.now(), chained = false) {
-    if (mode !== 'world' || movement || approachingTrainerId) return;
+    if (mode !== 'world' || movement || approachingTrainerId || changingMap) return;
     if (!chained && player.direction !== direction) {
       // da fermi, un colpetto in un'altra direzione gira soltanto; se il tasto resta giù si parte
       player.direction = direction;
@@ -401,21 +402,22 @@
     }
     // `back`: si torna alla porta da cui si è entrati, se la si conosce
     const back = exit.back && save.returnSpot && maps[save.returnSpot.map] ? save.returnSpot : null;
-    player.map = back ? back.map : exit.to;
-    player.x = back ? back.x : exit.spawnX;
-    player.y = back ? back.y : exit.spawnY;
-    if (exit.direction) player.direction = exit.direction;
-    player.renderX = player.x;
-    player.renderY = player.y;
-    currentMap = maps[player.map];
-    justArrived = heldDirections.length > 0;
-    nextMoveAt = performance.now() + pace(350); // un attimo di pausa all'arrivo, il tempo della dissolvenza
-    fadeInMap();
-    initNpcs();
-    updateLocation();
-    showLocation(currentMap.name);
     playSound('transition');
-    autoSave();
+    changeMap(() => {
+      player.map = back ? back.map : exit.to;
+      player.x = back ? back.x : exit.spawnX;
+      player.y = back ? back.y : exit.spawnY;
+      if (exit.direction) player.direction = exit.direction;
+      player.renderX = player.x;
+      player.renderY = player.y;
+      currentMap = maps[player.map];
+      justArrived = heldDirections.length > 0;
+      nextMoveAt = performance.now() + pace(300); // un attimo di pausa all'arrivo, il tempo della dissolvenza
+      initNpcs();
+      updateLocation();
+      showLocation(locationName());
+      autoSave();
+    });
     return true;
   }
 
@@ -494,7 +496,7 @@
 
   function interact() {
     // a metà passo A non fa nulla: altrimenti un cambio di mappa partiva con il passo ancora in corso
-    if (mode !== 'world' || movement) return;
+    if (mode !== 'world' || movement || changingMap) return;
     const vector = directions[player.direction];
     const x = player.x + vector.x;
     const y = player.y + vector.y;
@@ -541,6 +543,7 @@
     playSound('confirm');
     // da dove si entra: ci si torna uscendo dagli interni condivisi (bar, tabacchi)
     save.returnSpot = { map: player.map, x: building.door.x, y: building.door.y };
+    save.roomName = building.name; // le stanze condivise mostrano il nome di questo edificio
     runScript(buildingScript(building));
   }
 
@@ -673,6 +676,10 @@
     },
     async warp(dest) {
       movement = null; // un passo rimasto a metà riporterebbe il giocatore alle coordinate della mappa di prima
+      changingMap = true;
+      fadeMap();
+      await sleep(FADE_OUT_MS);
+      changingMap = false;
       player.map = dest.map;
       player.x = dest.x;
       player.y = dest.y;
@@ -680,10 +687,9 @@
       player.renderX = player.x;
       player.renderY = player.y;
       currentMap = maps[dest.map];
-      fadeInMap();
       initNpcs();
       updateLocation();
-      showLocation(currentMap.name);
+      showLocation(locationName());
       autoSave();
     },
     async toast(text) {
@@ -1621,7 +1627,7 @@
     initNpcs();
     endBattle('lost');
     updateLocation();
-    showLocation(currentMap.name);
+    showLocation(locationName());
     showToast('La tua squadra è stata curata.');
     autoSave();
   }
@@ -2166,16 +2172,31 @@
     toastTimer = setTimeout(() => { ui.toast.hidden = true; }, 2200);
   }
 
+  // Il nome del posto in cui si è. Le stanze condivise (bar, case, chiese…) prendono il nome
+  // dell'edificio da cui si è entrati: «Chiesa dell'Immacolata», non «Chiesa».
+  function locationName() {
+    return /^interno_/.test(player.map) && save && save.roomName ? save.roomName : currentMap.name;
+  }
+
   function updateLocation() {
-    ui.locationName.textContent = currentMap.name;
+    ui.locationName.textContent = locationName();
     updateMusicTheme();
   }
 
-  // Cambio di mappa: nero per un attimo, poi la mappa nuova affiora (classe .map-fade in styles.css).
-  function fadeInMap() {
+  // Cambio di mappa: lo schermo va a nero, a nero pieno si cambia mappa, poi la nuova affiora
+  // (classe .map-fade in styles.css: il nero pieno arriva a FADE_OUT_MS).
+  const FADE_OUT_MS = 170;
+
+  function fadeMap() {
     ui.viewport.classList.remove('map-fade');
     void ui.viewport.offsetWidth; // fa ripartire l'animazione se ce n'era una in corso
     ui.viewport.classList.add('map-fade');
+  }
+
+  function changeMap(arrive) {
+    changingMap = true;
+    fadeMap();
+    setTimeout(() => { arrive(); changingMap = false; }, pace(FADE_OUT_MS));
   }
 
   // ---------------------------------------------------------------------
@@ -2794,7 +2815,7 @@
   if (typeof location !== 'undefined' && /[?&]debug=1/.test(location.search || '')) {
     window.PokemonAscoliDebug = {
       state: () => ({
-        mode, map: player.map, x: player.x, y: player.y, direction: player.direction, moving: !!movement, approaching: approachingTrainerId,
+        mode, map: player.map, x: player.x, y: player.y, direction: player.direction, moving: !!movement || changingMap, approaching: approachingTrainerId,
         battle: battle ? { kind: battle.kind, enemy: battle.wild.species, enemyHp: battle.wild.hp, ally: activeMonster().species, allyHp: activeMonster().hp } : null,
         flags: save ? Object.keys(save.flags).filter(key => save.flags[key]) : [], badges: save ? save.badges : [], money: save ? save.money : 0,
         team: save ? save.team.map(m => ({ species: m.species, level: m.level, hp: m.hp, exp: m.exp })) : [], storage: save ? save.storage.length : 0,

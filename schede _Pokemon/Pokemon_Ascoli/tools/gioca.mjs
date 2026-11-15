@@ -70,10 +70,12 @@ const BOT = `window.__bot = (() => {
     key('keydown', KEYS[direction]);
     const started = performance.now();
     let now = before;
-    while (now.mode === 'world' && now.map === before.map && now.x === before.x && now.y === before.y && performance.now() - started < 1100) { await sleep(40); now = D().state(); }
+    // Il tasto resta giù solo finché il passo non parte: tenuto fino in fondo ne concatena un secondo,
+    // e a passo svelto Oliver finirebbe fuori dalla chiazza d'erba o dalla strada che si sta provando.
+    while (now.mode === 'world' && now.map === before.map && !now.moving && now.x === before.x && now.y === before.y && performance.now() - started < 1100) { await sleep(5); now = D().state(); }
     key('keyup', KEYS[direction]);
-    for (let i = 0; i < 40 && D().state().moving; i += 1) await sleep(30);
-    await sleep(80);
+    for (let i = 0; i < 300 && D().state().moving; i += 1) await sleep(10);
+    await sleep(40);
     return D().state();
   }
   // porta avanti dialoghi, lotte, negozi e schermate finché non si torna a camminare

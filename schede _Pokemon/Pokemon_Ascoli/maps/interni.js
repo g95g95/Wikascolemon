@@ -52,6 +52,40 @@
     }]
   });
 
+  // Seconda casa: quella dei nonni. Cucina grande con la tavola al centro, poltrone davanti al camino.
+  window.PokemonAscoliMaps.interno_casa_2 = room({
+    name: 'Casa', floor: 'pavimento_cotto',
+    decor: [
+      d(2, 1, 'quadro'), d(6, 1, 'finestra_tende'), d(11, 1, 'quadro'),
+      d(1, 2, 'fornello'), d(2, 2, 'lavello'), d(4, 2, 'frigo'), d(8, 2, 'camino'), d(11, 2, 'libreria'), d(13, 2, 'pendola'),
+      d(3, 5, 'sedia'), d(4, 5, 'tavola'), d(6, 5, 'sedia'),
+      d(9, 4, 'poltrona'), d(11, 4, 'poltrona'), d(9, 6, 'tappeto'),
+      d(1, 8, 'pianta'), d(12, 8, 'armadio'),
+      d(7, 9, 'zerbino')
+    ],
+    npcs: [{
+      x: 10, y: 5, name: 'Nonno', sprite: 'anziano', movement: 'fermo',
+      dialogue: ['Ai tempi miei i Pokémon si andavano a cercare a piedi, mica con la corriera.', 'Siediti, che fra poco è pronto.']
+    }]
+  });
+
+  // Terza casa: la stanza di un ragazzo. Letto, scrivania con i libri, televisore e divano.
+  window.PokemonAscoliMaps.interno_casa_3 = room({
+    name: 'Casa', floor: 'pavimento_legno',
+    decor: [
+      d(4, 1, 'finestra_tende'), d(9, 1, 'quadro'),
+      d(1, 2, 'letto'), d(3, 2, 'comodino'), d(6, 2, 'libreria'), d(8, 2, 'libreria'), d(11, 2, 'armadio'), d(13, 2, 'pianta'),
+      d(1, 5, 'tavola'), d(3, 5, 'sedia'),
+      d(10, 5, 'tv'), d(10, 7, 'tappeto'), d(10, 8, 'divano'),
+      d(1, 8, 'pianta'), d(4, 8, 'tavolo_sedie'),
+      d(7, 9, 'zerbino')
+    ],
+    npcs: [{
+      x: 12, y: 6, name: 'Ragazzo', sprite: 'ragazzo', movement: 'fermo',
+      dialogue: ['Sto guardando la replica della finale della Lega.', 'Un giorno ci arrivo anch\'io, vedrai.']
+    }]
+  });
+
   window.PokemonAscoliMaps.interno_tabacchi = room({
     name: 'Tabacchi', floor: 'pavimento_scacchi',
     decor: [
@@ -157,7 +191,7 @@
     name: 'Palazzo', floor: 'pavimento_cotto',
     decor: [
       d(2, 1, 'quadro'), d(5, 1, 'quadro'), d(8, 1, 'quadro'), d(11, 1, 'quadro'),
-      d(1, 2, 'libreria'), d(4, 2, 'pianta'), d(10, 2, 'pianta'), d(12, 2, 'libreria'),
+      d(1, 2, 'libreria'), d(4, 2, 'candelabro'), d(10, 2, 'candelabro'), d(12, 2, 'libreria'),
       d(6, 5, 'tappeto'), d(6, 6, 'tappeto'),
       d(1, 6, 'poltrona'), d(12, 6, 'poltrona'),
       d(7, 9, 'zerbino')

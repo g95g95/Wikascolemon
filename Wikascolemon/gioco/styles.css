@@ -203,12 +203,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .shop-row button { padding: 3px 6px; border: 1px solid #3d473c; background: #efe5cd; cursor: pointer; font: inherit; }
 .shop-row .qty { min-width: 1.4em; text-align: center; }
 
-/* cambio di mappa: schermo nero per un attimo, poi la mappa nuova affiora */
+/* cambio di mappa: dissolvenza in uscita e in entrata */
 .map-fade::after {
   content: ""; position: absolute; inset: 0; z-index: 9; background: #000; pointer-events: none;
-  animation: map-fade-in .45s ease-out forwards;
+  animation: map-fade .6s linear forwards;
 }
-@keyframes map-fade-in { 0%, 30% { opacity: 1; } 100% { opacity: 0; } }
+/* a nero in 170 ms (è lì che il gioco cambia mappa), una pausa, poi la mappa nuova affiora */
+@keyframes map-fade { 0% { opacity: 0; } 28%, 45% { opacity: 1; } 100% { opacity: 0; } }
 
 .intro-fade::after {
   content: "";
