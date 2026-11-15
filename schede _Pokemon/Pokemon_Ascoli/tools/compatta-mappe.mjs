@@ -3,11 +3,16 @@
 // una misura che conta. Richiesta di Jacopo del 14/11/2026: «non ho chiesto di rimpicciolire gli
 // elementi, la dimensione di prima di case e strade era perfetta».
 //
-//   node tools/compatta-mappe.mjs          # anteprima: misure prima → dopo
-//   node tools/compatta-mappe.mjs --scrivi # riscrive maps/, trainers/, data.js
+//   node tools/compatta-mappe.mjs                       # anteprima: misure prima → dopo
+//   node tools/compatta-mappe.mjs --scrivi              # riscrive maps/, trainers/, data.js
+//   node tools/compatta-mappe.mjs --ancora --lato=0.75  # un altro giro sulle mappe già compattate
+//   …  --stretto                                        # toglie anche i margini attorno a edifici e persone
 //
-// Si lancia UNA volta sulle mappe a misura piena (quelle che usano `...city/wide/tall`): dopo, ogni
-// mappa ha `width`/`height` suoi e lo script si rifiuta di ripartire. Poi: `node tools/arreda-mappe.mjs`.
+// `--lato=F` è la frazione del lato a cui si punta (0.5 se non detto). La prima volta lavora sulle
+// mappe a misura piena (quelle con `...city/wide/tall`) e scrive `width`/`height` in ogni mappa; per
+// ripassarci sopra serve `--ancora`, così non si compatta due volte per sbaglio.
+// Dopo ogni giro: `node tools/arreda-mappe.mjs`, e in game.js il passo `mapScale` e le chiavi
+// ConfigVn/TrainersVn, perché salvataggi e modifiche del configuratore puntano a coordinate vecchie.
 //
 // Colonne (e righe) PROTETTE, che non si tolgono mai:
 // - la cornice della mappa (2 celle per lato);
@@ -41,8 +46,12 @@ trainerFiles.forEach(f => load(`trainers/${f}`));
 const data = context.window.PokemonAscoliData;
 const trainers = context.window.PokemonAscoliTrainers.trainers;
 
-if (!mapFiles.some(f => /\.\.\.(city|wide|tall)\b/.test(fs.readFileSync(path.join(gameDir, 'maps', f), 'utf8')))) {
-  console.error('Le mappe sono già compattate (nessuna usa più ...city/wide/tall): non riparto.');
+const again = process.argv.includes('--ancora');
+const tight = process.argv.includes('--stretto'); // protegge solo le celle occupate, senza margini
+const side = Number((process.argv.find(arg => arg.startsWith('--lato=')) || '--lato=0.5').split('=')[1]);
+if (!(side > 0 && side < 1)) { console.error('--lato deve stare fra 0 e 1'); process.exit(1); }
+if (!again && !mapFiles.some(f => /\.\.\.(city|wide|tall)\b/.test(fs.readFileSync(path.join(gameDir, 'maps', f), 'utf8')))) {
+  console.error('Le mappe sono già compattate (nessuna usa più ...city/wide/tall): per un altro giro usa --ancora.');
   process.exit(1);
 }
 
@@ -65,9 +74,11 @@ for (const [id, map] of Object.entries(data.maps)) {
   const size = { x: map.width, y: map.height };
   const keep = { x: new Uint8Array(size.x), y: new Uint8Array(size.y) };
   const protect = (axis, from, to) => { for (let v = Math.max(0, from); v <= Math.min(size[axis] - 1, to); v += 1) keep[axis][v] = 1; };
-  const around = (x, y, r = 1) => { protect('x', x - r, x + r); protect('y', y - r, y + r); };
+  const around = (x, y, r = tight ? 0 : 1) => { protect('x', x - r, x + r); protect('y', y - r, y + r); };
   for (const axis of ['x', 'y']) { protect(axis, 0, 1); protect(axis, size[axis] - 2, size[axis] - 1); }
-  (map.buildings || []).forEach(b => { protect('x', b.x - 1, b.x + b.w); protect('y', b.y - 1, b.y + b.h + 1); if (b.door) around(b.door.x, b.door.y); });
+  // largo: una cella di margine tutt'attorno e due file davanti. Stretto: una cella a sinistra (due
+  // edifici non si toccano mai) e la sola fila davanti alla facciata.
+  (map.buildings || []).forEach(b => { protect('x', b.x - 1, b.x + b.w - (tight ? 1 : 0)); protect('y', b.y - (tight ? 0 : 1), b.y + b.h + (tight ? 0 : 1)); if (b.door) around(b.door.x, b.door.y); });
   (map.npcs || []).forEach(n => around(n.x, n.y));
   Object.values(trainers).filter(t => t.map === id).forEach(t => {
     around(t.x, t.y);
@@ -76,7 +87,7 @@ for (const [id, map] of Object.entries(data.maps)) {
     if (dx) protect('x', Math.min(t.x, t.x + dx * reach), Math.max(t.x, t.x + dx * reach));
     if (dy) protect('y', Math.min(t.y, t.y + dy * reach), Math.max(t.y, t.y + dy * reach));
   });
-  (map.transitions || []).forEach(t => { protect('x', t.x - 1, t.x + t.w); protect('y', t.y - 1, t.y + t.h); });
+  (map.transitions || []).forEach(t => { const m = tight ? 0 : 1; protect('x', t.x - m, t.x + t.w - 1 + m); protect('y', t.y - m, t.y + t.h - 1 + m); });
   (arrivals[id] || []).forEach(([x, y]) => around(x, y));
   const thin = r => { if (r.w <= THIN) protect('x', r.x, r.x + r.w - 1); if (r.h <= THIN) protect('y', r.y, r.y + r.h - 1); };
   (map.roads || []).filter(r => r.type !== 'albero').forEach(thin);
@@ -86,7 +97,7 @@ for (const [id, map] of Object.entries(data.maps)) {
   const prefix = {};
   for (const axis of ['x', 'y']) {
     const total = size[axis];
-    const wanted = total - Math.ceil(total / 2);                    // quante toglierne per dimezzare
+    const wanted = total - Math.ceil(total * side);                 // quante toglierne per arrivare alla frazione chiesta
     const runs = [];
     for (let v = 0; v < total; v += 1) {
       if (keep[axis][v]) continue;
@@ -154,7 +165,7 @@ for (const name of mapFiles) {
     });
     text = text.replace(new RegExp(`\\bnpc\\(\\s*${N}${SEP}${N}`, 'g'), (_, x, y) => { hit(); return `npc(${plan.fx(+x)}, ${plan.fy(+y)}`; });
     text = text.replace(new RegExp(`\\bx:\\s*${N}${SEP}y:\\s*${N}`, 'g'), (_, x, y) => { hit(); return `x: ${plan.fx(+x)}, y: ${plan.fy(+y)}`; });
-    text = text.replace(/\.\.\.(city|wide|tall),/, `width: ${plan.width}, height: ${plan.height},`);
+    text = text.replace(/\.\.\.(city|wide|tall),|width: \d+, height: \d+,/, `width: ${plan.width}, height: ${plan.height},`);
     return text.replace(/x§/g, 'x:').replace(/y§/g, 'y:');
   });
 }

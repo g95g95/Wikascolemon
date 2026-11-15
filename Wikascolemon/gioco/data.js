@@ -46,14 +46,30 @@
     typeChart,
     items,
     starters: ['basilino', 'puledrotto', 'tuffito'],
-    start: { map: 'porta_maggiore', x: 14, y: 23, direction: 'down' },
-    respawn: { map: 'porta_maggiore', x: 14, y: 23, direction: 'down' },
+    start: { map: 'porta_maggiore', x: 11, y: 17, direction: 'down' },
+    respawn: { map: 'porta_maggiore', x: 11, y: 17, direction: 'down' },
     initialItems: { ball: 5, potion: 2, antidote: 0, repel: 0, acquasanta: 0 }
   };
   // Interni generici (maps/interni.js): ogni bar e ogni tabacchi senza uno script suo porta, dalla
   // porta, nella stanza condivisa del suo tipo. L'uscita di riserva della stanza è il primo edificio
   // di quel tipo; in partita si torna alla porta da cui si è entrati (save.returnSpot).
-  const rooms = { bar: 'interno_bar', market: 'interno_tabacchi' };
+  const rooms = { bar: 'interno_bar', market: 'interno_tabacchi', house: 'interno_casa' };
+  // Le case («Casa», «Casa popolare», «Casa dei …») sono visitabili: se non hanno una porta nei dati
+  // la ricevono al centro della facciata, dove la disegna il gioco, purché la cella davanti sia libera.
+  const inside = (x, y, r) => x >= r.x && y >= r.y && x < r.x + r.w && y < r.y + r.h;
+  const freeCell = (map, x, y) => x >= 0 && y >= 0 && x < map.width && y < map.height
+    && !(map.buildings || []).some(b => inside(x, y, b))
+    && !(map.waters || []).some(w => inside(x, y, w) && !(map.bridges || []).some(b => inside(x, y, b)))
+    && !(map.roads || []).some(r => ['albero', 'muro', 'binari'].includes(r.type) && inside(x, y, r))
+    && !(map.npcs || []).some(n => n.x === x && n.y === y)
+    && !(map.transitions || []).some(t => inside(x, y, t));
+  Object.values(maps).forEach(map => (map.buildings || []).forEach(building => {
+    if (map.indoor || building.interior || building.script || !/^casa\b/i.test(building.name || '')) return;
+    const door = building.door || { x: Math.floor(building.x + building.w / 2), y: building.y + building.h };
+    if (!freeCell(map, door.x, door.y)) return;
+    building.door = door;
+    building.interior = 'house';
+  }));
   Object.entries(maps).forEach(([mapId, map]) => (map.buildings || []).forEach(building => {
     const roomId = rooms[building.interior];
     if (!roomId || !maps[roomId] || !building.door || building.script) return;

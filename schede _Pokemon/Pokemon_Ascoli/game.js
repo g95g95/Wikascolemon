@@ -22,8 +22,9 @@
   ].map(id => [id, document.getElementById(id)]));
 
   const STORAGE_KEY = 'pokemonAscoliSaveV1';
-  const CONFIG_KEY = 'pokemonAscoliConfigV5'; // a ogni riduzione delle mappe la chiave cambia: le override vecchie puntano a coordinate che non esistono più
-  const TRAINERS_KEY = 'pokemonAscoliTrainersV4';
+  const MAP_SCALE = 5; // da alzare a ogni giro di tools/compatta-mappe.mjs
+  const CONFIG_KEY = 'pokemonAscoliConfigV6'; // a ogni riduzione delle mappe la chiave cambia: le override vecchie puntano a coordinate che non esistono più
+  const TRAINERS_KEY = 'pokemonAscoliTrainersV5';
   const directions = {
     up: { x: 0, y: -1, row: 1 },
     down: { x: 0, y: 1, row: 0 },
@@ -153,21 +154,21 @@
       badges: [],
       money: 3000,
       lastHeal: { map: data.respawn.map, x: data.respawn.x, y: data.respawn.y },
-      mapScale: 4
+      mapScale: MAP_SCALE
     };
   }
 
   function migrateSave(parsed) {
     parsed.name = parsed.name || 'Oliver';
-    // Le mappe esterne hanno cambiato misura più volte il 14/11/2026; dall'ultima (compattazione
-    // senza rimpicciolire gli elementi, `mapScale: 4`) le vecchie coordinate non si possono più
-    // convertire: chi ha un salvataggio precedente riparte dalla stazione, con squadra e progressi intatti.
-    if (parsed.mapScale !== 4) {
+    // Le mappe esterne hanno cambiato misura più volte (14-15/11/2026). Da quando si compattano
+    // togliendo spazio vuoto le vecchie coordinate non si possono convertire: a ogni giro `MAP_SCALE`
+    // sale, e chi ha un salvataggio precedente riparte dalla stazione con squadra e progressi intatti.
+    if (parsed.mapScale !== MAP_SCALE) {
       const outdoors = spot => spot && data.maps[spot.map] && !data.maps[spot.map].indoor;
       if (!parsed.player || outdoors(parsed.player) || !data.maps[parsed.player.map]) parsed.player = { ...data.start };
       if (!parsed.lastHeal || outdoors(parsed.lastHeal) || !data.maps[parsed.lastHeal.map]) parsed.lastHeal = { map: data.respawn.map, x: data.respawn.x, y: data.respawn.y };
       delete parsed.returnSpot;
-      parsed.mapScale = 4;
+      parsed.mapScale = MAP_SCALE;
     }
     if (parsed.version === 2) return parsed;
     // v1 -> v2
@@ -291,7 +292,8 @@
     if (['water', 'mare', 'muro', 'albero', 'binari'].includes(terrain)) return true;
     if ((map.buildings || []).some(item => pointInRect(x, y, item))) return true;
     if (window.PokemonAscoliTiles.decorBlocks(map, x, y)) return true;
-    if (!ignoreNpc && runtimeNpcs.some(item => item.x === x && item.y === y)) return true;
+    // solo gli NPC che si vedono: quelli nascosti da una condizione (`when`) non devono fare da muro
+    if (!ignoreNpc && visibleRuntimeNpcs().some(item => item.x === x && item.y === y)) return true;
     if (!ignoreNpc && save && activeTrainersOnMap().some(t => t.x === x && t.y === y && !save.flags[Events.flagKeys.trainerFlag(t.id)])) return true;
     return false;
   }
@@ -397,8 +399,10 @@
   function getEncounter(playerX, playerY) {
     const custom = currentMap.encounterCells && currentMap.encounterCells[keyFor(playerX, playerY)];
     if (custom !== undefined) return custom > 0 ? { rate: Number(custom), table: 'default' } : null;
-    // sull'erba gli incontri capitano solo dove l'erba alta si vede; su sabbia e simili vale la zona
-    if (terrainAt(currentMap, playerX, playerY) === 'erba' && !isTallGrass(currentMap, playerX, playerY)) return null;
+    // Gli incontri capitano solo sull'erba alta che si vede, oppure su sabbia e pendii dentro una zona.
+    // Mai su strade, piazze, ponti: una chiazza d'erba può scavalcare la strada, ma lì non succede nulla.
+    const ground = terrainAt(currentMap, playerX, playerY);
+    if (ground === 'erba' ? !isTallGrass(currentMap, playerX, playerY) : !['sabbia', 'pendio'].includes(ground)) return null;
     return (currentMap.encounterZones || []).find(item => pointInRect(playerX, playerY, item)) || null;
   }
 
@@ -929,7 +933,7 @@
     ui.battleMessage.textContent = `È apparso ${data.species[wild.species].name} selvatico!`;
     renderBattle();
     showBattleMain();
-    sendOutAlly();
+    sendOutAlly(550);
     playSound('encounter');
     autoSave();
   }
@@ -957,7 +961,7 @@
       ui.battleMessage.textContent = `${trainer.name} ti sfida a duello!`;
       renderBattle();
       showBattleMain();
-      sendOutAlly();
+      sendOutAlly(550);
       playSound('encounter');
     });
   }
@@ -1223,13 +1227,17 @@
   }
 
   // Il proprio Pokémon entra in campo: la Ball vola da sinistra, si apre e lui compare.
-  async function sendOutAlly() {
+  // `wait`: a inizio lotta si aspetta la fine del lampo d'ingresso, che copre tutto lo schermo.
+  async function sendOutAlly(wait = 0) {
     const ball = ui.battleBall;
+    const fight = battle;
     ui.allySprite.classList.add('unsent');
+    if (wait) await sleep(wait);
+    if (battle !== fight) return;
     ball.hidden = false;
     ball.className = 'battle-ball sending';
     playSound('throw');
-    await sleep(480);
+    await sleep(700);
     if (!battle || ball.className !== 'battle-ball sending') return;
     ball.className = 'battle-ball opening-ally';
     ui.allySprite.classList.remove('unsent');

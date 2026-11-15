@@ -5,8 +5,8 @@
   const trainersDefault = window.PokemonAscoliTrainers;
   const canvas = document.getElementById('editorCanvas');
   const ctx = canvas.getContext('2d');
-  const storageKey = 'pokemonAscoliConfigV5';
-  const trainersStorageKey = 'pokemonAscoliTrainersV4';
+  const storageKey = 'pokemonAscoliConfigV6';
+  const trainersStorageKey = 'pokemonAscoliTrainersV5';
   const scale = 16;
   const gymTypes = [
     'Normale', 'Fuoco', 'Acqua', 'Erba', 'Elettro', 'Ghiaccio', 'Lotta', 'Veleno',

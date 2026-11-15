@@ -13,7 +13,7 @@
     waters: [], bridges: [], plazas: [], buildings: [],
     labels: [{ x: 2, y: 2, text: 'Free Spirit' }],
     encounterZones: [],
-    transitions: [transition(11, 19, 2, 1, 'castel_di_lama', 51, 38, 'Uscita', { direction: 'down' })],
+    transitions: [transition(11, 19, 2, 1, 'castel_di_lama', 45, 31, 'Uscita', { direction: 'down' })],
     npcs: [
       { x: 6, y: 17, name: 'Guida', dialogue: ['I Pokémon di tipo Veleno indeboliscono chi li tocca a lungo.', 'Punta su mosse Psico o Terra, qui dentro rendono meglio.'], movement: 'fermo' },
       {

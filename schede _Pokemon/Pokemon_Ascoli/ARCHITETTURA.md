@@ -101,8 +101,8 @@ window.PokemonAscoliTrainers = {
   gyms: { castel_di_lama: { name: 'Palestra di Castel di Lama', city: 'Castel di Lama', leader: 'castel_di_lama_hills', map: 'castel_di_lama', order: 1, type: 'Veleno' } }
 };
 ```
-Chiave localStorage dell'override: `pokemonAscoliTrainersV4` = `{ version: 1, updatedAt, trainers: {...}, gyms: {...} }`
-(sostituisce interamente le due mappe, come fa `pokemonAscoliConfigV5` per le mappe).
+Chiave localStorage dell'override: `pokemonAscoliTrainersV5` = `{ version: 1, updatedAt, trainers: {...}, gyms: {...} }`
+(sostituisce interamente le due mappe, come fa `pokemonAscoliConfigV6` per le mappe).
 Stato in salvataggio: `save.flags['trainer:<id>'] = true` quando sconfitto; `save.badges = [1, 2]`;
 `save.money`.
 
@@ -194,7 +194,7 @@ sotto stanno lì, non più in `game.js`.
 - **Sprite degli NPC**: `tools/build-npc.py` ritaglia `tools/sorgenti/npc-*.png` (una riga per
   personaggio: fronte, retro, sinistra, destra) in `assets/npc/<nome>.png`. Un NPC senza `sprite` lo
   riceve da `guessNpcSprite` in `game.js` (dal nome, altrimenti un passante a rotazione).
-- Il configuratore salva in `localStorage` (`pokemonAscoliConfigV5`) e vale solo su quel browser: per
+- Il configuratore salva in `localStorage` (`pokemonAscoliConfigV6`) e vale solo su quel browser: per
   portare nel gioco pubblicato ciò che si disegna lì, esportare il JSON e riversarlo in `maps/<id>.js`.
 
 Atlante a celle 16×16, 16 colonne. Le posizioni dei tile sono la costante `TILES` in `tiles.js` ed è

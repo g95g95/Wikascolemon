@@ -1,7 +1,7 @@
 (function () {
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     porta_cartara_pescatore_1: {
-      map: 'porta_cartara', x: 31, y: 23, direction: 'down', sight: 4,
+      map: 'porta_cartara', x: 20, y: 19, direction: 'down', sight: 4,
       class: 'pescatore', name: 'Nazzareno', sprite: null,
       team: [{ species: 'tuffito', level: 7 }, { species: 'tuffito', level: 8 }],
       before: ['Il Rio Castellano è pieno di Tuffito, sa.', 'Ne ho pescati due bboni, mo\' te fo\' vede\'!'],

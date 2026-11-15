@@ -1,7 +1,7 @@
 (function () {
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     marino_del_tronto_ragazzino_1: {
-      map: 'marino_del_tronto', x: 30, y: 36, direction: 'right', sight: 4,
+      map: 'marino_del_tronto', x: 26, y: 30, direction: 'right', sight: 4,
       class: 'ragazzino', name: 'Fabrizio', sprite: null,
       team: [{ species: 'tifotto', level: 6 }, { species: 'totera', level: 7 }],
       before: ['Ehó, aspetta! Manco un saluto?', 'Qui su\' la Salaria ce s\'allena forte, sa\'!'],
@@ -10,7 +10,7 @@
       money: null, gym: null, when: null
     },
     marino_del_tronto_ragazzina_1: {
-      map: 'marino_del_tronto', x: 63, y: 34, direction: 'left', sight: 4,
+      map: 'marino_del_tronto', x: 50, y: 28, direction: 'left', sight: 4,
       class: 'ragazzina', name: 'Serena', sprite: null,
       team: [{ species: 'tamburino', level: 7 }, { species: 'anicino', level: 7 }],
       before: ['Tè, uno che passeggia tranquillo!', 'Da queste parti nisciuno passa senza lotta\'.'],
@@ -19,7 +19,7 @@
       money: null, gym: null, when: null
     },
     marino_del_tronto_pescatore_1: {
-      map: 'marino_del_tronto', x: 50, y: 49, direction: 'down', sight: 3,
+      map: 'marino_del_tronto', x: 39, y: 37, direction: 'down', sight: 3,
       class: 'pescatore', name: 'Learco', sprite: null,
       team: [{ species: 'soldatino', level: 7 }, { species: 'soldatino', level: 8 }],
       before: ['Chi vòle attraversà il Tronto, prima passa da me!', 'Qui l\'acqua è bona pé\' i Soldatino.'],

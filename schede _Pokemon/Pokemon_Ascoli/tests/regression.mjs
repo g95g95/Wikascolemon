@@ -46,7 +46,7 @@ for (const [mapId, map] of Object.entries(data.maps)) {
   if (map.indoor) {
     assert.ok(map.width >= 12 && map.width <= 60 && map.height >= 10 && map.height <= 40, `${mapId}: dimensioni interne fra 12×10 e 60×40`);
   } else {
-    assert.ok(map.width >= 60 && map.width <= 140 && map.height >= 45 && map.height <= 95, `${mapId}: dimensioni fra 60×45 e 140×95 (mappe compattate: ognuna ha la sua misura, dal 14/11/2026)`);
+    assert.ok(map.width >= 40 && map.width <= 140 && map.height >= 30 && map.height <= 95, `${mapId}: dimensioni fra 40×30 e 140×95 (mappe compattate: ognuna ha la sua misura, dal 14/11/2026)`);
   }
   for (const key of ['roads', 'waters', 'bridges', 'plazas', 'buildings', 'encounterZones', 'transitions', 'npcs']) {
     for (const item of map[key] || []) assert.ok(insideMap(map, item), `${mapId}: ${key} dentro la mappa`);
@@ -205,7 +205,7 @@ assert.match(styles, /\.enemy-card\s*\{[^}]*left:/, 'La scheda avversaria sta in
 assert.match(styles, /\.ally-card\s*\{[^}]*right:/, 'La scheda della squadra sta in basso a destra, di fronte al suo Pokémon');
 
 // --- door/interior/script/when sulle mappe ---
-const validInteriors = new Set(['bar', 'market', 'gym', 'none']);
+const validInteriors = new Set(['bar', 'market', 'gym', 'house', 'none']);
 for (const [mapId, map] of Object.entries(data.maps)) {
   for (const building of map.buildings || []) {
     if (building.door) {

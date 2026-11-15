@@ -1,7 +1,7 @@
 (function () {
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     monticelli_campeggiatore_1: {
-      map: 'monticelli', x: 21, y: 38, direction: 'right', sight: 4,
+      map: 'monticelli', x: 16, y: 32, direction: 'right', sight: 4,
       class: 'campeggiatore', name: 'Gino', sprite: null,
       team: [{ species: 'segaccio', level: 6 }, { species: 'venagrox', level: 5 }],
       before: ['Sto campeggiando qui vicino all\'ospedale.', 'Ma un po\' di battaglia non guasta, dai!'],

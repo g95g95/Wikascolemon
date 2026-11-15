@@ -302,7 +302,7 @@
           : item.interior === 'gym' || label.includes('palestra') ? 'insegna_palestra'
           : item.interior === 'market' || label.includes('tabacc') ? 'insegna_tabacchi'
           : item.kind === 'ospedale' || label.includes('farmacia') ? 'insegna_croce'
-          : item.interior === 'bar' || /(bar|caff|coffee|ristoro|pizzeria)/.test(label) ? 'insegna_bar' : null;
+          : item.interior === 'bar' || /\b(bar|caff|coffee|ristoro|pizzeria)/.test(label) ? 'insegna_bar' : null;
         if (sign && wallHeight >= 48) drawObject(sign, doorCenter, base - OBJECTS[doorName][3] - 1);
         ctx.fillStyle = '#3a2e26';
         ctx.fillRect(x - 1, y - 1, width + 2, 1);

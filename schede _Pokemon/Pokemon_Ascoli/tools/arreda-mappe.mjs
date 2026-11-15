@@ -92,11 +92,40 @@ for (const [id, map] of Object.entries(data.maps)) {
 
   // --- 1. erba alta a chiazze ---
   const zones = [];
+  const grassBeds = [];
   let patched = 0;
   for (const z of map.encounterZones || []) {
     let grass = 0;
     for (let y = z.y; y < z.y + z.h; y += 1) for (let x = z.x; x < z.x + z.w; x += 1) if (terrain(x, y) === 'erba' && !inBuilding(x, y)) grass += 1;
     const area = z.w * z.h;
+    if (area >= 80 && grass / area < .6) {
+      // zona su selciato (Centro Storico): niente incontri senza erba, quindi ci si mettono delle
+      // aiuole d'erba alta. Le zone su sabbia o pendio restano come sono.
+      let wild = 0;
+      for (let y = z.y; y < z.y + z.h; y += 1) for (let x = z.x; x < z.x + z.w; x += 1) if (['sabbia', 'pendio'].includes(terrain(x, y))) wild += 1;
+      if (wild / area < .3) {
+        patched += 1;
+        const base = map.baseTile;
+        const clear = (x0, y0, w, h) => {
+          for (let y = y0 - 1; y <= y0 + h; y += 1) for (let x = x0 - 1; x <= x0 + w; x += 1) {
+            if (terrain(x, y) !== base || inBuilding(x, y) || (map.transitions || []).some(t => inRect(x, y, t))) return false;
+          }
+          return !(map.buildings || []).some(b => x0 + w >= b.x - 1 && x0 <= b.x + b.w + 1 && y0 + h >= b.y - 1 && y0 <= b.y + b.h + 2);
+        };
+        const rate = Math.min(.15, Math.max(.1, z.rate * 3));
+        for (let wanted = Math.max(3, Math.round(area / 450)), tries = 0; wanted > 0 && tries < 3000; tries += 1) {
+          const w = 4 + Math.floor(rand() * 4), h = 3 + Math.floor(rand() * 3);
+          const x0 = z.x + Math.floor(rand() * Math.max(1, z.w - w)), y0 = z.y + Math.floor(rand() * Math.max(1, z.h - h));
+          if (!clear(x0, y0, w, h)) continue;
+          const patch = { x: x0, y: y0, w, h, type: 'erba' };
+          map.roads.unshift(patch);   // da qui in poi terrain() le vede come erba
+          grassBeds.push(patch);
+          zones.push({ x: x0, y: y0, w, h, rate, table: z.table });
+          wanted -= 1;
+        }
+        continue;
+      }
+    }
     if (area < 80 || grass / area < .6) { zones.push(z); continue; }
     patched += 1;
     const covered = new Set();
@@ -179,7 +208,7 @@ for (const [id, map] of Object.entries(data.maps)) {
   const anyGround = ['erba', 'road', 'piazza', 'ghiaia', 'travertino', 'asfalto', 'sabbia', 'pendio'];
   let unsigned = 0;
   for (const b of map.buildings || []) {
-    if (!b.name || /^casa/i.test(b.name)) continue;
+    if (!b.name || /^casa\b/i.test(b.name)) continue;
     const front = b.y + b.h;
     // a due celle dalla porta, non attaccato: altrimenti il cartello copre l'ingresso
     const doorX = b.door ? b.door.x : Math.floor(b.x + b.w / 2);
@@ -248,7 +277,7 @@ for (const [id, map] of Object.entries(data.maps)) {
   }
 
   decor.sort((a, b) => a.y - b.y || a.x - b.x);
-  result[id] = { zones, decor };
+  result[id] = { zones, decor, grassBeds };
   const byKind = {};
   decor.forEach(item => { byKind[item.kind] = (byKind[item.kind] || 0) + 1; });
   report.push(`${id.padEnd(22)} zone ${(map.encounterZones || []).length} → ${zones.length} (${patched} a chiazze) · ${unsigned ? `⚠️ ${unsigned} cartelli non piazzati · ` : ''}arredo ${decor.length}: ${Object.entries(byKind).map(([k, n]) => `${k} ${n}`).join(', ')}`);
@@ -260,12 +289,13 @@ const lines = [
   '//   node tools/arreda-mappe.mjs',
   '// Si carica dopo tutte le mappe e ne sostituisce erba alta (encounterZones, a chiazze) e arredo (decor).',
   '(function () {',
-  '  const { zone } = window.PokemonAscoliMapHelpers;',
+  '  const { zone, rect } = window.PokemonAscoliMapHelpers;',
   '  const maps = window.PokemonAscoliMaps;',
   '  const apply = (id, extra) => { if (maps[id]) Object.assign(maps[id], extra); };',
   '  const d = (x, y, kind, text) => (text ? { x, y, kind, text } : { x, y, kind });',
 ];
-for (const [id, { zones, decor }] of Object.entries(result)) {
+for (const [id, { zones, decor, grassBeds }] of Object.entries(result)) {
+  if (grassBeds.length) lines.push(`  if (maps.${id}) maps.${id}.roads.unshift(${grassBeds.map(g => `rect(${g.x}, ${g.y}, ${g.w}, ${g.h}, 'erba')`).join(', ')}); // aiuole`);
   lines.push(`  apply('${id}', {`);
   lines.push(`    encounterZones: [${zones.map(z => `zone(${z.x}, ${z.y}, ${z.w}, ${z.h}, ${z.rate}, '${z.table}')`).join(', ')}],`);
   lines.push(`    decor: [${decor.map(item => `d(${item.x}, ${item.y}, '${item.kind}'${item.text ? `, ${JSON.stringify(item.text)}` : ''})`).join(', ')}]`);

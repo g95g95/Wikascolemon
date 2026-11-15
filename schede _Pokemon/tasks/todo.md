@@ -123,6 +123,18 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
 - [ ] G6. Nando davanti al bar di Bobby: con le mappe a misura piena sta di nuovo a 6 celle dalla porta
       (il blocco veniva dalla mappa rimpicciolita). Da ricontrollare giocando.
 
+## H. Terzo giro di test (15/11)
+- [x] H1. Ball all'ingresso del proprio Pokémon: partiva sotto il lampo d'ingresso → ritardata e rallentata.
+- [x] H2. Incontri solo su erba alta visibile (o sabbia/pendio in zona), mai su strada/piazza/ponte;
+      aiuole d'erba alta nelle zone su selciato (Centro Storico) generate da `arreda-mappe.mjs`.
+- [x] H3. NPC nascosti da `when` non bloccano più (`isBlocked` usa `visibleRuntimeNpcs`).
+- [x] H4. Secondo giro di `compatta-mappe.mjs --ancora --stretto --lato=0.7`; `MAP_SCALE = 5`,
+      ConfigV6/TrainersV5. Oltre non si può con tagli dritti: servirebbe ridisegnare i quartieri.
+- [x] H5. Case visitabili (`interno_casa`, `interior: 'house'` assegnato in `data.js` alle «Casa…»).
+      Manca il foglio di arredi di casa per arredarle davvero.
+- ⚠️ Nota tecnica: negli script lanciati da shell un `\b` dentro una stringa Python arriva come
+  backspace (0x08) e rompe le regex in silenzio. Per scrivere regex nei sorgenti usare Edit.
+
 ## D. Suono (dopo)
 - [ ] D1. Effetti chiptune e 3-4 temi (città, percorso, lotta, vittoria) generati in WebAudio.
 

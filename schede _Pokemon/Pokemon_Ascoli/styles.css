@@ -241,7 +241,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .battle-ball.shaking { animation: ball-shake .45s ease-in-out both; }
 .battle-ball.locked { filter: brightness(.65); transition: filter .2s; }
 .battle-ball.opening { animation: ball-open .25s ease-out both; }
-.battle-ball.sending { animation: ball-send .48s cubic-bezier(.3, .6, .5, 1) both; }
+.battle-ball.sending { animation: ball-send .7s cubic-bezier(.3, .6, .5, 1) both; }
 .battle-ball.opening-ally { left: calc(56 * var(--u)); top: calc(92 * var(--u)); animation: ball-open .25s ease-out both; }
 @keyframes ball-send {
   0% { left: calc(-14 * var(--u)); top: calc(74 * var(--u)); transform: rotate(0); }

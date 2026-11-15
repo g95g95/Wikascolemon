@@ -33,6 +33,22 @@
     }]
   });
 
+  // Casa: per ora con i mobili che ci sono (tavolo, credenza, frigo, piante); letto, divano e cucina
+  // arriveranno con un foglio di arredi di casa.
+  window.PokemonAscoliMaps.interno_casa = room({
+    name: 'Casa', floor: 'pavimento_legno',
+    decor: [
+      d(3, 1, 'quadro'), d(10, 1, 'quadro'),
+      d(1, 2, 'scaffale_bottiglie'), d(12, 2, 'frigo'), d(6, 2, 'pianta'),
+      d(6, 5, 'tavolo_sedie'), d(1, 7, 'pianta'), d(13, 8, 'pianta'),
+      d(7, 9, 'zerbino')
+    ],
+    npcs: [{
+      x: 9, y: 4, name: 'Padrona di casa', sprite: 'signora', movement: 'fermo',
+      dialogue: ['Oh, un allenatore! Fai come se fossi a casa tua.', 'Se la squadra è stanca, il bar più vicino la rimette in sesto.']
+    }]
+  });
+
   window.PokemonAscoliMaps.interno_tabacchi = room({
     name: 'Tabacchi', floor: 'pavimento_scacchi',
     decor: [

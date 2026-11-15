@@ -88,7 +88,7 @@ Draft → published: the `crea-scheda` skill writes the draft in `schede _Pokemo
 
 #### Game demo (`schede _Pokemon/Pokemon_Ascoli/`)
 Static browser game, source of truth for `Wikascolemon/gioco/`. Data is split one file per map
-(`maps/<id>.js`, each map has its own size, roughly 76-131×56-88 tiles: full-size elements, empty space removed by `tools/compatta-mappe.mjs`) and one file per map's trainers (`trainers/<mapId>.js`);
+(`maps/<id>.js`, each map has its own size, roughly 57-112×43-72 tiles: full-size elements, empty space removed by `tools/compatta-mappe.mjs`) and one file per map's trainers (`trainers/<mapId>.js`);
 see `Pokemon_Ascoli/ARCHITETTURA.md` for the module contracts and `Pokemon_Ascoli/README.md` for
 how to play/extend it.
 - Publish: `node tools/build-gioco.mjs` copies the game into `Wikascolemon/gioco/`. **Never hand-edit

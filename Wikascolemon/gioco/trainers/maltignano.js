@@ -1,7 +1,7 @@
 (function () {
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     maltignano_ciclista_1: {
-      map: 'maltignano', x: 32, y: 30, direction: 'left', sight: 4,
+      map: 'maltignano', x: 27, y: 27, direction: 'left', sight: 4,
       class: 'ciclista', name: 'Renzo', sprite: null,
       team: [{ species: 'cignalo', level: 10 }, { species: 'tifotto', level: 10 }],
       before: ['Frena frena! Manco me pare vero de trovà quarcuno quassù.', 'Chi sarto sti tornanti a piedi se merita na bella lezione!'],
@@ -10,7 +10,7 @@
       money: null, gym: null, when: null
     },
     maltignano_ragazzino_1: {
-      map: 'maltignano', x: 16, y: 23, direction: 'right', sight: 4,
+      map: 'maltignano', x: 11, y: 21, direction: 'right', sight: 4,
       class: 'ragazzino', name: 'Dino', sprite: null,
       team: [{ species: 'pefna', level: 9 }, { species: 'totera', level: 10 }],
       before: ['Ohò, se sarto sti curvoni pé allename\', mica pé passeggià!', 'Batte pure a me, se te ce riesci.'],
@@ -19,7 +19,7 @@
       money: null, gym: null, when: null
     },
     maltignano_contadino_1: {
-      map: 'maltignano', x: 37, y: 16, direction: 'left', sight: 4,
+      map: 'maltignano', x: 32, y: 15, direction: 'left', sight: 4,
       class: 'contadino', name: 'Osvaldo', sprite: null,
       team: [{ species: 'cignalo', level: 11 }],
       before: ['Quassù ce cammino tutte le matine co\' le bestie.', 'Se vuoi passà, prima famme vedé quanto vali.'],
@@ -28,7 +28,7 @@
       money: null, gym: null, when: null
     },
     maltignano_nando_puledrotto: {
-      map: 'maltignano', x: 43, y: 16, direction: 'left', sight: 4,
+      map: 'maltignano', x: 38, y: 15, direction: 'left', sight: 4,
       class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'puledrotto', level: 10 }, { species: 'tamburino', level: 9 }],
       before: [
@@ -41,7 +41,7 @@
       money: 400, gym: null, when: { flag: 'starter_basilino' }
     },
     maltignano_nando_tuffito: {
-      map: 'maltignano', x: 44, y: 16, direction: 'left', sight: 4,
+      map: 'maltignano', x: 39, y: 15, direction: 'left', sight: 4,
       class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'tuffito', level: 10 }, { species: 'tamburino', level: 9 }],
       before: [
@@ -54,7 +54,7 @@
       money: 400, gym: null, when: { flag: 'starter_puledrotto' }
     },
     maltignano_nando_basilino: {
-      map: 'maltignano', x: 45, y: 16, direction: 'left', sight: 4,
+      map: 'maltignano', x: 40, y: 15, direction: 'left', sight: 4,
       class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'basilino', level: 10 }, { species: 'tamburino', level: 9 }],
       before: [

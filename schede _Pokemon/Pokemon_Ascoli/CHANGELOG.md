@@ -2,6 +2,21 @@
 
 Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco/configuratore.html`
 
+## 15/11/2026 — Terzo giro di test
+
+- **Mappe ancora più raccolte**, sempre senza toccare la misura di case e strade: un secondo giro ha
+  tolto altro spazio vuoto, anche i margini attorno a edifici e persone. I quartieri ora vanno da
+  57×50 a 112×61 celle. Chi aveva una partita riparte dalla stazione (squadra e progressi restano).
+- **Incontri solo dove c'è l'erba alta.** Prima capitavano anche sulla strada quando l'erba alta stava
+  ai due lati, e al Centro Storico capitavano sul selciato. Ora mai su strade, piazze e ponti; al
+  Centro Storico sono comparse delle aiuole d'erba alta.
+- **Niente più muri invisibili**: i personaggi nascosti (Bobby, Elena e Steven dopo l'introduzione)
+  continuavano a bloccare le celle dove erano stati.
+- **La Ball del tuo Pokémon ora si vede**: partiva durante il lampo d'ingresso in lotta, che la copriva.
+- **Case visitabili.** Si entra in tutte le «Casa…»: una stanza con la padrona di casa. Per ora è
+  arredata con i mobili che ci sono; letto, divano e cucina arriveranno con un foglio dedicato.
+- Le case comuni non hanno più il cartello col nome; i bar riconosciuti dal nome hanno l'insegna.
+
 ## 14/11/2026 (tarda notte) — Dopo il secondo test di Jacopo
 
 - **Mappe raccolte, elementi a misura piena.** La riduzione precedente rimpiccioliva anche case e

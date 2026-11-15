@@ -1,7 +1,7 @@
 (function () {
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     ripatransone_contadino_1: {
-      map: 'ripatransone', x: 11, y: 25, direction: 'down', sight: 4,
+      map: 'ripatransone', x: 6, y: 20, direction: 'down', sight: 4,
       class: 'contadino', name: 'Renzo', sprite: null,
       team: [{ species: 'pefna', level: 7 }, { species: 'cignalo', level: 8 }],
       before: ['Ehò, statte accorto! Da le vigne su per Ripatransone nun ce passa nisciuno senza fatte na sfida.'],
