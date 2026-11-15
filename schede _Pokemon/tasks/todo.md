@@ -197,9 +197,15 @@ Ordinati per quanto si notano giocando. Jacopo sceglie da quale partire.
 **Grafica e atmosfera**
 - [ ] I4. Foglio di camminata vero per Oliver (oggi i passi sono ricavati in codice dal fotogramma fermo).
 - [ ] I5. Sprite veri per Tifotto, fronte e retro (= F8).
-- [ ] I6. Allenatori che camminano: hanno un solo fotogramma per direzione, quindi scivolano.
-- [ ] I7. Dissolvenza fra le mappe, animazione dei colpi in lotta (= C3).
-- [ ] I8. Musica diversa per zona: città, percorso, lotta, palestra.
+- [x] I6. (15/11) Allenatori che camminano: il passo è ricavato in codice dal fotogramma fermo (un piede
+      alzato a turno, `stride` in `drawSpriteFrame`). È un accenno: per un passo vero servono fogli con i
+      fotogrammi di camminata, come per Oliver (I4).
+- [x] I7. (15/11) Dissolvenza al cambio di mappa (nero, poi la mappa affiora); in lotta chi attacca scatta
+      in avanti, chi è colpito lampeggia, chi va KO scivola giù e sparisce (= C3).
+      ⚠️ La barra dei PS scende già sul messaggio «X usa Y!», prima del colpo: da allineare.
+- [x] I8. (15/11) Quattro temi sintetizzati (`MUSIC_THEMES`): città, percorso (Marino, Oasi, Maltignano,
+      Spinetoli), palestra (le due palestre e lo Jonathan), lotta. Il tema vecchio sfuma, il nuovo riparte.
+      ⚠️ Scritti senza poterli ascoltare: vanno giudicati a orecchio.
 
 **Contenuti**
 - [ ] I9. Interni dei bar della trama (Bobby, Steven, Elena). Da decidere insieme: tocca la storia, oggi

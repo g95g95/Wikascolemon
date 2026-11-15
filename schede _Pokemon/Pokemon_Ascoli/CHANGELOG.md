@@ -2,6 +2,13 @@
 
 Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco/configuratore.html`
 
+## 15/11/2026 — Atmosfera
+
+- **Dissolvenza** al cambio di mappa e quando si entra o si esce da un edificio.
+- **I colpi si vedono**: chi attacca scatta in avanti, chi è colpito lampeggia, chi va KO scivola giù.
+- **Musica per zona**: un tema per le città, uno per i percorsi, uno per palestre e Jonathan, uno per le lotte.
+- Gli allenatori che ti vengono incontro muovono i piedi invece di scivolare.
+
 ## 15/11/2026 — Quarto giro di test
 
 - **Il Little Bar è aperto**: a Monticelli ora si entra e il barista cura la squadra.

@@ -190,6 +190,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .shop-row button { padding: 3px 6px; border: 1px solid #3d473c; background: #efe5cd; cursor: pointer; font: inherit; }
 .shop-row .qty { min-width: 1.4em; text-align: center; }
 
+/* cambio di mappa: schermo nero per un attimo, poi la mappa nuova affiora */
+.map-fade::after {
+  content: ""; position: absolute; inset: 0; z-index: 9; background: #000; pointer-events: none;
+  animation: map-fade-in .45s ease-out forwards;
+}
+@keyframes map-fade-in { 0%, 30% { opacity: 1; } 100% { opacity: 0; } }
+
 .intro-fade::after {
   content: "";
   position: absolute;
@@ -218,6 +225,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .location-banner { top: 8px; }
 .toast { bottom: 8px; z-index: 12; } /* sopra le pagine del menu */
+.viewport:has(.dialogue-overlay:not([hidden])) .toast { bottom: calc(52 * var(--u)); } /* non sopra il riquadro dei dialoghi */
 
 /* Lotta: schermo logico 240×160, tutte le misure in --u così scala con la finestra di gioco */
 .battle-screen { background: #000; animation: battle-flash .45s steps(1); }

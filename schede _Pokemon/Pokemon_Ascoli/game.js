@@ -393,7 +393,8 @@
     player.renderY = player.y;
     currentMap = maps[player.map];
     justArrived = heldDirections.length > 0;
-    nextMoveAt = performance.now() + 250; // un attimo di pausa all'arrivo
+    nextMoveAt = performance.now() + 350; // un attimo di pausa all'arrivo, il tempo della dissolvenza
+    fadeInMap();
     initNpcs();
     updateLocation();
     showLocation(currentMap.name);
@@ -656,6 +657,7 @@
       player.renderX = player.x;
       player.renderY = player.y;
       currentMap = maps[dest.map];
+      fadeInMap();
       initNpcs();
       updateLocation();
       showLocation(currentMap.name);
@@ -936,6 +938,7 @@
     };
     save.dex.seen[wild.species] = true;
     mode = 'battle';
+    updateMusicTheme();
     ui.battleScreen.hidden = false;
     ui.battleMessage.textContent = `È apparso ${data.species[wild.species].name} selvatico!`;
     renderBattle();
@@ -965,6 +968,7 @@
         onEnd: resolve
       };
       mode = 'battle';
+      updateMusicTheme();
       ui.battleScreen.hidden = false;
       ui.battleMessage.textContent = `${trainer.name} ti sfida a duello!`;
       renderBattle();
@@ -1087,14 +1091,14 @@
         if (playerAction.type !== 'move') continue;
         if (activeMonster().hp <= 0 || battle.wild.hp <= 0) continue;
         const result = Battle.executeMove(activeMonster(), battle.wild, playerAction.moveId, battle.playerStages, battle.enemyStages, { rng: Math.random });
-        if (result.events.some(event => event.type === 'damage')) playSound('hit');
+        if (result.events.some(event => event.type === 'damage')) { playSound('hit'); animateHit(ui.allySprite, ui.enemySprite, 1); }
         pushMessages(result.events);
         await flushMessages();
         if (await checkFaints()) return;
       } else {
         if (activeMonster().hp <= 0 || battle.wild.hp <= 0) continue;
         const result = Battle.executeMove(battle.wild, activeMonster(), enemyAction.moveId, battle.enemyStages, battle.playerStages, { rng: Math.random });
-        if (result.events.some(event => event.type === 'damage')) playSound('hit');
+        if (result.events.some(event => event.type === 'damage')) { playSound('hit'); animateHit(ui.enemySprite, ui.allySprite, -1); }
         pushMessages(result.events);
         await flushMessages();
         if (await checkFaints()) return;
@@ -1110,6 +1114,26 @@
     if (await checkFaints()) return;
     renderBattle();
     showBattleMain();
+  }
+
+  // Colpo: chi attacca scatta verso l'avversario, chi lo prende lampeggia. `side`: 1 = attacca il giocatore.
+  // Animazioni fatte da codice (Web Animations) per non interferire con le classi CSS degli sprite.
+  function animateHit(attacker, target, side) {
+    if (!attacker.animate) return;
+    attacker.animate([{ transform: 'translate(0, 0)' }, { transform: `translate(${18 * side}%, ${-12 * side}%)` }, { transform: 'translate(0, 0)' }], { duration: 220 });
+    target.animate([{ opacity: 1 }, { opacity: 0 }, { opacity: 1 }, { opacity: 0 }, { opacity: 1 }], { duration: 420, delay: 160 });
+  }
+
+  // KO: lo sprite scivola giù e sparisce. Resta nascosto finché `reviveSprite` non lo libera.
+  function faintSprite(sprite) {
+    if (!sprite.animate) return;
+    reviveSprite(sprite);
+    sprite.faintAnimation = sprite.animate([{ transform: 'translateY(0)', opacity: 1 }, { transform: 'translateY(45%)', opacity: 0 }], { duration: 450, fill: 'forwards' });
+  }
+
+  function reviveSprite(sprite) {
+    if (sprite.faintAnimation) sprite.faintAnimation.cancel();
+    sprite.faintAnimation = null;
   }
 
   async function checkFaints() {
@@ -1134,6 +1158,7 @@
     playSound('faint');
     ui.battleMessage.textContent = `${data.species[battle.wild.species].name} è esausto!`;
     renderBattle();
+    faintSprite(ui.enemySprite);
     await sleep(600);
     for (const monster of [active, ...sharers.filter(other => other !== active)]) {
       if (!sharers.includes(monster)) continue;
@@ -1184,6 +1209,7 @@
     if (battle.kind === 'trainer' && battle.enemyIndex < battle.enemyTeam.length) {
       battle.wild = battle.enemyTeam[battle.enemyIndex];
       battle.enemyStages = Battle.freshStages();
+      reviveSprite(ui.enemySprite);
       ui.battleMessage.textContent = `${battle.trainer.name} manda in campo ${data.species[battle.wild.species].name}!`;
       renderBattle();
       showBattleMain();
@@ -1227,6 +1253,7 @@
     playSound('faint');
     ui.battleMessage.textContent = `${data.species[activeMonster().species].name} non può più combattere!`;
     renderBattle();
+    faintSprite(ui.allySprite);
     await sleep(700);
     const next = save.team.findIndex(monster => monster.hp > 0);
     if (next === -1) {
@@ -1235,6 +1262,7 @@
       return;
     }
     ui.allySprite.classList.add('unsent');
+    reviveSprite(ui.allySprite);
     ui.battleMessage.textContent = 'Chi mandi in campo?';
     showBattleTeam(true);
   }
@@ -1414,8 +1442,11 @@
     const onEnd = battle ? battle.onEnd : null;
     battle = null;
     ui.battleScreen.hidden = true;
+    reviveSprite(ui.enemySprite);
+    reviveSprite(ui.allySprite);
     resetBall();
     mode = 'world';
+    updateMusicTheme();
     const messages = { won: 'Vittoria!', win: 'Vittoria!', caught: null, fled: 'Sei fuggito.', lost: 'Sei stato sconfitto.' };
     if (messages[result]) showToast(messages[result]);
     if (result === 'won' || result === 'win') playSound('win');
@@ -1799,6 +1830,14 @@
 
   function updateLocation() {
     ui.locationName.textContent = currentMap.name;
+    updateMusicTheme();
+  }
+
+  // Cambio di mappa: nero per un attimo, poi la mappa nuova affiora (classe .map-fade in styles.css).
+  function fadeInMap() {
+    ui.viewport.classList.remove('map-fade');
+    void ui.viewport.offsetWidth; // fa ripartire l'animazione se ce n'era una in corso
+    ui.viewport.classList.add('map-fade');
   }
 
   // ---------------------------------------------------------------------
@@ -1982,9 +2021,18 @@
     });
   }
 
-  function drawSpriteFrame(sheet, direction, x, y) {
+  // `stride`: 0 fermo; 1 o 2 = un piede alzato (sinistro o destro). I fogli degli NPC hanno un solo
+  // fotogramma per direzione: il passo si ricava alzando di un pixel metà della fascia dei piedi.
+  function drawSpriteFrame(sheet, direction, x, y, stride = 0) {
     const row = directions[direction].row;
-    ctx.drawImage(sheet, 0, row * 32, 32, 32, Math.round(x - 8), Math.round(y - 20), 32, 32);
+    const left = Math.round(x - 8), top = Math.round(y - 20);
+    if (!stride) { ctx.drawImage(sheet, 0, row * 32, 32, 32, left, top, 32, 32); return; }
+    const FEET = 6; // righe in fondo allo sprite che fanno da gambe
+    ctx.drawImage(sheet, 0, row * 32, 32, 32 - FEET, left, top, 32, 32 - FEET);
+    [0, 1].forEach(half => {
+      const lift = half === stride - 1 ? 1 : 0;
+      ctx.drawImage(sheet, half * 16, row * 32 + 32 - FEET, 16, FEET - lift, left + half * 16, top + 32 - FEET - lift, 16, FEET - lift);
+    });
   }
 
   function drawNpcs(camera) {
@@ -2011,13 +2059,15 @@
     activeTrainersOnMap().forEach(trainer => {
       const defeated = !!save.flags[Events.flagKeys.trainerFlag(trainer.id)];
       const renderX = trainer.renderX ?? trainer.x, renderY = trainer.renderY ?? trainer.y;
-      const stepping = (renderX + renderY) % 1 > .5 ? 1 : 0; // un pixel di molleggio a ogni mezzo passo
+      // mentre cammina alterna i piedi: mezza cella un piede, mezza cella fermo, poi l'altro
+      const travelled = renderX + renderY;
+      const stride = travelled % 1 > .5 ? 1 + Math.floor(travelled) % 2 : 0;
       const x = Math.round(renderX * 16 - camera.x);
-      const y = Math.round(renderY * 16 - camera.y) - stepping;
+      const y = Math.round(renderY * 16 - camera.y);
       if (x < -16 || y < -20 || x > canvas.width || y > canvas.height) return;
       const sheet = npcSheet(trainer.sprite || (trainersData.classes[trainer.class] || {}).sprite);
       if (sheet) {
-        drawSpriteFrame(sheet, trainer.direction || 'down', x, y);
+        drawSpriteFrame(sheet, trainer.direction || 'down', x, y, stride);
         return;
       }
       const color = defeated ? '#6b6b6b' : (trainerColors[trainer.class] || '#8b4c49');
@@ -2102,8 +2152,45 @@
     [73.42, [146.83, 174.61, 220, 261.63], [440, 523.25, 587.33, 698.46]],        // Re minore 7
     [65.41, [130.81, 164.81, 196, 246.94], [392, 493.88, 523.25, 659.25]]         // Do maggiore 7
   ];
-  const MUSIC_BEAT = 60 / 72;
+  // Temi: stesso generatore, cambiano accordi, andatura e carattere. `drive` = basso che batte ogni ottavo.
+  const hz = midi => 440 * Math.pow(2, (midi - 69) / 12);
+  const chords = list => list.map(([bass, pad, melody]) => [hz(bass), pad.map(hz), melody.map(hz)]);
+  const MUSIC_THEMES = {
+    citta: { beat: 60 / 72, bars: MUSIC_BARS, melody: .4, drive: false },
+    percorso: { // Do maggiore, I-V-vi-IV: aperto, da camminata
+      beat: 60 / 104, melody: .6, drive: false,
+      bars: chords([[48, [60, 64, 67], [72, 76, 79, 84]], [43, [55, 59, 62], [71, 74, 79, 83]], [45, [57, 60, 64], [72, 76, 81, 84]], [41, [53, 57, 60], [72, 77, 81, 84]]])
+    },
+    palestra: { // Re minore: teso
+      beat: 60 / 120, melody: .45, drive: true,
+      bars: chords([[38, [50, 53, 57], [62, 65, 69, 74]], [34, [46, 50, 53], [62, 65, 70, 74]], [36, [48, 52, 55], [64, 67, 72, 76]], [33, [45, 49, 52], [61, 64, 69, 73]]])
+    },
+    lotta: { // La minore, veloce
+      beat: 60 / 160, melody: .7, drive: true,
+      bars: chords([[45, [57, 60, 64], [69, 72, 76, 81]], [41, [53, 57, 60], [69, 72, 77, 81]], [43, [55, 59, 62], [67, 71, 74, 79]], [40, [52, 56, 59], [68, 71, 76, 80]]])
+    }
+  };
+  const ROUTE_MAPS = new Set(['marino_del_tronto', 'oasi', 'maltignano', 'spinetoli_centobuchi']);
   let music = null;
+
+  function musicThemeNow() {
+    if (mode === 'battle') return 'lotta';
+    if (/^palestra_/.test(player.map) || player.map === 'jonathan') return 'palestra';
+    return ROUTE_MAPS.has(player.map) ? 'percorso' : 'citta';
+  }
+
+  // Cambia tema se serve: il vecchio sfuma, il nuovo riparte dalla prima battuta.
+  function updateMusicTheme() {
+    if (!music || !player) return;
+    const theme = musicThemeNow();
+    if (theme === music.theme) return;
+    try { music.bus.gain.setTargetAtTime(0, audioContext.currentTime, .12); } catch (_) { }
+    music.theme = theme;
+    music.bus = audioContext.createGain();
+    music.bus.connect(music.master);
+    music.bar = 0;
+    music.nextBarAt = audioContext.currentTime + .15;
+  }
 
   function startMusic() {
     if (music || !save || save.settings.music === false) return;
@@ -2121,27 +2208,34 @@
         gain.gain.setValueAtTime(.0001, at);
         gain.gain.linearRampToValueAtTime(peak, at + attack);
         gain.gain.exponentialRampToValueAtTime(.0001, at + duration);
-        oscillator.connect(gain).connect(master);
+        oscillator.connect(gain).connect(state.bus);
         oscillator.start(at);
         oscillator.stop(at + duration + .05);
       };
-      const state = { master, bar: 0, nextBarAt: audioContext.currentTime + .1, timer: 0 };
+      const state = { master, bus: audioContext.createGain(), theme: musicThemeNow(), bar: 0, nextBarAt: audioContext.currentTime + .1, timer: 0 };
+      state.bus.connect(master);
       const schedule = () => {
-        while (state.nextBarAt < audioContext.currentTime + 1.2) {
-          const [bass, pad, melody] = MUSIC_BARS[state.bar % MUSIC_BARS.length];
+        const theme = MUSIC_THEMES[state.theme];
+        const beat = theme.beat;
+        while (state.nextBarAt < audioContext.currentTime + .6) {
+          const [bass, pad, melody] = theme.bars[state.bar % theme.bars.length];
           const at = state.nextBarAt;
-          pad.forEach(frequency => tone(frequency, at, MUSIC_BEAT * 4.2, 'sine', .022, .5));
-          tone(bass, at, MUSIC_BEAT * 1.8, 'triangle', .05, .03);
-          tone(bass, at + MUSIC_BEAT * 2, MUSIC_BEAT * 1.6, 'triangle', .04, .03);
+          pad.forEach(frequency => tone(frequency, at, beat * 4.2, 'sine', .022, theme.drive ? .08 : .5));
+          if (theme.drive) {
+            for (let eighth = 0; eighth < 8; eighth += 1) tone(bass, at + eighth * beat / 2, beat * .45, 'square', eighth % 2 ? .014 : .022, .01);
+          } else {
+            tone(bass, at, beat * 1.8, 'triangle', .05, .03);
+            tone(bass, at + beat * 2, beat * 1.6, 'triangle', .04, .03);
+          }
           for (let eighth = 0; eighth < 8; eighth += 1) {
-            if (Math.random() < .4) tone(melody[Math.floor(Math.random() * melody.length)], at + eighth * MUSIC_BEAT / 2, MUSIC_BEAT * 1.1, 'triangle', .022, .02);
+            if (Math.random() < theme.melody) tone(melody[Math.floor(Math.random() * melody.length)], at + eighth * beat / 2, beat * 1.1, 'triangle', .022, .02);
           }
           state.bar += 1;
-          state.nextBarAt += MUSIC_BEAT * 4;
+          state.nextBarAt += beat * 4;
         }
       };
       schedule();
-      state.timer = setInterval(schedule, 300);
+      state.timer = setInterval(schedule, 150);
       music = state;
     } catch (_) { music = null; }
   }
