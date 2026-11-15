@@ -56,7 +56,7 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
 - [x] C2b. (14/11, deciso da Jacopo) Lati come nei giochi Pokémon: avversario in alto a destra con scheda
       in alto a sinistra, proprio Pokémon in basso a sinistra con scheda in basso a destra. Sostituisce la
       scelta precedente (selvatico a sinistra); `regression.mjs` aggiornato.
-- [ ] C3. Transizioni: dissolvenza fra mappe, animazione della Ball, colpo/KO (il lampo d'ingresso c'è).
+- [x] C3. (15/11, = I7) Transizioni: dissolvenza fra mappe, animazione della Ball, colpo/KO.
 - [x] C4a. (14/11) Schermata Squadra a riquadri: capofila grande a sinistra, altri cinque in colonna,
       barre PS colorate, KO in rosso, posti vuoti tratteggiati; clic → scheda. Grafica originale.
 - [x] C4b. (15/11) Menu di pausa a lista sulla destra; Borsa a tasche (= I3).
@@ -222,6 +222,52 @@ Ordinati per quanto si notano giocando. Jacopo sceglie da quale partire.
 - [ ] I16. Mappe: Jacopo le sta provando. Se servono più raccolte, ridisegnare a mano i quartieri fitti
       (Porta Maggiore, Castel di Lama, Centro Storico, Costa): con i tagli dritti siamo al limite.
 - Dopo ogni giro di modifiche: `node tools/gioca.mjs`.
+
+## K. Elenco aggiornato (15/11/2026 sera) — Jacopo: «teniamolo a mente, è pieno di cose interessanti»
+Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
+
+**In corso**
+- [x] K0. (15/11) ⚠️ Blocco in lotta alla palestra di Castel di Lama: il riquadro «quale mossa dimenticare»
+      si apriva DIETRO la schermata di lotta (stesso z-index, viene prima nel DOM) e il gioco aspettava una
+      scelta invisibile. C'era da sempre; `gioca.mjs` non lo vedeva perché clicca i bottoni anche coperti.
+      Ora sta sopra, nello stile nuovo.
+- [ ] K1. Effetti delle mosse mancanti: 55 mosse con effetto non previsto dal motore (confusione, Boato,
+      Riposo, campi, ricarica). Prima quelle che compaiono nella demo.
+- [ ] K2. La barra dei PS scende sul messaggio «X usa Y!», prima del colpo: allinearla all'animazione.
+- [ ] K3. Repellente: si compra ma non fa nulla.
+- [ ] K4. Scheda Pokémon più ricca (categoria, voce Pokédex, altezza, peso, abilità) e apribile dal
+      Pokédex e dalla lotta (= I11, A2, A3).
+- [ ] K5. Pagine del menu rimaste vecchie: Pokédex, Allenatore, Deposito, Salva, Opzioni.
+- [ ] K6. Icone delle due medaglie (= C5).
+- [ ] K7. Animazioni per gli stati in lotta: paralisi, veleno, scottatura, sonno, congelamento (Jacopo, 15/11).
+
+**Posso farle da solo, dopo**
+- [ ] K8. Stanze diverse per le case (= I10).
+- [ ] K9. Mappa della regione disegnata (= I12).
+- [ ] K10. Passare dietro tetti ed edifici; alberi che coprono anche i personaggi (= B3).
+- [ ] K11. Ombra sotto gli sprite, fiori animati (= B4).
+- [ ] K12. Erba alta a chiazze dove è rimasta a rettangoli (= B2b).
+- [ ] K13. Campo `growth` sbagliato per 23 specie (= I14).
+- [ ] K14. Portare nel gioco ciò che Jacopo disegna nel configuratore (= I13).
+- [ ] K15. Test di playthrough `tests/e2e/` fermo da quando sono cambiati movimento e mappe.
+
+**Servono i fogli di Jacopo (ChatGPT immagini)**
+- [ ] K16. Camminata vera per Oliver (= I4) e per gli allenatori (oggi un accenno in codice).
+- [ ] K17. Tifotto fronte e retro (= I5); da rifare Sciarpone (provvisorio), Ciccharizard e Coperto
+      (sbiaditi), Cavedòne e Sbandiera (poco somiglianti).
+- [ ] K18. Arredi per gli interni nuovi: banchi di chiesa, altare, lettino d'ospedale, schermo, forno.
+- [ ] K19. Atlante dei tile definitivo (= B0).
+
+**Serve una decisione di Jacopo**
+- [ ] K20. Interni dei bar della trama: Bobby, Steven, Elena (= I9).
+- [ ] K21. Zanzì parte con Velenpuntura (80) sulla wiki: voluto o svista?
+- [ ] K22. Difficoltà della seconda metà (DJ e turista sulla costa, terzo Bro, Nando allo Jonathan: 60-70%).
+
+**Da provare Jacopo**
+- [ ] K23. Musica: i quattro temi sono scritti senza ascoltarli.
+- [ ] K24. Prova su un telefono vero (= I15).
+- [ ] K25. Mappe ancora più raccolte? Servirebbe ridisegnare a mano i quartieri fitti (= I16).
+- [ ] K26. Nando davanti al bar di Bobby: non deve bloccare la porta (= G6).
 
 ## D. Suono (dopo)
 - [ ] D1. Effetti chiptune e 3-4 temi (città, percorso, lotta, vittoria) generati in WebAudio.
