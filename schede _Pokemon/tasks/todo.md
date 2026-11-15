@@ -139,6 +139,39 @@ Le mappe oggi sono rettangoli (`roads`, `waters`, `buildings`…) dipinti con `f
 - ⚠️ Nota tecnica: negli script lanciati da shell un `\b` dentro una stringa Python arriva come
   backspace (0x08) e rompe le regex in silenzio. Per scrivere regex nei sorgenti usare Edit.
 
+## I. Da dove ripartire (elenco concordato con Jacopo il 15/11/2026)
+Ordinati per quanto si notano giocando. Jacopo sceglie da quale partire.
+
+**Le tre consigliate**
+- [ ] I1. Controllo degli sprite di battaglia contro la wiki: tavola con sprite e artwork affiancati
+      per tutte le specie (Tifotto aveva l'arte di Anicino; il vecchio file di Anicino non era nessuno dei due).
+- [ ] I2. Bilanciamento: `simulate-balance.mjs` dà Puledrotto 0% contro entrambi i capipalestra; da allora
+      sono cambiati exp iniziale, frequenza degli incontri (×1,5 a chiazze) ed exp divisa.
+- [ ] I3. Menu di pausa, Borsa e schermata titolo nello stile nuovo (sono le uniche schermate rimaste vecchie).
+
+**Grafica e atmosfera**
+- [ ] I4. Foglio di camminata vero per Oliver (oggi i passi sono ricavati in codice dal fotogramma fermo).
+- [ ] I5. Sprite veri per Tifotto, fronte e retro (= F8).
+- [ ] I6. Allenatori che camminano: hanno un solo fotogramma per direzione, quindi scivolano.
+- [ ] I7. Dissolvenza fra le mappe, animazione dei colpi in lotta (= C3).
+- [ ] I8. Musica diversa per zona: città, percorso, lotta, palestra.
+
+**Contenuti**
+- [ ] I9. Interni dei bar della trama (Bobby, Steven, Elena). Da decidere insieme: tocca la storia, oggi
+      il bar di Bobby risulta chiuso dopo la rissa (= F10a).
+- [ ] I10. Stanze diverse per le case (oggi una sola condivisa).
+- [ ] I11. Scheda Pokémon più ricca: categoria, voce Pokédex, altezza, peso, abilità dalla wiki; scheda
+      apribile anche dal Pokédex (= A2, A3).
+- [ ] I12. Mappa della regione disegnata, al posto dello schema provvisorio.
+
+**Sotto il cofano**
+- [ ] I13. Portare nel gioco ciò che Jacopo disegna nel configuratore (= B1c).
+- [ ] I14. Campo `growth` sbagliato per 23 specie (= A5), prima del porting verso la ROM hack.
+- [ ] I15. Prova su un telefono vero.
+- [ ] I16. Mappe: Jacopo le sta provando. Se servono più raccolte, ridisegnare a mano i quartieri fitti
+      (Porta Maggiore, Castel di Lama, Centro Storico, Costa): con i tagli dritti siamo al limite.
+- Dopo ogni giro di modifiche: `node tools/gioca.mjs`.
+
 ## D. Suono (dopo)
 - [ ] D1. Effetti chiptune e 3-4 temi (città, percorso, lotta, vittoria) generati in WebAudio.
 
