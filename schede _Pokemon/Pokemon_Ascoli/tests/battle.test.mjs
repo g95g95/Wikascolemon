@@ -472,4 +472,68 @@ function seq(values) {
   assert.strictEqual(battle.canRun(fast, slow, 0, () => 0.99), true, 'più veloce fugge sempre');
 }
 
+// --- Effetti aggiunti il 15/11/2026: confusione, Riposo, Sbadiglio, provocazione, ricarica, PS negli eventi ---
+{
+  const status = (id, effect, extra = {}) => { moves[id] = { name: id, type: 'Normale', category: 'Stato', power: 0, accuracy: null, pp: 10, priority: 0, effect, description: '', ...extra }; };
+  status('t_confondi', { kind: 'confuse', chance: 100 });
+  status('t_riposo', { kind: 'rest' });
+  status('t_sbadiglio', { kind: 'yawn' });
+  status('t_provoca', { kind: 'taunt' });
+  status('t_boato', { kind: 'forceSwitch' });
+  status('t_ricarica', { kind: 'recharge' }, { category: 'Fisico', power: 100, accuracy: null });
+  const fresh = () => [battle.createMonster('basilino', 20), battle.createMonster('tuffito', 20)];
+  const texts = result => result.events.map(e => e.text || '').join(' | ');
+
+  // il danno dice quanti PS restano: chi mostra la lotta muove la barra su quell'evento
+  let [a, d] = fresh();
+  let result = battle.executeMove(a, d, 'azione', battle.freshStages(), battle.freshStages(), { rng: () => 0.5 });
+  const hit = result.events.find(e => e.type === 'damage');
+  assert.strictEqual(hit.hp, d.hp, 'evento di danno con i PS rimasti');
+
+  // confusione: il bersaglio resta confuso e, con il dado basso, si colpisce da solo senza agire
+  [a, d] = fresh();
+  result = battle.executeMove(a, d, 't_confondi', battle.freshStages(), battle.freshStages(), { rng: () => 0.5 });
+  assert.ok(d.confusedTurns > 0 && texts(result).includes('è confuso'), 'la confusione si applica e si annuncia');
+  const before = d.hp;
+  result = battle.executeMove(d, a, 'azione', battle.freshStages(), battle.freshStages(), { rng: () => 0.1 });
+  assert.ok(d.hp < before && a.hp === a.stats.hp && texts(result).includes('colpirsi da solo'), 'confuso: si colpisce da solo e non attacca');
+  battle.clearVolatile(d);
+  assert.ok(!d.confusedTurns, 'clearVolatile toglie la confusione');
+
+  // Riposo: PS pieni, sonno; a PS pieni non fa nulla
+  [a, d] = fresh();
+  result = battle.executeMove(a, d, 't_riposo', battle.freshStages(), battle.freshStages(), { rng: () => 0.5 });
+  assert.ok(texts(result).includes('Ma non ha effetto'), 'Riposo a PS pieni non ha effetto');
+  a.hp = 5;
+  battle.executeMove(a, d, 't_riposo', battle.freshStages(), battle.freshStages(), { rng: () => 0.5 });
+  assert.ok(a.hp === a.stats.hp && a.status === 'slp', 'Riposo cura e addormenta');
+
+  // Sbadiglio: il sonno arriva alla fine del turno successivo
+  [a, d] = fresh();
+  battle.executeMove(a, d, 't_sbadiglio', battle.freshStages(), battle.freshStages(), { rng: () => 0.5 });
+  battle.endOfTurn(d);
+  assert.strictEqual(d.status, null, 'dopo il primo fine turno è ancora sveglio');
+  const drowsy = battle.endOfTurn(d);
+  assert.ok(d.status === 'slp' && drowsy.some(e => e.type === 'status' && e.who === 'self'), 'al secondo fine turno si addormenta');
+
+  // provocazione: niente mosse di stato, quelle d'attacco sì
+  [a, d] = fresh();
+  battle.executeMove(a, d, 't_provoca', battle.freshStages(), battle.freshStages(), { rng: () => 0.5 });
+  result = battle.executeMove(d, a, 'crescita', battle.freshStages(), battle.freshStages(), { rng: () => 0.5 });
+  assert.ok(texts(result).includes('provocato'), 'provocato: la mossa di stato non parte');
+  result = battle.executeMove(d, a, 'azione', battle.freshStages(), battle.freshStages(), { rng: () => 0.5 });
+  assert.ok(result.events.some(e => e.type === 'damage'), 'provocato: le mosse di attacco partono');
+
+  // ricarica: il turno dopo non si muove
+  [a, d] = fresh();
+  battle.executeMove(a, d, 't_ricarica', battle.freshStages(), battle.freshStages(), { rng: () => 0.5 });
+  result = battle.executeMove(a, d, 'azione', battle.freshStages(), battle.freshStages(), { rng: () => 0.5 });
+  assert.ok(texts(result).includes('ricaricarsi') && !result.events.some(e => e.type === 'damage'), 'dopo la mossa deve ricaricarsi');
+
+  // Boato: il motore lo segnala, la sostituzione la fa chi gestisce la lotta
+  [a, d] = fresh();
+  result = battle.executeMove(a, d, 't_boato', battle.freshStages(), battle.freshStages(), { rng: () => 0.5 });
+  assert.ok(result.events.some(e => e.type === 'forceSwitch'), 'Boato produce un evento di cambio forzato');
+}
+
 console.log('battle.test.mjs: tutti i test superati.');

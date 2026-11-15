@@ -382,8 +382,8 @@
     "pp": 25,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "confuse_chance"
+      "kind": "confuse",
+      "chance": 10
     },
     "description": "Un'onda psichica che può confondere il bersaglio."
   },
@@ -653,8 +653,8 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "confuse_only"
+      "kind": "confuse",
+      "chance": 100
     },
     "description": "Un raggio che confonde il bersaglio."
   },
@@ -667,8 +667,7 @@
     "pp": 5,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "cure_team_status"
+      "kind": "cure"
     },
     "description": "Un profumo che cura i problemi di stato dell'intera squadra."
   },
@@ -980,8 +979,8 @@
     "pp": 20,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "confuse_chance"
+      "kind": "confuse",
+      "chance": 20
     },
     "description": "Onde d'acqua pulsanti che possono confondere."
   },
@@ -1608,8 +1607,7 @@
     "pp": 20,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "taunt"
+      "kind": "taunt"
     },
     "description": "Provoca il bersaglio impedendogli di usare mosse di stato per alcuni turni."
   },
@@ -1800,8 +1798,7 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "yawn"
+      "kind": "yawn"
     },
     "description": "al 14: lo esegue dondolando, e la combinazione è considerata tra le cose più contagiose del dex."
   },
@@ -1828,8 +1825,7 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "rest"
+      "kind": "rest"
     },
     "description": "Cura completamente PS e stato, ma fa addormentare chi la usa per due turni."
   },
@@ -2112,8 +2108,9 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "confuse_self_after"
+      "kind": "confuse",
+      "target": "self",
+      "chance": 100
     },
     "description": "Attacco potente che confonde chi lo usa nel turno successivo."
   },
@@ -2137,8 +2134,7 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "recharge"
+      "kind": "recharge"
     },
     "description": "Un'onda d'urto fortissima: il turno successivo occorre ricaricare."
   },
@@ -2380,8 +2376,7 @@
     "pp": 20,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "radicamento"
+      "kind": "ingrain"
     },
     "description": "Mette radici, curando PS ogni turno ma impedendo la fuga."
   },
@@ -3051,8 +3046,9 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "idropompa_a_salve"
+      "kind": "multi",
+      "min": 2,
+      "max": 5
     },
     "description": "Getti d'acqua a bassa potenza, versione depotenziata dell'Idropompa (mossa di Cozzetta)."
   },
@@ -3389,8 +3385,7 @@
     "pp": 20,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "roar"
+      "kind": "forceSwitch"
     },
     "description": "Costringe il bersaglio a essere sostituito."
   },
@@ -4711,8 +4706,7 @@
     "pp": 40,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "roar"
+      "kind": "forceSwitch"
     },
     "description": "Costringe il bersaglio a essere sostituito."
   },
@@ -4753,8 +4747,8 @@
     "pp": 10,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "confuse_chance"
+      "kind": "confuse",
+      "chance": 20
     },
     "description": "è la sua mossa esclusiva: una raffica sonora di borbottii gorgoglianti e visibilmente offesi che può"
   },
@@ -4877,8 +4871,7 @@
     "pp": 20,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "flee"
+      "kind": "flee"
     },
     "description": "Permette di fuggire immediatamente dalla lotta."
   },
@@ -5640,8 +5633,7 @@
     "pp": 15,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "sabbiotomba"
+      "kind": "trap"
     },
     "description": "Intrappola il bersaglio in un vortice di sabbia che infligge danno nei turni successivi."
   },
@@ -5668,8 +5660,7 @@
     "pp": 5,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "oh_ko"
+      "kind": "ohko"
     },
     "description": "Mette KO il bersaglio in un solo colpo se va a segno."
   },
@@ -6088,8 +6079,7 @@
     "pp": 1,
     "priority": 0,
     "effect": {
-      "kind": "custom",
-      "id": "recharge"
+      "kind": "recharge"
     },
     "description": "Attacco Buio devastante: il turno successivo occorre ricaricare."
   },

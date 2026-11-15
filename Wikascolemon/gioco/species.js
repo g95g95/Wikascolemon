@@ -69,6 +69,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Pietra su Pietra",
+    "abilities": [
+      "Raccoglitore (prima)",
+      "Robustezza (seconda)",
+      "Rigenergia (speciale)"
+    ],
+    "height": "1,0 m",
+    "weight": "42,0 kg",
+    "dex": "Cammina a testa bassa e ogni pietra che trova la valuta, la prova, e se va bene se la carica sulla schiena, dove trova da sola il suo posto. I muretti dei pascoli, dicono i vecchi, sono in buona parte roba sua.",
     "wiki": "../accumoli.html"
   },
   "alghetta": {
@@ -128,6 +137,15 @@
       "level": 18,
       "location": "costa"
     },
+    "category": "Pokémon Alga",
+    "abilities": [
+      "Clorofilla (prima)",
+      "Assorbenza (seconda)",
+      "Correntista (speciale)"
+    ],
+    "height": "0,6 m",
+    "weight": "3,2 kg",
+    "dex": "Vive aggrappata agli scogli tra San Benedetto e Grottammare. Chi fa snorkeling la scambia spesso per una semplice alga, finché non gli fa l'occhiolino.",
     "wiki": "../alghetta.html"
   },
   "amatrice": {
@@ -198,6 +216,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Focolare",
+    "abilities": [
+      "Fuocardore (prima)",
+      "Corpodifuoco (seconda)",
+      "Voracità (speciale)"
+    ],
+    "height": "0,9 m",
+    "weight": "24,0 kg",
+    "dex": "Si accuccia nel punto più freddo di una casa, che in un'ora diventa il più caldo. Intorno a lei la gente arriva senza essere chiamata, e a un certo punto qualcuno tira fuori da mangiare.",
     "wiki": "../amatrice.html"
   },
   "ancella": {
@@ -264,6 +291,15 @@
       "level": 55,
       "night": true
     },
+    "category": "Pokémon Ancella",
+    "abilities": [
+      "Premonizione (prima)",
+      "Incantevole (seconda)",
+      "Magispecchio (speciale)"
+    ],
+    "height": "1,2 m",
+    "weight": "24,0 kg",
+    "dex": "Accompagna chi si perde in quota, camminando avanti senza farsi raggiungere. Quando il sentiero ricompare, lei non c'è più.",
     "wiki": "../ancella.html"
   },
   "anicino": {
@@ -329,6 +365,14 @@
       "into": "anisetta",
       "level": 20
     },
+    "category": "Pokémon Anice",
+    "abilities": [
+      "Clorofilla (prima)",
+      "Aromavelo (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "1,8 kg",
+    "dex": "Cresce ai bordi delle strade a decine. Segue i passanti per un tratto, poi si ferma e torna indietro: non si allontana mai dal proprio campo.",
     "wiki": "../anicino.html"
   },
   "anisetta": {
@@ -400,6 +444,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Ammazzacaffè",
+    "abilities": [
+      "Clorofilla (prima)",
+      "Levitazione (speciale)"
+    ],
+    "height": "0,8 m",
+    "weight": "9,5 kg",
+    "dex": "Compare dove la gente si ferma a parlare e sparisce quando il locale si svuota. Nessuno lo ha mai visto arrivare: a un certo punto è sul tavolo.",
     "wiki": "../anisetta.html"
   },
   "arquata": {
@@ -470,6 +522,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Rocca",
+    "abilities": [
+      "Solidroccia (prima)",
+      "Robustezza (seconda)",
+      "Filtro (speciale)"
+    ],
+    "height": "1,1 m",
+    "weight": "70,0 kg",
+    "dex": "Il suo arco non è rigido: quando qualcosa gli grava sopra si flette di un soffio, distribuisce il peso sui quattro pilastri e torna com'era. Sotto, chi passa, è al riparo.",
     "wiki": "../arquata.html"
   },
   "ascolana": {
@@ -557,6 +618,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Dorato",
+    "abilities": [
+      "Corpodifuoco (prima)",
+      "Cuordeciso (seconda)",
+      "Vitalspirito (speciale)"
+    ],
+    "height": "0,6 m",
+    "weight": "2,2 kg",
+    "dex": "Si dice che non se ne possa mangiare una sola. Il Pokédex conferma: non se ne può affrontare una sola.",
     "wiki": "../ascolana.html"
   },
   "bagnetto": {
@@ -619,6 +689,14 @@
       "night": true,
       "knowsSoundMove": true
     },
+    "category": "Pokémon Stagionale",
+    "abilities": [
+      "Vigore (prima)",
+      "Turno di Guardia (speciale)"
+    ],
+    "height": "1,7 m",
+    "weight": "63,0 kg",
+    "dex": "Sa in ogni momento quante teste ci sono in acqua. Se il numero cala di uno se ne accorge prima che qualcuno gridi, e nessuno saprà mai che se n'era accorto.",
     "wiki": "../bagnetto.html"
   },
   "banconio": {
@@ -689,6 +767,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Avventore",
+    "abilities": [
+      "Insonnia (prima)",
+      "Pigrone (speciale)"
+    ],
+    "height": "1,2 m",
+    "weight": "78,0 kg",
+    "dex": "Nessuno lo ha mai visto entrare né uscire. Il posto era già suo prima che il bar aprisse.",
     "wiki": "../banconio.html"
   },
   "basilino": {
@@ -754,6 +840,14 @@
       "into": "turibasil",
       "level": 17
     },
+    "category": "Pokémon Mazzetto",
+    "abilities": [
+      "Erbaiuto (prima)",
+      "Aromavelo (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "2,1 kg",
+    "dex": "Nasce nei vasi benedetti il 5 agosto. Sceglie da sé la casa da proteggere: dove dorme un Basilino, si dorme tranquilli.",
     "wiki": "../basilino.html"
   },
   "batterino": {
@@ -816,6 +910,14 @@
       "level": 15,
       "item": "grattaevinci"
     },
+    "category": "Pokémon Batteria",
+    "abilities": [
+      "Robustezza (prima)",
+      "Battaglione (speciale)"
+    ],
+    "height": "0,4 m",
+    "weight": "3,1 kg",
+    "dex": "Sei bottigliette, sei caratteri, un solo cartoncino. Decidono tutto all'unanimità, dopo consultazioni che durano ore e che dall'esterno suonano come un lungo tintinnio.",
     "wiki": "../batterino.html"
   },
   "bettacce": {
@@ -878,6 +980,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Fosso",
+    "abilities": [
+      "Assorbacqua (prima)",
+      "Umidità (seconda)",
+      "Nuotovelox (speciale)"
+    ],
+    "height": "0,4 m",
+    "weight": "3,5 kg",
+    "dex": "Sta sui sassi al sole con gli occhi socchiusi e si tuffa prima che tu l'abbia vista. Del suo passaggio resta il tonfo, e due occhi che riemergono a guardare chi eri.",
     "wiki": "../bettacce.html"
   },
   "bovfint": {
@@ -937,6 +1048,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Simulacro",
+    "abilities": [
+      "Battagliero (prima)",
+      "Sangue Finto (speciale)"
+    ],
+    "height": "1,8 m",
+    "weight": "28,0 kg",
+    "dex": "Compare a Offida un pomeriggio all'anno e attraversa il paese alla carica, basculando su un numero di gambe che non è mai lo stesso due volte. Cosa ci sia sotto la stoffa non si sa: la stoffa non si alza, e non si è mai alzata.",
     "wiki": "../bovfint.html"
   },
   "bracignale": {
@@ -996,6 +1115,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Carbonaia",
+    "abilities": [
+      "Fiamme (prima)",
+      "Spessospesso (seconda)",
+      "Braci vive (speciale)"
+    ],
+    "height": "1,3 m",
+    "weight": "98,0 kg",
+    "dex": "Ammucchia tronchi caduti e li fa ardere lentamente sotto la terra, proprio come i carbonai della Laga facevano un tempo.",
     "wiki": "../bracignale.html"
   },
   "brasero": {
@@ -1061,6 +1189,14 @@
       "into": "compadrone",
       "level": 36
     },
+    "category": "Pokémon Griglia",
+    "abilities": [
+      "Acquaiuto (prima)",
+      "Iperfuria (speciale)"
+    ],
+    "height": "0,9 m",
+    "weight": "32,0 kg",
+    "dex": "Usa la piastra del dorso come griglia e non lascia la riva finché l'ultimo tizzone non si è spento. Rifiuta il cibo crudo.",
     "wiki": "../brasero.html"
   },
   "bree": {
@@ -1127,6 +1263,14 @@
       "into": "felignoto",
       "location": "avvistamenti"
     },
+    "category": "Pokémon Fuggevole",
+    "abilities": [
+      "Fuganatura (prima)",
+      "Velostatico (speciale)"
+    ],
+    "height": "0,4 m",
+    "weight": "4,8 kg",
+    "dex": "Corre sempre in discesa e sempre verso valle. Chi lo ha visto, l'ha visto una volta sola.",
     "wiki": "../bree.html"
   },
   "caccnitte": {
@@ -1185,6 +1329,15 @@
       "level": 22,
       "night": true
     },
+    "category": "Pokémon Salotto",
+    "abilities": [
+      "Vigore (prima)",
+      "Fuggifuggi (seconda)",
+      "Burla (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "2,8 kg",
+    "dex": "Non caccia niente e avvisa tutto: il postino, i piccioni, il vento, un sacchetto. Sempre da dietro un vetro, un cancello o un padrone.",
     "wiki": "../caccnitte.html"
   },
   "caciara": {
@@ -1253,6 +1406,15 @@
     "evolution": {
       "into": "trecaciare"
     },
+    "category": "Pokémon Frastuono",
+    "abilities": [
+      "Manto Nevoso (prima)",
+      "Insonnia (seconda)",
+      "Cassa Toracica (speciale)"
+    ],
+    "height": "0,8 m",
+    "weight": "18,0 kg",
+    "dex": "Si sente prima di vederla: un tintinnio continuo di ghiaccio che rimbalza tra le rocce innevate del Vettore.",
     "wiki": "../caciara.html"
   },
   "caita": {
@@ -1316,6 +1478,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Adunanza",
+    "abilities": [
+      "Erba Bianca (prima)",
+      "Insonnia (seconda)",
+      "Adunanza (speciale)"
+    ],
+    "height": "1,1 m",
+    "weight": "88,4 kg",
+    "dex": "Nasce dall'unione di più Pef'na. Nessuno sa se ricordi di essere stato tre creature diverse: il suo sguardo lascia pensare di sì.",
     "wiki": "../caita.html"
   },
   "calancolo": {
@@ -1380,6 +1551,15 @@
     "evolution": {
       "into": "tufone"
     },
+    "category": "Pokémon Calanco",
+    "abilities": [
+      "Sabbiafiotto (prima)",
+      "Robustezza (seconda)",
+      "Grondaia (speciale)"
+    ],
+    "height": "0,6 m",
+    "weight": "18,0 kg",
+    "dex": "Ogni pioggia lo fa più piccolo, ogni estate più duro. Dopo i temporali esce sui versanti a contare quello che resta.",
     "wiki": "../calancolo.html"
   },
   "camusci": {
@@ -1453,6 +1633,15 @@
       "into": "ornata",
       "item": "pietra_gelo"
     },
+    "category": "Pokémon Parete",
+    "abilities": [
+      "Zoccoli Saldi (prima)",
+      "Robustezza (seconda)",
+      "Pellecruda (speciale)"
+    ],
+    "height": "0,8 m",
+    "weight": "22,0 kg",
+    "dex": "Il capretto del camoscio dei Sibillini. Vive in verticale, sulle pareti dove nessun altro sta: non cerca gli appigli, li fa. A terra cammina a scatti e guarda in alto.",
     "wiki": "../camusci.html"
   },
   "canala": {
@@ -1516,6 +1705,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Ultima Parola",
+    "abilities": [
+      "Pressione (prima)",
+      "Robustezza (seconda)",
+      "Antisuono (speciale)"
+    ],
+    "height": "1,9 m",
+    "weight": "130,0 kg",
+    "dex": "Parla una volta all'anno, senza preavviso, e dice una parola sola. Chi c'era la racconta per i dodici mesi successivi.",
     "wiki": "../canala.html"
   },
   "capultra": {
@@ -1587,6 +1785,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Trascinatore",
+    "abilities": [
+      "Prepotenza (prima)",
+      "Punk Rock (speciale)"
+    ],
+    "height": "1,9 m",
+    "weight": "98,0 kg",
+    "dex": "Dirige la curva dando le spalle al campo. In tutta la sua vita non ha mai visto un gol dal vivo: li ha sentiti tutti, negli occhi di chi aveva davanti.",
     "wiki": "../capultra.html"
   },
   "carpentrap": {
@@ -1654,6 +1860,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Ponteggio",
+    "abilities": [
+      "Robustezza (prima)",
+      "Grinta (speciale)"
+    ],
+    "height": "1,8 m",
+    "weight": "96,0 kg",
+    "dex": "Arrivato dall'altra sponda del Mediterraneo quando qui c'era tutto da rimettere in piedi. È rimasto perché il lavoro non è finito.",
     "wiki": "../carpentrap.html"
   },
   "cavalbrace": {
@@ -1720,6 +1934,14 @@
       "level": 36,
       "night": true
     },
+    "category": "Pokémon Scalpito",
+    "abilities": [
+      "Aiutofuoco (prima)",
+      "Fuocardore (speciale)"
+    ],
+    "height": "1,4 m",
+    "weight": "62,0 kg",
+    "dex": "Scalpita giorno e notte come un mortaretto che non è ancora scoppiato. Le sue impronte restano strinate sull'asfalto.",
     "wiki": "../cavalbrace.html"
   },
   "cavedi": {
@@ -1777,6 +1999,15 @@
       "into": "cavedone",
       "level": 25
     },
+    "category": "Pokémon Pesciolino",
+    "abilities": [
+      "Ingorda (prima)",
+      "Adattabilità (seconda)",
+      "Occhi Furbi (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "1,2 kg",
+    "dex": "Segue ogni lenza che tocca l'acqua, convinto che sia cibo. Ha ragione più spesso di quanto i pescatori vorrebbero ammettere.",
     "wiki": "../cavedi.html"
   },
   "cavedone": {
@@ -1851,6 +2082,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Buca Profonda",
+    "abilities": [
+      "Ingorda (prima)",
+      "Adattabilità (seconda)",
+      "Occhi Furbi (speciale)"
+    ],
+    "height": "0,9 m",
+    "weight": "9,5 kg",
+    "dex": "Vive immobile sul fondo delle buche più profonde. Chi lo vede una volta giura che lo stava già osservando da prima.",
     "wiki": "../cavedone.html"
   },
   "cello": {
@@ -1924,6 +2164,15 @@
       "into": "canala",
       "level": 55
     },
+    "category": "Pokémon Tuttofare",
+    "abilities": [
+      "Prepotenza (prima)",
+      "Incantevole (seconda)",
+      "Mutatipo (speciale)"
+    ],
+    "height": "1,7 m",
+    "weight": "82,0 kg",
+    "dex": "Ripara motori e cuori, innesta, imbianca, pesca, cucina, media le liti e vince a briscola, possibilmente nello stesso pomeriggio. Non si vanta: constata.",
     "wiki": "../cello.html"
   },
   "cerqua": {
@@ -1987,6 +2236,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Quercia",
+    "abilities": [
+      "Robustezza (prima)",
+      "Ben Piantata (speciale)"
+    ],
+    "height": "2,6 m",
+    "weight": "340,0 kg",
+    "dex": "Chi le dava della totera ora si ripara sotto i suoi rami quando piove. Lei non lo fa notare a nessuno, ma le file ordinate della sua corteccia se lo ricordano tutte.",
     "wiki": "../cerqua.html"
   },
   "chioccidoro": {
@@ -2062,6 +2319,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Covata d'Oro",
+    "abilities": [
+      "Robustezza (prima)",
+      "Incantevole (seconda)",
+      "Telaio d'Oro (speciale)"
+    ],
+    "height": "1,1 m",
+    "weight": "95,0 kg",
+    "dex": "Sta accovacciata nella voragine con le ali aperte a tetto, e sotto le ali una covata di pulcini d'oro che si spostano di continuo. Chi la trova trova un tesoro, ma il tesoro non si porta via: si può solo restare.",
     "wiki": "../chioccidoro.html"
   },
   "chirocefalo": {
@@ -2129,6 +2395,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Relitto",
+    "abilities": [
+      "Assorbacqua (prima)",
+      "Idratazione (seconda)",
+      "Robustezza (speciale)"
+    ],
+    "height": "0,4 m",
+    "weight": "2,5 kg",
+    "dex": "Vive in un solo lago al mondo e nuota a pancia in su, guardando il cielo. Quando il lago sparisce muore, e le sue uova aspettano nel fango la neve che lo riporta.",
     "wiki": "../chirocefalo.html"
   },
   "ciammarica": {
@@ -2187,6 +2462,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Chiocciola",
+    "abilities": [
+      "Viscosità (prima)",
+      "Scia Lucida (speciale)"
+    ],
+    "height": "0,4 m",
+    "weight": "6,5 kg",
+    "dex": "Dopo la pioggia si arrampica sui muretti di travertino, da cui è quasi indistinguibile. Se cade e si cappotta, impiega anche quaranta minuti a rigirarsi: senza fretta e senza vergogna.",
     "wiki": "../ciammarica.html"
   },
   "ciccharizard": {
@@ -2254,6 +2537,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Maître",
+    "abilities": [
+      "Ascolto Attivo (prima)",
+      "Partecipazione (seconda)",
+      "Equità Selettiva (speciale)"
+    ],
+    "height": "1,7 m",
+    "weight": "67,4 kg",
+    "dex": "Gestisce locali che compaiono nel centro di Ascoli soltanto dopo il tramonto. Chi gli racconta un problema esce spesso con una soluzione che crede di aver trovato da solo.",
     "wiki": "../ciccharizard.html"
   },
   "ciclabile": {
@@ -2320,6 +2612,15 @@
       "into": "pontecurvo",
       "location": "marino_del_tronto"
     },
+    "category": "Pokémon Mobilità Dolce",
+    "abilities": [
+      "Pressione (prima)",
+      "Fuggifuggi (seconda)",
+      "Piedisvelti (speciale)"
+    ],
+    "height": "1,2 m",
+    "weight": "48,0 kg",
+    "dex": "Vuole collegare un punto della città a un altro con una striscia verde. Dove non trova spazio, si stende sul marciapiede: chi camminava lì cammina altrove, e non ne è contento.",
     "wiki": "../ciclabile.html"
   },
   "cignalo": {
@@ -2378,6 +2679,15 @@
       "into": "bracignale",
       "level": 26
     },
+    "category": "Pokémon Cinghialetto",
+    "abilities": [
+      "Testarda (prima)",
+      "Spessospesso (seconda)",
+      "Grugnito (speciale)"
+    ],
+    "height": "0,5 m",
+    "weight": "14,0 kg",
+    "dex": "Caracolla tra i castagneti raspando il terreno col grifo. Quando trova una radice succosa, la difende grugnendo per ore.",
     "wiki": "../cignalo.html"
   },
   "ciuci": {
@@ -2432,6 +2742,15 @@
       "into": "ciucione",
       "level": 18
     },
+    "category": "Pokémon Passerotto",
+    "abilities": [
+      "Sguardo Fermo (prima)",
+      "Spudoratezza (seconda)",
+      "Bricioleria (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "1,6 kg",
+    "dex": "Vive sui tavolini dei bar del lungomare. Non fugge quasi mai davanti a un cliente distratto: aspetta solo il momento buono.",
     "wiki": "../ciuci.html"
   },
   "ciucione": {
@@ -2487,6 +2806,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Passerone",
+    "abilities": [
+      "Sguardo Fermo (prima)",
+      "Spudoratezza (seconda)",
+      "Bricioleria (speciale)"
+    ],
+    "height": "0,6 m",
+    "weight": "5,4 kg",
+    "dex": "Comanda lo stormo dei tavolini del lungomare. Basta il suo sguardo a far desistere anche i clienti più affamati.",
     "wiki": "../ciucione.html"
   },
   "cocchia": {
@@ -2557,6 +2885,15 @@
       "level": 20,
       "friendship": true
     },
+    "category": "Pokémon Crosta",
+    "abilities": [
+      "Avanzo (prima)",
+      "Robustezza (seconda)",
+      "Voracità (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "2,0 kg",
+    "dex": "Un pezzo di crosta di pane, curvo come una tegola, con due occhietti. Dentro è vuota: è solo fuori. Rotola, si infila nelle crepe calde vicino al forno e aspetta.",
     "wiki": "../cocchia.html"
   },
   "cometella": {
@@ -2624,6 +2961,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Cometa",
+    "abilities": [
+      "Illuminazione (prima)",
+      "Levitazione (seconda)",
+      "Scia (speciale)"
+    ],
+    "height": "0,4 m",
+    "weight": "0,3 kg",
+    "dex": "Per undici mesi è una stella qualunque sopra il paese, che se la guardi a lungo si sposta un poco per farsi vedere. A dicembre scende e si divide: una sopra ogni capanna, ventuno, tutte con la coda in giù.",
     "wiki": "../cometella.html"
   },
   "compadrone": {
@@ -2695,6 +3041,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Compare",
+    "abilities": [
+      "Acquaiuto (prima)",
+      "Iperfuria (speciale)"
+    ],
+    "height": "1,6 m",
+    "weight": "102,0 kg",
+    "dex": "I più anziani ricordano un fiume molto più caldo, dall'altra parte dell'oceano. Nessuno di loro c'è mai stato.",
     "wiki": "../compadrone.html"
   },
   "coperto": {
@@ -2757,6 +3111,14 @@
       "into": "mixaro",
       "defeat": "maranzino"
     },
+    "category": "Pokémon Servizio",
+    "abilities": [
+      "Multipresa (prima)",
+      "Doppio Turno (speciale)"
+    ],
+    "height": "1,8 m",
+    "weight": "68,0 kg",
+    "dex": "Regge sei piatti senza guardarli e ricorda ordini che nessuno ha scritto. Non si siede da maggio.",
     "wiki": "../coperto.html"
   },
   "cozzetta": {
@@ -2814,6 +3176,15 @@
       "into": "scoglierax",
       "level": 30
     },
+    "category": "Pokémon Mitilo",
+    "abilities": [
+      "Guscioduro (prima)",
+      "Adesivo (seconda)",
+      "Marea Placida (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "3,8 kg",
+    "dex": "Vive attaccata agli scogli in banchi di centinaia di esemplari identici. Riconoscerne uno con gli occhi aperti richiede molta pazienza.",
     "wiki": "../cozzetta.html"
   },
   "cremino": {
@@ -2888,6 +3259,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Crema Fritta",
+    "abilities": [
+      "Pelledura (prima)",
+      "Cuordeciso (seconda)",
+      "Incantevole (speciale)"
+    ],
+    "height": "0,5 m",
+    "weight": "1,5 kg",
+    "dex": "Si apposta sulle torri e soffia vapore di vaniglia per spaventare la città. Nessuno si spaventa. Dentro è crema, e lo sanno tutti tranne lui.",
     "wiki": "../cremino.html"
   },
   "cucu": {
@@ -2951,6 +3331,15 @@
       "level": 35,
       "night": true
     },
+    "category": "Pokémon Nascondino",
+    "abilities": [
+      "Cucù (prima)",
+      "Robustezza (seconda)",
+      "Levitazione (speciale)"
+    ],
+    "height": "0,5 m",
+    "weight": "4,0 kg",
+    "dex": "Una crisalide appesa alla pergola della pizzeria. Quando qualcuno passa si apre di scatto, sporge la testa, dice cucù e si richiude. È l'unico gioco che conosce.",
     "wiki": "../cucu.html"
   },
   "dehor": {
@@ -3018,6 +3407,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Terrazzino",
+    "abilities": [
+      "Cuorbenefico (prima)",
+      "Ora Felice (speciale)"
+    ],
+    "height": "1,6 m",
+    "weight": "210,0 kg",
+    "dex": "Nessuno è mai riuscito a passargli davanti senza sedersi. Non usa la forza: usa l'ombra giusta, la plastica calda di sole e il fatto che tanto ormai.",
     "wiki": "../dehor.html"
   },
   "faro": {
@@ -3085,6 +3482,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Due Lampi",
+    "abilities": [
+      "Illuminazione (prima)",
+      "Assorbivolt (seconda)",
+      "Analizzatore (speciale)"
+    ],
+    "height": "2,6 m",
+    "weight": "310,0 kg",
+    "dex": "Due lampi ogni dieci secondi, col mare buono e col mare cattivo, che qualcuno guardi o no. Non è mai stato colto in ritardo.",
     "wiki": "../faro.html"
   },
   "fatella": {
@@ -3146,6 +3552,15 @@
       "into": "ancella",
       "level": 35
     },
+    "category": "Pokémon Danzante",
+    "abilities": [
+      "Premonizione (prima)",
+      "Incantevole (seconda)",
+      "Magispecchio (speciale)"
+    ],
+    "height": "0,6 m",
+    "weight": "8,0 kg",
+    "dex": "Scende a valle al tramonto e balla tutta la notte, con la gonna che non si alza mai. Prima dell'alba se ne va, e al mattino le sue impronte sono di capra.",
     "wiki": "../fatella.html"
   },
   "favalanciata": {
@@ -3217,6 +3632,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Catapulta",
+    "abilities": [
+      "Ridarella (prima)",
+      "Vigore (seconda)",
+      "Testadura (speciale)"
+    ],
+    "height": "1,3 m",
+    "weight": "30,0 kg",
+    "dex": "Un baccello su due gambe a molla, con cinque o sei fave allineate dentro. A chiunque passi lungo la Salaria ne lancia una, calcolata per arrivare un secondo dopo che ha letto il cartello.",
     "wiki": "../favalanciata.html"
   },
   "favette": {
@@ -3282,6 +3706,15 @@
       "into": "favalanciata",
       "level": 22
     },
+    "category": "Pokémon Proiettile",
+    "abilities": [
+      "Fuggifuggi (prima)",
+      "Piedisvelti (seconda)",
+      "Levitazione (speciale)"
+    ],
+    "height": "0,1 m",
+    "weight": "0,1 kg",
+    "dex": "Una fava sola, verde, con gli occhi spalancati e la bocca a \"o\" di chi è stato appena lanciato. Nessuno l'ha mai vista partire, nessuno l'ha mai vista atterrare.",
     "wiki": "../favette.html"
   },
   "felignoto": {
@@ -3353,6 +3786,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Diceria",
+    "abilities": [
+      "Sguardofermo (prima)",
+      "Intimidazione (speciale)"
+    ],
+    "height": "2,1 m",
+    "weight": "68,0 kg",
+    "dex": "Non esiste una sola fotografia nitida. Ne esistono moltissime sfocate.",
     "wiki": "../felignoto.html"
   },
   "forox": {
@@ -3436,6 +3877,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Avvocato",
+    "abilities": [
+      "Prepotenza (prima)",
+      "Presagio (seconda)",
+      "Cavillo (speciale)"
+    ],
+    "height": "1,7 m",
+    "weight": "62,0 kg",
+    "dex": "Conosce a memoria tutte le costituzioni, comprese quelle abrogate. Se lo si contraddice, cita il comma esatto e continua a fare le fusa.",
     "wiki": "../forox.html"
   },
   "frizzantina": {
@@ -3509,6 +3959,15 @@
     "evolution": {
       "into": "spumadiva"
     },
+    "category": "Pokémon Etichetta",
+    "abilities": [
+      "Idratazione (prima)",
+      "Fuggifuggi (seconda)",
+      "Armatura Fragile (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "0,25 kg",
+    "dex": "Vive dentro una bottiglia di vetro e si affaccia quando la stappi. Se la scuoti si offende e schiuma per dieci minuti. Poi si calma e ti perdona, come fanno i bambini.",
     "wiki": "../frizzantina.html"
   },
   "fuocavallo": {
@@ -3580,6 +4039,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Girandola",
+    "abilities": [
+      "Aiutofuoco (prima)",
+      "Fuocardore (speciale)"
+    ],
+    "height": "1,9 m",
+    "weight": "88,0 kg",
+    "dex": "Le sue scintille scaldano ma non bruciano chi è in festa. Attraversa la folla al galoppo e la gente ride.",
     "wiki": "../fuocavallo.html"
   },
   "geotrito": {
@@ -3649,6 +4116,15 @@
       "into": "sandrago",
       "level": 32
     },
+    "category": "Pokémon Lingua",
+    "abilities": [
+      "Pelle Respira (prima)",
+      "Idratazione (seconda)",
+      "Cute Umida (speciale)"
+    ],
+    "height": "0,1 m",
+    "weight": "0,3 kg",
+    "dex": "Un drago lungo dieci centimetri senza fuoco e senza polmoni: respira dalla pelle e caccia con la lingua, più lunga del corpo. D'autunno sta sotto le foglie di castagno, dello stesso colore.",
     "wiki": "../geotrito.html"
   },
   "gionata": {
@@ -3720,6 +4196,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Volo Alto",
+    "abilities": [
+      "Testadura (prima)",
+      "Acutovista (seconda)",
+      "Levitazione (speciale)"
+    ],
+    "height": "0,9 m",
+    "weight": "12,0 kg",
+    "dex": "È l'unico gabbiano al mondo che non strilla. Vola più alto del necessario, per il gusto di farlo, e supera ogni ostacolo in silenzio.",
     "wiki": "../gionata.html"
   },
   "gommapiuma": {
@@ -3766,6 +4251,13 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Giaciglio",
+    "abilities": [
+      "Memoria di Forma (unica)"
+    ],
+    "height": "0,4 m (distesa)",
+    "weight": "12,0 kg (asciutta)",
+    "dex": "Fu trovata durante le feste di Natale in un edificio abbandonato, distesa in un quadrato di sole. Nessuno seppe dire da quanto tempo aspettasse. Lei non lo considerò mai un dato importante.",
     "wiki": "../gommapiuma.html"
   },
   "gradinata": {
@@ -3829,6 +4321,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Dodicesimo",
+    "abilities": [
+      "Vigore (prima)",
+      "Pressione (seconda)",
+      "Agonismo (speciale)"
+    ],
+    "height": "3,5 m",
+    "weight": "999,9 kg",
+    "dex": "Vive per novanta minuti alla settimana e passa il resto ad aspettarli, con le seggiole ribaltate e lo striscione al vento. La domenica è la creatura più forte dello stadio.",
     "wiki": "../gradinata.html"
   },
   "gradino": {
@@ -3886,6 +4387,15 @@
       "into": "seggiola",
       "level": 25
     },
+    "category": "Pokémon Scalino",
+    "abilities": [
+      "Robustezza (prima)",
+      "Vigore (seconda)",
+      "Pellearsa (speciale)"
+    ],
+    "height": "0,4 m",
+    "weight": "60,0 kg",
+    "dex": "Regge chi ci sale, chi ci salta, chi ci si accalca al gol. È l'unico elemento dello stadio che non abbia mai chiesto manutenzione.",
     "wiki": "../gradino.html"
   },
   "idra": {
@@ -3957,6 +4467,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Policefalo",
+    "abilities": [
+      "Guscioscudo (prima)",
+      "Idratazione (seconda)",
+      "Multisquame (speciale)"
+    ],
+    "height": "2,4 m",
+    "weight": "152,0 kg",
+    "dex": "Le sue cinque teste non dormono mai tutte insieme. Vive solo dove l'acqua è pulita: se abbandona un fosso, in frazione smettono di berne l'acqua il giorno stesso.",
     "wiki": "../idra.html"
   },
   "lalluna": {
@@ -4024,6 +4543,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Occhi di Luna",
+    "abilities": [
+      "Fototropismo (prima)",
+      "Insonnia (seconda)",
+      "Magispecchio (speciale)"
+    ],
+    "height": "1,4 m",
+    "weight": "9,0 kg",
+    "dex": "Una falena enorme con due lune piene sulle ali, che gira intorno alle lampade del parcheggio finché il locale non chiude. Gli ocelli non servono a spaventare: servono a farsi seguire.",
     "wiki": "../lalluna.html"
   },
   "lettino": {
@@ -4082,6 +4610,14 @@
       "into": "ombrellone",
       "level": 22
     },
+    "category": "Pokémon Prendisole",
+    "abilities": [
+      "Sabbiavelo (prima)",
+      "Scatto a Molla (speciale)"
+    ],
+    "height": "0,6 m",
+    "weight": "7,2 kg",
+    "dex": "Se qualcuno lo occupa senza asciugamano, cigola finché l'abusivo non se ne va. L'asciugamano, per lui, è un contratto: lo rispetta anche se il proprietario non torna per ore.",
     "wiki": "../lettino.html"
   },
   "lisciano": {
@@ -4160,6 +4696,15 @@
       "into": "idra",
       "level": 40
     },
+    "category": "Pokémon Pontefice",
+    "abilities": [
+      "Sincronia (prima)",
+      "Forzainteriore (seconda)",
+      "Telepatia (speciale)"
+    ],
+    "height": "1,1 m",
+    "weight": "24,5 kg",
+    "dex": "Porta il cartello della sua frazione come un pastorale e benedice chiunque salga il versante. Chi imbratta la segnaletica scopre che la sua voce gentile sa anche non esserlo.",
     "wiki": "../lisciano.html"
   },
   "liva": {
@@ -4240,6 +4785,15 @@
     "evolution": {
       "into": "ascolana"
     },
+    "category": "Pokémon Ripieno",
+    "abilities": [
+      "Robustezza (prima)",
+      "Cuordeciso (seconda)",
+      "Vitalspirito (speciale)"
+    ],
+    "height": "0,4 m",
+    "weight": "3,0 kg",
+    "dex": "Le hanno tolto il nocciolo con un taglio a spirale e l'hanno riempita di carne. Da allora non ha paura di niente e colpisce di testa.",
     "wiki": "../liva.html"
   },
   "livetta": {
@@ -4297,6 +4851,15 @@
       "into": "liva",
       "friendship": true
     },
+    "category": "Pokémon Tenera",
+    "abilities": [
+      "Robustezza (prima)",
+      "Agilfuga (seconda)",
+      "Vitalspirito (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "0,8 kg",
+    "dex": "Tenera fuori, dura dentro. Sta sul ramo fino a settembre e poi rotola ai piedi dell'albero, dove aspetta che qualcuno la raccolga a mano.",
     "wiki": "../livetta.html"
   },
   "longobatto": {
@@ -4372,6 +4935,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Corredo",
+    "abilities": [
+      "Corredo Funebre (prima)",
+      "Infiltrazione (seconda)",
+      "Corpo Maledetto (speciale)"
+    ],
+    "height": "1,5 m",
+    "weight": "18,0 kg",
+    "dex": "Uno Sparpagghjò che ha dormito in una tomba longobarda e ne è uscito con una fibbia d'oro in testa, convinto di essere il guerriero sepolto. Non lo è, ma vola dritto.",
     "wiki": "../longobatto.html"
   },
   "lupa": {
@@ -4447,6 +5019,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Pagnotta",
+    "abilities": [
+      "Lenzuolo (prima)",
+      "Cuore Ardente (seconda)",
+      "Voracità (speciale)"
+    ],
+    "height": "0,9 m",
+    "weight": "28,0 kg",
+    "dex": "Una pagnotta con un lenzuolo al collo. Ogni mattina esce dal forno e appende il lenzuolo fuori; ogni mattina qualcuno viene a leggerlo e gli chiede chi è. Lui risponde che è pane.",
     "wiki": "../lupa.html"
   },
   "lupitte": {
@@ -4513,6 +5094,15 @@
       "level": 30,
       "night": true
     },
+    "category": "Pokémon Cucciolo",
+    "abilities": [
+      "Fuggifuggi (prima)",
+      "Acutovista (seconda)",
+      "Agonismo (speciale)"
+    ],
+    "height": "0,5 m",
+    "weight": "9,0 kg",
+    "dex": "Nato in una tana di primavera in uno dei sedici nuclei del Parco. Compare nel Pokédex già fotografato: uno scatto notturno di fototrappola, occhi rossi, data in basso a destra.",
     "wiki": "../lupitte.html"
   },
   "maranzino": {
@@ -4575,6 +5165,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Ciclomolesto",
+    "abilities": [
+      "Rischiattacco (prima)",
+      "Motorsuono (speciale)"
+    ],
+    "height": "1,7 m",
+    "weight": "58,0 kg",
+    "dex": "Percorre la ciclabile avanti e indietro tutto il giorno con la cassa al massimo. Non ha una meta: si sente arrivare da lontano, e poi si sente andare via per altrettanto tempo.",
     "wiki": "../maranzino.html"
   },
   "mixaro": {
@@ -4634,6 +5232,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Consolle",
+    "abilities": [
+      "Punk Rock (prima)",
+      "Ultimo Pezzo (speciale)"
+    ],
+    "height": "1,8 m",
+    "weight": "72,0 kg",
+    "dex": "Quando alza le braccia, centinaia di persone alzano le braccia. Tre estati fa le stesse persone gli ordinavano da bere senza guardarlo in faccia.",
     "wiki": "../mixaro.html"
   },
   "moccolo": {
@@ -4689,6 +5295,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Lampioncino",
+    "abilities": [
+      "Risplendi (prima)",
+      "Ultimo Acceso (speciale)"
+    ],
+    "height": "0,9 m",
+    "weight": "2,1 kg",
+    "dex": "Compare solo quando tutte le altre luci si spengono. Chi lo cerca con una torcia in mano non lo troverà mai: è il buio la sua condizione, non il suo nemico.",
     "wiki": "../moccolo.html"
   },
   "moro": {
@@ -4756,6 +5370,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Saraceno",
+    "abilities": [
+      "Robustezza (prima)",
+      "Velostatico (speciale)"
+    ],
+    "height": "2,2 m",
+    "weight": "184,0 kg",
+    "dex": "Il legno del suo volto è stato riparato e riscolpito decine di volte. Nessuna delle facce che ha avuto è quella con cui fu intagliato la prima volta.",
     "wiki": "../moro.html"
   },
   "mucillax": {
@@ -4811,6 +5433,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Mucillagine",
+    "abilities": [
+      "Limaccioso (prima)",
+      "Assorbenza (seconda)",
+      "Marea Rossa (speciale)"
+    ],
+    "height": "1,4 m",
+    "weight": "38,5 kg",
+    "dex": "Compare dove l'acqua non è più limpida. Non è cattivo: è solo troppo intasato per muoversi in fretta.",
     "wiki": "../mucillax.html"
   },
   "ndandaluse": {
@@ -4867,6 +5498,15 @@
     "evolution": {
       "into": "sarchiapa"
     },
+    "category": "Pokémon Dondolo",
+    "abilities": [
+      "Pigrone (prima)",
+      "Fuggifuggi (seconda)",
+      "Piedisvelti (speciale)"
+    ],
+    "height": "0,9 m",
+    "weight": "22,0 kg",
+    "dex": "Cammina dondolando, un passo di qua e uno di là, e si ferma davanti a tutto. Arriva sempre: dopo, ma arriva.",
     "wiki": "../ndandaluse.html"
   },
   "ngeno": {
@@ -4954,6 +5594,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Sapientone",
+    "abilities": [
+      "Prepotenza (prima)",
+      "Pressione (seconda)",
+      "Burla (speciale)"
+    ],
+    "height": "1,4 m",
+    "weight": "58,0 kg",
+    "dex": "Sa tutto, l'ha già fatto, ce l'ha più grande. Non mente: crede a ogni parola che dice. A chi lo contraddice smette di dare retta.",
     "wiki": "../ngeno.html"
   },
   "notaiax": {
@@ -5029,6 +5678,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Rogito",
+    "abilities": [
+      "Prepotenza (prima)",
+      "Segreto Professionale (speciale)"
+    ],
+    "height": "3,4 m (1,2 m in cerchio)",
+    "weight": "88,8 kg",
+    "dex": "Un serpente che si morde la coda, chiuso in cerchio in uno studio del centro storico. La sua pelle è un codice penale: l'articolo che sta mordendo è quello che si applica a te.",
     "wiki": "../notaiax.html"
   },
   "ombrellone": {
@@ -5096,6 +5753,14 @@
       "level": 36,
       "partySpecies": "bagnino"
     },
+    "category": "Pokémon Ombra",
+    "abilities": [
+      "Robustezza (prima)",
+      "Zona d'Ombra (speciale)"
+    ],
+    "height": "2,2 m",
+    "weight": "9,5 kg",
+    "dex": "Ruota la cupola durante il giorno per tenere l'ombra su chi protegge, impercettibile come un girasole al contrario. Chi dorme sotto di lui non si scotta mai.",
     "wiki": "../ombrellone.html"
   },
   "ornata": {
@@ -5179,6 +5844,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Livrea",
+    "abilities": [
+      "Livrea Invernale (prima)",
+      "Robustezza (seconda)",
+      "Mantelneve (speciale)"
+    ],
+    "height": "1,4 m",
+    "weight": "48,0 kg",
+    "dex": "Il camoscio dei Sibillini con la livrea d'inverno diventata ghiaccio: collare di brina, corna come stalattiti nere. Dove appoggia gli zoccoli posteriori la roccia gela, e per lei tiene meglio.",
     "wiki": "../ornata.html"
   },
   "paguremo": {
@@ -5246,6 +5920,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Anacoreta",
+    "abilities": [
+      "Robustezza (prima)",
+      "Pressione (seconda)",
+      "Clausura (speciale)"
+    ],
+    "height": "2,1 m",
+    "weight": "260,0 kg",
+    "dex": "Ha murato una grotta della parete e ci si è chiuso dentro: sul dorso porta la facciata con le bifore per occhi, la chela grande tesa sul burrone è la scalinata. Si vede da Piazza del Popolo, e non è mai sceso.",
     "wiki": "../paguremo.html"
   },
   "palombare": {
@@ -5312,6 +5995,15 @@
       "into": "lisciano",
       "level": 17
     },
+    "category": "Pokémon Palomba",
+    "abilities": [
+      "Beccoforte (prima)",
+      "Occhioni (seconda)",
+      "Agonismo (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "2,1 kg",
+    "dex": "Nasce già stringendo tra le piume una targhetta azzurra col nome della sua frazione. La lucida ogni mattina col becco: è la prima cosa che mostra e l'ultima che lascerebbe.",
     "wiki": "../palombare.html"
   },
   "pantafeca": {
@@ -5379,6 +6071,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Dormiveglia",
+    "abilities": [
+      "Insonnia (prima)",
+      "Pressione (seconda)",
+      "Sogniamari (speciale)"
+    ],
+    "height": "1,2 m",
+    "weight": "99,9 kg",
+    "dex": "Entra dal buco della serratura e si siede sul petto di chi dorme supino. Non fa niente: sta lì, guarda, e pesa. All'alba se ne va senza rumore.",
     "wiki": "../pantafeca.html"
   },
   "passerina": {
@@ -5438,6 +6139,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Grappolo",
+    "abilities": [
+      "Clorofilla (prima)",
+      "Fuggifuggi (seconda)",
+      "Erbaiuto (speciale)"
+    ],
+    "height": "0,4 m",
+    "weight": "3,0 kg",
+    "dex": "Cresce nei filari come un grappolo qualsiasi, e la mattina della vendemmia il tralcio è vuoto: tre filari più in là c'è un grappolo che ride.",
     "wiki": "../passerina.html"
   },
   "peccio": {
@@ -5504,6 +6214,15 @@
       "into": "peccionara",
       "item": "granaglie"
     },
+    "category": "Pokémon Piccione",
+    "abilities": [
+      "Acutovista (prima)",
+      "Fuggifuggi (seconda)",
+      "Voracità (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "0,4 kg",
+    "dex": "Vive attorno a un'ora precisa del giorno, in cui qualcuno arriva in piazza con un sacchetto. Per quell'ora è sul cornicione giusto dieci minuti prima, da anni.",
     "wiki": "../peccio.html"
   },
   "peccionara": {
@@ -5571,6 +6290,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Colonia",
+    "abilities": [
+      "Pressione (prima)",
+      "Acutovista (seconda)",
+      "Insonnia (speciale)"
+    ],
+    "height": "2,8 m",
+    "weight": "480,0 kg",
+    "dex": "Non è un piccione: sono tutti. Centinaia stretti insieme nella forma di uno solo, seduti su una fontana antica che è diventata il loro ventre.",
     "wiki": "../peccionara.html"
   },
   "pecorino": {
@@ -5630,6 +6358,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Ritrovato",
+    "abilities": [
+      "Robustezza (prima)",
+      "Clorofilla (seconda)",
+      "Rigenergia (speciale)"
+    ],
+    "height": "0,5 m",
+    "weight": "9,0 kg",
+    "dex": "Cresce aggrappato a un sasso di montagna, con un ciuffo di lana sul dorso lasciato dalle pecore in transumanza. Matura tardi, resiste al freddo, e non si fa notare.",
     "wiki": "../pecorino.html"
   },
   "pefna": {
@@ -5688,6 +6425,15 @@
       "level": 20,
       "fusion": true
     },
+    "category": "Pokémon Turione",
+    "abilities": [
+      "Clorofilla (prima)",
+      "Erba Bianca (seconda)",
+      "Colonia (speciale)"
+    ],
+    "height": "0,4 m",
+    "weight": "1,2 kg",
+    "dex": "Vive nascosto tra i filari, timido come pochi altri Pokémon. Se ne vede uno solo, ce ne sono altri dieci intorno, immobili.",
     "wiki": "../pefna.html"
   },
   "peto": {
@@ -5747,6 +6493,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Ruota",
+    "abilities": [
+      "Intimidazione (prima)",
+      "In Mostra (speciale)"
+    ],
+    "height": "1,1 m",
+    "weight": "14,0 kg",
+    "dex": "Fa la ruota quando lo guardano. La fa anche quando non lo guarda nessuno, e in quel caso la fa più larga: qualcuno, da qualche parte, se lo sta perdendo.",
     "wiki": "../peto.html"
   },
   "picchio": {
@@ -5818,6 +6572,13 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Vessillo",
+    "abilities": [
+      "Apripista (unica)"
+    ],
+    "height": "1,7 m",
+    "weight": "42,0 kg",
+    "dex": "Si posò su uno stendardo e un popolo lo seguì attraverso le montagne. Da allora precede chiunque debba partire, e non si lascia raggiungere finché c'è strada.",
     "wiki": "../picchio.html"
   },
   "pito": {
@@ -5893,6 +6654,15 @@
       "level": 21,
       "wet": true
     },
+    "category": "Pokémon Cerbiatto",
+    "abilities": [
+      "Solidità (prima)",
+      "Fugafacile (seconda)",
+      "Sabbiavelo (speciale)"
+    ],
+    "height": "0,5 m",
+    "weight": "9,8 kg",
+    "dex": "Le macchie sul suo dorso non sono pelo, ma sassolini di arenaria della Laga. Quando ha paura si immobilizza e si finge una pietra del sentiero.",
     "wiki": "../pito.html"
   },
   "pontecurvo": {
@@ -5956,6 +6726,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Raggio 127",
+    "abilities": [
+      "Robustezza (prima)",
+      "Pressione (seconda)",
+      "Levitazione (speciale)"
+    ],
+    "height": "4,0 m",
+    "weight": "999,9 kg",
+    "dex": "Ha aspettato quasi vent'anni tra progetti e varianti. La curva tiene insieme la ferrovia, i negozi, le case e le due rotatorie: quando gli chiedono perché non dritto, abbassa i fari e continua a collegare.",
     "wiki": "../pontecurvo.html"
   },
   "pozza": {
@@ -6034,6 +6813,15 @@
       "into": "umito",
       "item": "acquasanta"
     },
+    "category": "Pokémon Fracchia",
+    "abilities": [
+      "Velenpunto (prima)",
+      "Viscosità (seconda)",
+      "Assorbacqua (speciale)"
+    ],
+    "height": "1,0 m",
+    "weight": "42,3 kg (circa un terzo è fango)",
+    "dex": "Si rotola in una fanghiglia liquida che gli abitanti della zona chiamano «pozza di fracchia». Il fango che si porta addosso non si asciuga mai.",
     "wiki": "../pozza.html"
   },
   "pretalien": {
@@ -6101,6 +6889,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Testimone",
+    "abilities": [
+      "Insettocchi (prima)",
+      "Levitazione (speciale)"
+    ],
+    "height": "0,7 m",
+    "weight": "9,3 kg",
+    "dex": "È il Pokémon più fotografato della regione e quello di cui si dubita di più. Nell'immagine più nota se ne sta seduto, stanco, e guarda l'obiettivo come se sapesse già come andrà a finire.",
     "wiki": "../pretalien.html"
   },
   "pulcidoro": {
@@ -6167,6 +6963,15 @@
       "item": "ciottolo_chiaro",
       "location": "ascensione"
     },
+    "category": "Pokémon Pulcino d'Oro",
+    "abilities": [
+      "Incantevole (prima)",
+      "Fuggifuggi (seconda)",
+      "Illuminazione (speciale)"
+    ],
+    "height": "0,2 m",
+    "weight": "1,2 kg",
+    "dex": "Spunta dalle fenditure del monte, uno alla volta, e pigola verso chi sale come una campanella persa. Non scappa: vuole essere trovato.",
     "wiki": "../pulcidoro.html"
   },
   "puledrotto": {
@@ -6228,6 +7033,14 @@
       "into": "cavalbrace",
       "level": 17
     },
+    "category": "Pokémon Miccia",
+    "abilities": [
+      "Aiutofuoco (prima)",
+      "Fuocardore (speciale)"
+    ],
+    "height": "0,7 m",
+    "weight": "16,5 kg",
+    "dex": "La sua criniera è una fiammella che trema quando ha paura. Quando starnutisce fa il botto: i vicini si lamentano, ma gli vogliono bene.",
     "wiki": "../puledrotto.html"
   },
   "punterosso": {
@@ -6294,6 +7107,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Rompipalme",
+    "abilities": [
+      "Sciame (prima)",
+      "Testadura (seconda)",
+      "Rompiforma (speciale)"
+    ],
+    "height": "1,4 m",
+    "weight": "55,0 kg",
+    "dex": "Sceglie la palma migliore, apre un foro con il rostro ed entra. Da dentro mangia il cuore della pianta per settimane, senza che fuori si veda niente. Quando la chioma si piega, lui è già in un'altra.",
     "wiki": "../punterosso.html"
   },
   "quintanaro": {
@@ -6356,6 +7178,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Cavaliere",
+    "abilities": [
+      "Intimidazione (prima)",
+      "Sguardofermo (speciale)"
+    ],
+    "height": "1,9 m",
+    "weight": "112,0 kg",
+    "dex": "Nell'elmo ha una fessura da cui non si vede quasi nulla. Non gli serve guardare: gli serve sapere dov'è il centro.",
     "wiki": "../quintanaro.html"
   },
   "rancco": {
@@ -6422,6 +7252,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Randagio",
+    "abilities": [
+      "Raccoglitore (prima)",
+      "Vigore (seconda)",
+      "Adattabilità (speciale)"
+    ],
+    "height": "0,7 m",
+    "weight": "16,0 kg",
+    "dex": "Il boccone gli cade nel tombino e la pioggia comincia da lui. Riparte scodinzolando: conosce gli orari di tutti i forni, e prima o poi ha ragione.",
     "wiki": "../rancco.html"
   },
   "repetito": {
@@ -6497,6 +7336,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Ripetitore",
+    "abilities": [
+      "Antisuono (prima)",
+      "Illuminazione (seconda)",
+      "Ricezione (speciale)"
+    ],
+    "height": "3,2 m",
+    "weight": "210,0 kg",
+    "dex": "Riceve tutto ciò che nel Piceno viene detto nell'aria e lo rimanda identico, più forte, senza capirlo. Chi gli canta contro si sente cantare addosso.",
     "wiki": "../repetito.html"
   },
   "retrabbie": {
@@ -6562,6 +7410,14 @@
     "evolution": {
       "into": "sammaro"
     },
+    "category": "Pokémon Paletta",
+    "abilities": [
+      "Pigrone (prima)",
+      "Manico Lungo (speciale)"
+    ],
+    "height": "1,4 m",
+    "weight": "16,0 kg",
+    "dex": "Passa la giornata appoggiato all'angolo del forno, con l'aria di chi sta per mettersi al lavoro da un momento all'altro. Quando finalmente si muove, sospira cenere.",
     "wiki": "../retrabbie.html"
   },
   "rossopiceno": {
@@ -6624,6 +7480,15 @@
       "into": "superiore",
       "item": "botte"
     },
+    "category": "Pokémon Rosso",
+    "abilities": [
+      "Clorofilla (prima)",
+      "Vigore (seconda)",
+      "Voracità (speciale)"
+    ],
+    "height": "0,6 m",
+    "weight": "12,0 kg",
+    "dex": "Cresce ovunque nelle colline, matura in fretta e finisce in tavola col pane e le olive. Con due grappoli accanto organizza una tavolata.",
     "wiki": "../rossopiceno.html"
   },
   "rotonda": {
@@ -6685,6 +7550,15 @@
       "into": "ciclabile",
       "level": 30
     },
+    "category": "Pokémon Rotatoria",
+    "abilities": [
+      "Pressione (prima)",
+      "Robustezza (seconda)",
+      "Levitazione (speciale)"
+    ],
+    "height": "0,6 m",
+    "weight": "95,0 kg",
+    "dex": "Non si sposta: fa girare gli altri. Chiunque le si avvicini rallenta, cede la precedenza e ne esce da un'altra parte, maledicendola. La cosa la nutre.",
     "wiki": "../rotonda.html"
   },
   "saladi": {
@@ -6764,6 +7638,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Dimora",
+    "abilities": [
+      "Rivendicazione (prima)",
+      "Robustezza (seconda)",
+      "Magidifesa (speciale)"
+    ],
+    "height": "2,5 m",
+    "weight": "480,0 kg",
+    "dex": "Un palazzo con il giardino all'italiana sulla schiena e un nastro tricolore sul portone. Per secoli è stato di una famiglia sola. Adesso è della città: lo dicono tutti, e tutti dicono di averlo restaurato.",
     "wiki": "../saladi.html"
   },
   "salvatorre": {
@@ -6823,6 +7706,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Vedetta",
+    "abilities": [
+      "Preveggenza (prima)",
+      "Salvataggio (speciale)"
+    ],
+    "height": "4,5 m",
+    "weight": "140,0 kg",
+    "dex": "Guarda il mare per dodici ore senza una sola oscillazione. Vede la corrente cambiare prima che cambi, e il temporale quando è ancora una riga scura sull'orizzonte.",
     "wiki": "../salvatorre.html"
   },
   "sammaro": {
@@ -6882,6 +7773,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Sambuco",
+    "abilities": [
+      "Flemma (prima)",
+      "Sciroppo (speciale)"
+    ],
+    "height": "3,1 m",
+    "weight": "38,0 kg",
+    "dex": "Sta da solo in mezzo al campo, dove i contadini l'hanno lasciato. È convinto che sia un incarico di fiducia, e nessuno ha mai avuto cuore di correggerlo.",
     "wiki": "../sammaro.html"
   },
   "sandrago": {
@@ -6961,6 +7860,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Tollerato",
+    "abilities": [
+      "Tollerato (prima)",
+      "Idratazione (seconda)",
+      "Robustezza (speciale)"
+    ],
+    "height": "1,6 m",
+    "weight": "95,0 kg",
+    "dex": "Il drago cresciuto, con la pelle diventata la roccia della grotta. Vive nella cella accanto all'altare dell'arcangelo Michele, il santo che in ogni affresco sta sopra un drago con la lancia. Qui no.",
     "wiki": "../sandrago.html"
   },
   "saputezza": {
@@ -7040,6 +7948,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Saccente",
+    "abilities": [
+      "Arie (prima)",
+      "Fugafacile (seconda)",
+      "Pettegolezzo (speciale)"
+    ],
+    "height": "1,3 m",
+    "weight": "18,0 kg",
+    "dex": "Una Sciapezza irrigidita nella posa: braccia conserte fuse al corpo, testa inclinata, giacca sulle spalle, occhiali in fronte mai scesi sugli occhi, un aperitivo mai bevuto. La bolla di fumetto è sparita: non le serve più dire niente, basta la posa.",
     "wiki": "../saputezza.html"
   },
   "sarchiapa": {
@@ -7107,6 +8024,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Inafferrabile",
+    "abilities": [
+      "Fuggifuggi (prima)",
+      "Piedisvelti (seconda)",
+      "Illusione (speciale)"
+    ],
+    "height": "1,6 m",
+    "weight": "9,9 kg",
+    "dex": "È fatto più di buchi che di corpo: i fori sono le parti su cui i paesi non si sono mai messi d'accordo. Quando il vento ci passa, fischiano: lo senti sempre, non lo vedi mai.",
     "wiki": "../sarchiapa.html"
   },
   "sbandiera": {
@@ -7173,6 +8099,14 @@
       "into": "quintanaro",
       "location": "sestiere"
     },
+    "category": "Pokémon Vessillo",
+    "abilities": [
+      "Sguardofermo (prima)",
+      "Intimidazione (speciale)"
+    ],
+    "height": "1,3 m",
+    "weight": "34,0 kg",
+    "dex": "Lancia la bandiera più in alto del campanile e la riprende senza guardare. Nessuno ha mai capito se sia lui a riprenderla o lei a tornare.",
     "wiki": "../sbandiera.html"
   },
   "sciapezza": {
@@ -7243,6 +8177,15 @@
       "level": 30,
       "item": "occhiali_finti"
     },
+    "category": "Pokémon Fesseria",
+    "abilities": [
+      "Senza Sale (prima)",
+      "Fugafacile (seconda)",
+      "Pettegolezzo (speciale)"
+    ],
+    "height": "0,6 m",
+    "weight": "7,0 kg",
+    "dex": "Una pallina molle e bianca come pasta senza sale, con una bolla di fumetto vuota sopra la testa. Parla di continuo e quello che dice non significa niente, ma lo dice con tale leggerezza che nessuno si arrabbia.",
     "wiki": "../sciapezza.html"
   },
   "sciarpone": {
@@ -7309,6 +8252,14 @@
       "night": true,
       "knowsSoundMove": true
     },
+    "category": "Pokémon Abbonato",
+    "abilities": [
+      "Amicoscudo (prima)",
+      "Grassospesso (speciale)"
+    ],
+    "height": "1,4 m",
+    "weight": "60,5 kg",
+    "dex": "Occupa lo stesso posto sui gradoni da vent'anni. Nessuno gliel'ha assegnato: è che si è sempre seduto lì, e ormai il cemento ha la sua forma.",
     "wiki": "../sciarpone.html"
   },
   "scoglierax": {
@@ -7372,6 +8323,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Frangiflutti",
+    "abilities": [
+      "Guscioduro (prima)",
+      "Solidoroccia (seconda)",
+      "Marea Placida (speciale)"
+    ],
+    "height": "2,1 m",
+    "weight": "148,0 kg",
+    "dex": "Resta immobile tra gli scogli per giorni, indistinguibile da un frangiflutti qualunque. Poi qualcosa lo disturba, e un pugno spacca il molo in due.",
     "wiki": "../scoglierax.html"
   },
   "segaccio": {
@@ -7443,6 +8403,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Boscaiolo",
+    "abilities": [
+      "Robustezza (prima)",
+      "Corazza (seconda)",
+      "Ventose (speciale)"
+    ],
+    "height": "1,9 m",
+    "weight": "155,0 kg",
+    "dex": "Si dice sia arrivato dai Balcani, molto tempo fa, dopo una tragedia di cui nessuno ricorda più il nome. Cammina sempre verso ovest, anche quando non serve.",
     "wiki": "../segaccio.html"
   },
   "seggiola": {
@@ -7504,6 +8473,15 @@
     "evolution": {
       "into": "gradinata"
     },
+    "category": "Pokémon Seggiolino",
+    "abilities": [
+      "Robustezza (prima)",
+      "Vigore (seconda)",
+      "Antisuono (speciale)"
+    ],
+    "height": "0,8 m",
+    "weight": "75,0 kg",
+    "dex": "Installata perché la gente si sedesse, la gente ci sale in piedi sopra. Non se la prende: si ribalta al momento giusto, cigola per protesta e regge.",
     "wiki": "../seggiola.html"
   },
   "sfrigne": {
@@ -7583,6 +8561,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Pezzente",
+    "abilities": [
+      "Aringhe Marce (prima)",
+      "Idratazione (seconda)",
+      "Burla (speciale)"
+    ],
+    "height": "1,2 m",
+    "weight": "30,0 kg",
+    "dex": "Un fagotto di stracci colorati sotto un ombrello da cui pendono aringhe marce. Le offre a tutti con una battuta, e nessuno le prende, e lui ride lo stesso.",
     "wiki": "../sfrigne.html"
   },
   "shpare": {
@@ -7654,6 +8641,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Fuoco d'Artificio",
+    "abilities": [
+      "Protettore (prima)",
+      "Fuocardore (seconda)",
+      "Ultimosforzo (speciale)"
+    ],
+    "height": "0,8 m",
+    "weight": "3,5 kg",
+    "dex": "Un razzo di cartone rosso con la miccia per coda, che esiste una notte all'anno: quella dei fuochi di Sant'Emidio sul Castellano. Sale, scoppia in una forma diversa ogni volta, e ricade.",
     "wiki": "../shpare.html"
   },
   "sibilla": {
@@ -7721,6 +8717,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Oracolo",
+    "abilities": [
+      "Premonizione (prima)",
+      "Manto Nevoso (seconda)",
+      "Magispecchio (speciale)"
+    ],
+    "height": "1,9 m",
+    "weight": "48,0 kg",
+    "dex": "Sta nella grotta sotto la corona del monte e conosce le risposte prima delle domande. Ascolta solo per vedere se le conosci anche tu.",
     "wiki": "../sibilla.html"
   },
   "sibillupo": {
@@ -7796,6 +8801,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Nucleo",
+    "abilities": [
+      "Nucleo (prima)",
+      "Acutovista (seconda)",
+      "Agonismo (speciale)"
+    ],
+    "height": "1,2 m",
+    "weight": "38,0 kg",
+    "dex": "Grigio-fulvo con la sella nera, la mascherina bianca e la banda nera sulle zampe. Al collo un radiocollare che lampeggia: nel buio dei Sibillini è spesso l'unica cosa che si vede di lui.",
     "wiki": "../sibillupo.html"
   },
   "sismino": {
@@ -7861,6 +8875,15 @@
       "into": "accumoli",
       "friendship": true
     },
+    "category": "Pokémon Presagio",
+    "abilities": [
+      "Presagio (prima)",
+      "Fuggifuggi (seconda)",
+      "Adattabilità (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "5,5 kg",
+    "dex": "Le vibrisse toccano il suolo mentre cammina, e sono loro, per prime, a sentire. Quando il suo tremito si ferma di colpo, la montagna ha imparato a fermarsi con lui.",
     "wiki": "../sismino.html"
   },
   "soldatino": {
@@ -7919,6 +8942,14 @@
       "level": 15,
       "item": "grattaevinci"
     },
+    "category": "Pokémon Aperitivo",
+    "abilities": [
+      "Umidità (prima)",
+      "Frizzante (speciale)"
+    ],
+    "height": "0,2 m",
+    "weight": "0,4 kg",
+    "dex": "Sta sull'attenti sulle mensole dei bar in file perfette. Alle sei di sera le file si irrigidiscono: ognuno spera che tocchi a lui.",
     "wiki": "../soldatino.html"
   },
   "sorci": {
@@ -7968,6 +8999,15 @@
       "into": "sorcione",
       "level": 20
     },
+    "category": "Pokémon Topocampo",
+    "abilities": [
+      "Trottolino (prima)",
+      "Fuggifuggi (seconda)",
+      "Golosità (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "3,2 kg",
+    "dex": "Si riempie le guance di olive rubate dagli ulivi lungo la Salaria e scappa prima che qualcuno se ne accorga.",
     "wiki": "../sorci.html"
   },
   "sorcione": {
@@ -8022,6 +9062,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Ratto da Capannone",
+    "abilities": [
+      "Testadura (prima)",
+      "Fuggifuggi (seconda)",
+      "Golosità (speciale)"
+    ],
+    "height": "0,9 m",
+    "weight": "28,0 kg",
+    "dex": "Passa le giornate sonnecchiando in un angolo del capannone. Guai a chi lo sveglia senza offrirgli qualcosa da mangiare.",
     "wiki": "../sorcione.html"
   },
   "sparpagghjo": {
@@ -8093,6 +9142,15 @@
       "level": 28,
       "location": "castel_trosino"
     },
+    "category": "Pokémon Sparpaglio",
+    "abilities": [
+      "Sparpaglio (prima)",
+      "Cuore Ardente (seconda)",
+      "Sguardo Fermo (speciale)"
+    ],
+    "height": "0,6 m",
+    "weight": "5,5 kg",
+    "dex": "Un pipistrello con le ali troppo grandi che non vola mai dritto. Il suo grido non serve a vedere: sparpaglia tutto quello che ha davanti, mosche, foglie, allenatori.",
     "wiki": "../sparpagghjo.html"
   },
   "spesurde": {
@@ -8160,6 +9218,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Sorda",
+    "abilities": [
+      "Antisuono (prima)",
+      "Velenopunto (speciale)"
+    ],
+    "height": "0,7 m",
+    "weight": "6,4 kg",
+    "dex": "Non sente nulla. Sente tutto: il tuo passo, tre metri più in là, attraverso il pietrisco.",
     "wiki": "../spesurde.html"
   },
   "spettornado": {
@@ -8231,6 +9297,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Sorvolo",
+    "abilities": [
+      "Assorbifuoco (prima)",
+      "Levitazione (speciale)"
+    ],
+    "height": "3,0 m",
+    "weight": "0,1 kg",
+    "dex": "Gira sulle colline di Monterocco dal 2014, senza fare rumore. L'abitacolo è vuoto. Dove passa lui, il bosco non brucia.",
     "wiki": "../spettornado.html"
   },
   "spumadiva": {
@@ -8314,6 +9388,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Diva",
+    "abilities": [
+      "Idratazione (prima)",
+      "Incantevole (seconda)",
+      "Armatura Fragile (speciale)"
+    ],
+    "height": "1,5 m",
+    "weight": "30,0 kg",
+    "dex": "Per anni nessuno la vide più. Quando tornò era un'altra, ma tutti la riconobbero al primo sguardo. Ha portato il Piceno nel mondo dentro una bottiglia da un quarto.",
     "wiki": "../spumadiva.html"
   },
   "superiore": {
@@ -8381,6 +9464,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Affinato",
+    "abilities": [
+      "Clorofilla (prima)",
+      "Vigore (seconda)",
+      "Analizzatore (speciale)"
+    ],
+    "height": "1,2 m",
+    "weight": "48,0 kg",
+    "dex": "Sta fermo dove prima gesticolava. Sul dorso porta tre doghe di rovere con un cerchio di ferro: il ricordo della botte, che non ha voluto lasciare.",
     "wiki": "../superiore.html"
   },
   "svedde": {
@@ -8449,6 +9541,15 @@
     "evolution": {
       "into": "ngeno"
     },
+    "category": "Pokémon Svelto",
+    "abilities": [
+      "Piedisvelti (prima)",
+      "Fuggifuggi (seconda)",
+      "Burla (speciale)"
+    ],
+    "height": "0,5 m",
+    "weight": "6,0 kg",
+    "dex": "È lo svelto di Pedaso. In un paese di tremila abitanti nessuno gli contesta il titolo, e lui lo considera una conferma.",
     "wiki": "../svedde.html"
   },
   "talvecchia": {
@@ -8515,6 +9616,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Sommerso",
+    "abilities": [
+      "Invaso (prima)",
+      "Idratazione (seconda)",
+      "Svaso (speciale)"
+    ],
+    "height": "1,9 m",
+    "weight": "48,0 kg",
+    "dex": "È entrata nel lago con la prima acqua, nel 1960, e vive nella casa sommersa: entra dalla porta, dorme nella stanza in fondo, percorre la vecchia strada come se fosse ancora una strada. I pescatori la sentono solo con l'ecoscandaglio.",
     "wiki": "../talvecchia.html"
   },
   "tamburino": {
@@ -8576,6 +9686,14 @@
       "into": "sbandiera",
       "level": 22
     },
+    "category": "Pokémon Tamburo",
+    "abilities": [
+      "Insonnia (prima)",
+      "Fuganatura (speciale)"
+    ],
+    "height": "0,4 m",
+    "weight": "6,0 kg",
+    "dex": "Si muove in gruppo e cambia passo tutto insieme, senza che nessuno dia il segnale. Chi lo ascolta troppo da vicino perde il ritmo dei propri movimenti.",
     "wiki": "../tamburino.html"
   },
   "terture": {
@@ -8643,6 +9761,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Bastone",
+    "abilities": [
+      "Minaccia (prima)",
+      "Robustezza (seconda)",
+      "Agonismo (speciale)"
+    ],
+    "height": "1,0 m",
+    "weight": "1,2 kg",
+    "dex": "Un bastone d'ulivo appoggiato al muro, accanto a una sedia impagliata. Non cammina, non colpisce, non parla: viene alzato, e quando viene alzato la stanza si rimette a posto.",
     "wiki": "../terture.html"
   },
   "tifotto": {
@@ -8700,6 +9827,14 @@
       "into": "sciarpone",
       "friendship": true
     },
+    "category": "Pokémon Occasionale",
+    "abilities": [
+      "Fuga (prima)",
+      "Insonnia (speciale)"
+    ],
+    "height": "0,8 m",
+    "weight": "31,0 kg",
+    "dex": "Le sue antenne captano ogni partita dell'Ascoli. Conosce la formazione a memoria, ma il divano esercita su di lui una forza che la scienza non ha ancora misurato.",
     "wiki": "../tifotto.html"
   },
   "totera": {
@@ -8769,6 +9904,15 @@
       "into": "cerqua",
       "level": 36
     },
+    "category": "Pokémon Pannocchia",
+    "abilities": [
+      "Clorofilla (prima)",
+      "Spessore (seconda)",
+      "Raccolto (speciale)"
+    ],
+    "height": "0,9 m",
+    "weight": "9,5 kg",
+    "dex": "Vive nascosta tra i filari di mais, immobile per ore. Molti braccianti raccontano di aver raccolto un campo intero senza mai accorgersi di una Totera in mezzo.",
     "wiki": "../totera.html"
   },
   "traffichiex": {
@@ -8843,6 +9987,15 @@
       "into": "forox",
       "level": 32
     },
+    "category": "Pokémon Smistatore",
+    "abilities": [
+      "Presagio (prima)",
+      "Sincronismo (seconda)",
+      "Raccomandazione (speciale)"
+    ],
+    "height": "0,6 m",
+    "weight": "4,2 kg",
+    "dex": "Gira attorno allo stadio e alla Prefettura con una biro più lunga di lui. Prende nota di tutti quelli che passano, e nessuno ha mai capito con quale grafia.",
     "wiki": "../traffichiex.html"
   },
   "traguardo": {
@@ -8908,6 +10061,15 @@
     "evolution": {
       "into": "gionata"
     },
+    "category": "Pokémon Porta Aperta",
+    "abilities": [
+      "Robustezza (prima)",
+      "Levitazione (seconda)",
+      "Telepatia (speciale)"
+    ],
+    "height": "1,8 m",
+    "weight": "160,0 kg",
+    "dex": "Non ha volto e al posto del petto ha una porta, che tiene aperta con la propria mano. Duecento persone al giorno guardano attraverso; chi guarda dentro sente un fruscio d'ali.",
     "wiki": "../traguardo.html"
   },
   "tramonto": {
@@ -8967,6 +10129,15 @@
       "level": 19,
       "dusk": true
     },
+    "category": "Pokémon Aperitivo",
+    "abilities": [
+      "Controluce (prima)",
+      "Voracità (seconda)",
+      "Corpodifuoco (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "2,5 kg",
+    "dex": "Un bruco colorato come il cielo delle sette di sera. Si sveglia quando accendono le luci della terrazza, si mette in posa controluce, dove è invisibile, e scende per il pane.",
     "wiki": "../tramonto.html"
   },
   "travertorre": {
@@ -9033,6 +10204,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Cento Torri",
+    "abilities": [
+      "Robustezza (prima)",
+      "Solidroccia (seconda)",
+      "Antisuono (speciale)"
+    ],
+    "height": "2,4 m",
+    "weight": "480,0 kg",
+    "dex": "Sceglie una piazza e la presidia per stagioni. Sotto di lui la gente si dà appuntamento, e chi cerca un muro alle spalle lo trova sempre al posto giusto.",
     "wiki": "../travertorre.html"
   },
   "trecaciare": {
@@ -9116,6 +10296,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Tholos",
+    "abilities": [
+      "Manto Nevoso (prima)",
+      "Robustezza (seconda)",
+      "Altoparlante (speciale)"
+    ],
+    "height": "1,8 m",
+    "weight": "310,0 kg",
+    "dex": "Tre capanne di pietra dei pastori, e dentro tre facce di neve che litigano tutta la notte. Chi entra in una delle tre ottiene un silenzio perfetto, ma solo lì.",
     "wiki": "../trecaciare.html"
   },
   "tuffito": {
@@ -9177,6 +10366,14 @@
       "into": "brasero",
       "level": 17
     },
+    "category": "Pokémon Bomba",
+    "abilities": [
+      "Acquaiuto (prima)",
+      "Iperfuria (speciale)"
+    ],
+    "height": "0,4 m",
+    "weight": "7,5 kg",
+    "dex": "Si lancia a bomba dai massi del Rio Castellano e riemerge subito a controllare che qualcuno l'abbia visto. Se non c'è pubblico, rifà il tuffo.",
     "wiki": "../tuffito.html"
   },
   "tufone": {
@@ -9246,6 +10443,15 @@
     "evolution": {
       "into": "travertorre"
     },
+    "category": "Pokémon Arenaria",
+    "abilities": [
+      "Sabbiafiotto (prima)",
+      "Robustezza (seconda)",
+      "Riparo (speciale)"
+    ],
+    "height": "1,3 m",
+    "weight": "130,0 kg",
+    "dex": "Nei suoi buchi nidificano uccelli, svernano api, si nascondono lucertole. La sera fa l'appello bussandosi sulla spalla: un colpo, una risposta da dentro.",
     "wiki": "../tufone.html"
   },
   "turibasil": {
@@ -9316,6 +10522,14 @@
       "level": 36,
       "location": "campo_parignano"
     },
+    "category": "Pokémon Chierichetto",
+    "abilities": [
+      "Erbaiuto (prima)",
+      "Aromavelo (speciale)"
+    ],
+    "height": "0,8 m",
+    "weight": "12,5 kg",
+    "dex": "Ha subito la prima cimatura ed è ricresciuto più folto. Segue le processioni in fondo al corteo, dondolando il turibolo a tempo.",
     "wiki": "../turibasil.html"
   },
   "umito": {
@@ -9387,6 +10601,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Cervosacro",
+    "abilities": [
+      "Solidità (prima)",
+      "Mangiaerba (seconda)",
+      "Erbogenesi (speciale)"
+    ],
+    "height": "1,9 m",
+    "weight": "118,6 kg",
+    "dex": "Si dice che dove posa gli zoccoli sgorghino sorgenti d'acqua purissima. Veglia sui castagneti della Laga come un guardiano silenzioso.",
     "wiki": "../umito.html"
   },
   "vecciando": {
@@ -9466,6 +10689,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Ammazzasomari",
+    "abilities": [
+      "Sciame (prima)",
+      "Velenopunto (seconda)",
+      "Tecnico (speciale)"
+    ],
+    "height": "1,1 m",
+    "weight": "34,0 kg",
+    "dex": "Sette punture uccidono un somaro, dicono. Nessuno ha mai contato. Lui non punge quasi mai, ma non lo dice a nessuno.",
     "wiki": "../vecciando.html"
   },
   "venagrox": {
@@ -9537,6 +10769,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Trattore",
+    "abilities": [
+      "Raddrizzafogne (prima)",
+      "Dialettica (seconda)",
+      "Monopolio (speciale)"
+    ],
+    "height": "5,4 m",
+    "weight": "2840,0 kg",
+    "dex": "Si muove di notte lungo le condotte tra Venagrande e la costa. Al mattino, fogne che sembravano irrecuperabili risultano dritte, pulite e perfettamente inclinate.",
     "wiki": "../venagrox.html"
   },
   "vescovasil": {
@@ -9608,6 +10849,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Cefaloforo",
+    "abilities": [
+      "Erbaiuto (prima)",
+      "Levitazione (speciale)"
+    ],
+    "height": "1,7 m",
+    "weight": "61,0 kg",
+    "dex": "Porta tra le mani la propria testa fiorita: ogni cimatura lo ha reso più forte, e quella che regge è solo l'ultima di molte. Dove passa, il suolo non trema.",
     "wiki": "../vescovasil.html"
   },
   "vinocotto": {
@@ -9667,6 +10916,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Caratello",
+    "abilities": [
+      "Corpodifuoco (prima)",
+      "Robustezza (seconda)",
+      "Rigenergia (speciale)"
+    ],
+    "height": "0,9 m",
+    "weight": "60,0 kg",
+    "dex": "Il giorno in cui nasce un figlio il mosto viene cotto e versato nel caratello, con il nome inciso. Da quel momento ha un solo compito: stare al buio a farsi buono, senza che nessuno lo apra.",
     "wiki": "../vinocotto.html"
   },
   "vlurde": {
@@ -9726,6 +10984,14 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Fascina",
+    "abilities": [
+      "Fuocaiuto (prima)",
+      "Ultima Corsa (speciale)"
+    ],
+    "height": "1,7 m",
+    "weight": "16,5 kg",
+    "dex": "Dorme undici mesi in un magazzino, indistinguibile da una fascina vera. La sera del martedì grasso si accende da solo, e da quel momento sa esattamente dove andare.",
     "wiki": "../vlurde.html"
   },
   "zanzarax": {
@@ -9781,6 +11047,15 @@
       ]
     ],
     "evolution": null,
+    "category": "Pokémon Zanzara Corazzata",
+    "abilities": [
+      "Sciame (prima)",
+      "Punto Debole (seconda)",
+      "Corpo Fantasma (speciale)"
+    ],
+    "height": "0,9 m",
+    "weight": "4,5 kg",
+    "dex": "Il suo ronzio grave si sente ben prima che arrivi. Perfora anche il cuoio più spesso con la sua trivella.",
     "wiki": "../zanzarax.html"
   },
   "zanzi": {
@@ -9827,6 +11102,15 @@
       "into": "zanzarax",
       "level": 10
     },
+    "category": "Pokémon Zanzara",
+    "abilities": [
+      "Sciame (prima)",
+      "Punto Debole (seconda)",
+      "Corpo Fantasma (speciale)"
+    ],
+    "height": "0,3 m",
+    "weight": "0,8 kg",
+    "dex": "Vive a sciami vicino all'acqua stagnante. Il suo ronzio si sente prima ancora di vederlo, e di solito è già troppo tardi.",
     "wiki": "../zanzi.html"
   },
   "zurrio": {
@@ -9888,6 +11172,15 @@
       "into": "cello",
       "level": 28
     },
+    "category": "Pokémon Monello",
+    "abilities": [
+      "Vigore (prima)",
+      "Fuggifuggi (seconda)",
+      "Agonismo (speciale)"
+    ],
+    "height": "0,7 m",
+    "weight": "14,0 kg",
+    "dex": "Dove è passato si sente: qualcosa è caduto, qualcuno ride, un cancello oscilla ancora. Quando serve una mano è già lì: essere già lì è la sua specialità.",
     "wiki": "../zurrio.html"
   }
 };

@@ -425,6 +425,12 @@
 
   function checkEncounter() {
     if (!save.team.length || save.team.every(monster => monster.hp <= 0)) return;
+    // Repellente: per 100 passi niente selvatici più deboli del primo Pokémon in piedi
+    const repelling = save.repelSteps > 0;
+    if (repelling) {
+      save.repelSteps -= 1;
+      if (!save.repelSteps) showToast('L\'effetto del Repellente è finito.');
+    }
     const encounter = getEncounter(player.x, player.y);
     if (!encounter || Math.random() >= Number(encounter.rate)) return;
     const table = currentMap.encounterTable || [];
@@ -433,6 +439,7 @@
     const min = Number(entry.minLevel || 2);
     const max = Number(entry.maxLevel || min);
     const level = min + Math.floor(Math.random() * (max - min + 1));
+    if (repelling && level < save.team.find(monster => monster.hp > 0).level) return;
     beginWildBattle(Battle.createMonster(entry.species, level));
   }
 
@@ -888,13 +895,6 @@
     return save.team[battle.activeIndex];
   }
 
-  function pushMessages(events) {
-    events.forEach(event => {
-      if (event.type === 'text') messageQueue.push(event.text);
-      if (event.type === 'status' && event.text) messageQueue.push(event.text);
-    });
-  }
-
   function flushMessages() {
     return new Promise(resolve => {
       messageResolve = resolve;
@@ -982,8 +982,8 @@
     return monster.status && statusLabels[monster.status] ? statusLabels[monster.status] : '';
   }
 
-  function setHpBar(element, monster) {
-    const ratio = Math.max(0, monster.hp / monster.stats.hp);
+  function setHpBar(element, monster, hp = monster.hp) {
+    const ratio = Math.max(0, hp / monster.stats.hp);
     element.style.width = `${ratio * 100}%`;
     element.className = ratio > .5 ? 'hp-high' : ratio > .2 ? 'hp-mid' : 'hp-low';
   }
@@ -1000,11 +1000,13 @@
     ui.enemyName.textContent = enemySpecies.name;
     ui.enemyLevel.textContent = `Lv.${enemy.level}`;
     ui.enemyStatus.textContent = statusText(enemy);
-    setHpBar(ui.allyHp, ally);
-    setHpBar(ui.enemyHp, enemy);
+    // durante un turno `battle.shown` tiene i PS mostrati: scendono quando il colpo si vede, non prima
+    const shown = battle.shown || { ally: ally.hp, enemy: enemy.hp };
+    setHpBar(ui.allyHp, ally, shown.ally);
+    setHpBar(ui.enemyHp, enemy, shown.enemy);
     const floor = Math.pow(ally.level, 3);
     ui.allyExp.style.width = `${Math.max(0, Math.min(100, ((ally.exp || 0) - floor) / (Battle.expToNext(ally) - floor) * 100))}%`;
-    ui.allyHpText.textContent = `${Math.max(0, ally.hp)} / ${ally.stats.hp} PS`;
+    ui.allyHpText.textContent = `${Math.max(0, shown.ally)} / ${ally.stats.hp} PS`;
     ui.allySprite.src = `assets/battle/${ally.species}-back.png`;
     ui.allySprite.alt = allySpecies.name;
     ui.enemySprite.src = `assets/battle/${enemy.species}-front.png`;
@@ -1032,6 +1034,14 @@
     );
   }
 
+  // «Indietro» da tastiera: vale solo se sullo schermo c'è un sottomenu con il suo «Indietro».
+  // Durante un turno o una scelta obbligata non deve far ricomparire il menu principale.
+  function battleBack() {
+    if (!ui.menuScreen.hidden) { closeBattleInfo(); return; }
+    const back = [...ui.battleActions.querySelectorAll('button')].find(button => button.textContent === 'Indietro');
+    if (back) back.click();
+  }
+
   function showBattleMoves() {
     ui.battleActions.innerHTML = '';
     ui.battleActions.className = 'battle-actions wide';
@@ -1047,6 +1057,10 @@
       const button = actionButton('', () => playerAttack(slot.id), slot.pp <= 0);
       button.innerHTML = `<b>${known.name}</b><small>${typeChip(known.type)} PP ${slot.pp}/${slot.maxPp}</small>`;
       button.title = known.description || '';
+      // passando sopra la mossa (o con il fuoco da tastiera) il riquadro dei messaggi la descrive
+      const describe = () => { ui.battleMessage.textContent = `${known.category} · Pot. ${known.power || '—'} · Prec. ${known.accuracy || '—'}${known.description ? ` — ${known.description}` : ''}`; };
+      button.addEventListener('mouseenter', describe);
+      button.addEventListener('focus', describe);
       ui.battleActions.appendChild(button);
     });
     ui.battleActions.appendChild(actionButton('Indietro', showBattleMain));
@@ -1074,7 +1088,22 @@
       button.disabled = index === battle.activeIndex || monster.hp <= 0;
       ui.battleActions.appendChild(button);
     });
+    // tasto destro (o pressione lunga) su un Pokémon: la sua scheda; altrimenti il bottone Info del primo in campo
+    ui.battleActions.querySelectorAll('button').forEach((button, index) => button.addEventListener('contextmenu', event => { event.preventDefault(); openBattleInfo(index); }));
+    ui.battleActions.appendChild(actionButton('Schede', () => showBattleInfoList(replacing)));
     if (replacing !== true) ui.battleActions.appendChild(actionButton('Indietro', showBattleMain));
+  }
+
+  // Lista della squadra per leggere le schede senza cambiare Pokémon.
+  function showBattleInfoList(replacing) {
+    ui.battleActions.innerHTML = '';
+    ui.battleActions.className = 'battle-actions wide';
+    save.team.forEach((monster, index) => {
+      const button = actionButton('', () => openBattleInfo(index));
+      button.innerHTML = `<b>${data.species[monster.species].name}</b><small>Leggi la scheda</small>`;
+      ui.battleActions.appendChild(button);
+    });
+    ui.battleActions.appendChild(actionButton('Indietro', () => showBattleTeam(replacing)));
   }
 
   async function resolveTurn(playerAction) {
@@ -1086,30 +1115,23 @@
       Math.random
     );
 
+    const fight = battle;
+    battle.shown = { ally: activeMonster().hp, enemy: battle.wild.hp };
     for (const who of order) {
-      if (who === 'player') {
-        if (playerAction.type !== 'move') continue;
-        if (activeMonster().hp <= 0 || battle.wild.hp <= 0) continue;
-        const result = Battle.executeMove(activeMonster(), battle.wild, playerAction.moveId, battle.playerStages, battle.enemyStages, { rng: Math.random });
-        if (result.events.some(event => event.type === 'damage')) { playSound('hit'); animateHit(ui.allySprite, ui.enemySprite, 1); }
-        pushMessages(result.events);
-        await flushMessages();
-        if (await checkFaints()) return;
-      } else {
-        if (activeMonster().hp <= 0 || battle.wild.hp <= 0) continue;
-        const result = Battle.executeMove(battle.wild, activeMonster(), enemyAction.moveId, battle.enemyStages, battle.playerStages, { rng: Math.random });
-        if (result.events.some(event => event.type === 'damage')) { playSound('hit'); animateHit(ui.enemySprite, ui.allySprite, -1); }
-        pushMessages(result.events);
-        await flushMessages();
-        if (await checkFaints()) return;
-      }
+      if (who === 'player' && playerAction.type !== 'move') continue;
+      if (activeMonster().hp <= 0 || battle.wild.hp <= 0) continue;
+      const result = who === 'player'
+        ? Battle.executeMove(activeMonster(), battle.wild, playerAction.moveId, battle.playerStages, battle.enemyStages, { rng: Math.random })
+        : Battle.executeMove(battle.wild, activeMonster(), enemyAction.moveId, battle.enemyStages, battle.playerStages, { rng: Math.random });
+      const outcome = await playEvents(result.events, who);
+      if (battle !== fight) return;       // la lotta è finita (fuga, Boato su un selvatico)
+      if (await checkFaints()) return;
+      if (outcome === 'cut') break;        // è entrato un altro Pokémon: il turno finisce qui
     }
 
-    const endEventsAlly = Battle.endOfTurn(activeMonster());
-    pushMessages(endEventsAlly);
-    const endEventsEnemy = Battle.endOfTurn(battle.wild);
-    pushMessages(endEventsEnemy);
-    if (messageQueue.length) await flushMessages();
+    await playEvents(Battle.endOfTurn(activeMonster()), 'player');
+    await playEvents(Battle.endOfTurn(battle.wild), 'enemy');
+    battle.shown = null;
     autoSave();
     if (await checkFaints()) return;
     renderBattle();
@@ -1136,6 +1158,122 @@
     sprite.faintAnimation = null;
   }
 
+  // Racconta gli eventi di una mossa uno alla volta: messaggi, colpi (la barra scende quando il colpo
+  // si vede), stati con la loro animazione. `side`: chi ha agito ('player' o 'enemy').
+  // Restituisce 'cut' se il turno va interrotto (cambio forzato).
+  async function playEvents(events, side) {
+    const fight = battle;
+    const own = side === 'player' ? 'ally' : 'enemy';
+    const other = side === 'player' ? 'enemy' : 'ally';
+    const sprites = { ally: ui.allySprite, enemy: ui.enemySprite };
+    const slotOf = target => (target === 'defender' ? other : own);
+    for (const event of events) {
+      if (battle !== fight) return null;
+      if (event.type === 'damage') {
+        const hit = slotOf(event.target);
+        playSound('hit');
+        if (event.target === 'defender') animateHit(sprites[own], sprites[hit], side === 'player' ? 1 : -1);
+        else if (event.cause) statusFx(sprites[hit], event.cause);
+        else if (sprites[hit].animate) sprites[hit].animate([{ opacity: 1 }, { opacity: 0 }, { opacity: 1 }, { opacity: 0 }, { opacity: 1 }], { duration: 420 });
+        await sleep(380);
+        if (battle.shown && event.hp !== undefined) battle.shown[hit] = event.hp;
+        renderBattle();
+        await sleep(450);
+      } else if (event.type === 'hp') {
+        if (battle.shown) battle.shown[slotOf(event.target)] = event.hp;
+        renderBattle();
+        await sleep(450);
+      } else if (event.type === 'text' || event.type === 'status') {
+        const fx = event.type === 'status' ? event.status : event.anim;
+        if (fx) statusFx(sprites[slotOf(event.who || 'defender')], fx);
+        messageQueue.push(event.text);
+        await flushMessages();
+      } else if (event.type === 'flee' || event.type === 'forceSwitch') {
+        if (await escapeEvent(event, side) === 'cut') return 'cut';
+      }
+    }
+    return null;
+  }
+
+  async function say(text, ms = 800) {
+    ui.battleMessage.textContent = text;
+    await sleep(ms);
+  }
+
+  // Teletrasporto e Boato. In una lotta selvatica chiudono l'incontro; contro un allenatore Boato
+  // trascina in campo un altro Pokémon a caso (se c'è), Teletrasporto non fa nulla.
+  async function escapeEvent(event, side) {
+    const userName = data.species[(side === 'player' ? activeMonster() : battle.wild).species].name;
+    const targetIsPlayer = side === 'enemy';
+    if (event.type === 'flee' || battle.kind === 'wild') {
+      if (battle.kind !== 'wild') { await say('Ma non ha effetto!'); return null; }
+      const others = save.team.some((monster, index) => index !== battle.activeIndex && monster.hp > 0);
+      if (event.type === 'forceSwitch' && targetIsPlayer && others) return dragIn(true);
+      await say(event.type === 'flee' ? `${userName} fugge dalla lotta!` : `${userName} mette in fuga l'avversario!`);
+      endBattle('fled');
+      return null;
+    }
+    return dragIn(targetIsPlayer);
+  }
+
+  // Boato: esce chi è in campo ed entra un compagno a caso fra quelli in piedi.
+  async function dragIn(playerSide) {
+    if (playerSide) {
+      const choices = save.team.map((monster, index) => index).filter(index => index !== battle.activeIndex && save.team[index].hp > 0);
+      if (!choices.length) { await say('Ma non ha effetto!'); return null; }
+      Battle.clearVolatile(activeMonster());
+      battle.activeIndex = choices[Math.floor(Math.random() * choices.length)];
+      battle.participants.add(battle.activeIndex);
+      battle.playerStages = Battle.freshStages();
+      battle.shown.ally = activeMonster().hp;
+    } else {
+      const choices = battle.enemyTeam.map((monster, index) => index).filter(index => index > battle.enemyIndex && battle.enemyTeam[index].hp > 0);
+      if (!choices.length) { await say('Ma non ha effetto!'); return null; }
+      const pick = choices[Math.floor(Math.random() * choices.length)];
+      [battle.enemyTeam[battle.enemyIndex], battle.enemyTeam[pick]] = [battle.enemyTeam[pick], battle.enemyTeam[battle.enemyIndex]];
+      battle.wild = battle.enemyTeam[battle.enemyIndex];
+      battle.enemyStages = Battle.freshStages();
+      battle.participants = new Set([battle.activeIndex]);
+      save.dex.seen[battle.wild.species] = true;
+      battle.shown.enemy = battle.wild.hp;
+    }
+    renderBattle();
+    await say(`${data.species[(playerSide ? activeMonster() : battle.wild).species].name} è trascinato in campo!`, 1000);
+    return 'cut';
+  }
+
+  // Animazione di uno stato sullo sprite: una tinta che pulsa, più un segno che sale (Z, ?, bolle, scintille).
+  const STATUS_FX = {
+    psn: { tint: 'sepia(1) saturate(6) hue-rotate(225deg)', mark: 'dot', color: '#a050c8' },
+    brn: { tint: 'sepia(1) saturate(7) hue-rotate(-28deg) brightness(1.1)', mark: 'dot', color: '#f08030' },
+    par: { tint: 'sepia(1) saturate(8) hue-rotate(8deg) brightness(1.4)', mark: 'spark', color: '#f8d030', jitter: true },
+    frz: { tint: 'saturate(.4) brightness(1.5) hue-rotate(160deg)', mark: 'spark', color: '#98d8f8' },
+    slp: { tint: 'brightness(.75)', mark: 'Z', color: '#fbfaf2' },
+    cnf: { tint: 'none', mark: '?', color: '#f8d030', sway: true }
+  };
+
+  function statusFx(sprite, status) {
+    const fx = STATUS_FX[status];
+    if (!fx || !sprite.animate) return;
+    const move = fx.jitter ? ['-5%', '5%', '-5%', '5%'] : fx.sway ? ['-8%', '8%', '-8%', '8%'] : ['0', '0', '0', '0'];
+    sprite.animate([
+      { filter: 'none', transform: 'translateX(0)' },
+      ...move.map(x => ({ filter: fx.tint, transform: `translateX(${x})` })),
+      { filter: 'none', transform: 'translateX(0)' }
+    ], { duration: fx.jitter ? 450 : 750 });
+    for (let i = 0; i < 3; i += 1) {
+      const mark = document.createElement('span');
+      mark.className = `status-mark ${fx.mark.length === 1 ? 'letter' : fx.mark}`;
+      if (fx.mark.length === 1) mark.textContent = fx.mark;
+      mark.style.color = fx.color;
+      mark.style.left = `${sprite.offsetLeft + sprite.offsetWidth * (.3 + i * .2)}px`;
+      mark.style.top = `${sprite.offsetTop + sprite.offsetHeight * .35}px`;
+      sprite.parentElement.appendChild(mark);
+      mark.animate([{ transform: 'translateY(0)', opacity: 0 }, { opacity: 1, offset: .2 }, { transform: 'translateY(-160%)', opacity: 0 }], { duration: 800, delay: i * 140, fill: 'both' })
+        .onfinish = () => mark.remove();
+    }
+  }
+
   async function checkFaints() {
     if (battle.wild.hp <= 0) {
       await handleEnemyFaint();
@@ -1151,6 +1289,7 @@
   async function handleEnemyFaint() {
     // L'esperienza va a tutti i Pokémon ancora in piedi che sono scesi in campo contro questo
     // avversario, divisa in parti uguali (come nei giochi di terza generazione).
+    battle.shown = null;
     const active = activeMonster();
     const sharers = [...battle.participants].map(index => save.team[index]).filter(monster => monster && monster.hp > 0);
     if (!sharers.includes(active) && active.hp > 0) sharers.push(active);
@@ -1250,6 +1389,7 @@
   }
 
   async function handleFaintedAlly() {
+    battle.shown = null;
     playSound('faint');
     ui.battleMessage.textContent = `${data.species[activeMonster().species].name} non può più combattere!`;
     renderBattle();
@@ -1411,6 +1551,7 @@
     ui.allySprite.classList.add('unsent');
     await sleep(800);
     if (battle !== fight) return;
+    Battle.clearVolatile(activeMonster());
     battle.activeIndex = index;
     battle.participants.add(index);
     battle.playerStages = Battle.freshStages();
@@ -1441,6 +1582,7 @@
   function endBattle(result) {
     const onEnd = battle ? battle.onEnd : null;
     battle = null;
+    save.team.forEach(Battle.clearVolatile);
     ui.battleScreen.hidden = true;
     reviveSprite(ui.enemySprite);
     reviveSprite(ui.allySprite);
@@ -1501,6 +1643,7 @@
   }
 
   function menuBack() {
+    if (mode === 'battle') { closeBattleInfo(); return; }
     if (mode !== 'menu') return;
     if (ui.menuScreen.dataset.view === 'page') showMenuList(ui.menuScreen.dataset.tab);
     else closeMenu();
@@ -1518,6 +1661,7 @@
   }
 
   function renderMenu(tab) {
+    partyOrder = null;
     ui.menuScreen.dataset.view = 'page';
     ui.menuScreen.dataset.tab = tab;
     if (tab === 'team') renderTeamMenu();
@@ -1530,21 +1674,18 @@
     if (tab === 'settings') renderSettingsMenu();
   }
 
-  function monsterRow(monster, action = '', ref = '') {
-    const species = data.species[monster.species];
-    const hpPercent = Math.max(0, monster.hp / monster.stats.hp * 100);
-    const status = statusText(monster);
-    return `<div class="creature-row"${ref ? ` data-summary="${ref}"` : ''}><img src="assets/battle/${monster.species}-front.png" alt="${species.name}" onerror="this.style.display='none'"><div><strong>${species.name}</strong> Lv.${monster.level} ${status ? `<span class="status-badge">${status}</span>` : ''}<div class="bar"><i style="width:${hpPercent}%"></i></div><small>${monster.hp}/${monster.stats.hp} PS</small></div>${action}</div>`;
-  }
-
   // Schermata Squadra: il primo Pokémon nel riquadro grande a sinistra, gli altri in colonna a destra.
+  // `partyOrder`: null = si guarda la scheda; 'pick' = va scelto chi spostare; un numero = scelto, manca con chi.
+  let partyOrder = null;
+
   function partySlot(monster, index) {
     if (!monster) return '<div class="party-slot empty"></div>';
     const species = data.species[monster.species];
     const ratio = Math.max(0, monster.hp / monster.stats.hp);
     const hpClass = ratio > .5 ? 'hp-high' : ratio > .2 ? 'hp-mid' : 'hp-low';
     const status = monster.hp <= 0 ? 'KO' : statusText(monster);
-    return `<div class="party-slot${index === 0 ? ' lead' : ''}${monster.hp <= 0 ? ' fainted' : ''}" data-summary="team:${index}:team">
+    const action = partyOrder === null ? `data-summary="team:${index}:team"` : `data-swap="${index}"`;
+    return `<div class="party-slot${index === 0 ? ' lead' : ''}${monster.hp <= 0 ? ' fainted' : ''}${partyOrder === index ? ' picked' : ''}" ${action}>
       <img src="assets/battle/${monster.species}-front.png" alt="" onerror="this.style.visibility='hidden'">
       <div class="party-name"><strong>${species.name}</strong><span>Lv.${monster.level}</span>${status ? `<span class="status-badge">${status}</span>` : ''}</div>
       <div class="hp-row"><b>PS</b><div class="hp-track"><i class="${hpClass}" style="width:${ratio * 100}%"></i></div></div>
@@ -1553,8 +1694,25 @@
 
   function renderTeamMenu() {
     const others = Array.from({ length: 5 }, (_, i) => partySlot(save.team[i + 1], i + 1)).join('');
+    const hint = partyOrder === null ? 'Scegli un Pokémon per vederne la scheda.'
+      : partyOrder === 'pick' ? 'Ordina: scegli il Pokémon da spostare.'
+        : `Ordina: con chi scambi ${data.species[save.team[partyOrder].species].name}? Il primo riquadro scende in campo per primo.`;
     ui.menuContent.innerHTML = `<div class="party-screen">${partySlot(save.team[0], 0)}<div class="party-list">${others}</div>
-      <p class="party-hint">Scegli un Pokémon per vederne la scheda.</p></div>`;
+      <p class="party-hint"><span>${hint}</span><button id="partyOrder" class="pill"${save.team.length < 2 ? ' disabled' : ''}>${partyOrder === null ? 'Ordina' : 'Annulla'}</button></p></div>`;
+    document.getElementById('partyOrder').addEventListener('click', () => { partyOrder = partyOrder === null ? 'pick' : null; renderTeamMenu(); });
+    ui.menuContent.querySelectorAll('[data-swap]').forEach(slot => slot.addEventListener('click', () => {
+      const index = Number(slot.dataset.swap);
+      if (partyOrder === 'pick') partyOrder = index;
+      else {
+        if (index !== partyOrder) {
+          [save.team[partyOrder], save.team[index]] = [save.team[index], save.team[partyOrder]];
+          autoSave();
+          playSound('confirm');
+        }
+        partyOrder = null;
+      }
+      renderTeamMenu();
+    }));
   }
 
   // Scheda del singolo Pokémon: si apre cliccando una riga di Squadra o Deposito.
@@ -1569,6 +1727,37 @@
     return `<span class="type-chip" style="background:${typeColors[type] || '#777'}">${type}</span>`;
   }
 
+  // --- Scheda di un Pokémon ---
+  // Tre ingressi: un Pokémon della squadra o del deposito (`renderSummary`), una specie dal Pokédex
+  // (`renderSpeciesSheet`), un Pokémon della squadra durante la lotta (`openBattleInfo`).
+  function profileBlock(species) {
+    const facts = [['Altezza', species.height], ['Peso', species.weight], ['Abilità', (species.abilities || []).join(' · ')]]
+      .filter(([, value]) => value).map(([label, value]) => `<div><span>${label}</span><strong>${value}</strong></div>`).join('');
+    return `${facts ? `<div class="sheet-facts">${facts}</div>` : ''}${species.dex ? `<p class="sheet-dex">${species.dex}</p>` : ''}`;
+  }
+
+  function sheetHead(id, title, lines) {
+    const species = data.species[id];
+    return `<div class="sheet-head"><img src="assets/battle/${id}-front.png" alt="${species.name}" onerror="this.style.visibility='hidden'">
+      <div><h2>${title}</h2>
+        <p>#${String(species.number).padStart(3, '0')} · ${species.category || 'Pokémon'}</p>
+        <p>${species.types.map(typeChip).join(' ')} ${lines}</p>
+        <p><a href="${species.wiki}" target="_blank" rel="noopener">Scheda sulla wiki ▶</a></p></div></div>`;
+  }
+
+  function moveBlock(move, pp, level) {
+    return `<div class="sheet-move"><div class="sheet-move-name">${level ? `<small>Lv.${level}</small>` : ''}<strong>${move.name}</strong>${typeChip(move.type)}<span>${move.category}</span></div>
+      <div class="sheet-move-data">Pot. ${move.power || '—'} · Prec. ${move.accuracy || '—'} · PP ${pp}</div>
+      ${move.description ? `<p>${move.description}</p>` : ''}</div>`;
+  }
+
+  function sheetBack(label, action) {
+    const button = document.getElementById('summaryBack');
+    button.textContent = `◀ ${label}`;
+    button.addEventListener('click', action);
+    ui.menuContent.scrollTop = 0;
+  }
+
   function renderSummary(listName, index, backTab) {
     const monster = (save[listName] || [])[index];
     if (!monster) { renderMenu(backTab); return; }
@@ -1577,26 +1766,58 @@
     const next = Battle.expToNext(monster);
     const exp = monster.exp || 0;
     const expPercent = Math.max(0, Math.min(100, (exp - floor) / (next - floor) * 100));
-    const status = statusText(monster);
+    const status = monster.hp <= 0 ? 'KO' : statusText(monster);
     const stats = statRows.map(([key, label]) => `<div><span>${label}</span><strong>${key === 'hp' ? `${Math.max(0, monster.hp)}/${monster.stats.hp}` : monster.stats[key]}</strong></div>`).join('');
-    const moves = monster.moves.map(slot => {
-      const move = data.moves[slot.id];
-      if (!move) return '';
-      return `<div class="summary-move"><div><strong>${move.name}</strong> ${typeChip(move.type)} <span>${move.category}</span></div>
-        <div class="summary-move-data">Pot. ${move.power || '—'} · Prec. ${move.accuracy || '—'} · PP ${slot.pp}/${slot.maxPp}</div>
-        <p>${move.description || ''}</p></div>`;
-    }).join('');
-    ui.menuContent.innerHTML = `<button id="summaryBack">◀ Indietro</button>
-      <div class="summary-head"><img src="assets/battle/${monster.species}-front.png" alt="${species.name}" onerror="this.style.display='none'">
-        <div><h2>${species.name} <small>Lv.${monster.level}</small></h2>
-          <p>#${String(species.number).padStart(3, '0')} ${species.types.map(typeChip).join(' ')} ${status ? `<span class="status-badge">${status}</span>` : ''}</p>
-          <p><a href="${species.wiki}" target="_blank" rel="noopener">Scheda wiki</a></p></div></div>
-      <div class="summary-stats">${stats}</div>
-      <p>Esperienza: <strong>${exp}</strong> · al prossimo livello: <strong>${Math.max(0, next - exp)}</strong></p>
-      <div class="bar exp-bar"><i style="width:${expPercent}%"></i></div>
-      <h3>Mosse</h3>${moves}`;
-    ui.menuContent.scrollTop = 0;
-    document.getElementById('summaryBack').addEventListener('click', () => renderMenu(backTab));
+    const moves = monster.moves.map(slot => (data.moves[slot.id] ? moveBlock(data.moves[slot.id], `${slot.pp}/${slot.maxPp}`) : '')).join('');
+    ui.menuContent.innerHTML = `<div class="page sheet"><button id="summaryBack" class="pill"></button>
+      ${sheetHead(monster.species, `${species.name} <small>Lv.${monster.level}</small>`, status ? `<span class="status-badge">${status}</span>` : '')}
+      <div class="sheet-stats">${stats}</div>
+      <p class="sheet-exp">Esperienza <strong>${exp}</strong> · al prossimo livello <strong>${Math.max(0, next - exp)}</strong></p>
+      <div class="exp-track"><i style="width:${expPercent}%"></i></div>
+      ${profileBlock(species)}
+      <h3>Mosse</h3>${moves}</div>`;
+    sheetBack(backTab === 'deposit' ? 'Deposito' : mode === 'battle' ? 'Lotta' : 'Squadra', () => (mode === 'battle' ? closeBattleInfo() : renderMenu(backTab)));
+  }
+
+  function evolutionText(evolution) {
+    if (!evolution) return 'Non si evolve.';
+    const how = [
+      evolution.level && `dal livello ${evolution.level}`,
+      evolution.friendship && 'con molta amicizia',
+      evolution.item && data.items[evolution.item] && `con ${data.items[evolution.item].name}`,
+      evolution.night && 'di notte',
+      evolution.dusk && 'al tramonto',
+      evolution.location && 'in un luogo particolare'
+    ].filter(Boolean).join(', ');
+    const target = save.dex.seen[evolution.into] ? data.species[evolution.into].name : '???';
+    return `Si evolve in <strong>${target}</strong>${how ? ` ${how}` : ''}.`;
+  }
+
+  // Scheda di una specie catturata, dal Pokédex: statistiche base, mosse per livello, evoluzione.
+  function renderSpeciesSheet(id) {
+    const species = data.species[id];
+    const labels = statRows.map(([, label]) => label);
+    const stats = species.base.map((value, index) => `<div><span>${labels[index]}</span><strong>${value}</strong></div>`).join('');
+    const moves = species.learnset.map(([level, moveId]) => (data.moves[moveId] ? moveBlock(data.moves[moveId], data.moves[moveId].pp, level) : '')).join('');
+    ui.menuContent.innerHTML = `<div class="page sheet"><button id="summaryBack" class="pill"></button>
+      ${sheetHead(id, species.name, '')}
+      <p class="sheet-exp">${evolutionText(species.evolution)}</p>
+      ${profileBlock(species)}
+      <h3>Statistiche di base</h3><div class="sheet-stats">${stats}</div>
+      <h3>Mosse per livello</h3>${moves}</div>`;
+    sheetBack('Pokédex', () => renderMenu('dex'));
+  }
+
+  // In lotta la scheda si apre sopra la schermata di lotta e si chiude tornando alla lista della squadra.
+  function openBattleInfo(index) {
+    ui.menuScreen.hidden = false;
+    ui.menuScreen.dataset.view = 'page';
+    ui.menuScreen.dataset.tab = 'info';
+    renderSummary('team', index, 'team');
+  }
+
+  function closeBattleInfo() {
+    ui.menuScreen.hidden = true;
   }
 
   // Borsa a tasche. Si vedono solo gli strumenti posseduti; fuori dalla lotta si usano Pozione e Antidoto.
@@ -1605,7 +1826,12 @@
     potion: { can: monster => monster.hp > 0 && monster.hp < monster.stats.hp, apply: monster => { monster.hp = Math.min(monster.stats.hp, monster.hp + 20); }, done: 'recupera PS.' },
     antidote: { can: monster => monster.status === 'psn', apply: monster => { monster.status = null; }, done: 'non è più avvelenato.' }
   };
+  // strumenti che si usano e basta, senza scegliere un Pokémon: restituiscono il messaggio da mostrare
+  const bagDirectUses = {
+    repel: () => { save.repelSteps = 100; return 'Repellente attivo per 100 passi.'; }
+  };
   const bagTexts = {
+    repel: 'Per 100 passi tiene lontani i selvatici più deboli del primo Pokémon in squadra.',
     ball: 'Si lancia in lotta per catturare un Pokémon selvatico.',
     potion: 'Restituisce 20 PS a un Pokémon.',
     antidote: 'Cura un Pokémon avvelenato.'
@@ -1644,7 +1870,7 @@
       detail = `<p>Su chi usi ${data.items[bagItem].name}?</p><div class="bag-targets">${save.team.map((monster, index) =>
         `<button data-target="${index}"${use.can(monster) ? '' : ' disabled'}>${data.species[monster.species].name} ${Math.max(0, monster.hp)}/${monster.stats.hp}</button>`).join('')}<button data-target="">Annulla</button></div>`;
     } else if (bagItem) {
-      detail = `<p>${bagDescription(bagItem) || data.items[bagItem].name}</p>${use ? '<button id="bagUse">Usa</button>' : ''}`;
+      detail = `<p>${bagDescription(bagItem) || data.items[bagItem].name}</p>${use || bagDirectUses[bagItem] ? '<button id="bagUse">Usa</button>' : ''}`;
     }
     ui.menuContent.innerHTML = `<div class="bag-screen">
       <div class="bag-pocket"><div class="bag-art pocket-${pocketId}"></div>
@@ -1656,6 +1882,13 @@
     ui.menuContent.querySelectorAll('[data-item]').forEach(button => button.addEventListener('click', () => { bagItem = button.dataset.item; bagChoosing = false; renderBagMenu(); }));
     const useButton = document.getElementById('bagUse');
     if (useButton) useButton.addEventListener('click', () => {
+      if (bagDirectUses[bagItem]) {
+        save.items[bagItem] -= 1;
+        showToast(bagDirectUses[bagItem]());
+        autoSave();
+        renderBagMenu();
+        return;
+      }
       if (!save.team.some(use.can)) { showToast('Non avrebbe alcun effetto.'); return; }
       bagChoosing = true;
       renderBagMenu();
@@ -1674,16 +1907,21 @@
   }
 
   function renderDexMenu() {
-    const rows = Object.entries(data.species)
-      .sort(([, a], [, b]) => a.number - b.number)
-      .map(([id, species]) => {
-        const seen = Boolean(save.dex.seen[id]);
-        const caught = Boolean(save.dex.caught[id]);
-        const name = seen ? species.name : '???';
-        const detail = caught ? `${species.types.join(' / ')} · <a href="${species.wiki}" target="_blank" rel="noopener">Scheda completa</a>` : seen ? 'Avvistato' : 'Non avvistato';
-        return `<div class="dex-row ${seen ? '' : 'unseen'}"><img src="assets/battle/${id}-front.png" alt="" onerror="this.style.display='none'"><div><strong>#${String(species.number).padStart(3, '0')} ${name}</strong><br><span>${detail}</span></div><span>${caught ? '●' : seen ? '◐' : '○'}</span></div>`;
-      }).join('');
-    ui.menuContent.innerHTML = `<h2>Pokédex del Piceno</h2>${rows}`;
+    const all = Object.entries(data.species).sort(([, a], [, b]) => a.number - b.number);
+    const count = list => all.filter(([id]) => list[id]).length;
+    const rows = all.map(([id, species]) => {
+      const seen = Boolean(save.dex.seen[id]);
+      const caught = Boolean(save.dex.caught[id]);
+      return `<div class="dex-row${caught ? ' caught' : seen ? ' seen' : ''}"${caught ? ` data-species="${id}"` : ''}>
+        <img src="assets/battle/${id}-front.png" alt="" onerror="this.style.visibility='hidden'">
+        <span class="dex-num">#${String(species.number).padStart(3, '0')}</span>
+        <strong>${seen ? species.name : '?????'}</strong>
+        <span>${caught ? species.types.map(typeChip).join(' ') : seen ? 'avvistato' : ''}</span>
+        <i class="dex-ball"></i></div>`;
+    }).join('');
+    ui.menuContent.innerHTML = `<div class="page"><h2>Pokédex del Piceno <small>visti ${count(save.dex.seen)} · catturati ${count(save.dex.caught)}</small></h2>
+      <p class="page-hint">Scegli un Pokémon catturato per leggerne la scheda.</p>${rows}</div>`;
+    ui.menuContent.querySelectorAll('[data-species]').forEach(row => row.addEventListener('click', () => renderSpeciesSheet(row.dataset.species)));
   }
 
   // Mappa della regione (provvisoria): uno schema dei luoghi e dei collegamenti, senza il dettaglio
@@ -1719,28 +1957,55 @@
       <p class="party-hint">Sei a: <strong>${maps[here] ? maps[here].name : ''}</strong> · riquadri dorati: palestre · tratteggio: corriera</p></div>`;
   }
 
+  // Icone delle medaglie: disegni originali, una forma per palestra (per `order`), colore dal tipo.
+  const badgeShapes = {
+    1: '<path d="M12 2c3 4 6 6 6 11a6 6 0 0 1-12 0c0-5 3-7 6-11z"/><path class="shine" d="M10 12c0-2 1-3 2-5 1 2 2 3 2 5a2 2 0 0 1-4 0z"/>',
+    2: '<path d="M2 13a10 10 0 0 1 20 0z"/><path d="M11 13h2v8h-2z"/><path class="shine" d="M7 12a8 8 0 0 1 4-7v7z"/>'
+  };
+
+  function badgeIcon(gym, earned) {
+    const shape = badgeShapes[gym.order] || '<circle cx="12" cy="12" r="8"/>';
+    return `<svg viewBox="0 0 24 24" class="badge-icon${earned ? ' earned' : ''}" style="--badge:${typeColors[gym.type] || '#999'}">${shape}</svg>`;
+  }
+
   function renderTrainerMenu() {
     const seenCount = Object.values(save.dex.seen).filter(Boolean).length;
     const caughtCount = Object.values(save.dex.caught).filter(Boolean).length;
     const allGyms = Object.values(trainersData.gyms).sort((a, b) => a.order - b.order);
     const badgeSlots = Array.from({ length: 8 }, (_, index) => {
       const gym = allGyms[index];
-      const earned = gym && save.badges.includes(gym.leader ? (trainersData.trainers[gym.leader].gym || {}).badge : null);
-      return `<div class="badge-slot ${earned ? 'earned' : ''}">${earned ? (trainersData.trainers[gym.leader].gym.badgeName || '') : (gym ? gym.name : '—')}</div>`;
+      if (!gym) return '<div class="badge-slot empty"></div>';
+      const leaderGym = (trainersData.trainers[gym.leader] || {}).gym || {};
+      const earned = save.badges.includes(leaderGym.badge);
+      return `<div class="badge-slot${earned ? ' earned' : ''}">${badgeIcon(gym, earned)}<small>${earned ? leaderGym.badgeName || '' : gym.city}</small></div>`;
     }).join('');
-    ui.menuContent.innerHTML = `<h2>Allenatore</h2>
-      <p>Nome: <strong>${save.name || 'Oliver'}</strong></p>
-      <p>Talleri: <strong>${save.money}</strong></p>
-      <p>Passi: <strong>${save.steps || 0}</strong></p>
-      <p>Pokédex: <strong>${caughtCount}</strong> catturati / <strong>${seenCount}</strong> visti</p>
-      <p>Medaglie:</p>
-      <div class="badge-grid">${badgeSlots}</div>`;
+    ui.menuContent.innerHTML = `<div class="page trainer-card">
+      <h2>Tessera Allenatore</h2>
+      <div class="trainer-data">
+        <div class="trainer-face"></div>
+        <div class="sheet-facts">
+          <div><span>Nome</span><strong>${save.name || 'Oliver'}</strong></div>
+          <div><span>Talleri</span><strong>${save.money}</strong></div>
+          <div><span>Passi</span><strong>${save.steps || 0}</strong></div>
+          <div><span>Pokédex</span><strong>${caughtCount} catturati · ${seenCount} visti</strong></div>
+        </div>
+      </div>
+      <h3>Medaglie</h3>
+      <div class="badge-grid">${badgeSlots}</div></div>`;
+  }
+
+  function depositRow(monster, action, ref) {
+    const species = data.species[monster.species];
+    return `<div class="box-row" data-summary="${ref}"><img src="assets/battle/${monster.species}-front.png" alt="" onerror="this.style.visibility='hidden'">
+      <strong>${species.name}</strong><span>Lv.${monster.level}</span><span>${Math.max(0, monster.hp)}/${monster.stats.hp} PS</span>${action}</div>`;
   }
 
   function renderDepositMenu() {
-    const team = save.team.map((monster, index) => monsterRow(monster, `<button data-deposit="${index}">Deposita</button>`, `team:${index}:deposit`)).join('');
-    const stored = save.storage.map((monster, index) => monsterRow(monster, `<button data-withdraw="${index}">Ritira</button>`, `storage:${index}:deposit`)).join('');
-    ui.menuContent.innerHTML = `<h2>Deposito</h2><strong>Squadra</strong>${team}<strong>Depositati</strong>${stored || '<p>Nessun Pokémon depositato.</p>'}`;
+    const team = save.team.map((monster, index) => depositRow(monster, `<button class="pill" data-deposit="${index}">Deposita</button>`, `team:${index}:deposit`)).join('');
+    const stored = save.storage.map((monster, index) => depositRow(monster, `<button class="pill" data-withdraw="${index}">Ritira</button>`, `storage:${index}:deposit`)).join('');
+    ui.menuContent.innerHTML = `<div class="page"><h2>Deposito</h2>
+      <p class="page-hint">Tocca un Pokémon per la scheda. In squadra ne stanno al massimo sei.</p>
+      <div class="box-columns"><div><h3>Squadra</h3>${team}</div><div><h3>Depositati</h3>${stored || '<p>Nessun Pokémon depositato.</p>'}</div></div></div>`;
     ui.menuContent.querySelectorAll('[data-deposit]').forEach(button => button.addEventListener('click', () => {
       if (save.team.length <= 1) { showToast('Deve restare almeno un Pokémon in squadra.'); return; }
       save.storage.push(save.team.splice(Number(button.dataset.deposit), 1)[0]);
@@ -1756,7 +2021,15 @@
   }
 
   function renderSaveMenu() {
-    ui.menuContent.innerHTML = `<h2>Salvataggio</h2><p>Il gioco salva automaticamente sul dispositivo.</p><button id="saveNow">Salva ora</button><button id="exportSave">Esporta JSON</button><label class="file-label">Importa JSON<input id="importSave" type="file" accept="application/json" hidden></label><button id="resetSave">Ricomincia</button>`;
+    ui.menuContent.innerHTML = `<div class="page"><h2>Salvataggio</h2>
+      <p>Il gioco salva da solo su questo dispositivo a ogni passaggio, lotta e acquisto.</p>
+      <div class="page-actions"><button id="saveNow" class="pill">Salva ora</button></div>
+      <h3>Portare la partita altrove</h3>
+      <p>Esporta la partita in un file e importala su un altro dispositivo o browser.</p>
+      <div class="page-actions"><button id="exportSave" class="pill">Esporta</button><label class="pill">Importa<input id="importSave" type="file" accept="application/json" hidden></label></div>
+      <h3>Ricominciare</h3>
+      <p>Cancella la partita salvata su questo dispositivo.</p>
+      <div class="page-actions"><button id="resetSave" class="pill danger">Ricomincia da capo</button></div></div>`;
     document.getElementById('saveNow').addEventListener('click', () => { autoSave(); showToast('Partita salvata.'); });
     document.getElementById('exportSave').addEventListener('click', exportSave);
     document.getElementById('importSave').addEventListener('change', importSave);
@@ -1768,7 +2041,10 @@
   }
 
   function renderSettingsMenu() {
-    ui.menuContent.innerHTML = `<h2>Impostazioni</h2><button id="toggleSound">Effetti sonori: ${save.settings.sound ? 'attivi' : 'disattivati'}</button><button id="toggleMusic">Musica: ${save.settings.music === false ? 'disattivata' : 'attiva'}</button><p>Ambientazione: giorno fisso</p><p>Lingua: italiano</p>`;
+    const row = (id, label, on) => `<div class="option-row"><span>${label}</span><button id="${id}" class="pill${on ? '' : ' off'}">${on ? 'Sì' : 'No'}</button></div>`;
+    ui.menuContent.innerHTML = `<div class="page"><h2>Opzioni</h2>
+      ${row('toggleSound', 'Effetti sonori', save.settings.sound)}
+      ${row('toggleMusic', 'Musica', save.settings.music !== false)}</div>`;
     document.getElementById('toggleMusic').addEventListener('click', () => {
       save.settings.music = save.settings.music === false;
       if (save.settings.music) startMusic(); else stopMusic();
@@ -2035,8 +2311,10 @@
     });
   }
 
-  function drawNpcs(camera) {
+  // `row`: disegna solo chi sta su quella riga (vedi renderWorld)
+  function drawNpcs(camera, row) {
     visibleRuntimeNpcs().forEach((npc, index) => {
+      if (npc.y !== row) return;
       const x = npc.x * 16 - camera.x;
       const y = npc.y * 16 - camera.y;
       if (x < -16 || y < -20 || x > canvas.width || y > canvas.height) return;
@@ -2054,11 +2332,12 @@
     });
   }
 
-  function drawTrainers(camera) {
+  function drawTrainers(camera, row) {
     if (!save) return;
     activeTrainersOnMap().forEach(trainer => {
       const defeated = !!save.flags[Events.flagKeys.trainerFlag(trainer.id)];
       const renderX = trainer.renderX ?? trainer.x, renderY = trainer.renderY ?? trainer.y;
+      if (Math.floor(renderY) !== row) return;
       // mentre cammina alterna i piedi: mezza cella un piede, mezza cella fermo, poi l'altro
       const travelled = renderX + renderY;
       const stride = travelled % 1 > .5 ? 1 + Math.floor(travelled) % 2 : 0;
@@ -2125,16 +2404,20 @@
     }
     drawTransitions(camera);
     drawBuildings(camera);
-    // alberi e arredo sbordano sulle celle vicine: si disegnano dopo terreno ed edifici
-    if (atlas) drawStanding(currentMap, grid, startX, startY, endX, endY + 1, camera.x, camera.y);
-    drawNpcs(camera);
-    drawTrainers(camera);
-    drawPlayer(camera);
+    // Alberi, arredo e personaggi sbordano sulle celle vicine: si disegnano dopo terreno ed edifici, una
+    // riga alla volta dall'alto, così chi sta più in basso copre chi sta più in alto (si passa dietro
+    // le chiome, non sopra). Chi è a metà passo conta sulla riga da cui parte o in cui arriva più in alto.
+    const playerRow = Math.floor(player.renderY);
+    const actorsOnRow = row => {
+      drawNpcs(camera, row);
+      drawTrainers(camera, row);
+      if (row === playerRow) drawPlayer(camera);
+    };
+    if (atlas) drawStanding(currentMap, grid, startX, startY - 1, endX, endY + 1, camera.x, camera.y, actorsOnRow);
+    else for (let row = startY - 1; row <= endY + 1; row += 1) actorsOnRow(row);
     if (atlas) {
-      // alberi e arredo che stanno più in basso del giocatore lo coprono: dietro le chiome, non sopra
       const cellX = Math.round(player.renderX);
       const cellY = Math.round(player.renderY);
-      drawStanding(currentMap, grid, cellX - 1, Math.floor(player.renderY) + 1, cellX + 1, Math.floor(player.renderY) + 2, camera.x, camera.y);
       // l'erba alta copre i piedi del giocatore
       if (isTallGrass(currentMap, cellX, cellY)) blit(TILES.erba_alta_front, 0, Math.round(player.renderX * 16 - camera.x), Math.round(player.renderY * 16 - camera.y));
       // fruscio: i ciuffi si aprono per un attimo nella cella in cui si è appena entrati
@@ -2345,7 +2628,7 @@
     if (event.code === 'KeyM') openMenu();
     if (event.code === 'Escape' || event.code === 'KeyX') {
       if (mode === 'menu') menuBack();
-      else if (mode === 'battle') showBattleMain();
+      else if (mode === 'battle') battleBack();
       else if (mode === 'credits') closeCredits();
     }
   });
@@ -2382,7 +2665,7 @@
   ['pointerup', 'pointercancel', 'pointerleave'].forEach(type => ui.touchB.addEventListener(type, () => { running = false; }));
   ui.touchB.addEventListener('click', () => {
     if (mode === 'menu') menuBack();
-    else if (mode === 'battle') showBattleMain();
+    else if (mode === 'battle') battleBack();
   });
   ui.menuClose.addEventListener('click', menuBack);
   ui.menuExit.addEventListener('click', closeMenu);

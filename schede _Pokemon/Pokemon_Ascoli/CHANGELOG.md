@@ -2,6 +2,26 @@
 
 Gioco: https://g95g95.github.io/Wikascolemon/gioco/ · Configuratore: `…/gioco/configuratore.html`
 
+## 15/11/2026 — Lotta più leggibile, scheda Pokémon, menu completo
+
+- **Blocco in lotta risolto**: quando un Pokémon con quattro mosse ne imparava una nuova, il riquadro
+  «quale mossa dimenticare» si apriva dietro la schermata di lotta e il gioco restava ad aspettare. Ora
+  sta sopra e mostra tipo, categoria, potenza e PP di ogni mossa.
+- **La barra dei PS scende quando il colpo arriva**, non prima.
+- **Animazioni degli stati**: veleno, scottatura, paralisi, sonno, gelo e confusione si vedono sul Pokémon.
+- **Mosse che ora funzionano**: confusione (Confondiraggio, Idropulsar, Gloglottio…), Riposo, Sbadiglio,
+  Boato, Teletrasporto, Provocazione, le mosse che fanno ricaricare, Radicamento, Sabbiotomba e altre.
+- **Repellente**: si usa dalla Borsa e per 100 passi tiene lontani i selvatici più deboli del tuo primo Pokémon.
+- **Scheda Pokémon più ricca**: categoria, altezza, peso, abilità e voce Pokédex. Si apre anche dal
+  Pokédex (per le specie catturate, con mosse per livello ed evoluzione) e in lotta da Squadra → Schede.
+- In lotta, passando su una mossa il riquadro dei messaggi ne mostra potenza, precisione e descrizione.
+- **Pokédex, Allenatore, Deposito, Salva e Opzioni** hanno lo stile nuovo; sulla Tessera Allenatore ci
+  sono le icone delle medaglie.
+- X/Esc durante un turno non fa più ricomparire il menu della lotta.
+- **Squadra → Ordina**: scambi di posto due Pokémon; il primo riquadro è quello che scende in campo per primo.
+- **Alberi**: tolta la «fila che seguiva Oliver». Alberi, arredo e personaggi ora si coprono a vicenda nel
+  modo giusto: chi sta più in basso sta davanti.
+
 ## 15/11/2026 — Atmosfera
 
 - **Dissolvenza** al cambio di mappa e quando si entra o si esce da un edificio.

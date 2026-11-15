@@ -231,20 +231,47 @@ Scelti da Jacopo per primi: K1-K6, più K0 e K7 arrivati dal test.
       si apriva DIETRO la schermata di lotta (stesso z-index, viene prima nel DOM) e il gioco aspettava una
       scelta invisibile. C'era da sempre; `gioca.mjs` non lo vedeva perché clicca i bottoni anche coperti.
       Ora sta sopra, nello stile nuovo.
-- [ ] K1. Effetti delle mosse mancanti: 55 mosse con effetto non previsto dal motore (confusione, Boato,
-      Riposo, campi, ricarica). Prima quelle che compaiono nella demo.
-- [ ] K2. La barra dei PS scende sul messaggio «X usa Y!», prima del colpo: allinearla all'animazione.
-- [ ] K3. Repellente: si compra ma non fa nulla.
-- [ ] K4. Scheda Pokémon più ricca (categoria, voce Pokédex, altezza, peso, abilità) e apribile dal
-      Pokédex e dalla lotta (= I11, A2, A3).
-- [ ] K5. Pagine del menu rimaste vecchie: Pokédex, Allenatore, Deposito, Salva, Opzioni.
-- [ ] K6. Icone delle due medaglie (= C5).
-- [ ] K7. Animazioni per gli stati in lotta: paralisi, veleno, scottatura, sonno, congelamento (Jacopo, 15/11).
+- [x] K1. (15/11) Effetti delle mosse: il motore ora sa fare confusione (anche su di sé), Riposo, Sbadiglio,
+      Boato/Stordiscappo (chiudono l'incontro selvatico; contro un allenatore trascinano in campo un altro
+      Pokémon), Teletrasporto, Provocazione, ricarica dopo la mossa, KO in un colpo, cura dello stato,
+      radici, vortice. 18 mosse sistemate in `tools/moves-catalog.json`; test in `tests/battle.test.mjs`.
+      Restano 37 mosse con effetto non previsto (quasi tutte esclusive di specie fuori dalla demo, o
+      pensate per le lotte in doppio): quelle di stato dicono «Ma non ha effetto!». Elenco: aiuto, arringa,
+      bolgia, braciscavo, cappottone, chicco_doro, colpo_sordo, contatore, corretto, desiderio,
+      dialettica_critica, diceria, difesa_del_forestiero, differita, dropbeat, favorino, filiera_corta,
+      fischio_lungo, flagello, fora_fora, ghiannata, jnen, malocchio, ombra_fresca, partecipazione,
+      ponteggio, raddrizzafogna, scattomatto, scia_di_braci, sconfinata, sei_piatti, sfocatura,
+      smistamento, solito, solo_piombo, staffetta, terrasanta.
+      ⚠️ Per molte la descrizione sulla wiki è tronca («è la sua mossa esclusiva: agisce»): prima di
+      implementarle va letta la scheda.
+- [x] K2. (15/11) La lotta racconta gli eventi uno alla volta (`playEvents`): la barra dei PS scende quando
+      il colpo si vede, non sul messaggio «X usa Y!». Gli eventi del motore portano i PS rimasti (`hp`).
+      Resta: l'etichetta dello stato (VEL, PAR…) compare un messaggio prima dell'annuncio.
+- [x] K3. (15/11) Repellente: si usa dalla Borsa, per 100 passi niente selvatici di livello più basso del
+      primo Pokémon in piedi; avvisa quando finisce.
+- [x] K4. (15/11) Scheda Pokémon con categoria, altezza, peso, abilità e voce Pokédex (`build-dex.mjs` le
+      porta in `species.js`). Si apre dalla Squadra, dal Deposito, dal Pokédex (specie catturate:
+      statistiche base, mosse per livello, evoluzione) e in lotta (Squadra → Schede). Nel menu mosse il
+      riquadro dei messaggi descrive la mossa su cui si passa.
+- [x] K5. (15/11) Pokédex, Allenatore, Deposito, Salva e Opzioni rifatti nello stile nuovo (classe `.page`).
+- [x] K6. (15/11) Icone delle due medaglie sulla Tessera Allenatore (goccia viola, ombrellone): disegni
+      originali in SVG, grigie finché non sono vinte.
+- [x] K7. (15/11) Animazioni degli stati: tinta sullo sprite più segni che salgono (bolle per veleno e
+      scottatura, scintille per paralisi e gelo, Z per il sonno, ? per la confusione), sia quando lo stato
+      arriva sia quando agisce.
+- [x] K0c. (15/11) Alberi, seconda correzione: la prima (ridisegnare gli alberi vicini a Oliver) metteva quel
+      pezzo sopra la fila successiva e sembrava una fila che lo seguiva. Ora alberi, arredo, personaggi e
+      allenatori si disegnano riga per riga dall'alto (`afterRow` in `drawStanding`): chiude anche K10 per
+      alberi e personaggi; restano i tetti degli edifici.
+- [x] K0d. (15/11) Squadra → «Ordina»: scegli un Pokémon e poi con chi scambiarlo; il primo riquadro è
+      quello che scende in campo per primo.
+- [x] K0b. (15/11) X/Esc/B durante un turno faceva ricomparire il menu principale della lotta (è così che
+      Jacopo si è sbloccato): ora vale solo da un sottomenu con il suo «Indietro».
 
 **Posso farle da solo, dopo**
 - [ ] K8. Stanze diverse per le case (= I10).
 - [ ] K9. Mappa della regione disegnata (= I12).
-- [ ] K10. Passare dietro tetti ed edifici; alberi che coprono anche i personaggi (= B3).
+- [ ] K10. Passare dietro i tetti degli edifici (= B3). Alberi e personaggi: fatto, vedi K0c.
 - [ ] K11. Ombra sotto gli sprite, fiori animati (= B4).
 - [ ] K12. Erba alta a chiazze dove è rimasta a rettangoli (= B2b).
 - [ ] K13. Campo `growth` sbagliato per 23 specie (= I14).

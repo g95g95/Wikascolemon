@@ -246,6 +246,11 @@
   // --- Esecuzione mossa ---
   function preMoveStatusCheck(attacker, attackerName, rng) {
     const events = [];
+    if (attacker.recharging) {
+      attacker.recharging = false;
+      events.push({ type: 'text', text: `${attackerName} deve ricaricarsi!` });
+      return { canMove: false, events };
+    }
     if (attacker.flinched) {
       attacker.flinched = false;
       events.push({ type: 'text', text: `${attackerName} ha esitato e non può muoversi!` });
@@ -259,7 +264,7 @@
           events.push({ type: 'text', text: `${attackerName} si è svegliato!` });
           return { canMove: true, events };
         }
-        events.push({ type: 'text', text: `${attackerName} dorme profondamente.` });
+        events.push({ type: 'text', text: `${attackerName} dorme profondamente.`, anim: 'slp', who: 'attacker' });
         return { canMove: false, events };
       }
       attacker.status = null;
@@ -269,17 +274,50 @@
         attacker.status = null;
         events.push({ type: 'text', text: `${attackerName} si è scongelato!` });
       } else {
-        events.push({ type: 'text', text: `${attackerName} è congelato e non può muoversi!` });
+        events.push({ type: 'text', text: `${attackerName} è congelato e non può muoversi!`, anim: 'frz', who: 'attacker' });
         return { canMove: false, events };
       }
     }
     if (attacker.status === 'par') {
       if (rand(rng) < 0.25) {
-        events.push({ type: 'text', text: `${attackerName} è paralizzato e non riesce a muoversi!` });
+        events.push({ type: 'text', text: `${attackerName} è paralizzato e non riesce a muoversi!`, anim: 'par', who: 'attacker' });
         return { canMove: false, events };
       }
     }
+    // confusione: dura qualche turno; una volta su due ci si colpisce da soli (colpo fisico da 40, senza tipo)
+    if (attacker.confusedTurns > 0) {
+      attacker.confusedTurns -= 1;
+      if (attacker.confusedTurns <= 0) {
+        events.push({ type: 'text', text: `${attackerName} non è più confuso!` });
+      } else {
+        events.push({ type: 'text', text: `${attackerName} è confuso!`, anim: 'cnf', who: 'attacker' });
+        if (rand(rng) < 0.5) {
+          const damage = Math.max(1, Math.floor((((2 * attacker.level / 5) + 2) * 40 * attacker.stats.attack / attacker.stats.defense) / 50 + 2));
+          attacker.hp = Math.max(0, attacker.hp - damage);
+          events.push({ type: 'text', text: 'È così confuso da colpirsi da solo!' });
+          events.push({ type: 'damage', target: 'attacker', amount: damage, hp: attacker.hp });
+          if (attacker.hp <= 0) events.push({ type: 'faint', target: 'attacker' });
+          return { canMove: false, events };
+        }
+      }
+    }
     return { canMove: true, events };
+  }
+
+  function applyConfusion(target, targetName, who, chance, events, rng) {
+    if (target.hp <= 0 || rand(rng) * 100 >= (chance ?? 100)) return;
+    if (target.confusedTurns > 0) {
+      events.push({ type: 'text', text: `${targetName} è già confuso!` });
+      return;
+    }
+    target.confusedTurns = 2 + Math.floor(rand(rng) * 4); // da 1 a 4 turni di confusione effettiva
+    events.push({ type: 'text', text: `${targetName} è confuso!`, anim: 'cnf', who });
+  }
+
+  // Stati che valgono solo finché il Pokémon resta in campo: si azzerano al cambio e a fine lotta.
+  function clearVolatile(monster) {
+    ['confusedTurns', 'recharging', 'tauntTurns', 'drowsy', 'rooted', 'trappedTurns', 'flinched', 'protected'].forEach(key => { delete monster[key]; });
+    return monster;
   }
 
   function statusImmune(status, targetTypes) {
@@ -317,6 +355,11 @@
     const preCheck = preMoveStatusCheck(attacker, attackerName, rng);
     events.push(...preCheck.events);
     if (!preCheck.canMove) {
+      return { events };
+    }
+
+    if (attacker.tauntTurns > 0 && !known.power) {
+      events.push({ type: 'text', text: `${attackerName} è stato provocato: non può usare ${known.name}!` });
       return { events };
     }
 
@@ -379,7 +422,7 @@
       totalDamage += damage;
       lastCrit = crit;
       lastEffectiveness = effectivenessMult;
-      events.push({ type: 'damage', target: 'defender', amount: damage, effectiveness: effectivenessMult, crit });
+      events.push({ type: 'damage', target: 'defender', amount: damage, hp: defender.hp, effectiveness: effectivenessMult, crit });
       if (defender.hp <= 0) {
         events.push({ type: 'faint', target: 'defender' });
         break;
@@ -398,10 +441,20 @@
       if (effect.kind === 'drain' && totalDamage > 0) {
         const healAmount = Math.max(1, Math.floor(totalDamage * effect.ratio));
         attacker.hp = Math.min(attacker.stats.hp, attacker.hp + healAmount);
+        events.push({ type: 'hp', target: 'attacker', hp: attacker.hp });
         events.push({ type: 'text', text: `${attackerName} ha assorbito energia!` });
       }
       if (effect.kind === 'status' && defender.hp > 0) {
         maybeApplyStatus(effect, defender, defenderName, events, rng);
+      }
+      if (effect.kind === 'confuse') {
+        if (effect.target === 'self') applyConfusion(attacker, attackerName, 'attacker', effect.chance, events, rng);
+        else applyConfusion(defender, defenderName, 'defender', effect.chance, events, rng);
+      }
+      if (effect.kind === 'recharge') attacker.recharging = true;
+      if (effect.kind === 'trap' && defender.hp > 0 && !defender.trappedTurns) {
+        defender.trappedTurns = 4 + Math.floor(rand(rng) * 2);
+        events.push({ type: 'text', text: `${defenderName} è intrappolato nel vortice!` });
       }
       if (effect.kind === 'flinch' && defender.hp > 0) {
         if (rand(rng) * 100 < effect.chance) {
@@ -416,6 +469,7 @@
     if (effect && effect.kind === 'recoil' && totalDamage > 0) {
       const recoilAmount = Math.max(1, Math.floor(totalDamage * effect.ratio));
       attacker.hp = Math.max(0, attacker.hp - recoilAmount);
+      events.push({ type: 'damage', target: 'attacker', amount: recoilAmount, hp: attacker.hp });
       events.push({ type: 'text', text: `${attackerName} è esausto per il contraccolpo!` });
       if (attacker.hp <= 0) events.push({ type: 'faint', target: 'attacker' });
     }
@@ -459,7 +513,73 @@
       case 'heal': {
         const healAmount = Math.max(1, Math.floor(attacker.stats.hp * effect.ratio));
         attacker.hp = Math.min(attacker.stats.hp, attacker.hp + healAmount);
+        events.push({ type: 'hp', target: 'attacker', hp: attacker.hp });
         events.push({ type: 'text', text: `${attackerName} recupera PS!` });
+        break;
+      }
+      case 'confuse': {
+        applyConfusion(defender, defenderName, 'defender', effect.chance, events, rng);
+        break;
+      }
+      case 'rest': { // Riposo: PS al massimo, stato curato, due turni di sonno
+        if (attacker.hp >= attacker.stats.hp && !attacker.status) {
+          events.push({ type: 'text', text: 'Ma non ha effetto!' });
+          break;
+        }
+        attacker.hp = attacker.stats.hp;
+        attacker.status = 'slp';
+        attacker.sleepTurns = 3;
+        events.push({ type: 'hp', target: 'attacker', hp: attacker.hp });
+        events.push({ type: 'text', text: `${attackerName} si addormenta e recupera le forze!`, anim: 'slp', who: 'attacker' });
+        break;
+      }
+      case 'yawn': { // Sbadiglio: il bersaglio si addormenta alla fine del turno successivo
+        if (defender.status || defender.drowsy) {
+          events.push({ type: 'text', text: 'Ma non ha effetto!' });
+          break;
+        }
+        defender.drowsy = 2;
+        events.push({ type: 'text', text: `${defenderName} ha sonno!` });
+        break;
+      }
+      case 'taunt': {
+        defender.tauntTurns = 3;
+        events.push({ type: 'text', text: `${defenderName} cade nella provocazione!` });
+        break;
+      }
+      case 'cure': {
+        if (!attacker.status) {
+          events.push({ type: 'text', text: 'Ma non ha effetto!' });
+          break;
+        }
+        attacker.status = null;
+        attacker.sleepTurns = 0;
+        events.push({ type: 'text', text: `${attackerName} è guarito!` });
+        break;
+      }
+      case 'ingrain': {
+        attacker.rooted = true;
+        events.push({ type: 'text', text: `${attackerName} mette radici!` });
+        break;
+      }
+      case 'ohko': { // la precisione (30%) è già stata tirata; non funziona su chi è di livello più alto
+        if (attacker.level < defender.level) {
+          events.push({ type: 'text', text: 'Ma non ha effetto!' });
+          break;
+        }
+        events.push({ type: 'damage', target: 'defender', amount: defender.hp, hp: 0 });
+        defender.hp = 0;
+        events.push({ type: 'text', text: 'KO in un colpo solo!' });
+        events.push({ type: 'faint', target: 'defender' });
+        break;
+      }
+      // Boato e Teletrasporto dipendono dalla squadra e dal tipo di lotta: il motore li segnala, decide chi lo usa
+      case 'forceSwitch': {
+        events.push({ type: 'forceSwitch', target: 'defender' });
+        break;
+      }
+      case 'flee': {
+        events.push({ type: 'flee', target: 'attacker' });
         break;
       }
       case 'protect': {
@@ -476,7 +596,7 @@
     }
   }
 
-  function maybeApplyStatus(effect, target, targetName, events, rng) {
+  function maybeApplyStatus(effect, target, targetName, events, rng, who) {
     if (target.status) {
       events.push({ type: 'text', text: `${targetName} ha già uno stato alterato!` });
       return;
@@ -489,7 +609,7 @@
     if (rand(rng) * 100 >= (effect.chance ?? 100)) return;
     target.status = effect.status;
     if (effect.status === 'slp') target.sleepTurns = 1 + Math.floor(rand(rng) * 3);
-    events.push({ type: 'status', target: targetName, status: effect.status, text: `${targetName} è ora ${statusNamesIt[effect.status]}!` });
+    events.push({ type: 'status', target: targetName, who: who || 'defender', status: effect.status, text: `${targetName} è ora ${statusNamesIt[effect.status]}!` });
   }
 
   function endOfTurn(monster) {
@@ -500,10 +620,32 @@
       const damage = Math.max(1, Math.floor(monster.stats.hp / 8));
       monster.hp = Math.max(0, monster.hp - damage);
       const label = monster.status === 'psn' ? 'veleno' : 'scottatura';
-      events.push({ type: 'damage', target: 'self', amount: damage, cause: monster.status });
       events.push({ type: 'text', text: `${name} soffre per ${label}!` });
+      events.push({ type: 'damage', target: 'self', amount: damage, hp: monster.hp, cause: monster.status });
       if (monster.hp <= 0) events.push({ type: 'faint', target: 'self' });
     }
+    if (monster.hp > 0 && monster.trappedTurns > 0) {
+      const damage = Math.max(1, Math.floor(monster.stats.hp / 16));
+      monster.hp = Math.max(0, monster.hp - damage);
+      monster.trappedTurns -= 1;
+      events.push({ type: 'text', text: `${name} è ferito dal vortice!` });
+      events.push({ type: 'damage', target: 'self', amount: damage, hp: monster.hp });
+      if (monster.hp <= 0) events.push({ type: 'faint', target: 'self' });
+    }
+    if (monster.hp > 0 && monster.rooted && monster.hp < monster.stats.hp) {
+      monster.hp = Math.min(monster.stats.hp, monster.hp + Math.max(1, Math.floor(monster.stats.hp / 16)));
+      events.push({ type: 'hp', target: 'self', hp: monster.hp });
+      events.push({ type: 'text', text: `${name} assorbe nutrimento dalle radici!` });
+    }
+    if (monster.hp > 0 && monster.drowsy > 0) {
+      monster.drowsy -= 1;
+      if (monster.drowsy === 0 && !monster.status) {
+        monster.status = 'slp';
+        monster.sleepTurns = 2 + Math.floor(rand() * 2);
+        events.push({ type: 'status', target: name, who: 'self', status: 'slp', text: `${name} si è addormentato!` });
+      }
+    }
+    if (monster.tauntTurns > 0) monster.tauntTurns -= 1;
     monster.flinched = false;
     monster.protected = false;
     return events;
@@ -601,7 +743,7 @@
     configure,
     createMonster, calculateStats, movesFor, hydrateMonster,
     expToNext, expGain, gainExperience, learnMove,
-    typeMultiplier, typeChart,
+    typeMultiplier, typeChart, clearVolatile,
     chooseMove, turnOrder, executeMove, endOfTurn,
     catchChance, attemptCatch, canRun,
     freshStages

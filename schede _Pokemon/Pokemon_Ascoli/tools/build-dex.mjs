@@ -123,6 +123,29 @@ function extractGrowth(html, fileName, errors, warnings) {
   return norm;
 }
 
+// Dati «da scheda» (solo testo, la lotta non li usa): categoria, abilità, altezza, peso, prima voce Pokédex.
+function extractProfile(html, fileName, warnings) {
+  const text = value => stripTags(value).replace(/\s+/g, ' ').trim();
+  const row = label => {
+    const m = html.match(new RegExp(`<tr><th>${label}</th><td>([\\s\\S]*?)</td></tr>`));
+    return m ? m[1] : null;
+  };
+  const category = html.match(/<div class="cat">([^<]+)<\/div>/);
+  const abilities = row('Abilità');
+  const entry = html.match(/<div class="dexentries">\s*<p>(?:<span class="ver">[^<]*<\/span>\s*—\s*)?([\s\S]*?)<\/p>/);
+  const profile = {
+    category: category ? category[1].trim() : null,
+    abilities: abilities ? abilities.split(/<br\s*\/?>/).map(text).filter(Boolean) : [],
+    height: row('Altezza') ? text(row('Altezza')) : null,
+    weight: row('Peso') ? text(row('Peso')) : null,
+    dex: entry ? text(entry[1]) : null
+  };
+  Object.entries(profile).forEach(([key, value]) => {
+    if (value === null || (Array.isArray(value) && !value.length)) warnings.push(`${fileName}: dato di scheda mancante (${key})`);
+  });
+  return profile;
+}
+
 function extractStats(html, fileName, errors) {
   const statSection = section(html, 'Statistiche', ['Mosse']);
   if (!statSection) { errors.push(`${fileName}: blocco statistiche non trovato`); return null; }
@@ -264,6 +287,7 @@ function main() {
       growth,
       learnset: learnsetRaw.map(([lvl, moveId]) => [lvl, moveId]),
       evolution: evolution && evolution.into ? { into: evolution.into, level: evolution.level } : null,
+      ...extractProfile(html, file, warnings),
       wiki: `../${id}.html`
     };
     if (species[id].evolution) {

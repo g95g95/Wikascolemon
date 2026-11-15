@@ -399,20 +399,22 @@
 
 
     // Alberi e arredo della zona visibile, riga per riga dall'alto: chi sta più in basso copre.
-    function drawStanding(map, grid, startX, startY, endX, endY, originX, originY) {
+    // `afterRow(y)`: chiamata dopo ogni riga, per disegnare i personaggi che stanno su quella riga
+    // (così passano dietro a ciò che sta più in basso e davanti a ciò che sta più in alto).
+    function drawStanding(map, grid, startX, startY, endX, endY, originX, originY, afterRow) {
       const decorByRow = {};
       (map.decor || []).forEach(item => { (decorByRow[item.y] = decorByRow[item.y] || []).push(item); });
-      for (let y = startY; y <= Math.min(map.height - 1, endY); y += 1) {
+      for (let y = Math.max(0, startY); y <= Math.min(map.height - 1, endY); y += 1) {
         for (let x = startX - 1; x <= endX; x += 1) {
           if (gridType(grid, x, y) !== 'albero') continue;
           if (objectsReady()) drawObject('albero', x * 16 - originX + 8, (y + 1) * 16 - originY);
           else blit(TILES.albero_top, 0, x * 16 - originX, (y - 1) * 16 - originY);
         }
-        if (!objectsReady()) continue;
-        (decorByRow[y] || []).forEach(item => {
+        if (objectsReady()) (decorByRow[y] || []).forEach(item => {
           const kind = DECOR_KINDS[item.kind];
           if (kind) drawObject(item.kind, item.x * 16 - originX + (kind.span || 1) * 8, (y + 1) * 16 - originY);
         });
+        if (afterRow) afterRow(y);
       }
     }
 
