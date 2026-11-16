@@ -32,15 +32,19 @@ su un repository nuovo Actions va acceso a mano dalla scheda Actions; in quella 
   rimpicciolito alla misura di Smeraldo (16×32), come tutti gli altri personaggi nostri.
   Bobby, Steven ed Elena davanti al bar con i loro sprite; Steven ed Elena spariscono avuto lo starter.
 - **Senza Pokémon** l'erba alta non fa uscire niente e le uscite del quartiere rimandano da Bobby.
-- **Quattro zone collegate**, disegnate a mano guardando i luoghi veri: Porta Maggiore al centro,
+- **Sette zone collegate: tutta Ascoli città.** Oltre alle quattro qui sotto: **Campo Parignano**
+  (58×40, a nord del Centro oltre il Tronto: Happy Coffee, cinema Odeon, chiesa del Sacro Cuore,
+  Sant'Emidio alle Grotte), **Borgo Solestà** (50×50, a ovest: le case, l'area sportiva, i due ponti),
+  **Porta Cartara** (50×36, a sud: la porta, il Rio Castellano).
+- Le prime quattro, disegnate a mano guardando i luoghi veri: Porta Maggiore al centro,
   Centro Storico (52×46) a ovest oltre il ponte, **Monticelli** (52×34) a est con l'ospedale Mazzoni,
   il Little Bar, la pizzeria Mosè e il benzinaio, **Borgo Chiaro** (48×34) a nord con lo stadio Del Duca. Centro Storico: piazza del Popolo col Palazzo dei Capitani e il bar Callare, Teatro
   Ventidio Basso, piazza Arringo con Cattedrale, Battistero e fontane.
 - **Interni veri con le porte**: le stanze arredate della demo. Porta Maggiore: stazione, chiesa, bar
   (la barista cura), tabacchi (vende), cinque case. Centro Storico: palazzo, bar, cattedrale, tre case.
   Monticelli: ospedale (l'infermiera cura), emporio del benzinaio, pizzeria, bar, due case.
-- **Sette set di tessere nostri**: per gli esterni `piceno` (Porta Maggiore), `piceno_centro`,
-  `piceno_monticelli`, `piceno_borgo`; per gli interni `piceno_interni`, `piceno_case`, `piceno_servizi`. Il terreno (erba, strade, alberi, acqua) è ancora quello di Hoenn.
+- **Nove set di tessere nostri**: per gli esterni `piceno` (Porta Maggiore), `piceno_centro`,
+  `piceno_monticelli`, `piceno_borgo`, `piceno_campo`, `piceno_borghi` (Solestà e Cartara); per gli interni `piceno_interni`, `piceno_case`, `piceno_servizi`. Il terreno (erba, strade, alberi, acqua) è ancora quello di Hoenn.
 - La chiesa di piazza Immacolata è ridisegnata dalla foto di Jacopo (facciata chiara a pilastri,
   tiburio ottagonale); la stazione dalle foto di Wikimedia.
 - **Alberi composti come in Hoenn**: bordi, base e la punta nella cella sopra, calpestabile (prima
@@ -57,6 +61,19 @@ Le piante stanno in `mappe/<id>_pianta.json`, gli eventi scritti a mano in `mapp
 della mappa in cui si è. Edifici e arredi (che stanno nel set della zona) vanno tenuti ad almeno 7
 celle dai lati collegati e 5 da sopra e sotto.
 
+**Grafica (decisioni di Jacopo del 16/11)**
+- I personaggi devono avere **le stesse misure di quelli di Smeraldo**: ora la figura è alta 20 pixel
+  (loro 19-21), ricavata dai fogli della demo. Sono più stretti (10-14 contro 14-16).
+- Gli elementi nostri vanno **nello stile dei giochi Pokémon**: `tools/piceno/disegni.py` dipinge
+  tutti gli edifici e gli arredi degli esterni con lo stesso kit (contorno blu-ardesia, tre toni per
+  materiale, tetti a tegole, finestre col riflesso). Niente più ritagli della demo negli esterni; gli
+  interni sono ancora quelli della demo. Lo stile del gioco sarà un misto: terreno di Hoenn e tessere
+  nostre, e nulla vieta di farne di nuove.
+- I **tabacchi hanno la T** bianca su fondo scuro. Cartelli col nome accanto a ogni luogo d'interesse.
+- Le piazze sono lastricate di travertino (blocchi nostri).
+- Se mGBA ha la ROM aperta non si può sovrascrivere `pokeemerald.gba`: in quel caso la ROM nuova
+  finisce in `pokemon-piceno-nuova.gba`, nella stessa cartella.
+
 **Da dove si riparte**
 - Aspetta la prova di Jacopo su Monticelli, Borgo Chiaro, alberi e sprite piccoli.
 - **Definizione grafica** (domanda di Jacopo del 16/11): la risoluzione è quella del Game Boy Advance
@@ -64,8 +81,16 @@ celle dai lati collegati e 5 da sopra e sotto.
   limite: edifici e personaggi disegnati a mano alla misura giusta invece che rimpiccioliti o dipinti
   da codice (oggi stazione, chiese, monumenti, ospedale, stadio sono dipinti da me in Python).
   Strada concreta: Jacopo fa i fogli in ChatGPT già a 16×32 (personaggi) e a multipli di 16 (edifici).
-- Zone ancora da portare, dalla demo: Campo Parignano, Borgo Solestà, Porta Cartara, Marino del
-  Tronto e le altre. Le uscite verso di loro ci sono già e per ora non portano da nessuna parte.
+- **Carta delle zone** (posizione dell'angolo in alto a sinistra, in celle, Porta Maggiore = 0,0):
+  Centro Storico −52,−4 · Monticelli 52,2 · Borgo Chiaro 6,−34 · Campo Parignano −52,−44 · Borgo
+  Solestà −102,−24 · Porta Cartara −48,42. Una zona nuova deve incastrarsi qui senza sovrapporsi.
+- Zone ancora da portare, dalla demo: **Marino del Tronto** (Percorso 1, a est di Monticelli), poi
+  Oasi, Maltignano, Castel di Lama, Spinetoli e Centobuchi, Costa, Jonathan, Ripatransone e le due
+  palestre. Nessuna di queste ha ancora allenatori nel gioco: `trainers/<mappa>.js` è da portare.
+- Passaggi della demo che sulla carta non tornano e ho lasciato fuori: Borgo Solestà ↔ Borgo Chiaro
+  (la strada a nord di Borgo Chiaro non porta da nessuna parte) e la corriera per Ripatransone.
+- A Borgo Solestà case, campetto ed erba alta li ho messi io (nella demo sono riquadri senza
+  edifici); a Porta Cartara le due case. La chiesa del Sacro Cuore ha una facciata generica.
 - Lo stadio, il Teatro e il Battistero sono chiusi (la demo non ha una stanza per loro).
 - Steven dopo lo starter dovrebbe stare al bar Callare: oggi nel Centro Storico c'è sempre.
 - A Monticelli le due palazzine le ho aggiunte io: nella demo non ci sono.
