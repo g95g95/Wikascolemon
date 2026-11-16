@@ -1,4 +1,20 @@
-# ▶ A CHE PUNTO SIAMO (16/11/2026, seconda sessione)
+# ▶ A CHE PUNTO SIAMO (16/11/2026, fine giornata — Jacopo: «molto soddisfatto per adesso», si mette un punto)
+
+**Ultima ROM provata da Jacopo:** `pokemon-piceno-2.gba` nella cartella del repo `pokemon-piceno`
+(`pokeemerald.gba`, lì accanto, è più vecchia: mGBA la teneva aperta e non si è potuta sovrascrivere).
+
+**Prossimi passi, nell'ordine proposto a Jacopo il 16/11 (non ancora scelti da lui)**
+1. Strada fino alla prima palestra: Maltignano, Castel di Lama e l'interno della palestra di Hills,
+   con i loro allenatori (la demo ha già tutto).
+2. Rifinire gli sprite: Bobby (il bianco di capelli, barba e grembiule si fonde), Nando (oggi un
+   ragazzino di Hoenn, e in lotta la figura di Brendan), le figure in lotta degli allenatori.
+3. Classi degli allenatori in italiano («Ragazzino», «Pescatore») e traduzione di menu e lotta.
+4. La scena iniziale: Oliver che arriva in treno alla stazione.
+5. Interni: piante venute scure; mobili da ridisegnare col kit invece che ripuliti dalla demo.
+6. Togliere Hoenn: schermata di Vola, mappe e allenatori di Hoenn (libera i numeri degli allenatori).
+7. Le cose messe da parte: Iperfuria, le 120 abilità senza effetto, le 38 mosse con numeri diversi
+   dalle ufficiali, le ~85 mosse con effetti particolari, le 17 evoluzioni speciali lasciate fuori.
+8. Le altre zone della demo: Spinetoli e Centobuchi, Costa, Jonathan, Ripatransone.
 
 **In una giornata si è passati dalla demo nel browser alla ROM hack vera.** Decisione di Jacopo del
 16/11: si lavora direttamente sul motore (`pokeemerald-expansion`); alla demo non si aggiungono più
