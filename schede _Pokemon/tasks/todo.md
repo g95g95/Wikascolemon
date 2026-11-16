@@ -52,7 +52,7 @@ su un repository nuovo Actions va acceso a mano dalla scheda Actions; in quella 
 - Hoenn è ancora tutta dentro, ma non ci si arriva.
 
 **Come si rigenera tutto** (dalla cartella `tools/piceno` del repo `pokemon-piceno`, in quest'ordine):
-`python edifici.py` → `python personaggi.py` → per ogni zona
+`python edifici.py` → `python personaggi.py` → `python allenatori.py` → per ogni zona
 `python porta_mappa.py <id> <Nome> "<TITOLO>" --rifai` e `python interni.py <id>`.
 Le piante stanno in `mappe/<id>_pianta.json`, gli eventi scritti a mano in `mappe/<id>.json` e `.inc`.
 **`--rifai` butta le modifiche fatte a mano in Porymap**: finora non ce ne sono.
@@ -60,6 +60,30 @@ Le piante stanno in `mappe/<id>_pianta.json`, gli eventi scritti a mano in `mapp
 **Regola dei confini** (pagata il 16/11): il gioco disegna il lembo della mappa vicina con le tessere
 della mappa in cui si è. Edifici e arredi (che stanno nel set della zona) vanno tenuti ad almeno 7
 celle dai lati collegati e 5 da sopra e sotto.
+
+**Terza sessione del 16/11 (richieste di Jacopo: allenatori, Percorso 1, interni e Pokédex insieme; sprite da rifare; scritte)**
+- **Allenatori** (`tools/piceno/allenatori.py`, da lanciare PRIMA di `porta_mappa.py`): 14 della
+  demo, con squadre e battute. Il gioco ha solo 9 numeri liberi per gli allenatori, quindi i nostri
+  **prendono in prestito i numeri delle reclute Aqua/Magma** (`TRAINER_GRUNT_...`): l'abbinamento è in
+  `tools/piceno/allenatori.json` e non va cambiato a mano. Dove stanno lo dice la pianta
+  («allenatori»). Le classi sono quelle di Hoenn più vicine (in lotta si legge il nome inglese); le
+  mosse scelte a mano nella demo non sono portate.
+- **Nando**, il rivale: compare sotto il bar di Bobby avuto lo starter (`FLAG_UNUSED_0x020` lo
+  nasconde prima) e sfida con lo starter che batte quello scelto. Sprite e figura in lotta provvisori.
+- **Marino del Tronto (Percorso 1) e Oasi**, a est di Monticelli (104,2 e 160,2 sulla carta delle
+  zone), set `piceno_campagna`. Sulla cartina Marino si chiama «PERCORSO 1»: il nome intero non
+  sta nei 16 caratteri. A est dell'Oasi si andrà a Maltignano.
+- **La prima palestra è a Castel di Lama**: mancano Maltignano, Castel di Lama e l'interno della palestra.
+- **Sprite**: `personaggi.py` non rimpicciolisce più i fogli della demo. Ogni personaggio è una
+  ricetta: uno sprite di Smeraldo ricolorato e ritoccato; Oliver è disegnato da zero in codice.
+- **Interni**: pavimenti e pareti da `disegni.py`; i mobili sono i ritagli della demo ripuliti
+  (`disegni.pulisci`: cinque colori del kit, niente pixel isolati, contorno). Alcune piante vengono
+  scure anziché verdi.
+- **Insegne**: carattere a pixel nostro (`disegni.scritta`), non più quello di PIL.
+- **Pokédex regionale**: solo le nostre 149 specie nell'ordine della wiki (posizioni consecutive:
+  il buco del #137 fa scalare di uno le specie #138-150). Sta in `porta_pokedex.py`.
+- **Cartina** (`tools/piceno/cartina.py`): nove caselle, una per zona, disegno schematico. La
+  schermata di Vola mostra ancora i pallini delle città di Hoenn: va rifatta in codice.
 
 **Grafica (decisioni di Jacopo del 16/11)**
 - I personaggi devono avere **le stesse misure di quelli di Smeraldo**: ora la figura è alta 20 pixel
