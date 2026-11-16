@@ -5,21 +5,37 @@ La demo nel browser (`Pokemon_Ascoli`, online su `/gioco`) ha fatto il suo lavor
 squadre e trama sono abbastanza definite da scriverle nel motore vero. Da qui in poi alla demo non si
 aggiungono funzioni: resta come banco di prova per trama e bilanciamento.
 
-**Prossimo passo, in attesa di Jacopo:** aprire PowerShell come amministratore, lanciare
-`wsl --install` e riavviare il PC. Poi lo dice a Claude, che prosegue con l'installazione.
-Stato di questo PC al 16/11: niente WSL, niente compilatore ARM, niente sorgente di
-`pokeemerald-expansion`, niente emulatore.
+**Come si compila (deciso da Jacopo il 16/11):** nel cloud, con GitHub Actions, senza installare Linux né
+compilatori su questo PC. Si lavora come con la demo: modifica qui, push, GitHub compila e ne esce la
+ROM, che si scarica e si apre in mGBA (programma Windows). Verificato il 16/11: il progetto
+`pokeemerald-expansion` si compila già così (Ubuntu, quattro pacchetti, nessuna ROM originale); le
+loro compilazioni complete durano 15-25 minuti, la sola ROM di Smeraldo è stimata sotto i dieci
+(da misurare). Limite: ogni prova costa un push più l'attesa. Se un giorno pesa, si può passare a
+WSL2 o MSYS2 in locale senza perdere il lavoro.
+
+**Dove sta il repository (deciso da Jacopo il 16/11):** privato, sull'account `JacopoCiccoianni`, nome
+proposto `pokemon-piceno`, con Giulio Bonelli (`g95g95`, il proprietario della wiki) invitato come
+collaboratore: da collaboratore lavora come da proprietario. Su `g95g95` Jacopo non può creare
+repository (ha solo il permesso di scrittura sulla wiki); si potrà trasferire lì più avanti.
+Privato perché la ROM compilata contiene il gioco originale e non va distribuita; i minuti di
+compilazione gratuiti sono 2000 al mese.
+
+**Prossimo passo, dopo la pausa — NON ancora fatto:** Jacopo lancia nel prompt
+`! gh auth refresh -s workflow` (il suo accesso attuale non può caricare i file di compilazione) e
+dà il via. Solo allora Claude: crea il repository privato, invita `g95g95`, scarica il sorgente
+(circa mezzo giga), lo carica, fa partire la prima compilazione e misura quanto dura.
+Servirà anche mGBA per provare la ROM.
 
 **Tappe concordate**
-- [ ] R1. Installare gli attrezzi (WSL con Ubuntu, compilatore ARM, `pokeemerald-expansion`, mGBA) e
-      compilare il gioco base così com'è. ⚠️ Mai fatto su questa macchina: è il passo meno prevedibile.
+- [ ] R1. Repository privato su GitHub con la compilazione automatica; prima ROM del gioco base scaricata
+      e aperta in mGBA. ⚠️ Mai fatto: è il passo meno prevedibile.
 - [ ] R2. Portare una specie a mano (es. Tifotto: statistiche, tipi, mosse, voce Pokédex, sprite 64×64 a
       16 colori) per capire formato e intoppi.
 - [ ] R3. Scrivere il generatore gemello di `tools/build-dex.mjs` che dalla wiki scrive le specie nel
       formato della ROM hack, e portarle tutte.
 - [ ] R4. Sostituire starter e selvatici dei primi percorsi: ROM giocabile con i nostri Pokémon nella
       Hoenn originale, su emulatore o telefono.
-- [ ] R5. Solo dopo: le mappe del Piceno, disegnate da Jacopo in Porymap con la demo come bozza.
+- [ ] R5. Solo dopo: le mappe del Piceno, disegnate da Jacopo (e Giulio) in Porymap con la demo come bozza.
 
 **Cosa si porta dietro dalla demo:** specie (statistiche, tipi, mosse per livello, evoluzioni, voci
 Pokédex), sprite di battaglia, squadre degli allenatori, tabelle degli incontri, testi dei dialoghi,
