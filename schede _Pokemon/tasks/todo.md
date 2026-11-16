@@ -1,7 +1,13 @@
 # ▶ A CHE PUNTO SIAMO (16/11/2026, fine giornata — Jacopo: «molto soddisfatto per adesso», si mette un punto)
 
-**Ultima ROM provata da Jacopo:** `pokemon-piceno-2.gba` nella cartella del repo `pokemon-piceno`
-(`pokeemerald.gba`, lì accanto, è più vecchia: mGBA la teneva aperta e non si è potuta sovrascrivere).
+**La ROM è una sola:** `pokemon-piceno.gba` nella cartella del repo `pokemon-piceno` (ignorata da git).
+Si aggiorna sempre quel file; se mGBA lo tiene aperto non si può sovrascrivere, quindi va chiuso prima.
+L'ultima compilata (16/11, 18:10) ha la correzione delle porte: **Jacopo non l'ha ancora provata**.
+
+**Difetto pagato il 16/11:** dopo aver ridipinto gli edifici nessuna porta si apriva (i muri avevano
+un pixel trasparente ai lati e `edifici.py` prendeva gli edifici per arredi). Ora `edifici.py` si
+ferma se la porta di un edificio non è una soglia. Controllare che una porta sia raggiungibile non
+basta: va controllato anche il comportamento del blocco.
 
 **Prossimi passi, nell'ordine proposto a Jacopo il 16/11 (non ancora scelti da lui)**
 1. Strada fino alla prima palestra: Maltignano, Castel di Lama e l'interno della palestra di Hills,
