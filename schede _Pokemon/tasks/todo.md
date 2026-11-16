@@ -1,41 +1,146 @@
-# ▶ A CHE PUNTO SIAMO (16/11/2026)
+# ▶ A CHE PUNTO SIAMO (16/11/2026, sera — pausa chiesta da Jacopo)
 
-**Decisione di Jacopo del 16/11/2026: si comincia a lavorare direttamente sulla ROM hack.**
-La demo nel browser (`Pokemon_Ascoli`, online su `/gioco`) ha fatto il suo lavoro: specie, mosse,
-squadre e trama sono abbastanza definite da scriverle nel motore vero. Da qui in poi alla demo non si
-aggiungono funzioni: resta come banco di prova per trama e bilanciamento.
+**In una giornata si è passati dalla demo nel browser alla ROM hack vera.** Decisione di Jacopo del
+16/11: si lavora direttamente sul motore (`pokeemerald-expansion`); alla demo non si aggiungono più
+funzioni, resta come banco di prova e come sorgente dei dati.
 
-**Come si compila (deciso da Jacopo il 16/11):** nel cloud, con GitHub Actions, senza installare Linux né
-compilatori su questo PC. Si lavora come con la demo: modifica qui, push, GitHub compila e ne esce la
-ROM, che si scarica e si apre in mGBA (programma Windows). Verificato il 16/11: il progetto
-`pokeemerald-expansion` si compila già così (Ubuntu, quattro pacchetti, nessuna ROM originale); le
-loro compilazioni complete durano 15-25 minuti, la sola ROM di Smeraldo è stimata sotto i dieci
-(da misurare). Limite: ogni prova costa un push più l'attesa. Se un giorno pesa, si può passare a
-WSL2 o MSYS2 in locale senza perdere il lavoro.
+**Dove sta tutto**
+- Repository privato: https://github.com/JacopoCiccoianni/pokemon-piceno (ramo `master`; Giulio,
+  `g95g95`, invitato il 16/11 con permesso di scrittura: deve ancora accettare).
+- Copia locale: `C:\Users\39329\Coding\pokemon-piceno` (remoto `upstream` = expansion, `origin` = il nostro).
+- ROM dell'ultima compilazione: `C:\Users\39329\Coding\pokemon-piceno\pokeemerald.gba` (ignorata da git).
+- mGBA 0.10.5: `C:\Program Files\mGBA\mGBA.exe`. Tasti: frecce, X = A, Z = B, Invio = Start.
+- Porymap 6.3.1: `%LOCALAPPDATA%\Programs\porymap\porymap.exe` (mappa nel gruppo `gMapGroup_Piceno`).
+- Strumenti nostri, tutti in `tools/piceno/` del repo: `porta_pokedex.py` (specie, mosse, abilità),
+  `hoenn_provvisoria.py` (selvatici e rivale in Hoenn), `edifici.py` (edifici della demo nel set di
+  tessere), `porta_mappa.py` (bozza di una mappa dalla demo), `disegna_mappa.py` (mappa → PNG),
+  `rapporto.txt` (tutto ciò che resta provvisorio nel Pokédex).
 
-**Dove sta il repository (deciso da Jacopo il 16/11):** privato, sull'account `JacopoCiccoianni`, nome
-proposto `pokemon-piceno`, con Giulio Bonelli (`g95g95`, il proprietario della wiki) invitato come
-collaboratore: da collaboratore lavora come da proprietario. Su `g95g95` Jacopo non può creare
-repository (ha solo il permesso di scrittura sulla wiki); si potrà trasferire lì più avanti.
-Privato perché la ROM compilata contiene il gioco originale e non va distribuita; i minuti di
-compilazione gratuiti sono 2000 al mese.
+**Come si lavora:** modifica in locale, push, GitHub Actions compila (6-9 minuti), si scarica la ROM
+con `gh run download <id> -R JacopoCiccoianni/pokemon-piceno -n pokemon-piceno -D .` e si apre in mGBA.
+Sul motore si lavora davvero: è il sorgente C del gioco (Terrasanta è codice di lotta nuovo).
+Intoppi già pagati: `gh auth refresh` va lanciato in una finestra PowerShell vera con `-h github.com`;
+su un repository nuovo Actions va acceso a mano dalla scheda Actions; in quella cartella `gh` senza
+`-R` punta all'expansion; il codice C sbagliato si scopre solo a compilazione finita.
 
-**Prossimo passo, dopo la pausa — NON ancora fatto:** Jacopo lancia nel prompt
-`! gh auth refresh -s workflow` (il suo accesso attuale non può caricare i file di compilazione) e
-dà il via. Solo allora Claude: crea il repository privato, invita `g95g95`, scarica il sorgente
-(circa mezzo giga), lo carica, fa partire la prima compilazione e misura quanto dura.
-Servirà anche mGBA per provare la ROM.
+**Cosa c'è nella ROM adesso**
+- Le 149 specie del Pokédex del Piceno, con 288 mosse nostre e 120 abilità nostre (solo di nome).
+- Partita nuova a **Porta Maggiore** (40×28, tessere di Hoenn + bar, tabacchi e casa con la grafica
+  della demo): Bobby davanti al bar fa scegliere lo starter, la barista cura, erba alta con i selvatici.
+- Hoenn è ancora tutta dentro, con i nostri Pokémon nell'erba dei primi sei percorsi e nel rivale, ma
+  da Porta Maggiore non ci si arriva (la mappa non è collegata a nulla).
+
+**Giudizi di Jacopo durante la giornata** (parole sue): prima battaglia «ottimo»; R4 «vengono fuori i
+pokemon giusti»; prima mappa «la qualità per ora è molto brutta, bisogna migliorare ma abbiamo fatto
+passi da gigante»; dopo le correzioni «per ora molto meglio».
+
+**Da dove si riparte: tre strade proposte, Jacopo non ha ancora scelto**
+1. Rifinire Porta Maggiore (stagno sparito a metà scala, erba alta piccola, case fitte), sul
+   convertitore o a mano in Porymap.
+2. Un set di tessere secondario tutto nostro, così anche stazione, chiesa e il resto hanno la grafica
+   della demo (nel set di Hoenn c'era posto per tre edifici soli).
+3. Portare le zone vicine (Centro Storico, Monticelli, Borgo Chiaro) e cucirle a Porta Maggiore.
+
+**Idee e questioni venute fuori oggi, da non perdere**
+- *Messe da parte per scelta di Jacopo:* le 38 mosse col nome di una ufficiale ma numeri diversi
+  (probabili errori della wiki), le 120 abilità senza effetto (alcune forse ufficiali scritte male,
+  es. «Intimidazione»), **Iperfuria** (la wiki la nomina e basta: va deciso cosa fa), le ~85 mosse
+  nuove con effetti particolari che per ora valgono solo i numeri.
+- *Regola di Jacopo:* una mossa o abilità si riconduce a una esistente solo se l'effetto è uguale in
+  tutto; altrimenti si crea nuova.
+- *Compilatore in locale:* eventualità segnata più sotto, non decisa.
+- *Dimensioni:* le mappe si restringono rispetto alla demo (Porta Maggiore a metà). Una regione
+  grande si fa con tante mappe collegate; limite per mappa (larghezza+15)×(altezza+14) ≤ 10.240.
+- *Bar:* devono avere l'estetica dei bar del Piceno, non dei Centri Pokémon. Nel gioco i bar curano.
+- *Interni e porte:* gli edifici sono ancora chiusi. Servono le mappe degli interni e le porte vere.
+- *Steven ed Elena* oggi parlano dentro il dialogo di Bobby: nella demo sono personaggi a sé.
+- *Evoluzioni speciali* (29): luoghi, strumenti, squadra, pioggia, fusione. 12 solo per livello, 17
+  lasciate fuori; i luoghi diventeranno possibili man mano che nascono le mappe.
+- *Lingua:* i testi nostri sono in italiano, il resto del gioco (menu, mosse di Hoenn, messaggi di
+  lotta) è ancora in inglese. Non se n'è parlato: va deciso se e quando tradurre.
+- *Provvisori grafici e sonori:* versi presi da Pokémon esistenti, cromatico uguale al normale,
+  98 sprite ricavati dall'artwork con il retro uguale al fronte, niente impronte né sprite da
+  passeggio, animazioni delle mosse nuove prese in prestito.
+- *Ordine nel Pokédex:* le nostre specie stanno in fondo al Pokédex di Hoenn; il Pokédex regionale
+  vero va rifatto quando Hoenn esce.
+- *Wiki da correggere alla fonte:* 34 specie con crescita non valida («medio», «nessuno»), nomi di
+  mosse e abilità non ufficiali, 11 categorie più lunghe di 12 caratteri.
 
 **Tappe concordate**
-- [ ] R1. Repository privato su GitHub con la compilazione automatica; prima ROM del gioco base scaricata
-      e aperta in mGBA. ⚠️ Mai fatto: è il passo meno prevedibile.
-- [ ] R2. Portare una specie a mano (es. Tifotto: statistiche, tipi, mosse, voce Pokédex, sprite 64×64 a
+- [x] R1. Repository privato su GitHub con la compilazione automatica; prima ROM del gioco base scaricata
+      e aperta in mGBA. Fatto il 16/11: Jacopo l'ha provata, «è ok ma è ancora Pokémon Smeraldo».
+- [x] R2. Portare una specie a mano (es. Tifotto: statistiche, tipi, mosse, voce Pokédex, sprite 64×64 a
       16 colori) per capire formato e intoppi.
-- [ ] R3. Scrivere il generatore gemello di `tools/build-dex.mjs` che dalla wiki scrive le specie nel
+      **16/11: fatto con le tre linee starter** (scelta di Jacopo), 9 specie, compilazione riuscita
+      (6 min 20 s); provata da Jacopo (prima battaglia: «ottimo»). Le scrive `tools/piceno/porta_specie.py`
+      nel repo `pokemon-piceno` (legge `species.js` della demo + le schede della wiki + gli sprite
+      della demo): è già il seme del generatore di R3, basta allungare l'elenco `SPECIE` e le tabelle
+      di traduzione. Le costanti (`species.h`, `pokedex.h`, ordini del Pokédex) per ora sono a mano.
+      Intoppi e scelte provvisorie:
+      - **Regola di Jacopo (16/11):** una mossa o abilità si riconduce a una esistente solo se
+        l'effetto è uguale in tutto e per tutto; altrimenti si crea nuova. Applicata: Fortificazione =
+        Harden e Rafforzatore = Sharpen (identiche); Idrogetto, Vigorcolpo e Girandola create nuove in
+        `src/data/moves_info_piceno.h` (animazioni prese in prestito).
+      - Abilità «Iperfuria» (linea Tuffito): non ufficiale e mai descritta nella wiki; provvisoria
+        Anger Point (Grancollera). **Serve che Jacopo dica cosa fa.**
+      - Mosse ancora fuori: Terrasanta (5 turni senza mosse Terra: effetto di campo nuovo) e
+        Comparanza (+Attacco e +Difesa a sé e all'alleato: effetto nuovo). Serve codice nel motore.
+      - Evoluzione di Turibasil «presso Sant'Emidio alle Grotte»: il luogo non esiste, per ora solo
+        livello 36. Cavalbrace → Fuocavallo: livello 36 di sera o di notte, funziona con l'orologio.
+      - Voce Pokédex: 4 righe da 40 caratteri; quella di Vescovasil è stata accorciata alla prima frase.
+      - Provvisori: versi di Pokémon esistenti, cromatico = normale, niente impronta né sprite da
+        passeggio, ordini del Pokédex (alfabetico/peso/altezza) in coda, i nove messi in fondo al
+        Pokédex di Hoenn. Il rivale ha ancora Treecko/Torchic/Mudkip (R4).
+- [x] R3. Scrivere il generatore gemello di `tools/build-dex.mjs` che dalla wiki scrive le specie nel
       formato della ROM hack, e portarle tutte.
-- [ ] R4. Sostituire starter e selvatici dei primi percorsi: ROM giocabile con i nostri Pokémon nella
+      **16/11: fatto e compilato (9 min).** Le specie escono giuste in gioco; resta aperto l'elenco qui sotto. `tools/piceno/porta_pokedex.py`
+      nel repo `pokemon-piceno` genera le 149 specie, 283 mosse nuove e 120 abilità nuove, e scrive
+      `tools/piceno/rapporto.txt` con tutto ciò che resta provvisorio. Terrasanta e Comparanza sono
+      nel motore (Terrasanta è codice di lotta nuovo). Da rivedere con Jacopo, in ordine di peso:
+      - 120 abilità su 184 non sono ufficiali: dentro solo come nome, SENZA effetto. Alcune sono
+        forse ufficiali scritte male (es. «Intimidazione»). Iperfuria è fra queste.
+      - 38 mosse hanno il nome di una ufficiale ma numeri diversi (Fulmine 95, Fuococarica 50,
+        Turbine come attacco…): create a sé per la regola, ma molte sembrano errori della wiki.
+      - 84 mosse nuove con effetti particolari + le mosse di stato senza effetto dichiarato: per ora
+        valgono solo i numeri (Jacopo: «possono per ora rimanere senza effetto»).
+      - 29 evoluzioni legate a luoghi/strumenti/condizioni: 12 solo per livello, 17 lasciate fuori.
+      - 34 specie con crescita non valida nella wiki («medio», «nessuno») messa medio-veloce (= K13).
+      - 98 sprite ricavati dall'artwork (retro = fronte); 11 categorie Pokédex più lunghe di 12
+        caratteri (campo allargato a 19, da controllare a schermo); 9 nomi di mossa accorciati a 16.
+- [x] R4. Sostituire starter e selvatici dei primi percorsi: ROM giocabile con i nostri Pokémon nella
       Hoenn originale, su emulatore o telefono.
-- [ ] R5. Solo dopo: le mappe del Piceno, disegnate da Jacopo (e Giulio) in Porymap con la demo come bozza.
+      **16/11: scritto e compilato** (`tools/piceno/hoenn_provvisoria.py` nel repo `pokemon-piceno`),
+      provato da Jacopo: «vengono fuori i pokemon giusti». Erba alta, con i livelli originali di Hoenn: Percorso 101 ← Porta
+      Maggiore, 103 ← Centro Storico, 102 ← Campo Parignano, 104 ← Porta Cartara, Bosco Petalo ←
+      Borgo Solestà, 116 ← Monticelli. Rivale con le nostre linee starter. Acqua, pesca, grotte e
+      tutti gli altri allenatori sono ancora di Hoenn; Borgo Chiaro non è stato messo da nessuna parte.
+- [ ] **Eventualità: compilatore in locale** (chiesto da Jacopo il 16/11, da tenere segnato, non
+      deciso). Oggi ogni prova costa un push e 6-9 minuti. Strade su Windows: WSL2 (la più veloce,
+      richiede di attivare Linux e riavviare) o MSYS2 (niente riavvio, circa 20 volte più lenta
+      secondo `INSTALL.md` dell'expansion). Da riprendere se l'attesa comincia a pesare.
+- [ ] R5. (IN CORSO) Le mappe del Piceno, disegnate da Jacopo (e Giulio) in Porymap con la demo come bozza.
+      **16/11: prima mappa fatta e compilata, Porta Maggiore** (79×55), da provare. Decisioni di
+      Jacopo: tessere di Hoenn per ora; bozza generata dalla demo e poi rifinita a mano in Porymap;
+      dimensioni della demo tenute così. Nel repo `pokemon-piceno`:
+      - `tools/piceno/porta_mappa.py <id demo> <NomeMappa> "<TITOLO>"` crea la bozza UNA volta (poi la
+        mappa si modifica in Porymap; `--rifai` la rigenera buttando le modifiche a mano). Trama e
+        script scritti a mano stanno in `tools/piceno/mappe/<id>.json` e `.inc`.
+      - `tools/piceno/disegna_mappa.py LAYOUT_X uscita.png [--griglia]` disegna una mappa in PNG.
+      - Porymap 6.3.1 in `%LOCALAPPDATA%\Programs\porymap\porymap.exe`.
+      - Partita nuova: si comincia a Porta Maggiore (11,17), non sul camion. Bobby davanti al bar dà lo
+        starter, la barista cura. La mappa NON è collegata a nulla: i quattro passaggi della demo
+        (Centro Storico, Monticelli, Borgo Chiaro, corriera) mancano finché non esistono quelle mappe.
+      - Edifici: timbri di Hoenn (bar = Centro Pokémon, tabacchi = Market, stazione e chiesa =
+        palestra, case = casa rossa), porte chiuse, niente interni.
+      - **Dopo la prima prova di Jacopo (16/11):** «qualità molto brutta, ma passi da gigante». Tre
+        correzioni fatte e compilate: tolto il tremolio iniziale (sequenza del camion); bar, tabacchi e
+        casa con la grafica della demo (`tools/piceno/edifici.py` li aggiunge al set di tessere
+        petalburg: c'era posto per tre edifici, stazione e chiesa sono ancora palestre di Hoenn);
+        mappa a metà scala, 40×28 (`porta_mappa.py --scala=0.5`). **Le dimensioni della demo NON si
+        tengono più: si restringe.** Da rifinire: stagno sparito, erba alta piccola, case fitte.
+        Per altri edifici nostri serve un set di tessere secondario del Piceno (da fare).
+      - **Limite del motore:** (larghezza+15)×(altezza+14) ≤ 10.240 per mappa. Castel di Lama (9.804)
+        e Costa (9.525) sono al limite; una regione grande si fa con tante mappe collegate.
 
 **Cosa si porta dietro dalla demo:** specie (statistiche, tipi, mosse per livello, evoluzioni, voci
 Pokédex), sprite di battaglia, squadre degli allenatori, tabelle degli incontri, testi dei dialoghi,
