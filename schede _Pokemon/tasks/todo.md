@@ -28,18 +28,23 @@ su un repository nuovo Actions va acceso a mano dalla scheda Actions; in quella 
 - Le 149 specie del Pokédex del Piceno, con 288 mosse nostre e 120 abilità nostre (solo di nome).
 - Partita nuova **senza il discorso di Birch** (`PICENO_SALTA_PRESENTAZIONE` in `src/main_menu.c`: è
   l'aggancio per la scena iniziale nostra). Il filmato prima del titolo resta: a Jacopo va bene.
-- Si arriva alla **stazione di Porta Maggiore** (52×36) come **Oliver**, con lo sprite della demo.
+- Si arriva alla **stazione di Porta Maggiore** (52×38) come **Oliver**, con lo sprite della demo
+  rimpicciolito alla misura di Smeraldo (16×32), come tutti gli altri personaggi nostri.
   Bobby, Steven ed Elena davanti al bar con i loro sprite; Steven ed Elena spariscono avuto lo starter.
 - **Senza Pokémon** l'erba alta non fa uscire niente e le uscite del quartiere rimandano da Bobby.
-- **Porta Maggiore e Centro Storico** (52×46) disegnati a mano guardando i luoghi veri, **collegati**
-  dal ponte. Centro Storico: piazza del Popolo col Palazzo dei Capitani e il bar Callare, Teatro
+- **Quattro zone collegate**, disegnate a mano guardando i luoghi veri: Porta Maggiore al centro,
+  Centro Storico (52×46) a ovest oltre il ponte, **Monticelli** (52×34) a est con l'ospedale Mazzoni,
+  il Little Bar, la pizzeria Mosè e il benzinaio, **Borgo Chiaro** (48×34) a nord con lo stadio Del Duca. Centro Storico: piazza del Popolo col Palazzo dei Capitani e il bar Callare, Teatro
   Ventidio Basso, piazza Arringo con Cattedrale, Battistero e fontane.
 - **Interni veri con le porte**: le stanze arredate della demo. Porta Maggiore: stazione, chiesa, bar
   (la barista cura), tabacchi (vende), cinque case. Centro Storico: palazzo, bar, cattedrale, tre case.
-- **Quattro set di tessere nostri**: `piceno` (Porta Maggiore), `piceno_centro`, `piceno_interni`,
-  `piceno_case`. Il terreno (erba, strade, alberi, acqua) è ancora quello di Hoenn.
+  Monticelli: ospedale (l'infermiera cura), emporio del benzinaio, pizzeria, bar, due case.
+- **Sette set di tessere nostri**: per gli esterni `piceno` (Porta Maggiore), `piceno_centro`,
+  `piceno_monticelli`, `piceno_borgo`; per gli interni `piceno_interni`, `piceno_case`, `piceno_servizi`. Il terreno (erba, strade, alberi, acqua) è ancora quello di Hoenn.
 - La chiesa di piazza Immacolata è ridisegnata dalla foto di Jacopo (facciata chiara a pilastri,
   tiburio ottagonale); la stazione dalle foto di Wikimedia.
+- **Alberi composti come in Hoenn**: bordi, base e la punta nella cella sopra, calpestabile (prima
+  le punte erano tagliate). Sopra le strade la punta è un blocco nostro, solo lontano dai bordi.
 - Hoenn è ancora tutta dentro, ma non ci si arriva.
 
 **Come si rigenera tutto** (dalla cartella `tools/piceno` del repo `pokemon-piceno`, in quest'ordine):
@@ -53,14 +58,20 @@ della mappa in cui si è. Edifici e arredi (che stanno nel set della zona) vanno
 celle dai lati collegati e 5 da sopra e sotto.
 
 **Da dove si riparte**
-- Aspetta la prova di Jacopo: porte e interni, sprite 32×32, passaggio sul ponte fra le due mappe.
-- Zone ancora da portare: **Monticelli** (a est: ospedale, Little Bar, benzinaio, pizzeria) e **Borgo
-  Chiaro** (a nord: lo stadio). Per Borgo Chiaro stazione e chiesa di Porta Maggiore stanno a 3-4
-  celle dal bordo nord: vanno scese o si allunga la mappa.
+- Aspetta la prova di Jacopo su Monticelli, Borgo Chiaro, alberi e sprite piccoli.
+- **Definizione grafica** (domanda di Jacopo del 16/11): la risoluzione è quella del Game Boy Advance
+  (240×160, tessere 8×8, 16 colori per tavolozza) e non si alza. Il dettaglio si migliora dentro quel
+  limite: edifici e personaggi disegnati a mano alla misura giusta invece che rimpiccioliti o dipinti
+  da codice (oggi stazione, chiese, monumenti, ospedale, stadio sono dipinti da me in Python).
+  Strada concreta: Jacopo fa i fogli in ChatGPT già a 16×32 (personaggi) e a multipli di 16 (edifici).
+- Zone ancora da portare, dalla demo: Campo Parignano, Borgo Solestà, Porta Cartara, Marino del
+  Tronto e le altre. Le uscite verso di loro ci sono già e per ora non portano da nessuna parte.
+- Lo stadio, il Teatro e il Battistero sono chiusi (la demo non ha una stanza per loro).
 - Steven dopo lo starter dovrebbe stare al bar Callare: oggi nel Centro Storico c'è sempre.
-- Teatro e Battistero sono chiusi (la demo non ha una stanza per loro).
-- Battute scritte da me, da rivedere: il tabaccaio («Che te serve?», «Arrivederci!») e il cartello
-  delle soglie («Senza POKéMON è pericoloso. Prima parla con BOBBY, al bar.»).
+- A Monticelli le due palazzine le ho aggiunte io: nella demo non ci sono.
+- Battute scritte da me, da rivedere: il tabaccaio («Che te serve?», «Arrivederci!»), il saluto di chi
+  vende («Arrivederci!») e il cartello delle soglie («Senza POKéMON è pericoloso. Prima parla con
+  BOBBY, al bar.»).
 - La scena iniziale del Piceno è da scrivere (Oliver che arriva in treno).
 
 **Idee e questioni venute fuori oggi, da non perdere**
