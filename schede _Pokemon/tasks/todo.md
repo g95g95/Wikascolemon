@@ -26,31 +26,42 @@ su un repository nuovo Actions va acceso a mano dalla scheda Actions; in quella 
 
 **Cosa c'è nella ROM adesso**
 - Le 149 specie del Pokédex del Piceno, con 288 mosse nostre e 120 abilità nostre (solo di nome).
-- Partita nuova a **Porta Maggiore** (50×36), **senza il discorso di Birch**: si entra subito in
-  mappa come Oliver, davanti alla stazione (`PICENO_SALTA_PRESENTAZIONE` in `src/main_menu.c`: è
-  l'aggancio per la scena iniziale nostra, quando ci sarà). Bobby davanti al bar fa scegliere lo
-  starter, la barista cura, erba alta con i selvatici.
-- **Set di tessere nostro** (`gTileset_Piceno`, 438 tessere su 512): bar, tabacchi, casa, palazzina,
-  stazione (rosa, com'è quella vera), chiesa, statua dell'Immacolata, lampione, panchina. Il terreno
-  (erba, strade, alberi, acqua) è ancora quello di Hoenn.
-- **Porta Maggiore ridisegnata a mano guardando il quartiere vero**: il Castellano e il ponte a
-  ovest, viale Indipendenza alberato, stazione col piazzale, piazza Immacolata con chiesa e statua,
-  case popolari a sud. Anteprima: `tools/piceno/mappe/porta_maggiore_anteprima.png`.
-- Hoenn è ancora tutta dentro, con i nostri Pokémon nell'erba dei primi sei percorsi e nel rivale, ma
-  da Porta Maggiore non ci si arriva (la mappa non è collegata a nulla).
+- Partita nuova **senza il discorso di Birch** (`PICENO_SALTA_PRESENTAZIONE` in `src/main_menu.c`: è
+  l'aggancio per la scena iniziale nostra). Il filmato prima del titolo resta: a Jacopo va bene.
+- Si arriva alla **stazione di Porta Maggiore** (52×36) come **Oliver**, con lo sprite della demo.
+  Bobby, Steven ed Elena davanti al bar con i loro sprite; Steven ed Elena spariscono avuto lo starter.
+- **Senza Pokémon** l'erba alta non fa uscire niente e le uscite del quartiere rimandano da Bobby.
+- **Porta Maggiore e Centro Storico** (52×46) disegnati a mano guardando i luoghi veri, **collegati**
+  dal ponte. Centro Storico: piazza del Popolo col Palazzo dei Capitani e il bar Callare, Teatro
+  Ventidio Basso, piazza Arringo con Cattedrale, Battistero e fontane.
+- **Interni veri con le porte**: le stanze arredate della demo. Porta Maggiore: stazione, chiesa, bar
+  (la barista cura), tabacchi (vende), cinque case. Centro Storico: palazzo, bar, cattedrale, tre case.
+- **Quattro set di tessere nostri**: `piceno` (Porta Maggiore), `piceno_centro`, `piceno_interni`,
+  `piceno_case`. Il terreno (erba, strade, alberi, acqua) è ancora quello di Hoenn.
+- La chiesa di piazza Immacolata è ridisegnata dalla foto di Jacopo (facciata chiara a pilastri,
+  tiburio ottagonale); la stazione dalle foto di Wikimedia.
+- Hoenn è ancora tutta dentro, ma non ci si arriva.
 
-**Giudizi di Jacopo durante la giornata** (parole sue): prima battaglia «ottimo»; R4 «vengono fuori i
-pokemon giusti»; prima mappa «la qualità per ora è molto brutta, bisogna migliorare ma abbiamo fatto
-passi da gigante»; dopo le correzioni «per ora molto meglio».
+**Come si rigenera tutto** (dalla cartella `tools/piceno` del repo `pokemon-piceno`, in quest'ordine):
+`python edifici.py` → `python personaggi.py` → per ogni zona
+`python porta_mappa.py <id> <Nome> "<TITOLO>" --rifai` e `python interni.py <id>`.
+Le piante stanno in `mappe/<id>_pianta.json`, gli eventi scritti a mano in `mappe/<id>.json` e `.inc`.
+**`--rifai` butta le modifiche fatte a mano in Porymap**: finora non ce ne sono.
 
-**Da dove si riparte** (strade 1 e 2 scelte da Jacopo e fatte nella seconda sessione del 16/11)
-- Aspetta il giudizio di Jacopo sulla Porta Maggiore nuova e sugli edifici.
-- Poi la strada 3: portare le zone vicine (Centro Storico, Monticelli, Borgo Chiaro) e cucirle a
-  Porta Maggiore. Le uscite ci sono già: ponte a ovest, viale a est, strada a nord.
-- Restano 74 tessere e nessuna tavolozza libera nel set: per il terreno nostro o per molti altri
-  edifici servirà un secondo set (un set secondario per zona) o tavolozze condivise.
+**Regola dei confini** (pagata il 16/11): il gioco disegna il lembo della mappa vicina con le tessere
+della mappa in cui si è. Edifici e arredi (che stanno nel set della zona) vanno tenuti ad almeno 7
+celle dai lati collegati e 5 da sopra e sotto.
+
+**Da dove si riparte**
+- Aspetta la prova di Jacopo: porte e interni, sprite 32×32, passaggio sul ponte fra le due mappe.
+- Zone ancora da portare: **Monticelli** (a est: ospedale, Little Bar, benzinaio, pizzeria) e **Borgo
+  Chiaro** (a nord: lo stadio). Per Borgo Chiaro stazione e chiesa di Porta Maggiore stanno a 3-4
+  celle dal bordo nord: vanno scese o si allunga la mappa.
+- Steven dopo lo starter dovrebbe stare al bar Callare: oggi nel Centro Storico c'è sempre.
+- Teatro e Battistero sono chiusi (la demo non ha una stanza per loro).
+- Battute scritte da me, da rivedere: il tabaccaio («Che te serve?», «Arrivederci!») e il cartello
+  delle soglie («Senza POKéMON è pericoloso. Prima parla con BOBBY, al bar.»).
 - La scena iniziale del Piceno è da scrivere (Oliver che arriva in treno).
-- Il filmato prima del titolo e la schermata con Rayquaza sono ancora quelli di Smeraldo.
 
 **Idee e questioni venute fuori oggi, da non perdere**
 - *Messe da parte per scelta di Jacopo:* le 38 mosse col nome di una ufficiale ma numeri diversi
