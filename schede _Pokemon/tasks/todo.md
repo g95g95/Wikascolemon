@@ -1,4 +1,4 @@
-# ▶ A CHE PUNTO SIAMO (16/11/2026, sera — pausa chiesta da Jacopo)
+# ▶ A CHE PUNTO SIAMO (16/11/2026, seconda sessione)
 
 **In una giornata si è passati dalla demo nel browser alla ROM hack vera.** Decisione di Jacopo del
 16/11: si lavora direttamente sul motore (`pokeemerald-expansion`); alla demo non si aggiungono più
@@ -12,9 +12,10 @@ funzioni, resta come banco di prova e come sorgente dei dati.
 - mGBA 0.10.5: `C:\Program Files\mGBA\mGBA.exe`. Tasti: frecce, X = A, Z = B, Invio = Start.
 - Porymap 6.3.1: `%LOCALAPPDATA%\Programs\porymap\porymap.exe` (mappa nel gruppo `gMapGroup_Piceno`).
 - Strumenti nostri, tutti in `tools/piceno/` del repo: `porta_pokedex.py` (specie, mosse, abilità),
-  `hoenn_provvisoria.py` (selvatici e rivale in Hoenn), `edifici.py` (edifici della demo nel set di
-  tessere), `porta_mappa.py` (bozza di una mappa dalla demo), `disegna_mappa.py` (mappa → PNG),
-  `rapporto.txt` (tutto ciò che resta provvisorio nel Pokédex).
+  `hoenn_provvisoria.py` (selvatici e rivale in Hoenn), `edifici.py` (scrive il set di tessere
+  nostro, `gTileset_Piceno`: edifici e arredi), `porta_mappa.py` (mappa dalla demo, o dalla pianta
+  disegnata a mano in `mappe/<id>_pianta.json`), `disegna_mappa.py` (mappa → PNG), `rapporto.txt`
+  (tutto ciò che resta provvisorio nel Pokédex).
 
 **Come si lavora:** modifica in locale, push, GitHub Actions compila (6-9 minuti), si scarica la ROM
 con `gh run download <id> -R JacopoCiccoianni/pokemon-piceno -n pokemon-piceno -D .` e si apre in mGBA.
@@ -25,8 +26,16 @@ su un repository nuovo Actions va acceso a mano dalla scheda Actions; in quella 
 
 **Cosa c'è nella ROM adesso**
 - Le 149 specie del Pokédex del Piceno, con 288 mosse nostre e 120 abilità nostre (solo di nome).
-- Partita nuova a **Porta Maggiore** (40×28, tessere di Hoenn + bar, tabacchi e casa con la grafica
-  della demo): Bobby davanti al bar fa scegliere lo starter, la barista cura, erba alta con i selvatici.
+- Partita nuova a **Porta Maggiore** (50×36), **senza il discorso di Birch**: si entra subito in
+  mappa come Oliver, davanti alla stazione (`PICENO_SALTA_PRESENTAZIONE` in `src/main_menu.c`: è
+  l'aggancio per la scena iniziale nostra, quando ci sarà). Bobby davanti al bar fa scegliere lo
+  starter, la barista cura, erba alta con i selvatici.
+- **Set di tessere nostro** (`gTileset_Piceno`, 438 tessere su 512): bar, tabacchi, casa, palazzina,
+  stazione (rosa, com'è quella vera), chiesa, statua dell'Immacolata, lampione, panchina. Il terreno
+  (erba, strade, alberi, acqua) è ancora quello di Hoenn.
+- **Porta Maggiore ridisegnata a mano guardando il quartiere vero**: il Castellano e il ponte a
+  ovest, viale Indipendenza alberato, stazione col piazzale, piazza Immacolata con chiesa e statua,
+  case popolari a sud. Anteprima: `tools/piceno/mappe/porta_maggiore_anteprima.png`.
 - Hoenn è ancora tutta dentro, con i nostri Pokémon nell'erba dei primi sei percorsi e nel rivale, ma
   da Porta Maggiore non ci si arriva (la mappa non è collegata a nulla).
 
@@ -34,12 +43,14 @@ su un repository nuovo Actions va acceso a mano dalla scheda Actions; in quella 
 pokemon giusti»; prima mappa «la qualità per ora è molto brutta, bisogna migliorare ma abbiamo fatto
 passi da gigante»; dopo le correzioni «per ora molto meglio».
 
-**Da dove si riparte: tre strade proposte, Jacopo non ha ancora scelto**
-1. Rifinire Porta Maggiore (stagno sparito a metà scala, erba alta piccola, case fitte), sul
-   convertitore o a mano in Porymap.
-2. Un set di tessere secondario tutto nostro, così anche stazione, chiesa e il resto hanno la grafica
-   della demo (nel set di Hoenn c'era posto per tre edifici soli).
-3. Portare le zone vicine (Centro Storico, Monticelli, Borgo Chiaro) e cucirle a Porta Maggiore.
+**Da dove si riparte** (strade 1 e 2 scelte da Jacopo e fatte nella seconda sessione del 16/11)
+- Aspetta il giudizio di Jacopo sulla Porta Maggiore nuova e sugli edifici.
+- Poi la strada 3: portare le zone vicine (Centro Storico, Monticelli, Borgo Chiaro) e cucirle a
+  Porta Maggiore. Le uscite ci sono già: ponte a ovest, viale a est, strada a nord.
+- Restano 74 tessere e nessuna tavolozza libera nel set: per il terreno nostro o per molti altri
+  edifici servirà un secondo set (un set secondario per zona) o tavolozze condivise.
+- La scena iniziale del Piceno è da scrivere (Oliver che arriva in treno).
+- Il filmato prima del titolo e la schermata con Rayquaza sono ancora quelli di Smeraldo.
 
 **Idee e questioni venute fuori oggi, da non perdere**
 - *Messe da parte per scelta di Jacopo:* le 38 mosse col nome di una ufficiale ma numeri diversi
@@ -139,6 +150,15 @@ passi da gigante»; dopo le correzioni «per ora molto meglio».
         mappa a metà scala, 40×28 (`porta_mappa.py --scala=0.5`). **Le dimensioni della demo NON si
         tengono più: si restringe.** Da rifinire: stagno sparito, erba alta piccola, case fitte.
         Per altri edifici nostri serve un set di tessere secondario del Piceno (da fare).
+      - **Seconda sessione del 16/11** (richieste di Jacopo: «rendiamola più sensata», alberi davanti
+        agli edifici e in piazza che non hanno senso, edifici con le tessere della palestra, la
+        stazione da cui arriva Oliver, tagliare la scena iniziale). Fatto: set di tessere nostro,
+        pianta disegnata a mano dopo aver guardato le foto del quartiere, partenza dalla stazione,
+        discorso di Birch saltato. La pianta sta in `tools/piceno/mappe/porta_maggiore_pianta.json`
+        (stesso formato della demo, misura del gioco): si cambia lì e si rilancia
+        `python tools/piceno/porta_mappa.py porta_maggiore PortaMaggiore "PORTA MAGGIORE" --rifai`.
+        **Attenzione:** `--rifai` butta le modifiche fatte a mano in Porymap; finora non ce ne sono.
+        Per un edificio nuovo: aggiungerlo in `edifici.py` (`pezzi_del_set`) e rilanciarlo.
       - **Limite del motore:** (larghezza+15)×(altezza+14) ≤ 10.240 per mappa. Castel di Lama (9.804)
         e Costa (9.525) sono al limite; una regione grande si fa con tante mappe collegate.
 
