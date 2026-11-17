@@ -1,20 +1,53 @@
-# ▶ A CHE PUNTO SIAMO (16/11/2026, fine giornata — Jacopo: «molto soddisfatto per adesso», si mette un punto)
+# ▶ A CHE PUNTO SIAMO (17/11/2026 — Jacopo ha scelto i passi 1, 2 e 3, più la T dei tabacchi)
 
 **La ROM è una sola:** `pokemon-piceno.gba` nella cartella del repo `pokemon-piceno` (ignorata da git).
 Si aggiorna sempre quel file; se mGBA lo tiene aperto non si può sovrascrivere, quindi va chiuso prima.
-L'ultima compilata (16/11, 18:10) ha la correzione delle porte: **Jacopo non l'ha ancora provata**.
+Le porte si aprono (provato da Jacopo il 17/11).
+
+**Fatto il 17/11 (commit `2e5c76e9a7` di `pokemon-piceno`, compilata: `pokemon-piceno.gba` delle 11:17) — DA PROVARE in gioco**
+- **Passo 1, strada fino alla prima palestra.** Maltignano (50×44, set `piceno_campo`): si entra
+  dall'Oasi in basso a ovest, tornanti fino al paese in cima (chiesa, Bar della Salita con interno),
+  discesa a est; fra i tornanti alberi, con due varchi d'erba alta per tagliare. Allenatori Renzo,
+  Dino, Osvaldo; **Nando** aspetta sulla discesa (tre celle della strada lo fanno partire, battuto se
+  ne va: `FLAG_UNUSED_0x021`). Castel di Lama (60×46, set nuovo `piceno_lama`): piazza della Fontana,
+  Bar Centrale, tabacchi, quattro case con interno, campo sportivo, e il **Free Spirit**. A est la
+  strada per Spinetoli finisce contro gli alberi. Interno della palestra (`interno_palestra`, scritto
+  da noi in `tools/piceno/mappe/stanze.json`): i banconi dell'ex bar fanno il percorso, Cencio e
+  Miriam ai due varchi, **Hills** in fondo dà la Medaglia Spirito (`FLAG_BADGE01_GET`).
+  Carta delle zone: Maltignano 210,−12 · Castel di Lama 260,−6. Cartina: caselle 16,7 e 17,7.
+- **Passo 2, sprite.** Bobby: il grembiule parte dalla vita, fra barba e grembiule resta la maglia.
+  Nando e Hills hanno sprite propri (basi `boy_3` e `psychic_m`) e **figura in lotta propria**:
+  `tools/piceno/figure.py` ricolora una figura ufficiale (Nando da `cooltrainer_m`, Hills da
+  `guitarist`, il pescatore in giallo). Le altre figure in lotta restano quelle di Hoenn.
+- **Passo 3, italiano.** `tools/piceno/traduci.py` applica ai sorgenti le coppie di
+  `tools/piceno/traduzione/*.txt` (2.147 stringhe: menu, lotta, zaino, squadra, salvataggio, cura,
+  Pokédex, nature, tipi, classi). Rilanciabile dopo un aggiornamento dell'expansion: dice cosa non
+  trova più. Classi: RAGAZZINO, RAGAZZINA, PESCATORE, BIRDWATCHER, CAMPEGGIAT. (il motore regge 12
+  lettere), CONTADINO, CICLISTA, GEMELLE, CAPOPALESTRA, RIVALE (quest'ultima scritta a mano in
+  `src/battle_main.c`).
+- **T dei tabacchi** rifatta sulla foto di Jacopo: cartello verticale blu col bordo chiaro, T larga,
+  riquadro del numero di rivendita, le tre righe di scritta come tratti.
+
+**Rimasto fuori o da rivedere (17/11)**
+- La **MT Velenospina** che l'assistente della palestra dà nella demo: la mossa c'è, lo strumento MT no.
+- Dopo una sconfitta si riparte sempre da Porta Maggiore: Castel di Lama non ha ancora il suo punto.
+- Traduzione: **non tradotti** nomi e descrizioni degli strumenti, i testi delle mappe di Hoenn, il
+  discorso di Birch (saltato). Prefissi in lotta: «Nemico X» / «Selvatico X» senza articolo (il
+  motore mette il prefisso prima del nome). 26 righe sono più lunghe dell'originale e vanno guardate
+  a schermo (`python tools/piceno/traduci.py --avvisi`): «NUOVA PARTITA», «STRUMENTI», il messaggio
+  di salvataggio. Scelte dei traduttori da confermare: BIMBO/BIMBA per la scelta del sesso, «Liv.»,
+  WALLY → LINO, virgolette tolte.
+- Battute nuove scritte da me: «NANDO: Che guardi? Passa, passa...», «HILLS: La medaglia ce l'hai.
+  Mo' vedi d'usalla bene.», il messaggio della medaglia, il cartello «Spinetoli - strada chiusa».
+- Le figure in lotta del contadino e degli altri sono ancora quelle di Hoenn (il contadino in lotta
+  ha il cappello verde, sulla mappa di paglia).
 
 **Difetto pagato il 16/11:** dopo aver ridipinto gli edifici nessuna porta si apriva (i muri avevano
 un pixel trasparente ai lati e `edifici.py` prendeva gli edifici per arredi). Ora `edifici.py` si
 ferma se la porta di un edificio non è una soglia. Controllare che una porta sia raggiungibile non
 basta: va controllato anche il comportamento del blocco.
 
-**Prossimi passi, nell'ordine proposto a Jacopo il 16/11 (non ancora scelti da lui)**
-1. Strada fino alla prima palestra: Maltignano, Castel di Lama e l'interno della palestra di Hills,
-   con i loro allenatori (la demo ha già tutto).
-2. Rifinire gli sprite: Bobby (il bianco di capelli, barba e grembiule si fonde), Nando (oggi un
-   ragazzino di Hoenn, e in lotta la figura di Brendan), le figure in lotta degli allenatori.
-3. Classi degli allenatori in italiano («Ragazzino», «Pescatore») e traduzione di menu e lotta.
+**Prossimi passi, nell'ordine proposto a Jacopo il 16/11 (1-3 fatti il 17/11, gli altri non ancora scelti)**
 4. La scena iniziale: Oliver che arriva in treno alla stazione.
 5. Interni: piante venute scure; mobili da ridisegnare col kit invece che ripuliti dalla demo.
 6. Togliere Hoenn: schermata di Vola, mappe e allenatori di Hoenn (libera i numeri degli allenatori).
@@ -74,7 +107,8 @@ su un repository nuovo Actions va acceso a mano dalla scheda Actions; in quella 
 - Hoenn è ancora tutta dentro, ma non ci si arriva.
 
 **Come si rigenera tutto** (dalla cartella `tools/piceno` del repo `pokemon-piceno`, in quest'ordine):
-`python edifici.py` → `python personaggi.py` → `python allenatori.py` → per ogni zona
+`python edifici.py` → `python personaggi.py` → `python figure.py` → `python allenatori.py` →
+`python cartina.py` → `python traduci.py` (dalla radice: `python tools/piceno/traduci.py`) → per ogni zona
 `python porta_mappa.py <id> <Nome> "<TITOLO>" --rifai` e `python interni.py <id>`.
 Le piante stanno in `mappe/<id>_pianta.json`, gli eventi scritti a mano in `mappe/<id>.json` e `.inc`.
 **`--rifai` butta le modifiche fatte a mano in Porymap**: finora non ce ne sono.
