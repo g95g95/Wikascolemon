@@ -55,6 +55,21 @@ Le porte si aprono (provato da Jacopo il 17/11).
   sorgente (`src/battle_main.c`) va prima rimesso YOUNGSTER/LASS o cambiato a mano.
   Jacopo ha parlato di «tipologia personaggi»: probabile che voglia rivedere anche le altre classi.
 
+**Chiesto da Jacopo il 17/11, da fare più avanti: le bacche diventano «COCCHIE»**
+- «Cocchia» è una parola nostra: il guscio, la buccia. Nel gioco le bacche si chiamano cocchie e
+  sono al massimo una quindicina (oggi il motore ne ha una settantina).
+- L'elenco da cui prenderle è il preset «Cocchie» di TierForge (https://g95g95.github.io/tierforge/,
+  39 voci: frutta secca, frutta con la buccia, «il resto»), **tolte quelle esotiche**.
+- Proposta mia, da confermare (15, solo cose che crescono dalle nostre parti): Noce, Nocciola,
+  Mandorla, Pinolo, Castagna, Arancia, Mandarino, Limone, Melograno, Anguria, Melone, Mela, Pera,
+  Fico d'India, Oliva. In dubbio: Oliva (Oliver è un'oliva), e Pane, che non è un frutto ma è nostro.
+  Scartate come esotiche: Anacardo, Noce pecan, Noce macadamia, Noce del Brasile, Noce di cocco,
+  Banana, Pompelmo, Ananas, Kiwi, Mango, Papaya, Litchi, Avocado, Frutto della passione, Pitaya;
+  fuori anche Pistacchio, Arachide, Clementina e le voci scherzose (Intonaco, Compensato, Ossa,
+  Denti, Telaio macchina).
+- Da decidere quando si fa: quale effetto delle bacche ufficiali va a quale cocchia (cura dei PS,
+  degli stati, dei PP...) e cosa succede alle bacche che restano fuori.
+
 **Difetto pagato il 16/11:** dopo aver ridipinto gli edifici nessuna porta si apriva (i muri avevano
 un pixel trasparente ai lati e `edifici.py` prendeva gli edifici per arredi). Ora `edifici.py` si
 ferma se la porta di un edificio non è una soglia. Controllare che una porta sia raggiungibile non
