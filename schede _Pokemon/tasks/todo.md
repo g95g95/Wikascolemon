@@ -67,11 +67,13 @@ allenatori e schermata di Vola, non le musiche: quelle si tengono e si riusano n
   Arachide, Uovo, Granchio, Cocco. Il criterio è il **guscio duro**, non la buccia: per questo la
   mia prima proposta con la frutta (arance, mele, meloni) è caduta, e ci stanno anche cose che non
   sono frutti (uovo, granchio).
-- Posti liberi: fino a 5. Idee mie sullo stesso criterio, non ancora scelte: Ghianda, Pigna, Lupino,
-  Bruscolino (seme di zucca), Fava, Carruba; fra gli animali Lumaca, Cozza, Vongola, Riccio di mare,
-  Tartaruga.
-- Da decidere quando si fa: quale effetto delle bacche ufficiali va a quale cocchia (cura dei PS,
-  degli stati, dei PP...) e cosa succede alle bacche che restano fuori.
+- **Aggiunte da Jacopo il 17/11 (7):** Lumaca, Cozza, Vongola, Riccio di mare, Bruscolino, Lupino,
+  Ghianda. **L'elenco è chiuso a 17** («vanno bene»). Restano fuori, fra le mie idee: Pigna, Fava,
+  Carruba, Tartaruga.
+- Le cocchie **prendono gli effetti delle bacche** (detto da Jacopo): non sono strumenti nuovi, ogni
+  cocchia sostituisce una bacca e ne eredita l'effetto.
+- Da decidere quando si fa: quale bacca va a quale cocchia (17 effetti da scegliere fra una
+  settantina: cura dei PS, degli stati, dei PP...) e cosa succede alle bacche che restano fuori.
 
 **Difetto pagato il 16/11:** dopo aver ridipinto gli edifici nessuna porta si apriva (i muri avevano
 un pixel trasparente ai lati e `edifici.py` prendeva gli edifici per arredi). Ora `edifici.py` si
