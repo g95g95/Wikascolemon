@@ -66,22 +66,22 @@
       npc(3, 4, 'Cartello', 'LUNGOMARE DI SAN BENEDETTO — passeggiata fra le palme.', 'fermo'),
       npc(2, 48, 'Cartello', 'SPIAGGIA LIBERA — accesso gratuito, portate l\'ombrellone.', 'fermo'),
       npc(105, 33, 'Cartello', '→ JONATHAN — la discoteca sulla spiaggia, poco più a est.', 'fermo'),
-      npc(29, 8, 'Bagnino di salvataggio', 'D\'estate quaggiù è tutto un via vai, ma l\'acqua è \'na bellezza.', 'orizzontale'),
-      npc(78, 8, 'Ragazza col gelato', 'Se\' vinuto pé la spiaggia o pé lo Jonathan la sera?', 'fermo'),
-      npc(21, 43, 'Pescatore del porto', 'Stammatina ho ripreso le reti, ma li pesci moderni so\' furbi.', 'fermo'),
+      npc(29, 8, 'Bagnino di salvataggio', 'D\'estate ècche jó è tutte nu via vai, ma l\'acqua è na bellezza.', 'orizzontale'),
+      npc(78, 8, 'Ragazza col gelato', 'Jé venute pe la spiaggia o pe lu Jonathan la sera?', 'fermo'),
+      npc(21, 43, 'Pescatore del porto', 'Stamatina sò repigghjate li rete, ma li pesce moderne è furbe.', 'fermo'),
       // Ivo e Teo, "i congressisti": prima del flag, script lungo con dialogo alternato
       {
         x: 45, y: 53, name: 'Ivo', sprite: 'ivo', movement: 'fermo', when: { notFlag: 'ivo_teo_visti' },
         script: [
           { say: 'Ehm... salve. Siamo solo due villeggianti, eh, niente di che.', name: 'Ivo' },
-          { say: 'Sì sì, congressisti. Qui pé lu congresso. Mica pé antro.', name: 'Teo' },
-          { say: 'Teo, non serve giustificasse così, mo\' ce pijeno pé matti davero.', name: 'Ivo' },
-          { say: 'A dì la verità... noi s\'era \'nventati de dà \'na lezione a quer Riccio de lo Jonathan.', name: 'Teo' },
-          { say: 'Sì, l\'aguato più curto de la storia. Ce s\'è visto arrivà co\' \'na fusciacca de gomma e ha detto solo "Ombrellone, avanti".', name: 'Ivo' },
-          { say: 'E doppo tre minuti eravamo già stesi sulla sabbia, tutt\'e due.', name: 'Teo' },
-          { say: 'Ce ha pure rimandato al congresso, testuale. "Annàtevene al congresso, va\'".', name: 'Ivo' },
-          { say: 'Se vòi entrà a lo Jonathan sappi che Riccio sta llà dietro, protetto da li Bro della Security.', name: 'Teo' },
-          { say: 'Fatte forte prima de provacce, uagliò. Nu\' come noi.', name: 'Ivo' },
+          { say: 'Sì sì, congressiste. Ècche pe lu congresse. Mica pe addre.', name: 'Teo' },
+          { say: 'Teo, nen serve giustificasse cuscì, mó ce pigghja pe matte davvere.', name: 'Ivo' },
+          { say: 'A dì la verità... nu ce savàme \'nvendate de dà na lezió a \'llu Riccio de lu Jonathan.', name: 'Teo' },
+          { say: 'Sì, l\'agguate più curte de la storia. Ce è viste arrivà che na fusciacca de gomma e è ditte sule "Ombrellone, avanti".', name: 'Ivo' },
+          { say: 'E dapuó tre minute savàme già jó \'ccima a la sabbia, tutt\'e ddó.', name: 'Teo' },
+          { say: 'Ce è pure remannate a lu congresse, testuale. "Jéte a lu congresse, jéte".', name: 'Ivo' },
+          { say: 'Se vuò \'ndrà a lu Jonathan, vide che Riccio sta llà dietre, protette da li Bro della Security.', name: 'Teo' },
+          { say: 'Fàtte forte prima de provacce, frechì. Nen come nu.', name: 'Ivo' },
           { setFlag: 'ivo_teo_visti' }
         ]
       },
@@ -92,11 +92,11 @@
       // dopo il flag: coppia gemella, battuta di commiato
       {
         x: 45, y: 53, name: 'Ivo', sprite: 'ivo', movement: 'fermo', when: { flag: 'ivo_teo_visti' },
-        dialogue: 'Noi se retiramo davero, stavolta. Bona fortuna co\' Riccio.'
+        dialogue: 'Nu ce retiréme davvere, \'sta vodda. Bbona fortuna che Riccio.'
       },
       {
         x: 46, y: 53, name: 'Teo', sprite: 'teo', movement: 'fermo', when: { flag: 'ivo_teo_visti' },
-        dialogue: 'E salutace er congresso, se ce passi.'
+        dialogue: 'E salùtece lu congresse, se ce passe.'
       }
     ]
   };

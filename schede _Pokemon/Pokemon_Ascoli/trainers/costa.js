@@ -4,18 +4,18 @@
       map: 'costa', x: 12, y: 49, direction: 'left', sight: 5,
       class: 'bagnino', name: 'Renzo', sprite: null,
       team: [{ species: 'lettino', level: 18 }, { species: 'cozzetta', level: 18 }],
-      before: ['Fermo là! Sulla spiaggia libera se se sfida tutti, lo sai.', 'Metti giù l\'asciugamano e famme vedé li tua Pokémon.'],
-      after: ['Aho, m\'hai fregato pé davero.'],
-      lost: 'Torna quanno hai allenato \'n altro po\'.',
+      before: ['Fermo là! Sulla spiaggia libera se se sfida tutti, lo sai.', 'Mitte jó l\'asciugamà e fàmme vedé li Pokémon tuó.'],
+      after: ['Auà, me jé frecate pe davvere.'],
+      lost: 'Torna quanne jé allenate n\'addre neccó.',
       money: null, gym: null, when: null
     },
     costa_bagnino_2: {
       map: 'costa', x: 64, y: 55, direction: 'up', sight: 4,
       class: 'bagnino', name: 'Franco', sprite: null,
       team: [{ species: 'bagnetto', level: 19 }],
-      before: ['Ehi tu, du\' passi sulla sabbia e mo\' te sfido!'],
+      before: ['Ehi tu, ddó passa \'ccima a la sabbia e mó te sfide!'],
       after: ['Vabbè, oggi era giornata storta.'],
-      lost: 'Passa doppo, magari me rifò.',
+      lost: 'Passa dapuó, magari me refacce.',
       money: null, gym: null, when: null
     },
     costa_turista_1: {
@@ -40,9 +40,9 @@
       map: 'costa', x: 104, y: 32, direction: 'left', sight: 3,
       class: 'dj', name: 'Mauri', sprite: null,
       team: [{ species: 'mucillax', level: 19 }, { species: 'bagnetto', level: 18 }],
-      before: ['Ué, prima de entrà a lo Jonathan te tocca passà da me!', 'Stasera faccio er set, ma mo\' famo \'na lotta pé scaldacce.'],
-      after: ['Bella energia, uagliò! Stasera te sento dietro li speaker, magari.'],
-      lost: 'Torna quanno hai n\'antro Pokémon, se no lu ritmo se perde.',
+      before: ['Ué, prima de entrà a lo Jonathan te tocca passà da me!', 'Massera facce lu set, ma mó facéme na lotta pe scallacce.'],
+      after: ['Bbella energia, frechì! Massera te sènde dietre li speaker, magari.'],
+      lost: 'Torna quanne tiéne n\'addre Pokémon, sennò lu ritme se pèrde.',
       money: null, gym: null, when: null
     }
   });

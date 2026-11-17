@@ -550,7 +550,7 @@
   function buildingScript(building) {
     if (building.script) return building.script;
     if (building.interior === 'bar') {
-      return [{ say: 'Che te faccio?', name: building.name }, { heal: true }, { say: 'Ecco fatto!', name: building.name }];
+      return [{ say: 'Che te pòrte?', name: building.name }, { heal: true }, { say: 'Ecco fatto!', name: building.name }];
     }
     if (building.interior === 'market') {
       return [{ shop: ['ball', 'potion', 'antidote', 'repel', 'grattaevinci'] }];

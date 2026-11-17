@@ -17,8 +17,8 @@
     npcs: [
       npc(38, 39, 'Pescatore', 'I Tuffito si muovono in gruppo lungo il Rio Castellano.', 'fermo'),
       npc(16, 27, 'Cartello', 'Rio Castellano: qui Bobby diede il primo Tuffito a chi sceglieva l’acqua.', 'fermo'),
-      npc(11, 36, 'Lavandaia', 'Da ragazza si veniva qui a lavà li panni, mo\' nemmanco più.', 'fermo'),
-      npc(55, 23, 'Passante', 'Con l’acqua alta certe volte il fiume s\'ariprenne tutto.', 'verticale')
+      npc(11, 36, 'Lavandaia', 'Da frechina ècche se rellavàva li panne, mó manche più.', 'fermo'),
+      npc(55, 23, 'Passante', 'Quanne l\'acqua è adda, certe vodde lu fiume se pigghja tutte.', 'verticale')
     ]
   };
   const map = window.PokemonAscoliMaps.porta_cartara;

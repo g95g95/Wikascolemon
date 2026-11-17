@@ -23,8 +23,8 @@
     ],
     npcs: [
       npc(27, 30, 'Residente', 'Il ponte romano conduce dritto al centro.', 'verticale'),
-      npc(14, 44, 'Anziano', 'Quant\'anni fa qui c\'era un antro bar, mo\' è tutto chiuso.', 'fermo'),
-      npc(54, 13, 'Passante', 'Certe bande girano pé la collina, statte accorto de sera.', 'orizzontale')
+      npc(14, 44, 'Anziano', 'Quand\'anne fà ècche c\'èra n\'addre bar, mó è tutte chiuse.', 'fermo'),
+      npc(54, 13, 'Passante', 'Certe bande gira pe la collina, statte accorte de sera.', 'orizzontale')
     ]
   };
   const map = window.PokemonAscoliMaps.borgo_solesta;

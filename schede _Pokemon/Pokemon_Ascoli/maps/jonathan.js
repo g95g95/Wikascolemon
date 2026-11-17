@@ -34,7 +34,7 @@
     npcs: [
       npc(15, 30, 'Cartello', 'PARCHEGGIO JONATHAN — ingresso discoteca a nord.', 'fermo'),
       npc(25, 17, 'Buttafuori', 'Solo il vialetto centrale porta all\'ingresso.', 'fermo'),
-      npc(47, 30, 'Cliente in coda', 'Aspetto da mezzora, ma dentro se sta bene.', 'fermo')
+      npc(47, 30, 'Cliente in coda', 'Aspette da mezz\'ora, ma dendre se sta bbé.', 'fermo')
     ]
   };
   const map = window.PokemonAscoliMaps.jonathan;

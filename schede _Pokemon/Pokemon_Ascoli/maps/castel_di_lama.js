@@ -50,9 +50,9 @@
     ],
     npcs: [
       npc(42, 32, 'Cartello', 'Castel di Lama — qui c\'era il Free Spirit', 'fermo'),
-      npc(12, 13, 'Anziano', ['Ah, il Free Spirit... quello sì che era un bar.', 'Mo\' è \'na palestra, boh, so\' cose che càpeno.'], 'fermo'),
-      npc(29, 14, 'Passante', 'A Castel de Lama se magna bono, fidete.', 'orizzontale'),
-      npc(27, 49, 'Ragazza', 'Il campo sportivo la sera è pieno de gente.', 'verticale')
+      npc(12, 13, 'Anziano', ['Ah, lu Free Spirit... quille sì che èra nu bar.', 'Mó è na palestra, boh, è cose che capita.'], 'fermo'),
+      npc(29, 14, 'Passante', 'A Castel de Lama se magna bbé, fìdete.', 'orizzontale'),
+      npc(27, 49, 'Ragazza', 'Lu cambe sportive la sera è piene de gende.', 'verticale')
     ]
   };
   const map = window.PokemonAscoliMaps.castel_di_lama;

@@ -38,9 +38,9 @@
       before: [
         'Allo Jonathan la sfida è sempre aperta.',
         'Ivo e Teo hanno provato l\'agguato prima di te: du\' congressisti che manco sanno tuffasse.',
-        'Speriamo tu regga meglio de quer duo!'
+        'Speréme che règge mègghje de \'llu duo!'
       ],
-      after: ['Embè, complimenti davvero. Chiedi all\'assistente, che c\'ha una cosa pé te.'],
+      after: ['Mbè, complimende davvere. Chiede a l\'assistènde, che tène na cosa pe te.'],
       lost: 'Torna a trovarmi quando sei più allenato.',
       money: null,
       gym: { id: 'costa', badge: 2, badgeName: 'Medaglia Balneare', type: 'Acqua', tm: 'idrogetto' },

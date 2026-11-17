@@ -5,8 +5,8 @@
       class: 'contadino', name: 'Marino', sprite: null,
       team: [{ species: 'basilino', level: 7 }, { species: 'pito', level: 7 }, { species: 'banconio', level: 8 }],
       before: ['Questi campi li lavoro da una vita.', 'Vediamo se i tuoi Pokémon reggono la fatica!'],
-      after: ['Embè, brao davvero.'],
-      lost: 'Ripassa quando hai fatto un po\' di allenamento, giovi\'.',
+      after: ['Mbè, bbrave davvere.'],
+      lost: 'Repassa quanne jé fatte neccó d\'allenamènde, frechì.',
       money: null, gym: null, when: null
     }
   });

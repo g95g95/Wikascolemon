@@ -47,8 +47,8 @@
     npcs: [
       npc(3, 26, 'Cartello', 'Percorso 1 — Via Salaria: da Monticelli all\'Oasi lungo il Tronto.', 'fermo'),
       npc(36, 23, 'Cartello', 'Marino del Tronto: campi, filari e il fiume più a sud.', 'fermo'),
-      npc(15, 20, 'Contadino', 'Qui la terra è bona: se semina de tutto, granturco pure.', 'fermo'),
-      npc(43, 43, 'Abitante', 'Attento a quer ponte quanno piove, che l\'acqua sale forte.', 'fermo')
+      npc(15, 20, 'Contadino', 'Ècche la terra è bbona: se semena de tutte, pure lu granturche.', 'fermo'),
+      npc(43, 43, 'Abitante', 'Statte attende a \'llu ponde quanne piove, che l\'acqua sùve forte.', 'fermo')
     ]
   };
   const map = window.PokemonAscoliMaps.marino_del_tronto;

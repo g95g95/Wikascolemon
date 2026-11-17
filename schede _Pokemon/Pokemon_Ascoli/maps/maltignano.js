@@ -49,8 +49,8 @@
     ],
     npcs: [
       npc(42, 13, 'Cartello', 'Maltignano — la salita record', 'fermo'),
-      npc(19, 13, 'Anziano', 'Ogne vòrda che sarto sti tornanti me pare de fa\' er Giro d\'Italia.', 'fermo'),
-      npc(34, 13, 'Ragazza del bar', 'Se te reggi le gambe doppo la salita, entra che offro io.', 'fermo')
+      npc(19, 13, 'Anziano', 'Ogne vodda che sùve \'sti tornande me pare de fà lu Giro d\'Italia.', 'fermo'),
+      npc(34, 13, 'Ragazza del bar', 'Se te regge li gambe dapuó la sùveta, viénne dendre che offre i\'.', 'fermo')
     ]
   };
   const map = window.PokemonAscoliMaps.maltignano;

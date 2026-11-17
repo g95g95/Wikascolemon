@@ -40,10 +40,10 @@
       npc(3, 32, 'Cartello', 'Fermata corriera — per Ascoli Piceno.', 'fermo'),
       {
         x: 15, y: 11, name: 'Anziano del borgo', movement: 'fermo',
-        script: [{ say: ['Chi arriva a Ripatransone giusto pé l\'ottava di Pasqua vede lu Cartellone, la scena più granne dipinta a mano.', 'E se guardi bbene quaggiù, sotto lu paese, li Puledrotto currono ancora com\'a la mejo squadra: qui s\'allenano da sempre.'], name: 'Anziano del borgo' }]
+        script: [{ say: ['Chi arriva a Ripatransone juste pe l\'ottava de Pasqua véde lu Cartellone, la scena più granne depinda a mà.', 'E se uarde bbé ècche jó, sotte lu paese, li Puledrotto córre ancora come la mègghje squadra: ècche s\'allena da sèmbre.'], name: 'Anziano del borgo' }]
       },
-      npc(30, 12, 'Massaia', 'Su a la piazza c\'è sempre n\'ariata bbona, mo\' che sò salita da le vigne.', 'fermo'),
-      npc(50, 30, 'Pescatore', 'Da lu belvedere se vede fino a lu mare, quanno è chiaro.', 'fermo')
+      npc(30, 12, 'Massaia', 'Su a la piazza c\'è sèmbre n\'aria bbona, mó che sò sùveta da li vigne.', 'fermo'),
+      npc(50, 30, 'Pescatore', 'Da lu belvedere se véde fine a lu mare, quanne è chiare.', 'fermo')
     ]
   };
   const map = window.PokemonAscoliMaps.ripatransone;

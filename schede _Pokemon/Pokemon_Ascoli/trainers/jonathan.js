@@ -10,7 +10,7 @@
       ],
       before: ['Ancora tu! Stavolta davanti allo Jonathan.', 'Riccio se lo prendo io, mica te!'],
       after: ['Vabbè, stavolta hai vinto tu. Ma alla prossima cambia musica.'],
-      lost: 'Ripassa quando hai allenato di più, che mo\' non c\'è partita.',
+      lost: 'Repassa quanne jé allenate de più, che mó nen c\'è partita.',
       money: 800, gym: null, when: { flag: 'starter_basilino' }
     },
     jonathan_nando_tuffito: {
@@ -23,7 +23,7 @@
       ],
       before: ['Ancora tu! Stavolta davanti allo Jonathan.', 'Riccio se lo prendo io, mica te!'],
       after: ['Vabbè, stavolta hai vinto tu. Ma alla prossima cambia musica.'],
-      lost: 'Ripassa quando hai allenato di più, che mo\' non c\'è partita.',
+      lost: 'Repassa quanne jé allenate de più, che mó nen c\'è partita.',
       money: 800, gym: null, when: { flag: 'starter_puledrotto' }
     },
     jonathan_nando_basilino: {
@@ -36,7 +36,7 @@
       ],
       before: ['Ancora tu! Stavolta davanti allo Jonathan.', 'Riccio se lo prendo io, mica te!'],
       after: ['Vabbè, stavolta hai vinto tu. Ma alla prossima cambia musica.'],
-      lost: 'Ripassa quando hai allenato di più, che mo\' non c\'è partita.',
+      lost: 'Repassa quanne jé allenate de più, che mó nen c\'è partita.',
       money: 800, gym: null, when: { flag: 'starter_tuffito' }
     }
   });

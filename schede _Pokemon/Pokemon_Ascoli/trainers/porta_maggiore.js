@@ -14,12 +14,12 @@
       class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'puledrotto', level: 5 }],
       before: [
-        'Ehó, fermo llà!',
-        'So\' Nando, e mi\' zio tié er bar rivale de Bobby — e ha vinto lui la rissa, mica se scorda!',
-        'Bobby te vo\' fa\' credé che tu sei quello giusto? Prima vediamo si sai combatte\'.'
+        'Ehó, statte ferme llà!',
+        'I\' sò Nando, e zìeme tène lu bar rivale de Bobby: isse è vinte la rissa, nen se scorda!',
+        'Bobby te vo\' fà credé che tu jé quille giuste? Prima vedéme se jé bbuone a combatte.'
       ],
-      after: ['Bah, so\' stato distratto.'],
-      lost: 'Va bene, va bene, la prossima è mia.',
+      after: ['Bah, sò state distratte.'],
+      lost: 'Va bbè, va bbè, la prossema è mié.',
       money: 200, gym: null, when: { flag: 'starter_basilino' }
     },
     porta_maggiore_nando_tuffito: {
@@ -27,12 +27,12 @@
       class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'tuffito', level: 5 }],
       before: [
-        'Ehó, fermo llà!',
-        'So\' Nando, e mi\' zio tié er bar rivale de Bobby — e ha vinto lui la rissa, mica se scorda!',
-        'Bobby te vo\' fa\' credé che tu sei quello giusto? Prima vediamo si sai combatte\'.'
+        'Ehó, statte ferme llà!',
+        'I\' sò Nando, e zìeme tène lu bar rivale de Bobby: isse è vinte la rissa, nen se scorda!',
+        'Bobby te vo\' fà credé che tu jé quille giuste? Prima vedéme se jé bbuone a combatte.'
       ],
-      after: ['Bah, so\' stato distratto.'],
-      lost: 'Va bene, va bene, la prossima è mia.',
+      after: ['Bah, sò state distratte.'],
+      lost: 'Va bbè, va bbè, la prossema è mié.',
       money: 200, gym: null, when: { flag: 'starter_puledrotto' }
     },
     porta_maggiore_nando_basilino: {
@@ -40,12 +40,12 @@
       class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'basilino', level: 5 }],
       before: [
-        'Ehó, fermo llà!',
-        'So\' Nando, e mi\' zio tié er bar rivale de Bobby — e ha vinto lui la rissa, mica se scorda!',
-        'Bobby te vo\' fa\' credé che tu sei quello giusto? Prima vediamo si sai combatte\'.'
+        'Ehó, statte ferme llà!',
+        'I\' sò Nando, e zìeme tène lu bar rivale de Bobby: isse è vinte la rissa, nen se scorda!',
+        'Bobby te vo\' fà credé che tu jé quille giuste? Prima vedéme se jé bbuone a combatte.'
       ],
-      after: ['Bah, so\' stato distratto.'],
-      lost: 'Va bene, va bene, la prossima è mia.',
+      after: ['Bah, sò state distratte.'],
+      lost: 'Va bbè, va bbè, la prossema è mié.',
       money: 200, gym: null, when: { flag: 'starter_tuffito' }
     }
   });

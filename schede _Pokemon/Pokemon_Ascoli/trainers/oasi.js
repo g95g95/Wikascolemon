@@ -4,8 +4,8 @@
       map: 'oasi', x: 19, y: 13, direction: 'down', sight: 4,
       class: 'birdwatcher', name: 'Renzo', sprite: null,
       team: [{ species: 'tamburino', level: 8 }, { species: 'anicino', level: 8 }],
-      before: ['Ehi, zitto! Stavo a osservà l\'ucelli...', 'Mo\' che m\'hai visto, famme vedé quanto vale la tua squadra.'],
-      after: ['Va bbè, m\'hai distratto per bene.'],
+      before: ['Ehi, zitte!', 'Stènghe uardènne li ciélle... Mó che me jé viste, fàmme vedé mùnde vale la squadra tuó.'],
+      after: ['Va bbè, me jé distratte pe bbé.'],
       lost: 'Torna quando sai stà più zitto de me.',
       money: null, gym: null, when: null
     },
@@ -13,9 +13,9 @@
       map: 'oasi', x: 51, y: 39, direction: 'left', sight: 3,
       class: 'campeggiatore', name: 'Marco', sprite: null,
       team: [{ species: 'totera', level: 8 }, { species: 'soldatino', level: 9 }],
-      before: ['Uè! Fermate n\' attimo, prima de magnà famo n\' controllo!', 'Chi vince se magna er dolce pé primo.'],
-      after: ['Vabbè, oggi er dolce te lo magni tu.'],
-      lost: 'Torna a trovamme quando semo ancora qui a picnic.',
+      before: ['Ehi!', 'Statte ferme n\'attime, prima de magnà facéme nu controlle! Chi vince se magna lu dolce pe prime.'],
+      after: ['Va bbè, uója lu dolce te lu magne tu.'],
+      lost: 'Torna a trovamme quanne séme ancora ècche a fà lu picnic.',
       money: null, gym: null, when: null
     }
   });

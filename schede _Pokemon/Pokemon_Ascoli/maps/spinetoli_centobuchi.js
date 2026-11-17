@@ -119,8 +119,8 @@
       npc(3, 16, 'Cartello', 'Spinetoli — benvenuti nella pianura della Salaria.', 'fermo'),
       npc(74, 16, 'Cartello', 'Centobuchi.', 'fermo'),
       npc(40, 18, 'Barista', 'Al Bar dello Sport si vede sempre la partita.', 'fermo'),
-      npc(13, 28, 'Contadino', 'Sti campi so\' pieni de Totera, sta\' accorto.', 'fermo'),
-      npc(59, 51, 'Anziana', 'A Centobuchi se magna bbono, fidete.', 'orizzontale')
+      npc(13, 28, 'Contadino', '\'Sti cambe è piene de Totera, statte accorte.', 'fermo'),
+      npc(59, 51, 'Anziana', 'A Centobuchi se magna bbé, fìdete.', 'orizzontale')
     ]
   };
 }());

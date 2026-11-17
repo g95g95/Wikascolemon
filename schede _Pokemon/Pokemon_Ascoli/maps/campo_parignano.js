@@ -24,10 +24,10 @@
     ],
     npcs: [
       npc(25, 33, 'Spettatore', 'All’Odeon c’è sempre qualche locandina nuova.', 'fermo'),
-      npc(8, 38, 'Elena', 'Che te faccio? Nu bel caffè pe\' riparte\'?', 'fermo'),
+      npc(8, 38, 'Elena', 'Che te pòrte? Nu bbuone caffè pe ripartì?', 'fermo'),
       npc(51, 13, 'Cartello', 'Sant’Emidio alle Grotte: da qui, tanto tempo fa, Bobby diede il primo Basilino a chi partiva.', 'fermo'),
-      npc(23, 27, 'Bracciante', 'Sti campi \'na volta rendeveno de più, mo\' semo rimasti in pochi.', 'fermo'),
-      npc(42, 30, 'Ragazzo', 'Certe bande girano de notte da ste parti, statte accorto.', 'verticale')
+      npc(23, 27, 'Bracciante', '\'Sti cambe na vodda rendàva de più, mó séme rimaste \'n poche.', 'fermo'),
+      npc(42, 30, 'Ragazzo', 'Certe bande gira de notte da \'sti parte, statte accorte.', 'verticale')
     ]
   };
   const map = window.PokemonAscoliMaps.campo_parignano;

@@ -33,14 +33,14 @@
       npc(17, 30, 'Viaggiatore', 'Benvenuto ad Ascoli Piceno!', 'fermo'),
       npc(56, 42, 'Abitante', 'Da qui puoi raggiungere facilmente il centro.', 'verticale'),
       npc(4, 6, 'Cartello', 'CORRIERA PER RIPATRANSONE — partenza qui, fermata a destra della stazione.', 'fermo'),
-      npc(32, 36, 'Vicino di casa', 'Sti\' palazzi so\' \'n degrado, ma è casa nostra.', 'fermo'),
-      npc(43, 37, 'Ragazza di quartiere', 'Le bande de la piazza fanno soo\' rumore, nient\'artro.', 'orizzontale'),
-      npc(18, 15, 'Cliente deluso', 'Er bar de Bobby è chiuso dopo la rissa... ma pé fortuna cura ancora.', 'fermo'),
+      npc(32, 36, 'Vicino di casa', '\'Sti palazze è \'n degrade, ma è la casa nostra.', 'fermo'),
+      npc(43, 37, 'Ragazza di quartiere', 'Li bande de la piazza fà sule rumore, e vasta.', 'orizzontale'),
+      npc(18, 15, 'Cliente deluso', 'Lu bar de Bobby è chiuse dapuó la rissa... ma pe fortuna cura ancora.', 'fermo'),
       {
         x: 11, y: 16, name: 'Bobby', sprite: 'bobby', movement: 'fermo', when: { notFlag: 'intro_vista' },
         script: [
           {
-            say: ['{player}, finalmente!', 'So\' n\'sacco d\'anni che nun ce vedimo, ma me servi tu.', 'Vieni al bar che te presento Steven e Elena.'],
+            say: ['{player}, finalmènde!', 'È furia d\'anne che nen ce vedéme, ma tènghe bisogne de te.', 'Viénne a lu bar che te presènde Steven e Elena.'],
             name: 'Bobby'
           },
           { setFlag: 'intro_vista' },
@@ -50,24 +50,24 @@
       {
         x: 26, y: 21, name: 'Bobby', sprite: 'bobby', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
         script: [
-          { say: ['Ehò, uagliò! Vieni, vieni, che te presento chi conta veramente da ste parti.'], name: 'Bobby' },
+          { say: ['Ehó, frechì! Viénne, viénne, che te presènde chi cónda veramènde da \'sti parte.'], name: 'Bobby' },
           {
             say: [
-              'Io so\' Steven, tengo er bar Callare ar centro storico.',
-              'Da ste parti i bar so\' comme dei centri pé i pokémon: se cura, se ripo\'sa, se riparte.',
-              'Nel Piceno ce so\' otto palestre, ma so\' \'n mano a pochi — e pure la lega ormai è \'n affare privato, mica pé la gente.'
+              'I\' sò Steven, tènghe lu bar Callare a lu Centro Storico.',
+              'Da \'sti parte li bar è come nu centre pe li pokémon: se cura, se riposa, se riparte.',
+              '\'N Piceno c\'è otte palestre, ma è \'n mà a poche — e pure la lega mó è n\'affare private, mica pe la gende.'
             ],
             name: 'Steven'
           },
           {
             say: [
-              'E io so\' Elena, dell\'Happy Coffee a Campo Parignano.',
-              'Er degrado s\'è magnato \'sta valle: umani e pokémon che se fanno la guerra, bande, misteri che nun se chiariscono mai.',
-              'Bobby vo\' riaprì er su\' bar, e nnoialtri difendemo i nostri. Ma serve uno de fiducia che conosce bbene \'sto territorio.'
+              'E i\' sò Elena, de l\'Happy Coffee a Campo Parignano.',
+              'Lu degrade s\'è magnate \'sta valle: uommene e pokémon che se fà la guerra, bande, mistere che nen se chiarisce mai.',
+              'Bobby vo\' riaprì lu bar suó, e nu defennéme li nuostre. Ma serve une de fiducia che conosce bbé \'stu territorie.'
             ],
             name: 'Elena'
           },
-          { say: ['Pé questo t\'ho chiamato, {player}. Tocca a tté sfidà le otto palestre e rimette\' a posto \'l Piceno.'], name: 'Bobby' },
+          { say: ['Pe quiste te sò chiamate, {player}. Tocca a te sfidà li otte palestre e remètte a poste lu Piceno.'], name: 'Bobby' },
           {
             choice: 'Dove vuoi iniziare?',
             options: [
@@ -78,7 +78,7 @@
                   { setFlag: 'starter_scelto' },
                   { setFlag: 'starter_basilino' },
                   { giveItem: 'ball', qty: 5 },
-                  { say: 'Bravo, statte accorto pé le grotte!', name: 'Bobby' }
+                  { say: 'Bbrave, statte accorte pe li grotte!', name: 'Bobby' }
                 ]
               },
               {
@@ -88,7 +88,7 @@
                   { setFlag: 'starter_scelto' },
                   { setFlag: 'starter_tuffito' },
                   { giveItem: 'ball', qty: 5 },
-                  { say: 'Bravo, mo\' vai a mmojatte \'n compagnia!', name: 'Bobby' }
+                  { say: 'Bbrave, mó vanne a bagnatte \'n combagnia!', name: 'Bobby' }
                 ]
               },
               {
@@ -98,7 +98,7 @@
                   { setFlag: 'starter_scelto' },
                   { setFlag: 'starter_puledrotto' },
                   { giveItem: 'ball', qty: 5 },
-                  { say: 'Bravo, e mo\' famme vedé che sai fa\'!', name: 'Bobby' }
+                  { say: 'Bbrave, e mó fàmme vedé mùnde vale!', name: 'Bobby' }
                 ]
               }
             ]
@@ -107,11 +107,11 @@
       },
       {
         x: 24, y: 21, name: 'Steven', sprite: 'steven', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
-        script: [{ say: 'Er bar Callare è sempre aperto, {player}. Passa quando vôi.', name: 'Steven' }]
+        script: [{ say: 'Lu bar Callare è sèmbre aperte, {player}. Passa quanne vuò.', name: 'Steven' }]
       },
       {
         x: 28, y: 21, name: 'Elena', sprite: 'elena', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
-        script: [{ say: 'All\'Happy Coffee te tengo sempre un posto, {player}.', name: 'Elena' }]
+        script: [{ say: 'A l\'Happy Coffee te tènghe sèmbre nu poste, {player}.', name: 'Elena' }]
       }
     ]
   };

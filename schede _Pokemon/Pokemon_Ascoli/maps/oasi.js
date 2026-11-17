@@ -44,7 +44,7 @@
     npcs: [
       npc(29, 9, 'Cartello', 'Oasi naturalistica — silenzio.', 'fermo'),
       npc(17, 29, 'Birdwatcher del posto', 'Sst, se stai zitto magari vedi un Tamburino sull\'acqua.', 'fermo'),
-      npc(51, 41, 'Gitante', 'Semo venuti pé fa\' n\' pò de picnic, tra n\' pò se magna!', 'fermo')
+      npc(51, 41, 'Gitante', 'Séme venute pe fà nu picnic, tra \'mbuóca se magna!', 'fermo')
     ]
   };
   const map = window.PokemonAscoliMaps.oasi;

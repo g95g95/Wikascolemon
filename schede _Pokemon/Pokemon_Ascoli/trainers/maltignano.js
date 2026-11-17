@@ -4,26 +4,26 @@
       map: 'maltignano', x: 27, y: 27, direction: 'left', sight: 4,
       class: 'ciclista', name: 'Renzo', sprite: null,
       team: [{ species: 'cignalo', level: 10 }, { species: 'tifotto', level: 10 }],
-      before: ['Frena frena! Manco me pare vero de trovà quarcuno quassù.', 'Chi sarto sti tornanti a piedi se merita na bella lezione!'],
-      after: ['Mannaggia, m\'hai frenato pure tu.'],
-      lost: 'Va bene, va bene, statte tranquillo.',
+      before: ['Frena, frena!', 'Manche me pare vére de trovà cacchedune \'ssassù. Chi sùve \'sti tornande a piede se merita na bbella lezió!'],
+      after: ['Mannaggia, me jé frenate pure tu.'],
+      lost: 'Va bbè, va bbè, statte tranquille.',
       money: null, gym: null, when: null
     },
     maltignano_ragazzino_1: {
       map: 'maltignano', x: 11, y: 21, direction: 'right', sight: 4,
       class: 'ragazzino', name: 'Dino', sprite: null,
       team: [{ species: 'pefna', level: 9 }, { species: 'totera', level: 10 }],
-      before: ['Ohò, se sarto sti curvoni pé allename\', mica pé passeggià!', 'Batte pure a me, se te ce riesci.'],
-      after: ['Uffa, quasi quasi ce credevo.'],
-      lost: 'Torna quando hai fiato pé risarì.',
+      before: ['Ohò, sùve \'sti curve p\'allenamme, nen pe passeggià!', 'Bbatte pure me, se ce riesce.'],
+      after: ['Uffa, quase quase ce credié.'],
+      lost: 'Torna quanne tiéne fiate pe resùve.',
       money: null, gym: null, when: null
     },
     maltignano_contadino_1: {
       map: 'maltignano', x: 32, y: 15, direction: 'left', sight: 4,
       class: 'contadino', name: 'Osvaldo', sprite: null,
       team: [{ species: 'cignalo', level: 11 }],
-      before: ['Quassù ce cammino tutte le matine co\' le bestie.', 'Se vuoi passà, prima famme vedé quanto vali.'],
-      after: ['Bravo, tié le gambe bbone.'],
+      before: ['\'Ssassù ce cammine tutte li matine che li bestie.', 'Se vuò passà, prima fàmme vedé mùnde vale.'],
+      after: ['Bbrave, tiéne li gambe bbone.'],
       lost: 'Passa pure, la prossima vorda arifacimo.',
       money: null, gym: null, when: null
     },
@@ -32,12 +32,12 @@
       class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'puledrotto', level: 10 }, { species: 'tamburino', level: 9 }],
       before: [
-        'Ah, sei tu quello che Bobby va dicenno in giro?',
-        'Io so\' Nando, mi\' zio tié il bar rivale ju a Porta Maggiore — e ha vinto lui, ricordatelo!',
-        'Mica t\'ho aspettato quassù pé fatte i complimenti. Famo \'na sfida!'
+        'Ah, jé tu quille che Bobby va dicènne \'n giro?',
+        'I\' sò Nando, zìeme tène lu bar rivale jó a Porta Maggiore — isse è vinte, ricòrdete!',
+        'Nen te sò aspettate \'ssassù pe fatte li complimende. Facéme na sfida!'
       ],
-      after: ['Bah, so\' stato distratto dalla salita.'],
-      lost: 'Rifacimo quando risarti, se ce riesci.',
+      after: ['Bah, sò state distratte da la sùveta.'],
+      lost: 'Refacéme quanne resùve, se ce riesce.',
       money: 400, gym: null, when: { flag: 'starter_basilino' }
     },
     maltignano_nando_tuffito: {
@@ -45,12 +45,12 @@
       class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'tuffito', level: 10 }, { species: 'tamburino', level: 9 }],
       before: [
-        'Ah, sei tu quello che Bobby va dicenno in giro?',
-        'Io so\' Nando, mi\' zio tié il bar rivale ju a Porta Maggiore — e ha vinto lui, ricordatelo!',
-        'Mica t\'ho aspettato quassù pé fatte i complimenti. Famo \'na sfida!'
+        'Ah, jé tu quille che Bobby va dicènne \'n giro?',
+        'I\' sò Nando, zìeme tène lu bar rivale jó a Porta Maggiore — isse è vinte, ricòrdete!',
+        'Nen te sò aspettate \'ssassù pe fatte li complimende. Facéme na sfida!'
       ],
-      after: ['Bah, so\' stato distratto dalla salita.'],
-      lost: 'Rifacimo quando risarti, se ce riesci.',
+      after: ['Bah, sò state distratte da la sùveta.'],
+      lost: 'Refacéme quanne resùve, se ce riesce.',
       money: 400, gym: null, when: { flag: 'starter_puledrotto' }
     },
     maltignano_nando_basilino: {
@@ -58,12 +58,12 @@
       class: 'rivale', name: 'Nando', sprite: 'nando',
       team: [{ species: 'basilino', level: 10 }, { species: 'tamburino', level: 9 }],
       before: [
-        'Ah, sei tu quello che Bobby va dicenno in giro?',
-        'Io so\' Nando, mi\' zio tié il bar rivale ju a Porta Maggiore — e ha vinto lui, ricordatelo!',
-        'Mica t\'ho aspettato quassù pé fatte i complimenti. Famo \'na sfida!'
+        'Ah, jé tu quille che Bobby va dicènne \'n giro?',
+        'I\' sò Nando, zìeme tène lu bar rivale jó a Porta Maggiore — isse è vinte, ricòrdete!',
+        'Nen te sò aspettate \'ssassù pe fatte li complimende. Facéme na sfida!'
       ],
-      after: ['Bah, so\' stato distratto dalla salita.'],
-      lost: 'Rifacimo quando risarti, se ce riesci.',
+      after: ['Bah, sò state distratte da la sùveta.'],
+      lost: 'Refacéme quanne resùve, se ce riesce.',
       money: 400, gym: null, when: { flag: 'starter_tuffito' }
     }
   });

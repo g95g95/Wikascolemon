@@ -29,7 +29,7 @@
     ],
     npcs: [{
       x: 3, y: 3, name: 'Barista', sprite: 'barista', movement: 'fermo',
-      script: [{ say: 'Che te faccio?', name: 'Barista' }, { heal: true }, { say: 'Ecco fatto! La squadra è come nuova.', name: 'Barista' }]
+      script: [{ say: 'Che te pòrte?', name: 'Barista' }, { heal: true }, { say: 'Ècche fatte! La squadra è come nòva.', name: 'Barista' }]
     }]
   });
 

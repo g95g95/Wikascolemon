@@ -19,8 +19,8 @@
     ],
     npcs: [
       npc(37, 36, 'Tifoso', 'Lo stadio è il cuore di Borgo Chiaro.', 'orizzontale'),
-      npc(22, 26, 'Steward', 'La domenica se riempie ancora, ma fori\' dallo stadio è tutto chiuso.', 'fermo'),
-      npc(51, 41, 'Residente', 'Certe bande se fanno vedè de sera, mejo passà de giorno.', 'verticale')
+      npc(22, 26, 'Steward', 'La domenica se rempie ancora, ma fore de lu stadie è tutte chiuse.', 'fermo'),
+      npc(51, 41, 'Residente', 'Certe bande se fà vedé de sera, mègghje passà de giorne.', 'verticale')
     ]
   };
   const map = window.PokemonAscoliMaps.borgo_chiaro;

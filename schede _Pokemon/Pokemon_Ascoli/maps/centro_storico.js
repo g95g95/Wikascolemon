@@ -20,9 +20,9 @@
             {
               say: [
                 'La palestra del Ventidio è chiusa: "riprese", dicono.',
-                'Er capopalestra Ossidio non c\'è, è via pé \'ste riprese.',
-                'Se vuoi girà, pija la Salaria vero \'l mare, passanno da Monticelli.',
-                'Torna quanno riapre, uagliò.'
+                'Lu capopalestra Ossidio nen c\'è, è via pe \'sti riprese.',
+                'Se vuò girà, pigghja la Salaria verse lu mare, passènne da Monticelli.',
+                'Torna quanne riapre, frechì.'
               ],
               name: 'Maschera'
             },
@@ -47,12 +47,12 @@
       transition(48, 67, 4, 2, 'porta_cartara', 26, 4, 'Porta Cartara')
     ],
     npcs: [
-      npc(34, 42, 'Cittadino', 'Bande de regazzi girano la notte, mo\' manco più en piazza se sta tranquilli.', 'orizzontale'),
-      npc(73, 59, 'Visitatrice', 'Quanti bar chiusi pé sto giro, era tutto \'n antra cosa.', 'fermo'),
-      npc(17, 42, 'Steven', 'Il bar è mio, ma qui te curo la squadra come al centro medico.', 'fermo'),
-      npc(22, 6, 'Ambulante', 'Fori\' dar teatro nun se fa\' più \'l botteghino, mo\' vennemo torroncini.', 'fermo'),
-      npc(25, 27, 'Cronista di quartiere', 'Ossidio via pé le riprese? Boh, io un ciò creso mai.', 'orizzontale'),
-      npc(61, 43, 'Pellegrino', 'A Sant\'Emidio ce vengo ogni anno, da quanno era regazzino.', 'verticale')
+      npc(34, 42, 'Cittadino', 'Bande de frechì gira de notte, mó manche \'n piazza se sta tranquille.', 'orizzontale'),
+      npc(73, 59, 'Visitatrice', 'Quande bar chiuse pe \'stu gire, èra tutta n\'addra cosa.', 'fermo'),
+      npc(17, 42, 'Steven', 'Lu bar è mié, ma ècche te cure la squadra come a lu centre medeche.', 'fermo'),
+      npc(22, 6, 'Ambulante', 'Fore de lu teatre nen se fà più lu botteghì, mó vennéme torrongì.', 'fermo'),
+      npc(25, 27, 'Cronista di quartiere', 'Ossidio via pe li riprese? Boh, i\' nen ce sò credute mai.', 'orizzontale'),
+      npc(61, 43, 'Pellegrino', 'A Sant\'Emidio ce vènghe ogne anne, da quanne èra frechì.', 'verticale')
     ]
   };
   const map = window.PokemonAscoliMaps.centro_storico;
