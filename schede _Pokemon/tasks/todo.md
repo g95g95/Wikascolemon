@@ -55,6 +55,9 @@ Le porte si aprono (provato da Jacopo il 17/11).
   sorgente (`src/battle_main.c`) va prima rimesso YOUNGSTER/LASS o cambiato a mano.
   Jacopo ha parlato di «tipologia personaggi»: probabile che voglia rivedere anche le altre classi.
 
+**Deciso da Jacopo il 17/11: la musica di Hoenn resta.** «Togliere Hoenn» (passo 6) vuol dire mappe,
+allenatori e schermata di Vola, non le musiche: quelle si tengono e si riusano nelle nostre zone.
+
 **Chiesto da Jacopo il 17/11, da fare più avanti: le bacche diventano «COCCHIE»**
 - «Cocchia» è una parola nostra: il guscio, la buccia. Nel gioco le bacche si chiamano cocchie e
   sono al massimo una quindicina (oggi il motore ne ha una settantina).
