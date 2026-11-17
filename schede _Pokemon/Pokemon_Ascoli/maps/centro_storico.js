@@ -22,7 +22,7 @@
                 'La palestra del Ventidio è chiusa: "riprese", dicono.',
                 'Lu capopalestra Ossidio nen c\'è, è via pe \'sti riprese.',
                 'Se vuò girà, pigghja la Salaria verse lu mare, passènne da Monticelli.',
-                'Torna quanne riapre, frechì.'
+                'Torna quanne riapre, capo.'
               ],
               name: 'Maschera'
             },

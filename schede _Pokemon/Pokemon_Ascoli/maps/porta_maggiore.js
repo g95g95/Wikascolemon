@@ -50,7 +50,7 @@
       {
         x: 26, y: 21, name: 'Bobby', sprite: 'bobby', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
         script: [
-          { say: ['Ehó, frechì! Viénne, viénne, che te presènde chi cónda veramènde da \'sti parte.'], name: 'Bobby' },
+          { say: ['Oh capo! Viénne, viénne, che te presènde chi cónda veramènde da \'sti parte.'], name: 'Bobby' },
           {
             say: [
               'I\' sò Steven, tènghe lu bar Callare a lu Centro Storico.',

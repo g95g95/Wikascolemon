@@ -6,7 +6,7 @@
       team: [{ species: 'tifotto', level: 6 }, { species: 'totera', level: 7 }],
       before: ['Ehó, aspetta!', 'Manche nu salute? \'Ccima a la Salaria se allena forte!'],
       after: ['Va bbè, me jé frecate \'sta vodda.'],
-      lost: 'Torna a trovamme quanne vuò, frechì.',
+      lost: 'Torna a trovamme quanne vuò, capo.',
       money: null, gym: null, when: null
     },
     marino_del_tronto_ragazzina_1: {

@@ -41,7 +41,7 @@
       class: 'dj', name: 'Mauri', sprite: null,
       team: [{ species: 'mucillax', level: 19 }, { species: 'bagnetto', level: 18 }],
       before: ['Ué, prima de entrà a lo Jonathan te tocca passà da me!', 'Massera facce lu set, ma mó facéme na lotta pe scallacce.'],
-      after: ['Bbella energia, frechì! Massera te sènde dietre li speaker, magari.'],
+      after: ['Bbella energia, capo! Massera te sènde dietre li speaker, magari.'],
       lost: 'Torna quanne tiéne n\'addre Pokémon, sennò lu ritme se pèrde.',
       money: null, gym: null, when: null
     }

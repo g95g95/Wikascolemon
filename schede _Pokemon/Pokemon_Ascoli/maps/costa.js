@@ -81,7 +81,7 @@
           { say: 'E dapuó tre minute savàme già jó \'ccima a la sabbia, tutt\'e ddó.', name: 'Teo' },
           { say: 'Ce è pure remannate a lu congresse, testuale. "Jéte a lu congresse, jéte".', name: 'Ivo' },
           { say: 'Se vuò \'ndrà a lu Jonathan, vide che Riccio sta llà dietre, protette da li Bro della Security.', name: 'Teo' },
-          { say: 'Fàtte forte prima de provacce, frechì. Nen come nu.', name: 'Ivo' },
+          { say: 'Fàtte forte prima de provacce, capo. Nen come nu.', name: 'Ivo' },
           { setFlag: 'ivo_teo_visti' }
         ]
       },
