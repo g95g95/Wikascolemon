@@ -1,4 +1,54 @@
-# ▶ A CHE PUNTO SIAMO (17/11/2026 — Jacopo ha scelto i passi 1, 2 e 3, più la T dei tabacchi)
+# ▶ A CHE PUNTO SIAMO (17/11/2026, fine giornata — Jacopo: «per ora ci fermiamo qui»)
+
+## ✅ DA FARE (lista unica, al 17/11 sera)
+
+Il gioco si gioca dal treno alla prima medaglia e fino a Spinetoli e Centobuchi. ROM: `pokemon-piceno.gba`
+delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallelo e ha un suo piano in
+`pokemon-piceno/tasks/todo.md`: **i due piani restano separati per ora** (deciso da Jacopo), si integrano dopo.
+
+**Da provare in gioco (fatto il 17/11 pomeriggio e sera, visto solo in anteprima)**
+- [ ] La scena del treno (serve una partita nuova): scossa, annuncio, discesa, Bobby alla stazione.
+- [ ] Spinetoli e Centobuchi, e il blocco a Castel di Lama senza la Medaglia Spirito.
+- [ ] Le piante di cocchie: cogliere, ripiantare, i messaggi tradotti.
+- [ ] Gli interni coi mobili nuovi.
+- [ ] Zaotto e zaotta in lotta.
+
+**Decisioni che aspettano Jacopo**
+- [ ] Approvare la proposta di Giulio sulle 120 abilità (`pokemon-piceno/tasks/abilita_proposte.md`, 5 decisioni aperte).
+- [ ] Rivedere l'abbinamento cocchia → effetto (l'ho scelto io, elenco più sotto).
+- [ ] Le altre classi degli allenatori: dopo zaotto e zaotta, quali altri nomi cambiare.
+- [ ] Togliere Hoenn (passo 6): **prima un'analisi approfondita**. La musica resta. Non serve per i
+      numeri degli allenatori (nel motore sono 855, ne usiamo 27).
+
+**Piccole cose lasciate aperte**
+- [ ] MT Velenospina: Hills non la dà (la mossa c'è, lo strumento MT no).
+- [ ] Dopo una sconfitta si riparte sempre da Porta Maggiore: dare un punto a Castel di Lama.
+- [ ] Nessuno dà il Vaso Wailmer per annaffiare le piante.
+- [ ] «CAMPEGGIAT.» abbreviato (12 lettere al massimo) e gemelle «NICE-DICE» (10 lettere).
+- [ ] Le righe tradotte più lunghe dell'originale, da guardare a schermo (`python tools/piceno/traduci.py --avvisi`).
+- [ ] Interni: 1 pixel di fessura fra cassa e bancone (tabacchi) e fra i banconi della pizzeria; tappeto dietro il divano.
+- [ ] Battute scritte da me da rivedere: annuncio del treno e capotreno, cartelli «strada chiusa»,
+      messaggio della medaglia, due frasi di Nando e di Hills (ora in ascolano, da Giulio).
+
+**Grafica**
+- [ ] Piante e icone delle cocchie: sono ancora quelle delle bacche di Hoenn.
+- [ ] Figure in lotta degli altri allenatori (il contadino ha ancora il cappello verde).
+- [ ] Terreno, alberi e acqua sono di Hoenn; edifici dipinti da codice. Fogli di Jacopo in ChatGPT quando vuole.
+
+**Traduzione**
+- [ ] Nomi e descrizioni degli strumenti (tranne le cocchie), testi delle mappe di Hoenn.
+- [ ] Prefissi in lotta «Nemico X» / «Selvatico X» senza articolo.
+- [ ] Dialetto: rilettura di un parlante sul foglio di Giulio (`pokemon-piceno/tasks/battute_da_rileggere.md`).
+
+**Motore di lotta (lo sta seguendo Giulio)**
+- [ ] Le 120 abilità senza effetto, le ~85 mosse con effetti particolari, le evoluzioni rimaste fuori, Iperfuria.
+- [ ] Le mosse scelte a mano nella demo per gli allenatori non sono portate; bilanciamento mai guardato.
+
+**Zone ancora da portare**
+- [ ] Costa (con le cocchie di mare: granchio, cozza, vongola, riccio), Jonathan, Ripatransone, la seconda palestra.
+
+---
+
 
 **La ROM è una sola:** `pokemon-piceno.gba` nella cartella del repo `pokemon-piceno` (ignorata da git).
 Si aggiorna sempre quel file; se mGBA lo tiene aperto non si può sovrascrivere, quindi va chiuso prima.
