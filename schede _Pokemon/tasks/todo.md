@@ -31,11 +31,18 @@ giro, possibilmente ai bordi delle aree»). Il passo 6 (togliere Hoenn) vuole pr
   Cocco = scottatura, Ghianda = gelo, Pinolo = PP, Lupino = confusione, Uovo = tutti gli stati,
   Granchio = Attacco, Cozza = Difesa, Lumaca = Velocità, Riccio di mare = Att. Sp., Vongola = Dif. Sp.,
   Bruscolino = brutti colpi, Arachide = una statistica a caso. «Bacca/Bacche» è «Cocchia/Cocchie»
-  in menu e lotta. In giro: due o tre per zona (27 in tutto), ai bordi, sull'erba, da raccogliere una
-  volta sola come gli strumenti a terra; posto e indicatore stanno in `tools/piceno/cocchie.json`.
-  Per ora solo quelle «di terra»: granchio, cozza, vongola e riccio aspettano la Costa.
-  Da fare: **l'icona è ancora quella della bacca e a terra si vede una Poké Ball**; non ricrescono;
-  le altre bacche restano nel motore ma non si trovano.
+  in menu e lotta. In giro: due o tre per zona (27 in tutto), ai bordi, sull'erba.
+  **Si colgono dalle PIANTE, come le bacche di Smeraldo** (chiesto da Jacopo il 17/11 sera, commit
+  `eb24b09c89`, ROM delle 19:17): terreno soffice, crescono, si colgono, si ripiantano, si annaffiano.
+  I numeri degli alberi sono presi in prestito da quelli di Hoenn (dove si può, uno che in Hoenn ha
+  la stessa bacca); posto e albero stanno in `tools/piceno/cocchie.json`, e cosa c'è piantato in una
+  partita nuova lo scrive `cocchie.py` in `data/scripts/new_game.inc`. Messaggi delle piante
+  tradotti (`traduzione/alberi.txt`). Per ora solo quelle «di terra»: granchio, cozza, vongola e
+  riccio aspettano la Costa.
+  Da fare o da guardare: **la pianta e l'icona sono ancora quelle della bacca di Hoenn** (la noce
+  cresce sulla pianta della Baccarancia); in una partita cominciata prima di oggi quattro piante
+  (le due «Uovo» e due «Castagna») hanno ancora la bacca di Hoenn finché non si ripiantano; nessuno
+  dà ancora il Vaso Wailmer; le altre bacche restano nel motore ma non si trovano.
 - **Numeri degli allenatori** (correzione, Jacopo aveva ragione): nel motore gli allenatori di Hoenn
   sono 855. `allenatori.py` prende in prestito solo le 53 reclute (27 usate): finite quelle basta
   allargare l'elenco. Togliere Hoenn non serve per questo.
