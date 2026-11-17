@@ -41,6 +41,19 @@ Le porte si aprono (provato da Jacopo il 17/11).
   Mo' vedi d'usalla bene.», il messaggio della medaglia, il cartello «Spinetoli - strada chiusa».
 - Le figure in lotta del contadino e degli altri sono ancora quelle di Hoenn (il contadino in lotta
   ha il cappello verde, sulla mappa di paglia).
+- «CAMPEGGIAT.» è abbreviato perché il motore regge 12 lettere per il nome di una classe
+  (`u8 name[13]` in `include/data.h`): o si allarga il campo, o si sceglie un nome più corto.
+- La sala della palestra è 15×14, più piccola di quella della demo (24×20).
+- Nell'insegna dei tabacchi le tre righe di scritta sono tratti bianchi: a quella misura le lettere non ci stanno.
+- Niente di tutto il lavoro del 17/11 è stato provato in gioco da me: solo anteprime e compilazione.
+  Jacopo, il 17/11, a ROM ricevuta: «semplicemente stupendo».
+
+**Chiesto da Jacopo il 17/11, da fare più avanti: cambiare i nomi delle classi degli allenatori**
+- bullo/ragazzino diventa **«ZAOTTO»**, ragazzina diventa **«ZAOTTA»**. Oggi sono RAGAZZINO e RAGAZZINA:
+  si cambiano in `tools/piceno/traduzione/classi.txt` (righe YOUNGSTER e LASS) e si rilancia
+  `python tools/piceno/traduci.py`; attenzione che lo strumento cerca l'originale inglese, quindi nel
+  sorgente (`src/battle_main.c`) va prima rimesso YOUNGSTER/LASS o cambiato a mano.
+  Jacopo ha parlato di «tipologia personaggi»: probabile che voglia rivedere anche le altre classi.
 
 **Difetto pagato il 16/11:** dopo aver ridipinto gli edifici nessuna porta si apriva (i muri avevano
 un pixel trasparente ai lati e `edifici.py` prendeva gli edifici per arredi). Ora `edifici.py` si
