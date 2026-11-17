@@ -4,7 +4,43 @@
 Si aggiorna sempre quel file; se mGBA lo tiene aperto non si può sovrascrivere, quindi va chiuso prima.
 Le porte si aprono (provato da Jacopo il 17/11).
 
-**Fatto il 17/11 (commit `2e5c76e9a7` di `pokemon-piceno`, compilata: `pokemon-piceno.gba` delle 11:17) — DA PROVARE in gioco**
+**Fatto il 17/11 pomeriggio (commit `33fe494659` e `af4e913216` di `pokemon-piceno`) — DA PROVARE in gioco**
+Jacopo ha chiesto i passi 4 e 5, Spinetoli e Centobuchi, zaotto/zaotta e le cocchie (messe «un po' in
+giro, possibilmente ai bordi delle aree»). Il passo 6 (togliere Hoenn) vuole prima un'analisi a parte.
+- **Passo 4, la scena del treno.** La partita nuova comincia nel vagone (`PortaMaggiore_Treno`, una
+  «stanza in più» della pianta): il vagone trema, il treno frena, l'altoparlante annuncia Ascoli, si
+  scende dalla porta e si esce davanti alla stazione, dove Bobby viene incontro col saluto della demo
+  e poi aspetta al bar. `VAR_UNUSED_0x404E` conta i passi (0 in treno, 1 sceso, 2 salutato);
+  `FLAG_UNUSED_0x022` nasconde il Bobby della stazione. I suoni sono quelli del camion di Smeraldo.
+  **Si vede solo con una partita nuova.** Battute mie da rivedere: l'annuncio («Dlin dlon! Stazione di
+  ASCOLI PICENO. Fine della corsa. Si prega di scendere.») e il capotreno.
+- **Passo 5, interni.** I 44 mobili sono ridisegnati in codice col kit (`tools/piceno/mobili.py`),
+  alla stessa misura dei ritagli della demo; le piante sono verdi. Tutti usano le stesse 15 tinte: le
+  stanze sono a filo dei 15 colori, aggiungere una tinta vuol dire toglierne un'altra. Sbavature
+  note: 1 pixel di fessura fra cassa e bancone ai tabacchi e fra i due banconi della pizzeria; il
+  tappeto dietro il divano si legge male.
+- **Spinetoli e Centobuchi** (60×40, set `piceno_campagna` più il bar): la provinciale con la rotonda,
+  Bar dello Sport e due case coloniche con interno, due capannoni, i campi. Quattro allenatori sulle
+  strade bianche (Learco, Dante, Renzo, le gemelle «NICE-DICE»: il motore regge 10 lettere). Da
+  Castel di Lama **non si passa senza la Medaglia Spirito**. A est la strada per la Costa è chiusa.
+  Carta delle zone: 320,0. Cartina: casella 18,7 («SPINETOLI»).
+- **Zaotto e zaotta**: fatto (`classi.txt` e `src/battle_main.c`).
+- **Cocchie**: fatto. `tools/piceno/cocchie.py` rinomina 17 bacche (nome, plurale, descrizione) e ne
+  tiene l'effetto. L'abbinamento l'ho scelto io, **da rivedere**: Noce = Baccarancia (10 PS),
+  Castagna = Baccacedro (PS), Pistacchio = paralisi, Nocciola = sonno, Mandorla = veleno,
+  Cocco = scottatura, Ghianda = gelo, Pinolo = PP, Lupino = confusione, Uovo = tutti gli stati,
+  Granchio = Attacco, Cozza = Difesa, Lumaca = Velocità, Riccio di mare = Att. Sp., Vongola = Dif. Sp.,
+  Bruscolino = brutti colpi, Arachide = una statistica a caso. «Bacca/Bacche» è «Cocchia/Cocchie»
+  in menu e lotta. In giro: due o tre per zona (27 in tutto), ai bordi, sull'erba, da raccogliere una
+  volta sola come gli strumenti a terra; posto e indicatore stanno in `tools/piceno/cocchie.json`.
+  Per ora solo quelle «di terra»: granchio, cozza, vongola e riccio aspettano la Costa.
+  Da fare: **l'icona è ancora quella della bacca e a terra si vede una Poké Ball**; non ricrescono;
+  le altre bacche restano nel motore ma non si trovano.
+- **Numeri degli allenatori** (correzione, Jacopo aveva ragione): nel motore gli allenatori di Hoenn
+  sono 855. `allenatori.py` prende in prestito solo le 53 reclute (27 usate): finite quelle basta
+  allargare l'elenco. Togliere Hoenn non serve per questo.
+
+**Fatto il 17/11 mattina (commit `2e5c76e9a7` di `pokemon-piceno`) — giocato da Jacopo fino alla medaglia: «stupendo», le scritte stanno nella finestra**
 - **Passo 1, strada fino alla prima palestra.** Maltignano (50×44, set `piceno_campo`): si entra
   dall'Oasi in basso a ovest, tornanti fino al paese in cima (chiesa, Bar della Salita con interno),
   discesa a est; fra i tornanti alberi, con due varchi d'erba alta per tagliare. Allenatori Renzo,
@@ -48,7 +84,7 @@ Le porte si aprono (provato da Jacopo il 17/11).
 - Niente di tutto il lavoro del 17/11 è stato provato in gioco da me: solo anteprime e compilazione.
   Jacopo, il 17/11, a ROM ricevuta: «semplicemente stupendo».
 
-**Chiesto da Jacopo il 17/11, da fare più avanti: cambiare i nomi delle classi degli allenatori**
+**Chiesto da Jacopo il 17/11: cambiare i nomi delle classi degli allenatori (zaotto e zaotta FATTI nel pomeriggio)**
 - bullo/ragazzino diventa **«ZAOTTO»**, ragazzina diventa **«ZAOTTA»**. Oggi sono RAGAZZINO e RAGAZZINA:
   si cambiano in `tools/piceno/traduzione/classi.txt` (righe YOUNGSTER e LASS) e si rilancia
   `python tools/piceno/traduci.py`; attenzione che lo strumento cerca l'originale inglese, quindi nel
@@ -58,7 +94,7 @@ Le porte si aprono (provato da Jacopo il 17/11).
 **Deciso da Jacopo il 17/11: la musica di Hoenn resta.** «Togliere Hoenn» (passo 6) vuol dire mappe,
 allenatori e schermata di Vola, non le musiche: quelle si tengono e si riusano nelle nostre zone.
 
-**Chiesto da Jacopo il 17/11, da fare più avanti: le bacche diventano «COCCHIE»**
+**Chiesto da Jacopo il 17/11: le bacche diventano «COCCHIE» (FATTO nel pomeriggio, vedi in cima)**
 - «Cocchia» è una parola nostra: il guscio, la buccia. Nel gioco le bacche si chiamano cocchie e
   sono al massimo una quindicina (oggi il motore ne ha una settantina).
 - L'elenco da cui prenderle è il preset «Cocchie» di TierForge (https://g95g95.github.io/tierforge/,
@@ -81,12 +117,12 @@ ferma se la porta di un edificio non è una soglia. Controllare che una porta si
 basta: va controllato anche il comportamento del blocco.
 
 **Prossimi passi, nell'ordine proposto a Jacopo il 16/11 (1-3 fatti il 17/11, gli altri non ancora scelti)**
-4. La scena iniziale: Oliver che arriva in treno alla stazione.
-5. Interni: piante venute scure; mobili da ridisegnare col kit invece che ripuliti dalla demo.
-6. Togliere Hoenn: schermata di Vola, mappe e allenatori di Hoenn (libera i numeri degli allenatori).
+4. e 5. fatti il 17/11 pomeriggio (scena del treno, interni).
+6. Togliere Hoenn: schermata di Vola, mappe e allenatori di Hoenn. **Prima serve un'analisi più
+   approfondita** (detto da Jacopo il 17/11); la musica resta.
 7. Le cose messe da parte: Iperfuria, le 120 abilità senza effetto, le 38 mosse con numeri diversi
    dalle ufficiali, le ~85 mosse con effetti particolari, le 17 evoluzioni speciali lasciate fuori.
-8. Le altre zone della demo: Spinetoli e Centobuchi, Costa, Jonathan, Ripatransone.
+8. Le altre zone della demo: Costa, Jonathan, Ripatransone (Spinetoli e Centobuchi fatta il 17/11).
 
 **In una giornata si è passati dalla demo nel browser alla ROM hack vera.** Decisione di Jacopo del
 16/11: si lavora direttamente sul motore (`pokeemerald-expansion`); alla demo non si aggiungono più
