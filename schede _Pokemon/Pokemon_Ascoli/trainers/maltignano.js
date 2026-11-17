@@ -13,7 +13,7 @@
       map: 'maltignano', x: 11, y: 21, direction: 'right', sight: 4,
       class: 'ragazzino', name: 'Dino', sprite: null,
       team: [{ species: 'pefna', level: 9 }, { species: 'totera', level: 10 }],
-      before: ['Ohò, sùve \'sti curve p\'allenamme, nen pe passeggià!', 'Bbatte pure me, se ce riesce.'],
+      before: ['Ohò, sùve \'ste curve p\'allenamme, nen pe passeggià!', 'Bbatte pure me, se ce riesce.'],
       after: ['Uffa, quase quase ce credié.'],
       lost: 'Torna quanne tiéne fiate pe resùve.',
       money: null, gym: null, when: null

@@ -28,7 +28,7 @@
     npcs: [
       npc(45, 27, 'Infermiere', 'La zona dell’ospedale è sempre molto frequentata.', 'orizzontale'),
       npc(59, 44, 'Benzinaio', 'Manche più li camion se ferma ècche, è tutte \'n cale.', 'fermo'),
-      npc(13, 46, 'Pensionato', 'Certe bande s\'è viste pure da \'sti parte, tiéne l\'occhie aperte.', 'fermo')
+      npc(13, 46, 'Pensionato', 'Certe bande s\'è viste pure da \'ste parti, tiéne l\'occhie aperte.', 'fermo')
     ]
   };
   const map = window.PokemonAscoliMaps.monticelli;

@@ -27,7 +27,7 @@
       npc(8, 38, 'Elena', 'Che te pòrte? Nu bbuone caffè pe ripartì?', 'fermo'),
       npc(51, 13, 'Cartello', 'Sant’Emidio alle Grotte: da qui, tanto tempo fa, Bobby diede il primo Basilino a chi partiva.', 'fermo'),
       npc(23, 27, 'Bracciante', '\'Sti cambe na vodda rendàva de più, mó séme rimaste \'n poche.', 'fermo'),
-      npc(42, 30, 'Ragazzo', 'Certe bande gira de notte da \'sti parte, statte accorte.', 'verticale')
+      npc(42, 30, 'Ragazzo', 'Certe bande gira de notte da \'ste parti, statte accorte.', 'verticale')
     ]
   };
   const map = window.PokemonAscoliMaps.campo_parignano;

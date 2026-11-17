@@ -20,7 +20,7 @@
             {
               say: [
                 'La palestra del Ventidio è chiusa: "riprese", dicono.',
-                'Lu capopalestra Ossidio nen c\'è, è via pe \'sti riprese.',
+                'Lu capopalestra Ossidio nen c\'è, è via pe \'ste riprese.',
                 'Se vuò girà, pigghja la Salaria verse lu mare, passènne da Monticelli.',
                 'Torna quanne riapre, capo.'
               ],

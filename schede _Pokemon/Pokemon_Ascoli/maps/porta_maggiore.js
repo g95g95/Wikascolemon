@@ -50,11 +50,11 @@
       {
         x: 26, y: 21, name: 'Bobby', sprite: 'bobby', movement: 'fermo', when: { all: [{ flag: 'intro_vista' }, { notFlag: 'starter_scelto' }] },
         script: [
-          { say: ['Oh capo! Viénne, viénne, che te presènde chi cónda veramènde da \'sti parte.'], name: 'Bobby' },
+          { say: ['Oh capo! Viénne, viénne, che te presènde chi cónda veramènde da \'ste parti.'], name: 'Bobby' },
           {
             say: [
               'I\' sò Steven, tènghe lu bar Callare a lu Centro Storico.',
-              'Da \'sti parte li bar è come nu centre pe li pokémon: se cura, se riposa, se riparte.',
+              'Da \'ste parti li bar è come nu centre pe li pokémon: se cura, se riposa, se riparte.',
               '\'N Piceno c\'è otte palestre, ma è \'n mà a poche — e pure la lega mó è n\'affare private, mica pe la gende.'
             ],
             name: 'Steven'

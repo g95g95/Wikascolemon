@@ -13,7 +13,7 @@
       map: 'marino_del_tronto', x: 50, y: 28, direction: 'left', sight: 4,
       class: 'ragazzina', name: 'Serena', sprite: null,
       team: [{ species: 'tamburino', level: 7 }, { species: 'anicino', level: 7 }],
-      before: ['Auà, n\'ome che passeggia tranquille!', 'Da \'sti parte nen se passa senza lottà.'],
+      before: ['Auà, n\'ome che passeggia tranquille!', 'Da \'ste parti nen se passa senza lottà.'],
       after: ['Mbè, uója jé vinte tu.'],
       lost: 'Repassa quanne vuò, magari me refacce.',
       money: null, gym: null, when: null
