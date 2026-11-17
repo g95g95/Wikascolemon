@@ -63,13 +63,13 @@ allenatori e schermata di Vola, non le musiche: quelle si tengono e si riusano n
   sono al massimo una quindicina (oggi il motore ne ha una settantina).
 - L'elenco da cui prenderle è il preset «Cocchie» di TierForge (https://g95g95.github.io/tierforge/,
   39 voci: frutta secca, frutta con la buccia, «il resto»), **tolte quelle esotiche**.
-- Proposta mia, da confermare (15, solo cose che crescono dalle nostre parti): Noce, Nocciola,
-  Mandorla, Pinolo, Castagna, Arancia, Mandarino, Limone, Melograno, Anguria, Melone, Mela, Pera,
-  Fico d'India, Oliva. In dubbio: Oliva (Oliver è un'oliva), e Pane, che non è un frutto ma è nostro.
-  Scartate come esotiche: Anacardo, Noce pecan, Noce macadamia, Noce del Brasile, Noce di cocco,
-  Banana, Pompelmo, Ananas, Kiwi, Mango, Papaya, Litchi, Avocado, Frutto della passione, Pitaya;
-  fuori anche Pistacchio, Arachide, Clementina e le voci scherzose (Intonaco, Compensato, Ossa,
-  Denti, Telaio macchina).
+- **Scelte da Jacopo il 17/11 (10):** Noce, Nocciola, Mandorla, Pinolo, Castagna, Pistacchio,
+  Arachide, Uovo, Granchio, Cocco. Il criterio è il **guscio duro**, non la buccia: per questo la
+  mia prima proposta con la frutta (arance, mele, meloni) è caduta, e ci stanno anche cose che non
+  sono frutti (uovo, granchio).
+- Posti liberi: fino a 5. Idee mie sullo stesso criterio, non ancora scelte: Ghianda, Pigna, Lupino,
+  Bruscolino (seme di zucca), Fava, Carruba; fra gli animali Lumaca, Cozza, Vongola, Riccio di mare,
+  Tartaruga.
 - Da decidere quando si fa: quale effetto delle bacche ufficiali va a quale cocchia (cura dei PS,
   degli stati, dei PP...) e cosa succede alle bacche che restano fuori.
 
