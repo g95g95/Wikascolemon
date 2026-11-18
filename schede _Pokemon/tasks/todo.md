@@ -31,25 +31,29 @@ delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallel
       l'elenco delle mosse da MT (in `piceno_families.h` non c'è), quindi non la imparerebbe nessuno.
       Va con il lavoro sul motore di lotta (Giulio).
 - [x] Punto di ripartenza a Castel di Lama (18/11): chi cura fissa il punto della sua zona, se la zona ha
-      «ritorno» in `mappe/<id>.json`. Per ora ce l'hanno Porta Maggiore e Castel di Lama.
+      «ritorno» in `mappe/<id>.json`. Ce l'hanno Porta Maggiore, Castel di Lama, Monticelli e Spinetoli.
+      Le altre zone con un bar (Centro Storico, Campo Parignano, Maltignano) non ancora.
 - [x] L'annaffiatoio lo dà il custode nel capanno dell'Oasi (18/11; stanza `interno_capanno` in
       `stanze.json`, script in `mappe/Oasi_Capanno.inc`, battute mie in italiano).
 - [ ] «CAMPEGGIAT.» abbreviato (12 lettere al massimo) e gemelle «NICE-DICE» (10 lettere).
 - [ ] Le righe tradotte più lunghe dell'originale, da guardare a schermo (`python tools/piceno/traduci.py --avvisi`).
 - [x] Fessure di cassa e bancone delle pizze chiuse (18/11: ora sono larghi 32 pixel).
-- [ ] Interni: il tappeto dietro il divano si legge male (la disposizione viene dalla demo).
+- [x] Tappeto davanti al divano nelle case (18/11 sera, con «_cambi» in `stanze.json`).
 - [x] Battute scritte da me (treno, capotreno, cartelli, medaglia): vanno bene (Jacopo, 18/11).
 
 **Chiesto da Jacopo il 18/11**
-- [ ] **Box nei bar**: oggi non c'è modo di depositare e ritirare i Pokémon (nessun PC nelle nostre zone).
-      Idea di Jacopo: nei bar lo fa una **slot** (la macchinetta): le si parla e apre il deposito.
-      Serve il mobile nuovo (`mobili.py`), il suo posto nella stanza del bar e l'evento che apre il box.
+- [x] **Box nei bar** (18/11 sera, commit `ae88d34874`): in ogni bar c'è una **slot** (idea di Jacopo), disegnata
+      da me in `mobili.py` «per ora»; le si parla da sotto e apre il deposito di Smeraldo. Messaggio adattato
+      («infila una moneta nella slot»). In `stanze.json`: «_arredi» = mobili che la demo non ha, «_cambi» =
+      ritocchi alle stanze della demo. **Da provare in gioco**: depositare e ritirare, e uscire dal deposito.
 - [ ] **Rifare un po' di sprite dei Pokémon dell'inizio** (quelli che si incontrano fino alla prima medaglia).
       Da decidere quali e come (fogli di Jacopo in ChatGPT, poi li ritaglio io).
 
 **Grafica**
 - [ ] Piante e icone delle cocchie: sono ancora quelle delle bacche di Hoenn.
-- [ ] Figure in lotta degli altri allenatori (il contadino ha ancora il cappello verde).
+- [ ] Figure in lotta degli altri allenatori. Il contadino usa la figura dell'escursionista di Hoenn: nel file
+      il cappello è color sabbia e il gilet verde, e cappello, zaino e pantaloni hanno le stesse tinte. Da
+      capire con Jacopo cosa cambiare (18/11: non toccato).
 - [ ] Terreno, alberi e acqua sono di Hoenn; edifici dipinti da codice. Fogli di Jacopo in ChatGPT quando vuole.
 
 **Traduzione**
