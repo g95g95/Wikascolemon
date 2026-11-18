@@ -40,6 +40,13 @@ delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallel
 - [ ] Interni: il tappeto dietro il divano si legge male (la disposizione viene dalla demo).
 - [x] Battute scritte da me (treno, capotreno, cartelli, medaglia): vanno bene (Jacopo, 18/11).
 
+**Chiesto da Jacopo il 18/11**
+- [ ] **Box nei bar**: oggi non c'è modo di depositare e ritirare i Pokémon (nessun PC nelle nostre zone).
+      Idea di Jacopo: nei bar lo fa una **slot** (la macchinetta): le si parla e apre il deposito.
+      Serve il mobile nuovo (`mobili.py`), il suo posto nella stanza del bar e l'evento che apre il box.
+- [ ] **Rifare un po' di sprite dei Pokémon dell'inizio** (quelli che si incontrano fino alla prima medaglia).
+      Da decidere quali e come (fogli di Jacopo in ChatGPT, poi li ritaglio io).
+
 **Grafica**
 - [ ] Piante e icone delle cocchie: sono ancora quelle delle bacche di Hoenn.
 - [ ] Figure in lotta degli altri allenatori (il contadino ha ancora il cappello verde).
