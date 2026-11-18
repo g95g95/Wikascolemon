@@ -46,6 +46,9 @@ delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallel
       da me in `mobili.py` «per ora»; le si parla da sotto e apre il deposito di Smeraldo. Messaggio adattato
       («infila una moneta nella slot»). In `stanze.json`: «_arredi» = mobili che la demo non ha, «_cambi» =
       ritocchi alle stanze della demo. **Da provare in gioco**: depositare e ritirare, e uscire dal deposito.
+- [ ] **Rifare lo sprite di Hills** (chiesto da Jacopo il 18/11 sera). Oggi sulla mappa è una ricetta su
+      `psychic_m` e in lotta il chitarrista di Hoenn ricolorato (`figure.py`). Da chiarire se intende quello
+      sulla mappa, la figura in lotta o tutti e due.
 - [ ] **Rifare un po' di sprite dei Pokémon dell'inizio** (quelli che si incontrano fino alla prima medaglia).
       Da decidere quali e come (fogli di Jacopo in ChatGPT, poi li ritaglio io).
 
