@@ -60,7 +60,12 @@ delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallel
 - [ ] Terreno, alberi e acqua sono di Hoenn; edifici dipinti da codice. Fogli di Jacopo in ChatGPT quando vuole.
 
 **Traduzione**
-- [ ] Nomi e descrizioni degli strumenti (tranne le cocchie), testi delle mappe di Hoenn.
+- [ ] Strumenti in italiano (confermato da Jacopo il 18/11): **fatti i primi 27** (Ball, pozioni, cure di stato,
+      eteri, repellenti, Fune di Fuga, Caramella Rara, Vaso Cavedì) con `tools/piceno/strumenti.py` (commit
+      `96a28d6a9d`), che riscrive la voce intera: nome, plurale, descrizione. Gli altri ~850 restano in inglese e
+      si aggiungono alla tabella man mano che entrano nel gioco. **Non usare `traduci.py` per le descrizioni**:
+      sostituisce una riga ovunque compaia (la Poké Ball era rimasta «Per annaffiare / catching wild»).
+- [ ] Testi delle mappe di Hoenn.
 - [ ] Prefissi in lotta «Nemico X» / «Selvatico X» senza articolo.
 - [ ] Dialetto: rilettura di un parlante sul foglio di Giulio (`pokemon-piceno/tasks/battute_da_rileggere.md`).
 
