@@ -21,7 +21,7 @@ delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallel
 - [x] Abbinamento cocchia → effetto: va bene così (Jacopo, 18/11).
 - [ ] Il nome dell'annaffiatoio: Jacopo non vuole «Vaso Wailmer» ma un nome legato ai nostri Pokémon;
       ho messo **Vaso Cavedì** (il pesciolino dell'Oasi), da confermare. L'icona è ancora quella di Wailmer.
-- [ ] «CAMPEGGIAT.»: è la classe di Gino (Monticelli) e Marco (Oasi). Nome più corto o campo più largo?
+- [x] «CAMPEGGIAT.» è diventato **«ASCOLANO»** (Jacopo, 18/11): la classe di Gino (Monticelli) e Marco (Oasi).
 - [ ] Le altre classi degli allenatori: dopo zaotto e zaotta, quali altri nomi cambiare.
 - [ ] Togliere Hoenn (passo 6): **prima un'analisi approfondita**. La musica resta. Non serve per i
       numeri degli allenatori (nel motore sono 855, ne usiamo 27).
