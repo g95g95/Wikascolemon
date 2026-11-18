@@ -12,23 +12,33 @@ delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallel
 - [ ] Le piante di cocchie: cogliere, ripiantare, i messaggi tradotti.
 - [ ] Gli interni coi mobili nuovi.
 - [ ] Zaotto e zaotta in lotta.
+- [ ] **Rilascio del 18/11** (commit `b449edd3d0` di `pokemon-piceno`): il capanno dell'Oasi con dentro il
+      custode che dà il **Vaso Cavedì**; perdere dopo essersi curati al Bar Centrale di Castel di Lama
+      (si deve riapparire lì davanti); tabacchi e pizzeria senza fessura.
 
 **Decisioni che aspettano Jacopo**
 - [ ] Approvare la proposta di Giulio sulle 120 abilità (`pokemon-piceno/tasks/abilita_proposte.md`, 5 decisioni aperte).
-- [ ] Rivedere l'abbinamento cocchia → effetto (l'ho scelto io, elenco più sotto).
+- [x] Abbinamento cocchia → effetto: va bene così (Jacopo, 18/11).
+- [ ] Il nome dell'annaffiatoio: Jacopo non vuole «Vaso Wailmer» ma un nome legato ai nostri Pokémon;
+      ho messo **Vaso Cavedì** (il pesciolino dell'Oasi), da confermare. L'icona è ancora quella di Wailmer.
+- [ ] «CAMPEGGIAT.»: è la classe di Gino (Monticelli) e Marco (Oasi). Nome più corto o campo più largo?
 - [ ] Le altre classi degli allenatori: dopo zaotto e zaotta, quali altri nomi cambiare.
 - [ ] Togliere Hoenn (passo 6): **prima un'analisi approfondita**. La musica resta. Non serve per i
       numeri degli allenatori (nel motore sono 855, ne usiamo 27).
 
 **Piccole cose lasciate aperte**
-- [ ] MT Velenospina: Hills non la dà (la mossa c'è, lo strumento MT no).
-- [ ] Dopo una sconfitta si riparte sempre da Porta Maggiore: dare un punto a Castel di Lama.
-- [ ] Nessuno dà il Vaso Wailmer per annaffiare le piante.
+- [ ] MT Velenospina: Hills non la dà. Non basta aggiungere lo strumento: nessuna delle nostre specie ha
+      l'elenco delle mosse da MT (in `piceno_families.h` non c'è), quindi non la imparerebbe nessuno.
+      Va con il lavoro sul motore di lotta (Giulio).
+- [x] Punto di ripartenza a Castel di Lama (18/11): chi cura fissa il punto della sua zona, se la zona ha
+      «ritorno» in `mappe/<id>.json`. Per ora ce l'hanno Porta Maggiore e Castel di Lama.
+- [x] L'annaffiatoio lo dà il custode nel capanno dell'Oasi (18/11; stanza `interno_capanno` in
+      `stanze.json`, script in `mappe/Oasi_Capanno.inc`, battute mie in italiano).
 - [ ] «CAMPEGGIAT.» abbreviato (12 lettere al massimo) e gemelle «NICE-DICE» (10 lettere).
 - [ ] Le righe tradotte più lunghe dell'originale, da guardare a schermo (`python tools/piceno/traduci.py --avvisi`).
-- [ ] Interni: 1 pixel di fessura fra cassa e bancone (tabacchi) e fra i banconi della pizzeria; tappeto dietro il divano.
-- [ ] Battute scritte da me da rivedere: annuncio del treno e capotreno, cartelli «strada chiusa»,
-      messaggio della medaglia, due frasi di Nando e di Hills (ora in ascolano, da Giulio).
+- [x] Fessure di cassa e bancone delle pizze chiuse (18/11: ora sono larghi 32 pixel).
+- [ ] Interni: il tappeto dietro il divano si legge male (la disposizione viene dalla demo).
+- [x] Battute scritte da me (treno, capotreno, cartelli, medaglia): vanno bene (Jacopo, 18/11).
 
 **Grafica**
 - [ ] Piante e icone delle cocchie: sono ancora quelle delle bacche di Hoenn.
