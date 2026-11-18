@@ -31,8 +31,7 @@ delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallel
       l'elenco delle mosse da MT (in `piceno_families.h` non c'è), quindi non la imparerebbe nessuno.
       Va con il lavoro sul motore di lotta (Giulio).
 - [x] Punto di ripartenza a Castel di Lama (18/11): chi cura fissa il punto della sua zona, se la zona ha
-      «ritorno» in `mappe/<id>.json`. Ce l'hanno Porta Maggiore, Castel di Lama, Monticelli e Spinetoli.
-      Le altre zone con un bar (Centro Storico, Campo Parignano, Maltignano) non ancora.
+      «ritorno» in `mappe/<id>.json`. Ce l'hanno tutte le zone con un bar o l'ospedale (commit `d993275df6`).
 - [x] L'annaffiatoio lo dà il custode nel capanno dell'Oasi (18/11; stanza `interno_capanno` in
       `stanze.json`, script in `mappe/Oasi_Capanno.inc`, battute mie in italiano).
 - [x] «CAMPEGGIAT.» è diventato «ASCOLANO»; le gemelle restano «NICE-DICE» per ora (Jacopo, 18/11).
@@ -66,12 +65,13 @@ delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallel
       si aggiungono alla tabella man mano che entrano nel gioco. **Non usare `traduci.py` per le descrizioni**:
       sostituisce una riga ovunque compaia (la Poké Ball era rimasta «Per annaffiare / catching wild»).
 - [ ] Testi delle mappe di Hoenn.
-- [ ] Prefissi in lotta «Nemico X» / «Selvatico X» senza articolo.
+- [x] Prefissi in lotta «Nemico X» / «Selvatico X» senza articolo: Jacopo il 18/11 ha detto di lasciarli così.
 - [ ] Dialetto: rilettura di un parlante sul foglio di Giulio (`pokemon-piceno/tasks/battute_da_rileggere.md`).
 
 **Motore di lotta (lo sta seguendo Giulio)**
 - [ ] Le 120 abilità senza effetto, le ~85 mosse con effetti particolari, le evoluzioni rimaste fuori, Iperfuria.
-- [ ] Le mosse scelte a mano nella demo per gli allenatori non sono portate; bilanciamento mai guardato.
+- [ ] Le mosse scelte a mano nella demo non sono portate: è **un solo allenatore** (Renzo il ciclista a Borgo
+      Chiaro, Puledrotto con Azione e Braciere). Bilanciamento mai guardato.
 
 **Zone ancora da portare**
 - [ ] Costa (con le cocchie di mare: granchio, cozza, vongola, riccio), Jonathan, Ripatransone, la seconda palestra.
