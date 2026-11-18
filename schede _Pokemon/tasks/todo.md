@@ -35,7 +35,7 @@ delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallel
       Le altre zone con un bar (Centro Storico, Campo Parignano, Maltignano) non ancora.
 - [x] L'annaffiatoio lo dà il custode nel capanno dell'Oasi (18/11; stanza `interno_capanno` in
       `stanze.json`, script in `mappe/Oasi_Capanno.inc`, battute mie in italiano).
-- [ ] «CAMPEGGIAT.» abbreviato (12 lettere al massimo) e gemelle «NICE-DICE» (10 lettere).
+- [x] «CAMPEGGIAT.» è diventato «ASCOLANO»; le gemelle restano «NICE-DICE» per ora (Jacopo, 18/11).
 - [ ] Le righe tradotte più lunghe dell'originale, da guardare a schermo (`python tools/piceno/traduci.py --avvisi`).
 - [x] Fessure di cassa e bancone delle pizze chiuse (18/11: ora sono larghi 32 pixel).
 - [x] Tappeto davanti al divano nelle case (18/11 sera, con «_cambi» in `stanze.json`).
