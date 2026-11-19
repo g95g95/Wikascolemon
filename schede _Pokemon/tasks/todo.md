@@ -47,9 +47,25 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
       - **giorno e notte**: l'orologio resta, la tinta della mappa è spenta (`OW_ENABLE_DNS FALSE`; Jacopo:
         «non funziona ancora bene a livello visivo»).
 
+- [ ] **Quarto rilascio del 19/11** (commit `c49e6f9f1f`), da provare:
+      - il **Jonathan**, a nord della Costa: il lungomare prosegue dritto, parcheggio, biglietteria, spiaggia;
+      - **Nando** nel vialetto fra le siepi davanti alla discoteca (terza sfida);
+      - la **discoteca-palestra**: i tre Bro della Security accanto ai varchi, Riccio in fondo, la
+        **Medaglia Balneare**; lo chalet «Bagni Jonathan»;
+      - nella Costa il DJ Mauri e il cartello del Jonathan ora sono in cima al lungomare.
+      - le **figure in lotta dai fogli di Jacopo**: Hills con lo smartphone, il Bro della Security, il DJ
+        (`tools/piceno/ritaglia_figura.py`, sorgenti in `tools/piceno/fogli/sorgenti/`).
+      Provvisori: Riccio in lotta (l'esperto di Smeraldo ritoccato: anziano, barba bianca, maglia bianca,
+      dall'immagine di riferimento di Jacopo), gli sprite sulla mappa di Riccio, dei Bro e del DJ (di
+      Smeraldo), la MT Idrogetto (non c'è lo strumento MT).
+
+**Fogli**
+- [x] Hills, Bro della Security e DJ in lotta: arrivati il 19/11 e montati.
+- [ ] Riccio in lotta: Jacopo ha dato un'immagine di riferimento (uomo anziano, capelli e pizzetto grigi,
+      maglietta bianca, allo stabilimento). Serve il foglio 64×64 su fondo magenta.
+- [x] Icone delle cocchie: per ora non serve un'immagine apposta (Jacopo, 19/11).
+
 **Chiesto da Jacopo il 19/11 sera e ancora aperto**
-- [ ] **Hills in lotta, sprite suo**: «un tizio che urla a uno smartphone». Serve un foglio di Jacopo
-      (64×64, 16 colori, fondo uniforme); quello di oggi è una figura ufficiale ritoccata.
 - [ ] Altri strumenti in mappa e altri personaggi che ne regalano: i primi sono messi a giudizio mio.
 - [x] Regola della ripartenza: si riparte dall'ultimo posto che ha curato (è già così).
 
@@ -124,9 +140,8 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
 **Zone ancora da portare**
 - [x] Costa e Ripatransone con la corriera (19/11). Costa 60×60 (rifatta la sera col mare a est), set
       `piceno_costa`, carta delle zone 380,−11, cartina 19,7; Ripatransone 50×38, set `piceno_ripa`, cartina 18,5, non confina con niente.
-- [ ] Jonathan e la seconda palestra. **Il Jonathan sta a NORD della Costa, non a sud** (Jacopo, 19/11):
-      oggi il cartello «Jonathan - strada chiusa» e il DJ Mauri sono in fondo al lungomare a sud, vanno
-      spostati in cima (a nord) e lì va aperto il confine quando la zona c'è.
+- [x] Jonathan e la seconda palestra (19/11): a NORD della Costa (Jacopo), 60×40, set `piceno_jonathan`,
+      carta delle zone 380,−51, cartina 19,6. A nord del Jonathan il lungomare per ora finisce.
 
 ---
 
