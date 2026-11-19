@@ -1,9 +1,9 @@
-# ▶ A CHE PUNTO SIAMO (17/11/2026, fine giornata — Jacopo: «per ora ci fermiamo qui»)
+# ▶ A CHE PUNTO SIAMO (19/11/2026, rilascio corposo)
 
-## ✅ DA FARE (lista unica, al 17/11 sera)
+## ✅ DA FARE (lista unica, al 19/11)
 
-Il gioco si gioca dal treno alla prima medaglia e fino a Spinetoli e Centobuchi. ROM: `pokemon-piceno.gba`
-delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallelo e ha un suo piano in
+Il gioco si gioca dal treno alla prima medaglia, fino alla Costa, e in corriera a Ripatransone. ROM: `pokemon-piceno.gba`
+del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo e ha un suo piano in
 `pokemon-piceno/tasks/todo.md`: **i due piani restano separati per ora** (deciso da Jacopo), si integrano dopo.
 
 **Da provare in gioco (fatto il 17/11 pomeriggio e sera, visto solo in anteprima)**
@@ -16,15 +16,28 @@ delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallel
       custode che dà il **Vaso Cavedì**; perdere dopo essersi curati al Bar Centrale di Castel di Lama
       (si deve riapparire lì davanti); tabacchi e pizzeria senza fessura.
 
+- [ ] **Rilascio del 19/11** (commit `6339a6ce80`), visto solo in anteprima:
+      - la **Costa**: si entra da Spinetoli (est), lungomare, gradini, spiaggia, pontile, Ristoro al Porto
+        (cura), i cinque allenatori, Ivo e Teo sulla sabbia, le tre cocchie di mare in fondo al lungomare;
+      - la **corriera**: autista sul piazzale della stazione di Porta Maggiore, andata a Ripatransone e ritorno;
+      - **Ripatransone**: piazza, bar (cura), chiesa, tre case, le vigne con Renzo sulla salita;
+      - le **piante di cocchie** sul terreno giusto (Oasi accanto al capanno, Spinetoli sotto la provinciale,
+        Costa, Ripatransone) e sparite da tutte le altre zone;
+      - **Hills in lotta** con lo smartphone; i nomi degli strumenti in italiano nello zaino e ai tabacchi;
+      - in una partita già cominciata le piante nuove possono risultare vuote o con la bacca vecchia finché
+        non si ripiantano (lo stato sta nel salvataggio).
+
 **Decisioni che aspettano Jacopo**
 - [ ] Approvare la proposta di Giulio sulle 120 abilità (`pokemon-piceno/tasks/abilita_proposte.md`, 5 decisioni aperte).
 - [x] Abbinamento cocchia → effetto: va bene così (Jacopo, 18/11).
-- [ ] Il nome dell'annaffiatoio: Jacopo non vuole «Vaso Wailmer» ma un nome legato ai nostri Pokémon;
-      ho messo **Vaso Cavedì** (il pesciolino dell'Oasi), da confermare. L'icona è ancora quella di Wailmer.
+- [x] Il nome dell'annaffiatoio: **Vaso Cavedì** confermato «per ora» (Jacopo, 19/11). L'icona è ancora quella di Wailmer.
 - [x] «CAMPEGGIAT.» è diventato **«ASCOLANO»** (Jacopo, 18/11): la classe di Gino (Monticelli) e Marco (Oasi).
-- [ ] Le altre classi degli allenatori: dopo zaotto e zaotta, quali altri nomi cambiare.
-- [ ] Togliere Hoenn (passo 6): **prima un'analisi approfondita**. La musica resta. Non serve per i
-      numeri degli allenatori (nel motore sono 855, ne usiamo 27).
+- [x] Le altre classi degli allenatori: per ora non si rinominano (Jacopo, 19/11). Con la Costa sono entrate
+      tre classi nuove, tradotte come nella demo: BAGNINO, TURISTA, DJ.
+- [ ] Togliere Hoenn (passo 6): **analisi fatta il 19/11, `tasks/analisi_hoenn.pdf`**. Proposta: non toglierla
+      adesso (5,8 MB liberi su 32, 635 riferimenti di script da sistemare, aggiornamenti del motore più
+      difficili per sempre); sistemare Vola, la ripartenza di riserva e un secondo gruppo di mappe (il
+      nostro è a 66 su 127). **Aspetta la decisione di Jacopo.**
 
 **Piccole cose lasciate aperte**
 - [ ] MT Velenospina: Hills non la dà. Non basta aggiungere lo strumento: nessuna delle nostre specie ha
@@ -45,21 +58,30 @@ delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallel
       da me in `mobili.py` «per ora»; le si parla da sotto e apre il deposito di Smeraldo. Messaggio adattato
       («infila una moneta nella slot»). In `stanze.json`: «_arredi» = mobili che la demo non ha, «_cambi» =
       ritocchi alle stanze della demo. **Da provare in gioco**: depositare e ritirare, e uscire dal deposito.
-- [ ] **Rifare lo sprite di Hills** (chiesto da Jacopo il 18/11 sera). Oggi sulla mappa è una ricetta su
-      `psychic_m` e in lotta il chitarrista di Hoenn ricolorato (`figure.py`). Da chiarire se intende quello
-      sulla mappa, la figura in lotta o tutti e due.
+- [x] **Hills in lotta** (19/11): «un tizio che sbraita davanti a uno smartphone» (Jacopo). È il rocker di
+      Rosso Fuoco ritoccato in `figure.py`: via fulmini e cavi, telefono in mano, capelli viola. Resta una
+      figura ufficiale ritoccata: per una disegnata da zero serve un foglio di Jacopo.
 - [ ] **Rifare un po' di sprite dei Pokémon dell'inizio** (quelli che si incontrano fino alla prima medaglia).
       Da decidere quali e come (fogli di Jacopo in ChatGPT, poi li ritaglio io).
 
 **Grafica**
-- [ ] Piante e icone delle cocchie: sono ancora quelle delle bacche di Hoenn.
+- [x] Piante di cocchie che «si vedono male» (Jacopo, 19/11): il terreno soffice era un blocco che nei nostri
+      set non c'è, sotto la pianta usciva un pezzo di edificio. Corretto (`edifici.py` ne mette una copia in
+      ogni set). Ora sono **poche e in campagna**: le dice la pianta della zona («cocchie»), 11 in tutto
+      (Oasi 3, Spinetoli 3, Costa 3 di mare, Ripatransone 2). Il Riccio di mare aspetta il Jonathan.
+- [ ] Le piante e le icone delle cocchie hanno ancora il disegno delle bacche di Hoenn (la noce cresce sulla
+      pianta della Baccarancia).
 - [ ] Figure in lotta degli altri allenatori. Il contadino usa la figura dell'escursionista di Hoenn: nel file
       il cappello è color sabbia e il gilet verde, e cappello, zaino e pantaloni hanno le stesse tinte. Da
       capire con Jacopo cosa cambiare (18/11: non toccato).
 - [ ] Terreno, alberi e acqua sono di Hoenn; edifici dipinti da codice. Fogli di Jacopo in ChatGPT quando vuole.
 
 **Traduzione**
-- [ ] Strumenti in italiano (confermato da Jacopo il 18/11): **fatti i primi 27** (Ball, pozioni, cure di stato,
+- [ ] Strumenti in italiano: **326 su circa 870** al 19/11 (tutte le Ball, cure, vitamine, strumenti X, pietre
+      e strumenti evolutivi, quasi tutti quelli da tenere, fossili, oggetti di valore, canne e bici). Fuori:
+      megapietre e cristalli Z, strumenti di ottava e nona generazione dal nome incerto, quelli della trama
+      di Hoenn, la posta. Da rileggere: «Attacco Sp. X»/«Difesa Sp. X» e il Condividi Esp. (descritto come
+      strumento da tenere, com'è configurato ora). I primi 27 (Ball, pozioni, cure di stato,
       eteri, repellenti, Fune di Fuga, Caramella Rara, Vaso Cavedì) con `tools/piceno/strumenti.py` (commit
       `96a28d6a9d`), che riscrive la voce intera: nome, plurale, descrizione. Gli altri ~850 restano in inglese e
       si aggiungono alla tabella man mano che entrano nel gioco. **Non usare `traduci.py` per le descrizioni**:
@@ -74,7 +96,9 @@ delle 19:17 (commit `eb24b09c89` di `pokemon-piceno`). Giulio lavora in parallel
       Chiaro, Puledrotto con Azione e Braciere). Bilanciamento mai guardato.
 
 **Zone ancora da portare**
-- [ ] Costa (con le cocchie di mare: granchio, cozza, vongola, riccio), Jonathan, Ripatransone, la seconda palestra.
+- [x] Costa e Ripatransone con la corriera (19/11). Costa 76×46, set `piceno_costa`, carta delle zone 380,4,
+      cartina 19,7; Ripatransone 50×38, set `piceno_ripa`, cartina 18,5, non confina con niente.
+- [ ] Jonathan (a est della Costa la strada è chiusa) e la seconda palestra.
 
 ---
 
