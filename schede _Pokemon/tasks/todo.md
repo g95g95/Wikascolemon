@@ -40,11 +40,16 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
       - i **saltelli** a Maltignano: nei due varchi della salita si salta giù, in salita non si passa;
       - gli **strumenti a terra**: 14 Poké Ball in 13 zone (`tools/piceno/strumenti_mappa.json`).
 
+- [ ] **Terzo rilascio del 19/11** (commit `72b96e5adc`), da provare:
+      - **Box**: le icone delle nostre 149 specie erano troppo grandi (30 pixel), ora stanno in 22 come le ufficiali;
+      - **chalet**: i quattro stabilimenti della Costa hanno l'interno (`interno_chalet`), il barista vende
+        Acqua Fresca, Gassosa e Lemonsucco;
+      - **giorno e notte**: l'orologio resta, la tinta della mappa è spenta (`OW_ENABLE_DNS FALSE`; Jacopo:
+        «non funziona ancora bene a livello visivo»).
+
 **Chiesto da Jacopo il 19/11 sera e ancora aperto**
 - [ ] **Hills in lotta, sprite suo**: «un tizio che urla a uno smartphone». Serve un foglio di Jacopo
       (64×64, 16 colori, fondo uniforme); quello di oggi è una figura ufficiale ritoccata.
-- [ ] **Box**: «gli sprite dei Pokémon sono troppo…» (frase interrotta: da chiarire cosa non va).
-- [ ] **Bagni della Costa**: non si entra, per ora è voluto. Da decidere se dare un interno.
 - [ ] Altri strumenti in mappa e altri personaggi che ne regalano: i primi sono messi a giudizio mio.
 - [x] Regola della ripartenza: si riparte dall'ultimo posto che ha curato (è già così).
 
@@ -119,7 +124,9 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
 **Zone ancora da portare**
 - [x] Costa e Ripatransone con la corriera (19/11). Costa 60×60 (rifatta la sera col mare a est), set
       `piceno_costa`, carta delle zone 380,−11, cartina 19,7; Ripatransone 50×38, set `piceno_ripa`, cartina 18,5, non confina con niente.
-- [ ] Jonathan (a est della Costa la strada è chiusa) e la seconda palestra.
+- [ ] Jonathan e la seconda palestra. **Il Jonathan sta a NORD della Costa, non a sud** (Jacopo, 19/11):
+      oggi il cartello «Jonathan - strada chiusa» e il DJ Mauri sono in fondo al lungomare a sud, vanno
+      spostati in cima (a nord) e lì va aperto il confine quando la zona c'è.
 
 ---
 
