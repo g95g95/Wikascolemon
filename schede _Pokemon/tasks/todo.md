@@ -27,6 +27,27 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
       - in una partita già cominciata le piante nuove possono risultare vuote o con la bacca vecchia finché
         non si ripiantano (lo stato sta nel salvataggio).
 
+- [ ] **Secondo rilascio del 19/11** (commit `f985a3753c`), dopo la prova di Jacopo. Da riprovare:
+      - il **DJ** della Costa ora si vede (aveva uno sprite che esiste solo nel motore di Rosso Fuoco: era
+        invisibile e bloccava il gioco; `porta_mappa.py` adesso si ferma se uno sprite non esiste);
+      - **Castel di Lama**: senza medaglia Bobby ferma sulla strada per Spinetoli e non si aggira più
+        dall'erba (le soglie erano una colonna troppo indietro); con la medaglia Bobby non c'è più;
+      - le **piante di cocchie** coi colori giusti (prendevano le tavolozze di Oliver, Bobby, Steven ed
+        Elena: `personaggi.py` metteva i nostri in testa alla tabella, ora in fondo);
+      - la **Costa col mare a est**: provinciale da Spinetoli, lungomare nord-sud, spiaggia e pontile a est;
+      - gli **interni dei tre capannoni** (Percorso 1, Spinetoli, Centobuchi) col contadino che regala
+        Noci, Mandorle, Latte Mumu; la **chiesa di Maltignano**;
+      - i **saltelli** a Maltignano: nei due varchi della salita si salta giù, in salita non si passa;
+      - gli **strumenti a terra**: 14 Poké Ball in 13 zone (`tools/piceno/strumenti_mappa.json`).
+
+**Chiesto da Jacopo il 19/11 sera e ancora aperto**
+- [ ] **Hills in lotta, sprite suo**: «un tizio che urla a uno smartphone». Serve un foglio di Jacopo
+      (64×64, 16 colori, fondo uniforme); quello di oggi è una figura ufficiale ritoccata.
+- [ ] **Box**: «gli sprite dei Pokémon sono troppo…» (frase interrotta: da chiarire cosa non va).
+- [ ] **Bagni della Costa**: non si entra, per ora è voluto. Da decidere se dare un interno.
+- [ ] Altri strumenti in mappa e altri personaggi che ne regalano: i primi sono messi a giudizio mio.
+- [x] Regola della ripartenza: si riparte dall'ultimo posto che ha curato (è già così).
+
 **Decisioni che aspettano Jacopo**
 - [ ] Approvare la proposta di Giulio sulle 120 abilità (`pokemon-piceno/tasks/abilita_proposte.md`, 5 decisioni aperte).
 - [x] Abbinamento cocchia → effetto: va bene così (Jacopo, 18/11).
@@ -96,8 +117,8 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
       Chiaro, Puledrotto con Azione e Braciere). Bilanciamento mai guardato.
 
 **Zone ancora da portare**
-- [x] Costa e Ripatransone con la corriera (19/11). Costa 76×46, set `piceno_costa`, carta delle zone 380,4,
-      cartina 19,7; Ripatransone 50×38, set `piceno_ripa`, cartina 18,5, non confina con niente.
+- [x] Costa e Ripatransone con la corriera (19/11). Costa 60×60 (rifatta la sera col mare a est), set
+      `piceno_costa`, carta delle zone 380,−11, cartina 19,7; Ripatransone 50×38, set `piceno_ripa`, cartina 18,5, non confina con niente.
 - [ ] Jonathan (a est della Costa la strada è chiusa) e la seconda palestra.
 
 ---
