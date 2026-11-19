@@ -47,22 +47,19 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
       - **giorno e notte**: l'orologio resta, la tinta della mappa è spenta (`OW_ENABLE_DNS FALSE`; Jacopo:
         «non funziona ancora bene a livello visivo»).
 
-- [ ] **Quarto rilascio del 19/11** (commit `c49e6f9f1f`), da provare:
+- [ ] **Quarto rilascio del 19/11** (commit `c2b2e46fd0`), da provare:
       - il **Jonathan**, a nord della Costa: il lungomare prosegue dritto, parcheggio, biglietteria, spiaggia;
       - **Nando** nel vialetto fra le siepi davanti alla discoteca (terza sfida);
       - la **discoteca-palestra**: i tre Bro della Security accanto ai varchi, Riccio in fondo, la
         **Medaglia Balneare**; lo chalet «Bagni Jonathan»;
       - nella Costa il DJ Mauri e il cartello del Jonathan ora sono in cima al lungomare.
-      - le **figure in lotta dai fogli di Jacopo**: Hills con lo smartphone, il Bro della Security, il DJ
+      - le **figure in lotta dai fogli di Jacopo**: Hills con lo smartphone, il Bro della Security, il DJ, Riccio
         (`tools/piceno/ritaglia_figura.py`, sorgenti in `tools/piceno/fogli/sorgenti/`).
-      Provvisori: Riccio in lotta (l'esperto di Smeraldo ritoccato: anziano, barba bianca, maglia bianca,
-      dall'immagine di riferimento di Jacopo), gli sprite sulla mappa di Riccio, dei Bro e del DJ (di
+      Provvisori: gli sprite sulla mappa di Riccio, dei Bro e del DJ (di
       Smeraldo), la MT Idrogetto (non c'è lo strumento MT).
 
 **Fogli**
-- [x] Hills, Bro della Security e DJ in lotta: arrivati il 19/11 e montati.
-- [ ] Riccio in lotta: Jacopo ha dato un'immagine di riferimento (uomo anziano, capelli e pizzetto grigi,
-      maglietta bianca, allo stabilimento). Serve il foglio 64×64 su fondo magenta.
+- [x] Hills, Bro della Security, DJ e Riccio in lotta: arrivati il 19/11 e montati.
 - [x] Icone delle cocchie: per ora non serve un'immagine apposta (Jacopo, 19/11).
 
 **Chiesto da Jacopo il 19/11 sera e ancora aperto**
