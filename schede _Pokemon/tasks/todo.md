@@ -102,8 +102,24 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
       per livello (Tuffito, Brasero, Compadrone, Cavedì, Cavedone). Letto dalla ROM con l'emulatore.
 - [ ] 32 mosse delle tabelle MT della wiki non esistono nel gioco (Raggioscuro, Sgambetto, Ognimossa,
       Fuocodenti, Stoccata, Chiacchiera...): elenco in `tools/piceno/rapporto.txt`, «mosse da MT».
-- [ ] **Fogli di grafica**: sette prompt pronti in `schede _Pokemon/tasks/prompt_grafica/PROMPT.txt`, con le
-      immagini da allegare nella stessa cartella. Quando arrivano i PNG li ritaglio.
+- [x] **Fogli di grafica** (21/11): Jacopo ha fatto i dodici fogli coi prompt di
+      `schede _Pokemon/tasks/prompt_grafica/`; ritagliati da `tools/piceno/ritaglia_fogli.py` e montati
+      (ROM del commit `9557a0e7a6`):
+      - Oliver di spalle coi quattro fotogrammi del lancio, Oliver di fronte al posto di Brendan (scheda
+        allenatore e menu);
+      - otto figure in lotta: contadino, zaotto, zaotta, ascolano, ciclista, bagnino, turista, pescatore;
+      - Riccio, Bro della Security e DJ sulla mappa (prima erano personaggi di Smeraldo);
+      - le 17 icone delle cocchie nello zaino e la pianta di cocchie (una per tutte: alberello, fiorita,
+        coi frutti; terra e germoglio restano quelli di Smeraldo);
+      - sprite fronte e retro di Basilino, Puledrotto, Tuffito, Tifotto (e le loro icone).
+      Visto in gioco con l'emulatore: Oliver che lancia, Basilino di spalle, Puledrotto, i Bro in palestra,
+      il DJ sulla Costa, le piante all'Oasi, la Mandorla nello zaino (`emulatore/foto/grafica_in_gioco.png`).
+      **Da guardare da Jacopo**: la scheda allenatore, le otto figure in lotta, Riccio, Tuffito e Tifotto;
+      i personaggi dai fogli sono più magri di quelli di Smeraldo.
+- [ ] Grafica ancora da fare: sprite degli altri Pokémon, la figura della turista donna (usa ancora la
+      Pokéfan di Smeraldo), terreno/alberi/acqua.
+- [ ] `prova_lotta.py` è fallita una volta su cinque il 21/11 senza motivo trovato (il controllo
+      dell'esperienza dopo un colpo normale): da tenere d'occhio.
 
 **Chiesto da Jacopo il 21/11: la mappa della città nel gioco**
 - [ ] Mettere nel gioco la **mappa** (la cartina del Piceno c'è già nel motore, `tools/piceno/cartina.py`, ma
