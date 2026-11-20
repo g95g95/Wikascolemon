@@ -80,11 +80,18 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
 - [x] Manuale per chi ci lavora: `pokemon-piceno/tasks/manuale_sviluppo.md`.
 - [x] Provare il gioco da qui (20/11): `python tools/piceno/emulatore.py` nel repo del gioco, il motore di
       mGBA in versione libretro pilotato da Python (tasti, attese, schermate, stati; istruzioni nel manuale).
-      Provato: partita nuova fino al treno, Oliver cammina, il menu si apre. **Non ancora nel repo** (da
-      committare). Il salvataggio di Jacopo del 19/11 con la ROM del 20/11 mostra la mappa a pezzi.
-- [ ] Prove di base con l'emulatore prima di ogni consegna: da scrivere (una sequenza che arriva dal treno
-      alla prima lotta), e far leggere all'emulatore posizione e mappa dalla memoria (serve il file `.sym`
-      della compilazione, che oggi non si scarica).
+      La compilazione consegna anche `pokeemerald.sym` (da copiare su `pokemon-piceno.sym`): con quello
+      l'emulatore legge dalla memoria mappa, casella, squadra.
+- [x] Prova di base (20/11): `python tools/piceno/prova_base.py`, 3 secondi. Partita nuova, scena del treno,
+      discesa a Porta Maggiore, saluto di Bobby, starter, lotta con Nando fino in fondo. Sulla ROM del 20/11
+      passa. Premendo solo A la lotta si perde, e si riappare davanti al bar di Porta Maggiore.
+- [ ] Con l'emulatore, le prove del rilascio del 20/11 che non sono di aspetto: ripartenza davanti ai bar
+      dopo una sconfitta, bigliettaio e autista raggiungibili, corriera andata e ritorno.
+- [ ] **I salvataggi vecchi si rompono a ogni ROM nuova** (scoperto il 20/11): quello di Jacopo del 19/11,
+      fatto a Marino del Tronto, con la ROM del 20/11 mostra la mappa a pezzi e si cammina attraverso i
+      muri, finché non si entra in una porta. La partita ricorda il numero della pianta e l'ordine in
+      `layouts.json` cambia a ogni generazione. Rimedio proposto: tenere fermo l'ordine (le piante nuove in
+      fondo). **Aspetta la decisione di Jacopo.**
 
 **Fogli**
 - [x] Hills, Bro della Security, DJ e Riccio in lotta: arrivati il 19/11 e montati.
