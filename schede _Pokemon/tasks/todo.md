@@ -6,12 +6,12 @@ Il gioco si gioca dal treno alla prima medaglia, fino alla Costa, e in corriera 
 del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo e ha un suo piano in
 `pokemon-piceno/tasks/todo.md`: **i due piani restano separati per ora** (deciso da Jacopo), si integrano dopo.
 
-**Da provare in gioco (fatto il 17/11 pomeriggio e sera, visto solo in anteprima)**
-- [ ] La scena del treno (serve una partita nuova): scossa, annuncio, discesa, Bobby alla stazione.
-- [ ] Spinetoli e Centobuchi, e il blocco a Castel di Lama senza la Medaglia Spirito.
-- [ ] Le piante di cocchie: cogliere, ripiantare, i messaggi tradotti.
-- [ ] Gli interni coi mobili nuovi.
-- [ ] Zaotto e zaotta in lotta.
+**Provato in gioco da Jacopo (detto il 20/11): il lavoro del 17/11 e i rilasci del 18 e del 19/11**
+- [x] La scena del treno (serve una partita nuova): scossa, annuncio, discesa, Bobby alla stazione.
+- [x] Spinetoli e Centobuchi, e il blocco a Castel di Lama senza la Medaglia Spirito.
+- [x] Le piante di cocchie: cogliere, ripiantare, i messaggi tradotti.
+- [x] Gli interni coi mobili nuovi.
+- [x] Zaotto e zaotta in lotta.
 - [x] **Rilascio del 18/11** (commit `b449edd3d0` di `pokemon-piceno`): *(provato da Jacopo, detto il 20/11)* il capanno dell'Oasi con dentro il
       custode che dà il **Vaso Cavedì**; perdere dopo essersi curati al Bar Centrale di Castel di Lama
       (si deve riapparire lì davanti); tabacchi e pizzeria senza fessura.
