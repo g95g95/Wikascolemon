@@ -153,6 +153,9 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
 - [ ] Dialetto: rilettura di un parlante sul foglio di Giulio (`pokemon-piceno/tasks/battute_da_rileggere.md`).
 
 **Motore di lotta (lo sta seguendo Giulio)**
+- [ ] **«Fuga» di Tifotto = Fugafacile** (Jacopo, 20/11): l'abilità è analoga a quella dei giochi esistenti
+      (Run Away, `ABILITY_RUN_AWAY`), quindi va ricondotta a quella e non creata nuova. Da riportare nella
+      tabella degli alias di `porta_pokedex.py` e nella proposta di Giulio (`pokemon-piceno/tasks/abilita_proposte.md`).
 - [ ] Le 120 abilità senza effetto, le ~85 mosse con effetti particolari, le evoluzioni rimaste fuori, Iperfuria.
 - [ ] Le mosse scelte a mano nella demo non sono portate: è **un solo allenatore** (Renzo il ciclista a Borgo
       Chiaro, Puledrotto con Azione e Braciere). Bilanciamento mai guardato.
