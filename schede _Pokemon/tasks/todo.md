@@ -105,6 +105,15 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
 - [ ] **Fogli di grafica**: sette prompt pronti in `schede _Pokemon/tasks/prompt_grafica/PROMPT.txt`, con le
       immagini da allegare nella stessa cartella. Quando arrivano i PNG li ritaglio.
 
+**Chiesto da Jacopo il 21/11: la mappa della città nel gioco**
+- [ ] Mettere nel gioco la **mappa** (la cartina del Piceno c'è già nel motore, `tools/piceno/cartina.py`, ma
+      il giocatore non ha modo di aprirla): dentro il PokéNav «o qualcosa di simile». Serve **qualcuno che
+      la dà in un modo sensato**. Da decidere con Jacopo: lo strumento (PokéNav vero, che si porta dietro
+      anche Match Call e Fiocchi, oppure un oggetto nostro che apre solo la cartina, tipo una piantina
+      della città), chi la consegna e quando (proposte: il bigliettaio o il vigile alla stazione
+      all'arrivo; Bobby insieme allo starter; l'edicola/tabacchi), e se deve mostrare anche le città di
+      dettaglio o solo la regione.
+
 **Documentazione (20/11)**
 - [x] Presentazione rifatta: `Presentazione Pokemon Piceno - 20 novembre.pdf` nella radice di Wikascolemon;
       si rigenera con `python tools/piceno/presentazione.py` nel repo del gioco e si stampa con Edge.
