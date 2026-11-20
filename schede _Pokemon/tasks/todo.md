@@ -58,7 +58,7 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
       Provvisori: gli sprite sulla mappa di Riccio, dei Bro e del DJ (di
       Smeraldo), la MT Idrogetto (non c'è lo strumento MT).
 
-- [ ] **Rilascio del 20/11** (commit `e79f49548b`), dopo la seconda prova di Jacopo. Da riprovare:
+- [x] **Rilascio del 20/11** (commit `e79f49548b`), dopo la seconda prova di Jacopo *(provato da Jacopo il 20/11: tutto a posto)*:
       - **perdere una lotta** dopo essersi curati in un nostro bar (Costa, Ripatransone, Castel di Lama...): si
         deve riapparire davanti al bar, non in una mappa a caso. Causa: le tabelle della ripartenza del motore
         finiscono all'ultima voce con «respawn_npc», e le nostre stavano dopo. Era questo anche il blocco
@@ -71,6 +71,22 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
       - **Oliver di spalle in lotta** (dal foglio di Jacopo) al posto di Brendan. I quattro fotogrammi del
         lancio sono uguali: per l'animazione servono altri tre disegni. Sulla scheda allenatore e nel
         menu la figura di fronte è ancora quella di Brendan.
+
+**Segnalato da Jacopo il 20/11 dopo la prova: corretto nella ROM del 20/11 sera (commit `ce44c4bfec`)**
+- [x] **Niente esperienza se l'ultimo Pokémon dell'avversario cade per il veleno** (Zaotto Dino, Ciclista
+      Renzo). Era del motore: a esito deciso la fine del turno saltava il passo che dà l'esperienza
+      (`src/battle_end_turn.c`). Vale anche per scottatura e simili. Provato con l'emulatore: 135 → 198
+      punti, come con un colpo normale.
+- [x] **Riposo non funzionava**: era una mossa nostra (10 PP, la ufficiale ne ha 5) rimasta senza effetto.
+      Ora ha l'effetto di Rest (`EFFETTI_DEL_MOTORE` in `porta_pokedex.py`). Provato con l'emulatore:
+      «Basilino dorme e recupera i PS!», PS pieni.
+- [ ] Da riprovare in gioco da Jacopo: le due correzioni qui sopra.
+- [ ] **Altre mosse nella stessa condizione di Riposo** (nome di una ufficiale, numeri diversi, create a sé e
+      rimaste SENZA EFFETTO): Baratto (Skill Swap), Cuordileone (Work Up), Fangata (Mud Sport), Fortuncanto
+      (Lucky Chant), Precedenza (Me First), Rancore (Grudge), Schizzo (Sketch). Altre hanno perso l'effetto
+      speciale e fanno solo danno: Aeroattacco, Elettroraggio, Flagello, Marchiafuoco, Riduttore,
+      Battipiedi. In tutto 38 in `rapporto.txt`, più 83 mosse nuove senza effetto. **Jacopo decide** quali
+      devono prendere l'effetto della ufficiale.
 
 **Documentazione (20/11)**
 - [x] Presentazione rifatta: `Presentazione Pokemon Piceno - 20 novembre.pdf` nella radice di Wikascolemon;
