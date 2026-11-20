@@ -78,8 +78,13 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
 - [x] Guida al gioco con la tabella degli incontri: `Guida a Pokemon Piceno.pdf` (radice di Wikascolemon),
       scritta dai dati del gioco da `tools/piceno/documenta.py`.
 - [x] Manuale per chi ci lavora: `pokemon-piceno/tasks/manuale_sviluppo.md`.
-- [ ] Provare il gioco da qui: oggi non si può (mGBA 0.10.5 non si comanda da riga di comando). Da valutare
-      un emulatore comandabile, per fare da me le prove di base prima di consegnare una ROM.
+- [x] Provare il gioco da qui (20/11): `python tools/piceno/emulatore.py` nel repo del gioco, il motore di
+      mGBA in versione libretro pilotato da Python (tasti, attese, schermate, stati; istruzioni nel manuale).
+      Provato: partita nuova fino al treno, Oliver cammina, il menu si apre. **Non ancora nel repo** (da
+      committare). Il salvataggio di Jacopo del 19/11 con la ROM del 20/11 mostra la mappa a pezzi.
+- [ ] Prove di base con l'emulatore prima di ogni consegna: da scrivere (una sequenza che arriva dal treno
+      alla prima lotta), e far leggere all'emulatore posizione e mappa dalla memoria (serve il file `.sym`
+      della compilazione, che oggi non si scarica).
 
 **Fogli**
 - [x] Hills, Bro della Security, DJ e Riccio in lotta: arrivati il 19/11 e montati.
