@@ -58,6 +58,29 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
       Provvisori: gli sprite sulla mappa di Riccio, dei Bro e del DJ (di
       Smeraldo), la MT Idrogetto (non c'è lo strumento MT).
 
+- [ ] **Rilascio del 20/11** (commit `e79f49548b`), dopo la seconda prova di Jacopo. Da riprovare:
+      - **perdere una lotta** dopo essersi curati in un nostro bar (Costa, Ripatransone, Castel di Lama...): si
+        deve riapparire davanti al bar, non in una mappa a caso. Causa: le tabelle della ripartenza del motore
+        finiscono all'ultima voce con «respawn_npc», e le nostre stavano dopo. Era questo anche il blocco
+        dopo il DJ del 19/11 (lo sprite sbagliato lo rendeva solo invisibile);
+      - **arrivare a Porta Maggiore da nord**: chiesa e stazione devono vedersi bene. Gli edifici stanno ora ad
+        almeno 7 celle da ogni lato collegato (prima 5 sopra e sotto) e `porta_mappa.py` avvisa;
+      - i **capannoni** con balle di fieno, cassette, sacchi e botti; le due **palazzine della Costa** con l'interno;
+      - il **bigliettaio** dentro la stazione: era coperto dal gabbiotto, ora sta accanto; l'autista sta di
+        fianco alla corriera;
+      - **Oliver di spalle in lotta** (dal foglio di Jacopo) al posto di Brendan. I quattro fotogrammi del
+        lancio sono uguali: per l'animazione servono altri tre disegni. Sulla scheda allenatore e nel
+        menu la figura di fronte è ancora quella di Brendan.
+
+**Documentazione (20/11)**
+- [x] Presentazione rifatta: `Presentazione Pokemon Piceno - 20 novembre.pdf` nella radice di Wikascolemon;
+      si rigenera con `python tools/piceno/presentazione.py` nel repo del gioco e si stampa con Edge.
+- [x] Guida al gioco con la tabella degli incontri: `Guida a Pokemon Piceno.pdf` (radice di Wikascolemon),
+      scritta dai dati del gioco da `tools/piceno/documenta.py`.
+- [x] Manuale per chi ci lavora: `pokemon-piceno/tasks/manuale_sviluppo.md`.
+- [ ] Provare il gioco da qui: oggi non si può (mGBA 0.10.5 non si comanda da riga di comando). Da valutare
+      un emulatore comandabile, per fare da me le prove di base prima di consegnare una ROM.
+
 **Fogli**
 - [x] Hills, Bro della Security, DJ e Riccio in lotta: arrivati il 19/11 e montati.
 - [x] Icone delle cocchie: per ora non serve un'immagine apposta (Jacopo, 19/11).
