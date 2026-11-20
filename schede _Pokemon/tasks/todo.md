@@ -81,12 +81,29 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
       Ora ha l'effetto di Rest (`EFFETTI_DEL_MOTORE` in `porta_pokedex.py`). Provato con l'emulatore:
       «Basilino dorme e recupera i PS!», PS pieni.
 - [ ] Da riprovare in gioco da Jacopo: le due correzioni qui sopra.
-- [ ] **Altre mosse nella stessa condizione di Riposo** (nome di una ufficiale, numeri diversi, create a sé e
-      rimaste SENZA EFFETTO): Baratto (Skill Swap), Cuordileone (Work Up), Fangata (Mud Sport), Fortuncanto
-      (Lucky Chant), Precedenza (Me First), Rancore (Grudge), Schizzo (Sketch). Altre hanno perso l'effetto
-      speciale e fanno solo danno: Aeroattacco, Elettroraggio, Flagello, Marchiafuoco, Riduttore,
-      Battipiedi. In tutto 38 in `rapporto.txt`, più 83 mosse nuove senza effetto. **Jacopo decide** quali
-      devono prendere l'effetto della ufficiale.
+- [x] Le sette mosse nella stessa condizione di Riposo hanno ora l'effetto della ufficiale (Jacopo, 20/11):
+      Baratto (Skill Swap), Cuordileone (Work Up), Fangata (Mud Sport), Fortuncanto (Lucky Chant), Precedenza
+      (Me First), Rancore (Grudge), Schizzo (Sketch). I numeri restano quelli della wiki. Provata con
+      l'emulatore solo Cuordileone (alza Attacco e Att. Sp.).
+- [ ] Restano senza l'effetto speciale, da guardare una per una con Jacopo: Aeroattacco, Elettroraggio,
+      Flagello, Marchiafuoco, Riduttore, Battipiedi (fanno solo danno). E le 83 mosse nuove senza effetto.
+
+**Rilascio del 21/11 (commit `b7fb2f9792` di `pokemon-piceno`), da provare da Jacopo**
+- [ ] Le sette mosse qui sopra, in lotta.
+- [x] **«Fuga» di Tifotto è Fugafacile** (`ABILITY_RUN_AWAY`): fatto in `porta_pokedex.py`. Da provare: Tifotto
+      scappa sempre dai selvatici.
+- [ ] **MT51 Velenospina** da Hills e **MT52 Idrogetto** da Riccio, appena battuti; chi ha già la medaglia
+      la riceve riparlandogli. Le due battute («Tè, pìjate pure questa. Dentro ce sta...») sono mie: da
+      rileggere. NON provato con l'emulatore il momento della consegna.
+- [x] **Mosse da MT per specie**: dalla tabella «Tramite MT/DT» di ogni scheda della wiki. Valgono solo
+      quelle che sono una MT del gioco (le 50 di Smeraldo più le nostre due). Velenospina va anche a tre
+      Pokémon di tipo Veleno scelti a caso (Spesurde, Mucillax, Sparpagghjò), oltre a chi la impara per
+      livello (Peccio, Peccionara, Pozza) e a Vecciando che la ha nella wiki. Idrogetto: solo chi la impara
+      per livello (Tuffito, Brasero, Compadrone, Cavedì, Cavedone). Letto dalla ROM con l'emulatore.
+- [ ] 32 mosse delle tabelle MT della wiki non esistono nel gioco (Raggioscuro, Sgambetto, Ognimossa,
+      Fuocodenti, Stoccata, Chiacchiera...): elenco in `tools/piceno/rapporto.txt`, «mosse da MT».
+- [ ] **Fogli di grafica**: sette prompt pronti in `schede _Pokemon/tasks/prompt_grafica/PROMPT.txt`, con le
+      immagini da allegare nella stessa cartella. Quando arrivano i PNG li ritaglio.
 
 **Documentazione (20/11)**
 - [x] Presentazione rifatta: `Presentazione Pokemon Piceno - 20 novembre.pdf` nella radice di Wikascolemon;
@@ -133,7 +150,7 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
       nostro è a 66 su 127). **Aspetta la decisione di Jacopo.**
 
 **Piccole cose lasciate aperte**
-- [ ] MT Velenospina: Hills non la dà. Non basta aggiungere lo strumento: nessuna delle nostre specie ha
+- [x] MT Velenospina (fatto il 21/11, vedi sopra). Prima: Hills non la dà. Non basta aggiungere lo strumento: nessuna delle nostre specie ha
       l'elenco delle mosse da MT (in `piceno_families.h` non c'è), quindi non la imparerebbe nessuno.
       Va con il lavoro sul motore di lotta (Giulio).
 - [x] Punto di ripartenza a Castel di Lama (18/11): chi cura fissa il punto della sua zona, se la zona ha
@@ -184,7 +201,7 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
 - [ ] Dialetto: rilettura di un parlante sul foglio di Giulio (`pokemon-piceno/tasks/battute_da_rileggere.md`).
 
 **Motore di lotta (lo sta seguendo Giulio)**
-- [ ] **«Fuga» di Tifotto = Fugafacile** (Jacopo, 20/11): l'abilità è analoga a quella dei giochi esistenti
+- [x] **«Fuga» di Tifotto = Fugafacile** (Jacopo, 20/11; fatto il 21/11): l'abilità è analoga a quella dei giochi esistenti
       (Run Away, `ABILITY_RUN_AWAY`), quindi va ricondotta a quella e non creata nuova. Da riportare nella
       tabella degli alias di `porta_pokedex.py` e nella proposta di Giulio (`pokemon-piceno/tasks/abilita_proposte.md`).
 - [ ] Le 120 abilità senza effetto, le ~85 mosse con effetti particolari, le evoluzioni rimaste fuori, Iperfuria.
