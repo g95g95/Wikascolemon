@@ -12,11 +12,11 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
 - [ ] Le piante di cocchie: cogliere, ripiantare, i messaggi tradotti.
 - [ ] Gli interni coi mobili nuovi.
 - [ ] Zaotto e zaotta in lotta.
-- [ ] **Rilascio del 18/11** (commit `b449edd3d0` di `pokemon-piceno`): il capanno dell'Oasi con dentro il
+- [x] **Rilascio del 18/11** (commit `b449edd3d0` di `pokemon-piceno`): *(provato da Jacopo, detto il 20/11)* il capanno dell'Oasi con dentro il
       custode che dà il **Vaso Cavedì**; perdere dopo essersi curati al Bar Centrale di Castel di Lama
       (si deve riapparire lì davanti); tabacchi e pizzeria senza fessura.
 
-- [ ] **Rilascio del 19/11** (commit `6339a6ce80`), visto solo in anteprima:
+- [x] **Rilascio del 19/11** (commit `6339a6ce80`), visto solo in anteprima: *(provato da Jacopo, detto il 20/11)*
       - la **Costa**: si entra da Spinetoli (est), lungomare, gradini, spiaggia, pontile, Ristoro al Porto
         (cura), i cinque allenatori, Ivo e Teo sulla sabbia, le tre cocchie di mare in fondo al lungomare;
       - la **corriera**: autista sul piazzale della stazione di Porta Maggiore, andata a Ripatransone e ritorno;
@@ -27,7 +27,7 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
       - in una partita già cominciata le piante nuove possono risultare vuote o con la bacca vecchia finché
         non si ripiantano (lo stato sta nel salvataggio).
 
-- [ ] **Secondo rilascio del 19/11** (commit `f985a3753c`), dopo la prova di Jacopo. Da riprovare:
+- [x] **Secondo rilascio del 19/11** (commit `f985a3753c`), dopo la prova di Jacopo. Da riprovare: *(provato da Jacopo, detto il 20/11)*
       - il **DJ** della Costa ora si vede (aveva uno sprite che esiste solo nel motore di Rosso Fuoco: era
         invisibile e bloccava il gioco; `porta_mappa.py` adesso si ferma se uno sprite non esiste);
       - **Castel di Lama**: senza medaglia Bobby ferma sulla strada per Spinetoli e non si aggira più
@@ -40,14 +40,14 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
       - i **saltelli** a Maltignano: nei due varchi della salita si salta giù, in salita non si passa;
       - gli **strumenti a terra**: 14 Poké Ball in 13 zone (`tools/piceno/strumenti_mappa.json`).
 
-- [ ] **Terzo rilascio del 19/11** (commit `72b96e5adc`), da provare:
+- [x] **Terzo rilascio del 19/11** (commit `72b96e5adc`), da provare: *(provato da Jacopo, detto il 20/11)*
       - **Box**: le icone delle nostre 149 specie erano troppo grandi (30 pixel), ora stanno in 22 come le ufficiali;
       - **chalet**: i quattro stabilimenti della Costa hanno l'interno (`interno_chalet`), il barista vende
         Acqua Fresca, Gassosa e Lemonsucco;
       - **giorno e notte**: l'orologio resta, la tinta della mappa è spenta (`OW_ENABLE_DNS FALSE`; Jacopo:
         «non funziona ancora bene a livello visivo»).
 
-- [ ] **Quarto rilascio del 19/11** (commit `c2b2e46fd0`), da provare:
+- [x] **Quarto rilascio del 19/11** (commit `c2b2e46fd0`), da provare: *(provato da Jacopo, detto il 20/11)*
       - il **Jonathan**, a nord della Costa: il lungomare prosegue dritto, parcheggio, biglietteria, spiaggia;
       - **Nando** nel vialetto fra le siepi davanti alla discoteca (terza sfida);
       - la **discoteca-palestra**: i tre Bro della Security accanto ai varchi, Riccio in fondo, la
