@@ -85,13 +85,16 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
 - [x] Prova di base (20/11): `python tools/piceno/prova_base.py`, 3 secondi. Partita nuova, scena del treno,
       discesa a Porta Maggiore, saluto di Bobby, starter, lotta con Nando fino in fondo. Sulla ROM del 20/11
       passa. Premendo solo A la lotta si perde, e si riappare davanti al bar di Porta Maggiore.
-- [ ] Con l'emulatore, le prove del rilascio del 20/11 che non sono di aspetto: ripartenza davanti ai bar
-      dopo una sconfitta, bigliettaio e autista raggiungibili, corriera andata e ritorno.
-- [ ] **I salvataggi vecchi si rompono a ogni ROM nuova** (scoperto il 20/11): quello di Jacopo del 19/11,
+- [x] Prove del rilascio del 20/11 con l'emulatore (`python tools/piceno/prova_rilascio.py`, 35 secondi),
+      **tutte passate**: persa una lotta si riappare davanti a chi ha curato in tutte e nove le zone
+      (Monticelli con l'ospedale, Campo Parignano, Maltignano, Castel di Lama, Spinetoli, Costa, Porta
+      Maggiore, Centro Storico, Ripatransone); il bigliettaio in stazione si raggiunge e risponde; la
+      corriera va a Ripatransone e torna. Restano a Jacopo, a occhio: Porta Maggiore da nord, capannoni e
+      palazzine, Oliver di spalle. Non provato: il bar di Monticelli.
+- [x] I salvataggi vecchi si rompono a ogni ROM nuova (scoperto il 20/11): quello di Jacopo del 19/11,
       fatto a Marino del Tronto, con la ROM del 20/11 mostra la mappa a pezzi e si cammina attraverso i
-      muri, finché non si entra in una porta. La partita ricorda il numero della pianta e l'ordine in
-      `layouts.json` cambia a ogni generazione. Rimedio proposto: tenere fermo l'ordine (le piante nuove in
-      fondo). **Aspetta la decisione di Jacopo.**
+      muri. La partita ricorda il numero della pianta e l'ordine in `layouts.json` cambia a ogni
+      generazione. **Jacopo (20/11): non tenere fermo l'ordine, resta così.**
 
 **Fogli**
 - [x] Hills, Bro della Security, DJ e Riccio in lotta: arrivati il 19/11 e montati.
