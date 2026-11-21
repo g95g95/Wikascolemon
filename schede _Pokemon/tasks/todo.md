@@ -1,10 +1,28 @@
-# ▶ A CHE PUNTO SIAMO (19/11/2026, rilascio corposo)
+# ▶ A CHE PUNTO SIAMO (21/11/2026, notte)
 
-## ✅ DA FARE (lista unica, al 19/11)
+## ✅ DA FARE (lista unica, al 21/11)
 
-Il gioco si gioca dal treno alla prima medaglia, fino alla Costa, e in corriera a Ripatransone. ROM: `pokemon-piceno.gba`
-del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo e ha un suo piano in
+Il gioco si gioca dal treno alla seconda medaglia (Jonathan), fino alla Costa, e in corriera a Ripatransone.
+ROM: `pokemon-piceno.gba` del 21/11 notte (commit `bb77b297cc` di `pokemon-piceno`), con accanto
+`pokemon-piceno.sym` della stessa compilazione. Giulio lavora in parallelo e ha un suo piano in
 `pokemon-piceno/tasks/todo.md`: **i due piani restano separati per ora** (deciso da Jacopo), si integrano dopo.
+
+**Da dove si riparte (lasciato il 21/11 notte)**
+1. **Jacopo sta facendo i fogli del terzo giro** (18 Pokémon: Costa, evoluzioni degli starter; prompt e artwork
+   in `schede _Pokemon/tasks/prompt_grafica_3/`). Quando dice che sono in Downloads: copiarli in
+   `tools/piceno/fogli/sorgenti/<specie>.png` (sono nell'ordine della cartella: controllare a occhio con
+   un foglio d'insieme), aggiungere le specie all'elenco in fondo a `tools/piceno/ritaglia_fogli.py`,
+   lanciarlo, poi `porta_pokedex.py`, rimettere a posto icone e `iconPalIndex` delle ALTRE specie e
+   `data/layouts/layouts.json` (vedi il manuale), push, scaricare ROM e `.sym`, lanciare le tre prove.
+2. **Jacopo deve provare la ROM del 21/11**: le sette mosse con l'effetto ufficiale, la consegna delle MT da
+   Hills e Riccio, la Mappa Città dal bigliettaio (per chi ha già una partita), la scheda allenatore con
+   Oliver, le otto figure in lotta, Riccio sulla mappa, gli sprite nuovi in lotta.
+3. Aperte, in attesa di Jacopo: le sei mosse che fanno solo danno, le 32 mosse da MT della wiki che non
+   esistono, la proposta di Giulio sulle abilità, togliere Hoenn.
+
+**Come provo io la ROM** (dal 20/11): `python tools/piceno/prova_base.py`, `prova_lotta.py`,
+`prova_rilascio.py` nel repo del gioco, con l'emulatore senza finestra (`tools/piceno/emulatore.py`).
+Tutto spiegato in `pokemon-piceno/tasks/manuale_sviluppo.md`.
 
 **Provato in gioco da Jacopo (detto il 20/11): il lavoro del 17/11 e i rilasci del 18 e del 19/11**
 - [x] La scena del treno (serve una partita nuova): scossa, annuncio, discesa, Bobby alla stazione.
