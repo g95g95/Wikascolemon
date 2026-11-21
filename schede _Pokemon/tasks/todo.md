@@ -1,24 +1,66 @@
-# ▶ A CHE PUNTO SIAMO (21/11/2026, notte)
+# ▶ A CHE PUNTO SIAMO (21/11/2026, pomeriggio)
 
 ## ✅ DA FARE (lista unica, al 21/11)
 
 Il gioco si gioca dal treno alla seconda medaglia (Jonathan), fino alla Costa, e in corriera a Ripatransone.
-ROM: `pokemon-piceno.gba` del 21/11 notte (commit `bb77b297cc` di `pokemon-piceno`), con accanto
+ROM: `pokemon-piceno.gba` del 21/11 pomeriggio (commit `302cfdff63` di `pokemon-piceno`), con accanto
 `pokemon-piceno.sym` della stessa compilazione. Giulio lavora in parallelo e ha un suo piano in
 `pokemon-piceno/tasks/todo.md`: **i due piani restano separati per ora** (deciso da Jacopo), si integrano dopo.
 
-**Da dove si riparte (lasciato il 21/11 notte)**
-1. **Jacopo sta facendo i fogli del terzo giro** (18 Pokémon: Costa, evoluzioni degli starter; prompt e artwork
-   in `schede _Pokemon/tasks/prompt_grafica_3/`). Quando dice che sono in Downloads: copiarli in
-   `tools/piceno/fogli/sorgenti/<specie>.png` (sono nell'ordine della cartella: controllare a occhio con
-   un foglio d'insieme), aggiungere le specie all'elenco in fondo a `tools/piceno/ritaglia_fogli.py`,
-   lanciarlo, poi `porta_pokedex.py`, rimettere a posto icone e `iconPalIndex` delle ALTRE specie e
-   `data/layouts/layouts.json` (vedi il manuale), push, scaricare ROM e `.sym`, lanciare le tre prove.
+**Da dove si riparte (lasciato il 21/11 pomeriggio)**
+1. **Fatto il 21/11: terzo giro di sprite** (commit `302cfdff63` di `pokemon-piceno`). I 18 fogli di Jacopo
+   (Costa, evoluzioni degli starter) sono ritagliati e montati: Alghetta, Mucillax, Bagnetto, Cozzetta,
+   Scoglieràx, Lettino, Maranzino, Cignalo, Peto, Caita, Turibasil, Vescovasil, Cavalbrace, Fuocavallo,
+   Brasero, Compadrone, Cavedone, Batterino. Con i primi due giri sono 34 su 149. Nella stessa ROM gli
+   strumenti in italiano (794 più le cocchie). Le tre prove passano; sprite e strumenti **non visti in
+   gioco**, solo in anteprima: da guardare da Jacopo. L'anteprima di `ritaglia_fogli.py` esce nera in
+   fondo (il foglio è alto 2000 e i pezzi ora sono 102): da allungare.
 2. **Jacopo deve provare la ROM del 21/11**: le sette mosse con l'effetto ufficiale, la consegna delle MT da
    Hills e Riccio, la Mappa Città dal bigliettaio (per chi ha già una partita), la scheda allenatore con
    Oliver, le otto figure in lotta, Riccio sulla mappa, gli sprite nuovi in lotta.
 3. Aperte, in attesa di Jacopo: le sei mosse che fanno solo danno, le 32 mosse da MT della wiki che non
    esistono, la proposta di Giulio sulle abilità, togliere Hoenn.
+
+**Proposte del 21/11 mattina sulle mosse: aspettano il sì di Jacopo, niente è montato**
+
+*Le sei mosse che fanno solo danno.* Guardando le schede, tre non sono «senza effetto»: hanno righe
+diverse da una scheda all'altra, o i numeri di un'altra mossa ufficiale.
+| Mossa | Cosa dice la wiki | Proposta |
+|---|---|---|
+| Aeroattacco | Volante, fisico, 60, non manca mai, 20 PP (6 specie) | Sono i numeri di **Aeroassalto** (Aerial Ace, la MT40), uguali in tutto: ricondurla a quella e correggere il nome nelle schede. Aeroattacco ufficiale è un'altra mossa (140, due turni). |
+| Battipiedi | Tifotto e Sciarpone: Terra, fisico, 75/100/10. Fatella e Ancella: Normale, fisico, 30/100/20 | Sono due mosse. Quella di Tifotto e Sciarpone è il **Battipiedi ufficiale** (Stomping Tantrum), uguale in tutto: ricondurla. Quella delle fate è un'altra: le serve un nome suo (resta solo danno). Oggi nel gioco tutte e quattro hanno la versione da 30. |
+| Riduttore | Quattro righe diverse: Banconio 80/75/20 fisico; Soldatino stato 10 PP; Zurriò stato 100%/20 PP; Ciammarica Coleottero, stato, 95%/40 PP (i numeri di Millebave) | Da decidere scheda per scheda cosa volevano essere. Oggi nel gioco tutti hanno la versione di Banconio. Il Riduttore ufficiale è 90/85/20 col contraccolpo. |
+| Flagello | Esclusiva di Moro: «la potenza aumenta quanto più l'avversario è lento di lui, fino a 150» | È la formula di **Energisfera** (Electro Ball): prendere quell'effetto, coi numeri della wiki (Acciaio, fisico, 100%, 10 PP). Si fa con una riga in `EFFETTI_DEL_MOTORE`. |
+| Elettroraggio | Elettro, speciale, 60/100/20, nessuna descrizione (Faro, Repetito) | Lasciarla solo danno. L'ufficiale (130, due turni) non c'entra. |
+| Marchiafuoco | Fuoco, fisico, 120/85/5, «potentissimo ma impreciso» (Bracignale) | Lasciarla solo danno: è quello che dice la scheda. |
+
+*Le 32 righe «mosse da MT» (20 mosse diverse).* Nessuna è inventata da zero: quasi tutte sono mosse
+ufficiali scritte con un nome che non è quello italiano.
+| Nella wiki | È | Esito proposto |
+|---|---|---|
+| Raggioscuro (famiglia Soldatino) | **Geloraggio**, MT13, numeri uguali | Correggere il nome: la imparano subito |
+| Assorbenergia (Vlurde) | **Gigassorbimento**, MT19, numeri uguali | Correggere il nome: la impara subito |
+| Sole Cocente (Alghetta) | **Giornodisole**, MT11 (la wiki dice Normale, è Fuoco) | Correggere nome e tipo |
+| Roccia Massiccia (Scoglieràx) | **Rocciotomba**, MT39 (wiki 50/95/10, ufficiale 60/95/15) | Correggere nome e numeri |
+| Stoccata (Cocchia, Lu Pà) | 70/100/20 Normale: i numeri di **Facciata** (MT42) e di **Forzasegreta** (MT43) | Scegliere quale delle due |
+| Bomba Acida (Totera) | **Acidobomba**, numeri uguali | Mossa del motore, ma non è una MT |
+| Zanna di ghiaccio (Bracignale) | **Gelodenti**, numeri uguali | idem |
+| Fuocodenti (Lupittə, Sibillupo) | **Rogodenti**, numeri uguali | idem |
+| Eco Voce (Caciara, Trecaciare) | **Echeggiavoce**, numeri uguali | idem |
+| Chiacchiera (Sciapezza, Saputezza) | **Schiamazzo**, numeri uguali | idem |
+| Facciabuffa (Caciara) | **Visotruce**, numeri uguali | idem |
+| Roccia tagliente (Bracignale) | **Pietrataglio** (wiki 10 PP, ufficiale 5) | idem, correggendo i PP |
+| Palla Ferro (Sammarò) | 130/100/5 Acciaio: i numeri di **Ferrorullo** (che però fallisce senza un campo attivo) | Da decidere |
+| Sfuriata (Mixaro) | Buio, speciale, 80/100/10: quasi **Neropulsar** (15 PP) | Da decidere |
+| Sgambetto (Maranzino, Coperto) | Buio, fisico, 60/100/20: nessuna uguale (Furto, MT46, ha 25 PP e ruba) | Da decidere |
+| Coraggio (Vecciandò) | Lotta, fisico, 70/100/20: nessuna uguale (Breccia, MT31, è 75/100/15) | Da decidere |
+| Ognimossa (7 specie di vigna e orto) | Normale, fisico, 50/100/20: nessuna uguale | Da decidere |
+| Facilotto (Totera) | Normale, stato, 20 PP: non si capisce cosa sia | Da decidere |
+| Girospada (Retrabbiə) | Acciaio, stato, 15 PP: i PP di Ferroscudo e Sganciapesi | Da decidere |
+
+Per le sei «mossa del motore, ma non è una MT» ci sono due strade: farne MT nostre (i posti da 53 a
+100 sono vuoti) o toglierle dalla tabella MT delle schede. Raccomando la prima per Gelodenti e
+Rogodenti (le hanno in tre), la seconda per le altre.
 
 **Come provo io la ROM** (dal 20/11): `python tools/piceno/prova_base.py`, `prova_lotta.py`,
 `prova_rilascio.py` nel repo del gioco, con l'emulatore senza finestra (`tools/piceno/emulatore.py`).
@@ -235,7 +277,15 @@ Tutto spiegato in `pokemon-piceno/tasks/manuale_sviluppo.md`.
 - [ ] Terreno, alberi e acqua sono di Hoenn; edifici dipinti da codice. Fogli di Jacopo in ChatGPT quando vuole.
 
 **Traduzione**
-- [ ] Strumenti in italiano: **326 su circa 870** al 19/11 (tutte le Ball, cure, vitamine, strumenti X, pietre
+- [x] Strumenti in italiano, secondo giro (21/11, commit `1b5fb2a8fc` e seguente): **794 più le 17 cocchie su 872**.
+      Entrati megapietre, cristalli Z, le bacche che non sono cocchie, posta, strumenti chiave di Hoenn e
+      Kanto, ottava e nona generazione, e le MT/MN (ora «MT01»... «MN08», come le chiama il menu). Nomi
+      ufficiali da PokeAPI (`item_names.csv`) e dalla Pokémon Central Wiki; descrizioni mie. Restano in
+      inglese 14 strumenti di cui non ho trovato il nome ufficiale (Berserk Gene, Fresh-Start Mochi,
+      Jubilife Muffin, i tre Remedy, i quattro Aux, Choice Dumpling, Swap Snack, Twice-Spiced Radish,
+      Pokéshi Doll) e le MT vuote 53-100. **Nome mio da confermare: «Portacocchie»** (il Berry Pouch,
+      ufficiale «Portabacche»).
+- [x] Primo giro: **326 su circa 870** al 19/11 (tutte le Ball, cure, vitamine, strumenti X, pietre
       e strumenti evolutivi, quasi tutti quelli da tenere, fossili, oggetti di valore, canne e bici). Fuori:
       megapietre e cristalli Z, strumenti di ottava e nona generazione dal nome incerto, quelli della trama
       di Hoenn, la posta. Da rileggere: «Attacco Sp. X»/«Difesa Sp. X» e il Condividi Esp. (descritto come
