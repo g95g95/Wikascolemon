@@ -121,14 +121,19 @@ del 19/11 (commit `6339a6ce80` di `pokemon-piceno`). Giulio lavora in parallelo 
 - [ ] `prova_lotta.py` è fallita una volta su cinque il 21/11 senza motivo trovato (il controllo
       dell'esperienza dopo un colpo normale): da tenere d'occhio.
 
-**Chiesto da Jacopo il 21/11: la mappa della città nel gioco**
-- [ ] Mettere nel gioco la **mappa** (la cartina del Piceno c'è già nel motore, `tools/piceno/cartina.py`, ma
-      il giocatore non ha modo di aprirla): dentro il PokéNav «o qualcosa di simile». Serve **qualcuno che
-      la dà in un modo sensato**. Da decidere con Jacopo: lo strumento (PokéNav vero, che si porta dietro
-      anche Match Call e Fiocchi, oppure un oggetto nostro che apre solo la cartina, tipo una piantina
-      della città), chi la consegna e quando (proposte: il bigliettaio o il vigile alla stazione
-      all'arrivo; Bobby insieme allo starter; l'edicola/tabacchi), e se deve mostrare anche le città di
-      dettaglio o solo la regione.
+**Secondo rilascio del 21/11 (commit `bb77b297cc` di `pokemon-piceno`), da provare da Jacopo**
+- [x] **La mappa della città nel gioco** (chiesto da Jacopo il 21/11): è la **Mappa Città** (`ITEM_TOWN_MAP`,
+      c'era già nel motore), fra gli strumenti base; apre la cartina del Piceno col punto dove si è. La
+      dà il **capotreno** sul treno all'arrivo (partita nuova) e il **bigliettaio** in stazione a chi ha
+      già una partita (`FLAG_UNUSED_0x02A`). Tradotti «OLIVER guarda da vicino la mappa del PICENO» e
+      l'etichetta PICENO (era HOENN, anche nel Pokédex). Visto con l'emulatore. Le battute di capotreno
+      e bigliettaio sono mie. Sulla cartina la testina è ancora quella di Brendan.
+- [x] **Idrogetto da MT** anche alle famiglie di Soldatino (Batterino, Dehor) e di Bagnetto (Coperto, Mixaro),
+      scelte da me su richiesta di Jacopo. Letto dalla ROM.
+- [x] **Sprite fronte e retro di altri dodici Pokémon** dai fogli di Jacopo (prompt in
+      `schede _Pokemon/tasks/prompt_grafica_2/`): Banconio, Zanzì, Zanzarax, Pef'na, Tamburino, Anicino,
+      Pito, Ciucì, Sorcì, Cavedì, Soldatino, Totera, con le loro icone. Con quelli del primo giro sono 16
+      su 149. Visti solo in anteprima, non in lotta.
 
 **Documentazione (20/11)**
 - [x] Presentazione rifatta: `Presentazione Pokemon Piceno - 20 novembre.pdf` nella radice di Wikascolemon;

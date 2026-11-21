@@ -1,0 +1,36 @@
+PROMPT PER GLI SPRITE DEI PROSSIMI POKÉMON (fronte e retro)
+Scritto il 21/11/2026.
+
+Il prompt è uno solo, uguale per tutti: lo incolli e alleghi ogni volta un artwork diverso di questa
+cartella. Un foglio per Pokémon, dodici in tutto.
+
+Sono i quattro che hai chiesto (Banconio, Zanzì, Zanzarax, Pef'na) più gli altri selvatici che si
+incontrano per primi, dal treno alla prima medaglia:
+
+  01 - Banconio     Porta Maggiore, Centro Storico, Monticelli, Campo Parignano
+  02 - Zanzi        Oasi, Maltignano, Castel di Lama
+  03 - Zanzarax     l'evoluzione di Zanzì
+  04 - Pefna        Maltignano, Spinetoli, Ripatransone
+  05 - Tamburino    Porta Maggiore, Centro Storico, Monticelli, Borgo Solestà
+  06 - Anicino      Centro Storico, Monticelli
+  07 - Pito         Monticelli, Borgo Chiaro, Campo Parignano, Borgo Solestà
+  08 - Ciuci        Borgo Chiaro, Marino del Tronto, Oasi
+  09 - Sorci        Marino del Tronto, Maltignano
+  10 - Cavedi       Porta Cartara, Oasi
+  11 - Soldatino    Porta Cartara, Oasi
+  12 - Totera       Marino del Tronto, Castel di Lama, Spinetoli
+
+Quando scarichi il PNG, se riesci dagli il nome del Pokémon (es. «banconio.png»): mi evita di doverli
+riconoscere a occhio. Se non lo fai li riconosco lo stesso.
+
+------------------------------------------------------------------------------------------------------
+
+Pixel art in the style of Game Boy Advance Pokémon Emerald battle sprites.
+One row of 2 equal square cells on a solid flat magenta (#FF00FF) background, no shadows, no text, no borders.
+The creature is the one in the attached artwork; keep its shapes and colours.
+Cell 1: the creature seen from the front, turned slightly to the left, whole body visible, feet on the
+bottom third of the cell.
+Cell 2: the same creature seen from behind, turned slightly to the right (three-quarter back view),
+larger than in cell 1 and cut by the bottom edge of the cell as in Emerald back sprites.
+Dark outline, flat colours, at most 15 colours shared by both views, no gradients, no anti-aliasing,
+crisp pixels.
