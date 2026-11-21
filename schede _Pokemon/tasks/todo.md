@@ -3,7 +3,7 @@
 ## ✅ DA FARE (lista unica, al 21/11)
 
 Il gioco si gioca dal treno alla seconda medaglia (Jonathan), fino alla Costa, e in corriera a Ripatransone.
-ROM: `pokemon-piceno.gba` del 21/11 pomeriggio (commit `789de56f19` di `pokemon-piceno`), con accanto
+ROM: `pokemon-piceno.gba` del 21/11 pomeriggio (commit `75eb8fdf5a` di `pokemon-piceno`), con accanto
 `pokemon-piceno.sym` della stessa compilazione. Giulio lavora in parallelo e ha un suo piano in
 `pokemon-piceno/tasks/todo.md`: **i due piani restano separati per ora** (deciso da Jacopo), si integrano dopo.
 
@@ -46,10 +46,11 @@ ancora risposto.
       (il nome regge 10 lettere). Riccio in palestra ora dice «Iban e Teo».
       Script in `tools/piceno/mappe/costa.inc`, allenatore in `allenatori.py` (`SOLO_NEL_GIOCO`).
       Provato con l'emulatore: `python tools/piceno/prova_iban_teo.py`. Le battute dell'incontro sono mie.
-- [ ] **Sprite dedicati**: prompt in `schede _Pokemon/tasks/prompt_grafica_4/PROMPT.txt` (tre fogli: Iban
-      sulla mappa, Teo sulla mappa, i due insieme in lotta). Iban a torso nudo col microfono, Teo come
-      nella foto (le due foto sono in `OneDrive\Pictures\Screenshots 1`, non nel repository). Finché non
-      arrivano i fogli: sulla mappa il signore e l'uomo di Smeraldo, in lotta i due cronisti di Hoenn.
+- [x] **Sprite dedicati** (commit `75eb8fdf5a`): dai tre fogli di Jacopo (prompt in
+      `schede _Pokemon/tasks/prompt_grafica_4/PROMPT.txt`). Iban pelato, a torso nudo col microfono; Teo
+      con la polo rosa; in lotta i due insieme in una figura sola. Sulla mappa visti con l'emulatore
+      (`emulatore/foto/iban_teo_prima.png`); **la figura in lotta non l'ho vista in gioco**, solo ritagliata:
+      da guardare da Jacopo, insieme al colore della pelle di Iban sulla mappa (tira al giallo).
 - Trovato per caso: `Wikascolemon/gioco/` non è allineata ai sorgenti della demo (mappe e allenatori
   cambiati senza rilanciare `build-gioco.mjs`), quindi `tests/build.test.mjs` fallisce. Non toccata.
 
