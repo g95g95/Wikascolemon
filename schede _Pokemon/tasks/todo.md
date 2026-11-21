@@ -23,6 +23,17 @@ ROM: `pokemon-piceno.gba` del 21/11 pomeriggio (commit `302cfdff63` di `pokemon-
 
 **Proposte del 21/11 mattina sulle mosse: aspettano il sì di Jacopo, niente è montato**
 
+*Risposte di Jacopo (21/11 pomeriggio):* «Portacocchie perfetto»; Aeroattacco = Aeroassalto, sì; Battipiedi
+ufficiale per Tifotto e Sciarpone, sì; il Battipiedi di Fatella e Ancella in sospeso. Sul resto non ha
+ancora risposto.
+- [x] Aeroassalto: nome corretto nelle sei schede (pubblicate e bozze), `species.js`/`moves.js` rigenerati.
+- [x] Battipiedi: `MOSSE_PER_SPECIE` in `porta_pokedex.py` (Tifotto e Sciarpone → `STOMPING_TANTRUM`).
+- [ ] **Da finire: rilanciare `porta_pokedex.py`** nel repo del gioco (il 21/11 è stato fermato a metà dal
+      sistema per poca memoria, niente di generato è rimasto), rimettere le icone delle altre specie,
+      push, ROM, tre prove. Finché non si fa, nel gioco le due mosse sono ancora come prima.
+- Trovato per caso: `Wikascolemon/gioco/` non è allineata ai sorgenti della demo (mappe e allenatori
+  cambiati senza rilanciare `build-gioco.mjs`), quindi `tests/build.test.mjs` fallisce. Non toccata.
+
 *Le sei mosse che fanno solo danno.* Guardando le schede, tre non sono «senza effetto»: hanno righe
 diverse da una scheda all'altra, o i numeri di un'altra mossa ufficiale.
 | Mossa | Cosa dice la wiki | Proposta |
@@ -283,8 +294,7 @@ Tutto spiegato in `pokemon-piceno/tasks/manuale_sviluppo.md`.
       ufficiali da PokeAPI (`item_names.csv`) e dalla Pokémon Central Wiki; descrizioni mie. Restano in
       inglese 14 strumenti di cui non ho trovato il nome ufficiale (Berserk Gene, Fresh-Start Mochi,
       Jubilife Muffin, i tre Remedy, i quattro Aux, Choice Dumpling, Swap Snack, Twice-Spiced Radish,
-      Pokéshi Doll) e le MT vuote 53-100. **Nome mio da confermare: «Portacocchie»** (il Berry Pouch,
-      ufficiale «Portabacche»).
+      Pokéshi Doll) e le MT vuote 53-100. «Portacocchie» (il Berry Pouch) confermato da Jacopo il 21/11.
 - [x] Primo giro: **326 su circa 870** al 19/11 (tutte le Ball, cure, vitamine, strumenti X, pietre
       e strumenti evolutivi, quasi tutti quelli da tenere, fossili, oggetti di valore, canne e bici). Fuori:
       megapietre e cristalli Z, strumenti di ottava e nona generazione dal nome incerto, quelli della trama

@@ -3611,8 +3611,8 @@
     "effect": null,
     "description": ""
   },
-  "aeroattacco": {
-    "name": "Aeroattacco",
+  "aeroassalto": {
+    "name": "Aeroassalto",
     "type": "Volante",
     "category": "Fisico",
     "power": 60,
@@ -3620,7 +3620,7 @@
     "pp": 20,
     "priority": 0,
     "effect": null,
-    "description": ""
+    "description": "Assalto dall'alto in picchiata."
   },
   "focalenergia": {
     "name": "Focalenergia",
@@ -3910,17 +3910,6 @@
     "priority": 0,
     "effect": null,
     "description": ""
-  },
-  "aeroassalto": {
-    "name": "Aeroassalto",
-    "type": "Volante",
-    "category": "Fisico",
-    "power": 60,
-    "accuracy": null,
-    "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": "Assalto dall'alto in picchiata."
   },
   "ombrartigli": {
     "name": "Ombrartigli",
