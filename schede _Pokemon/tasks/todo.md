@@ -3,7 +3,7 @@
 ## ✅ DA FARE (lista unica, al 21/11)
 
 Il gioco si gioca dal treno alla seconda medaglia (Jonathan), fino alla Costa, e in corriera a Ripatransone.
-ROM: `pokemon-piceno.gba` del 21/11 pomeriggio (commit `302cfdff63` di `pokemon-piceno`), con accanto
+ROM: `pokemon-piceno.gba` del 21/11 pomeriggio (commit `789de56f19` di `pokemon-piceno`), con accanto
 `pokemon-piceno.sym` della stessa compilazione. Giulio lavora in parallelo e ha un suo piano in
 `pokemon-piceno/tasks/todo.md`: **i due piani restano separati per ora** (deciso da Jacopo), si integrano dopo.
 
@@ -28,9 +28,28 @@ ufficiale per Tifotto e Sciarpone, sì; il Battipiedi di Fatella e Ancella in so
 ancora risposto.
 - [x] Aeroassalto: nome corretto nelle sei schede (pubblicate e bozze), `species.js`/`moves.js` rigenerati.
 - [x] Battipiedi: `MOSSE_PER_SPECIE` in `porta_pokedex.py` (Tifotto e Sciarpone → `STOMPING_TANTRUM`).
-- [ ] **Da finire: rilanciare `porta_pokedex.py`** nel repo del gioco (il 21/11 è stato fermato a metà dal
-      sistema per poca memoria, niente di generato è rimasto), rimettere le icone delle altre specie,
-      push, ROM, tre prove. Finché non si fa, nel gioco le due mosse sono ancora come prima.
+- [x] Montati nella ROM (commit `07fac9ad00` di `pokemon-piceno`): Aeroassalto, Battipiedi ufficiale per
+      Tifotto e Sciarpone.
+- [x] **Riduttore e Flagello «con lo stesso effetto dei giochi normali»** (Jacopo, 21/11 sera): Riduttore ha
+      il contraccolpo del 25%, Flagello è più forte quanti meno PS restano a chi lo usa (`EFFETTI_DEL_MOTORE`).
+      I numeri restano quelli della wiki. La scheda di Moro descrive ancora Flagello con la regola della
+      velocità: da correggere nella wiki se la decisione resta questa. Le quattro righe diverse di
+      Riduttore nelle schede restano com'erano (nel gioco vale quella di Banconio, 80/75/20).
+- `Wikascolemon/gioco/`: Jacopo ha chiesto «ci interessa?». È la demo nel browser pubblicata sul sito;
+  dal 16/11 si lavora sulla ROM, quindi no, a meno di voler aggiornare la demo online.
+
+**IbanGreco e Teo Allisix (già Ivo e Teo), chiesto da Jacopo il 21/11 sera**
+- [x] Sulla spiaggia della Costa: giornalisti e congressisti, parlano romano, hanno tentato l'agguato a
+      Riccio, le hanno prese e sfidano Oliver **in doppio** per rifarsi (Sciapezza e Bree al 20, scelti da
+      me). Sconfitti: «Forse dovevamo restà co Wercom tu Favelas...»; a riparlarci: «E mo chi li sente
+      Marra e Fedez...». Con un Pokémon solo non lottano. In lotta si chiamano «GIORNALISTI IBAN E TEO»
+      (il nome regge 10 lettere). Riccio in palestra ora dice «Iban e Teo».
+      Script in `tools/piceno/mappe/costa.inc`, allenatore in `allenatori.py` (`SOLO_NEL_GIOCO`).
+      Provato con l'emulatore: `python tools/piceno/prova_iban_teo.py`. Le battute dell'incontro sono mie.
+- [ ] **Sprite dedicati**: prompt in `schede _Pokemon/tasks/prompt_grafica_4/PROMPT.txt` (tre fogli: Iban
+      sulla mappa, Teo sulla mappa, i due insieme in lotta). Iban a torso nudo col microfono, Teo come
+      nella foto (le due foto sono in `OneDrive\Pictures\Screenshots 1`, non nel repository). Finché non
+      arrivano i fogli: sulla mappa il signore e l'uomo di Smeraldo, in lotta i due cronisti di Hoenn.
 - Trovato per caso: `Wikascolemon/gioco/` non è allineata ai sorgenti della demo (mappe e allenatori
   cambiati senza rilanciare `build-gioco.mjs`), quindi `tests/build.test.mjs` fallisce. Non toccata.
 

@@ -1,0 +1,62 @@
+# Prompt per i fogli di IbanGreco e Teo Allisix (ChatGPT immagini)
+
+Scritti il 21/11/2026. Tre fogli: i due sulla mappa (uno a testa) e la figura in lotta (tutti e due
+insieme, perché la lotta è in doppio e la figura è una sola). Il PNG scaricato va in Downloads: lo
+ritaglio io.
+
+Le due foto di riferimento non stanno nel repository (sono foto di persone): sono in
+`OneDrive\Pictures\Screenshots 1\Iban greco.png` e `allisix.png`. **Allegale al messaggio** dove indicato.
+
+Come li ha chiesti Jacopo: Iban a torso nudo e col microfono; Teo come nella foto.
+
+---
+
+## 1. IbanGreco sulla mappa (allega «Iban greco.png»)
+
+```
+Pixel art overworld sprite sheet in the style of Game Boy Advance Pokémon Emerald walking characters
+(small chibi people, about two heads tall, each figure twice as tall as it is wide).
+A grid of 3 columns and 3 rows of equal cells on a solid flat magenta (#FF00FF) background,
+no shadows, no text, no borders.
+The character is inspired by the man in the attached image: a beach reporter with a shaved head,
+short dark beard, aviator sunglasses, bare chest (no shirt), white shorts, black sneakers,
+holding a handheld microphone in his right hand.
+Row 1: facing the viewer (front). Row 2: seen from behind (back). Row 3: facing left (side view).
+In each row: column 1 standing still, column 2 walking with the left foot forward,
+column 3 walking with the right foot forward.
+Same size, same colours and same head height in all 9 cells. Dark outline, flat colours,
+at most 15 colours, no gradients, no anti-aliasing, crisp pixels.
+```
+
+## 2. Teo Allisix sulla mappa (allega «allisix.png»)
+
+```
+Pixel art overworld sprite sheet in the style of Game Boy Advance Pokémon Emerald walking characters
+(small chibi people, about two heads tall, each figure twice as tall as it is wide).
+A grid of 3 columns and 3 rows of equal cells on a solid flat magenta (#FF00FF) background,
+no shadows, no text, no borders.
+The character is inspired by the young man in the attached image: a reporter with short
+light-brown hair, clean-shaven round face, pink polo shirt, beige shorts, white sneakers.
+Row 1: facing the viewer (front). Row 2: seen from behind (back). Row 3: facing left (side view).
+In each row: column 1 standing still, column 2 walking with the left foot forward,
+column 3 walking with the right foot forward.
+Same size, same colours and same head height in all 9 cells. Dark outline, flat colours,
+at most 15 colours, no gradients, no anti-aliasing, crisp pixels.
+```
+
+## 3. I due insieme, figura in lotta (allega tutte e due le foto)
+
+```
+Pixel art sprite in the style of Game Boy Advance Pokémon Emerald trainer front sprites
+(like the two-person "Interviewers" trainer sprite). One single square image on a solid flat
+magenta (#FF00FF) background, no shadows, no text, no borders.
+Two full-body characters standing side by side, close together, facing the viewer and slightly
+to the left, together filling the height of the square:
+on the left, the man from the first attached image: shaved head, short dark beard, aviator
+sunglasses, bare chest (no shirt), white shorts, black sneakers, pointing a handheld microphone
+towards the viewer;
+on the right, the young man from the second attached image: short light-brown hair, clean-shaven
+round face, pink polo shirt, beige shorts, white sneakers, holding up a smartphone as if filming.
+Dark outline, flat colours, at most 15 colours in the whole image, no gradients,
+no anti-aliasing, crisp pixels.
+```
