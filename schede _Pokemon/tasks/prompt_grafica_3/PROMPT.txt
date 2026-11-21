@@ -1,0 +1,34 @@
+PROMPT PER GLI SPRITE DEI POKÉMON (fronte e retro), terzo giro
+Scritto il 21/11/2026.
+
+Il prompt è lo stesso del giro scorso: lo incolli e alleghi ogni volta un artwork diverso di questa
+cartella. Un foglio per Pokémon, diciotto in tutto.
+
+  I selvatici della Costa
+  01 - Alghetta     02 - Mucillax (la sua evoluzione)     03 - Bagnetto     04 - Cozzetta
+  05 - Scoglierax (evoluzione di Cozzetta)     06 - Lettino     07 - Maranzino
+
+  Gli altri selvatici prima della seconda medaglia
+  08 - Cignalo      09 - Peto      10 - Caita (evoluzione di Pef'na)
+
+  Le evoluzioni degli starter
+  11 - Turibasil    12 - Vescovasil     (Basilino)
+  13 - Cavalbrace   14 - Fuocavallo     (Puledrotto)
+  15 - Brasero      16 - Compadrone     (Tuffito)
+
+  Le evoluzioni di due già fatti
+  17 - Cavedone (Cavedì)     18 - Batterino (Soldatino)
+
+Scaricali nell'ordine della cartella, come l'altra volta: li riconosco dall'ordine e dall'immagine.
+
+------------------------------------------------------------------------------------------------------
+
+Pixel art in the style of Game Boy Advance Pokémon Emerald battle sprites.
+One row of 2 equal square cells on a solid flat magenta (#FF00FF) background, no shadows, no text, no borders.
+The creature is the one in the attached artwork; keep its shapes and colours.
+Cell 1: the creature seen from the front, turned slightly to the left, whole body visible, feet on the
+bottom third of the cell.
+Cell 2: the same creature seen from behind, turned slightly to the right (three-quarter back view),
+larger than in cell 1 and cut by the bottom edge of the cell as in Emerald back sprites.
+Dark outline, flat colours, at most 15 colours shared by both views, no gradients, no anti-aliasing,
+crisp pixels.
