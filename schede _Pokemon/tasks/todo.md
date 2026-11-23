@@ -51,6 +51,10 @@ ancora risposto.
       con la polo rosa; in lotta i due insieme in una figura sola. Sulla mappa visti con l'emulatore
       (`emulatore/foto/iban_teo_prima.png`); **la figura in lotta non l'ho vista in gioco**, solo ritagliata:
       da guardare da Jacopo, insieme al colore della pelle di Iban sulla mappa (tira al giallo).
+- [x] Provata da Jacopo la lotta con Iban e Teo (21/11 sera, dalla partita di `partita_iban_teo.py`): «è ok».
+- [ ] **Da rifare gli sprite nel gioco: «sono un po' confusi»** (Jacopo, 21/11 sera). L'ha detto dopo la
+      prova di Iban e Teo: intendo i loro sprite (sulla mappa e in lotta), da chiedergli se vale anche
+      per altri. Servono fogli nuovi, più semplici e leggibili a 16×32 e a 64×64.
 - Trovato per caso: `Wikascolemon/gioco/` non è allineata ai sorgenti della demo (mappe e allenatori
   cambiati senza rilanciare `build-gioco.mjs`), quindi `tests/build.test.mjs` fallisce. Non toccata.
 
