@@ -1,9 +1,9 @@
-# ▶ A CHE PUNTO SIAMO (21/11/2026, pomeriggio)
+# ▶ A CHE PUNTO SIAMO (25/11/2026)
 
 ## ✅ DA FARE (lista unica, al 21/11)
 
 Il gioco si gioca dal treno alla seconda medaglia (Jonathan), fino alla Costa, e in corriera a Ripatransone.
-ROM: `pokemon-piceno.gba` del 21/11 pomeriggio (commit `75eb8fdf5a` di `pokemon-piceno`), con accanto
+ROM: `pokemon-piceno.gba` del 25/11 (commit `d9d214fae3` di `pokemon-piceno`), con accanto
 `pokemon-piceno.sym` della stessa compilazione. Giulio lavora in parallelo e ha un suo piano in
 `pokemon-piceno/tasks/todo.md`: **i due piani restano separati per ora** (deciso da Jacopo), si integrano dopo.
 
@@ -15,11 +15,75 @@ ROM: `pokemon-piceno.gba` del 21/11 pomeriggio (commit `75eb8fdf5a` di `pokemon-
    strumenti in italiano (794 più le cocchie). Le tre prove passano; sprite e strumenti **non visti in
    gioco**, solo in anteprima: da guardare da Jacopo. L'anteprima di `ritaglia_fogli.py` esce nera in
    fondo (il foglio è alto 2000 e i pezzi ora sono 102): da allungare.
-2. **Jacopo deve provare la ROM del 21/11**: le sette mosse con l'effetto ufficiale, la consegna delle MT da
-   Hills e Riccio, la Mappa Città dal bigliettaio (per chi ha già una partita), la scheda allenatore con
-   Oliver, le otto figure in lotta, Riccio sulla mappa, gli sprite nuovi in lotta.
-3. Aperte, in attesa di Jacopo: le sei mosse che fanno solo danno, le 32 mosse da MT della wiki che non
-   esistono, la proposta di Giulio sulle abilità, togliere Hoenn.
+2. **ROM del 21/11 provata da Jacopo (detto il 23/11): tutto ok.** Gli sprite nuovi in lotta, gli strumenti
+   in italiano, le sette mosse con l'effetto ufficiale, le MT da Hills e Riccio, la Mappa Città dal
+   bigliettaio, la scheda allenatore con Oliver, le otto figure in lotta, Riccio sulla mappa.
+3. **Risposte di Jacopo del 23/11:** gli sprite «confusi» sono solo quelli di Iban e Teo; Elettroraggio e
+   Marchiafuoco restano solo danno; il Battipiedi di Fatella e Ancella prende un nome nuovo inventato da
+   me: **Saltarello** (montato, vedi punto 5). Ancora aperte: le 16 righe di mosse da MT «da decidere»
+   (le altre 16 chiuse il 25/11, punto 6), la proposta di Giulio sulle abilità (riassunta il 23/11),
+   togliere Hoenn.
+
+4. **Fatto il 23/11: le abilità «identiche»** (commit `48b20da887` di `pokemon-piceno`, sì di Jacopo).
+   57 abilità della wiki ricondotte a quella uguale del motore (tipo A della proposta di Giulio, tabella
+   `ABILITA_DEL_MOTORE` in `porta_pokedex.py`): le abilità senza effetto scendono da 119 a 62. Resta fuori
+   Robustezza (decisione aperta n. 3 della proposta). Le 121 abilità del motore usate dalle nostre specie
+   ora hanno il nome italiano della wiki; dove due nomi della wiki finiscono sulla stessa abilità vale
+   l'ufficiale (Minaccia e Occhioni = Prepotenza, Sangue Finto e Corazza = Lottascudo, Fuga e Fuganatura =
+   Fugafacile, Fuocaiuto e Assorbifuoco = Fuocardore, Solidoroccia e Solidità = Solidroccia; e così
+   Illuminazione = Risplendi, Spessospesso = Grassospesso e simili).
+   Le tre prove passano; **nessuna abilità vista agire in lotta**: da provare da Jacopo. Nel piano di
+   Giulio la riga «I 59 alias» è ancora aperta: da dirgli che è fatta.
+
+5. **Fatto il 23/11 sera** (commit `5ec5048c09` di `pokemon-piceno`): le descrizioni in italiano delle 97
+   abilità del motore usate dalle nostre specie (`tools/piceno/abilita_descrizioni.py`, una riga di 33
+   lettere al massimo; non viste in gioco) e **Saltarello**, il nome nuovo del Battipiedi di Fatella e
+   Ancella (sì di Jacopo): corretto nelle due schede, pubblicate e bozze, `species.js`/`moves.js`
+   rigenerati. Il Battipiedi rimasto (Tifotto e Sciarpone) ora coincide da solo con l'ufficiale.
+
+6. **Rilascio del 25/11** (commit `7e1497d699` e `d9d214fae3` di `pokemon-piceno`; chiesto da Jacopo: «un bel
+   rilascio» con verifiche e rifiniture, strumenti e regali in mappa, i nomi delle mosse da MT).
+   - **Strumenti a terra: 15 nuovi, uno per zona, ai bordi** (con quelli di prima sono 32). Fra questi
+     due MT: **MT39 Rocciotomba** a Maltignano (in basso a destra, dopo la scena di Nando) e **MT13
+     Geloraggio** al Jonathan (in basso a sinistra). Gli altri: Pozione a Porta Maggiore, Mega Ball al
+     Centro Storico, Antidoto a Monticelli, Attacco X a Borgo Chiaro, Poké Ball a Campo Parignano, Etere a
+     Borgo Solestà, Superpozione a Porta Cartara, Repellente a Marino, Minor Ball all'Oasi,
+     Revitalizzante a Castel di Lama, Cura Totale a Spinetoli, Squama Cuore sulla Costa, Iperpozione a
+     Ripatransone. Scelti da me, come i posti.
+   - **Personaggi che regalano: 13** (prima erano solo i tre dei capannoni e il custode dell'Oasi).
+     Dicono la battuta di sempre, poi quella del regalo, una volta sola. Viaggiatore di Porta Maggiore
+     (Acqua Fresca), Ambulante del Centro (Miele), Infermiere di Monticelli (Cura Totale), Elena a Campo
+     Parignano (Sveglia, «fà come lu caffè»), Contadino di Marino (Miracolseme), Birdwatcher dell'Oasi
+     (Beccaffilato), Ragazza del bar a Maltignano (Gassosa), Contadino di Spinetoli (2 Repellenti);
+     sulla Costa la Ragazza col gelato (**MT53 Gelodenti**), il Bagnino (**MT11 Giornodisole**) e il
+     Pescatore del porto (3 Rete Ball); a Ripatransone l'Anziano del borgo (**MT54 Rogodenti**) e la
+     Massaia (**MT19 Gigassorbimento**). **Le 13 battute dei regali sono mie**, in dialetto dove il
+     personaggio parla dialetto: da rileggere (stanno in `tools/piceno/mappe/*_pianta.json`, «regala»).
+     Nella pianta si scrive `"regala": {"item", "quanti", "battuta"}` (aggiunto a `porta_mappa.py`).
+   - **Mosse da MT, i nomi** (sì di Jacopo il 25/11 alle righe sicure): nelle schede Raggioscuro è
+     Geloraggio, Assorbenergia è Gigassorbimento, Sole Cocente è Giornodisole (tipo Fuoco), Roccia
+     Massiccia è Rocciotomba (60/95/15), Zanna di ghiaccio è Gelodenti, Fuocodenti è Rogodenti.
+     Gelodenti e Rogodenti sono MT nostre (53 e 54). Tolte dalle tabelle MT cinque mosse ufficiali che
+     nel gioco non sono MT: Bomba Acida, Eco Voce, Chiacchiera, Facciabuffa, Roccia tagliente. Le righe
+     senza riscontro scendono **da 32 a 16**: restano le «da decidere» (Stoccata, Palla Ferro, Sfuriata,
+     Sgambetto, Coraggio, Ognimossa, Facilotto, Girospada). Nella scheda di Bracignale c'è ancora
+     «Zanna di fuoco», che è Rogodenti scritta in un terzo modo: non toccata.
+   - **Verifiche.** Un'abilità ricondotta vista agire: Capultra (Minaccia) entra e l'Attacco
+     dell'avversario cala; nella scheda si legge «Prepotenza / Entrando cala l'Attacco nemico.»
+     (`prova_abilita.py`). Il riquadro in lotta diceva «Capultra's»: tolto il genitivo inglese. Delle
+     18 righe tradotte più lunghe dell'originale ho guardato menu, zaino e salvataggio: ci stanno; quelle
+     dei messaggi di lotta non le ho viste. Anteprima di `ritaglia_fogli.py` allungata.
+   - **Prove:** le tre solite passano; `prova_regali.py` (nuova) raccoglie i 32 strumenti e i 13 regali;
+     `prova_lotta.py` legge dalla ROM le mosse da MT nuove. `prova_lotta.py` è fallita una volta su sei
+     sulla ROM del 23/11 (esperienza dopo il veleno): è il caso sporadico già segnato il 21/11.
+   - **Da guardare da Jacopo:** le battute dei regali; se le MT sono troppo generose per il punto in cui
+     si trovano (Geloraggio ha potenza 90); l'uso di una MT nuova su un Pokémon (non provato: ho letto
+     solo le tabelle dalla ROM).
+   - **Visto per caso, non toccato:** le mosse del motore hanno il nome inglese in gioco («Tackle», «Ice
+     Fang»), anche quelle delle MT nuove: per questo le battute non nominano la mossa. Si possono
+     mettere in italiano come le abilità (i nomi sono in `nomi_ufficiali.json`): aspetta il sì di
+     Jacopo. Nella scheda del Pokémon restano in inglese le etichette disegnate (PROFILE, ABILITY,
+     TRAINER MEMO) e le targhette dei tipi (DARK, FIGHT).
 
 **Proposte del 21/11 mattina sulle mosse: aspettano il sì di Jacopo, niente è montato**
 
@@ -259,7 +323,7 @@ Tutto spiegato in `pokemon-piceno/tasks/manuale_sviluppo.md`.
 - [x] Icone delle cocchie: per ora non serve un'immagine apposta (Jacopo, 19/11).
 
 **Chiesto da Jacopo il 19/11 sera e ancora aperto**
-- [ ] Altri strumenti in mappa e altri personaggi che ne regalano: i primi sono messi a giudizio mio.
+- [x] Altri strumenti in mappa e altri personaggi che ne regalano: fatto il 25/11 (punto 6 in cima), a giudizio mio.
 - [x] Regola della ripartenza: si riparte dall'ultimo posto che ha curato (è già così).
 
 **Decisioni che aspettano Jacopo**
@@ -284,6 +348,7 @@ Tutto spiegato in `pokemon-piceno/tasks/manuale_sviluppo.md`.
       `stanze.json`, script in `mappe/Oasi_Capanno.inc`, battute mie in italiano).
 - [x] «CAMPEGGIAT.» è diventato «ASCOLANO»; le gemelle restano «NICE-DICE» per ora (Jacopo, 18/11).
 - [ ] Le righe tradotte più lunghe dell'originale, da guardare a schermo (`python tools/piceno/traduci.py --avvisi`).
+      25/11: sono 18; menu, zaino e salvataggio ci stanno. Restano da vedere quelle dei messaggi di lotta.
 - [x] Fessure di cassa e bancone delle pizze chiuse (18/11: ora sono larghi 32 pixel).
 - [x] Tappeto davanti al divano nelle case (18/11 sera, con «_cambi» in `stanze.json`).
 - [x] Battute scritte da me (treno, capotreno, cartelli, medaglia): vanno bene (Jacopo, 18/11).
