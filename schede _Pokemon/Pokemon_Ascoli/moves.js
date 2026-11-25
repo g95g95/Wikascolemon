@@ -420,8 +420,8 @@
     },
     "description": "Ipnotizza il bersaglio, addormentandolo."
   },
-  "battipiedi": {
-    "name": "Battipiedi",
+  "saltarello": {
+    "name": "Saltarello",
     "type": "Normale",
     "category": "Fisico",
     "power": 30,
@@ -429,7 +429,7 @@
     "pp": 20,
     "priority": 0,
     "effect": null,
-    "description": "Colpo pesante sferrato con i piedi."
+    "description": ""
   },
   "psicoraggio": {
     "name": "Psicoraggio",
@@ -5357,6 +5357,17 @@
       "chance": 100
     },
     "description": "è la sua mossa esclusiva: aumenta di un livello Difesa e Difesa Speciale, ma da quel momento Sciarpone"
+  },
+  "battipiedi": {
+    "name": "Battipiedi",
+    "type": "Terra",
+    "category": "Fisico",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": "Colpo pesante sferrato con i piedi."
   },
   "pugno_di_scoglio": {
     "name": "Pugno di Scoglio",
