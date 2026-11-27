@@ -300,6 +300,58 @@ ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno
    - ROM del commit `61b3b76b21`. Prove: sette passano; `prova_ciclista.py` è passata tre volte su
      quattro (instabile come `prova_abilita.py`: da sistemare tutte e due).
 
+11. **Verso la demo per gli amici (28/11; Jacopo: «massimizzare la qualità di questo primo spicchio di
+    gioco per rilasciare una demo e raccogliere pareri»). Elenco degli interventi cosmetici, da spuntare.**
+    Chiesto da Jacopo:
+    - [ ] Porto d'Ascoli: togliere l'ultima fila in basso di ombrelloni.
+
+    *Prima impressione (quello che un amico vede nei primi cinque minuti)*
+    - [ ] **Schermata del titolo**: è ancora quella di Smeraldo (Rayquaza, «EMERALD VERSION»), mai toccata.
+    - [ ] **Cinque Pokémon dello spicchio senza sprite vero** (hanno la figura ricavata dall'artwork):
+          Bree, Ombrellone, Pozza, Sciapezza, Segaccio. Gli altri 28 dello spicchio li hanno. Servono i fogli.
+    - [ ] **Iban e Teo**: sprite «confusi» (Jacopo, 21/11), da rifare; la turista donna usa ancora la Pokéfan
+          di Smeraldo; sulla cartina la testina è quella di Brendan.
+    - [ ] **Guardare la cartina nuova dentro il gioco** (fatta il 27/11, vista solo in anteprima).
+
+    *Zone: farle sembrare paesi e quartieri, non percorsi*
+    - [ ] **Strade di città**: solo viale Indipendenza è asfaltato. Le altre vie di Porta Maggiore, Monticelli,
+          Campo Parignano, Borgo Solestà, Porta Cartara, Borgo Chiaro e il paese di Castel di Lama sono
+          ancora di terra. Le strade di campagna (Marino, Oasi, Maltignano, Spinetoli) restano di terra.
+    - [ ] **Ponti**: solo quello di Porta Maggiore è di pietra. Campo Parignano (il Tronto), Porta Cartara,
+          Borgo Solestà e Marino hanno ancora una striscia di terra sopra l'acqua.
+    - [ ] **Rettangoli d'erba alta nei quartieri**: Borgo Chiaro, Campo Parignano, Monticelli e Borgo Solestà
+          sono per metà prato con riquadri d'erba alta squadrati. Dare loro forme irregolari e spostarli ai
+          margini; al loro posto case, siepi, aiuole, un parcheggio, un parco.
+    - [ ] **Oasi**: i due specchi d'acqua sono due rettangoli identici. Farne un lago dalla forma naturale.
+    - [ ] **Case tutte uguali**: un solo modello (più la palazzina). Due o tre varianti di colore e di tetto.
+    - [ ] **Bordi delle città**: ogni zona è chiusa da alberi. Nei quartieri, tratti di mura, case a schiera,
+          recinzioni (Porta Cartara e Borgo Solestà hanno le mura vere).
+    - [ ] **Ferrovia**: finisce contro il bordo a est di Porta Maggiore. Farla proseguire a Monticelli o darle
+          una fine; un treno fermo in stazione.
+    - [ ] **Centro Storico**: sei alberi isolati e i cartelli col quadretto d'erba; il colore delle lastre
+          (rosato o grigio); rimettere la piramide sul Battistero e il padiglione sul Palazzo dei Capitani,
+          ora che c'è posto.
+    - [ ] **Porto d'Ascoli e San Benedetto**: lungomare lastricato invece della strada di terra; lettini,
+          materassini e ombrelloni di altri colori da Hoenn; le palme in fila lungo il lungomare.
+    - [ ] **Passaggio a livello**: senza sbarre; **altre strade di Porta Maggiore** oltre al viale.
+    - [ ] **Cartelli**: tutti lo stesso cartello grigio di Hoenn. Insegne diverse per fermate, piazze, confini.
+
+    *Personaggi e testi*
+    - [ ] **Nomi e battute**: i personaggi «Residente», «Passante», «Abitante», «Anziano»; i quattro Renzo, i
+          due Learco, i due Osvaldo; De Vitis che ricorre (punto 9). Le 147 battute in dialetto aspettano
+          ancora la rilettura di un ascolano (piano di Giulio).
+    - [ ] **Descrizioni delle mosse nostre**: 220 hanno il testo della scheda tagliato a metà frase
+          («ha priorità +3 ma riesce solo nel primo turno in cu…»). Riscriverle corte.
+    - [ ] **62 abilità** dicono «Abilità del Piceno: ancora senza effetto.»: almeno una frase vera.
+    - [ ] **Resti d'inglese**: da cercare giocando (menu, Pokédex, messaggi rari).
+    - [ ] **Frasi delle schede** che non corrispondono più alla mossa rinominata (Pantanobomba, Nitrocarica).
+
+    *Rifiniture*
+    - [ ] Giorno e notte: la tinta è spenta dal 19/11 («non funziona ancora bene a livello visivo»).
+    - [ ] Versi dei Pokémon: sono presi in prestito da specie di Hoenn.
+    - [ ] Alfabeto delle etichette (targhette dei tipi, intestazioni): più sottile dell'originale, da guardare.
+    - [ ] Due prove instabili (`prova_abilita.py`, `prova_ciclista.py`): prima di consegnare una demo.
+
 **Proposte del 21/11 mattina sulle mosse: aspettano il sì di Jacopo, niente è montato**
 
 *Risposte di Jacopo (21/11 pomeriggio):* «Portacocchie perfetto»; Aeroattacco = Aeroassalto, sì; Battipiedi
