@@ -3,7 +3,7 @@
 ## ✅ DA FARE (lista unica, al 21/11)
 
 Il gioco si gioca dal treno alla seconda medaglia (Jonathan), fino alla Costa, e in corriera a Ripatransone.
-ROM: `pokemon-piceno.gba` del 27/11 (commit `4ff6cfc081` di `pokemon-piceno`), con accanto
+ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno`), con accanto
 `pokemon-piceno.sym` della stessa compilazione. Giulio lavora in parallelo e ha un suo piano in
 `pokemon-piceno/tasks/todo.md`: **i due piani restano separati per ora** (deciso da Jacopo), si integrano dopo.
 
@@ -163,6 +163,48 @@ ROM: `pokemon-piceno.gba` del 27/11 (commit `4ff6cfc081` di `pokemon-piceno`), c
      come quelle del motore. In lotta l'etichetta «L MOVE INFO» è disegnata, in inglese come PROFILE
      e le targhette dei tipi: non ci sono arrivato. Otto mosse di stato hanno la scheda vuota
      (Buonumore, Cuorestrofinio, Rifugio, Riscaldamento, Sabotaggio, Sberleffo, Schermo, Seduzione).
+
+8. **Secondo rilascio del 27/11** (commit `9f49c5f493` e `1462924ff2` di `pokemon-piceno`; chiesto da
+   Jacopo: via le mosse diverse con lo stesso nome, i nomi ufficiali «anche nella wiki», le etichette
+   disegnate tradotte; le evoluzioni rimaste «andando avanti, con calma»).
+   - **Nomi delle mosse nelle schede: 680 righe in 280 file** (pubblicate e bozze), con
+     `tools/piceno/rinomina_mosse.py` del repo del gioco (fatto una volta: non si rilancia). Regola
+     scelta da Jacopo: caso per caso.
+     - *Erano mosse ufficiali scritte con un altro nome:* prendono nome e numeri ufficiali. Le 43
+       della proposta del punto 7, più Doppio Colpo e Doppiocolpo (Doppiosmash), Lacerazione
+       (Graffio), Urlo (Ruggito), Turbine che fa danno (Raffica), Finta di Bovfint (Fintoattacco),
+       Dragofuria (Tornado; due righe erano Ira di Drago), **Schizzo (Splash**: 40 PP, «non serve a
+       niente»; il 20/11 aveva preso per nome l'effetto di Sketch, che non c'entrava).
+     - *Stessa mossa, numeri vecchi o quasi uguali:* ora hanno i numeri ufficiali. Fulmine 95 → 90,
+       Granvoce 100 → 90, Riposo 10 → 5 PP, Riduttore (tutte le sue righe, anche quelle scritte come
+       mossa di stato) 90/85/20, Martellata 90 → 95%, Sberletese 100%/20 PP, Baratto (tipo Psico),
+       Cuordileone 30 PP, Fangata, Fortuncanto 30 PP, Precedenza 20 PP, Rancore 5 PP.
+     - *Mosse nostre col nome di un'ufficiale:* **undici nomi nuovi, inventati da me, da rileggere.**
+       Assillo → Scocciatura, Attaccalite (quella che fa danno) → Battibecco, Coro → Coro da Stadio,
+       Elettroraggio → Raggiolampo, Fintoattacco (Normale, 40) → Colpo Finto, Furtivombra → Passo
+       d'Ombra, Incanto → Canto Ammaliante, Marchiafuoco → Marchio Rovente, Nottesferza →
+       Scudisciata, Terrempesta (quella che fa danno) → Polverone, Ultimascelta → Cedo il Posto.
+     - *Lo stesso nome copriva due mosse:* decide la riga. Fuococarica 120 resta, quella da 50 è
+       Nitrocarica; Fangobomba Veleno 90 resta, quella Terra 65/85 è Pantanobomba; Fanghiglia Acqua
+       90 resta, quella Terra 20 è Fangosberla; Turbine di stato resta; Attaccalite e Terrempesta
+       di stato restano (le ufficiali); lo Spruzzo da 40 PP è Splash, l'altro Pistolacqua.
+     - **Restano omonime Flagello** (esclusiva di Moro) **e Velenospina** (la nostra MT51, 20 PP
+       contro 35): le ufficiali di quel nome nel gioco non le impara nessuno e non sono MT.
+     - **Cambia l'effetto rispetto a quel che diceva la scheda**, da guardare: Pantanobomba cala la
+       precisione (la scheda diceva «può avvelenare»), Nitrocarica alza la Velocità (la scheda di
+       Cavalbrace parla di contraccolpo), Fangosberla cala sempre la precisione, Pugnorapido e
+       Fintoattacco vanno per primi. Le frasi delle schede non le ho riscritte.
+     - Nel gioco: le mosse uguali a una del motore salgono da 197 a 237, quelle create nuove
+       scendono da 282 a 220. `EFFETTI_DEL_MOTORE` si svuota quasi (resta Flagello e le dieci del
+       punto 7 meno Scavare). Nella demo `tools/moves-catalog.json` ha ancora gli effetti sotto i
+       nomi vecchi: i test passano, ma le mosse rinominate lì fanno solo danno. Non toccato.
+   - **Etichette disegnate** (`tools/piceno/etichette.py`, si può rilanciare): le 24 targhette dei
+     tipi (COLEOT, BUIO, DRAGO, ELETTR, FOLLET, LOTTA, FUOCO, VOLANT, SPETTR, ERBA, TERRA, GHIACC,
+     NORMAL, VELENO, PSICO, ROCCIA, ACCIAI, ACQUA, ASTRAL; gare: BELLEZ, CLASSE, GRAZIA, ACUME,
+     GRINTA), le intestazioni della scheda del Pokémon (PROFILO, ABILITA', STATO, MEMO ALLENATORE,
+     STRUMENTO, FIOCCO, STATISTICHE, ESP., MOSSE, EFFETTO, DESCRIZIONE), il riquadro «INFO MOSSA»
+     in lotta; nel riquadro della mossa POT e PRE al posto di PWR e ACC. L'alfabeto è mio (4 punti
+     per 7): più sottile dell'originale nella scheda. Anteprima in `emulatore/foto/etichette.png`.
 
 **Proposte del 21/11 mattina sulle mosse: aspettano il sì di Jacopo, niente è montato**
 

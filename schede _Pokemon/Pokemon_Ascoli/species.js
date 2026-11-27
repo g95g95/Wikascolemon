@@ -45,7 +45,7 @@
       ],
       [
         21,
-        "fanghiglia"
+        "fangosberla"
       ],
       [
         26,
@@ -65,7 +65,7 @@
       ],
       [
         47,
-        "ultimascelta"
+        "cedo_il_posto"
       ]
     ],
     "evolution": null,
@@ -112,7 +112,7 @@
       ],
       [
         7,
-        "spruzzo"
+        "pistolacqua"
       ],
       [
         12,
@@ -215,7 +215,7 @@
       ],
       [
         47,
-        "ultimascelta"
+        "cedo_il_posto"
       ]
     ],
     "evolution": null,
@@ -274,7 +274,7 @@
       ],
       [
         31,
-        "vento_ghiacciato"
+        "ventogelato"
       ],
       [
         39,
@@ -407,7 +407,7 @@
       ],
       [
         1,
-        "lecca"
+        "leccata"
       ],
       [
         13,
@@ -524,7 +524,7 @@
       ],
       [
         47,
-        "ultimascelta"
+        "cedo_il_posto"
       ]
     ],
     "evolution": null,
@@ -592,7 +592,7 @@
       ],
       [
         26,
-        "fuococarica"
+        "nitrocarica"
       ],
       [
         30,
@@ -953,7 +953,7 @@
     "learnset": [
       [
         1,
-        "schizzo"
+        "splash"
       ],
       [
         4,
@@ -961,7 +961,7 @@
       ],
       [
         9,
-        "fanghiglia"
+        "fangosberla"
       ],
       [
         13,
@@ -1033,11 +1033,11 @@
       ],
       [
         9,
-        "cornata"
+        "incornata"
       ],
       [
         14,
-        "finta"
+        "fintoattacco"
       ],
       [
         20,
@@ -1092,11 +1092,11 @@
     "learnset": [
       [
         1,
-        "attaccatesta"
+        "bottintesta"
       ],
       [
         1,
-        "scavare"
+        "fossa"
       ],
       [
         26,
@@ -1116,7 +1116,7 @@
       ],
       [
         44,
-        "marchiafuoco"
+        "marchio_rovente"
       ],
       [
         50,
@@ -1124,7 +1124,7 @@
       ],
       [
         56,
-        "rip_temerario"
+        "sdoppiatore"
       ]
     ],
     "evolution": null,
@@ -1313,7 +1313,7 @@
       ],
       [
         1,
-        "attaccalite"
+        "battibecco"
       ],
       [
         6,
@@ -1380,11 +1380,11 @@
       ],
       [
         1,
-        "nevischio"
+        "polneve"
       ],
       [
         1,
-        "urlo"
+        "ruggito"
       ],
       [
         6,
@@ -1408,7 +1408,7 @@
       ],
       [
         33,
-        "vento_ghiacciato"
+        "ventogelato"
       ],
       [
         39,
@@ -1416,7 +1416,7 @@
       ],
       [
         45,
-        "gelo_nevoso"
+        "bora"
       ]
     ],
     "evolution": {
@@ -1454,7 +1454,7 @@
     "learnset": [
       [
         1,
-        "corpolento"
+        "corposcontro"
       ],
       [
         1,
@@ -1528,7 +1528,7 @@
     "learnset": [
       [
         1,
-        "fanghiglia"
+        "fangosberla"
       ],
       [
         1,
@@ -1548,7 +1548,7 @@
       ],
       [
         21,
-        "fangobomba"
+        "pantanobomba"
       ],
       [
         26,
@@ -1556,7 +1556,7 @@
       ],
       [
         31,
-        "terrempesta"
+        "polverone"
       ],
       [
         36,
@@ -1609,7 +1609,7 @@
       ],
       [
         4,
-        "lacerazione"
+        "graffio"
       ],
       [
         8,
@@ -1629,7 +1629,7 @@
       ],
       [
         24,
-        "testata"
+        "bottintesta"
       ],
       [
         28,
@@ -1641,11 +1641,11 @@
       ],
       [
         36,
-        "cornoattacco"
+        "incornata"
       ],
       [
         45,
-        "pietrabordo"
+        "pietrataglio"
       ]
     ],
     "evolution": {
@@ -1696,7 +1696,7 @@
       ],
       [
         40,
-        "demolizione"
+        "breccia"
       ],
       [
         47,
@@ -1763,11 +1763,11 @@
       ],
       [
         1,
-        "assillo"
+        "scocciatura"
       ],
       [
         1,
-        "fintoattacco"
+        "colpo_finto"
       ],
       [
         1,
@@ -1795,7 +1795,7 @@
       ],
       [
         45,
-        "ipervoce"
+        "granvoce"
       ],
       [
         52,
@@ -1877,7 +1877,7 @@
       ],
       [
         46,
-        "martelcolpo"
+        "martelpugno"
       ],
       [
         52,
@@ -1989,7 +1989,7 @@
     "learnset": [
       [
         1,
-        "spruzzo"
+        "pistolacqua"
       ],
       [
         1,
@@ -2051,7 +2051,7 @@
     "learnset": [
       [
         1,
-        "spruzzo"
+        "pistolacqua"
       ],
       [
         1,
@@ -2173,7 +2173,7 @@
       ],
       [
         40,
-        "demolizione"
+        "breccia"
       ],
       [
         47,
@@ -2239,7 +2239,7 @@
       ],
       [
         28,
-        "fangobomba"
+        "pantanobomba"
       ],
       [
         34,
@@ -2313,7 +2313,7 @@
       ],
       [
         17,
-        "bacio_drenante"
+        "assorbibacio"
       ],
       [
         21,
@@ -2329,7 +2329,7 @@
       ],
       [
         35,
-        "forzaluna"
+        "forza_lunare"
       ],
       [
         40,
@@ -2345,7 +2345,7 @@
       ],
       [
         58,
-        "ultimascelta"
+        "cedo_il_posto"
       ]
     ],
     "evolution": null,
@@ -2392,7 +2392,7 @@
       ],
       [
         8,
-        "nevischio"
+        "polneve"
       ],
       [
         14,
@@ -2404,7 +2404,7 @@
       ],
       [
         26,
-        "vento_ghiacciato"
+        "ventogelato"
       ],
       [
         32,
@@ -2416,7 +2416,7 @@
       ],
       [
         44,
-        "salamurra"
+        "acquadisale"
       ],
       [
         50,
@@ -2483,7 +2483,7 @@
       ],
       [
         30,
-        "fangobomba"
+        "pantanobomba"
       ],
       [
         38,
@@ -2610,7 +2610,7 @@
       ],
       [
         1,
-        "fanghiglia"
+        "fangosberla"
       ],
       [
         19,
@@ -2680,7 +2680,7 @@
     "learnset": [
       [
         1,
-        "attaccatesta"
+        "bottintesta"
       ],
       [
         1,
@@ -2692,7 +2692,7 @@
       ],
       [
         7,
-        "scavare"
+        "fossa"
       ],
       [
         12,
@@ -2763,7 +2763,7 @@
       ],
       [
         13,
-        "turbine"
+        "raffica"
       ],
       [
         18,
@@ -2822,7 +2822,7 @@
       ],
       [
         22,
-        "turbine"
+        "raffica"
       ],
       [
         27,
@@ -2901,7 +2901,7 @@
       ],
       [
         21,
-        "testata"
+        "bottintesta"
       ],
       [
         25,
@@ -2969,7 +2969,7 @@
       ],
       [
         26,
-        "bacio_drenante"
+        "assorbibacio"
       ],
       [
         32,
@@ -2981,7 +2981,7 @@
       ],
       [
         44,
-        "forzaluna"
+        "forza_lunare"
       ],
       [
         50,
@@ -3139,7 +3139,7 @@
       ],
       [
         54,
-        "ipervoce"
+        "granvoce"
       ]
     ],
     "evolution": {
@@ -3183,7 +3183,7 @@
       ],
       [
         1,
-        "spruzzo"
+        "splash"
       ],
       [
         5,
@@ -3257,7 +3257,7 @@
       ],
       [
         11,
-        "dragofuria"
+        "tornado"
       ],
       [
         16,
@@ -3404,7 +3404,7 @@
     "learnset": [
       [
         1,
-        "vocedincanto"
+        "incantavoce"
       ],
       [
         1,
@@ -3440,7 +3440,7 @@
       ],
       [
         52,
-        "forzaluna"
+        "forza_lunare"
       ],
       [
         60,
@@ -3494,7 +3494,7 @@
       ],
       [
         14,
-        "elettroshock"
+        "tuonoshock"
       ],
       [
         20,
@@ -3502,7 +3502,7 @@
       ],
       [
         26,
-        "elettroraggio"
+        "raggiolampo"
       ],
       [
         32,
@@ -3581,7 +3581,7 @@
       ],
       [
         31,
-        "vento_ghiacciato"
+        "ventogelato"
       ],
       [
         37,
@@ -3672,7 +3672,7 @@
       ],
       [
         58,
-        "ultimascelta"
+        "cedo_il_posto"
       ]
     ],
     "evolution": null,
@@ -3746,7 +3746,7 @@
       ],
       [
         35,
-        "ultimascelta"
+        "cedo_il_posto"
       ]
     ],
     "evolution": {
@@ -3813,7 +3813,7 @@
       ],
       [
         32,
-        "fintoattacco"
+        "finta"
       ],
       [
         38,
@@ -3891,7 +3891,7 @@
       ],
       [
         24,
-        "fangobomba"
+        "pantanobomba"
       ],
       [
         28,
@@ -3907,7 +3907,7 @@
       ],
       [
         40,
-        "terrforza"
+        "geoforza"
       ],
       [
         45,
@@ -3986,7 +3986,7 @@
       ],
       [
         19,
-        "ventofatato"
+        "vento_di_fata"
       ],
       [
         23,
@@ -3998,7 +3998,7 @@
       ],
       [
         32,
-        "bacioassorbente"
+        "assorbibacio"
       ],
       [
         38,
@@ -4125,7 +4125,7 @@
     "learnset": [
       [
         1,
-        "lacerazione"
+        "graffio"
       ],
       [
         1,
@@ -4137,7 +4137,7 @@
       ],
       [
         8,
-        "dragofuria"
+        "ira_di_drago"
       ],
       [
         12,
@@ -4153,7 +4153,7 @@
       ],
       [
         24,
-        "fangobomba"
+        "pantanobomba"
       ],
       [
         28,
@@ -4352,7 +4352,7 @@
       ],
       [
         1,
-        "coro"
+        "coro_da_stadio"
       ],
       [
         24,
@@ -4391,7 +4391,7 @@
     "dex": "Vive per novanta minuti alla settimana e passa il resto ad aspettarli, con le seggiole ribaltate e lo striscione al vento. La domenica è la creatura più forte dello stadio.",
     "wiki": "../gradinata.html",
     "evoMoves": [
-      "coro"
+      "coro_da_stadio"
     ]
   },
   "gradino": {
@@ -4501,7 +4501,7 @@
       ],
       [
         28,
-        "dragosoffio"
+        "dragospiro"
       ],
       [
         33,
@@ -4577,11 +4577,11 @@
       ],
       [
         25,
-        "vento_argenteo"
+        "ventargenteo"
       ],
       [
         30,
-        "bacio_drenante"
+        "assorbibacio"
       ],
       [
         35,
@@ -4593,7 +4593,7 @@
       ],
       [
         42,
-        "forzaluna"
+        "forza_lunare"
       ],
       [
         48,
@@ -5050,7 +5050,7 @@
       ],
       [
         6,
-        "colpo_rapido"
+        "pugnorapido"
       ],
       [
         10,
@@ -5228,7 +5228,7 @@
       ],
       [
         43,
-        "ipervoce"
+        "granvoce"
       ],
       [
         50,
@@ -5287,7 +5287,7 @@
       ],
       [
         45,
-        "ipervoce"
+        "granvoce"
       ],
       [
         50,
@@ -5341,7 +5341,7 @@
       ],
       [
         1,
-        "vocedincanto"
+        "incantavoce"
       ],
       [
         10,
@@ -5349,7 +5349,7 @@
       ],
       [
         16,
-        "incanto"
+        "canto_ammaliante"
       ],
       [
         24,
@@ -5361,7 +5361,7 @@
       ],
       [
         38,
-        "forzaluna"
+        "forza_lunare"
       ],
       [
         46,
@@ -5408,11 +5408,11 @@
       ],
       [
         1,
-        "lecca"
+        "leccata"
       ],
       [
         12,
-        "metalartiglio"
+        "ferrartigli"
       ],
       [
         18,
@@ -5420,11 +5420,11 @@
       ],
       [
         25,
-        "ombraferoce"
+        "ombrartigli"
       ],
       [
         32,
-        "testataferro"
+        "metaltestata"
       ],
       [
         39,
@@ -5746,7 +5746,7 @@
       ],
       [
         50,
-        "terrforza"
+        "geoforza"
       ],
       [
         57,
@@ -5875,7 +5875,7 @@
       ],
       [
         1,
-        "lacerazione"
+        "graffio"
       ],
       [
         1,
@@ -5899,7 +5899,7 @@
       ],
       [
         24,
-        "testata"
+        "bottintesta"
       ],
       [
         28,
@@ -5915,11 +5915,11 @@
       ],
       [
         40,
-        "ghiacciolo"
+        "scagliagelo"
       ],
       [
         45,
-        "pietrabordo"
+        "pietrataglio"
       ],
       [
         50,
@@ -6153,7 +6153,7 @@
       ],
       [
         55,
-        "furtivombra"
+        "passo_dombra"
       ]
     ],
     "evolution": null,
@@ -6478,7 +6478,7 @@
     "learnset": [
       [
         1,
-        "assorbi"
+        "assorbimento"
       ],
       [
         1,
@@ -6645,7 +6645,7 @@
       ],
       [
         49,
-        "martellata"
+        "martelpugno"
       ],
       [
         56,
@@ -7034,7 +7034,7 @@
       ],
       [
         17,
-        "bacio_drenante"
+        "assorbibacio"
       ],
       [
         21,
@@ -7050,7 +7050,7 @@
       ],
       [
         35,
-        "forzaluna"
+        "forza_lunare"
       ]
     ],
     "evolution": {
@@ -7245,7 +7245,7 @@
       ],
       [
         1,
-        "metalartiglio"
+        "ferrartigli"
       ],
       [
         26,
@@ -7253,7 +7253,7 @@
       ],
       [
         32,
-        "testataferro"
+        "metaltestata"
       ],
       [
         38,
@@ -7269,7 +7269,7 @@
       ],
       [
         57,
-        "doppiocolpo"
+        "doppiosmash"
       ]
     ],
     "evolution": null,
@@ -7306,7 +7306,7 @@
     "learnset": [
       [
         1,
-        "attaccalite"
+        "battibecco"
       ],
       [
         1,
@@ -7338,7 +7338,7 @@
       ],
       [
         36,
-        "demolizione"
+        "breccia"
       ],
       [
         42,
@@ -7405,7 +7405,7 @@
       ],
       [
         20,
-        "elettroraggio"
+        "raggiolampo"
       ],
       [
         26,
@@ -7624,7 +7624,7 @@
       ],
       [
         7,
-        "fanghiglia"
+        "fangosberla"
       ],
       [
         13,
@@ -7699,7 +7699,7 @@
       ],
       [
         12,
-        "bacio_drenante"
+        "assorbibacio"
       ],
       [
         16,
@@ -7719,7 +7719,7 @@
       ],
       [
         32,
-        "forzaluna"
+        "forza_lunare"
       ],
       [
         36,
@@ -7727,11 +7727,11 @@
       ],
       [
         40,
-        "pietrabordo"
+        "pietrataglio"
       ],
       [
         45,
-        "vocedincanto"
+        "incantavoce"
       ],
       [
         50,
@@ -7911,7 +7911,7 @@
     "learnset": [
       [
         1,
-        "lacerazione"
+        "graffio"
       ],
       [
         1,
@@ -7923,7 +7923,7 @@
       ],
       [
         1,
-        "dragofuria"
+        "ira_di_drago"
       ],
       [
         12,
@@ -7955,7 +7955,7 @@
       ],
       [
         40,
-        "pietrabordo"
+        "pietrataglio"
       ],
       [
         46,
@@ -8042,7 +8042,7 @@
       ],
       [
         32,
-        "ipervoce"
+        "granvoce"
       ],
       [
         36,
@@ -8189,7 +8189,7 @@
       ],
       [
         26,
-        "turbine"
+        "raffica"
       ],
       [
         31,
@@ -8281,7 +8281,7 @@
       ],
       [
         32,
-        "ipervoce"
+        "granvoce"
       ],
       [
         40,
@@ -8332,7 +8332,7 @@
       ],
       [
         1,
-        "fintoattacco"
+        "colpo_finto"
       ],
       [
         14,
@@ -8356,7 +8356,7 @@
       ],
       [
         39,
-        "ipervoce"
+        "granvoce"
       ],
       [
         46,
@@ -8415,7 +8415,7 @@
       ],
       [
         30,
-        "braccio_martello"
+        "martelpugno"
       ],
       [
         35,
@@ -8431,7 +8431,7 @@
       ],
       [
         50,
-        "bordata"
+        "pietrataglio"
       ],
       [
         55,
@@ -8486,7 +8486,7 @@
       ],
       [
         11,
-        "fendente"
+        "taglio"
       ],
       [
         16,
@@ -8518,7 +8518,7 @@
       ],
       [
         56,
-        "superpotere"
+        "troppoforte"
       ]
     ],
     "evolution": null,
@@ -8679,7 +8679,7 @@
       ],
       [
         50,
-        "nottesferza"
+        "scudisciata"
       ]
     ],
     "evolution": null,
@@ -8719,7 +8719,7 @@
       ],
       [
         1,
-        "fuococarica"
+        "nitrocarica"
       ],
       [
         1,
@@ -8803,11 +8803,11 @@
       ],
       [
         1,
-        "nevischio"
+        "polneve"
       ],
       [
         31,
-        "vento_ghiacciato"
+        "ventogelato"
       ],
       [
         39,
@@ -8914,7 +8914,7 @@
       ],
       [
         47,
-        "nevischio"
+        "polneve"
       ],
       [
         54,
@@ -8996,7 +8996,7 @@
       ],
       [
         41,
-        "ultimascelta"
+        "cedo_il_posto"
       ]
     ],
     "evolution": {
@@ -9170,11 +9170,11 @@
       ],
       [
         20,
-        "rip_temerario"
+        "sdoppiatore"
       ],
       [
         24,
-        "assillo"
+        "scocciatura"
       ],
       [
         30,
@@ -9201,7 +9201,7 @@
     "dex": "Passa le giornate sonnecchiando in un angolo del capannone. Guai a chi lo sveglia senza offrirgli qualcosa da mangiare.",
     "wiki": "../sorcione.html",
     "evoMoves": [
-      "rip_temerario"
+      "sdoppiatore"
     ]
   },
   "sparpagghjo": {
@@ -9329,7 +9329,7 @@
       ],
       [
         28,
-        "scavare"
+        "fossa"
       ],
       [
         34,
@@ -9396,7 +9396,7 @@
       ],
       [
         20,
-        "fuococarica"
+        "nitrocarica"
       ],
       [
         26,
@@ -9424,7 +9424,7 @@
       ],
       [
         62,
-        "tempesta"
+        "tifone"
       ]
     ],
     "evolution": null,
@@ -9487,7 +9487,7 @@
       ],
       [
         19,
-        "ventofatato"
+        "vento_di_fata"
       ],
       [
         23,
@@ -9499,7 +9499,7 @@
       ],
       [
         32,
-        "bacioassorbente"
+        "assorbibacio"
       ],
       [
         38,
@@ -9511,7 +9511,7 @@
       ],
       [
         50,
-        "geyser"
+        "zampillo"
       ],
       [
         56,
@@ -9709,7 +9709,7 @@
     "learnset": [
       [
         1,
-        "schizzo"
+        "splash"
       ],
       [
         1,
@@ -9717,7 +9717,7 @@
       ],
       [
         8,
-        "fanghiglia"
+        "fangosberla"
       ],
       [
         14,
@@ -9866,7 +9866,7 @@
       ],
       [
         10,
-        "colpo_rapido"
+        "pugnorapido"
       ],
       [
         15,
@@ -9933,7 +9933,7 @@
       ],
       [
         1,
-        "fintoattacco"
+        "colpo_finto"
       ],
       [
         6,
@@ -9957,7 +9957,7 @@
       ],
       [
         30,
-        "ipervoce"
+        "granvoce"
       ]
     ],
     "evolution": {
@@ -10380,11 +10380,11 @@
       ],
       [
         1,
-        "nevischio"
+        "polneve"
       ],
       [
         1,
-        "urlo"
+        "ruggito"
       ],
       [
         1,
@@ -10412,7 +10412,7 @@
       ],
       [
         33,
-        "vento_ghiacciato"
+        "ventogelato"
       ],
       [
         36,
@@ -10428,7 +10428,7 @@
       ],
       [
         45,
-        "gelo_nevoso"
+        "bora"
       ],
       [
         52,
@@ -10540,7 +10540,7 @@
     "learnset": [
       [
         1,
-        "fanghiglia"
+        "fangosberla"
       ],
       [
         1,
@@ -10560,7 +10560,7 @@
       ],
       [
         21,
-        "fangobomba"
+        "pantanobomba"
       ],
       [
         26,
@@ -10699,7 +10699,7 @@
     "learnset": [
       [
         1,
-        "assorbicorno"
+        "legnicorno"
       ],
       [
         1,
@@ -10758,7 +10758,7 @@
     "dex": "Si dice che dove posa gli zoccoli sgorghino sorgenti d'acqua purissima. Veglia sui castagneti della Laga come un guardiano silenzioso.",
     "wiki": "../umito.html",
     "evoMoves": [
-      "assorbicorno"
+      "legnicorno"
     ]
   },
   "vecciando": {
@@ -10806,7 +10806,7 @@
       ],
       [
         21,
-        "doppio_colpo"
+        "doppiosmash"
       ],
       [
         25,
@@ -11064,7 +11064,7 @@
       ],
       [
         70,
-        "ultimascelta"
+        "cedo_il_posto"
       ]
     ],
     "evolution": null,

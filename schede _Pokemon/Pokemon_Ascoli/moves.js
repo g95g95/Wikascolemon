@@ -83,8 +83,8 @@
     },
     "description": "Un morso che può far tentennare."
   },
-  "fanghiglia": {
-    "name": "Fanghiglia",
+  "fangosberla": {
+    "name": "Fangosberla",
     "type": "Terra",
     "category": "Speciale",
     "power": 20,
@@ -96,9 +96,9 @@
       "target": "enemy",
       "stat": "accuracy",
       "stages": -1,
-      "chance": 30
+      "chance": 100
     },
-    "description": "Fanghiglia che può abbassare la precisione avversaria."
+    "description": "Uno schizzo di fango che abbassa sempre la precisione avversaria."
   },
   "fossa": {
     "name": "Fossa",
@@ -156,8 +156,8 @@
     "effect": null,
     "description": "Un violento terremoto che scuote il campo."
   },
-  "ultimascelta": {
-    "name": "Ultimascelta",
+  "cedo_il_posto": {
+    "name": "Cedo il Posto",
     "type": "Normale",
     "category": "Stato",
     "power": 0,
@@ -195,8 +195,8 @@
     "effect": null,
     "description": "Un colpo di ramo scattante."
   },
-  "spruzzo": {
-    "name": "Spruzzo",
+  "pistolacqua": {
+    "name": "Pistolacqua",
     "type": "Acqua",
     "category": "Speciale",
     "power": 40,
@@ -204,7 +204,7 @@
     "pp": 25,
     "priority": 0,
     "effect": null,
-    "description": "Un piccolo spruzzo d'acqua."
+    "description": "Un getto d'acqua rapido."
   },
   "crescita": {
     "name": "Crescita",
@@ -453,22 +453,16 @@
     "effect": null,
     "description": ""
   },
-  "vento_ghiacciato": {
-    "name": "Vento Ghiacciato",
+  "ventogelato": {
+    "name": "Ventogelato",
     "type": "Ghiaccio",
     "category": "Speciale",
     "power": 55,
     "accuracy": 95,
     "pp": 15,
     "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "speed",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Un vento gelido che abbassa sempre la Velocità avversaria."
+    "effect": null,
+    "description": ""
   },
   "psichico": {
     "name": "Psichico",
@@ -630,20 +624,16 @@
     },
     "description": "è la sua mossa esclusiva, appresa nel momento dell'evoluzione: Anisetta si scalda da sé,"
   },
-  "lecca": {
-    "name": "Lecca",
+  "leccata": {
+    "name": "Leccata",
     "type": "Spettro",
     "category": "Fisico",
     "power": 30,
     "accuracy": 100,
     "pp": 30,
     "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "par",
-      "chance": 30
-    },
-    "description": "Una leccata che può paralizzare."
+    "effect": null,
+    "description": ""
   },
   "confondiraggio": {
     "name": "Confondiraggio",
@@ -811,8 +801,8 @@
     "effect": null,
     "description": ""
   },
-  "fuococarica": {
-    "name": "Fuococarica",
+  "nitrocarica": {
+    "name": "Nitrocarica",
     "type": "Fuoco",
     "category": "Fisico",
     "power": 50,
@@ -820,8 +810,11 @@
     "pp": 20,
     "priority": 0,
     "effect": {
-      "kind": "recoil",
-      "ratio": 0.33
+      "kind": "stat",
+      "target": "self",
+      "stat": "speed",
+      "stages": 1,
+      "chance": 100
     },
     "description": "è la corsa a rotta di collo che anticipa la festa: potentissima, ma il contraccolpo lo ferisce."
   },
@@ -890,21 +883,10 @@
     "category": "Stato",
     "power": 0,
     "accuracy": null,
-    "pp": 15,
+    "pp": 30,
     "priority": 0,
     "effect": null,
     "description": ""
-  },
-  "pistolacqua": {
-    "name": "Pistolacqua",
-    "type": "Acqua",
-    "category": "Speciale",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 25,
-    "priority": 0,
-    "effect": null,
-    "description": "Un getto d'acqua rapido."
   },
   "fischio": {
     "name": "Fischio",
@@ -1094,8 +1076,8 @@
     "name": "Riduttore",
     "type": "Normale",
     "category": "Fisico",
-    "power": 80,
-    "accuracy": 75,
+    "power": 90,
+    "accuracy": 85,
     "pp": 20,
     "priority": 0,
     "effect": null,
@@ -1206,8 +1188,8 @@
     "effect": null,
     "description": "Un raggio di bolle pressurizzate."
   },
-  "schizzo": {
-    "name": "Schizzo",
+  "splash": {
+    "name": "Splash",
     "type": "Normale",
     "category": "Stato",
     "power": 0,
@@ -1227,17 +1209,6 @@
     "priority": 0,
     "effect": null,
     "description": "Bolle scagliate con forza."
-  },
-  "leccata": {
-    "name": "Leccata",
-    "type": "Spettro",
-    "category": "Fisico",
-    "power": 30,
-    "accuracy": 100,
-    "pp": 30,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "doppioteam": {
     "name": "Doppioteam",
@@ -1303,8 +1274,8 @@
     "effect": null,
     "description": "è il suo celebre starnuto-botto: agisce sempre per primo, ma solo appena sceso in campo."
   },
-  "cornata": {
-    "name": "Cornata",
+  "incornata": {
+    "name": "Incornata",
     "type": "Normale",
     "category": "Fisico",
     "power": 65,
@@ -1314,8 +1285,8 @@
     "effect": null,
     "description": ""
   },
-  "finta": {
-    "name": "Finta",
+  "fintoattacco": {
+    "name": "Fintoattacco",
     "type": "Normale",
     "category": "Fisico",
     "power": 30,
@@ -1323,7 +1294,7 @@
     "pp": 10,
     "priority": 0,
     "effect": null,
-    "description": ""
+    "description": "Un finto attacco che colpisce comunque."
   },
   "riscaldamento": {
     "name": "Riscaldamento",
@@ -1372,31 +1343,6 @@
     },
     "description": "infligge danno Fuoco e ha probabilità aumentata di scoprire il bersaglio (annulla protezione tipo Buca), simulando la carica che disseppellisce la brace dal terreno."
   },
-  "attaccatesta": {
-    "name": "Attaccatesta",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 70,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": {
-      "kind": "flinch",
-      "chance": 30
-    },
-    "description": "Testata che può far tentennare il bersaglio."
-  },
-  "scavare": {
-    "name": "Scavare",
-    "type": "Terra",
-    "category": "Fisico",
-    "power": 80,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": "Si nasconde sottoterra e colpisce al turno successivo."
-  },
   "zampata": {
     "name": "Zampata",
     "type": "Fuoco",
@@ -1437,8 +1383,8 @@
     },
     "description": "Un morso che può far tentennare."
   },
-  "marchiafuoco": {
-    "name": "Marchiafuoco",
+  "marchio_rovente": {
+    "name": "Marchio Rovente",
     "type": "Fuoco",
     "category": "Fisico",
     "power": 120,
@@ -1446,10 +1392,10 @@
     "pp": 5,
     "priority": 0,
     "effect": null,
-    "description": "Un marchio di fuoco potentissimo ma impreciso."
+    "description": ""
   },
-  "rip_temerario": {
-    "name": "Rip. temerario",
+  "sdoppiatore": {
+    "name": "Sdoppiatore",
     "type": "Normale",
     "category": "Fisico",
     "power": 120,
@@ -1457,7 +1403,7 @@
     "pp": 15,
     "priority": 0,
     "effect": null,
-    "description": "Un attacco temerario e potentissimo."
+    "description": ""
   },
   "presa": {
     "name": "Presa",
@@ -1573,22 +1519,16 @@
     },
     "description": "infligge danno e aumenta di molto la Velocità, ma nel turno successivo Bree non può agire — si è già accucciato da qualche parte."
   },
-  "attaccalite": {
-    "name": "Attaccalite",
+  "battibecco": {
+    "name": "Battibecco",
     "type": "Normale",
     "category": "Fisico",
     "power": 30,
     "accuracy": 100,
     "pp": 35,
     "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "defense",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Un attacco verbale che abbassa la Difesa avversaria."
+    "effect": null,
+    "description": ""
   },
   "fulmisguardo": {
     "name": "Fulmisguardo",
@@ -1647,38 +1587,16 @@
     "effect": null,
     "description": "Colpo secco e diretto."
   },
-  "nevischio": {
-    "name": "Nevischio",
+  "polneve": {
+    "name": "Polneve",
     "type": "Ghiaccio",
     "category": "Speciale",
     "power": 40,
     "accuracy": 100,
     "pp": 25,
     "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "frz",
-      "chance": 10
-    },
-    "description": "Nevischio gelido che può congelare."
-  },
-  "urlo": {
-    "name": "Urlo",
-    "type": "Normale",
-    "category": "Stato",
-    "power": 0,
-    "accuracy": 100,
-    "pp": 40,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "attack",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Un urlo che abbassa l'Attacco avversario.",
-    "sound": true
+    "effect": null,
+    "description": ""
   },
   "cassa_toracica": {
     "name": "Cassa Toracica",
@@ -1738,8 +1656,8 @@
     "description": "Un grido straziante che abbassa molto l'Attacco Speciale avversario.",
     "sound": true
   },
-  "gelo_nevoso": {
-    "name": "Gelo Nevoso",
+  "bora": {
+    "name": "Bora",
     "type": "Ghiaccio",
     "category": "Speciale",
     "power": 110,
@@ -1747,7 +1665,7 @@
     "pp": 5,
     "priority": 0,
     "effect": null,
-    "description": "Una tempesta di neve gelida."
+    "description": ""
   },
   "adunanza": {
     "name": "Adunanza",
@@ -1765,17 +1683,6 @@
       "chance": 100
     },
     "description": "per tre turni aumenta la Difesa di Ca'ità in proporzione al numero di turioni residui visibili sul suo corpo, come se il ricordo dell'unione lo rendesse ancora più solido."
-  },
-  "corpolento": {
-    "name": "Corpolento",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 85,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": "Colpisce con tutto il peso del corpo."
   },
   "ringhio": {
     "name": "Ringhio",
@@ -1827,7 +1734,7 @@
     "category": "Stato",
     "power": 0,
     "accuracy": null,
-    "pp": 10,
+    "pp": 5,
     "priority": 0,
     "effect": {
       "kind": "rest"
@@ -1845,40 +1752,30 @@
     "effect": null,
     "description": ""
   },
-  "fangobomba": {
-    "name": "Fangobomba",
+  "pantanobomba": {
+    "name": "Pantanobomba",
     "type": "Terra",
     "category": "Speciale",
     "power": 65,
     "accuracy": 85,
     "pp": 10,
     "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "psn",
-      "chance": 30
-    },
-    "description": "Una bomba di fango che può avvelenare."
+    "effect": null,
+    "description": ""
   },
-  "terrempesta": {
-    "name": "Terrempesta",
+  "polverone": {
+    "name": "Polverone",
     "type": "Terra",
     "category": "Speciale",
     "power": 70,
     "accuracy": 100,
     "pp": 10,
     "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "defense",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Una tempesta di terra che abbassa la Difesa avversaria."
+    "effect": null,
+    "description": ""
   },
-  "lacerazione": {
-    "name": "Lacerazione",
+  "graffio": {
+    "name": "Graffio",
     "type": "Normale",
     "category": "Fisico",
     "power": 40,
@@ -1921,17 +1818,6 @@
     "effect": null,
     "description": ""
   },
-  "testata": {
-    "name": "Testata",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 70,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
   "scalaroccia": {
     "name": "Scalaroccia",
     "type": "Normale",
@@ -1942,28 +1828,6 @@
     "priority": 0,
     "effect": null,
     "description": ", che fuori dalla lotta serve a salire le pareti dei Sibillini."
-  },
-  "cornoattacco": {
-    "name": "Cornoattacco",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 65,
-    "accuracy": 100,
-    "pp": 25,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "pietrabordo": {
-    "name": "Pietrabordo",
-    "type": "Roccia",
-    "category": "Fisico",
-    "power": 100,
-    "accuracy": 80,
-    "pp": 5,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "meditazione": {
     "name": "Meditazione",
@@ -1986,17 +1850,6 @@
     "priority": 0,
     "effect": null,
     "description": "Psico, stato, priorità +1: fino alla fine del turno successivo, gli altri Pokémon in campo non possono usare mosse di stato né mosse basate sul suono."
-  },
-  "demolizione": {
-    "name": "Demolizione",
-    "type": "Lotta",
-    "category": "Fisico",
-    "power": 75,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "incrocolpo": {
     "name": "Incrocolpo",
@@ -2032,25 +1885,19 @@
     "description": "Un urlo carico di rabbia.",
     "sound": true
   },
-  "assillo": {
-    "name": "Assillo",
+  "scocciatura": {
+    "name": "Scocciatura",
     "type": "Buio",
     "category": "Stato",
     "power": 0,
     "accuracy": 100,
     "pp": 20,
     "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "attack",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Un fastidio continuo che abbassa l'Attacco avversario."
+    "effect": null,
+    "description": ""
   },
-  "fintoattacco": {
-    "name": "Fintoattacco",
+  "colpo_finto": {
+    "name": "Colpo Finto",
     "type": "Normale",
     "category": "Fisico",
     "power": 40,
@@ -2058,7 +1905,7 @@
     "pp": 20,
     "priority": 0,
     "effect": null,
-    "description": "Un finto attacco che colpisce comunque."
+    "description": ""
   },
   "bolgia": {
     "name": "Bolgia",
@@ -2122,8 +1969,8 @@
     "description": "Attacco potente che confonde chi lo usa nel turno successivo.",
     "sound": true
   },
-  "ipervoce": {
-    "name": "Ipervoce",
+  "granvoce": {
+    "name": "Granvoce",
     "type": "Normale",
     "category": "Speciale",
     "power": 90,
@@ -2131,7 +1978,7 @@
     "pp": 10,
     "priority": 0,
     "effect": null,
-    "description": "Un'onda sonora fortissima.",
+    "description": "",
     "sound": true
   },
   "ondaboato": {
@@ -2210,8 +2057,8 @@
     },
     "description": "monta un'impalcatura sul proprio lato del campo: per cinque turni la squadra subisce meno danni dalle mosse fisiche."
   },
-  "martelcolpo": {
-    "name": "Martelcolpo",
+  "martelpugno": {
+    "name": "Martelpugno",
     "type": "Lotta",
     "category": "Fisico",
     "power": 100,
@@ -2219,24 +2066,7 @@
     "pp": 10,
     "priority": 0,
     "effect": null,
-    "description": "Un colpo pesante e potente."
-  },
-  "nitrocarica": {
-    "name": "Nitrocarica",
-    "type": "Fuoco",
-    "category": "Fisico",
-    "power": 50,
-    "accuracy": 100,
-    "pp": 20,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "self",
-      "stat": "speed",
-      "stages": 1,
-      "chance": 100
-    },
-    "description": "Una carica di fuoco che aumenta anche la propria Velocità."
+    "description": ""
   },
   "pestone": {
     "name": "Pestone",
@@ -2251,6 +2081,20 @@
       "chance": 30
     },
     "description": "Un pestone che può far tentennare."
+  },
+  "fuococarica": {
+    "name": "Fuococarica",
+    "type": "Fuoco",
+    "category": "Fisico",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "recoil",
+      "ratio": 0.33
+    },
+    "description": "Carica furiosa avvolta dalle fiamme: il contraccolpo ferisce anche chi la usa (mossa di Cavalbrace)."
   },
   "colpocoda": {
     "name": "Colpocoda",
@@ -2300,17 +2144,6 @@
       "chance": 100
     },
     "description": "Uno sguardo fermo che abbassa la Velocità avversaria."
-  },
-  "graffio": {
-    "name": "Graffio",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 35,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "colpobasso": {
     "name": "Colpobasso",
@@ -2449,8 +2282,8 @@
     "effect": null,
     "description": "Folletto, stato: ripristina un quarto dei PS massimi dell'alleato e ne cura i problemi di stato."
   },
-  "bacio_drenante": {
-    "name": "Bacio Drenante",
+  "assorbibacio": {
+    "name": "Assorbibacio",
     "type": "Folletto",
     "category": "Speciale",
     "power": 50,
@@ -2470,17 +2303,6 @@
     "priority": 0,
     "effect": null,
     "description": "Folletto, fisica, 18 di potenza, colpisce da 2 a 5 volte."
-  },
-  "forzaluna": {
-    "name": "Forzaluna",
-    "type": "Folletto",
-    "category": "Speciale",
-    "power": 95,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": "Un raggio di luce lunare."
   },
   "cannonflash": {
     "name": "Cannonflash",
@@ -2526,8 +2348,8 @@
     "effect": null,
     "description": "Chirocefalo si dissecca e sparisce dal campo per un turno, durante il quale non può essere colpito; al turno successivo riemerge con metà dei PS ripristinati e senza problemi di stato."
   },
-  "salamurra": {
-    "name": "Salamurra",
+  "acquadisale": {
+    "name": "Acquadisale",
     "type": "Acqua",
     "category": "Speciale",
     "power": 65,
@@ -2750,7 +2572,7 @@
     "category": "Stato",
     "power": 0,
     "accuracy": null,
-    "pp": 15,
+    "pp": 20,
     "priority": 0,
     "effect": null,
     "description": "Normale, stato, priorità +4: le mosse con priorità degli avversari falliscono per il turno."
@@ -2826,16 +2648,16 @@
     },
     "description": "ruba un boccone al bersaglio e cura Ciuciòne di una piccola percentuale dei suoi PS massimi — da capobranco, la usa non per fame ma per principio: quel boccone spettava a lui."
   },
-  "turbine": {
-    "name": "Turbine",
+  "raffica": {
+    "name": "Raffica",
     "type": "Volante",
     "category": "Speciale",
     "power": 40,
     "accuracy": 100,
-    "pp": 20,
+    "pp": 35,
     "priority": 0,
     "effect": null,
-    "description": "Un vortice d'aria che colpisce il bersaglio."
+    "description": ""
   },
   "attacco_dala": {
     "name": "Attacco d'Ala",
@@ -3076,8 +2898,8 @@
     "effect": null,
     "description": ""
   },
-  "dragofuria": {
-    "name": "Dragofuria",
+  "tornado": {
+    "name": "Tornado",
     "type": "Drago",
     "category": "Speciale",
     "power": 40,
@@ -3126,7 +2948,7 @@
     "category": "Stato",
     "power": 0,
     "accuracy": null,
-    "pp": 5,
+    "pp": 30,
     "priority": 0,
     "effect": null,
     "description": "",
@@ -3187,8 +3009,8 @@
     "effect": null,
     "description": ""
   },
-  "vocedincanto": {
-    "name": "Vocedincanto",
+  "incantavoce": {
+    "name": "Incantavoce",
     "type": "Folletto",
     "category": "Speciale",
     "power": 40,
@@ -3196,7 +3018,7 @@
     "pp": 15,
     "priority": 0,
     "effect": null,
-    "description": "Un canto incantato.",
+    "description": "Un canto incantato che colpisce con energia magica.",
     "sound": true
   },
   "favorino": {
@@ -3235,19 +3057,23 @@
     "effect": null,
     "description": ""
   },
-  "elettroshock": {
-    "name": "Elettroshock",
+  "tuonoshock": {
+    "name": "Tuonoshock",
     "type": "Elettro",
     "category": "Speciale",
     "power": 40,
     "accuracy": 100,
     "pp": 30,
     "priority": 0,
-    "effect": null,
-    "description": ""
+    "effect": {
+      "kind": "status",
+      "status": "par",
+      "chance": 10
+    },
+    "description": "Una scarica elettrica che può paralizzare."
   },
-  "elettroraggio": {
-    "name": "Elettroraggio",
+  "raggiolampo": {
+    "name": "Raggiolampo",
     "type": "Elettro",
     "category": "Speciale",
     "power": 60,
@@ -3272,7 +3098,7 @@
     "name": "Fulmine",
     "type": "Elettro",
     "category": "Speciale",
-    "power": 95,
+    "power": 90,
     "accuracy": 100,
     "pp": 15,
     "priority": 0,
@@ -3332,8 +3158,8 @@
     "type": "Lotta",
     "category": "Fisico",
     "power": 15,
-    "accuracy": 85,
-    "pp": 10,
+    "accuracy": 100,
+    "pp": 20,
     "priority": 0,
     "effect": null,
     "description": ""
@@ -3351,6 +3177,17 @@
       "id": "diceria"
     },
     "description": "il danno aumenta del 50% per ogni volta che è già stata usata nella stessa lotta."
+  },
+  "finta": {
+    "name": "Finta",
+    "type": "Buio",
+    "category": "Fisico",
+    "power": 60,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": ""
   },
   "neroshock": {
     "name": "Neroshock",
@@ -3416,8 +3253,8 @@
     "effect": null,
     "description": "Una pioggia di piccole comete."
   },
-  "terrforza": {
-    "name": "Terrforza",
+  "geoforza": {
+    "name": "Geoforza",
     "type": "Terra",
     "category": "Speciale",
     "power": 90,
@@ -3425,7 +3262,7 @@
     "pp": 10,
     "priority": 0,
     "effect": null,
-    "description": "Un'esplosione di energia della terra."
+    "description": "Energia della terra scatenata in un'esplosione."
   },
   "sgranocchio": {
     "name": "Sgranocchio",
@@ -3477,24 +3314,13 @@
     "effect": null,
     "description": ""
   },
-  "ventofatato": {
-    "name": "Ventofatato",
+  "vento_di_fata": {
+    "name": "Vento di Fata",
     "type": "Folletto",
     "category": "Speciale",
     "power": 40,
     "accuracy": 100,
     "pp": 30,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
-  "bacioassorbente": {
-    "name": "Bacioassorbente",
-    "type": "Folletto",
-    "category": "Speciale",
-    "power": 50,
-    "accuracy": 100,
-    "pp": 10,
     "priority": 0,
     "effect": null,
     "description": ""
@@ -3509,18 +3335,6 @@
     "priority": 0,
     "effect": null,
     "description": ""
-  },
-  "incantavoce": {
-    "name": "Incantavoce",
-    "type": "Folletto",
-    "category": "Speciale",
-    "power": 40,
-    "accuracy": null,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": "Un canto incantato che colpisce con energia magica.",
-    "sound": true
   },
   "girandola": {
     "name": "Girandola",
@@ -3549,6 +3363,17 @@
     "priority": 0,
     "effect": null,
     "description": "Drago, fisica, 50 di potenza, priorità +1, non può fallire."
+  },
+  "ira_di_drago": {
+    "name": "Ira di Drago",
+    "type": "Drago",
+    "category": "Speciale",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": null,
+    "description": ""
   },
   "codacciaio": {
     "name": "Codacciaio",
@@ -3681,8 +3506,8 @@
     "effect": null,
     "description": ""
   },
-  "coro": {
-    "name": "Coro",
+  "coro_da_stadio": {
+    "name": "Coro da Stadio",
     "type": "Lotta",
     "category": "Stato",
     "power": 0,
@@ -3703,17 +3528,6 @@
     "effect": null,
     "description": "colpisce sbattendo il cartello di frazione, e infligge il doppio dei danni se il bersaglio è entrato in campo in questo turno."
   },
-  "dragosoffio": {
-    "name": "Dragosoffio",
-    "type": "Drago",
-    "category": "Speciale",
-    "power": 60,
-    "accuracy": 100,
-    "pp": 20,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
   "idrondata": {
     "name": "Idrondata",
     "type": "Acqua",
@@ -3730,7 +3544,7 @@
     "type": "Acqua",
     "category": "Fisico",
     "power": 100,
-    "accuracy": 90,
+    "accuracy": 95,
     "pp": 10,
     "priority": 0,
     "effect": null,
@@ -3747,8 +3561,8 @@
     "effect": null,
     "description": "Folletto, stato: di notte cura tutta la squadra dai problemi di stato e ripristina un terzo dei PS massimi di ciascuno; di giorno fallisce."
   },
-  "vento_argenteo": {
-    "name": "Vento Argenteo",
+  "ventargenteo": {
+    "name": "Ventargenteo",
     "type": "Coleottero",
     "category": "Speciale",
     "power": 60,
@@ -3955,8 +3769,8 @@
     "effect": null,
     "description": "Normale, stato: cura un alleato di metà dei PS massimi e lo rende immune alle mosse di stato per due turni; se usato in lotta singola, cura l'utente."
   },
-  "colpo_rapido": {
-    "name": "Colpo Rapido",
+  "pugnorapido": {
+    "name": "Pugnorapido",
     "type": "Lotta",
     "category": "Fisico",
     "power": 40,
@@ -4009,21 +3823,6 @@
     "priority": 0,
     "effect": null,
     "description": ""
-  },
-  "tuonoshock": {
-    "name": "Tuonoshock",
-    "type": "Elettro",
-    "category": "Speciale",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 30,
-    "priority": 0,
-    "effect": {
-      "kind": "status",
-      "status": "par",
-      "chance": 10
-    },
-    "description": "Una scarica elettrica che può paralizzare."
   },
   "passaggio": {
     "name": "Passaggio",
@@ -4094,22 +3893,16 @@
     "effect": null,
     "description": "Un attacco oscuro potente."
   },
-  "incanto": {
-    "name": "Incanto",
+  "canto_ammaliante": {
+    "name": "Canto Ammaliante",
     "type": "Folletto",
     "category": "Stato",
     "power": 0,
     "accuracy": 100,
     "pp": 20,
     "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "attack",
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Un canto ammaliante che abbassa l'Attacco avversario."
+    "effect": null,
+    "description": ""
   },
   "fora_fora": {
     "name": "Fòra Fòra",
@@ -4169,8 +3962,8 @@
     },
     "description": "è la sua mossa esclusiva: la potenza"
   },
-  "metalartiglio": {
-    "name": "Metalartiglio",
+  "ferrartigli": {
+    "name": "Ferrartigli",
     "type": "Acciaio",
     "category": "Fisico",
     "power": 50,
@@ -4179,34 +3972,12 @@
     "priority": 0,
     "effect": {
       "kind": "stat",
-      "target": "self",
-      "stat": "attack",
-      "stages": 1,
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
       "chance": 10
     },
-    "description": "Artigli d'acciaio che possono aumentare l'Attacco."
-  },
-  "ombraferoce": {
-    "name": "Ombraferoce",
-    "type": "Spettro",
-    "category": "Fisico",
-    "power": 70,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": "Un attacco spettrale feroce."
-  },
-  "testataferro": {
-    "name": "Testataferro",
-    "type": "Acciaio",
-    "category": "Fisico",
-    "power": 80,
-    "accuracy": 100,
-    "pp": 15,
-    "priority": 0,
-    "effect": null,
-    "description": "Una testata metallica pesante."
+    "description": "Artigli d'acciaio che possono abbassare la Difesa."
   },
   "contatore": {
     "name": "Contatore",
@@ -4360,10 +4131,10 @@
   },
   "baratto": {
     "name": "Baratto",
-    "type": "Buio",
+    "type": "Psico",
     "category": "Stato",
     "power": 0,
-    "accuracy": 100,
+    "accuracy": null,
     "pp": 10,
     "priority": 0,
     "effect": null,
@@ -4394,6 +4165,23 @@
       "chance": 30
     },
     "description": "Un morso velenoso che può avvelenare."
+  },
+  "attaccalite": {
+    "name": "Attaccalite",
+    "type": "Buio",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 15,
+    "priority": 0,
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Un attacco verbale che abbassa la Difesa avversaria."
   },
   "garanzia": {
     "name": "Garanzia",
@@ -4450,16 +4238,22 @@
     },
     "description": "è la sua mossa esclusiva: apre la cupola e crea per cinque turni una zona d'ombra sul lato alleato — i danni delle mosse speciali sono ridotti di un terzo e"
   },
-  "geoforza": {
-    "name": "Geoforza",
-    "type": "Terra",
-    "category": "Speciale",
-    "power": 90,
-    "accuracy": 100,
+  "terrempesta": {
+    "name": "Terrempesta",
+    "type": "Roccia",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
     "pp": 10,
     "priority": 0,
-    "effect": null,
-    "description": "Energia della terra scatenata in un'esplosione."
+    "effect": {
+      "kind": "stat",
+      "target": "enemy",
+      "stat": "defense",
+      "stages": -1,
+      "chance": 100
+    },
+    "description": "Una tempesta di terra che abbassa la Difesa avversaria."
   },
   "livrea": {
     "name": "Livrea",
@@ -4483,8 +4277,8 @@
     "effect": null,
     "description": ""
   },
-  "ghiacciolo": {
-    "name": "Ghiacciolo",
+  "scagliagelo": {
+    "name": "Scagliagelo",
     "type": "Ghiaccio",
     "category": "Fisico",
     "power": 85,
@@ -4527,17 +4321,6 @@
     "effect": null,
     "description": "Spettro, stato, 1 PP: il 25 aprile cura tutta la squadra dai problemi di stato e ripristina un terzo dei PS massimi di ciascuno; negli altri giorni fallisce."
   },
-  "raffica": {
-    "name": "Raffica",
-    "type": "Volante",
-    "category": "Speciale",
-    "power": 40,
-    "accuracy": 100,
-    "pp": 35,
-    "priority": 0,
-    "effect": null,
-    "description": ""
-  },
   "incubo": {
     "name": "Incubo",
     "type": "Spettro",
@@ -4554,8 +4337,8 @@
     "type": "Spettro",
     "category": "Stato",
     "power": 0,
-    "accuracy": 100,
-    "pp": 10,
+    "accuracy": null,
+    "pp": 5,
     "priority": 0,
     "effect": null,
     "description": ""
@@ -4593,8 +4376,8 @@
     "effect": null,
     "description": ""
   },
-  "furtivombra": {
-    "name": "Furtivombra",
+  "passo_dombra": {
+    "name": "Passo d'Ombra",
     "type": "Spettro",
     "category": "Fisico",
     "power": 70,
@@ -4614,6 +4397,17 @@
     "priority": 0,
     "effect": null,
     "description": "Erba, speciale, 70 di potenza: l'utente recupera metà dei danni inflitti."
+  },
+  "turbine": {
+    "name": "Turbine",
+    "type": "Normale",
+    "category": "Stato",
+    "power": 0,
+    "accuracy": null,
+    "pp": 20,
+    "priority": 0,
+    "effect": null,
+    "description": "Un vortice d'aria che colpisce il bersaglio."
   },
   "guano": {
     "name": "Guano",
@@ -4641,6 +4435,21 @@
     },
     "description": "Spine velenose che possono avvelenare."
   },
+  "fangobomba": {
+    "name": "Fangobomba",
+    "type": "Veleno",
+    "category": "Speciale",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 10,
+    "priority": 0,
+    "effect": {
+      "kind": "status",
+      "status": "psn",
+      "chance": 30
+    },
+    "description": "Una bomba di fango che può avvelenare."
+  },
   "mangiatoia": {
     "name": "Mangiatoia",
     "type": "Normale",
@@ -4662,20 +4471,6 @@
     "priority": 0,
     "effect": null,
     "description": "Erba, stato: se l'utente ha meno di un terzo dei PS, ne ripristina metà e cura i problemi di stato; altrimenti fallisce."
-  },
-  "assorbi": {
-    "name": "Assorbi",
-    "type": "Erba",
-    "category": "Speciale",
-    "power": 20,
-    "accuracy": 100,
-    "pp": 25,
-    "priority": 0,
-    "effect": {
-      "kind": "drain",
-      "ratio": 0.5
-    },
-    "description": "Assorbe metà del danno inflitto come cura."
   },
   "codaditalco": {
     "name": "Codaditalco",
@@ -4840,12 +4635,12 @@
     "effect": null,
     "description": "Acciaio, fisica, 90 di potenza: colpisce anche i bersagli in fase di Fossa, Volo o Tuffo, aggirando l'ostacolo."
   },
-  "fangosberla": {
-    "name": "Fangosberla",
-    "type": "Terra",
+  "fanghiglia": {
+    "name": "Fanghiglia",
+    "type": "Acqua",
     "category": "Speciale",
-    "power": 20,
-    "accuracy": 100,
+    "power": 90,
+    "accuracy": 85,
     "pp": 10,
     "priority": 0,
     "effect": {
@@ -4853,9 +4648,9 @@
       "target": "enemy",
       "stat": "accuracy",
       "stages": -1,
-      "chance": 100
+      "chance": 30
     },
-    "description": "Uno schizzo di fango che abbassa sempre la precisione avversaria."
+    "description": "Fanghiglia che può abbassare la precisione avversaria."
   },
   "velenpuntura": {
     "name": "Velenpuntura",
@@ -5014,20 +4809,16 @@
     },
     "description": "Un colpo d'acciaio che può aumentare l'Attacco."
   },
-  "doppiocolpo": {
-    "name": "Doppiocolpo",
+  "doppiosmash": {
+    "name": "Doppiosmash",
     "type": "Normale",
     "category": "Fisico",
     "power": 35,
     "accuracy": 90,
     "pp": 10,
     "priority": 0,
-    "effect": {
-      "kind": "multi",
-      "min": 2,
-      "max": 2
-    },
-    "description": "Colpisce due volte in rapida successione."
+    "effect": null,
+    "description": ""
   },
   "fedelta": {
     "name": "Fedeltà",
@@ -5105,23 +4896,6 @@
     "priority": 0,
     "effect": null,
     "description": "Normale, stato, suono: cura i problemi di stato di tutta la squadra e sveglia i Pokémon addormentati; una sola volta per lotta."
-  },
-  "ferrartigli": {
-    "name": "Ferrartigli",
-    "type": "Acciaio",
-    "category": "Fisico",
-    "power": 50,
-    "accuracy": 95,
-    "pp": 35,
-    "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "enemy",
-      "stat": "defense",
-      "stages": -1,
-      "chance": 10
-    },
-    "description": "Artigli d'acciaio che possono abbassare la Difesa."
   },
   "spazzabrace": {
     "name": "Spazzabrace",
@@ -5279,18 +5053,6 @@
     "effect": null,
     "description": ""
   },
-  "granvoce": {
-    "name": "Granvoce",
-    "type": "Normale",
-    "category": "Speciale",
-    "power": 100,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": "",
-    "sound": true
-  },
   "fischiabuchi": {
     "name": "Fischiabuchi",
     "type": "Spettro",
@@ -5400,17 +5162,6 @@
     },
     "description": "Si fortifica, aumentando molto la Difesa."
   },
-  "braccio_martello": {
-    "name": "Braccio Martello",
-    "type": "Lotta",
-    "category": "Fisico",
-    "power": 100,
-    "accuracy": 90,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": "Un colpo pesantissimo sferrato con il braccio."
-  },
   "colpo_vitale": {
     "name": "Colpo Vitale",
     "type": "Normale",
@@ -5422,19 +5173,8 @@
     "effect": null,
     "description": "Colpisce nei punti vitali."
   },
-  "bordata": {
-    "name": "Bordata",
-    "type": "Roccia",
-    "category": "Fisico",
-    "power": 100,
-    "accuracy": 80,
-    "pp": 5,
-    "priority": 0,
-    "effect": null,
-    "description": "Colpo di roccia che lascia il bersaglio scoperto."
-  },
-  "fendente": {
-    "name": "Fendente",
+  "taglio": {
+    "name": "Taglio",
     "type": "Normale",
     "category": "Fisico",
     "power": 50,
@@ -5442,7 +5182,7 @@
     "pp": 30,
     "priority": 0,
     "effect": null,
-    "description": "Un taglio netto e preciso."
+    "description": ""
   },
   "sconfinata": {
     "name": "Sconfinata",
@@ -5458,25 +5198,16 @@
     },
     "description": "agisce per prima se nel turno precedente il bersaglio ha usato una mossa di stato."
   },
-  "superpotere": {
-    "name": "Superpotere",
+  "troppoforte": {
+    "name": "Troppoforte",
     "type": "Lotta",
     "category": "Fisico",
     "power": 120,
     "accuracy": 100,
     "pp": 5,
     "priority": 0,
-    "effect": {
-      "kind": "stat",
-      "target": "self",
-      "stat": [
-        "attack",
-        "defense"
-      ],
-      "stages": -1,
-      "chance": 100
-    },
-    "description": "Un colpo fortissimo che abbassa Attacco e Difesa di chi lo usa."
+    "effect": null,
+    "description": ""
   },
   "ristrutturazione": {
     "name": "Ristrutturazione",
@@ -5539,14 +5270,14 @@
     "type": "Terra",
     "category": "Stato",
     "power": 0,
-    "accuracy": 100,
-    "pp": 10,
+    "accuracy": null,
+    "pp": 15,
     "priority": 0,
     "effect": null,
     "description": ""
   },
-  "nottesferza": {
-    "name": "Nottesferza",
+  "scudisciata": {
+    "name": "Scudisciata",
     "type": "Buio",
     "category": "Fisico",
     "power": 110,
@@ -5599,17 +5330,6 @@
     "priority": 0,
     "effect": null,
     "description": "100 di potenza, non può mancare e ignora le modifiche alle statistiche e l'abilità del bersaglio: colpisce le cose come sono, non come si mostrano."
-  },
-  "bora": {
-    "name": "Bora",
-    "type": "Ghiaccio",
-    "category": "Speciale",
-    "power": 110,
-    "accuracy": 70,
-    "pp": 5,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "radiocollare": {
     "name": "Radiocollare",
@@ -5710,8 +5430,8 @@
     "effect": null,
     "description": "un passaggio a bassissima quota che colpisce e spegne. Se il bersaglio è di tipo Fuoco, la sua abilità viene annullata per tre turni; se in campo c'è la luce solare intensa, viene cancellata."
   },
-  "tempesta": {
-    "name": "Tempesta",
+  "tifone": {
+    "name": "Tifone",
     "type": "Volante",
     "category": "Speciale",
     "power": 110,
@@ -5732,8 +5452,8 @@
     "effect": null,
     "description": ""
   },
-  "geyser": {
-    "name": "Geyser",
+  "zampillo": {
+    "name": "Zampillo",
     "type": "Acqua",
     "category": "Speciale",
     "power": 150,
@@ -5786,17 +5506,6 @@
     "priority": 0,
     "effect": null,
     "description": "Spettro, speciale, 80 di potenza: raddoppia se l'utente ha meno della metà dei PS."
-  },
-  "acquadisale": {
-    "name": "Acquadisale",
-    "type": "Acqua",
-    "category": "Speciale",
-    "power": 65,
-    "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": null,
-    "description": ""
   },
   "doppiasberla": {
     "name": "Doppiasberla",
@@ -5969,26 +5678,12 @@
     "effect": null,
     "description": "Volante, 40 di potenza, priorità +1 al primo utilizzo di ogni lotta: gli inquilini escono tutti insieme in faccia all'avversario."
   },
-  "assorbicorno": {
-    "name": "Assorbicorno",
+  "legnicorno": {
+    "name": "Legnicorno",
     "type": "Erba",
     "category": "Fisico",
     "power": 75,
     "accuracy": 100,
-    "pp": 10,
-    "priority": 0,
-    "effect": {
-      "kind": "drain",
-      "ratio": 0.5
-    },
-    "description": "Colpisce con le corna assorbendo metà del danno."
-  },
-  "doppio_colpo": {
-    "name": "Doppio Colpo",
-    "type": "Normale",
-    "category": "Fisico",
-    "power": 35,
-    "accuracy": 90,
     "pp": 10,
     "priority": 0,
     "effect": null,
