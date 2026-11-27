@@ -300,70 +300,73 @@ ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno
    - ROM del commit `61b3b76b21`. Prove: sette passano; `prova_ciclista.py` è passata tre volte su
      quattro (instabile come `prova_abilita.py`: da sistemare tutte e due).
 
-11. **Verso la demo per gli amici (28/11; Jacopo: «massimizzare la qualità di questo primo spicchio di
-    gioco per rilasciare una demo e raccogliere pareri»). Elenco degli interventi cosmetici, da spuntare.**
-    Chiesto da Jacopo:
-    - [ ] Porto d'Ascoli: togliere l'ultima fila in basso di ombrelloni.
+11. **Verso la demo per gli amici: elenco rifatto il 28/11 sera** (Jacopo: «massimizzare la qualità di
+    questo primo spicchio di gioco per rilasciare una demo e raccogliere pareri»). ROM: commit
+    `a51525fa57` più gli sprite del quinto giro.
 
-    *Prima impressione (quello che un amico vede nei primi cinque minuti)*
-    - [x] **Schermata del titolo** (28/11): il profilo di Ascoli con le torri e le finestre che pulsano, «VERSIONE
-          PICENO». Quella di Smeraldo è salvata accanto (`titolo.py smeraldo` la rimette). Resta «© 2005 GAME FREAK».
-    - [ ] *(prompt e artwork pronti in `tasks/prompt_grafica_5/`: aspettano i fogli di Jacopo)* **Cinque Pokémon dello spicchio senza sprite vero** (hanno la figura ricavata dall'artwork):
-          Bree, Ombrellone, Pozza, Sciapezza, Segaccio. Gli altri 28 dello spicchio li hanno. Servono i fogli.
-    - [ ] **Iban e Teo**: sprite «confusi» (Jacopo, 21/11), da rifare; la turista donna usa ancora la Pokéfan
-          di Smeraldo; sulla cartina la testina è quella di Brendan.
-    - [ ] **Guardare la cartina nuova dentro il gioco** (fatta il 27/11, vista solo in anteprima).
+    **Fatto il 28/11**
+    - [x] Schermata del titolo: profilo di Ascoli, «VERSIONE PICENO» (quella di Smeraldo salvata: `titolo.py smeraldo`).
+    - [x] Sprite di Bree, Ombrellone, Pozza, Sciapezza, Segaccio dai fogli di Jacopo: **tutti i 33 Pokémon
+          dello spicchio hanno lo sprite vero** (39 su 149 in tutto). Non visti in lotta.
+    - [x] Strade: asfalto a Porta Maggiore, Monticelli, Campo Parignano, Borgo Chiaro, Castel di Lama; selciato
+          a Borgo Solestà e Porta Cartara.
+    - [x] Quartieri ridisegnati: Borgo Chiaro, Campo Parignano, Monticelli, Borgo Solestà.
+    - [x] Centro Storico di pietra (vie, piazze, fondo), ponte di Porta Maggiore, Castellano da bordo a bordo.
+    - [x] Ferrovia e passaggio a livello a Porta Maggiore; tetti diversi; Cattedrale e Teatro più profondi,
+          Teatro con l'insegna da palestra; saltelli sulla discesa di Maltignano.
+    - [x] Vagone rifatto sul Jazz; tappeti che non coprono Oliver; dietro lampioni e palme si passa; cime
+          degli alberi intere.
+    - [x] Cartina del Piceno ridisegnata; Porto d'Ascoli e San Benedetto del Tronto; ombrelloni di Hoenn.
+    - [x] Set comune nostro: ogni zona ha posto per altri disegni.
 
-    *Zone: farle sembrare paesi e quartieri, non percorsi*
-    - [x] *(28/11: asfalto con cordoli e mezzerie a Porta Maggiore, Monticelli, Campo Parignano, Borgo Chiaro,
-          Castel di Lama; selciato a Borgo Solestà e Porta Cartara)* **Strade di città**: solo viale Indipendenza era asfaltato. Le altre vie di Porta Maggiore, Monticelli,
-          Campo Parignano, Borgo Solestà, Porta Cartara, Borgo Chiaro e il paese di Castel di Lama sono
-          ancora di terra. Le strade di campagna (Marino, Oasi, Maltignano, Spinetoli) restano di terra.
-    - [ ] **Ponti**: solo quello di Porta Maggiore è di pietra. Campo Parignano (il Tronto), Porta Cartara,
-          Borgo Solestà e Marino hanno ancora una striscia di terra sopra l'acqua.
-    - [x] *(28/11: Borgo Chiaro, Campo Parignano, Monticelli e Borgo Solestà ridisegnati: case e palazzine,
-          una via in più a Campo Parignano, due parchetti, aiuole, erba alta ai margini; Porta Solestà e i due
-          ponti di pietra a Borgo Solestà. Le posizioni sono mie: da guardare)* **Rettangoli d'erba alta nei quartieri**: Borgo Chiaro, Campo Parignano, Monticelli e Borgo Solestà
-          sono per metà prato con riquadri d'erba alta squadrati. Dare loro forme irregolari e spostarli ai
-          margini; al loro posto case, siepi, aiuole, un parcheggio, un parco.
-    - [ ] **Oasi**: i due specchi d'acqua sono due rettangoli identici. Farne un lago dalla forma naturale.
-    - [ ] **Case tutte uguali**: un solo modello (più la palazzina). Due o tre varianti di colore e di tetto.
-    - [ ] **Bordi delle città**: ogni zona è chiusa da alberi. Nei quartieri, tratti di mura, case a schiera,
-          recinzioni (Porta Cartara e Borgo Solestà hanno le mura vere).
-    - [ ] **Ferrovia**: finisce contro il bordo a est di Porta Maggiore. Farla proseguire a Monticelli o darle
-          una fine; un treno fermo in stazione.
-    - [ ] **Centro Storico**: sei alberi isolati e i cartelli col quadretto d'erba; il colore delle lastre
-          (rosato o grigio); rimettere la piramide sul Battistero e il padiglione sul Palazzo dei Capitani,
-          ora che c'è posto.
-    - [ ] **Porto d'Ascoli e San Benedetto**: lungomare lastricato invece della strada di terra; lettini,
-          materassini e ombrelloni di altri colori da Hoenn; le palme in fila lungo il lungomare.
-    - [ ] **Passaggio a livello**: senza sbarre; **altre strade di Porta Maggiore** oltre al viale.
-    - [ ] **Cartelli**: tutti lo stesso cartello grigio di Hoenn. Insegne diverse per fermate, piazze, confini.
+    **Da guardare giocando (fatto ma non visto in gioco da nessuno)**
+    - [ ] I cinque sprite nuovi in lotta; la cartina aperta dal gioco; il tappeto e i lampioni; i quartieri
+          ridisegnati camminandoci (case e aiuole le ho messe io); i tetti uno per uno.
+    - [ ] Colore delle lastre delle piazze: rosato (ora) o grigio chiaro.
 
-    *Chiesto da Jacopo il 28/11 e fatto (ROM del commit `a51525fa57`)*
-    - [x] Teatro Ventidio Basso più profondo (9×8) e riconoscibile come palestra: sfera sul tetto e targa «PALESTRA».
-    - [x] Negli interni il tappeto non copre più Oliver (non visto in gioco, solo la regola).
-    - [x] Cime degli alberi tagliate accanto alla stazione: ora ogni fondo (lastre, selciato, asfalto) ha la sua punta.
-    - [x] Vagone rifatto sul Jazz: sedili blu a coppie, finestrini larghi, mancorrenti gialli, display, linoleum.
-    - [x] Il Castellano va da un bordo all'altro di Porta Maggiore e del Centro. Oltre il bordo della mappa il gioco
-          disegna comunque alberi: non si può cambiare zona per zona.
-    - [x] Dietro i lampioni (e le palme) si passa (non visto in gioco, solo la regola).
+    **A. Subito, piccole (le faccio io, basta un sì)**
+    - [ ] Porto d'Ascoli: togliere l'ultima fila in basso di ombrelloni (chiesto da Jacopo).
+    - [ ] Rimettere la piramide sul Battistero e il padiglione sul Palazzo dei Capitani: ora c'è posto.
+    - [ ] Sbarre bianche e rosse al passaggio a livello; un treno fermo ai binari della stazione.
+    - [ ] Centro Storico: togliere i sei alberi isolati; un fondo di pietra sotto i cartelli.
+    - [ ] Togliere «© 2005 GAME FREAK inc.» dal titolo, o metterci la nostra riga.
+    - [ ] Le due prove instabili (`prova_abilita.py`, `prova_ciclista.py`).
 
-    *Personaggi e testi*
-    - [ ] **Nomi e battute**: i personaggi «Residente», «Passante», «Abitante», «Anziano»; i quattro Renzo, i
-          due Learco, i due Osvaldo; De Vitis che ricorre (punto 9). Le 147 battute in dialetto aspettano
-          ancora la rilettura di un ascolano (piano di Giulio).
-    - [ ] **Descrizioni delle mosse nostre**: 220 hanno il testo della scheda tagliato a metà frase
-          («ha priorità +3 ma riesce solo nel primo turno in cu…»). Riscriverle corte.
-    - [ ] **62 abilità** dicono «Abilità del Piceno: ancora senza effetto.»: almeno una frase vera.
-    - [ ] **Resti d'inglese**: da cercare giocando (menu, Pokédex, messaggi rari).
-    - [ ] **Frasi delle schede** che non corrispondono più alla mossa rinominata (Pantanobomba, Nitrocarica).
+    **B. Zone ancora da rifinire**
+    - [ ] **Ponti**: di pietra o di legno a Campo Parignano (ora è asfalto sull'acqua), Porta Cartara e Marino.
+          Servono i parapetti per i ponti che vanno da nord a sud.
+    - [ ] **Oasi**: i due specchi d'acqua rettangolari diventano un lago dalla forma naturale.
+    - [ ] **Porta Cartara**: è ancora due case e un prato. La cartiera papale, le mura, le rive.
+    - [ ] **Castel di Lama, Spinetoli, Marino, Ripatransone**: riquadri d'erba alta squadrati come erano i
+          quartieri; campi coltivati, filari, case coloniche vere.
+    - [ ] **Porto d'Ascoli e San Benedetto**: lungomare lastricato con le palme in fila; lettini e ombrelloni
+          di altri colori da Hoenn; il porto.
+    - [ ] **Ferrovia**: farla proseguire a Monticelli o darle una fine a est.
+    - [ ] **Case**: due o tre varianti di colore e di tetto (ora un modello più la palazzina).
+    - [ ] **Bordi delle città**: mura, case a schiera, recinzioni al posto degli alberi nei quartieri.
+    - [ ] **Cartelli**: insegne diverse per fermate, piazze, confini (ora un solo cartello grigio).
+    - [ ] **Interni**: gli altri come il treno? Bar, stazione, chiese, palestra: da riguardare uno per uno.
+    - [ ] **Teatro Ventidio Basso**: fuori è una palestra, dentro no. Decidere chi è il capopalestra.
 
-    *Rifiniture*
-    - [ ] Giorno e notte: la tinta è spenta dal 19/11 («non funziona ancora bene a livello visivo»).
-    - [ ] Versi dei Pokémon: sono presi in prestito da specie di Hoenn.
-    - [ ] Alfabeto delle etichette (targhette dei tipi, intestazioni): più sottile dell'originale, da guardare.
-    - [ ] Due prove instabili (`prova_abilita.py`, `prova_ciclista.py`): prima di consegnare una demo.
+    **C. Personaggi e testi**
+    - [ ] **Personaggi**: nomi e fissazioni ai «Residente», «Passante», «Abitante», «Anziano»; i nomi ripetuti
+          (due Renzo, due Learco, due Osvaldo oltre ai ciclisti); De Vitis che ricorre (punto 9).
+    - [ ] **Iban e Teo** da rifare (servono fogli); la turista donna; la testina di Oliver sulla cartina.
+    - [ ] **Descrizioni delle mosse nostre**: 220 tagliate a metà frase. Riscriverle corte.
+    - [ ] **62 abilità** con «ancora senza effetto» come descrizione.
+    - [ ] **Dialetto**: le 147 battute aspettano la rilettura di un ascolano (piano di Giulio).
+    - [ ] **Resti d'inglese** da cercare giocando; frasi delle schede che non corrispondono più alla mossa.
+
+    **D. Rifiniture di motore**
+    - [ ] Giorno e notte: la tinta è spenta dal 19/11.
+    - [ ] Versi dei Pokémon in prestito da Hoenn.
+    - [ ] Alfabeto delle etichette tradotte, più sottile dell'originale.
+    - [ ] Le 15 evoluzioni rimaste (strumenti e luoghi che non ci sono): «andando avanti, con calma».
+
+    **Prima di consegnare la demo**
+    - [ ] Una partita intera dal treno alla seconda medaglia, giocata da Jacopo sulla ROM finale.
+    - [ ] Guida e presentazione rigenerate (`documenta.py`, `presentazione.py`): sono del 20/11.
+    - [ ] Decidere come la si consegna (la ROM, le istruzioni per l'emulatore, cosa chiedere agli amici).
 
 **Proposte del 21/11 mattina sulle mosse: aspettano il sì di Jacopo, niente è montato**
 
