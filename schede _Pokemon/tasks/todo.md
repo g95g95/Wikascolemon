@@ -265,6 +265,23 @@ ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno
      condividono le tessere dei colori comuni (`COLORI_COMUNI` in `edifici.py`): Porta Maggiore è a
      503 su 512, il Centro a 510. Rigenerate tutte e 15 le zone. Corretta per strada una battuta di
      Castel di Lama che usciva senza accenti e senza spazio («era nu bar.Mo»). ROM del commit `e8f5db8327`.
+   - [x] **Centro Storico, secondo giro** (Jacopo: «me l'hai fatto tutto uguale, si devono distinguere le
+     strade e le piazze»): fondo di selciato grigio chiaro, vie di selciato più scuro, piazze di lastre
+     rosate col bordo (`"fondo": "selciato"`). Il Battistero ha il tetto a due falde, non a piramide
+     (costava 13 tessere).
+   - [x] **Ponte di Porta Maggiore e viale** (Jacopo, 28/11): via gli alberi fra Porta Maggiore e il
+     Centro; il Castellano è largo cinque celle a Porta Maggiore più due nel Centro e arriva al
+     confine; il ponte è di pietra coi parapetti (`"pietra": true` sulla voce del ponte) e continua
+     nel Centro. Viale Indipendenza è asfaltato, con mezzeria e cordoli (`"fondo": "asfalto"` sulla
+     strada). Attraversato con l'emulatore nei due versi. Difetto visto: sotto il ponte l'acqua fa
+     il bordo di riva, come se fossero due specchi d'acqua. Le altre strade di Porta Maggiore sono
+     ancora di terra. ROM del commit `a24886f494`.
+   - **Limite delle tessere** (domanda di Jacopo): una mappa vede 1024 tessere, 512 del set comune di
+     Hoenn e 512 della zona. Le nostre mappe usano solo 75 tessere e 42 blocchi del set comune: il
+     modo di aggirare il limite è un set comune nostro, con dentro solo quello che serve più tutti i
+     pezzi condivisi (pietre, binari, asfalto, tetti e muri uguali), che libererebbe circa 400
+     posti. È un lavoro a sé (tutte le mappe cambiano set comune): **da decidere**. Oggi: Porta
+     Maggiore 510 su 512, Centro 504.
    - [ ] **Ritocchi alle zone:** il foglio per segnarli è `pokemon-piceno/tasks/piante/piante.html`
      (si rifà con `python tools/piceno/foglio_piante.py`): per ogni zona la pianta, gli edifici, i
      cartelli, i personaggi con la battuta, gli allenatori. Aspetta le indicazioni di Jacopo.
