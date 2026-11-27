@@ -2,7 +2,7 @@
   Object.assign(window.PokemonAscoliTrainers.trainers, {
     maltignano_ciclista_1: {
       map: 'maltignano', x: 27, y: 27, direction: 'left', sight: 4,
-      class: 'ciclista', name: 'Renzo', sprite: null,
+      class: 'ciclista', name: 'De Vitis', sprite: null,
       team: [{ species: 'cignalo', level: 10 }, { species: 'tifotto', level: 10 }],
       before: ['Prima da Brian\'s e ora GPM Maltignano\nSIGNORI!\nIL CICLISMO'],   // battute di Jacopo, 27/11: gli a capo sono voluti
       after: ['Z2 Z3....'],
