@@ -1,0 +1,31 @@
+PROMPT PER GLI ULTIMI CINQUE SPRITE DELLO SPICCHIO DI GIOCO (fronte e retro)
+Scritto il 28/11/2026, verso la demo per gli amici.
+
+Il prompt è uno solo, uguale per tutti: lo incolli e alleghi ogni volta un artwork diverso di questa
+cartella. Un foglio per Pokémon, cinque in tutto.
+
+Sono i soli Pokémon che si incontrano nella parte già giocabile (selvatici o in squadra a un allenatore)
+e che hanno ancora la figura ricavata dall'artwork invece di uno sprite vero:
+
+  01 - Bree
+  02 - Ombrellone
+  03 - Pozza
+  04 - Sciapezza
+  05 - Segaccio
+
+Gli altri 28 dello spicchio lo sprite ce l'hanno già.
+
+Quando scarichi il PNG, se riesci dagli il nome del Pokémon (es. «bree.png»): mi evita di doverli
+riconoscere a occhio. Se non lo fai li riconosco lo stesso.
+
+------------------------------------------------------------------------------------------------------
+
+Pixel art in the style of Game Boy Advance Pokémon Emerald battle sprites.
+One row of 2 equal square cells on a solid flat magenta (#FF00FF) background, no shadows, no text, no borders.
+The creature is the one in the attached artwork; keep its shapes and colours.
+Cell 1: the creature seen from the front, turned slightly to the left, whole body visible, feet on the
+bottom third of the cell.
+Cell 2: the same creature seen from behind, turned slightly to the right (three-quarter back view),
+larger than in cell 1 and cut by the bottom edge of the cell as in Emerald back sprites.
+Dark outline, flat colours, at most 15 colours shared by both views, no gradients, no anti-aliasing,
+crisp pixels.

@@ -306,20 +306,24 @@ ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno
     - [ ] Porto d'Ascoli: togliere l'ultima fila in basso di ombrelloni.
 
     *Prima impressione (quello che un amico vede nei primi cinque minuti)*
-    - [ ] **Schermata del titolo**: è ancora quella di Smeraldo (Rayquaza, «EMERALD VERSION»), mai toccata.
-    - [ ] **Cinque Pokémon dello spicchio senza sprite vero** (hanno la figura ricavata dall'artwork):
+    - [x] **Schermata del titolo** (28/11): il profilo di Ascoli con le torri e le finestre che pulsano, «VERSIONE
+          PICENO». Quella di Smeraldo è salvata accanto (`titolo.py smeraldo` la rimette). Resta «© 2005 GAME FREAK».
+    - [ ] *(prompt e artwork pronti in `tasks/prompt_grafica_5/`: aspettano i fogli di Jacopo)* **Cinque Pokémon dello spicchio senza sprite vero** (hanno la figura ricavata dall'artwork):
           Bree, Ombrellone, Pozza, Sciapezza, Segaccio. Gli altri 28 dello spicchio li hanno. Servono i fogli.
     - [ ] **Iban e Teo**: sprite «confusi» (Jacopo, 21/11), da rifare; la turista donna usa ancora la Pokéfan
           di Smeraldo; sulla cartina la testina è quella di Brendan.
     - [ ] **Guardare la cartina nuova dentro il gioco** (fatta il 27/11, vista solo in anteprima).
 
     *Zone: farle sembrare paesi e quartieri, non percorsi*
-    - [ ] **Strade di città**: solo viale Indipendenza è asfaltato. Le altre vie di Porta Maggiore, Monticelli,
+    - [x] *(28/11: asfalto con cordoli e mezzerie a Porta Maggiore, Monticelli, Campo Parignano, Borgo Chiaro,
+          Castel di Lama; selciato a Borgo Solestà e Porta Cartara)* **Strade di città**: solo viale Indipendenza era asfaltato. Le altre vie di Porta Maggiore, Monticelli,
           Campo Parignano, Borgo Solestà, Porta Cartara, Borgo Chiaro e il paese di Castel di Lama sono
           ancora di terra. Le strade di campagna (Marino, Oasi, Maltignano, Spinetoli) restano di terra.
     - [ ] **Ponti**: solo quello di Porta Maggiore è di pietra. Campo Parignano (il Tronto), Porta Cartara,
           Borgo Solestà e Marino hanno ancora una striscia di terra sopra l'acqua.
-    - [ ] **Rettangoli d'erba alta nei quartieri**: Borgo Chiaro, Campo Parignano, Monticelli e Borgo Solestà
+    - [x] *(28/11: Borgo Chiaro, Campo Parignano, Monticelli e Borgo Solestà ridisegnati: case e palazzine,
+          una via in più a Campo Parignano, due parchetti, aiuole, erba alta ai margini; Porta Solestà e i due
+          ponti di pietra a Borgo Solestà. Le posizioni sono mie: da guardare)* **Rettangoli d'erba alta nei quartieri**: Borgo Chiaro, Campo Parignano, Monticelli e Borgo Solestà
           sono per metà prato con riquadri d'erba alta squadrati. Dare loro forme irregolari e spostarli ai
           margini; al loro posto case, siepi, aiuole, un parcheggio, un parco.
     - [ ] **Oasi**: i due specchi d'acqua sono due rettangoli identici. Farne un lago dalla forma naturale.
@@ -335,6 +339,15 @@ ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno
           materassini e ombrelloni di altri colori da Hoenn; le palme in fila lungo il lungomare.
     - [ ] **Passaggio a livello**: senza sbarre; **altre strade di Porta Maggiore** oltre al viale.
     - [ ] **Cartelli**: tutti lo stesso cartello grigio di Hoenn. Insegne diverse per fermate, piazze, confini.
+
+    *Chiesto da Jacopo il 28/11 e fatto (ROM del commit `a51525fa57`)*
+    - [x] Teatro Ventidio Basso più profondo (9×8) e riconoscibile come palestra: sfera sul tetto e targa «PALESTRA».
+    - [x] Negli interni il tappeto non copre più Oliver (non visto in gioco, solo la regola).
+    - [x] Cime degli alberi tagliate accanto alla stazione: ora ogni fondo (lastre, selciato, asfalto) ha la sua punta.
+    - [x] Vagone rifatto sul Jazz: sedili blu a coppie, finestrini larghi, mancorrenti gialli, display, linoleum.
+    - [x] Il Castellano va da un bordo all'altro di Porta Maggiore e del Centro. Oltre il bordo della mappa il gioco
+          disegna comunque alberi: non si può cambiare zona per zona.
+    - [x] Dietro i lampioni (e le palme) si passa (non visto in gioco, solo la regola).
 
     *Personaggi e testi*
     - [ ] **Nomi e battute**: i personaggi «Residente», «Passante», «Abitante», «Anziano»; i quattro Renzo, i
