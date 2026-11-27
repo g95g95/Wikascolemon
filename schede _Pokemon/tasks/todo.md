@@ -324,13 +324,22 @@ ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno
           ridisegnati camminandoci (case e aiuole le ho messe io); i tetti uno per uno.
     - [ ] Colore delle lastre delle piazze: rosato (ora) o grigio chiaro.
 
-    **A. Subito, piccole (le faccio io, basta un sì)**
-    - [ ] Porto d'Ascoli: togliere l'ultima fila in basso di ombrelloni (chiesto da Jacopo).
-    - [ ] Rimettere la piramide sul Battistero e il padiglione sul Palazzo dei Capitani: ora c'è posto.
-    - [ ] Sbarre bianche e rosse al passaggio a livello; un treno fermo ai binari della stazione.
-    - [ ] Centro Storico: togliere i sei alberi isolati; un fondo di pietra sotto i cartelli.
-    - [ ] Togliere «© 2005 GAME FREAK inc.» dal titolo, o metterci la nostra riga.
-    - [ ] Le due prove instabili (`prova_abilita.py`, `prova_ciclista.py`).
+    **A. Fatto il 28/11 notte (Jacopo: «fai tutto il pezzo A»; ROM del commit `00f31a8b14` e seguenti)**
+    - [x] Porto d'Ascoli: tolta l'ultima fila in basso di ombrelloni.
+    - [x] Piramide sul Battistero e padiglione sul Palazzo dei Capitani.
+    - [x] Sbarre bianche e rosse al passaggio a livello; il Jazz fermo ai binari della stazione.
+    - [x] Centro Storico: via i cinque alberi isolati; i cartelli stanno su un fondo di pietra (cartello nostro).
+    - [x] Titolo: «PREMI START» e «CORDATA COCCHIA GRATIS SNC» al posto di «© 2005 GAME FREAK inc.» (Jacopo).
+    - [x] `prova_ciclista.py` ora è stabile (4 su 4). **`prova_abilita.py` fallisce ancora una volta su quattro**
+          dopo la lotta: non era il menu, da capire.
+    - [x] **Titolo, secondo giro** (Jacopo: «non mi piace l'immagine dietro, qualcosa di più simile a una foto di
+          Ascoli vera, oppure a una mappa del Piceno stile Google Earth»): al posto del profilo delle torri c'è il
+          Piceno visto dall'alto, in rilievo: Sibillini e Laga con la neve, le valli dei fiumi, la costa, le luci
+          dei paesi che pulsano. È disegnato dal programma, non è una foto: **se Jacopo dà una foto sua di Ascoli
+          la si può convertire** (16 colori, 240×160).
+    - [x] **Cartina, secondo giro** (Jacopo: «così non è bella, vorrei più dettaglio»): campi, vigne e boschi diversi
+          da riquadro a riquadro, case col tetto rosso al posto dei quadretti, la ferrovia da Ascoli al mare e su
+          lungo la costa, il Tesino a nord, la spiaggia, il mare che scurisce al largo, le cime. Vista in anteprima.
 
     **B. Zone ancora da rifinire**
     - [ ] **Ponti**: di pietra o di legno a Campo Parignano (ora è asfalto sull'acqua), Porta Cartara e Marino.
