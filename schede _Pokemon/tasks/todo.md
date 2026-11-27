@@ -222,6 +222,25 @@ ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno
      «Learco» e «Osvaldo» ripetuti prendono nomi diversi; i personaggi senza nome («Residente»,
      «Passante», «Abitante») prendono un nome e una fissazione.
 
+10. **Geografia (27/11 notte; Jacopo ha scelto: ritocchi alle zone esistenti e la cartina).**
+   - [x] **La Costa si chiama Porto d'Ascoli, il Jonathan San Benedetto del Tronto** (Jacopo). Cambiati
+     i nomi sulla cartina («PORTO D'ASCOLI», «SAN BENEDETTO»: il nome intero supera i 16 caratteri del
+     motore), i cartelli, due battute (lo chalet, il contadino del capannone) e la guida. La discoteca
+     resta «Jonathan». Scelta mia: il cartello «Lungomare di San Benedetto» che stava a Porto
+     d'Ascoli ora dice «Lungomare di Porto d'Ascoli». I nomi interni (cartelle, `MAP_COSTA`,
+     `MAP_JONATHAN`, i file `costa*`, `jonathan*`) non sono cambiati.
+   - [x] **Cartina ridisegnata** (`cartina.py`, `anteprima` scrive `emulatore/foto/cartina.png`):
+     monti con la neve a ovest, colline a nord e a sud, pianura lungo la valle, il Tronto che gira
+     attorno al Centro Storico e va al mare, il Castellano che sale da sud fra il Centro e Porta
+     Maggiore, le strade fra le zone, Maltignano a sud del fiume, Ripatransone in collina, San
+     Benedetto più a nord sulla costa. Le zone restano una casella l'una. **Vista solo in anteprima,
+     non dentro il gioco.** Le posizioni e il corso dei fiumi sono miei: da guardare.
+   - [ ] **Ritocchi alle zone:** il foglio per segnarli è `pokemon-piceno/tasks/piante/piante.html`
+     (si rifà con `python tools/piceno/foglio_piante.py`): per ogni zona la pianta, gli edifici, i
+     cartelli, i personaggi con la battuta, gli allenatori. Aspetta le indicazioni di Jacopo.
+   - ROM del commit `61b3b76b21`. Prove: sette passano; `prova_ciclista.py` è passata tre volte su
+     quattro (instabile come `prova_abilita.py`: da sistemare tutte e due).
+
 **Proposte del 21/11 mattina sulle mosse: aspettano il sì di Jacopo, niente è montato**
 
 *Risposte di Jacopo (21/11 pomeriggio):* «Portacocchie perfetto»; Aeroattacco = Aeroassalto, sì; Battipiedi
