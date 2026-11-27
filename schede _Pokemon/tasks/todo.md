@@ -341,21 +341,26 @@ ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno
           da riquadro a riquadro, case col tetto rosso al posto dei quadretti, la ferrovia da Ascoli al mare e su
           lungo la costa, il Tesino a nord, la spiaggia, il mare che scurisce al largo, le cime. Vista in anteprima.
 
-    **B. Zone ancora da rifinire**
-    - [ ] **Ponti**: di pietra o di legno a Campo Parignano (ora è asfalto sull'acqua), Porta Cartara e Marino.
-          Servono i parapetti per i ponti che vanno da nord a sud.
-    - [ ] **Oasi**: i due specchi d'acqua rettangolari diventano un lago dalla forma naturale.
-    - [ ] **Porta Cartara**: è ancora due case e un prato. La cartiera papale, le mura, le rive.
-    - [ ] **Castel di Lama, Spinetoli, Marino, Ripatransone**: riquadri d'erba alta squadrati come erano i
-          quartieri; campi coltivati, filari, case coloniche vere.
-    - [ ] **Porto d'Ascoli e San Benedetto**: lungomare lastricato con le palme in fila; lettini e ombrelloni
-          di altri colori da Hoenn; il porto.
-    - [ ] **Ferrovia**: farla proseguire a Monticelli o darle una fine a est.
-    - [ ] **Case**: due o tre varianti di colore e di tetto (ora un modello più la palazzina).
-    - [ ] **Bordi delle città**: mura, case a schiera, recinzioni al posto degli alberi nei quartieri.
-    - [ ] **Cartelli**: insegne diverse per fermate, piazze, confini (ora un solo cartello grigio).
-    - [ ] **Interni**: gli altri come il treno? Bar, stazione, chiese, palestra: da riguardare uno per uno.
-    - [ ] **Teatro Ventidio Basso**: fuori è una palestra, dentro no. Decidere chi è il capopalestra.
+    **B. Zone: fatto il 28/11 notte (ROM del commit `d980d17087`)**
+    - [x] **Ponti** di pietra coi parapetti anche da nord a sud: Campo Parignano, Porta Cartara, Marino, la
+          passerella dell'Oasi (oltre a Porta Maggiore e Borgo Solestà).
+    - [x] **Oasi**: il lago ha una forma naturale; erba alta in macchie, qualche fiore.
+    - [x] **Porta Cartara**: la Cartiera Papale con la ruota accanto alla porta, vie di selciato, rive a macchie.
+    - [x] **Castel di Lama, Spinetoli, Marino, Ripatransone**: erba alta in macchie irregolari, campi arati e di
+          grano (ci si cammina, niente Pokémon). A Ripatransone le tre file della vigna restano.
+    - [x] **Porto d'Ascoli e San Benedetto**: lungomare lastricato, strade asfaltate, ombrelloni di tre colori e
+          lettini di Hoenn. Le tinte di ombrelloni e lettini sono approssimate (21 colori in 15).
+    - [x] **Case in tre varianti** (comignolo e gerani; tre finestrelle e tenda), scelte dal posto: stessi colori.
+    Le posizioni di campi, macchie d'erba e cartiera sono mie: da guardare sul foglio `piante.html`.
+
+    **B. Rimasto fuori (non ci stava in un rilascio)**
+    - [ ] **Ferrovia** oltre Porta Maggiore: le righe dei binari non combaciano con Monticelli (il confine è sfalsato
+          di due righe), va ripensato il tracciato o va data una fine a est.
+    - [ ] **Bordi delle città**: mura, case a schiera, recinzioni al posto degli alberi.
+    - [ ] **Cartelli** diversi per fermate, piazze, confini.
+    - [ ] **Interni** da riguardare uno per uno (bar, stazione, chiese, palestra).
+    - [ ] **Teatro Ventidio Basso**: fuori è una palestra, dentro no. Chi è il capopalestra?
+    - [ ] Il porto a Porto d'Ascoli; le palme in fila sul lungomare.
 
     **C. Personaggi e testi**
     - [ ] **Personaggi**: nomi e fissazioni ai «Residente», «Passante», «Abitante», «Anziano»; i nomi ripetuti
