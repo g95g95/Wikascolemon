@@ -1,9 +1,9 @@
-# ▶ A CHE PUNTO SIAMO (25/11/2026)
+# ▶ A CHE PUNTO SIAMO (27/11/2026)
 
 ## ✅ DA FARE (lista unica, al 21/11)
 
 Il gioco si gioca dal treno alla seconda medaglia (Jonathan), fino alla Costa, e in corriera a Ripatransone.
-ROM: `pokemon-piceno.gba` del 25/11 (commit `d9d214fae3` di `pokemon-piceno`), con accanto
+ROM: `pokemon-piceno.gba` del 27/11 (commit `4ff6cfc081` di `pokemon-piceno`), con accanto
 `pokemon-piceno.sym` della stessa compilazione. Giulio lavora in parallelo e ha un suo piano in
 `pokemon-piceno/tasks/todo.md`: **i due piani restano separati per ora** (deciso da Jacopo), si integrano dopo.
 
@@ -84,6 +84,85 @@ ROM: `pokemon-piceno.gba` del 25/11 (commit `d9d214fae3` di `pokemon-piceno`), c
      mettere in italiano come le abilità (i nomi sono in `nomi_ufficiali.json`): aspetta il sì di
      Jacopo. Nella scheda del Pokémon restano in inglese le etichette disegnate (PROFILE, ABILITY,
      TRAINER MEMO) e le targhette dei tipi (DARK, FIGHT).
+
+7. **Rilascio del 27/11** (commit da `b9e7ee5647` a `4ff6cfc081` di `pokemon-piceno`; scelto da
+   Jacopo: mosse in italiano, evoluzioni, effetti delle mosse).
+   - **Mosse in italiano.** 866 mosse del motore col nome italiano ufficiale (`traduzione/mosse.txt`, da
+     PokeAPI; fuori solo mosse Z e Gigamax). Le 217 che le nostre specie usano, per livello o da MT,
+     hanno anche la descrizione in italiano (`mosse_descrizioni.py`, **scritte da me**: due righe di 27
+     lettere). Restano in inglese le descrizioni delle mosse che non usiamo e tre scritte in altro
+     modo nel motore (Rapigiro, Frana, Cascata: elenco nel rapporto). Visto in lotta: «Azione, Fulmine, Stappata, Gelodenti».
+     Ora due mosse diverse possono avere lo stesso nome: il nostro Fulmine (95) e quello della MT24
+     (90), e così le altre 25 «nome ufficiale ma numeri diversi» del rapporto.
+   - **Effetti delle mosse: 22.** Dieci prendono l'effetto della mossa ufficiale che la scheda descrive
+     (`EFFETTI_DEL_MOTORE`): Aiuto (Assistente), Contatore (Contrattacco), Corredo (Raggiro), Guardia
+     Ampia (Bodyguard), Malocchio (Malosguardo), Stordiscappo (Boato), Ponteggio (Riflesso), Scavare
+     (Fossa), Stappata (Bruciapelo), Fedeltà (Vendetta). Dodici ricevono il dato che la scheda dice a
+     parole (`DATI_DALLA_SCHEDA`): Due Lampi e Doppio Colpo colpiscono due volte, Coro di Pietra tre,
+     Sberletese, Pulcinata e Sparpaglio da 2 a 5; Vendemmia assorbe metà, Pietra d'Altare un quarto;
+     Fava Lanciata confonde sempre, Storiella al 30%, Fischiabuchi al 20%; Salice Piangente colpisce
+     tutti e cala la Velocità; Linguafionda ha priorità +1. **Scelte mie:** Guardia Ampia e
+     Stordiscappo tengono la priorità dell'ufficiale (+3 e −6), che la scheda non dice; Fedeltà resta
+     a priorità 0 (Vendetta ufficiale è −4). Le mosse il cui effetto richiede codice scendono da 75 a 68.
+   - **Evoluzioni: 14 delle 29 in sospeso** (`EVOLUZIONI_DALLA_SCHEDA`). Turibasil → Vescovasil al 36
+     **solo a Campo Parignano** (prima bastava il livello: è lo starter d'Erba); Sbandiera → Quintanaro
+     e Svedde → 'Ngenò salendo di livello in una delle sette zone di Ascoli; Sciarpone → Capultrà e
+     Bagnetto → Coperto di sera o di notte conoscendo una mossa sonora (Rimbombo, Ipervoce, Fischio);
+     Ombrellone → Salvatorre al 36 con un Bagnetto in squadra; Coperto → Mixaro a fine lotta se ha
+     messo KO un Maranzino; Alghetta → Mucillax al 18 sulla Costa o al Jonathan; Liva → Ascolana con
+     la Pietrafocaia, Calancolo → Tufone con la Pietraidrica (**nel gioco le due pietre non si
+     trovano ancora**); Traguardo → Gionata con l'affetto alto; Ndandalusə → Sarchiapà fra il 28 e
+     il 40, deciso dalla personalità dell'esemplare; Ciclabile → Pontecurvo a Marino del Tronto;
+     Retrabbiə → Sammarò quando è solo in squadra (condizione nuova, `IF_ONLY_MON_IN_PARTY` in
+     `src/pokemon.c`). **Scelte mie:** «sestiere» = le sette zone della città; «E. coli» = il mare;
+     «il Pokémon bagnino» = Bagnetto (lo dice la sua scheda).
+   - **Restano 15, servono decisioni di Jacopo.** Sei chiedono uno strumento che non esiste:
+     Grattaevinci (Soldatino, Batterino), Acquasanta (Pozza, con scambio), Botte (Rossopiceno), Sacco
+     di Granaglie (Pəcciò), Ciottolo del Chiaro (Pulcidoro, sul Monte dell'Ascensione), Occhiali Finti
+     (Sciapezza): si creano? chi li dà? Quattro chiedono un luogo che non c'è: Tre Caciare (Caciara),
+     Acquasanta Terme (Tufone), Castel Trosino (Sparpagghjò), lo stadio di domenica (Seggiola). Poi:
+     Bree (quattro avvistamenti in paesi che non ci sono), Frizzantina (scambiata e restituita: nel
+     gioco non si scambia), Pef'na («fusione»: di quanti?), Pito («luogo umido»: quali zone?).
+   - **MT: un difetto corretto.** `porta_pokedex.py` saltava le righe in grassetto delle tabelle
+     «Tramite MT/DT» (le mosse col bonus di tipo): 103 righe su 662. Ora le legge: chi ha Surf,
+     Terremoto, Solarraggio, Riposo... in grassetto adesso la impara. Tre nomi nuovi che il gioco non
+     conosce (Sputoveleno di Mucillax, Semitrappola di Totera, Fangopalla di Pozza): le righe senza
+     riscontro salgono da 16 a 19. Nella scheda di Bracignale «Zanna di fuoco» è ora Rogodenti
+     (pubblicata e bozza).
+   - **Prove sulla ROM finale:** sei su sette passano sempre. `prova_abilita.py` passa due volte su
+     tre: quando Capultra sale di livello a fine lotta e vuole imparare una mossa, i tasti della
+     prova finiscono nella schermata delle mosse. È la prova che è fragile, non il gioco: da
+     sistemare. Vista in lotta la descrizione italiana («Frana di massi. Può far tentennare.»); nel
+     riquadro restano in inglese CAT, PWR, ACC. `prova_novita.py` (nuova): Vendemmia cura, Salice Piangente
+     cala la Velocità, Contatore restituisce il doppio (subiti 3, resi 6), Retrabbiə solo in squadra
+     diventa Sammarò, Turibasil al 36 a Porta Maggiore resta Turibasil. **Non provate in gioco** le
+     altre 19 mosse e le altre 12 evoluzioni (sono righe di tabella dello stesso tipo).
+   - **Incidente:** due compilazioni fallite, tutte e due sulle descrizioni: dove il motore ha un
+     `#if` dentro la descrizione di una mossa la sostituzione lasciava prima `#else` e `#endif`
+     orfani, poi (Baraonda) una riga di testo dopo l'`#endif`. Ora si sostituisce la descrizione
+     intera e il generatore si ferma se sta togliendo righe che non sono testo. Lezione: un
+     controllo di struttura in locale prima del push, perché non si compila qui. `porta_pokedex.py` non può più essere seguito da
+     `git restore` di `piceno_families.h` (butterebbe le evoluzioni): c'è `icone_come_prima.py`.
+   - **Proposta, aspetta il sì di Jacopo: 43 mosse nostre sono mosse ufficiali scritte con un altro
+     nome**, coi numeri identici. Col nome giusto nelle schede diventano quelle del motore, con
+     effetto e animazione: Assorbi (Assorbimento), Assorbicorno (Legnicorno), Attaccatesta e Testata
+     (Bottintesta), Bacio Drenante e Bacioassorbente (Assorbibacio), Bordata e Pietrabordo
+     (Pietrataglio), Braccio Martello e Martelcolpo (Martelpugno), Colpo Rapido (Pugnorapido),
+     Cornata e Cornoattacco (Incornata), Corpolento (Corposcontro), Demolizione (Breccia),
+     Dragofuria (Tornado), Dragosoffio (Dragospiro), Elettroshock (Tuonoshock), Fanghiglia
+     (Fangosberla), Fangobomba (Pantanobomba), Fendente (Taglio), Forzaluna (Forza Lunare),
+     Fuococarica (Nitrocarica), Gelo Nevoso (Bora), Geyser (Zampillo), Ghiacciolo (Scagliagelo),
+     Ipervoce (Granvoce), Lecca (Leccata), Metalartiglio (Ferrartigli), Nevischio (Polneve),
+     Ombraferoce (Ombrartigli), Rip. temerario (Sdoppiatore), Salamurra (Acquadisale), Scavare
+     (Fossa), Spruzzo (Pistolacqua), Superpotere (Troppoforte), Tempesta (Tifone), Terrforza
+     (Geoforza), Testataferro (Metaltestata), Vento Argenteo (Ventargenteo), Vento Ghiacciato
+     (Ventogelato), Ventofatato (Vento di Fata), Vocedincanto (Incantavoce). Per alcune la scheda
+     descrive un effetto diverso dall'ufficiale (Fanghiglia, Fangobomba, Fuococarica): da guardare.
+   - **Visto, non toccato:** le descrizioni delle mosse nuove sono il testo della scheda tagliato a
+     due righe («ha priorità +3 ma riesce solo nel primo turno in cu…»): andrebbero riscritte corte
+     come quelle del motore. In lotta l'etichetta «L MOVE INFO» è disegnata, in inglese come PROFILE
+     e le targhette dei tipi: non ci sono arrivato. Otto mosse di stato hanno la scheda vuota
+     (Buonumore, Cuorestrofinio, Rifugio, Riscaldamento, Sabotaggio, Sberleffo, Schermo, Seduzione).
 
 **Proposte del 21/11 mattina sulle mosse: aspettano il sì di Jacopo, niente è montato**
 
