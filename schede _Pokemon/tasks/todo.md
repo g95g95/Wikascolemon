@@ -235,6 +235,16 @@ ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno
      Maggiore, le strade fra le zone, Maltignano a sud del fiume, Ripatransone in collina, San
      Benedetto più a nord sulla costa. Le zone restano una casella l'una. **Vista solo in anteprima,
      non dentro il gioco.** Le posizioni e il corso dei fiumi sono miei: da guardare.
+   - [x] **Ferrovia a Porta Maggiore** (Jacopo, ispirazione la ferrovia di Fiordoropoli): dal
+     respingente accanto alla stazione i binari salgono lungo il lato ovest, curvano e corrono verso
+     est su tutto il bordo nord al posto degli alberi; dove passa la strada per Borgo Chiaro c'è il
+     **passaggio a livello** (croci di Sant'Andrea, senza sbarre: nella tavolozza comune non c'è il
+     rosso). A est finiscono contro il bordo della mappa. Visti in gioco dal passaggio e da Borgo
+     Chiaro. ROM del commit `1c86384461`. Pezzi nuovi in `disegni.py` (`binario`), chiave `binari`
+     nella pianta. «Eventualmente poi prosegue»: per continuarla in Borgo Chiaro o a Monticelli
+     basta aggiungere i tratti alle loro piante (Monticelli deve prima avere i pezzi nel suo set).
+   - [x] **Cattedrale di Sant'Emidio più profonda** (Jacopo: «così pare schiacciata»): da 9×7 a 9×9
+     celle, col tetto della navata dietro la facciata. Vista solo nel disegno della pianta.
    - [ ] **Ritocchi alle zone:** il foglio per segnarli è `pokemon-piceno/tasks/piante/piante.html`
      (si rifà con `python tools/piceno/foglio_piante.py`): per ogni zona la pianta, gli edifici, i
      cartelli, i personaggi con la battuta, gli allenatori. Aspetta le indicazioni di Jacopo.
