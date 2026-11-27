@@ -282,6 +282,18 @@ ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno
      pezzi condivisi (pietre, binari, asfalto, tetti e muri uguali), che libererebbe circa 400
      posti. È un lavoro a sé (tutte le mappe cambiano set comune): **da decidere**. Oggi: Porta
      Maggiore 510 su 512, Centro 504.
+   - [x] **Set primario nostro** (28/11, Jacopo: «fai adesso il lavoro di razionalizzazione con Hoenn»):
+     le 15 mappe all'aperto usano `gTileset_PicenoGenerale`, una copia del set di Hoenn con le tessere
+     comuni dei nostri set nei 329 posti che non usiamo. Porta Maggiore scende da 510 a 205 tessere su
+     512, il Centro da 504 a 393, le altre zone fra 66 e 222. Le mappe di Hoenn non sono toccate. Il
+     numero di tessere per mappa (1024) non si può aumentare. Visto in gioco a Porta Maggiore, sul
+     ponte, in spiaggia e nel Centro. ROM del commit `2332972e4e`.
+   - [x] **Il Castellano passa sotto il ponte** senza fare la riva.
+   - [x] **Pezzi di Hoenn** (Jacopo: «anche Hoenn ha gli ombrelloni»): gli ombrelloni di Porto d'Ascoli
+     e San Benedetto sono quelli della spiaggia di Porto Selcepoli, con la loro ombra (ora due celle
+     per tre). `da_hoenn()` in `disegni.py` prende qualunque blocco di un set di Hoenn. Sulla stessa
+     spiaggia Hoenn ha anche lettini, materassini e ombrelloni blu e verdi: **non messi, da decidere**.
+     Le tavolozze 11 dei set di Costa e Jonathan passano i 15 colori e sono approssimate (18 e 22).
    - [ ] **Ritocchi alle zone:** il foglio per segnarli è `pokemon-piceno/tasks/piante/piante.html`
      (si rifà con `python tools/piceno/foglio_piante.py`): per ogni zona la pianta, gli edifici, i
      cartelli, i personaggi con la battuta, gli allenatori. Aspetta le indicazioni di Jacopo.
