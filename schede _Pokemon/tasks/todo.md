@@ -245,6 +245,26 @@ ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno
      basta aggiungere i tratti alle loro piante (Monticelli deve prima avere i pezzi nel suo set).
    - [x] **Cattedrale di Sant'Emidio più profonda** (Jacopo: «così pare schiacciata»): da 9×7 a 9×9
      celle, col tetto della navata dietro la facciata. Vista solo nel disegno della pianta.
+   - [x] **Tetti degli edifici importanti** (Jacopo: «non possono essere tutti uguali»; le case
+     restano coi coppi): bar marrone, tabacchi blu, pizzeria verde, Teatro Ventidio Basso grigio
+     piombo, cupola col tiburio sulla Cattedrale, piramide sul Battistero, padiglione e corpo a due
+     falde sulla stazione, due falde sulle chiese di pietra, lamiera ondulata sul capannone. Il
+     Palazzo dei Capitani è rimasto com'era (ha già la torre merlata; il set del Centro è a 510
+     tessere su 512). `tetto(..., forma=)` in `disegni.py`. Visti nel foglio dei pezzi, non uno per uno in gioco.
+   - [x] **Saltelli sulla discesa di Maltignano** (Jacopo): tre gradoni di traverso alla strada (righe
+     21, 24, 27). Scendendo si salta; per risalire si passa dall'erba alta a est. Provato con
+     l'emulatore: da sotto il gradone non si sale, scendendo si saltano.
+   - [x] **Centro Storico senza erba** (Jacopo: «non può e non deve avere nessun tipo di erba»): tutto
+     lastricato (`"fondo": "lastricato"` nella pianta), via le strade di terra, le piazze segnate e
+     l'erba alta: nel Centro non si incontrano più Pokémon selvatici. Restano gli alberi del bordo e
+     sei alberi isolati (hanno l'erba ai piedi), e i cartelli degli edifici hanno il loro quadretto
+     verde: da decidere se toglierli. Visto in gioco.
+   - Per farlo: il lastricato ora usa una tavolozza comune a tutte le zone ed è lo stesso blocco in ogni
+     set (può arrivare al bordo di una mappa); **ha cambiato colore, da crema a rosato, in tutte le
+     piazze del gioco** (la tavolozza comune non ha il crema: l'alternativa è grigio chiaro). I set
+     condividono le tessere dei colori comuni (`COLORI_COMUNI` in `edifici.py`): Porta Maggiore è a
+     503 su 512, il Centro a 510. Rigenerate tutte e 15 le zone. Corretta per strada una battuta di
+     Castel di Lama che usciva senza accenti e senza spazio («era nu bar.Mo»). ROM del commit `e8f5db8327`.
    - [ ] **Ritocchi alle zone:** il foglio per segnarli è `pokemon-piceno/tasks/piante/piante.html`
      (si rifà con `python tools/piceno/foglio_piante.py`): per ogni zona la pianta, gli edifici, i
      cartelli, i personaggi con la battuta, gli allenatori. Aspetta le indicazioni di Jacopo.
