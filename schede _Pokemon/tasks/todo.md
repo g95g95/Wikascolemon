@@ -206,6 +206,22 @@ ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno
      in lotta; nel riquadro della mossa POT e PRE al posto di PWR e ACC. L'alfabeto è mio (4 punti
      per 7): più sottile dell'originale nella scheda. Anteprima in `emulatore/foto/etichette.png`.
 
+9. **Caratterizzazione (dal 27/11 sera; Jacopo: «lo scheletro è di ottima qualità, adesso dobbiamo solo
+   caratterizzarlo di più, anche a livello di personaggi»; le zone gli tornano, le evoluzioni rimaste
+   si fanno «andando avanti, con calma»).**
+   - [x] **Ciclista De Vitis**, all'inizio della salita record di Maltignano (era Renzo), con le
+     battute di Jacopo: «Prima da Brian's e ora GPM Maltignano / SIGNORI! / IL CICLISMO»; battuto:
+     «Z2 Z3....»; a riparlarci: «Stasera giro dei paesi baschi. / IL GRANDISSIMO CICLISMO». ROM del
+     commit `1cacf9cef4` di `pokemon-piceno`; `prova_ciclista.py` lo fa parlare (viste la sfida e
+     la battuta di dopo; «Z2 Z3....» sta nello script, non l'ho vista a schermo).
+     Per farlo: un «\n» in una battuta è un a capo voluto; nella pianta `"dopo": "..."` sulla voce di
+     un allenatore è quello che dice a riparlarci (senza, ripete la battuta della sconfitta).
+   - Jacopo: De Vitis «potrebbe essere un personaggio che ricorre». Proposte mie, **aspettano il suo
+     sì**: gli altri due ciclisti che oggi si chiamano Renzo (Borgo Chiaro, Spinetoli) diventano
+     De Vitis, con squadra che cresce e una battuta di ciclismo per tappa; i quattro «Renzo» e i due
+     «Learco» e «Osvaldo» ripetuti prendono nomi diversi; i personaggi senza nome («Residente»,
+     «Passante», «Abitante») prendono un nome e una fissazione.
+
 **Proposte del 21/11 mattina sulle mosse: aspettano il sì di Jacopo, niente è montato**
 
 *Risposte di Jacopo (21/11 pomeriggio):* «Portacocchie perfetto»; Aeroattacco = Aeroassalto, sì; Battipiedi
