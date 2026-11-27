@@ -341,7 +341,7 @@ ROM: `pokemon-piceno.gba` del 27/11 sera (commit `1462924ff2` di `pokemon-piceno
           da riquadro a riquadro, case col tetto rosso al posto dei quadretti, la ferrovia da Ascoli al mare e su
           lungo la costa, il Tesino a nord, la spiaggia, il mare che scurisce al largo, le cime. Vista in anteprima.
 
-    **B. Zone: fatto il 28/11 notte (ROM del commit `d980d17087`)**
+    **B. Zone: fatto il 28/11 notte (ROM del commit `237810e827`)**
     - [x] **Ponti** di pietra coi parapetti anche da nord a sud: Campo Parignano, Porta Cartara, Marino, la
           passerella dell'Oasi (oltre a Porta Maggiore e Borgo Solestà).
     - [x] **Oasi**: il lago ha una forma naturale; erba alta in macchie, qualche fiore.
