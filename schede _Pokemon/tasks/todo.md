@@ -1,4 +1,49 @@
-# ▶ A CHE PUNTO SIAMO (27/11/2026)
+# ▶ A CHE PUNTO SIAMO (28/11/2026, notte)
+
+ROM: `pokemon-piceno.gba` del commit `237810e827` di `pokemon-piceno`, otto prove su otto. Il dettaglio di
+ieri e di oggi è ai punti 7-11 qui sotto; l'elenco verso la demo è il punto 11.
+
+## ▶ PROSSIMI PASSI (scritti il 28/11 notte, chiesti da Jacopo: breve, medio, lungo termine)
+
+**Lo stato, detto chiaro.** Lo spicchio (dal treno alla seconda medaglia, 15 zone) ha un aspetto suo e si
+gioca in italiano; i 33 Pokémon che ci si incontrano hanno lo sprite. I punti deboli sono tre: (1) in due
+giorni è cambiato quasi tutto l'aspetto e **nessuno ha giocato la ROM di oggi**: io la provo a pezzi con
+l'emulatore, non vedo se «si sente» bene; (2) molte scelte di oggi sono mie (dove stanno case, campi, erba,
+i nomi nuovi delle mosse, i disegni): vanno guardate; (3) sotto la superficie le lotte sono ancora povere:
+62 abilità e 68 mosse senza effetto, 220 descrizioni tagliate, pochi allenatori, trama sottile.
+
+**Breve termine: la demo per gli amici (le prossime una o due sessioni)**
+1. **Jacopo gioca la ROM di oggi** dal treno alla seconda medaglia e segna quello che non va. È il passo
+   che sblocca tutto il resto: prima di aggiungere, vedere cosa c'è.
+2. Correggere quello che esce dalla partita.
+3. Finire il gruppo B rimasto: dare una fine alla ferrovia a est, cartelli diversi (fermate, piazze, confini),
+   riguardare gli interni uno per uno come il treno, bordi delle città (mura, case a schiera), il porto.
+4. Testi che un amico legge subito: le 220 descrizioni di mosse tagliate a metà frase, una frase vera alle 62
+   abilità, i resti d'inglese.
+5. Personaggi: nomi e battute a chi oggi è «Passante» o «Residente», i nomi ripetuti, De Vitis che ricorre
+   (servono le battute di Jacopo).
+6. Per la consegna: togliere «SEL New Game» dal titolo, rigenerare guida e presentazione, decidere cosa
+   chiedere agli amici (un foglio di tre o quattro domande).
+
+**Medio termine: dopo i pareri (le settimane dopo)**
+- Sistemare quello che dicono gli amici, prima di tutto.
+- **La terza palestra**: il Teatro Ventidio Basso è già segnato fuori; serve il capopalestra, l'interno, un filo
+  di trama che porti lì (oggi la storia è: treno, Bobby, Nando, due medaglie, Iban e Teo).
+- **Le lotte**: effetti alle abilità e alle mosse nostre, a blocchi, partendo da quelle dei Pokémon dello spicchio.
+- **Le 15 evoluzioni rimaste**: i sei strumenti (Grattaevinci, Acquasanta, Botte, Granaglie, Ciottolo, Occhiali
+  Finti) e chi li dà; le altre aspettano i luoghi.
+- **Sprite a giri**: altri fogli per i Pokémon delle zone che vengono dopo (39 su 149 fatti); Iban e Teo.
+- **Verso monte**: Castel Trosino, Acquasanta Terme, la Montagna dei Fiori (vedi la roadmap della montagna):
+  sono anche i luoghi di quattro evoluzioni.
+- Giorno e notte (la tinta è spenta), la rilettura del dialetto da parte di un ascolano.
+
+**Lungo termine: il gioco intero**
+- Tutte le zone del Piceno e le otto palestre, con una trama dall'inizio alla fine.
+- I 149 sprite, i versi dei Pokémon, le musiche (oggi sono quelle di Hoenn).
+- Bilanciamento: livelli, squadre, dove si trova cosa, giocato da più persone.
+- Togliere Hoenn dalla ROM (decisione aperta dal 23/11) e integrare il piano di Giulio col nostro.
+- La pubblicazione.
+
 
 ## ✅ DA FARE (lista unica, al 21/11)
 
